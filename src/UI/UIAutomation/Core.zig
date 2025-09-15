@@ -81,6 +81,7 @@ pub const CoreAutomationRemoteOperation = extern struct {
     }
     pub fn ImportConnectionBoundObject(self: *@This(), operandId: AutomationRemoteOperationOperandId, connectionBoundObject: *AutomationConnectionBoundObject) core.HResult!void {
         var this: ?*ICoreAutomationRemoteOperation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreAutomationRemoteOperation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ImportConnectionBoundObject(operandId, connectionBoundObject);

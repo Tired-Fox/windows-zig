@@ -125,6 +125,7 @@ pub const FileLoggingSession = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1590,96 +1591,112 @@ pub const LoggingActivity = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn getChannel(self: *@This()) core.HResult!*LoggingChannel {
         var this: ?*ILoggingActivity2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChannel();
     }
     pub fn StopActivity(self: *@This(), stopEventName: ?HSTRING) core.HResult!void {
         var this: ?*ILoggingActivity2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopActivity(stopEventName);
     }
     pub fn StopActivityWithFields(self: *@This(), stopEventName: ?HSTRING, fields: *LoggingFields) core.HResult!void {
         var this: ?*ILoggingActivity2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopActivityWithFields(stopEventName, fields);
     }
     pub fn StopActivityWithFieldsAndOptions(self: *@This(), stopEventName: ?HSTRING, fields: *LoggingFields, options: *LoggingOptions) core.HResult!void {
         var this: ?*ILoggingActivity2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopActivityWithFieldsAndOptions(stopEventName, fields, options);
     }
     pub fn IsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsEnabled();
     }
     pub fn IsEnabledWithLevel(self: *@This(), level: LoggingLevel) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsEnabledWithLevel(level);
     }
     pub fn IsEnabledWithLevelAndKeywords(self: *@This(), level: LoggingLevel, keywords: i64) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsEnabledWithLevelAndKeywords(level, keywords);
     }
     pub fn LogEvent(self: *@This(), eventName: ?HSTRING) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LogEvent(eventName);
     }
     pub fn LogEventWithFields(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LogEventWithFields(eventName, fields);
     }
     pub fn LogEventWithFieldsAndLevel(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LogEventWithFieldsAndLevel(eventName, fields, level);
     }
     pub fn LogEventWithFieldsAndLevelAndOptions(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LogEventWithFieldsAndLevelAndOptions(eventName, fields, level, options);
     }
     pub fn StartActivity(self: *@This(), startEventName: ?HSTRING) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartActivity(startEventName);
     }
     pub fn StartActivityWithFields(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartActivityWithFields(startEventName, fields);
     }
     pub fn StartActivityWithFieldsAndLevel(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartActivityWithFieldsAndLevel(startEventName, fields, level);
     }
     pub fn StartActivityWithFieldsAndLevelAndOptions(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartActivityWithFieldsAndLevelAndOptions(startEventName, fields, level, options);
@@ -1742,78 +1759,91 @@ pub const LoggingChannel = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var this: ?*ILoggingChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn IsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsEnabled();
     }
     pub fn IsEnabledWithLevel(self: *@This(), level: LoggingLevel) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsEnabledWithLevel(level);
     }
     pub fn IsEnabledWithLevelAndKeywords(self: *@This(), level: LoggingLevel, keywords: i64) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsEnabledWithLevelAndKeywords(level, keywords);
     }
     pub fn LogEvent(self: *@This(), eventName: ?HSTRING) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LogEvent(eventName);
     }
     pub fn LogEventWithFields(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LogEventWithFields(eventName, fields);
     }
     pub fn LogEventWithFieldsAndLevel(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LogEventWithFieldsAndLevel(eventName, fields, level);
     }
     pub fn LogEventWithFieldsAndLevelAndOptions(self: *@This(), eventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LogEventWithFieldsAndLevelAndOptions(eventName, fields, level, options);
     }
     pub fn StartActivity(self: *@This(), startEventName: ?HSTRING) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartActivity(startEventName);
     }
     pub fn StartActivityWithFields(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartActivityWithFields(startEventName, fields);
     }
     pub fn StartActivityWithFieldsAndLevel(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartActivityWithFieldsAndLevel(startEventName, fields, level);
     }
     pub fn StartActivityWithFieldsAndLevelAndOptions(self: *@This(), startEventName: ?HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartActivityWithFieldsAndLevelAndOptions(startEventName, fields, level, options);
@@ -2476,6 +2506,7 @@ pub const LoggingSession = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

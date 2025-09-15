@@ -35,36 +35,42 @@ pub const BluetoothAdapter = extern struct {
     }
     pub fn getAreClassicSecureConnectionsSupported(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothAdapter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreClassicSecureConnectionsSupported();
     }
     pub fn getAreLowEnergySecureConnectionsSupported(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothAdapter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreLowEnergySecureConnectionsSupported();
     }
     pub fn getIsExtendedAdvertisingSupported(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothAdapter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsExtendedAdvertisingSupported();
     }
     pub fn getMaxAdvertisementDataLength(self: *@This()) core.HResult!u32 {
         var this: ?*IBluetoothAdapter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxAdvertisementDataLength();
     }
     pub fn getIsLowEnergyUncoded2MPhySupported(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothAdapter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsLowEnergyUncoded2MPhySupported();
     }
     pub fn getIsLowEnergyCodedPhySupported(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothAdapter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothAdapter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsLowEnergyCodedPhySupported();
@@ -200,60 +206,70 @@ pub const BluetoothDevice = extern struct {
     }
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         var this: ?*IBluetoothDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceInformation();
     }
     pub fn getDeviceAccessInformation(self: *@This()) core.HResult!*DeviceAccessInformation {
         var this: ?*IBluetoothDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceAccessInformation();
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceAccessStatus) {
         var this: ?*IBluetoothDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestAccessAsync();
     }
     pub fn GetRfcommServicesAsync(self: *@This()) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var this: ?*IBluetoothDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRfcommServicesAsync();
     }
     pub fn GetRfcommServicesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var this: ?*IBluetoothDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRfcommServicesAsyncWithCacheMode(cacheMode);
     }
     pub fn GetRfcommServicesForIdAsync(self: *@This(), serviceId: *RfcommServiceId) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var this: ?*IBluetoothDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRfcommServicesForIdAsync(serviceId);
     }
     pub fn GetRfcommServicesForIdAsyncWithCacheMode(self: *@This(), serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var this: ?*IBluetoothDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRfcommServicesForIdAsyncWithCacheMode(serviceId, cacheMode);
     }
     pub fn getBluetoothDeviceId(self: *@This()) core.HResult!*BluetoothDeviceId {
         var this: ?*IBluetoothDevice4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBluetoothDeviceId();
     }
     pub fn getWasSecureConnectionUsedForPairing(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothDevice5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWasSecureConnectionUsedForPairing();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -703,114 +719,133 @@ pub const BluetoothLEDevice = extern struct {
     }
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         var this: ?*IBluetoothLEDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceInformation();
     }
     pub fn getAppearance(self: *@This()) core.HResult!*BluetoothLEAppearance {
         var this: ?*IBluetoothLEDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppearance();
     }
     pub fn getBluetoothAddressType(self: *@This()) core.HResult!BluetoothAddressType {
         var this: ?*IBluetoothLEDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBluetoothAddressType();
     }
     pub fn getDeviceAccessInformation(self: *@This()) core.HResult!*DeviceAccessInformation {
         var this: ?*IBluetoothLEDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceAccessInformation();
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceAccessStatus) {
         var this: ?*IBluetoothLEDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestAccessAsync();
     }
     pub fn GetGattServicesAsync(self: *@This()) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IBluetoothLEDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetGattServicesAsync();
     }
     pub fn GetGattServicesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IBluetoothLEDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetGattServicesAsyncWithCacheMode(cacheMode);
     }
     pub fn GetGattServicesForUuidAsync(self: *@This(), serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IBluetoothLEDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetGattServicesForUuidAsync(serviceUuid);
     }
     pub fn GetGattServicesForUuidAsyncWithCacheMode(self: *@This(), serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IBluetoothLEDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetGattServicesForUuidAsyncWithCacheMode(serviceUuid, cacheMode);
     }
     pub fn getBluetoothDeviceId(self: *@This()) core.HResult!*BluetoothDeviceId {
         var this: ?*IBluetoothLEDevice4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBluetoothDeviceId();
     }
     pub fn getWasSecureConnectionUsedForPairing(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEDevice5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWasSecureConnectionUsedForPairing();
     }
     pub fn GetConnectionParameters(self: *@This()) core.HResult!*BluetoothLEConnectionParameters {
         var this: ?*IBluetoothLEDevice6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConnectionParameters();
     }
     pub fn GetConnectionPhy(self: *@This()) core.HResult!*BluetoothLEConnectionPhy {
         var this: ?*IBluetoothLEDevice6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConnectionPhy();
     }
     pub fn RequestPreferredConnectionParameters(self: *@This(), preferredConnectionParameters: *BluetoothLEPreferredConnectionParameters) core.HResult!*BluetoothLEPreferredConnectionParametersRequest {
         var this: ?*IBluetoothLEDevice6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestPreferredConnectionParameters(preferredConnectionParameters);
     }
     pub fn addConnectionParametersChanged(self: *@This(), handler: *TypedEventHandler(BluetoothLEDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IBluetoothLEDevice6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addConnectionParametersChanged(handler);
     }
     pub fn removeConnectionParametersChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IBluetoothLEDevice6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeConnectionParametersChanged(token);
     }
     pub fn addConnectionPhyChanged(self: *@This(), handler: *TypedEventHandler(BluetoothLEDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IBluetoothLEDevice6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addConnectionPhyChanged(handler);
     }
     pub fn removeConnectionPhyChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IBluetoothLEDevice6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeConnectionPhyChanged(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -914,6 +949,7 @@ pub const BluetoothLEPreferredConnectionParametersRequest = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

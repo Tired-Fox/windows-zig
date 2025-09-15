@@ -2119,42 +2119,49 @@ pub const RemoteSystem = extern struct {
     }
     pub fn getIsAvailableBySpatialProximity(self: *@This()) core.HResult!bool {
         var this: ?*IRemoteSystem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAvailableBySpatialProximity();
     }
     pub fn GetCapabilitySupportedAsync(self: *@This(), capabilityName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IRemoteSystem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCapabilitySupportedAsync(capabilityName);
     }
     pub fn getManufacturerDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRemoteSystem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getManufacturerDisplayName();
     }
     pub fn getModelDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRemoteSystem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getModelDisplayName();
     }
     pub fn getPlatform(self: *@This()) core.HResult!RemoteSystemPlatform {
         var this: ?*IRemoteSystem4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystem4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlatform();
     }
     pub fn getApps(self: *@This()) core.HResult!*IVectorView(RemoteSystemApp) {
         var this: ?*IRemoteSystem5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystem5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getApps();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IRemoteSystem6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystem6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
@@ -2241,12 +2248,14 @@ pub const RemoteSystemApp = extern struct {
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IRemoteSystemApp2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystemApp2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
     }
     pub fn getConnectionToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRemoteSystemApp2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystemApp2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConnectionToken();
@@ -2341,12 +2350,14 @@ pub const RemoteSystemConnectionRequest = extern struct {
     }
     pub fn getRemoteSystemApp(self: *@This()) core.HResult!*RemoteSystemApp {
         var this: ?*IRemoteSystemConnectionRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystemConnectionRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteSystemApp();
     }
     pub fn getConnectionToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRemoteSystemConnectionRequest3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystemConnectionRequest3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConnectionToken();
@@ -2526,6 +2537,7 @@ pub const RemoteSystemSession = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -3091,30 +3103,35 @@ pub const RemoteSystemWatcher = extern struct {
     }
     pub fn addEnumerationCompleted(self: *@This(), handler: *TypedEventHandler(RemoteSystemWatcher,RemoteSystemEnumerationCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRemoteSystemWatcher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystemWatcher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addEnumerationCompleted(handler);
     }
     pub fn removeEnumerationCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRemoteSystemWatcher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystemWatcher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeEnumerationCompleted(token);
     }
     pub fn addErrorOccurred(self: *@This(), handler: *TypedEventHandler(RemoteSystemWatcher,RemoteSystemWatcherErrorOccurredEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRemoteSystemWatcher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystemWatcher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addErrorOccurred(handler);
     }
     pub fn removeErrorOccurred(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRemoteSystemWatcher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystemWatcher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeErrorOccurred(token);
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IRemoteSystemWatcher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystemWatcher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();

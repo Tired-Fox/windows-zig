@@ -2410,138 +2410,161 @@ pub const VpnChannel = extern struct {
     }
     pub fn StartWithMainTransport(self: *@This(), assignedClientIPv4list: *IVectorView(HostName), assignedClientIPv6list: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedDomainName: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, Reserved: bool, mainOuterTunnelTransport: *IInspectable) core.HResult!void {
         var this: ?*IVpnChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartWithMainTransport(assignedClientIPv4list, assignedClientIPv6list, vpnInterfaceId, assignedRoutes, assignedDomainName, mtuSize, maxFrameSize, Reserved, mainOuterTunnelTransport);
     }
     pub fn StartExistingTransports(self: *@This(), assignedClientIPv4list: *IVectorView(HostName), assignedClientIPv6list: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedDomainName: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, Reserved: bool) core.HResult!void {
         var this: ?*IVpnChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartExistingTransports(assignedClientIPv4list, assignedClientIPv6list, vpnInterfaceId, assignedRoutes, assignedDomainName, mtuSize, maxFrameSize, Reserved);
     }
     pub fn addActivityStateChange(self: *@This(), handler: *TypedEventHandler(VpnChannel,VpnChannelActivityStateChangedArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IVpnChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addActivityStateChange(handler);
     }
     pub fn removeActivityStateChange(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IVpnChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeActivityStateChange(token);
     }
     pub fn GetVpnSendPacketBuffer(self: *@This()) core.HResult!*VpnPacketBuffer {
         var this: ?*IVpnChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetVpnSendPacketBuffer();
     }
     pub fn GetVpnReceivePacketBuffer(self: *@This()) core.HResult!*VpnPacketBuffer {
         var this: ?*IVpnChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetVpnReceivePacketBuffer();
     }
     pub fn RequestCustomPromptAsync(self: *@This(), customPromptElement: *IVectorView(IVpnCustomPromptElement)) core.HResult!*IAsyncAction {
         var this: ?*IVpnChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestCustomPromptAsync(customPromptElement);
     }
     pub fn RequestCredentialsAsyncWithCredOptionsAndCertificate(self: *@This(), credType: VpnCredentialType, credOptions: u32, certificate: *Certificate) core.HResult!*IAsyncOperation(VpnCredential) {
         var this: ?*IVpnChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestCredentialsAsyncWithCredOptionsAndCertificate(credType, credOptions, certificate);
     }
     pub fn RequestCredentialsAsyncWithCredOptions(self: *@This(), credType: VpnCredentialType, credOptions: u32) core.HResult!*IAsyncOperation(VpnCredential) {
         var this: ?*IVpnChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestCredentialsAsyncWithCredOptions(credType, credOptions);
     }
     pub fn RequestCredentialsAsync(self: *@This(), credType: VpnCredentialType) core.HResult!*IAsyncOperation(VpnCredential) {
         var this: ?*IVpnChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestCredentialsAsync(credType);
     }
     pub fn TerminateConnection(self: *@This(), message: ?HSTRING) core.HResult!void {
         var this: ?*IVpnChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TerminateConnection(message);
     }
     pub fn StartWithTrafficFilterWithAssignedClientIpv4ListAndAssignedClientIpv6ListAndMainOuterTunnelTransportAndOptionalOuterTunnelTransportAndAssignedTrafficFilters(self: *@This(), assignedClientIpv4List: *IVectorView(HostName), assignedClientIpv6List: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedNamespace: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, reserved: bool, mainOuterTunnelTransport: *IInspectable, optionalOuterTunnelTransport: *IInspectable, assignedTrafficFilters: *VpnTrafficFilterAssignment) core.HResult!void {
         var this: ?*IVpnChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartWithTrafficFilterWithAssignedClientIpv4ListAndAssignedClientIpv6ListAndMainOuterTunnelTransportAndOptionalOuterTunnelTransportAndAssignedTrafficFilters(assignedClientIpv4List, assignedClientIpv6List, vpnInterfaceId, assignedRoutes, assignedNamespace, mtuSize, maxFrameSize, reserved, mainOuterTunnelTransport, optionalOuterTunnelTransport, assignedTrafficFilters);
     }
     pub fn AddAndAssociateTransport(self: *@This(), transport: *IInspectable, context: *IInspectable) core.HResult!void {
         var this: ?*IVpnChannel4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddAndAssociateTransport(transport, context);
     }
     pub fn StartWithTrafficFilter(self: *@This(), assignedClientIpv4Addresses: *IIterable(HostName), assignedClientIpv6Addresses: *IIterable(HostName), vpninterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedNamespace: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, reserved: bool, transports: *IIterable(IInspectable), assignedTrafficFilters: *VpnTrafficFilterAssignment) core.HResult!void {
         var this: ?*IVpnChannel4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartWithTrafficFilter(assignedClientIpv4Addresses, assignedClientIpv6Addresses, vpninterfaceId, assignedRoutes, assignedNamespace, mtuSize, maxFrameSize, reserved, transports, assignedTrafficFilters);
     }
     pub fn ReplaceAndAssociateTransport(self: *@This(), transport: *IInspectable, context: *IInspectable) core.HResult!void {
         var this: ?*IVpnChannel4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAndAssociateTransport(transport, context);
     }
     pub fn StartReconnectingTransport(self: *@This(), transport: *IInspectable, context: *IInspectable) core.HResult!void {
         var this: ?*IVpnChannel4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartReconnectingTransport(transport, context);
     }
     pub fn GetSlotTypeForTransportContext(self: *@This(), context: *IInspectable) core.HResult!ControlChannelTriggerStatus {
         var this: ?*IVpnChannel4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSlotTypeForTransportContext(context);
     }
     pub fn getCurrentRequestTransportContext(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IVpnChannel4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCurrentRequestTransportContext();
     }
     pub fn AppendVpnReceivePacketBuffer(self: *@This(), decapsulatedPacketBuffer: *VpnPacketBuffer) core.HResult!void {
         var this: ?*IVpnChannel5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AppendVpnReceivePacketBuffer(decapsulatedPacketBuffer);
     }
     pub fn AppendVpnSendPacketBuffer(self: *@This(), encapsulatedPacketBuffer: *VpnPacketBuffer) core.HResult!void {
         var this: ?*IVpnChannel5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AppendVpnSendPacketBuffer(encapsulatedPacketBuffer);
     }
     pub fn FlushVpnReceivePacketBuffers(self: *@This()) core.HResult!void {
         var this: ?*IVpnChannel5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushVpnReceivePacketBuffers();
     }
     pub fn FlushVpnSendPacketBuffers(self: *@This()) core.HResult!void {
         var this: ?*IVpnChannel5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushVpnSendPacketBuffers();
     }
     pub fn ActivateForeground(self: *@This(), packageRelativeAppId: ?HSTRING, sharedContext: *ValueSet) core.HResult!*ValueSet {
         var this: ?*IVpnChannel6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ActivateForeground(packageRelativeAppId, sharedContext);
@@ -2604,6 +2627,7 @@ pub const VpnChannelConfiguration = extern struct {
     }
     pub fn getServerUris(self: *@This()) core.HResult!*IVectorView(Uri) {
         var this: ?*IVpnChannelConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannelConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerUris();
@@ -2668,36 +2692,42 @@ pub const VpnCustomCheckBox = extern struct {
     }
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLabel();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompulsory();
     }
     pub fn putBordered(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBordered(value);
     }
     pub fn getBordered(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBordered();
@@ -2732,36 +2762,42 @@ pub const VpnCustomComboBox = extern struct {
     }
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLabel();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompulsory();
     }
     pub fn putBordered(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBordered(value);
     }
     pub fn getBordered(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBordered();
@@ -2804,36 +2840,42 @@ pub const VpnCustomEditBox = extern struct {
     }
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLabel();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompulsory();
     }
     pub fn putBordered(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBordered(value);
     }
     pub fn getBordered(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBordered();
@@ -2856,36 +2898,42 @@ pub const VpnCustomErrorBox = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLabel();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompulsory();
     }
     pub fn putBordered(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBordered(value);
     }
     pub fn getBordered(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBordered();
@@ -2920,36 +2968,42 @@ pub const VpnCustomPromptBooleanInput = extern struct {
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompulsory();
     }
     pub fn putEmphasized(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putEmphasized(value);
     }
     pub fn getEmphasized(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmphasized();
@@ -2980,36 +3034,42 @@ pub const VpnCustomPromptOptionSelector = extern struct {
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompulsory();
     }
     pub fn putEmphasized(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putEmphasized(value);
     }
     pub fn getEmphasized(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmphasized();
@@ -3040,36 +3100,42 @@ pub const VpnCustomPromptText = extern struct {
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompulsory();
     }
     pub fn putEmphasized(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putEmphasized(value);
     }
     pub fn getEmphasized(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmphasized();
@@ -3112,36 +3178,42 @@ pub const VpnCustomPromptTextInput = extern struct {
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompulsory();
     }
     pub fn putEmphasized(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putEmphasized(value);
     }
     pub fn getEmphasized(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPromptElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPromptElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmphasized();
@@ -3172,36 +3244,42 @@ pub const VpnCustomTextBox = extern struct {
     }
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLabel();
     }
     pub fn putCompulsory(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompulsory(value);
     }
     pub fn getCompulsory(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompulsory();
     }
     pub fn putBordered(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBordered(value);
     }
     pub fn getBordered(self: *@This()) core.HResult!bool {
         var this: ?*IVpnCustomPrompt = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnCustomPrompt.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBordered();
@@ -3280,6 +3358,7 @@ pub const VpnDomainNameInfo = extern struct {
     }
     pub fn getWebProxyUris(self: *@This()) core.HResult!*IVector(Uri) {
         var this: ?*IVpnDomainNameInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnDomainNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWebProxyUris();
@@ -3319,24 +3398,28 @@ pub const VpnForegroundActivatedEventArgs = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!ActivationKind {
         var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
         var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreviousExecutionState();
     }
     pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
         var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSplashScreen();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IActivatedEventArgsWithUser = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgsWithUser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
@@ -3587,78 +3670,91 @@ pub const VpnNativeProfile = extern struct {
     }
     pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProfileName();
     }
     pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProfileName(value);
     }
     pub fn getAppTriggers(self: *@This()) core.HResult!*IVector(VpnAppId) {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppTriggers();
     }
     pub fn getRoutes(self: *@This()) core.HResult!*IVector(VpnRoute) {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRoutes();
     }
     pub fn getDomainNameInfoList(self: *@This()) core.HResult!*IVector(VpnDomainNameInfo) {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDomainNameInfoList();
     }
     pub fn getTrafficFilters(self: *@This()) core.HResult!*IVector(VpnTrafficFilter) {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTrafficFilters();
     }
     pub fn getRememberCredentials(self: *@This()) core.HResult!bool {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRememberCredentials();
     }
     pub fn putRememberCredentials(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRememberCredentials(value);
     }
     pub fn getAlwaysOn(self: *@This()) core.HResult!bool {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAlwaysOn();
     }
     pub fn putAlwaysOn(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAlwaysOn(value);
     }
     pub fn getRequireVpnClientAppUI(self: *@This()) core.HResult!bool {
         var this: ?*IVpnNativeProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnNativeProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRequireVpnClientAppUI();
     }
     pub fn putRequireVpnClientAppUI(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnNativeProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnNativeProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRequireVpnClientAppUI(value);
     }
     pub fn getConnectionStatus(self: *@This()) core.HResult!VpnManagementConnectionStatus {
         var this: ?*IVpnNativeProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnNativeProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConnectionStatus();
@@ -3706,18 +3802,21 @@ pub const VpnPacketBuffer = extern struct {
     }
     pub fn getAppId(self: *@This()) core.HResult!*VpnAppId {
         var this: ?*IVpnPacketBuffer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnPacketBuffer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppId();
     }
     pub fn putTransportContext(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IVpnPacketBuffer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnPacketBuffer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransportContext(value);
     }
     pub fn getTransportContext(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IVpnPacketBuffer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnPacketBuffer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransportContext();
@@ -3772,6 +3871,7 @@ pub const VpnPacketBufferList = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(VpnPacketBuffer) {
         var this: ?*IIterable(VpnPacketBuffer) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(VpnPacketBuffer).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -3830,78 +3930,91 @@ pub const VpnPlugInProfile = extern struct {
     }
     pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProfileName();
     }
     pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProfileName(value);
     }
     pub fn getAppTriggers(self: *@This()) core.HResult!*IVector(VpnAppId) {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppTriggers();
     }
     pub fn getRoutes(self: *@This()) core.HResult!*IVector(VpnRoute) {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRoutes();
     }
     pub fn getDomainNameInfoList(self: *@This()) core.HResult!*IVector(VpnDomainNameInfo) {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDomainNameInfoList();
     }
     pub fn getTrafficFilters(self: *@This()) core.HResult!*IVector(VpnTrafficFilter) {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTrafficFilters();
     }
     pub fn getRememberCredentials(self: *@This()) core.HResult!bool {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRememberCredentials();
     }
     pub fn putRememberCredentials(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRememberCredentials(value);
     }
     pub fn getAlwaysOn(self: *@This()) core.HResult!bool {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAlwaysOn();
     }
     pub fn putAlwaysOn(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnProfile = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnProfile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAlwaysOn(value);
     }
     pub fn getRequireVpnClientAppUI(self: *@This()) core.HResult!bool {
         var this: ?*IVpnPlugInProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnPlugInProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRequireVpnClientAppUI();
     }
     pub fn putRequireVpnClientAppUI(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVpnPlugInProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnPlugInProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRequireVpnClientAppUI(value);
     }
     pub fn getConnectionStatus(self: *@This()) core.HResult!VpnManagementConnectionStatus {
         var this: ?*IVpnPlugInProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnPlugInProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConnectionStatus();

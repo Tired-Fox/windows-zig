@@ -813,18 +813,21 @@ pub const UserActivity = extern struct {
     }
     pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUserActivity2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserActivity2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToJson();
     }
     pub fn getIsRoamable(self: *@This()) core.HResult!bool {
         var this: ?*IUserActivity3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserActivity3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRoamable();
     }
     pub fn putIsRoamable(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IUserActivity3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserActivity3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsRoamable(value);
@@ -917,12 +920,14 @@ pub const UserActivityChannel = extern struct {
     }
     pub fn GetRecentUserActivitiesAsync(self: *@This(), maxUniqueActivities: i32) core.HResult!*IAsyncOperation(IVector(UserActivitySessionHistoryItem)) {
         var this: ?*IUserActivityChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserActivityChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRecentUserActivitiesAsync(maxUniqueActivities);
     }
     pub fn GetSessionHistoryItemsForUserActivityAsync(self: *@This(), activityId: ?HSTRING, startTime: DateTime) core.HResult!*IAsyncOperation(IVector(UserActivitySessionHistoryItem)) {
         var this: ?*IUserActivityChannel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserActivityChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSessionHistoryItemsForUserActivityAsync(activityId, startTime);
@@ -1035,6 +1040,7 @@ pub const UserActivitySession = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1113,12 +1119,14 @@ pub const UserActivityVisualElements = extern struct {
     }
     pub fn getAttributionDisplayText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUserActivityVisualElements2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserActivityVisualElements2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAttributionDisplayText();
     }
     pub fn putAttributionDisplayText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IUserActivityVisualElements2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserActivityVisualElements2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAttributionDisplayText(value);

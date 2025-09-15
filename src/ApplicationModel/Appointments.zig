@@ -103,150 +103,175 @@ pub const Appointment = extern struct {
     }
     pub fn getLocalId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLocalId();
     }
     pub fn getCalendarId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCalendarId();
     }
     pub fn getRoamingId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRoamingId();
     }
     pub fn putRoamingId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRoamingId(value);
     }
     pub fn getOriginalStartTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOriginalStartTime();
     }
     pub fn getIsResponseRequested(self: *@This()) core.HResult!bool {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsResponseRequested();
     }
     pub fn putIsResponseRequested(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsResponseRequested(value);
     }
     pub fn getAllowNewTimeProposal(self: *@This()) core.HResult!bool {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAllowNewTimeProposal();
     }
     pub fn putAllowNewTimeProposal(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAllowNewTimeProposal(value);
     }
     pub fn getOnlineMeetingLink(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOnlineMeetingLink();
     }
     pub fn putOnlineMeetingLink(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOnlineMeetingLink(value);
     }
     pub fn getReplyTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReplyTime();
     }
     pub fn putReplyTime(self: *@This(), value: *IReference(DateTime)) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReplyTime(value);
     }
     pub fn getUserResponse(self: *@This()) core.HResult!AppointmentParticipantResponse {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUserResponse();
     }
     pub fn putUserResponse(self: *@This(), value: AppointmentParticipantResponse) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUserResponse(value);
     }
     pub fn getHasInvitees(self: *@This()) core.HResult!bool {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHasInvitees();
     }
     pub fn getIsCanceledMeeting(self: *@This()) core.HResult!bool {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCanceledMeeting();
     }
     pub fn putIsCanceledMeeting(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsCanceledMeeting(value);
     }
     pub fn getIsOrganizedByUser(self: *@This()) core.HResult!bool {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsOrganizedByUser();
     }
     pub fn putIsOrganizedByUser(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsOrganizedByUser(value);
     }
     pub fn getChangeNumber(self: *@This()) core.HResult!u64 {
         var this: ?*IAppointment3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChangeNumber();
     }
     pub fn getRemoteChangeNumber(self: *@This()) core.HResult!u64 {
         var this: ?*IAppointment3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteChangeNumber();
     }
     pub fn putRemoteChangeNumber(self: *@This(), value: u64) core.HResult!void {
         var this: ?*IAppointment3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRemoteChangeNumber(value);
     }
     pub fn getDetailsKind(self: *@This()) core.HResult!AppointmentDetailsKind {
         var this: ?*IAppointment3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDetailsKind();
     }
     pub fn putDetailsKind(self: *@This(), value: AppointmentDetailsKind) core.HResult!void {
         var this: ?*IAppointment3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointment3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDetailsKind(value);
@@ -380,156 +405,182 @@ pub const AppointmentCalendar = extern struct {
     }
     pub fn getSyncManager(self: *@This()) core.HResult!*AppointmentCalendarSyncManager {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSyncManager();
     }
     pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteId();
     }
     pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRemoteId(value);
     }
     pub fn putDisplayColor(self: *@This(), value: Color) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayColor(value);
     }
     pub fn putIsHidden(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsHidden(value);
     }
     pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUserDataAccountId();
     }
     pub fn getCanCreateOrUpdateAppointments(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanCreateOrUpdateAppointments();
     }
     pub fn putCanCreateOrUpdateAppointments(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanCreateOrUpdateAppointments(value);
     }
     pub fn getCanCancelMeetings(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanCancelMeetings();
     }
     pub fn putCanCancelMeetings(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanCancelMeetings(value);
     }
     pub fn getCanForwardMeetings(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanForwardMeetings();
     }
     pub fn putCanForwardMeetings(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanForwardMeetings(value);
     }
     pub fn getCanProposeNewTimeForMeetings(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanProposeNewTimeForMeetings();
     }
     pub fn putCanProposeNewTimeForMeetings(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanProposeNewTimeForMeetings(value);
     }
     pub fn getCanUpdateMeetingResponses(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanUpdateMeetingResponses();
     }
     pub fn putCanUpdateMeetingResponses(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanUpdateMeetingResponses(value);
     }
     pub fn getCanNotifyInvitees(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanNotifyInvitees();
     }
     pub fn putCanNotifyInvitees(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanNotifyInvitees(value);
     }
     pub fn getMustNofityInvitees(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMustNofityInvitees();
     }
     pub fn putMustNofityInvitees(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMustNofityInvitees(value);
     }
     pub fn TryCreateOrUpdateAppointmentAsync(self: *@This(), appointment: *Appointment, notifyInvitees: bool) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryCreateOrUpdateAppointmentAsync(appointment, notifyInvitees);
     }
     pub fn TryCancelMeetingAsync(self: *@This(), meeting: *Appointment, subject: ?HSTRING, comment: ?HSTRING, notifyInvitees: bool) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryCancelMeetingAsync(meeting, subject, comment, notifyInvitees);
     }
     pub fn TryForwardMeetingAsync(self: *@This(), meeting: *Appointment, invitees: *IIterable(AppointmentInvitee), subject: ?HSTRING, forwardHeader: ?HSTRING, comment: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryForwardMeetingAsync(meeting, invitees, subject, forwardHeader, comment);
     }
     pub fn TryProposeNewTimeForMeetingAsync(self: *@This(), meeting: *Appointment, newStartTime: DateTime, newDuration: TimeSpan, subject: ?HSTRING, comment: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryProposeNewTimeForMeetingAsync(meeting, newStartTime, newDuration, subject, comment);
     }
     pub fn TryUpdateMeetingResponseAsync(self: *@This(), meeting: *Appointment, response: AppointmentParticipantResponse, subject: ?HSTRING, comment: ?HSTRING, sendUpdate: bool) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppointmentCalendar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryUpdateMeetingResponseAsync(meeting, response, subject, comment, sendUpdate);
     }
     pub fn RegisterSyncManagerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IAppointmentCalendar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RegisterSyncManagerAsync();
@@ -579,18 +630,21 @@ pub const AppointmentCalendarSyncManager = extern struct {
     }
     pub fn putStatus(self: *@This(), value: AppointmentCalendarSyncStatus) core.HResult!void {
         var this: ?*IAppointmentCalendarSyncManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendarSyncManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStatus(value);
     }
     pub fn putLastSuccessfulSyncTime(self: *@This(), value: DateTime) core.HResult!void {
         var this: ?*IAppointmentCalendarSyncManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendarSyncManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLastSuccessfulSyncTime(value);
     }
     pub fn putLastAttemptedSyncTime(self: *@This(), value: DateTime) core.HResult!void {
         var this: ?*IAppointmentCalendarSyncManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentCalendarSyncManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLastAttemptedSyncTime(value);
@@ -685,24 +739,28 @@ pub const AppointmentInvitee = extern struct {
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentParticipant = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentParticipant.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppointmentParticipant = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentParticipant.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
     pub fn getAddress(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentParticipant = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentParticipant.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAddress();
     }
     pub fn putAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppointmentParticipant = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentParticipant.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAddress(value);
@@ -1078,24 +1136,28 @@ pub const AppointmentRecurrence = extern struct {
     }
     pub fn getRecurrenceType(self: *@This()) core.HResult!RecurrenceType {
         var this: ?*IAppointmentRecurrence2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentRecurrence2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRecurrenceType();
     }
     pub fn getTimeZone(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentRecurrence2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentRecurrence2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimeZone();
     }
     pub fn putTimeZone(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppointmentRecurrence2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentRecurrence2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTimeZone(value);
     }
     pub fn getCalendarIdentifier(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppointmentRecurrence3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentRecurrence3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCalendarIdentifier();
@@ -1214,24 +1276,28 @@ pub const AppointmentStore = extern struct {
     }
     pub fn addStoreChanged(self: *@This(), pHandler: *TypedEventHandler(AppointmentStore,AppointmentStoreChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IAppointmentStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addStoreChanged(pHandler);
     }
     pub fn removeStoreChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IAppointmentStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeStoreChanged(token);
     }
     pub fn CreateAppointmentCalendarAsyncWithUserDataAccountId(self: *@This(), name: ?HSTRING, userDataAccountId: ?HSTRING) core.HResult!*IAsyncOperation(AppointmentCalendar) {
         var this: ?*IAppointmentStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateAppointmentCalendarAsyncWithUserDataAccountId(name, userDataAccountId);
     }
     pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*AppointmentStoreChangeTracker {
         var this: ?*IAppointmentStore3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetChangeTracker(identity);
@@ -1259,6 +1325,7 @@ pub const AppointmentStoreChange = extern struct {
     }
     pub fn getAppointmentCalendar(self: *@This()) core.HResult!*AppointmentCalendar {
         var this: ?*IAppointmentStoreChange2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStoreChange2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppointmentCalendar();
@@ -1305,6 +1372,7 @@ pub const AppointmentStoreChangeTracker = extern struct {
     }
     pub fn getIsTracking(self: *@This()) core.HResult!bool {
         var this: ?*IAppointmentStoreChangeTracker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStoreChangeTracker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTracking();

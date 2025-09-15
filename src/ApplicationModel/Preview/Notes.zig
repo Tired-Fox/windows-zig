@@ -338,24 +338,28 @@ pub const NotesWindowManagerPreview = extern struct {
     }
     pub fn ShowNoteRelativeToWithOptions(self: *@This(), noteViewId: i32, anchorNoteViewId: i32, options: *NotesWindowManagerPreviewShowNoteOptions) core.HResult!void {
         var this: ?*INotesWindowManagerPreview2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INotesWindowManagerPreview2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShowNoteRelativeToWithOptions(noteViewId, anchorNoteViewId, options);
     }
     pub fn ShowNoteWithPlacementWithOptions(self: *@This(), noteViewId: i32, data: *IBuffer, options: *NotesWindowManagerPreviewShowNoteOptions) core.HResult!void {
         var this: ?*INotesWindowManagerPreview2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INotesWindowManagerPreview2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShowNoteWithPlacementWithOptions(noteViewId, data, options);
     }
     pub fn SetFocusToPreviousView(self: *@This()) core.HResult!void {
         var this: ?*INotesWindowManagerPreview2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INotesWindowManagerPreview2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetFocusToPreviousView();
     }
     pub fn SetThumbnailImageForTaskSwitcherAsync(self: *@This(), bitmap: *SoftwareBitmap) core.HResult!*IAsyncAction {
         var this: ?*INotesWindowManagerPreview2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INotesWindowManagerPreview2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetThumbnailImageForTaskSwitcherAsync(bitmap);

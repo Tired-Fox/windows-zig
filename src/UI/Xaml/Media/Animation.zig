@@ -484,6 +484,7 @@ pub const ColorKeyFrameCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(ColorKeyFrame) {
         var this: ?*IIterable(ColorKeyFrame) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(ColorKeyFrame).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -506,12 +507,14 @@ pub const NavigationTransitionInfo = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn GetNavigationStateCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INavigationTransitionInfoOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationTransitionInfoOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetNavigationStateCore();
     }
     pub fn SetNavigationStateCore(self: *@This(), navigationState: ?HSTRING) core.HResult!void {
         var this: ?*INavigationTransitionInfoOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationTransitionInfoOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetNavigationStateCore(navigationState);
@@ -596,36 +599,42 @@ pub const ConnectedAnimation = extern struct {
     }
     pub fn getIsScaleAnimationEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IConnectedAnimation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectedAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsScaleAnimationEnabled();
     }
     pub fn putIsScaleAnimationEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IConnectedAnimation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectedAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsScaleAnimationEnabled(value);
     }
     pub fn TryStartWithCoordinatedElements(self: *@This(), destination: *UIElement, coordinatedElements: *IIterable(UIElement)) core.HResult!bool {
         var this: ?*IConnectedAnimation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectedAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryStartWithCoordinatedElements(destination, coordinatedElements);
     }
     pub fn SetAnimationComponent(self: *@This(), component: ConnectedAnimationComponent, animation: *ICompositionAnimationBase) core.HResult!void {
         var this: ?*IConnectedAnimation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectedAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAnimationComponent(component, animation);
     }
     pub fn getConfiguration(self: *@This()) core.HResult!*ConnectedAnimationConfiguration {
         var this: ?*IConnectedAnimation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectedAnimation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConfiguration();
     }
     pub fn putConfiguration(self: *@This(), value: *ConnectedAnimationConfiguration) core.HResult!void {
         var this: ?*IConnectedAnimation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectedAnimation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putConfiguration(value);
@@ -1141,6 +1150,7 @@ pub const DoubleKeyFrameCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(DoubleKeyFrame) {
         var this: ?*IIterable(DoubleKeyFrame) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(DoubleKeyFrame).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1755,12 +1765,14 @@ pub const GravityConnectedAnimationConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsShadowEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IGravityConnectedAnimationConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGravityConnectedAnimationConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsShadowEnabled();
     }
     pub fn putIsShadowEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IGravityConnectedAnimationConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGravityConnectedAnimationConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsShadowEnabled(value);
@@ -7133,6 +7145,7 @@ pub const ObjectKeyFrameCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(ObjectKeyFrame) {
         var this: ?*IIterable(ObjectKeyFrame) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(ObjectKeyFrame).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -7314,6 +7327,7 @@ pub const PointKeyFrameCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(PointKeyFrame) {
         var this: ?*IIterable(PointKeyFrame) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(PointKeyFrame).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -7709,12 +7723,14 @@ pub const RepositionThemeTransition = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsStaggeringEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IRepositionThemeTransition2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRepositionThemeTransition2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsStaggeringEnabled();
     }
     pub fn putIsStaggeringEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IRepositionThemeTransition2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRepositionThemeTransition2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsStaggeringEnabled(value);
@@ -7763,12 +7779,14 @@ pub const SlideNavigationTransitionInfo = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getEffect(self: *@This()) core.HResult!SlideNavigationTransitionEffect {
         var this: ?*ISlideNavigationTransitionInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlideNavigationTransitionInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffect();
     }
     pub fn putEffect(self: *@This(), value: SlideNavigationTransitionEffect) core.HResult!void {
         var this: ?*ISlideNavigationTransitionInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlideNavigationTransitionInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putEffect(value);
@@ -8408,6 +8426,7 @@ pub const TimelineCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Timeline) {
         var this: ?*IIterable(Timeline) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Timeline).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -8450,6 +8469,7 @@ pub const TransitionCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Transition) {
         var this: ?*IIterable(Transition) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Transition).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

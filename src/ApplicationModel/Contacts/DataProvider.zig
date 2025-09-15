@@ -23,24 +23,28 @@ pub const ContactDataProviderConnection = extern struct {
     }
     pub fn addCreateOrUpdateContactRequested(self: *@This(), handler: *TypedEventHandler(ContactDataProviderConnection,ContactListCreateOrUpdateContactRequestEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IContactDataProviderConnection2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactDataProviderConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCreateOrUpdateContactRequested(handler);
     }
     pub fn removeCreateOrUpdateContactRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IContactDataProviderConnection2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactDataProviderConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCreateOrUpdateContactRequested(token);
     }
     pub fn addDeleteContactRequested(self: *@This(), handler: *TypedEventHandler(ContactDataProviderConnection,ContactListDeleteContactRequestEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IContactDataProviderConnection2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactDataProviderConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addDeleteContactRequested(handler);
     }
     pub fn removeDeleteContactRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IContactDataProviderConnection2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactDataProviderConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeDeleteContactRequested(token);

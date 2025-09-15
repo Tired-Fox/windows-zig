@@ -63,18 +63,21 @@ pub const GeoboundingBox = extern struct {
     }
     pub fn getGeoshapeType(self: *@This()) core.HResult!GeoshapeType {
         var this: ?*IGeoshape = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGeoshapeType();
     }
     pub fn getSpatialReferenceId(self: *@This()) core.HResult!u32 {
         var this: ?*IGeoshape = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSpatialReferenceId();
     }
     pub fn getAltitudeReferenceSystem(self: *@This()) core.HResult!AltitudeReferenceSystem {
         var this: ?*IGeoshape = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAltitudeReferenceSystem();
@@ -126,18 +129,21 @@ pub const Geocircle = extern struct {
     }
     pub fn getGeoshapeType(self: *@This()) core.HResult!GeoshapeType {
         var this: ?*IGeoshape = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGeoshapeType();
     }
     pub fn getSpatialReferenceId(self: *@This()) core.HResult!u32 {
         var this: ?*IGeoshape = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSpatialReferenceId();
     }
     pub fn getAltitudeReferenceSystem(self: *@This()) core.HResult!AltitudeReferenceSystem {
         var this: ?*IGeoshape = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAltitudeReferenceSystem();
@@ -200,30 +206,35 @@ pub const Geocoordinate = extern struct {
     }
     pub fn getPositionSource(self: *@This()) core.HResult!PositionSource {
         var this: ?*IGeocoordinateWithPositionData = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithPositionData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPositionSource();
     }
     pub fn getSatelliteData(self: *@This()) core.HResult!*GeocoordinateSatelliteData {
         var this: ?*IGeocoordinateWithPositionData = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithPositionData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSatelliteData();
     }
     pub fn getPoint(self: *@This()) core.HResult!*Geopoint {
         var this: ?*IGeocoordinateWithPoint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithPoint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPoint();
     }
     pub fn getPositionSourceTimestamp(self: *@This()) core.HResult!*IReference(DateTime) {
         var this: ?*IGeocoordinateWithPositionSourceTimestamp = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithPositionSourceTimestamp.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPositionSourceTimestamp();
     }
     pub fn getIsRemoteSource(self: *@This()) core.HResult!bool {
         var this: ?*IGeocoordinateWithRemoteSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateWithRemoteSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRemoteSource();
@@ -250,12 +261,14 @@ pub const GeocoordinateSatelliteData = extern struct {
     }
     pub fn getGeometricDilutionOfPrecision(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*IGeocoordinateSatelliteData2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateSatelliteData2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGeometricDilutionOfPrecision();
     }
     pub fn getTimeDilutionOfPrecision(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*IGeocoordinateSatelliteData2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeocoordinateSatelliteData2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimeDilutionOfPrecision();
@@ -327,18 +340,21 @@ pub const Geolocator = extern struct {
     }
     pub fn getDesiredAccuracyInMeters(self: *@This()) core.HResult!*IReference(u32) {
         var this: ?*IGeolocatorWithScalarAccuracy = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeolocatorWithScalarAccuracy.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredAccuracyInMeters();
     }
     pub fn putDesiredAccuracyInMeters(self: *@This(), value: *IReference(u32)) core.HResult!void {
         var this: ?*IGeolocatorWithScalarAccuracy = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeolocatorWithScalarAccuracy.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDesiredAccuracyInMeters(value);
     }
     pub fn AllowFallbackToConsentlessPositions(self: *@This()) core.HResult!void {
         var this: ?*IGeolocator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeolocator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AllowFallbackToConsentlessPositions();
@@ -391,18 +407,21 @@ pub const Geopath = extern struct {
     }
     pub fn getGeoshapeType(self: *@This()) core.HResult!GeoshapeType {
         var this: ?*IGeoshape = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGeoshapeType();
     }
     pub fn getSpatialReferenceId(self: *@This()) core.HResult!u32 {
         var this: ?*IGeoshape = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSpatialReferenceId();
     }
     pub fn getAltitudeReferenceSystem(self: *@This()) core.HResult!AltitudeReferenceSystem {
         var this: ?*IGeoshape = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAltitudeReferenceSystem();
@@ -437,18 +456,21 @@ pub const Geopoint = extern struct {
     }
     pub fn getGeoshapeType(self: *@This()) core.HResult!GeoshapeType {
         var this: ?*IGeoshape = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGeoshapeType();
     }
     pub fn getSpatialReferenceId(self: *@This()) core.HResult!u32 {
         var this: ?*IGeoshape = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSpatialReferenceId();
     }
     pub fn getAltitudeReferenceSystem(self: *@This()) core.HResult!AltitudeReferenceSystem {
         var this: ?*IGeoshape = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoshape.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAltitudeReferenceSystem();
@@ -487,6 +509,7 @@ pub const Geoposition = extern struct {
     }
     pub fn getVenueData(self: *@This()) core.HResult!*VenueData {
         var this: ?*IGeoposition2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeoposition2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVenueData();

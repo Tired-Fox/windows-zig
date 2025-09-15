@@ -19,6 +19,7 @@ pub const AggregateContactManager = extern struct {
     }
     pub fn SetRemoteIdentificationInformationAsync(self: *@This(), contactListId: ?HSTRING, remoteSourceId: ?HSTRING, accountId: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IAggregateContactManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAggregateContactManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetRemoteIdentificationInformationAsync(contactListId, remoteSourceId, accountId);
@@ -53,318 +54,371 @@ pub const Contact = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putId(value);
     }
     pub fn getNotes(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNotes();
     }
     pub fn putNotes(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNotes(value);
     }
     pub fn getPhones(self: *@This()) core.HResult!*IVector(ContactPhone) {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPhones();
     }
     pub fn getEmails(self: *@This()) core.HResult!*IVector(ContactEmail) {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmails();
     }
     pub fn getAddresses(self: *@This()) core.HResult!*IVector(ContactAddress) {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAddresses();
     }
     pub fn getConnectedServiceAccounts(self: *@This()) core.HResult!*IVector(ContactConnectedServiceAccount) {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConnectedServiceAccounts();
     }
     pub fn getImportantDates(self: *@This()) core.HResult!*IVector(ContactDate) {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getImportantDates();
     }
     pub fn getDataSuppliers(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDataSuppliers();
     }
     pub fn getJobInfo(self: *@This()) core.HResult!*IVector(ContactJobInfo) {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getJobInfo();
     }
     pub fn getSignificantOthers(self: *@This()) core.HResult!*IVector(ContactSignificantOther) {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSignificantOthers();
     }
     pub fn getWebsites(self: *@This()) core.HResult!*IVector(ContactWebsite) {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWebsites();
     }
     pub fn getProviderProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IContact2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProviderProperties();
     }
     pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFirstName();
     }
     pub fn putFirstName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFirstName(value);
     }
     pub fn getLastName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLastName();
     }
     pub fn putLastName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLastName(value);
     }
     pub fn getMiddleName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMiddleName();
     }
     pub fn putMiddleName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMiddleName(value);
     }
     pub fn getYomiGivenName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getYomiGivenName();
     }
     pub fn putYomiGivenName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putYomiGivenName(value);
     }
     pub fn getYomiFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getYomiFamilyName();
     }
     pub fn putYomiFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putYomiFamilyName(value);
     }
     pub fn getHonorificNameSuffix(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHonorificNameSuffix();
     }
     pub fn putHonorificNameSuffix(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHonorificNameSuffix(value);
     }
     pub fn getHonorificNamePrefix(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHonorificNamePrefix();
     }
     pub fn putHonorificNamePrefix(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHonorificNamePrefix(value);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
     pub fn getYomiDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactName = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactName.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getYomiDisplayName();
     }
     pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContactListId();
     }
     pub fn getDisplayPictureUserUpdateTime(self: *@This()) core.HResult!DateTime {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayPictureUserUpdateTime();
     }
     pub fn putDisplayPictureUserUpdateTime(self: *@This(), value: DateTime) core.HResult!void {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayPictureUserUpdateTime(value);
     }
     pub fn getIsMe(self: *@This()) core.HResult!bool {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsMe();
     }
     pub fn getAggregateId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAggregateId();
     }
     pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteId();
     }
     pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRemoteId(value);
     }
     pub fn getRingToneToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRingToneToken();
     }
     pub fn putRingToneToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRingToneToken(value);
     }
     pub fn getIsDisplayPictureManuallySet(self: *@This()) core.HResult!bool {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDisplayPictureManuallySet();
     }
     pub fn getLargeDisplayPicture(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLargeDisplayPicture();
     }
     pub fn getSmallDisplayPicture(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSmallDisplayPicture();
     }
     pub fn getSourceDisplayPicture(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSourceDisplayPicture();
     }
     pub fn putSourceDisplayPicture(self: *@This(), value: *IRandomAccessStreamReference) core.HResult!void {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSourceDisplayPicture(value);
     }
     pub fn getTextToneToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextToneToken();
     }
     pub fn putTextToneToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextToneToken(value);
     }
     pub fn getIsAggregate(self: *@This()) core.HResult!bool {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAggregate();
     }
     pub fn getFullName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFullName();
     }
     pub fn getDisplayNameOverride(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayNameOverride();
     }
     pub fn putDisplayNameOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayNameOverride(value);
     }
     pub fn getNickname(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNickname();
     }
     pub fn putNickname(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNickname(value);
     }
     pub fn getSortName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContact3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContact3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSortName();
@@ -504,12 +558,14 @@ pub const ContactAnnotation = extern struct {
     }
     pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactAnnotation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactAnnotation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContactListId();
     }
     pub fn putContactListId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactAnnotation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactAnnotation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContactListId(value);
@@ -617,6 +673,7 @@ pub const ContactAnnotationStore = extern struct {
     }
     pub fn FindAnnotationsForContactListAsync(self: *@This(), contactListId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(ContactAnnotation)) {
         var this: ?*IContactAnnotationStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactAnnotationStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindAnnotationsForContactListAsync(contactListId);
@@ -660,6 +717,7 @@ pub const ContactCardDelayedDataLoader = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -695,6 +753,7 @@ pub const ContactCardOptions = extern struct {
     }
     pub fn getServerSearchContactListIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IContactCardOptions2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactCardOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerSearchContactListIds();
@@ -773,6 +832,7 @@ pub const ContactChangeTracker = extern struct {
     }
     pub fn getIsTracking(self: *@This()) core.HResult!bool {
         var this: ?*IContactChangeTracker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactChangeTracker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTracking();
@@ -1014,36 +1074,42 @@ pub const ContactFieldFactory = extern struct {
     }
     pub fn CreateLocation(self: *@This(), unstructuredAddress: ?HSTRING) core.HResult!*ContactLocationField {
         var this: ?*IContactLocationFieldFactory = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactLocationFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLocation(unstructuredAddress);
     }
     pub fn CreateLocationWithCategory(self: *@This(), unstructuredAddress: ?HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
         var this: ?*IContactLocationFieldFactory = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactLocationFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLocationWithCategory(unstructuredAddress, category);
     }
     pub fn CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(self: *@This(), unstructuredAddress: ?HSTRING, category: ContactFieldCategory, street: ?HSTRING, city: ?HSTRING, region: ?HSTRING, country: ?HSTRING, postalCode: ?HSTRING) core.HResult!*ContactLocationField {
         var this: ?*IContactLocationFieldFactory = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactLocationFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLocationWithCategoryAndStreetAndCityAndRegionAndCountryAndPostalCode(unstructuredAddress, category, street, city, region, country, postalCode);
     }
     pub fn CreateInstantMessage(self: *@This(), userName: ?HSTRING) core.HResult!*ContactInstantMessageField {
         var this: ?*IContactInstantMessageFieldFactory = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactInstantMessageFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateInstantMessage(userName);
     }
     pub fn CreateInstantMessageWithCategory(self: *@This(), userName: ?HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
         var this: ?*IContactInstantMessageFieldFactory = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactInstantMessageFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateInstantMessageWithCategory(userName, category);
     }
     pub fn CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(self: *@This(), userName: ?HSTRING, category: ContactFieldCategory, service: ?HSTRING, displayText: ?HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
         var this: ?*IContactInstantMessageFieldFactory = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactInstantMessageFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(userName, category, service, displayText, verb);
@@ -1144,24 +1210,28 @@ pub const ContactInstantMessageField = extern struct {
     }
     pub fn getType(self: *@This()) core.HResult!ContactFieldType {
         var this: ?*IContactField = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactField.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn getCategory(self: *@This()) core.HResult!ContactFieldCategory {
         var this: ?*IContactField = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactField.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCategory();
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactField = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactField.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactField = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactField.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValue();
@@ -1401,30 +1471,35 @@ pub const ContactList = extern struct {
     }
     pub fn RegisterSyncManagerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IContactList2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RegisterSyncManagerAsync();
     }
     pub fn putSupportsServerSearch(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IContactList2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSupportsServerSearch(value);
     }
     pub fn getSyncConstraints(self: *@This()) core.HResult!*ContactListSyncConstraints {
         var this: ?*IContactList2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSyncConstraints();
     }
     pub fn getLimitedWriteOperations(self: *@This()) core.HResult!*ContactListLimitedWriteOperations {
         var this: ?*IContactList3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactList3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLimitedWriteOperations();
     }
     pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*ContactChangeTracker {
         var this: ?*IContactList3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactList3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetChangeTracker(identity);
@@ -1722,18 +1797,21 @@ pub const ContactListSyncManager = extern struct {
     }
     pub fn putStatus(self: *@This(), value: ContactListSyncStatus) core.HResult!void {
         var this: ?*IContactListSyncManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactListSyncManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStatus(value);
     }
     pub fn putLastSuccessfulSyncTime(self: *@This(), value: DateTime) core.HResult!void {
         var this: ?*IContactListSyncManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactListSyncManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLastSuccessfulSyncTime(value);
     }
     pub fn putLastAttemptedSyncTime(self: *@This(), value: DateTime) core.HResult!void {
         var this: ?*IContactListSyncManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactListSyncManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLastAttemptedSyncTime(value);
@@ -1781,24 +1859,28 @@ pub const ContactLocationField = extern struct {
     }
     pub fn getType(self: *@This()) core.HResult!ContactFieldType {
         var this: ?*IContactField = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactField.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn getCategory(self: *@This()) core.HResult!ContactFieldCategory {
         var this: ?*IContactField = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactField.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCategory();
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactField = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactField.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactField = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactField.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValue();
@@ -1970,6 +2052,7 @@ pub const ContactManagerForUser = extern struct {
     }
     pub fn ShowFullContactCard(self: *@This(), contact: *Contact, fullContactCardOptions: *FullContactCardOptions) core.HResult!void {
         var this: ?*IContactManagerForUser2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactManagerForUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShowFullContactCard(contact, fullContactCardOptions);
@@ -2160,24 +2243,28 @@ pub const ContactPicker = extern struct {
     }
     pub fn getDesiredFieldsWithContactFieldType(self: *@This()) core.HResult!*IVector(ContactFieldType) {
         var this: ?*IContactPicker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactPicker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredFieldsWithContactFieldType();
     }
     pub fn PickContactAsync(self: *@This()) core.HResult!*IAsyncOperation(Contact) {
         var this: ?*IContactPicker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactPicker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PickContactAsync();
     }
     pub fn PickContactsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVector(Contact)) {
         var this: ?*IContactPicker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactPicker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PickContactsAsync();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IContactPicker3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactPicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
@@ -2363,12 +2450,14 @@ pub const ContactSignificantOther = extern struct {
     }
     pub fn getRelationship(self: *@This()) core.HResult!ContactRelationship {
         var this: ?*IContactSignificantOther2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactSignificantOther2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRelationship();
     }
     pub fn putRelationship(self: *@This(), value: ContactRelationship) core.HResult!void {
         var this: ?*IContactSignificantOther2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactSignificantOther2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRelationship(value);
@@ -2403,72 +2492,84 @@ pub const ContactStore = extern struct {
     }
     pub fn getChangeTracker(self: *@This()) core.HResult!*ContactChangeTracker {
         var this: ?*IContactStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChangeTracker();
     }
     pub fn addContactChanged(self: *@This(), value: *TypedEventHandler(ContactStore,ContactChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IContactStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addContactChanged(value);
     }
     pub fn removeContactChanged(self: *@This(), value: EventRegistrationToken) core.HResult!void {
         var this: ?*IContactStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeContactChanged(value);
     }
     pub fn getAggregateContactManager(self: *@This()) core.HResult!*AggregateContactManager {
         var this: ?*IContactStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAggregateContactManager();
     }
     pub fn FindContactListsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ContactList)) {
         var this: ?*IContactStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindContactListsAsync();
     }
     pub fn GetContactListAsync(self: *@This(), contactListId: ?HSTRING) core.HResult!*IAsyncOperation(ContactList) {
         var this: ?*IContactStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetContactListAsync(contactListId);
     }
     pub fn CreateContactListAsync(self: *@This(), displayName: ?HSTRING) core.HResult!*IAsyncOperation(ContactList) {
         var this: ?*IContactStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateContactListAsync(displayName);
     }
     pub fn GetMeContactAsync(self: *@This()) core.HResult!*IAsyncOperation(Contact) {
         var this: ?*IContactStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMeContactAsync();
     }
     pub fn GetContactReader(self: *@This()) core.HResult!*ContactReader {
         var this: ?*IContactStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetContactReader();
     }
     pub fn GetContactReaderWithOptions(self: *@This(), options: *ContactQueryOptions) core.HResult!*ContactReader {
         var this: ?*IContactStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetContactReaderWithOptions(options);
     }
     pub fn CreateContactListAsyncWithUserDataAccountId(self: *@This(), displayName: ?HSTRING, userDataAccountId: ?HSTRING) core.HResult!*IAsyncOperation(ContactList) {
         var this: ?*IContactStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateContactListAsyncWithUserDataAccountId(displayName, userDataAccountId);
     }
     pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*ContactChangeTracker {
         var this: ?*IContactStore3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetChangeTracker(identity);
@@ -2512,12 +2613,14 @@ pub const ContactWebsite = extern struct {
     }
     pub fn getRawValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContactWebsite2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactWebsite2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawValue();
     }
     pub fn putRawValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContactWebsite2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactWebsite2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRawValue(value);

@@ -866,18 +866,21 @@ pub const MidiChannelPressureMessage = extern struct {
     }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimestamp();
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawData();
     }
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -940,18 +943,21 @@ pub const MidiControlChangeMessage = extern struct {
     }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimestamp();
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawData();
     }
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -986,6 +992,7 @@ pub const MidiInPort = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1058,18 +1065,21 @@ pub const MidiNoteOffMessage = extern struct {
     }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimestamp();
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawData();
     }
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -1104,18 +1114,21 @@ pub const MidiNoteOnMessage = extern struct {
     }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimestamp();
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawData();
     }
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -1150,6 +1163,7 @@ pub const MidiOutPort = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1184,18 +1198,21 @@ pub const MidiPitchBendChangeMessage = extern struct {
     }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimestamp();
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawData();
     }
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -1230,18 +1247,21 @@ pub const MidiPolyphonicKeyPressureMessage = extern struct {
     }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimestamp();
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawData();
     }
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -1272,18 +1292,21 @@ pub const MidiProgramChangeMessage = extern struct {
     }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimestamp();
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawData();
     }
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -1310,18 +1333,21 @@ pub const MidiSongPositionPointerMessage = extern struct {
     }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimestamp();
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawData();
     }
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -1348,18 +1374,21 @@ pub const MidiSongSelectMessage = extern struct {
     }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimestamp();
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawData();
     }
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -1450,24 +1479,28 @@ pub const MidiSynthesizer = extern struct {
     }
     pub fn SendMessage(self: *@This(), midiMessage: *IMidiMessage) core.HResult!void {
         var this: ?*IMidiOutPort = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiOutPort.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SendMessage(midiMessage);
     }
     pub fn SendBuffer(self: *@This(), midiData: *IBuffer) core.HResult!void {
         var this: ?*IMidiOutPort = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiOutPort.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SendBuffer(midiData);
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMidiOutPort = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiOutPort.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1562,18 +1595,21 @@ pub const MidiTimeCodeMessage = extern struct {
     }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimestamp();
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawData();
     }
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         var this: ?*IMidiMessage = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();

@@ -414,66 +414,77 @@ pub const BackgroundTaskBuilder = extern struct {
     }
     pub fn putCancelOnConditionLoss(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBackgroundTaskBuilder2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCancelOnConditionLoss(value);
     }
     pub fn getCancelOnConditionLoss(self: *@This()) core.HResult!bool {
         var this: ?*IBackgroundTaskBuilder2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCancelOnConditionLoss();
     }
     pub fn putIsNetworkRequested(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBackgroundTaskBuilder3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsNetworkRequested(value);
     }
     pub fn getIsNetworkRequested(self: *@This()) core.HResult!bool {
         var this: ?*IBackgroundTaskBuilder3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsNetworkRequested();
     }
     pub fn getTaskGroup(self: *@This()) core.HResult!*BackgroundTaskRegistrationGroup {
         var this: ?*IBackgroundTaskBuilder4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTaskGroup();
     }
     pub fn putTaskGroup(self: *@This(), value: *BackgroundTaskRegistrationGroup) core.HResult!void {
         var this: ?*IBackgroundTaskBuilder4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTaskGroup(value);
     }
     pub fn SetTaskEntryPointClsid(self: *@This(), TaskEntryPoint: *Guid) core.HResult!void {
         var this: ?*IBackgroundTaskBuilder5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetTaskEntryPointClsid(TaskEntryPoint);
     }
     pub fn getAllowRunningTaskInStandby(self: *@This()) core.HResult!bool {
         var this: ?*IBackgroundTaskBuilder6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAllowRunningTaskInStandby();
     }
     pub fn putAllowRunningTaskInStandby(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBackgroundTaskBuilder6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAllowRunningTaskInStandby(value);
     }
     pub fn Validate(self: *@This()) core.HResult!bool {
         var this: ?*IBackgroundTaskBuilder6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Validate();
     }
     pub fn RegisterWithTaskName(self: *@This(), taskName: ?HSTRING) core.HResult!*BackgroundTaskRegistration {
         var this: ?*IBackgroundTaskBuilder6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RegisterWithTaskName(taskName);
@@ -854,24 +865,28 @@ pub const BackgroundTaskRegistration = extern struct {
     }
     pub fn getTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
         var this: ?*IBackgroundTaskRegistration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskRegistration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTrigger();
     }
     pub fn getTaskGroup(self: *@This()) core.HResult!*BackgroundTaskRegistrationGroup {
         var this: ?*IBackgroundTaskRegistration3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskRegistration3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTaskGroup();
     }
     pub fn getTaskLastThrottledInStandbyTimestamp(self: *@This()) core.HResult!DateTime {
         var this: ?*IBackgroundTaskRegistration4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskRegistration4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTaskLastThrottledInStandbyTimestamp();
     }
     pub fn getAppEnergyUsePredictionContribution(self: *@This()) core.HResult!f64 {
         var this: ?*IBackgroundTaskRegistration4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskRegistration4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppEnergyUsePredictionContribution();
@@ -983,72 +998,84 @@ pub const BluetoothLEAdvertisementPublisherTrigger = extern struct {
     }
     pub fn getPreferredTransmitPowerLevelInDBm(self: *@This()) core.HResult!*IReference(i16) {
         var this: ?*IBluetoothLEAdvertisementPublisherTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreferredTransmitPowerLevelInDBm();
     }
     pub fn putPreferredTransmitPowerLevelInDBm(self: *@This(), value: *IReference(i16)) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementPublisherTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPreferredTransmitPowerLevelInDBm(value);
     }
     pub fn getUseExtendedFormat(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementPublisherTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseExtendedFormat();
     }
     pub fn putUseExtendedFormat(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementPublisherTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseExtendedFormat(value);
     }
     pub fn getIsAnonymous(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementPublisherTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAnonymous();
     }
     pub fn putIsAnonymous(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementPublisherTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsAnonymous(value);
     }
     pub fn getIncludeTransmitPowerLevel(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementPublisherTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIncludeTransmitPowerLevel();
     }
     pub fn putIncludeTransmitPowerLevel(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementPublisherTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIncludeTransmitPowerLevel(value);
     }
     pub fn getPrimaryPhy(self: *@This()) core.HResult!BluetoothLEAdvertisementPhyType {
         var this: ?*IBluetoothLEAdvertisementPublisherTrigger3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTrigger3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPrimaryPhy();
     }
     pub fn putPrimaryPhy(self: *@This(), value: BluetoothLEAdvertisementPhyType) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementPublisherTrigger3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTrigger3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrimaryPhy(value);
     }
     pub fn getSecondaryPhy(self: *@This()) core.HResult!BluetoothLEAdvertisementPhyType {
         var this: ?*IBluetoothLEAdvertisementPublisherTrigger3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTrigger3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSecondaryPhy();
     }
     pub fn putSecondaryPhy(self: *@This(), value: BluetoothLEAdvertisementPhyType) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementPublisherTrigger3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTrigger3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSecondaryPhy(value);
@@ -1103,48 +1130,56 @@ pub const BluetoothLEAdvertisementWatcherTrigger = extern struct {
     }
     pub fn getAllowExtendedAdvertisements(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementWatcherTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcherTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAllowExtendedAdvertisements();
     }
     pub fn putAllowExtendedAdvertisements(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementWatcherTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcherTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAllowExtendedAdvertisements(value);
     }
     pub fn getUseUncoded1MPhy(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementWatcherTrigger3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcherTrigger3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseUncoded1MPhy();
     }
     pub fn putUseUncoded1MPhy(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementWatcherTrigger3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcherTrigger3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseUncoded1MPhy(value);
     }
     pub fn getUseCodedPhy(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementWatcherTrigger3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcherTrigger3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseCodedPhy();
     }
     pub fn putUseCodedPhy(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementWatcherTrigger3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcherTrigger3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseCodedPhy(value);
     }
     pub fn getScanParameters(self: *@This()) core.HResult!*BluetoothLEAdvertisementScanParameters {
         var this: ?*IBluetoothLEAdvertisementWatcherTrigger3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcherTrigger3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getScanParameters();
     }
     pub fn putScanParameters(self: *@This(), value: *BluetoothLEAdvertisementScanParameters) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementWatcherTrigger3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcherTrigger3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putScanParameters(value);
@@ -1464,6 +1499,7 @@ pub const GattCharacteristicNotificationTrigger = extern struct {
     }
     pub fn getEventTriggeringMode(self: *@This()) core.HResult!BluetoothEventTriggeringMode {
         var this: ?*IGattCharacteristicNotificationTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristicNotificationTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEventTriggeringMode();
@@ -4565,6 +4601,7 @@ pub const SocketActivityTrigger = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsWakeFromLowPowerSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISocketActivityTrigger = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISocketActivityTrigger.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsWakeFromLowPowerSupported();

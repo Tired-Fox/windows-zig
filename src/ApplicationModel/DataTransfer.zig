@@ -250,36 +250,42 @@ pub const DataPackage = extern struct {
     }
     pub fn SetApplicationLink(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IDataPackage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetApplicationLink(value);
     }
     pub fn SetWebLink(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IDataPackage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetWebLink(value);
     }
     pub fn addShareCompleted(self: *@This(), handler: *TypedEventHandler(DataPackage,ShareCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IDataPackage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addShareCompleted(handler);
     }
     pub fn removeShareCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IDataPackage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeShareCompleted(token);
     }
     pub fn addShareCanceled(self: *@This(), handler: *TypedEventHandler(DataPackage,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IDataPackage4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackage4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addShareCanceled(handler);
     }
     pub fn removeShareCanceled(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IDataPackage4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackage4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeShareCanceled(token);
@@ -352,108 +358,126 @@ pub const DataPackagePropertySet = extern struct {
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(?HSTRING,IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
     pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IMap(?HSTRING,IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IMap(?HSTRING,IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,IInspectable)) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IInspectable)).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
     pub fn getContentSourceWebLink(self: *@This()) core.HResult!*Uri {
         var this: ?*IDataPackagePropertySet2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentSourceWebLink();
     }
     pub fn putContentSourceWebLink(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IDataPackagePropertySet2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContentSourceWebLink(value);
     }
     pub fn getContentSourceApplicationLink(self: *@This()) core.HResult!*Uri {
         var this: ?*IDataPackagePropertySet2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentSourceApplicationLink();
     }
     pub fn putContentSourceApplicationLink(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IDataPackagePropertySet2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContentSourceApplicationLink(value);
     }
     pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDataPackagePropertySet2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPackageFamilyName();
     }
     pub fn putPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDataPackagePropertySet2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPackageFamilyName(value);
     }
     pub fn getSquare30x30Logo(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var this: ?*IDataPackagePropertySet2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSquare30x30Logo();
     }
     pub fn putSquare30x30Logo(self: *@This(), value: *IRandomAccessStreamReference) core.HResult!void {
         var this: ?*IDataPackagePropertySet2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSquare30x30Logo(value);
     }
     pub fn getLogoBackgroundColor(self: *@This()) core.HResult!Color {
         var this: ?*IDataPackagePropertySet2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLogoBackgroundColor();
     }
     pub fn putLogoBackgroundColor(self: *@This(), value: Color) core.HResult!void {
         var this: ?*IDataPackagePropertySet2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLogoBackgroundColor(value);
     }
     pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDataPackagePropertySet3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEnterpriseId();
     }
     pub fn putEnterpriseId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDataPackagePropertySet3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putEnterpriseId(value);
     }
     pub fn getContentSourceUserActivityJson(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDataPackagePropertySet4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentSourceUserActivityJson();
     }
     pub fn putContentSourceUserActivityJson(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDataPackagePropertySet4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySet4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContentSourceUserActivityJson(value);
@@ -492,66 +516,77 @@ pub const DataPackagePropertySetView = extern struct {
     }
     pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDataPackagePropertySetView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySetView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPackageFamilyName();
     }
     pub fn getContentSourceWebLink(self: *@This()) core.HResult!*Uri {
         var this: ?*IDataPackagePropertySetView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySetView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentSourceWebLink();
     }
     pub fn getContentSourceApplicationLink(self: *@This()) core.HResult!*Uri {
         var this: ?*IDataPackagePropertySetView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySetView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentSourceApplicationLink();
     }
     pub fn getSquare30x30Logo(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var this: ?*IDataPackagePropertySetView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySetView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSquare30x30Logo();
     }
     pub fn getLogoBackgroundColor(self: *@This()) core.HResult!Color {
         var this: ?*IDataPackagePropertySetView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySetView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLogoBackgroundColor();
     }
     pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDataPackagePropertySetView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySetView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEnterpriseId();
     }
     pub fn getContentSourceUserActivityJson(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDataPackagePropertySetView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySetView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentSourceUserActivityJson();
     }
     pub fn getIsFromRoamingClipboard(self: *@This()) core.HResult!bool {
         var this: ?*IDataPackagePropertySetView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackagePropertySetView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsFromRoamingClipboard();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView(?HSTRING,IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
     pub fn Split(self: *@This(), first: *IMapView(?HSTRING,IInspectable), second: *IMapView(?HSTRING,IInspectable)) core.HResult!void {
         var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView(?HSTRING,IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Split(first, second);
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,IInspectable)) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IInspectable)).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -622,36 +657,42 @@ pub const DataPackageView = extern struct {
     }
     pub fn GetApplicationLinkAsync(self: *@This()) core.HResult!*IAsyncOperation(Uri) {
         var this: ?*IDataPackageView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackageView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetApplicationLinkAsync();
     }
     pub fn GetWebLinkAsync(self: *@This()) core.HResult!*IAsyncOperation(Uri) {
         var this: ?*IDataPackageView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackageView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetWebLinkAsync();
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var this: ?*IDataPackageView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackageView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestAccessAsync();
     }
     pub fn RequestAccessAsyncWithEnterpriseId(self: *@This(), enterpriseId: ?HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var this: ?*IDataPackageView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackageView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestAccessAsyncWithEnterpriseId(enterpriseId);
     }
     pub fn UnlockAndAssumeEnterpriseIdentity(self: *@This()) core.HResult!ProtectionPolicyEvaluationResult {
         var this: ?*IDataPackageView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackageView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UnlockAndAssumeEnterpriseIdentity();
     }
     pub fn SetAcceptedFormatId(self: *@This(), formatId: ?HSTRING) core.HResult!void {
         var this: ?*IDataPackageView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackageView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAcceptedFormatId(formatId);
@@ -859,12 +900,14 @@ pub const DataTransferManager = extern struct {
     }
     pub fn addShareProvidersRequested(self: *@This(), handler: *TypedEventHandler(DataTransferManager,ShareProvidersRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IDataTransferManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataTransferManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addShareProvidersRequested(handler);
     }
     pub fn removeShareProvidersRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IDataTransferManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataTransferManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeShareProvidersRequested(token);
@@ -2779,6 +2822,7 @@ pub const OperationCompletedEventArgs = extern struct {
     }
     pub fn getAcceptedFormatId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IOperationCompletedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOperationCompletedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAcceptedFormatId();

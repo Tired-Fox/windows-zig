@@ -1227,36 +1227,42 @@ pub const IsolatedWindowsEnvironment = extern struct {
     }
     pub fn PostMessageToReceiverAsync(self: *@This(), receiverId: *Guid, message: *IIterable(IInspectable)) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentPostMessageResult) {
         var this: ?*IIsolatedWindowsEnvironment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PostMessageToReceiverAsync(receiverId, message);
     }
     pub fn PostMessageToReceiverAsyncWithTelemetryParameters(self: *@This(), receiverId: *Guid, message: *IIterable(IInspectable), telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentPostMessageResult) {
         var this: ?*IIsolatedWindowsEnvironment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PostMessageToReceiverAsyncWithTelemetryParameters(receiverId, message, telemetryParameters);
     }
     pub fn GetUserInfo(self: *@This()) core.HResult!*IsolatedWindowsEnvironmentUserInfo {
         var this: ?*IIsolatedWindowsEnvironment3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetUserInfo();
     }
     pub fn ShareFileAsync(self: *@This(), filePath: ?HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
         var this: ?*IIsolatedWindowsEnvironment3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShareFileAsync(filePath, options);
     }
     pub fn ShareFileAsyncWithTelemetryParameters(self: *@This(), filePath: ?HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
         var this: ?*IIsolatedWindowsEnvironment3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShareFileAsyncWithTelemetryParameters(filePath, options, telemetryParameters);
     }
     pub fn ChangePriority(self: *@This(), Priority: IsolatedWindowsEnvironmentCreationPriority) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironment4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ChangePriority(Priority);
@@ -1329,6 +1335,7 @@ pub const IsolatedWindowsEnvironmentCreateResult = extern struct {
     }
     pub fn ChangeCreationPriority(self: *@This(), priority: IsolatedWindowsEnvironmentCreationPriority) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironmentCreateResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentCreateResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ChangeCreationPriority(priority);
@@ -1364,12 +1371,14 @@ pub const IsolatedWindowsEnvironmentFile = extern struct {
     }
     pub fn getGuestPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IIsolatedWindowsEnvironmentFile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentFile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGuestPath();
     }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var this: ?*IIsolatedWindowsEnvironmentFile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentFile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadOnly();
@@ -1504,48 +1513,56 @@ pub const IsolatedWindowsEnvironmentOptions = extern struct {
     }
     pub fn getWindowAnnotationOverride(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IIsolatedWindowsEnvironmentOptions2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWindowAnnotationOverride();
     }
     pub fn putWindowAnnotationOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironmentOptions2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWindowAnnotationOverride(value);
     }
     pub fn getAllowedClipboardFormatsToEnvironment(self: *@This()) core.HResult!IsolatedWindowsEnvironmentAllowedClipboardFormats {
         var this: ?*IIsolatedWindowsEnvironmentOptions3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAllowedClipboardFormatsToEnvironment();
     }
     pub fn putAllowedClipboardFormatsToEnvironment(self: *@This(), value: IsolatedWindowsEnvironmentAllowedClipboardFormats) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironmentOptions3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAllowedClipboardFormatsToEnvironment(value);
     }
     pub fn getAllowedClipboardFormatsToHost(self: *@This()) core.HResult!IsolatedWindowsEnvironmentAllowedClipboardFormats {
         var this: ?*IIsolatedWindowsEnvironmentOptions3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAllowedClipboardFormatsToHost();
     }
     pub fn putAllowedClipboardFormatsToHost(self: *@This(), value: IsolatedWindowsEnvironmentAllowedClipboardFormats) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironmentOptions3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAllowedClipboardFormatsToHost(value);
     }
     pub fn getCreationPriority(self: *@This()) core.HResult!IsolatedWindowsEnvironmentCreationPriority {
         var this: ?*IIsolatedWindowsEnvironmentOptions3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCreationPriority();
     }
     pub fn putCreationPriority(self: *@This(), value: IsolatedWindowsEnvironmentCreationPriority) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironmentOptions3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentOptions3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCreationPriority(value);
@@ -1873,6 +1890,7 @@ pub const IsolatedWindowsEnvironmentUserInfo = extern struct {
     }
     pub fn TryWaitForSignInWithProgressAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(bool,IsolatedWindowsEnvironmentSignInProgress) {
         var this: ?*IIsolatedWindowsEnvironmentUserInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironmentUserInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryWaitForSignInWithProgressAsync();

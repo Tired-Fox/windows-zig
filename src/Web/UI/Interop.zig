@@ -574,108 +574,126 @@ pub const WebViewControl = extern struct {
     }
     pub fn getProcess(self: *@This()) core.HResult!*WebViewControlProcess {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProcess();
     }
     pub fn putScale(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putScale(value);
     }
     pub fn getScale(self: *@This()) core.HResult!f64 {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getScale();
     }
     pub fn putBounds(self: *@This(), value: Rect) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBounds(value);
     }
     pub fn getBounds(self: *@This()) core.HResult!Rect {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBounds();
     }
     pub fn putIsVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsVisible(value);
     }
     pub fn getIsVisible(self: *@This()) core.HResult!bool {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsVisible();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn MoveFocus(self: *@This(), reason: WebViewControlMoveFocusReason) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MoveFocus(reason);
     }
     pub fn addMoveFocusRequested(self: *@This(), handler: *TypedEventHandler(WebViewControl,WebViewControlMoveFocusRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addMoveFocusRequested(handler);
     }
     pub fn removeMoveFocusRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMoveFocusRequested(token);
     }
     pub fn addAcceleratorKeyPressed(self: *@This(), handler: *TypedEventHandler(WebViewControl,WebViewControlAcceleratorKeyPressedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addAcceleratorKeyPressed(handler);
     }
     pub fn removeAcceleratorKeyPressed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebViewControlSite = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAcceleratorKeyPressed(token);
     }
     pub fn AddInitializeScript(self: *@This(), script: ?HSTRING) core.HResult!void {
         var this: ?*IWebViewControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddInitializeScript(script);
     }
     pub fn addGotFocus(self: *@This(), handler: *TypedEventHandler(WebViewControl,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IWebViewControlSite2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addGotFocus(handler);
     }
     pub fn removeGotFocus(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebViewControlSite2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeGotFocus(token);
     }
     pub fn addLostFocus(self: *@This(), handler: *TypedEventHandler(WebViewControl,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IWebViewControlSite2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addLostFocus(handler);
     }
     pub fn removeLostFocus(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebViewControlSite2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlSite2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeLostFocus(token);

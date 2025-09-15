@@ -512,6 +512,7 @@ pub const Lamp = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -646,18 +647,21 @@ pub const LampArray = extern struct {
     }
     pub fn getIsAvailable(self: *@This()) core.HResult!bool {
         var this: ?*ILampArray2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArray2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAvailable();
     }
     pub fn addAvailabilityChanged(self: *@This(), handler: *TypedEventHandler(LampArray,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ILampArray2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArray2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addAvailabilityChanged(handler);
     }
     pub fn removeAvailabilityChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ILampArray2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArray2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAvailabilityChanged(token);

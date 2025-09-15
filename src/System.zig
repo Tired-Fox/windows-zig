@@ -23,18 +23,21 @@ pub const AppDiagnosticInfo = extern struct {
     }
     pub fn GetResourceGroups(self: *@This()) core.HResult!*IVector(AppResourceGroupInfo) {
         var this: ?*IAppDiagnosticInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppDiagnosticInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetResourceGroups();
     }
     pub fn CreateResourceGroupWatcher(self: *@This()) core.HResult!*AppResourceGroupInfoWatcher {
         var this: ?*IAppDiagnosticInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppDiagnosticInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateResourceGroupWatcher();
     }
     pub fn LaunchAsync(self: *@This()) core.HResult!*IAsyncOperation(AppActivationResult) {
         var this: ?*IAppDiagnosticInfo3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppDiagnosticInfo3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LaunchAsync();
@@ -178,6 +181,7 @@ pub const AppMemoryReport = extern struct {
     }
     pub fn getExpectedTotalCommitLimit(self: *@This()) core.HResult!u64 {
         var this: ?*IAppMemoryReport2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppMemoryReport2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpectedTotalCommitLimit();
@@ -274,18 +278,21 @@ pub const AppResourceGroupInfo = extern struct {
     }
     pub fn StartSuspendAsync(self: *@This()) core.HResult!*IAsyncOperation(AppExecutionStateChangeResult) {
         var this: ?*IAppResourceGroupInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppResourceGroupInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartSuspendAsync();
     }
     pub fn StartResumeAsync(self: *@This()) core.HResult!*IAsyncOperation(AppExecutionStateChangeResult) {
         var this: ?*IAppResourceGroupInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppResourceGroupInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartResumeAsync();
     }
     pub fn StartTerminateAsync(self: *@This()) core.HResult!*IAsyncOperation(AppExecutionStateChangeResult) {
         var this: ?*IAppResourceGroupInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppResourceGroupInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartTerminateAsync();
@@ -448,12 +455,14 @@ pub const AppUriHandlerHost = extern struct {
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IAppUriHandlerHost2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppUriHandlerHost2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsEnabled();
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAppUriHandlerHost2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppUriHandlerHost2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
@@ -497,18 +506,21 @@ pub const AppUriHandlerRegistration = extern struct {
     }
     pub fn GetAllHosts(self: *@This()) core.HResult!*IVector(AppUriHandlerHost) {
         var this: ?*IAppUriHandlerRegistration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppUriHandlerRegistration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllHosts();
     }
     pub fn UpdateHosts(self: *@This(), hosts: *IIterable(AppUriHandlerHost)) core.HResult!void {
         var this: ?*IAppUriHandlerRegistration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppUriHandlerRegistration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdateHosts(hosts);
     }
     pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppUriHandlerRegistration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppUriHandlerRegistration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPackageFamilyName();
@@ -531,6 +543,7 @@ pub const AppUriHandlerRegistrationManager = extern struct {
     }
     pub fn getPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppUriHandlerRegistrationManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppUriHandlerRegistrationManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPackageFamilyName();
@@ -600,6 +613,7 @@ pub const DispatcherQueue = extern struct {
     }
     pub fn getHasThreadAccess(self: *@This()) core.HResult!bool {
         var this: ?*IDispatcherQueue2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDispatcherQueue2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHasThreadAccess();
@@ -800,12 +814,14 @@ pub const FolderLauncherOptions = extern struct {
     }
     pub fn getDesiredRemainingView(self: *@This()) core.HResult!ViewSizePreference {
         var this: ?*ILauncherViewOptions = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherViewOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredRemainingView();
     }
     pub fn putDesiredRemainingView(self: *@This(), value: ViewSizePreference) core.HResult!void {
         var this: ?*ILauncherViewOptions = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherViewOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDesiredRemainingView(value);
@@ -3835,24 +3851,28 @@ pub const LauncherOptions = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getTargetApplicationPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILauncherOptions2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTargetApplicationPackageFamilyName();
     }
     pub fn putTargetApplicationPackageFamilyName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ILauncherOptions2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTargetApplicationPackageFamilyName(value);
     }
     pub fn getNeighboringFilesQuery(self: *@This()) core.HResult!*StorageFileQueryResult {
         var this: ?*ILauncherOptions2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNeighboringFilesQuery();
     }
     pub fn putNeighboringFilesQuery(self: *@This(), value: *StorageFileQueryResult) core.HResult!void {
         var this: ?*ILauncherOptions2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNeighboringFilesQuery(value);
@@ -3911,36 +3931,42 @@ pub const LauncherOptions = extern struct {
     }
     pub fn getIgnoreAppUriHandlers(self: *@This()) core.HResult!bool {
         var this: ?*ILauncherOptions3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherOptions3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIgnoreAppUriHandlers();
     }
     pub fn putIgnoreAppUriHandlers(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ILauncherOptions3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherOptions3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIgnoreAppUriHandlers(value);
     }
     pub fn getLimitPickerToCurrentAppAndAppUriHandlers(self: *@This()) core.HResult!bool {
         var this: ?*ILauncherOptions4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherOptions4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLimitPickerToCurrentAppAndAppUriHandlers();
     }
     pub fn putLimitPickerToCurrentAppAndAppUriHandlers(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ILauncherOptions4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherOptions4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLimitPickerToCurrentAppAndAppUriHandlers(value);
     }
     pub fn getDesiredRemainingView(self: *@This()) core.HResult!ViewSizePreference {
         var this: ?*ILauncherViewOptions = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherViewOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredRemainingView();
     }
     pub fn putDesiredRemainingView(self: *@This(), value: ViewSizePreference) core.HResult!void {
         var this: ?*ILauncherViewOptions = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILauncherViewOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDesiredRemainingView(value);
@@ -4179,6 +4205,7 @@ pub const User = extern struct {
     }
     pub fn CheckUserAgeConsentGroupAsync(self: *@This(), consentGroup: UserAgeConsentGroup) core.HResult!*IAsyncOperation(UserAgeConsentResult) {
         var this: ?*IUser2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CheckUserAgeConsentGroupAsync(consentGroup);
@@ -4279,6 +4306,7 @@ pub const UserChangedEventArgs = extern struct {
     }
     pub fn getChangedPropertyKinds(self: *@This()) core.HResult!*IVectorView(UserWatcherUpdateKind) {
         var this: ?*IUserChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChangedPropertyKinds();

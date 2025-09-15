@@ -99,12 +99,14 @@ pub const CoreInkIndependentInputSource = extern struct {
     }
     pub fn getPointerCursor(self: *@This()) core.HResult!*CoreCursor {
         var this: ?*ICoreInkIndependentInputSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInkIndependentInputSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPointerCursor();
     }
     pub fn putPointerCursor(self: *@This(), value: *CoreCursor) core.HResult!void {
         var this: ?*ICoreInkIndependentInputSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInkIndependentInputSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPointerCursor(value);

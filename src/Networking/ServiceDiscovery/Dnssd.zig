@@ -15,6 +15,7 @@ pub const DnssdRegistrationResult = extern struct {
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
@@ -103,6 +104,7 @@ pub const DnssdServiceInstance = extern struct {
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
@@ -129,6 +131,7 @@ pub const DnssdServiceInstanceCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(DnssdServiceInstance) {
         var this: ?*IIterable(DnssdServiceInstance) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(DnssdServiceInstance).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

@@ -522,24 +522,28 @@ pub const ImageVariableDescriptorPreview = extern struct {
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn getModelFeatureKind(self: *@This()) core.HResult!LearningModelFeatureKindPreview {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getModelFeatureKind();
     }
     pub fn getIsRequired(self: *@This()) core.HResult!bool {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRequired();
@@ -614,18 +618,21 @@ pub const LearningModelBindingPreview = extern struct {
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView(?HSTRING,IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
     pub fn Split(self: *@This(), first: *IMapView(?HSTRING,IInspectable), second: *IMapView(?HSTRING,IInspectable)) core.HResult!void {
         var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView(?HSTRING,IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Split(first, second);
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,IInspectable)) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IInspectable)).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -799,24 +806,28 @@ pub const MapVariableDescriptorPreview = extern struct {
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn getModelFeatureKind(self: *@This()) core.HResult!LearningModelFeatureKindPreview {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getModelFeatureKind();
     }
     pub fn getIsRequired(self: *@This()) core.HResult!bool {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRequired();
@@ -835,24 +846,28 @@ pub const SequenceVariableDescriptorPreview = extern struct {
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn getModelFeatureKind(self: *@This()) core.HResult!LearningModelFeatureKindPreview {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getModelFeatureKind();
     }
     pub fn getIsRequired(self: *@This()) core.HResult!bool {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRequired();
@@ -875,24 +890,28 @@ pub const TensorVariableDescriptorPreview = extern struct {
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn getModelFeatureKind(self: *@This()) core.HResult!LearningModelFeatureKindPreview {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getModelFeatureKind();
     }
     pub fn getIsRequired(self: *@This()) core.HResult!bool {
         var this: ?*ILearningModelVariableDescriptorPreview = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelVariableDescriptorPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRequired();

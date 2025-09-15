@@ -47,72 +47,84 @@ pub const AtomPubClient = extern struct {
     }
     pub fn getServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*ISyndicationClient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationClient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCredential();
     }
     pub fn putServerCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         var this: ?*ISyndicationClient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationClient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putServerCredential(value);
     }
     pub fn getProxyCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*ISyndicationClient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationClient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProxyCredential();
     }
     pub fn putProxyCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         var this: ?*ISyndicationClient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationClient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProxyCredential(value);
     }
     pub fn getMaxResponseBufferSize(self: *@This()) core.HResult!u32 {
         var this: ?*ISyndicationClient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationClient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxResponseBufferSize();
     }
     pub fn putMaxResponseBufferSize(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ISyndicationClient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationClient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxResponseBufferSize(value);
     }
     pub fn getTimeout(self: *@This()) core.HResult!u32 {
         var this: ?*ISyndicationClient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationClient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimeout();
     }
     pub fn putTimeout(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ISyndicationClient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationClient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTimeout(value);
     }
     pub fn getBypassCacheOnRetrieve(self: *@This()) core.HResult!bool {
         var this: ?*ISyndicationClient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationClient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBypassCacheOnRetrieve();
     }
     pub fn putBypassCacheOnRetrieve(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISyndicationClient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationClient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBypassCacheOnRetrieve(value);
     }
     pub fn SetRequestHeader(self: *@This(), name: ?HSTRING, value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationClient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationClient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetRequestHeader(name, value);
     }
     pub fn RetrieveFeedAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(SyndicationFeed,RetrievalProgress) {
         var this: ?*ISyndicationClient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationClient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrieveFeedAsync(uri);
@@ -367,78 +379,91 @@ pub const ResourceCollection = extern struct {
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeName();
     }
     pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeName(value);
     }
     pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeNamespace();
     }
     pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeNamespace(value);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeValue(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLanguage(value);
     }
     pub fn getBaseUri(self: *@This()) core.HResult!*Uri {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBaseUri();
     }
     pub fn putBaseUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBaseUri(value);
     }
     pub fn getAttributeExtensions(self: *@This()) core.HResult!*IVector(SyndicationAttribute) {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAttributeExtensions();
     }
     pub fn getElementExtensions(self: *@This()) core.HResult!*IVector(ISyndicationNode) {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getElementExtensions();
     }
     pub fn GetXmlDocument(self: *@This(), format: SyndicationFormat) core.HResult!*XmlDocument {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXmlDocument(format);
@@ -457,78 +482,91 @@ pub const ServiceDocument = extern struct {
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeName();
     }
     pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeName(value);
     }
     pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeNamespace();
     }
     pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeNamespace(value);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeValue(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLanguage(value);
     }
     pub fn getBaseUri(self: *@This()) core.HResult!*Uri {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBaseUri();
     }
     pub fn putBaseUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBaseUri(value);
     }
     pub fn getAttributeExtensions(self: *@This()) core.HResult!*IVector(SyndicationAttribute) {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAttributeExtensions();
     }
     pub fn getElementExtensions(self: *@This()) core.HResult!*IVector(ISyndicationNode) {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getElementExtensions();
     }
     pub fn GetXmlDocument(self: *@This(), format: SyndicationFormat) core.HResult!*XmlDocument {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXmlDocument(format);
@@ -551,78 +589,91 @@ pub const Workspace = extern struct {
     }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeName();
     }
     pub fn putNodeName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeName(value);
     }
     pub fn getNodeNamespace(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeNamespace();
     }
     pub fn putNodeNamespace(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeNamespace(value);
     }
     pub fn getNodeValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNodeValue();
     }
     pub fn putNodeValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNodeValue(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLanguage(value);
     }
     pub fn getBaseUri(self: *@This()) core.HResult!*Uri {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBaseUri();
     }
     pub fn putBaseUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBaseUri(value);
     }
     pub fn getAttributeExtensions(self: *@This()) core.HResult!*IVector(SyndicationAttribute) {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAttributeExtensions();
     }
     pub fn getElementExtensions(self: *@This()) core.HResult!*IVector(ISyndicationNode) {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getElementExtensions();
     }
     pub fn GetXmlDocument(self: *@This(), format: SyndicationFormat) core.HResult!*XmlDocument {
         var this: ?*ISyndicationNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXmlDocument(format);

@@ -1296,42 +1296,49 @@ pub const SecondaryTile = extern struct {
     }
     pub fn putPhoneticName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISecondaryTile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPhoneticName(value);
     }
     pub fn getPhoneticName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISecondaryTile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPhoneticName();
     }
     pub fn getVisualElements(self: *@This()) core.HResult!*SecondaryTileVisualElements {
         var this: ?*ISecondaryTile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVisualElements();
     }
     pub fn putRoamingEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISecondaryTile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRoamingEnabled(value);
     }
     pub fn getRoamingEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ISecondaryTile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRoamingEnabled();
     }
     pub fn addVisualElementsRequested(self: *@This(), handler: *TypedEventHandler(SecondaryTile,VisualElementsRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ISecondaryTile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addVisualElementsRequested(handler);
     }
     pub fn removeVisualElementsRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ISecondaryTile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeVisualElementsRequested(token);
@@ -1469,30 +1476,35 @@ pub const SecondaryTileVisualElements = extern struct {
     }
     pub fn putSquare71x71Logo(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISecondaryTileVisualElements2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSquare71x71Logo(value);
     }
     pub fn getSquare71x71Logo(self: *@This()) core.HResult!*Uri {
         var this: ?*ISecondaryTileVisualElements2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSquare71x71Logo();
     }
     pub fn putSquare44x44Logo(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*ISecondaryTileVisualElements3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSquare44x44Logo(value);
     }
     pub fn getSquare44x44Logo(self: *@This()) core.HResult!*Uri {
         var this: ?*ISecondaryTileVisualElements3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSquare44x44Logo();
     }
     pub fn getMixedRealityModel(self: *@This()) core.HResult!*TileMixedRealityModel {
         var this: ?*ISecondaryTileVisualElements4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryTileVisualElements4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMixedRealityModel();
@@ -1523,12 +1535,14 @@ pub const StartScreenManager = extern struct {
     }
     pub fn ContainsSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IStartScreenManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStartScreenManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ContainsSecondaryTileAsync(tileId);
     }
     pub fn TryRemoveSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IStartScreenManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStartScreenManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryRemoveSecondaryTileAsync(tileId);
@@ -1571,12 +1585,14 @@ pub const TileMixedRealityModel = extern struct {
     }
     pub fn putActivationBehavior(self: *@This(), value: TileMixedRealityModelActivationBehavior) core.HResult!void {
         var this: ?*ITileMixedRealityModel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITileMixedRealityModel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putActivationBehavior(value);
     }
     pub fn getActivationBehavior(self: *@This()) core.HResult!TileMixedRealityModelActivationBehavior {
         var this: ?*ITileMixedRealityModel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITileMixedRealityModel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActivationBehavior();

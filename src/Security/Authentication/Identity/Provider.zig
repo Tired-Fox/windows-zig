@@ -635,18 +635,21 @@ pub const SecondaryAuthenticationFactorInfo = extern struct {
     }
     pub fn getPresenceMonitoringMode(self: *@This()) core.HResult!SecondaryAuthenticationFactorDevicePresenceMonitoringMode {
         var this: ?*ISecondaryAuthenticationFactorInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryAuthenticationFactorInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPresenceMonitoringMode();
     }
     pub fn UpdateDevicePresenceAsync(self: *@This(), presenceState: SecondaryAuthenticationFactorDevicePresence) core.HResult!*IAsyncAction {
         var this: ?*ISecondaryAuthenticationFactorInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryAuthenticationFactorInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdateDevicePresenceAsync(presenceState);
     }
     pub fn getIsAuthenticationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISecondaryAuthenticationFactorInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISecondaryAuthenticationFactorInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAuthenticationSupported();

@@ -27,12 +27,14 @@ pub const Brush = extern struct {
     }
     pub fn PopulatePropertyInfoOverride(self: *@This(), propertyName: ?HSTRING, animationPropertyInfo: *AnimationPropertyInfo) core.HResult!void {
         var this: ?*IBrushOverrides2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBrushOverrides2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PopulatePropertyInfoOverride(propertyName, animationPropertyInfo);
     }
     pub fn PopulatePropertyInfo(self: *@This(), propertyName: ?HSTRING, propertyInfo: *AnimationPropertyInfo) core.HResult!void {
         var this: ?*IAnimationObject = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAnimationObject.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PopulatePropertyInfo(propertyName, propertyInfo);
@@ -133,24 +135,28 @@ pub const XamlCompositionBrushBase = extern struct {
     }
     pub fn getCompositionBrush(self: *@This()) core.HResult!*CompositionBrush {
         var this: ?*IXamlCompositionBrushBaseProtected = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXamlCompositionBrushBaseProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompositionBrush();
     }
     pub fn putCompositionBrush(self: *@This(), value: *CompositionBrush) core.HResult!void {
         var this: ?*IXamlCompositionBrushBaseProtected = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXamlCompositionBrushBaseProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompositionBrush(value);
     }
     pub fn OnConnected(self: *@This()) core.HResult!void {
         var this: ?*IXamlCompositionBrushBaseOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXamlCompositionBrushBaseOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnConnected();
     }
     pub fn OnDisconnected(self: *@This()) core.HResult!void {
         var this: ?*IXamlCompositionBrushBaseOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXamlCompositionBrushBaseOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnDisconnected();
@@ -218,12 +224,14 @@ pub const AcrylicBrush = extern struct {
     }
     pub fn getTintLuminosityOpacity(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*IAcrylicBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAcrylicBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTintLuminosityOpacity();
     }
     pub fn putTintLuminosityOpacity(self: *@This(), value: *IReference(f64)) core.HResult!void {
         var this: ?*IAcrylicBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAcrylicBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTintLuminosityOpacity(value);
@@ -495,6 +503,7 @@ pub const BrushCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Brush) {
         var this: ?*IIterable(Brush) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Brush).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -541,18 +550,21 @@ pub const GeneralTransform = extern struct {
     }
     pub fn getInverseCore(self: *@This()) core.HResult!*GeneralTransform {
         var this: ?*IGeneralTransformOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeneralTransformOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInverseCore();
     }
     pub fn TryTransformCore(self: *@This(), inPoint: Point, outPoint: Point) core.HResult!bool {
         var this: ?*IGeneralTransformOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeneralTransformOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryTransformCore(inPoint, outPoint);
     }
     pub fn TransformBoundsCore(self: *@This(), rect: Rect) core.HResult!Rect {
         var this: ?*IGeneralTransformOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGeneralTransformOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransformBoundsCore(rect);
@@ -769,6 +781,7 @@ pub const DoubleCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(f64) {
         var this: ?*IIterable(f64) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(f64).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -940,6 +953,7 @@ pub const GeometryCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Geometry) {
         var this: ?*IIterable(Geometry) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Geometry).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1134,6 +1148,7 @@ pub const GradientStopCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(GradientStop) {
         var this: ?*IIterable(GradientStop) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(GradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -5863,6 +5878,7 @@ pub const LoadedImageSurface = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -6040,6 +6056,7 @@ pub const PartialMediaFailureDetectedEventArgs = extern struct {
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*IPartialMediaFailureDetectedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPartialMediaFailureDetectedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtendedError();
@@ -6147,6 +6164,7 @@ pub const PathFigureCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(PathFigure) {
         var this: ?*IIterable(PathFigure) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(PathFigure).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -6230,6 +6248,7 @@ pub const PathSegmentCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(PathSegment) {
         var this: ?*IIterable(PathSegment) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(PathSegment).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -6452,6 +6471,7 @@ pub const PointCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Point) {
         var this: ?*IIterable(Point) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Point).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -7209,6 +7229,7 @@ pub const TimelineMarkerCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(TimelineMarker) {
         var this: ?*IIterable(TimelineMarker) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(TimelineMarker).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -7364,6 +7385,7 @@ pub const TransformCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Transform) {
         var this: ?*IIterable(Transform) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Transform).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -7514,30 +7536,35 @@ pub const XamlLight = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getCompositionLight(self: *@This()) core.HResult!*CompositionLight {
         var this: ?*IXamlLightProtected = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXamlLightProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompositionLight();
     }
     pub fn putCompositionLight(self: *@This(), value: *CompositionLight) core.HResult!void {
         var this: ?*IXamlLightProtected = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXamlLightProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompositionLight(value);
     }
     pub fn GetId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXamlLightOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXamlLightOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetId();
     }
     pub fn OnConnected(self: *@This(), newElement: *UIElement) core.HResult!void {
         var this: ?*IXamlLightOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXamlLightOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnConnected(newElement);
     }
     pub fn OnDisconnected(self: *@This(), oldElement: *UIElement) core.HResult!void {
         var this: ?*IXamlLightOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXamlLightOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnDisconnected(oldElement);

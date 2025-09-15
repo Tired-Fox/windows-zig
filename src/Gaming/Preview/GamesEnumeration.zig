@@ -167,48 +167,56 @@ pub const GameListEntry = extern struct {
     }
     pub fn getLaunchableState(self: *@This()) core.HResult!GameListEntryLaunchableState {
         var this: ?*IGameListEntry2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLaunchableState();
     }
     pub fn getLauncherExecutable(self: *@This()) core.HResult!*IStorageFile {
         var this: ?*IGameListEntry2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLauncherExecutable();
     }
     pub fn getLaunchParameters(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGameListEntry2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLaunchParameters();
     }
     pub fn SetLauncherExecutableFileAsync(self: *@This(), executableFile: *IStorageFile) core.HResult!*IAsyncAction {
         var this: ?*IGameListEntry2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetLauncherExecutableFileAsync(executableFile);
     }
     pub fn SetLauncherExecutableFileAsyncWithLaunchParams(self: *@This(), executableFile: *IStorageFile, launchParams: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IGameListEntry2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetLauncherExecutableFileAsyncWithLaunchParams(executableFile, launchParams);
     }
     pub fn getTitleId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGameListEntry2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTitleId();
     }
     pub fn SetTitleIdAsync(self: *@This(), id: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IGameListEntry2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetTitleIdAsync(id);
     }
     pub fn getGameModeConfiguration(self: *@This()) core.HResult!*GameModeConfiguration {
         var this: ?*IGameListEntry2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGameModeConfiguration();

@@ -75,6 +75,7 @@ pub const DateTimeFormatter = extern struct {
     }
     pub fn FormatWithTimeZoneId(self: *@This(), datetime: DateTime, timeZoneId: ?HSTRING) core.HResult!?HSTRING {
         var this: ?*IDateTimeFormatter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDateTimeFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatWithTimeZoneId(datetime, timeZoneId);

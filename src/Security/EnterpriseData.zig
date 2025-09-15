@@ -94,6 +94,7 @@ pub const FileProtectionInfo = extern struct {
     }
     pub fn getIsProtectWhileOpenSupported(self: *@This()) core.HResult!bool {
         var this: ?*IFileProtectionInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileProtectionInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsProtectWhileOpenSupported();
@@ -1481,12 +1482,14 @@ pub const ProtectionPolicyManager = extern struct {
     }
     pub fn putShowEnterpriseIndicator(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IProtectionPolicyManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProtectionPolicyManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putShowEnterpriseIndicator(value);
     }
     pub fn getShowEnterpriseIndicator(self: *@This()) core.HResult!bool {
         var this: ?*IProtectionPolicyManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProtectionPolicyManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShowEnterpriseIndicator();
@@ -1672,6 +1675,7 @@ pub const ThreadNetworkContext = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

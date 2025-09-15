@@ -77,6 +77,7 @@ pub const AccountsSettingsPaneCommandsRequestedEventArgs = extern struct {
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IAccountsSettingsPaneCommandsRequestedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccountsSettingsPaneCommandsRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();

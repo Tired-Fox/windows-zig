@@ -529,48 +529,56 @@ pub const MapControlDataHelper = extern struct {
     }
     pub fn addBusinessLandmarkPointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addBusinessLandmarkPointerEntered(value);
     }
     pub fn removeBusinessLandmarkPointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeBusinessLandmarkPointerEntered(token);
     }
     pub fn addTransitFeaturePointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTransitFeaturePointerEntered(value);
     }
     pub fn removeTransitFeaturePointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTransitFeaturePointerEntered(token);
     }
     pub fn addBusinessLandmarkPointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerExitedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addBusinessLandmarkPointerExited(value);
     }
     pub fn removeBusinessLandmarkPointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeBusinessLandmarkPointerExited(token);
     }
     pub fn addTransitFeaturePointerExited(self: *@This(), value: *TypedEventHandler(MapControl,MapControlTransitFeaturePointerExitedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTransitFeaturePointerExited(value);
     }
     pub fn removeTransitFeaturePointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControlDataHelper2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControlDataHelper2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTransitFeaturePointerExited(token);
@@ -6066,6 +6074,7 @@ pub const MapActualCameraChangedEventArgs = extern struct {
     }
     pub fn getChangeReason(self: *@This()) core.HResult!MapCameraChangeReason {
         var this: ?*IMapActualCameraChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapActualCameraChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChangeReason();
@@ -6092,6 +6101,7 @@ pub const MapActualCameraChangingEventArgs = extern struct {
     }
     pub fn getChangeReason(self: *@This()) core.HResult!MapCameraChangeReason {
         var this: ?*IMapActualCameraChangingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapActualCameraChangingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChangeReason();
@@ -6136,60 +6146,70 @@ pub const MapElement = extern struct {
     }
     pub fn getMapTabIndex(self: *@This()) core.HResult!i32 {
         var this: ?*IMapElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMapTabIndex();
     }
     pub fn putMapTabIndex(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IMapElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMapTabIndex(value);
     }
     pub fn getMapStyleSheetEntry(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMapElement3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMapStyleSheetEntry();
     }
     pub fn putMapStyleSheetEntry(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMapElement3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMapStyleSheetEntry(value);
     }
     pub fn getMapStyleSheetEntryState(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMapElement3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMapStyleSheetEntryState();
     }
     pub fn putMapStyleSheetEntryState(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMapElement3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMapStyleSheetEntryState(value);
     }
     pub fn getTag(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IMapElement3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
     pub fn putTag(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IMapElement3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTag(value);
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMapElement4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsEnabled();
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMapElement4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapElement4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
@@ -6650,480 +6670,560 @@ pub const MapControl = extern struct {
     }
     pub fn getBusinessLandmarksVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBusinessLandmarksVisible();
     }
     pub fn putBusinessLandmarksVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBusinessLandmarksVisible(value);
     }
     pub fn getTransitFeaturesVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransitFeaturesVisible();
     }
     pub fn putTransitFeaturesVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransitFeaturesVisible(value);
     }
     pub fn getPanInteractionMode(self: *@This()) core.HResult!MapPanInteractionMode {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPanInteractionMode();
     }
     pub fn putPanInteractionMode(self: *@This(), value: MapPanInteractionMode) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPanInteractionMode(value);
     }
     pub fn getRotateInteractionMode(self: *@This()) core.HResult!MapInteractionMode {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotateInteractionMode();
     }
     pub fn putRotateInteractionMode(self: *@This(), value: MapInteractionMode) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRotateInteractionMode(value);
     }
     pub fn getTiltInteractionMode(self: *@This()) core.HResult!MapInteractionMode {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTiltInteractionMode();
     }
     pub fn putTiltInteractionMode(self: *@This(), value: MapInteractionMode) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTiltInteractionMode(value);
     }
     pub fn getZoomInteractionMode(self: *@This()) core.HResult!MapInteractionMode {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getZoomInteractionMode();
     }
     pub fn putZoomInteractionMode(self: *@This(), value: MapInteractionMode) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putZoomInteractionMode(value);
     }
     pub fn getIs3DSupported(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIs3DSupported();
     }
     pub fn getIsStreetsideSupported(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsStreetsideSupported();
     }
     pub fn getScene(self: *@This()) core.HResult!*MapScene {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getScene();
     }
     pub fn putScene(self: *@This(), value: *MapScene) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putScene(value);
     }
     pub fn getActualCamera(self: *@This()) core.HResult!*MapCamera {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActualCamera();
     }
     pub fn getTargetCamera(self: *@This()) core.HResult!*MapCamera {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTargetCamera();
     }
     pub fn getCustomExperience(self: *@This()) core.HResult!*MapCustomExperience {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCustomExperience();
     }
     pub fn putCustomExperience(self: *@This(), value: *MapCustomExperience) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCustomExperience(value);
     }
     pub fn addMapElementClick(self: *@This(), handler: *TypedEventHandler(MapControl,MapElementClickEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addMapElementClick(handler);
     }
     pub fn removeMapElementClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMapElementClick(token);
     }
     pub fn addMapElementPointerEntered(self: *@This(), handler: *TypedEventHandler(MapControl,MapElementPointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addMapElementPointerEntered(handler);
     }
     pub fn removeMapElementPointerEntered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMapElementPointerEntered(token);
     }
     pub fn addMapElementPointerExited(self: *@This(), handler: *TypedEventHandler(MapControl,MapElementPointerExitedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addMapElementPointerExited(handler);
     }
     pub fn removeMapElementPointerExited(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMapElementPointerExited(token);
     }
     pub fn addActualCameraChanged(self: *@This(), handler: *TypedEventHandler(MapControl,MapActualCameraChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addActualCameraChanged(handler);
     }
     pub fn removeActualCameraChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeActualCameraChanged(token);
     }
     pub fn addActualCameraChanging(self: *@This(), handler: *TypedEventHandler(MapControl,MapActualCameraChangingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addActualCameraChanging(handler);
     }
     pub fn removeActualCameraChanging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeActualCameraChanging(token);
     }
     pub fn addTargetCameraChanged(self: *@This(), handler: *TypedEventHandler(MapControl,MapTargetCameraChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTargetCameraChanged(handler);
     }
     pub fn removeTargetCameraChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTargetCameraChanged(token);
     }
     pub fn addCustomExperienceChanged(self: *@This(), handler: *TypedEventHandler(MapControl,MapCustomExperienceChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCustomExperienceChanged(handler);
     }
     pub fn removeCustomExperienceChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCustomExperienceChanged(token);
     }
     pub fn StartContinuousRotate(self: *@This(), rateInDegreesPerSecond: f64) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartContinuousRotate(rateInDegreesPerSecond);
     }
     pub fn StopContinuousRotate(self: *@This()) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopContinuousRotate();
     }
     pub fn StartContinuousTilt(self: *@This(), rateInDegreesPerSecond: f64) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartContinuousTilt(rateInDegreesPerSecond);
     }
     pub fn StopContinuousTilt(self: *@This()) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopContinuousTilt();
     }
     pub fn StartContinuousZoom(self: *@This(), rateOfChangePerSecond: f64) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartContinuousZoom(rateOfChangePerSecond);
     }
     pub fn StopContinuousZoom(self: *@This()) core.HResult!void {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopContinuousZoom();
     }
     pub fn TryRotateAsync(self: *@This(), degrees: f64) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryRotateAsync(degrees);
     }
     pub fn TryRotateToAsync(self: *@This(), angleInDegrees: f64) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryRotateToAsync(angleInDegrees);
     }
     pub fn TryTiltAsync(self: *@This(), degrees: f64) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryTiltAsync(degrees);
     }
     pub fn TryTiltToAsync(self: *@This(), angleInDegrees: f64) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryTiltToAsync(angleInDegrees);
     }
     pub fn TryZoomInAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryZoomInAsync();
     }
     pub fn TryZoomOutAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryZoomOutAsync();
     }
     pub fn TryZoomToAsync(self: *@This(), zoomLevel: f64) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryZoomToAsync(zoomLevel);
     }
     pub fn TrySetSceneAsync(self: *@This(), scene: *MapScene) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TrySetSceneAsync(scene);
     }
     pub fn TrySetSceneAsyncWithAnimationKind(self: *@This(), scene: *MapScene, animationKind: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TrySetSceneAsyncWithAnimationKind(scene, animationKind);
     }
     pub fn addMapRightTapped(self: *@This(), handler: *TypedEventHandler(MapControl,MapRightTappedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addMapRightTapped(handler);
     }
     pub fn removeMapRightTapped(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMapRightTapped(token);
     }
     pub fn getBusinessLandmarksEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBusinessLandmarksEnabled();
     }
     pub fn putBusinessLandmarksEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMapControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBusinessLandmarksEnabled(value);
     }
     pub fn getTransitFeaturesEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransitFeaturesEnabled();
     }
     pub fn putTransitFeaturesEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMapControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransitFeaturesEnabled(value);
     }
     pub fn GetVisibleRegion(self: *@This(), region: MapVisibleRegionKind) core.HResult!*Geopath {
         var this: ?*IMapControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetVisibleRegion(region);
     }
     pub fn getMapProjection(self: *@This()) core.HResult!MapProjection {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMapProjection();
     }
     pub fn putMapProjection(self: *@This(), value: MapProjection) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMapProjection(value);
     }
     pub fn getStyleSheet(self: *@This()) core.HResult!*MapStyleSheet {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStyleSheet();
     }
     pub fn putStyleSheet(self: *@This(), value: *MapStyleSheet) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStyleSheet(value);
     }
     pub fn getViewPadding(self: *@This()) core.HResult!Thickness {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getViewPadding();
     }
     pub fn putViewPadding(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putViewPadding(value);
     }
     pub fn addMapContextRequested(self: *@This(), handler: *TypedEventHandler(MapControl,MapContextRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addMapContextRequested(handler);
     }
     pub fn removeMapContextRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMapContextRequested(token);
     }
     pub fn FindMapElementsAtOffsetWithRadius(self: *@This(), offset: Point, radius: f64) core.HResult!*IVectorView(MapElement) {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindMapElementsAtOffsetWithRadius(offset, radius);
     }
     pub fn GetLocationFromOffsetWithDesiredReferenceSystemAndLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLocationFromOffsetWithDesiredReferenceSystemAndLocation(offset, desiredReferenceSystem, location);
     }
     pub fn StartContinuousPan(self: *@This(), horizontalPixelsPerSecond: f64, verticalPixelsPerSecond: f64) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartContinuousPan(horizontalPixelsPerSecond, verticalPixelsPerSecond);
     }
     pub fn StopContinuousPan(self: *@This()) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopContinuousPan();
     }
     pub fn TryPanAsync(self: *@This(), horizontalPixels: f64, verticalPixels: f64) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryPanAsync(horizontalPixels, verticalPixels);
     }
     pub fn TryPanToAsync(self: *@This(), location: *Geopoint) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryPanToAsync(location);
     }
     pub fn getLayers(self: *@This()) core.HResult!*IVector(MapLayer) {
         var this: ?*IMapControl6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLayers();
     }
     pub fn putLayers(self: *@This(), value: *IVector(MapLayer)) core.HResult!void {
         var this: ?*IMapControl6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLayers(value);
     }
     pub fn TryGetLocationFromOffset(self: *@This(), offset: Point, location: *Geopoint) core.HResult!bool {
         var this: ?*IMapControl6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetLocationFromOffset(offset, location);
     }
     pub fn TryGetLocationFromOffsetWithDesiredReferenceSystemAndLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
         var this: ?*IMapControl6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetLocationFromOffsetWithDesiredReferenceSystemAndLocation(offset, desiredReferenceSystem, location);
     }
     pub fn getRegion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMapControl7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRegion();
     }
     pub fn putRegion(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMapControl7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRegion(value);
     }
     pub fn getCanTiltDown(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanTiltDown();
     }
     pub fn getCanTiltUp(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanTiltUp();
     }
     pub fn getCanZoomIn(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanZoomIn();
     }
     pub fn getCanZoomOut(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanZoomOut();
@@ -7792,12 +7892,14 @@ pub const MapIcon = extern struct {
     }
     pub fn getCollisionBehaviorDesired(self: *@This()) core.HResult!MapElementCollisionBehavior {
         var this: ?*IMapIcon2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapIcon2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCollisionBehaviorDesired();
     }
     pub fn putCollisionBehaviorDesired(self: *@This(), value: MapElementCollisionBehavior) core.HResult!void {
         var this: ?*IMapIcon2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapIcon2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCollisionBehaviorDesired(value);
@@ -8001,6 +8103,7 @@ pub const MapPolygon = extern struct {
     }
     pub fn getPaths(self: *@This()) core.HResult!*IVector(Geopath) {
         var this: ?*IMapPolygon2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapPolygon2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPaths();
@@ -8565,6 +8668,7 @@ pub const MapTargetCameraChangedEventArgs = extern struct {
     }
     pub fn getChangeReason(self: *@This()) core.HResult!MapCameraChangeReason {
         var this: ?*IMapTargetCameraChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTargetCameraChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChangeReason();
@@ -8656,6 +8760,7 @@ pub const MapTileBitmapRequestedEventArgs = extern struct {
     }
     pub fn getFrameIndex(self: *@This()) core.HResult!i32 {
         var this: ?*IMapTileBitmapRequestedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileBitmapRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFrameIndex();
@@ -8773,60 +8878,70 @@ pub const MapTileSource = extern struct {
     }
     pub fn getAnimationState(self: *@This()) core.HResult!MapTileAnimationState {
         var this: ?*IMapTileSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAnimationState();
     }
     pub fn getAutoPlay(self: *@This()) core.HResult!bool {
         var this: ?*IMapTileSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAutoPlay();
     }
     pub fn putAutoPlay(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMapTileSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAutoPlay(value);
     }
     pub fn getFrameCount(self: *@This()) core.HResult!i32 {
         var this: ?*IMapTileSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFrameCount();
     }
     pub fn putFrameCount(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IMapTileSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFrameCount(value);
     }
     pub fn getFrameDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMapTileSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFrameDuration();
     }
     pub fn putFrameDuration(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMapTileSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFrameDuration(value);
     }
     pub fn Pause(self: *@This()) core.HResult!void {
         var this: ?*IMapTileSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Pause();
     }
     pub fn Play(self: *@This()) core.HResult!void {
         var this: ?*IMapTileSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Play();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IMapTileSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
@@ -8991,6 +9106,7 @@ pub const MapTileUriRequestedEventArgs = extern struct {
     }
     pub fn getFrameIndex(self: *@This()) core.HResult!i32 {
         var this: ?*IMapTileUriRequestedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileUriRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFrameIndex();

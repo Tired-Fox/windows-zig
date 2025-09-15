@@ -326,24 +326,28 @@ pub const GuidanceNavigator = extern struct {
     }
     pub fn addAudioNotificationRequested(self: *@This(), value: *TypedEventHandler(GuidanceNavigator,GuidanceAudioNotificationRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IGuidanceNavigator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGuidanceNavigator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addAudioNotificationRequested(value);
     }
     pub fn removeAudioNotificationRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IGuidanceNavigator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGuidanceNavigator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAudioNotificationRequested(token);
     }
     pub fn getIsGuidanceAudioMuted(self: *@This()) core.HResult!bool {
         var this: ?*IGuidanceNavigator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGuidanceNavigator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsGuidanceAudioMuted();
     }
     pub fn putIsGuidanceAudioMuted(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IGuidanceNavigator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGuidanceNavigator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsGuidanceAudioMuted(value);
@@ -419,6 +423,7 @@ pub const GuidanceRoadSegment = extern struct {
     }
     pub fn getIsScenic(self: *@This()) core.HResult!bool {
         var this: ?*IGuidanceRoadSegment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGuidanceRoadSegment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsScenic();

@@ -95,102 +95,119 @@ pub const CoreInputView = extern struct {
     }
     pub fn addXYFocusTransferringFromPrimaryView(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewTransferringXYFocusEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addXYFocusTransferringFromPrimaryView(handler);
     }
     pub fn removeXYFocusTransferringFromPrimaryView(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreInputView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeXYFocusTransferringFromPrimaryView(token);
     }
     pub fn addXYFocusTransferredToPrimaryView(self: *@This(), handler: *TypedEventHandler(CoreInputView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addXYFocusTransferredToPrimaryView(handler);
     }
     pub fn removeXYFocusTransferredToPrimaryView(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreInputView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeXYFocusTransferredToPrimaryView(token);
     }
     pub fn TryTransferXYFocusToPrimaryView(self: *@This(), origin: Rect, direction: CoreInputViewXYFocusTransferDirection) core.HResult!bool {
         var this: ?*ICoreInputView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryTransferXYFocusToPrimaryView(origin, direction);
     }
     pub fn TryShow(self: *@This()) core.HResult!bool {
         var this: ?*ICoreInputView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryShow();
     }
     pub fn TryShowWithTy(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
         var this: ?*ICoreInputView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryShowWithTy(ty);
     }
     pub fn TryHide(self: *@This()) core.HResult!bool {
         var this: ?*ICoreInputView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryHide();
     }
     pub fn addPrimaryViewShowing(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewShowingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPrimaryViewShowing(handler);
     }
     pub fn removePrimaryViewShowing(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreInputView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePrimaryViewShowing(token);
     }
     pub fn addPrimaryViewHiding(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewHidingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPrimaryViewHiding(handler);
     }
     pub fn removePrimaryViewHiding(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreInputView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePrimaryViewHiding(token);
     }
     pub fn IsKindSupported(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
         var this: ?*ICoreInputView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsKindSupported(ty);
     }
     pub fn addSupportedKindsChanged(self: *@This(), handler: *TypedEventHandler(CoreInputView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSupportedKindsChanged(handler);
     }
     pub fn removeSupportedKindsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreInputView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSupportedKindsChanged(token);
     }
     pub fn addPrimaryViewAnimationStarting(self: *@This(), handler: *TypedEventHandler(CoreInputView,CoreInputViewAnimationStartingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPrimaryViewAnimationStarting(handler);
     }
     pub fn removePrimaryViewAnimationStarting(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreInputView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePrimaryViewAnimationStarting(token);

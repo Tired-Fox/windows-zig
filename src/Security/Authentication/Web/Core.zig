@@ -895,12 +895,14 @@ pub const WebAccountMonitor = extern struct {
     }
     pub fn addAccountPictureUpdated(self: *@This(), handler: *TypedEventHandler(WebAccountMonitor,WebAccountEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebAccountMonitor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountMonitor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addAccountPictureUpdated(handler);
     }
     pub fn removeAccountPictureUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebAccountMonitor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountMonitor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAccountPictureUpdated(token);
@@ -1131,18 +1133,21 @@ pub const WebTokenRequest = extern struct {
     }
     pub fn getAppProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         var this: ?*IWebTokenRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebTokenRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppProperties();
     }
     pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebTokenRequest3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebTokenRequest3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCorrelationId();
     }
     pub fn putCorrelationId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IWebTokenRequest3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebTokenRequest3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCorrelationId(value);

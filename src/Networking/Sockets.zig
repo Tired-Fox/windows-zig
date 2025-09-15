@@ -47,12 +47,14 @@ pub const ControlChannelTrigger = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn getIsWakeFromLowPowerSupported(self: *@This()) core.HResult!bool {
         var this: ?*IControlChannelTrigger2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlChannelTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsWakeFromLowPowerSupported();
@@ -352,48 +354,56 @@ pub const DatagramSocket = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn BindServiceNameAsyncWithAdapter(self: *@This(), localServiceName: ?HSTRING, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
         var this: ?*IDatagramSocket2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocket2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BindServiceNameAsyncWithAdapter(localServiceName, adapter);
     }
     pub fn CancelIOAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IDatagramSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CancelIOAsync();
     }
     pub fn EnableTransferOwnership(self: *@This(), taskId: *Guid) core.HResult!void {
         var this: ?*IDatagramSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableTransferOwnership(taskId);
     }
     pub fn EnableTransferOwnershipWithConnectedStandbyAction(self: *@This(), taskId: *Guid, connectedStandbyAction: SocketActivityConnectedStandbyAction) core.HResult!void {
         var this: ?*IDatagramSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableTransferOwnershipWithConnectedStandbyAction(taskId, connectedStandbyAction);
     }
     pub fn TransferOwnership(self: *@This(), socketId: ?HSTRING) core.HResult!void {
         var this: ?*IDatagramSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnership(socketId);
     }
     pub fn TransferOwnershipWithData(self: *@This(), socketId: ?HSTRING, data: *SocketActivityContext) core.HResult!void {
         var this: ?*IDatagramSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnershipWithData(socketId, data);
     }
     pub fn TransferOwnershipWithDataAndKeepAliveTime(self: *@This(), socketId: ?HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
         var this: ?*IDatagramSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnershipWithDataAndKeepAliveTime(socketId, data, keepAliveTime);
@@ -441,36 +451,42 @@ pub const DatagramSocketControl = extern struct {
     }
     pub fn getInboundBufferSizeInBytes(self: *@This()) core.HResult!u32 {
         var this: ?*IDatagramSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInboundBufferSizeInBytes();
     }
     pub fn putInboundBufferSizeInBytes(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IDatagramSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putInboundBufferSizeInBytes(value);
     }
     pub fn getDontFragment(self: *@This()) core.HResult!bool {
         var this: ?*IDatagramSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDontFragment();
     }
     pub fn putDontFragment(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDatagramSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDontFragment(value);
     }
     pub fn getMulticastOnly(self: *@This()) core.HResult!bool {
         var this: ?*IDatagramSocketControl3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocketControl3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMulticastOnly();
     }
     pub fn putMulticastOnly(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDatagramSocketControl3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocketControl3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMulticastOnly(value);
@@ -2829,66 +2845,77 @@ pub const MessageWebSocket = extern struct {
     }
     pub fn getOutputStream(self: *@This()) core.HResult!*IOutputStream {
         var this: ?*IWebSocket = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutputStream();
     }
     pub fn ConnectAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncAction {
         var this: ?*IWebSocket = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConnectAsync(uri);
     }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IWebSocket = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetRequestHeader(headerName, headerValue);
     }
     pub fn addClosed(self: *@This(), eventHandler: *TypedEventHandler(IWebSocket,WebSocketClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebSocket = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addClosed(eventHandler);
     }
     pub fn removeClosed(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebSocket = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosed(eventCookie);
     }
     pub fn CloseWithCodeAndReason(self: *@This(), code: u16, reason: ?HSTRING) core.HResult!void {
         var this: ?*IWebSocket = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CloseWithCodeAndReason(code, reason);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn addServerCustomValidationRequested(self: *@This(), eventHandler: *TypedEventHandler(MessageWebSocket,WebSocketServerCustomValidationRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMessageWebSocket2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMessageWebSocket2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addServerCustomValidationRequested(eventHandler);
     }
     pub fn removeServerCustomValidationRequested(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IMessageWebSocket2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMessageWebSocket2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeServerCustomValidationRequested(eventCookie);
     }
     pub fn SendNonfinalFrameAsync(self: *@This(), data: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IMessageWebSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMessageWebSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SendNonfinalFrameAsync(data);
     }
     pub fn SendFinalFrameAsync(self: *@This(), data: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IMessageWebSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMessageWebSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SendFinalFrameAsync(data);
@@ -2927,90 +2954,105 @@ pub const MessageWebSocketControl = extern struct {
     }
     pub fn getOutboundBufferSizeInBytes(self: *@This()) core.HResult!u32 {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutboundBufferSizeInBytes();
     }
     pub fn putOutboundBufferSizeInBytes(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutboundBufferSizeInBytes(value);
     }
     pub fn getServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCredential();
     }
     pub fn putServerCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putServerCredential(value);
     }
     pub fn getProxyCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProxyCredential();
     }
     pub fn putProxyCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProxyCredential(value);
     }
     pub fn getSupportedProtocols(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedProtocols();
     }
     pub fn getIgnorableServerCertificateErrors(self: *@This()) core.HResult!*IVector(ChainValidationResult) {
         var this: ?*IWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIgnorableServerCertificateErrors();
     }
     pub fn getDesiredUnsolicitedPongInterval(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMessageWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMessageWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredUnsolicitedPongInterval();
     }
     pub fn putDesiredUnsolicitedPongInterval(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMessageWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMessageWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDesiredUnsolicitedPongInterval(value);
     }
     pub fn getActualUnsolicitedPongInterval(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMessageWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMessageWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActualUnsolicitedPongInterval();
     }
     pub fn getReceiveMode(self: *@This()) core.HResult!MessageWebSocketReceiveMode {
         var this: ?*IMessageWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMessageWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReceiveMode();
     }
     pub fn putReceiveMode(self: *@This(), value: MessageWebSocketReceiveMode) core.HResult!void {
         var this: ?*IMessageWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMessageWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReceiveMode(value);
     }
     pub fn getClientCertificate(self: *@This()) core.HResult!*Certificate {
         var this: ?*IMessageWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMessageWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getClientCertificate();
     }
     pub fn putClientCertificate(self: *@This(), value: *Certificate) core.HResult!void {
         var this: ?*IMessageWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMessageWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putClientCertificate(value);
@@ -3037,24 +3079,28 @@ pub const MessageWebSocketInformation = extern struct {
     }
     pub fn getServerCertificate(self: *@This()) core.HResult!*Certificate {
         var this: ?*IWebSocketInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCertificate();
     }
     pub fn getServerCertificateErrorSeverity(self: *@This()) core.HResult!SocketSslErrorSeverity {
         var this: ?*IWebSocketInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCertificateErrorSeverity();
     }
     pub fn getServerCertificateErrors(self: *@This()) core.HResult!*IVectorView(ChainValidationResult) {
         var this: ?*IWebSocketInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCertificateErrors();
     }
     pub fn getServerIntermediateCertificates(self: *@This()) core.HResult!*IVectorView(Certificate) {
         var this: ?*IWebSocketInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerIntermediateCertificates();
@@ -3081,6 +3127,7 @@ pub const MessageWebSocketMessageReceivedEventArgs = extern struct {
     }
     pub fn getIsMessageComplete(self: *@This()) core.HResult!bool {
         var this: ?*IMessageWebSocketMessageReceivedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMessageWebSocketMessageReceivedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsMessageComplete();
@@ -3137,6 +3184,7 @@ pub const ServerMessageWebSocket = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -3211,6 +3259,7 @@ pub const ServerStreamWebSocket = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -3450,48 +3499,56 @@ pub const StreamSocket = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn ConnectAsyncWithRemoteHostNameAndRemoteServiceNameAndProtectionLevelAndAdapter(self: *@This(), remoteHostName: *HostName, remoteServiceName: ?HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocket2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConnectAsyncWithRemoteHostNameAndRemoteServiceNameAndProtectionLevelAndAdapter(remoteHostName, remoteServiceName, protectionLevel, adapter);
     }
     pub fn CancelIOAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CancelIOAsync();
     }
     pub fn EnableTransferOwnership(self: *@This(), taskId: *Guid) core.HResult!void {
         var this: ?*IStreamSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableTransferOwnership(taskId);
     }
     pub fn EnableTransferOwnershipWithConnectedStandbyAction(self: *@This(), taskId: *Guid, connectedStandbyAction: SocketActivityConnectedStandbyAction) core.HResult!void {
         var this: ?*IStreamSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableTransferOwnershipWithConnectedStandbyAction(taskId, connectedStandbyAction);
     }
     pub fn TransferOwnership(self: *@This(), socketId: ?HSTRING) core.HResult!void {
         var this: ?*IStreamSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnership(socketId);
     }
     pub fn TransferOwnershipWithData(self: *@This(), socketId: ?HSTRING, data: *SocketActivityContext) core.HResult!void {
         var this: ?*IStreamSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnershipWithData(socketId, data);
     }
     pub fn TransferOwnershipWithDataAndKeepAliveTime(self: *@This(), socketId: ?HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
         var this: ?*IStreamSocket3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnershipWithDataAndKeepAliveTime(socketId, data, keepAliveTime);
@@ -3563,42 +3620,49 @@ pub const StreamSocketControl = extern struct {
     }
     pub fn getIgnorableServerCertificateErrors(self: *@This()) core.HResult!*IVector(ChainValidationResult) {
         var this: ?*IStreamSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIgnorableServerCertificateErrors();
     }
     pub fn getSerializeConnectionAttempts(self: *@This()) core.HResult!bool {
         var this: ?*IStreamSocketControl3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketControl3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSerializeConnectionAttempts();
     }
     pub fn putSerializeConnectionAttempts(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IStreamSocketControl3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketControl3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSerializeConnectionAttempts(value);
     }
     pub fn getClientCertificate(self: *@This()) core.HResult!*Certificate {
         var this: ?*IStreamSocketControl3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketControl3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getClientCertificate();
     }
     pub fn putClientCertificate(self: *@This(), value: *Certificate) core.HResult!void {
         var this: ?*IStreamSocketControl3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketControl3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putClientCertificate(value);
     }
     pub fn getMinProtectionLevel(self: *@This()) core.HResult!SocketProtectionLevel {
         var this: ?*IStreamSocketControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinProtectionLevel();
     }
     pub fn putMinProtectionLevel(self: *@This(), value: SocketProtectionLevel) core.HResult!void {
         var this: ?*IStreamSocketControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMinProtectionLevel(value);
@@ -3653,24 +3717,28 @@ pub const StreamSocketInformation = extern struct {
     }
     pub fn getServerCertificateErrorSeverity(self: *@This()) core.HResult!SocketSslErrorSeverity {
         var this: ?*IStreamSocketInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCertificateErrorSeverity();
     }
     pub fn getServerCertificateErrors(self: *@This()) core.HResult!*IVectorView(ChainValidationResult) {
         var this: ?*IStreamSocketInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCertificateErrors();
     }
     pub fn getServerCertificate(self: *@This()) core.HResult!*Certificate {
         var this: ?*IStreamSocketInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCertificate();
     }
     pub fn getServerIntermediateCertificates(self: *@This()) core.HResult!*IVectorView(Certificate) {
         var this: ?*IStreamSocketInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerIntermediateCertificates();
@@ -3709,48 +3777,56 @@ pub const StreamSocketListener = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn BindServiceNameAsyncWithProtectionLevel(self: *@This(), localServiceName: ?HSTRING, protectionLevel: SocketProtectionLevel) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocketListener2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListener2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BindServiceNameAsyncWithProtectionLevel(localServiceName, protectionLevel);
     }
     pub fn BindServiceNameAsyncWithProtectionLevelAndAdapter(self: *@This(), localServiceName: ?HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocketListener2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListener2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BindServiceNameAsyncWithProtectionLevelAndAdapter(localServiceName, protectionLevel, adapter);
     }
     pub fn CancelIOAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocketListener3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListener3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CancelIOAsync();
     }
     pub fn EnableTransferOwnership(self: *@This(), taskId: *Guid) core.HResult!void {
         var this: ?*IStreamSocketListener3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListener3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableTransferOwnership(taskId);
     }
     pub fn EnableTransferOwnershipWithConnectedStandbyAction(self: *@This(), taskId: *Guid, connectedStandbyAction: SocketActivityConnectedStandbyAction) core.HResult!void {
         var this: ?*IStreamSocketListener3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListener3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableTransferOwnershipWithConnectedStandbyAction(taskId, connectedStandbyAction);
     }
     pub fn TransferOwnership(self: *@This(), socketId: ?HSTRING) core.HResult!void {
         var this: ?*IStreamSocketListener3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListener3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnership(socketId);
     }
     pub fn TransferOwnershipWithData(self: *@This(), socketId: ?HSTRING, data: *SocketActivityContext) core.HResult!void {
         var this: ?*IStreamSocketListener3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListener3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnershipWithData(socketId, data);
@@ -3793,48 +3869,56 @@ pub const StreamSocketListenerControl = extern struct {
     }
     pub fn getNoDelay(self: *@This()) core.HResult!bool {
         var this: ?*IStreamSocketListenerControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListenerControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNoDelay();
     }
     pub fn putNoDelay(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IStreamSocketListenerControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListenerControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNoDelay(value);
     }
     pub fn getKeepAlive(self: *@This()) core.HResult!bool {
         var this: ?*IStreamSocketListenerControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListenerControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeepAlive();
     }
     pub fn putKeepAlive(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IStreamSocketListenerControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListenerControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putKeepAlive(value);
     }
     pub fn getOutboundBufferSizeInBytes(self: *@This()) core.HResult!u32 {
         var this: ?*IStreamSocketListenerControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListenerControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutboundBufferSizeInBytes();
     }
     pub fn putOutboundBufferSizeInBytes(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IStreamSocketListenerControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListenerControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutboundBufferSizeInBytes(value);
     }
     pub fn getOutboundUnicastHopLimit(self: *@This()) core.HResult!u8 {
         var this: ?*IStreamSocketListenerControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListenerControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutboundUnicastHopLimit();
     }
     pub fn putOutboundUnicastHopLimit(self: *@This(), value: u8) core.HResult!void {
         var this: ?*IStreamSocketListenerControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListenerControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutboundUnicastHopLimit(value);
@@ -3873,54 +3957,63 @@ pub const StreamWebSocket = extern struct {
     }
     pub fn getOutputStream(self: *@This()) core.HResult!*IOutputStream {
         var this: ?*IWebSocket = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutputStream();
     }
     pub fn ConnectAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncAction {
         var this: ?*IWebSocket = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConnectAsync(uri);
     }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IWebSocket = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetRequestHeader(headerName, headerValue);
     }
     pub fn addClosed(self: *@This(), eventHandler: *TypedEventHandler(IWebSocket,WebSocketClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebSocket = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addClosed(eventHandler);
     }
     pub fn removeClosed(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebSocket = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosed(eventCookie);
     }
     pub fn CloseWithCodeAndReason(self: *@This(), code: u16, reason: ?HSTRING) core.HResult!void {
         var this: ?*IWebSocket = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CloseWithCodeAndReason(code, reason);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn addServerCustomValidationRequested(self: *@This(), eventHandler: *TypedEventHandler(StreamWebSocket,WebSocketServerCustomValidationRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IStreamWebSocket2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamWebSocket2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addServerCustomValidationRequested(eventHandler);
     }
     pub fn removeServerCustomValidationRequested(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IStreamWebSocket2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamWebSocket2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeServerCustomValidationRequested(eventCookie);
@@ -3951,78 +4044,91 @@ pub const StreamWebSocketControl = extern struct {
     }
     pub fn getOutboundBufferSizeInBytes(self: *@This()) core.HResult!u32 {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutboundBufferSizeInBytes();
     }
     pub fn putOutboundBufferSizeInBytes(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutboundBufferSizeInBytes(value);
     }
     pub fn getServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCredential();
     }
     pub fn putServerCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putServerCredential(value);
     }
     pub fn getProxyCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProxyCredential();
     }
     pub fn putProxyCredential(self: *@This(), value: *PasswordCredential) core.HResult!void {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProxyCredential(value);
     }
     pub fn getSupportedProtocols(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IWebSocketControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedProtocols();
     }
     pub fn getIgnorableServerCertificateErrors(self: *@This()) core.HResult!*IVector(ChainValidationResult) {
         var this: ?*IWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIgnorableServerCertificateErrors();
     }
     pub fn getDesiredUnsolicitedPongInterval(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IStreamWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredUnsolicitedPongInterval();
     }
     pub fn putDesiredUnsolicitedPongInterval(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IStreamWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDesiredUnsolicitedPongInterval(value);
     }
     pub fn getActualUnsolicitedPongInterval(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IStreamWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActualUnsolicitedPongInterval();
     }
     pub fn getClientCertificate(self: *@This()) core.HResult!*Certificate {
         var this: ?*IStreamWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getClientCertificate();
     }
     pub fn putClientCertificate(self: *@This(), value: *Certificate) core.HResult!void {
         var this: ?*IStreamWebSocketControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamWebSocketControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putClientCertificate(value);
@@ -4049,24 +4155,28 @@ pub const StreamWebSocketInformation = extern struct {
     }
     pub fn getServerCertificate(self: *@This()) core.HResult!*Certificate {
         var this: ?*IWebSocketInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCertificate();
     }
     pub fn getServerCertificateErrorSeverity(self: *@This()) core.HResult!SocketSslErrorSeverity {
         var this: ?*IWebSocketInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCertificateErrorSeverity();
     }
     pub fn getServerCertificateErrors(self: *@This()) core.HResult!*IVectorView(ChainValidationResult) {
         var this: ?*IWebSocketInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCertificateErrors();
     }
     pub fn getServerIntermediateCertificates(self: *@This()) core.HResult!*IVectorView(Certificate) {
         var this: ?*IWebSocketInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocketInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerIntermediateCertificates();

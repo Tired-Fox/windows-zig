@@ -47,6 +47,7 @@ pub const CoreDragInfo = extern struct {
     }
     pub fn getAllowedOperations(self: *@This()) core.HResult!DataPackageOperation {
         var this: ?*ICoreDragInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDragInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAllowedOperations();
@@ -89,12 +90,14 @@ pub const CoreDragOperation = extern struct {
     }
     pub fn getAllowedOperations(self: *@This()) core.HResult!DataPackageOperation {
         var this: ?*ICoreDragOperation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDragOperation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAllowedOperations();
     }
     pub fn putAllowedOperations(self: *@This(), value: DataPackageOperation) core.HResult!void {
         var this: ?*ICoreDragOperation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDragOperation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAllowedOperations(value);

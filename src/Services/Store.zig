@@ -2090,6 +2090,7 @@ pub const StoreAppLicense = extern struct {
     }
     pub fn getIsDiscLicense(self: *@This()) core.HResult!bool {
         var this: ?*IStoreAppLicense2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreAppLicense2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDiscLicense();
@@ -2317,120 +2318,140 @@ pub const StoreContext = extern struct {
     }
     pub fn FindStoreProductForPackageAsync(self: *@This(), productKinds: *IIterable(?HSTRING), package: *Package) core.HResult!*IAsyncOperation(StoreProductResult) {
         var this: ?*IStoreContext2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindStoreProductForPackageAsync(productKinds, package);
     }
     pub fn getCanSilentlyDownloadStorePackageUpdates(self: *@This()) core.HResult!bool {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanSilentlyDownloadStorePackageUpdates();
     }
     pub fn TrySilentDownloadStorePackageUpdatesAsync(self: *@This(), storePackageUpdates: *IIterable(StorePackageUpdate)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TrySilentDownloadStorePackageUpdatesAsync(storePackageUpdates);
     }
     pub fn TrySilentDownloadAndInstallStorePackageUpdatesAsync(self: *@This(), storePackageUpdates: *IIterable(StorePackageUpdate)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TrySilentDownloadAndInstallStorePackageUpdatesAsync(storePackageUpdates);
     }
     pub fn CanAcquireStoreLicenseForOptionalPackageAsync(self: *@This(), optionalPackage: *Package) core.HResult!*IAsyncOperation(StoreCanAcquireLicenseResult) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CanAcquireStoreLicenseForOptionalPackageAsync(optionalPackage);
     }
     pub fn CanAcquireStoreLicenseAsync(self: *@This(), productStoreId: ?HSTRING) core.HResult!*IAsyncOperation(StoreCanAcquireLicenseResult) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CanAcquireStoreLicenseAsync(productStoreId);
     }
     pub fn GetStoreProductsAsyncWithStoreProductOptions(self: *@This(), productKinds: *IIterable(?HSTRING), storeIds: *IIterable(?HSTRING), storeProductOptions: *StoreProductOptions) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStoreProductsAsyncWithStoreProductOptions(productKinds, storeIds, storeProductOptions);
     }
     pub fn GetAssociatedStoreQueueItemsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(StoreQueueItem)) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAssociatedStoreQueueItemsAsync();
     }
     pub fn GetStoreQueueItemsAsync(self: *@This(), storeIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(StoreQueueItem)) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStoreQueueItemsAsync(storeIds);
     }
     pub fn RequestDownloadAndInstallStorePackagesAsyncWithStorePackageInstallOptions(self: *@This(), storeIds: *IIterable(?HSTRING), storePackageInstallOptions: *StorePackageInstallOptions) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestDownloadAndInstallStorePackagesAsyncWithStorePackageInstallOptions(storeIds, storePackageInstallOptions);
     }
     pub fn DownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DownloadAndInstallStorePackagesAsync(storeIds);
     }
     pub fn RequestUninstallStorePackageAsync(self: *@This(), package: *Package) core.HResult!*IAsyncOperation(StoreUninstallStorePackageResult) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestUninstallStorePackageAsync(package);
     }
     pub fn RequestUninstallStorePackageByStoreIdAsync(self: *@This(), storeId: ?HSTRING) core.HResult!*IAsyncOperation(StoreUninstallStorePackageResult) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestUninstallStorePackageByStoreIdAsync(storeId);
     }
     pub fn UninstallStorePackageAsync(self: *@This(), package: *Package) core.HResult!*IAsyncOperation(StoreUninstallStorePackageResult) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UninstallStorePackageAsync(package);
     }
     pub fn UninstallStorePackageByStoreIdAsync(self: *@This(), storeId: ?HSTRING) core.HResult!*IAsyncOperation(StoreUninstallStorePackageResult) {
         var this: ?*IStoreContext3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UninstallStorePackageByStoreIdAsync(storeId);
     }
     pub fn RequestRateAndReviewAppAsync(self: *@This()) core.HResult!*IAsyncOperation(StoreRateAndReviewResult) {
         var this: ?*IStoreContext4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestRateAndReviewAppAsync();
     }
     pub fn SetInstallOrderForAssociatedStoreQueueItemsAsync(self: *@This(), items: *IIterable(StoreQueueItem)) core.HResult!*IAsyncOperation(IVectorView(StoreQueueItem)) {
         var this: ?*IStoreContext4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetInstallOrderForAssociatedStoreQueueItemsAsync(items);
     }
     pub fn GetUserPurchaseHistoryAsync(self: *@This(), productKinds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var this: ?*IStoreContext5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetUserPurchaseHistoryAsync(productKinds);
     }
     pub fn GetAssociatedStoreProductsByInAppOfferTokenAsync(self: *@This(), inAppOfferTokens: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var this: ?*IStoreContext5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAssociatedStoreProductsByInAppOfferTokenAsync(inAppOfferTokens);
     }
     pub fn RequestPurchaseByInAppOfferTokenAsync(self: *@This(), inAppOfferToken: ?HSTRING) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         var this: ?*IStoreContext5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestPurchaseByInAppOfferTokenAsync(inAppOfferToken);
@@ -2565,6 +2586,7 @@ pub const StorePackageLicense = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -2603,6 +2625,7 @@ pub const StorePackageUpdateResult = extern struct {
     }
     pub fn getStoreQueueItems(self: *@This()) core.HResult!*IVectorView(StoreQueueItem) {
         var this: ?*IStorePackageUpdateResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorePackageUpdateResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStoreQueueItems();
@@ -2660,18 +2683,21 @@ pub const StorePrice = extern struct {
     }
     pub fn getUnformattedBasePrice(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStorePrice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorePrice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUnformattedBasePrice();
     }
     pub fn getUnformattedPrice(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStorePrice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorePrice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUnformattedPrice();
     }
     pub fn getUnformattedRecurrencePrice(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStorePrice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorePrice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUnformattedRecurrencePrice();
@@ -2934,18 +2960,21 @@ pub const StoreQueueItem = extern struct {
     }
     pub fn CancelInstallAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStoreQueueItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreQueueItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CancelInstallAsync();
     }
     pub fn PauseInstallAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStoreQueueItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreQueueItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PauseInstallAsync();
     }
     pub fn ResumeInstallAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStoreQueueItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreQueueItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ResumeInstallAsync();
@@ -3076,6 +3105,7 @@ pub const StoreSendRequestResult = extern struct {
     }
     pub fn getHttpStatusCode(self: *@This()) core.HResult!HttpStatusCode {
         var this: ?*IStoreSendRequestResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreSendRequestResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHttpStatusCode();

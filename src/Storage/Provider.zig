@@ -58,12 +58,14 @@ pub const CachedFileUpdaterUI = extern struct {
     }
     pub fn getUpdateRequest(self: *@This()) core.HResult!*FileUpdateRequest {
         var this: ?*ICachedFileUpdaterUI2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICachedFileUpdaterUI2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUpdateRequest();
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*FileUpdateRequestDeferral {
         var this: ?*ICachedFileUpdaterUI2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICachedFileUpdaterUI2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDeferral();
@@ -102,12 +104,14 @@ pub const FileUpdateRequest = extern struct {
     }
     pub fn getUserInputNeededMessage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IFileUpdateRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileUpdateRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUserInputNeededMessage();
     }
     pub fn putUserInputNeededMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IFileUpdateRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileUpdateRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUserInputNeededMessage(value);
@@ -2644,54 +2648,63 @@ pub const StorageProviderSearchResult = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!StorageProviderResultKind {
         var this: ?*IStorageProviderQueryResult = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn putKind(self: *@This(), value: StorageProviderResultKind) core.HResult!void {
         var this: ?*IStorageProviderQueryResult = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putKind(value);
     }
     pub fn getResultId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStorageProviderQueryResult = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResultId();
     }
     pub fn putResultId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IStorageProviderQueryResult = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putResultId(value);
     }
     pub fn getRemoteFileId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStorageProviderQueryResult = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteFileId();
     }
     pub fn putRemoteFileId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IStorageProviderQueryResult = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRemoteFileId(value);
     }
     pub fn getFilePath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStorageProviderQueryResult = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFilePath();
     }
     pub fn putFilePath(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IStorageProviderQueryResult = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFilePath(value);
     }
     pub fn getRequestedProperties(self: *@This()) core.HResult!*PropertySet {
         var this: ?*IStorageProviderQueryResult = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderQueryResult.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRequestedProperties();
@@ -3010,18 +3023,21 @@ pub const StorageProviderSyncRootInfo = extern struct {
     }
     pub fn getProviderId(self: *@This()) core.HResult!*Guid {
         var this: ?*IStorageProviderSyncRootInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderSyncRootInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProviderId();
     }
     pub fn putProviderId(self: *@This(), value: *Guid) core.HResult!void {
         var this: ?*IStorageProviderSyncRootInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderSyncRootInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProviderId(value);
     }
     pub fn getFallbackFileTypeInfo(self: *@This()) core.HResult!*IVector(StorageProviderFileTypeInfo) {
         var this: ?*IStorageProviderSyncRootInfo3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageProviderSyncRootInfo3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFallbackFileTypeInfo();

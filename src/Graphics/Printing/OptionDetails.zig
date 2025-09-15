@@ -1082,30 +1082,35 @@ pub const PrintBindingOptionDetails = extern struct {
     }
     pub fn getItems(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IPrintItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintBindingOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBindingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintBindingOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBindingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintBindingOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBindingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintBindingOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBindingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -1152,30 +1157,35 @@ pub const PrintBorderingOptionDetails = extern struct {
     }
     pub fn getItems(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IPrintItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintBorderingOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBorderingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintBorderingOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBorderingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintBorderingOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBorderingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintBorderingOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintBorderingOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -1222,30 +1232,35 @@ pub const PrintCollationOptionDetails = extern struct {
     }
     pub fn getItems(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IPrintItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCollationOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCollationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCollationOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCollationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCollationOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCollationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCollationOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCollationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -1292,30 +1307,35 @@ pub const PrintColorModeOptionDetails = extern struct {
     }
     pub fn getItems(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IPrintItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintColorModeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintColorModeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintColorModeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintColorModeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintColorModeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintColorModeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintColorModeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintColorModeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -1362,36 +1382,42 @@ pub const PrintCopiesOptionDetails = extern struct {
     }
     pub fn getMinValue(self: *@This()) core.HResult!u32 {
         var this: ?*IPrintNumberOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintNumberOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinValue();
     }
     pub fn getMaxValue(self: *@This()) core.HResult!u32 {
         var this: ?*IPrintNumberOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintNumberOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxValue();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCopiesOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCopiesOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCopiesOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCopiesOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCopiesOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCopiesOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCopiesOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCopiesOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -1458,54 +1484,63 @@ pub const PrintCustomItemListOptionDetails = extern struct {
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
     pub fn getItems(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IPrintItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
     pub fn AddItem(self: *@This(), itemId: ?HSTRING, displayName: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddItem(itemId, displayName);
     }
     pub fn AddItemWithDescriptionAndIcon(self: *@This(), itemId: ?HSTRING, displayName: ?HSTRING, description: ?HSTRING, icon: *IRandomAccessStreamWithContentType) core.HResult!void {
         var this: ?*IPrintCustomItemListOptionDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddItemWithDescriptionAndIcon(itemId, displayName, description, icon);
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomItemListOptionDetails3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomItemListOptionDetails3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomItemListOptionDetails3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomItemListOptionDetails3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -1552,48 +1587,56 @@ pub const PrintCustomTextOptionDetails = extern struct {
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
     pub fn putMaxCharacters(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IPrintCustomTextOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomTextOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxCharacters(value);
     }
     pub fn getMaxCharacters(self: *@This()) core.HResult!u32 {
         var this: ?*IPrintCustomTextOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomTextOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxCharacters();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomTextOptionDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomTextOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomTextOptionDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomTextOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomTextOptionDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomTextOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomTextOptionDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomTextOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -1640,36 +1683,42 @@ pub const PrintCustomToggleOptionDetails = extern struct {
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomToggleOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomToggleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomToggleOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomToggleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintCustomToggleOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomToggleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintCustomToggleOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomToggleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -1716,30 +1765,35 @@ pub const PrintDuplexOptionDetails = extern struct {
     }
     pub fn getItems(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IPrintItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintDuplexOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintDuplexOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintDuplexOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintDuplexOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintDuplexOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintDuplexOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintDuplexOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintDuplexOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -1786,30 +1840,35 @@ pub const PrintHolePunchOptionDetails = extern struct {
     }
     pub fn getItems(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IPrintItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintHolePunchOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintHolePunchOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintHolePunchOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintHolePunchOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintHolePunchOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintHolePunchOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintHolePunchOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintHolePunchOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -1856,30 +1915,35 @@ pub const PrintMediaSizeOptionDetails = extern struct {
     }
     pub fn getItems(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IPrintItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintMediaSizeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaSizeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintMediaSizeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaSizeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintMediaSizeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaSizeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintMediaSizeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaSizeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -1926,30 +1990,35 @@ pub const PrintMediaTypeOptionDetails = extern struct {
     }
     pub fn getItems(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IPrintItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintMediaTypeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaTypeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintMediaTypeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaTypeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintMediaTypeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaTypeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintMediaTypeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintMediaTypeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -2008,30 +2077,35 @@ pub const PrintOrientationOptionDetails = extern struct {
     }
     pub fn getItems(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IPrintItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintOrientationOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintOrientationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintOrientationOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintOrientationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintOrientationOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintOrientationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintOrientationOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintOrientationOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -2078,24 +2152,28 @@ pub const PrintPageRangeOptionDetails = extern struct {
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintPageRangeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintPageRangeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintPageRangeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintPageRangeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintPageRangeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintPageRangeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintPageRangeOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintPageRangeOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -2142,30 +2220,35 @@ pub const PrintQualityOptionDetails = extern struct {
     }
     pub fn getItems(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IPrintItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintQualityOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintQualityOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintQualityOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintQualityOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintQualityOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintQualityOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintQualityOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintQualityOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -2212,30 +2295,35 @@ pub const PrintStapleOptionDetails = extern struct {
     }
     pub fn getItems(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IPrintItemListOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItems();
     }
     pub fn putWarningText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintStapleOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintStapleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWarningText(value);
     }
     pub fn getWarningText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintStapleOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintStapleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarningText();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPrintStapleOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintStapleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintStapleOptionDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintStapleOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
@@ -2290,18 +2378,21 @@ pub const PrintTaskOptionDetails = extern struct {
     }
     pub fn GetPageDescription(self: *@This(), jobPageNumber: u32) core.HResult!PrintPageDescription {
         var this: ?*IPrintTaskOptionsCore = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCore.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPageDescription(jobPageNumber);
     }
     pub fn getDisplayedOptions(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IPrintTaskOptionsCoreUIConfiguration = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreUIConfiguration.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayedOptions();
     }
     pub fn CreateToggleOption(self: *@This(), optionId: ?HSTRING, displayName: ?HSTRING) core.HResult!*PrintCustomToggleOptionDetails {
         var this: ?*IPrintTaskOptionDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateToggleOption(optionId, displayName);

@@ -127,6 +127,7 @@ pub const EasComplianceResults = extern struct {
     }
     pub fn getEncryptionProviderType(self: *@This()) core.HResult!EasEncryptionProviderType {
         var this: ?*IEasComplianceResults2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEasComplianceResults2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEncryptionProviderType();
@@ -491,12 +492,14 @@ pub const EasClientDeviceInformation = extern struct {
     }
     pub fn getSystemHardwareVersion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEasClientDeviceInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEasClientDeviceInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSystemHardwareVersion();
     }
     pub fn getSystemFirmwareVersion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IEasClientDeviceInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEasClientDeviceInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSystemFirmwareVersion();

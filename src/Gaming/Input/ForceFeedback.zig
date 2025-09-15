@@ -23,12 +23,14 @@ pub const ConditionForceEffect = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!ConditionForceEffectKind {
         var this: ?*IConditionForceEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConditionForceEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn SetParameters(self: *@This(), direction: Vector3, positiveCoefficient: f32, negativeCoefficient: f32, maxPositiveMagnitude: f32, maxNegativeMagnitude: f32, deadZone: f32, bias: f32) core.HResult!void {
         var this: ?*IConditionForceEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConditionForceEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetParameters(direction, positiveCoefficient, negativeCoefficient, maxPositiveMagnitude, maxNegativeMagnitude, deadZone, bias);
@@ -77,12 +79,14 @@ pub const ConstantForceEffect = extern struct {
     }
     pub fn SetParameters(self: *@This(), vector: Vector3, duration: TimeSpan) core.HResult!void {
         var this: ?*IConstantForceEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConstantForceEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetParameters(vector, duration);
     }
     pub fn SetParametersWithEnvelope(self: *@This(), vector: Vector3, attackGain: f32, sustainGain: f32, releaseGain: f32, startDelay: TimeSpan, attackDuration: TimeSpan, sustainDuration: TimeSpan, releaseDuration: TimeSpan, repeatCount: u32) core.HResult!void {
         var this: ?*IConstantForceEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConstantForceEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetParametersWithEnvelope(vector, attackGain, sustainGain, releaseGain, startDelay, attackDuration, sustainDuration, releaseDuration, repeatCount);
@@ -505,18 +509,21 @@ pub const PeriodicForceEffect = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!PeriodicForceEffectKind {
         var this: ?*IPeriodicForceEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPeriodicForceEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn SetParameters(self: *@This(), vector: Vector3, frequency: f32, phase: f32, bias: f32, duration: TimeSpan) core.HResult!void {
         var this: ?*IPeriodicForceEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPeriodicForceEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetParameters(vector, frequency, phase, bias, duration);
     }
     pub fn SetParametersWithEnvelope(self: *@This(), vector: Vector3, frequency: f32, phase: f32, bias: f32, attackGain: f32, sustainGain: f32, releaseGain: f32, startDelay: TimeSpan, attackDuration: TimeSpan, sustainDuration: TimeSpan, releaseDuration: TimeSpan, repeatCount: u32) core.HResult!void {
         var this: ?*IPeriodicForceEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPeriodicForceEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetParametersWithEnvelope(vector, frequency, phase, bias, attackGain, sustainGain, releaseGain, startDelay, attackDuration, sustainDuration, releaseDuration, repeatCount);
@@ -566,12 +573,14 @@ pub const RampForceEffect = extern struct {
     }
     pub fn SetParameters(self: *@This(), startVector: Vector3, endVector: Vector3, duration: TimeSpan) core.HResult!void {
         var this: ?*IRampForceEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRampForceEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetParameters(startVector, endVector, duration);
     }
     pub fn SetParametersWithEnvelope(self: *@This(), startVector: Vector3, endVector: Vector3, attackGain: f32, sustainGain: f32, releaseGain: f32, startDelay: TimeSpan, attackDuration: TimeSpan, sustainDuration: TimeSpan, releaseDuration: TimeSpan, repeatCount: u32) core.HResult!void {
         var this: ?*IRampForceEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRampForceEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetParametersWithEnvelope(startVector, endVector, attackGain, sustainGain, releaseGain, startDelay, attackDuration, sustainDuration, releaseDuration, repeatCount);

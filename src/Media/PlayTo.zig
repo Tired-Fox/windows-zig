@@ -1226,12 +1226,14 @@ pub const PlayToSource = extern struct {
     }
     pub fn getPreferredSourceUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayToSourceWithPreferredSourceUri = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayToSourceWithPreferredSourceUri.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreferredSourceUri();
     }
     pub fn putPreferredSourceUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayToSourceWithPreferredSourceUri = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayToSourceWithPreferredSourceUri.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPreferredSourceUri(value);

@@ -724,12 +724,14 @@ pub const LampArrayBitmapEffect = extern struct {
     }
     pub fn getZIndex(self: *@This()) core.HResult!i32 {
         var this: ?*ILampArrayEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArrayEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getZIndex();
     }
     pub fn putZIndex(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ILampArrayEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArrayEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putZIndex(value);
@@ -832,12 +834,14 @@ pub const LampArrayBlinkEffect = extern struct {
     }
     pub fn getZIndex(self: *@This()) core.HResult!i32 {
         var this: ?*ILampArrayEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArrayEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getZIndex();
     }
     pub fn putZIndex(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ILampArrayEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArrayEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putZIndex(value);
@@ -892,12 +896,14 @@ pub const LampArrayColorRampEffect = extern struct {
     }
     pub fn getZIndex(self: *@This()) core.HResult!i32 {
         var this: ?*ILampArrayEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArrayEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getZIndex();
     }
     pub fn putZIndex(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ILampArrayEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArrayEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putZIndex(value);
@@ -944,12 +950,14 @@ pub const LampArrayCustomEffect = extern struct {
     }
     pub fn getZIndex(self: *@This()) core.HResult!i32 {
         var this: ?*ILampArrayEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArrayEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getZIndex();
     }
     pub fn putZIndex(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ILampArrayEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArrayEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putZIndex(value);
@@ -1020,12 +1028,14 @@ pub const LampArrayEffectPlaylist = extern struct {
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVectorView(ILampArrayEffect) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView(ILampArrayEffect).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(ILampArrayEffect) {
         var this: ?*IIterable(ILampArrayEffect) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(ILampArrayEffect).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1101,12 +1111,14 @@ pub const LampArraySolidEffect = extern struct {
     }
     pub fn getZIndex(self: *@This()) core.HResult!i32 {
         var this: ?*ILampArrayEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArrayEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getZIndex();
     }
     pub fn putZIndex(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ILampArrayEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILampArrayEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putZIndex(value);

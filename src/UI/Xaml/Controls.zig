@@ -187,372 +187,434 @@ pub const Control = extern struct {
     }
     pub fn getIsTextScaleFactorEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTextScaleFactorEnabled();
     }
     pub fn putIsTextScaleFactorEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsTextScaleFactorEnabled(value);
     }
     pub fn getUseSystemFocusVisuals(self: *@This()) core.HResult!bool {
         var this: ?*IControl3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseSystemFocusVisuals();
     }
     pub fn putUseSystemFocusVisuals(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IControl3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseSystemFocusVisuals(value);
     }
     pub fn getIsFocusEngagementEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsFocusEngagementEnabled();
     }
     pub fn putIsFocusEngagementEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsFocusEngagementEnabled(value);
     }
     pub fn getIsFocusEngaged(self: *@This()) core.HResult!bool {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsFocusEngaged();
     }
     pub fn putIsFocusEngaged(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsFocusEngaged(value);
     }
     pub fn getRequiresPointer(self: *@This()) core.HResult!RequiresPointer {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRequiresPointer();
     }
     pub fn putRequiresPointer(self: *@This(), value: RequiresPointer) core.HResult!void {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRequiresPointer(value);
     }
     pub fn getXYFocusLeft(self: *@This()) core.HResult!*DependencyObject {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getXYFocusLeft();
     }
     pub fn putXYFocusLeft(self: *@This(), value: *DependencyObject) core.HResult!void {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putXYFocusLeft(value);
     }
     pub fn getXYFocusRight(self: *@This()) core.HResult!*DependencyObject {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getXYFocusRight();
     }
     pub fn putXYFocusRight(self: *@This(), value: *DependencyObject) core.HResult!void {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putXYFocusRight(value);
     }
     pub fn getXYFocusUp(self: *@This()) core.HResult!*DependencyObject {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getXYFocusUp();
     }
     pub fn putXYFocusUp(self: *@This(), value: *DependencyObject) core.HResult!void {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putXYFocusUp(value);
     }
     pub fn getXYFocusDown(self: *@This()) core.HResult!*DependencyObject {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getXYFocusDown();
     }
     pub fn putXYFocusDown(self: *@This(), value: *DependencyObject) core.HResult!void {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putXYFocusDown(value);
     }
     pub fn getElementSoundMode(self: *@This()) core.HResult!ElementSoundMode {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getElementSoundMode();
     }
     pub fn putElementSoundMode(self: *@This(), value: ElementSoundMode) core.HResult!void {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putElementSoundMode(value);
     }
     pub fn addFocusEngaged(self: *@This(), handler: *TypedEventHandler(Control,FocusEngagedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addFocusEngaged(handler);
     }
     pub fn removeFocusEngaged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeFocusEngaged(token);
     }
     pub fn addFocusDisengaged(self: *@This(), handler: *TypedEventHandler(Control,FocusDisengagedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addFocusDisengaged(handler);
     }
     pub fn removeFocusDisengaged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeFocusDisengaged(token);
     }
     pub fn RemoveFocusEngagement(self: *@This()) core.HResult!void {
         var this: ?*IControl4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveFocusEngagement();
     }
     pub fn getDefaultStyleResourceUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDefaultStyleResourceUri();
     }
     pub fn putDefaultStyleResourceUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IControl5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDefaultStyleResourceUri(value);
     }
     pub fn getBackgroundSizing(self: *@This()) core.HResult!BackgroundSizing {
         var this: ?*IControl7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackgroundSizing();
     }
     pub fn putBackgroundSizing(self: *@This(), value: BackgroundSizing) core.HResult!void {
         var this: ?*IControl7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBackgroundSizing(value);
     }
     pub fn getCornerRadius(self: *@This()) core.HResult!CornerRadius {
         var this: ?*IControl7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCornerRadius();
     }
     pub fn putCornerRadius(self: *@This(), value: CornerRadius) core.HResult!void {
         var this: ?*IControl7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControl7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCornerRadius(value);
     }
     pub fn getDefaultStyleKey(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IControlProtected = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDefaultStyleKey();
     }
     pub fn putDefaultStyleKey(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IControlProtected = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDefaultStyleKey(value);
     }
     pub fn GetTemplateChild(self: *@This(), childName: ?HSTRING) core.HResult!*DependencyObject {
         var this: ?*IControlProtected = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetTemplateChild(childName);
     }
     pub fn OnPointerEntered(self: *@This(), e: *PointerRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnPointerEntered(e);
     }
     pub fn OnPointerPressed(self: *@This(), e: *PointerRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnPointerPressed(e);
     }
     pub fn OnPointerMoved(self: *@This(), e: *PointerRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnPointerMoved(e);
     }
     pub fn OnPointerReleased(self: *@This(), e: *PointerRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnPointerReleased(e);
     }
     pub fn OnPointerExited(self: *@This(), e: *PointerRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnPointerExited(e);
     }
     pub fn OnPointerCaptureLost(self: *@This(), e: *PointerRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnPointerCaptureLost(e);
     }
     pub fn OnPointerCanceled(self: *@This(), e: *PointerRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnPointerCanceled(e);
     }
     pub fn OnPointerWheelChanged(self: *@This(), e: *PointerRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnPointerWheelChanged(e);
     }
     pub fn OnTapped(self: *@This(), e: *TappedRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnTapped(e);
     }
     pub fn OnDoubleTapped(self: *@This(), e: *DoubleTappedRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnDoubleTapped(e);
     }
     pub fn OnHolding(self: *@This(), e: *HoldingRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnHolding(e);
     }
     pub fn OnRightTapped(self: *@This(), e: *RightTappedRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnRightTapped(e);
     }
     pub fn OnManipulationStarting(self: *@This(), e: *ManipulationStartingRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnManipulationStarting(e);
     }
     pub fn OnManipulationInertiaStarting(self: *@This(), e: *ManipulationInertiaStartingRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnManipulationInertiaStarting(e);
     }
     pub fn OnManipulationStarted(self: *@This(), e: *ManipulationStartedRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnManipulationStarted(e);
     }
     pub fn OnManipulationDelta(self: *@This(), e: *ManipulationDeltaRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnManipulationDelta(e);
     }
     pub fn OnManipulationCompleted(self: *@This(), e: *ManipulationCompletedRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnManipulationCompleted(e);
     }
     pub fn OnKeyUp(self: *@This(), e: *KeyRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnKeyUp(e);
     }
     pub fn OnKeyDown(self: *@This(), e: *KeyRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnKeyDown(e);
     }
     pub fn OnGotFocus(self: *@This(), e: *RoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnGotFocus(e);
     }
     pub fn OnLostFocus(self: *@This(), e: *RoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnLostFocus(e);
     }
     pub fn OnDragEnter(self: *@This(), e: *DragEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnDragEnter(e);
     }
     pub fn OnDragLeave(self: *@This(), e: *DragEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnDragLeave(e);
     }
     pub fn OnDragOver(self: *@This(), e: *DragEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnDragOver(e);
     }
     pub fn OnDrop(self: *@This(), e: *DragEventArgs) core.HResult!void {
         var this: ?*IControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnDrop(e);
     }
     pub fn OnPreviewKeyDown(self: *@This(), e: *KeyRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnPreviewKeyDown(e);
     }
     pub fn OnPreviewKeyUp(self: *@This(), e: *KeyRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnPreviewKeyUp(e);
     }
     pub fn OnCharacterReceived(self: *@This(), e: *CharacterReceivedRoutedEventArgs) core.HResult!void {
         var this: ?*IControlOverrides6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IControlOverrides6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnCharacterReceived(e);
@@ -769,24 +831,28 @@ pub const ContentControl = extern struct {
     }
     pub fn getContentTemplateRoot(self: *@This()) core.HResult!*UIElement {
         var this: ?*IContentControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentTemplateRoot();
     }
     pub fn OnContentChanged(self: *@This(), oldContent: *IInspectable, newContent: *IInspectable) core.HResult!void {
         var this: ?*IContentControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnContentChanged(oldContent, newContent);
     }
     pub fn OnContentTemplateChanged(self: *@This(), oldContentTemplate: *DataTemplate, newContentTemplate: *DataTemplate) core.HResult!void {
         var this: ?*IContentControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnContentTemplateChanged(oldContentTemplate, newContentTemplate);
     }
     pub fn OnContentTemplateSelectorChanged(self: *@This(), oldContentTemplateSelector: *DataTemplateSelector, newContentTemplateSelector: *DataTemplateSelector) core.HResult!void {
         var this: ?*IContentControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnContentTemplateSelectorChanged(oldContentTemplateSelector, newContentTemplateSelector);
@@ -858,78 +924,91 @@ pub const AppBar = extern struct {
     }
     pub fn getClosedDisplayMode(self: *@This()) core.HResult!AppBarClosedDisplayMode {
         var this: ?*IAppBar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getClosedDisplayMode();
     }
     pub fn putClosedDisplayMode(self: *@This(), value: AppBarClosedDisplayMode) core.HResult!void {
         var this: ?*IAppBar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putClosedDisplayMode(value);
     }
     pub fn getTemplateSettings(self: *@This()) core.HResult!*AppBarTemplateSettings {
         var this: ?*IAppBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTemplateSettings();
     }
     pub fn addOpening(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IAppBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addOpening(handler);
     }
     pub fn removeOpening(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IAppBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeOpening(token);
     }
     pub fn addClosing(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IAppBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addClosing(handler);
     }
     pub fn removeClosing(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IAppBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosing(token);
     }
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var this: ?*IAppBar4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBar4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLightDismissOverlayMode();
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         var this: ?*IAppBar4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBar4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLightDismissOverlayMode(value);
     }
     pub fn OnClosed(self: *@This(), e: *IInspectable) core.HResult!void {
         var this: ?*IAppBarOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnClosed(e);
     }
     pub fn OnOpened(self: *@This(), e: *IInspectable) core.HResult!void {
         var this: ?*IAppBarOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnOpened(e);
     }
     pub fn OnClosing(self: *@This(), e: *IInspectable) core.HResult!void {
         var this: ?*IAppBarOverrides3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarOverrides3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnClosing(e);
     }
     pub fn OnOpening(self: *@This(), e: *IInspectable) core.HResult!void {
         var this: ?*IAppBarOverrides3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarOverrides3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnOpening(e);
@@ -971,12 +1050,14 @@ pub const Button = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getFlyout(self: *@This()) core.HResult!*FlyoutBase {
         var this: ?*IButtonWithFlyout = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IButtonWithFlyout.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFlyout();
     }
     pub fn putFlyout(self: *@This(), value: *FlyoutBase) core.HResult!void {
         var this: ?*IButtonWithFlyout = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IButtonWithFlyout.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFlyout(value);
@@ -1020,60 +1101,70 @@ pub const AppBarButton = extern struct {
     }
     pub fn getLabelPosition(self: *@This()) core.HResult!CommandBarLabelPosition {
         var this: ?*IAppBarButton3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarButton3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLabelPosition();
     }
     pub fn putLabelPosition(self: *@This(), value: CommandBarLabelPosition) core.HResult!void {
         var this: ?*IAppBarButton3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarButton3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabelPosition(value);
     }
     pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppBarButton4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarButton4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyboardAcceleratorTextOverride();
     }
     pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppBarButton4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarButton4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putKeyboardAcceleratorTextOverride(value);
     }
     pub fn getTemplateSettings(self: *@This()) core.HResult!*AppBarButtonTemplateSettings {
         var this: ?*IAppBarButton5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarButton5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTemplateSettings();
     }
     pub fn getIsCompact(self: *@This()) core.HResult!bool {
         var this: ?*ICommandBarElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCompact();
     }
     pub fn putIsCompact(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICommandBarElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsCompact(value);
     }
     pub fn getIsInOverflow(self: *@This()) core.HResult!bool {
         var this: ?*ICommandBarElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsInOverflow();
     }
     pub fn getDynamicOverflowOrder(self: *@This()) core.HResult!i32 {
         var this: ?*ICommandBarElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDynamicOverflowOrder();
     }
     pub fn putDynamicOverflowOrder(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ICommandBarElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDynamicOverflowOrder(value);
@@ -1132,30 +1223,35 @@ pub const AppBarElementContainer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsCompact(self: *@This()) core.HResult!bool {
         var this: ?*ICommandBarElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCompact();
     }
     pub fn putIsCompact(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICommandBarElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsCompact(value);
     }
     pub fn getIsInOverflow(self: *@This()) core.HResult!bool {
         var this: ?*ICommandBarElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsInOverflow();
     }
     pub fn getDynamicOverflowOrder(self: *@This()) core.HResult!i32 {
         var this: ?*ICommandBarElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDynamicOverflowOrder();
     }
     pub fn putDynamicOverflowOrder(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ICommandBarElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDynamicOverflowOrder(value);
@@ -1191,30 +1287,35 @@ pub const AppBarSeparator = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsCompact(self: *@This()) core.HResult!bool {
         var this: ?*ICommandBarElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCompact();
     }
     pub fn putIsCompact(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICommandBarElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsCompact(value);
     }
     pub fn getIsInOverflow(self: *@This()) core.HResult!bool {
         var this: ?*ICommandBarElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsInOverflow();
     }
     pub fn getDynamicOverflowOrder(self: *@This()) core.HResult!i32 {
         var this: ?*ICommandBarElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDynamicOverflowOrder();
     }
     pub fn putDynamicOverflowOrder(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ICommandBarElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDynamicOverflowOrder(value);
@@ -1267,60 +1368,70 @@ pub const AppBarToggleButton = extern struct {
     }
     pub fn getLabelPosition(self: *@This()) core.HResult!CommandBarLabelPosition {
         var this: ?*IAppBarToggleButton3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarToggleButton3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLabelPosition();
     }
     pub fn putLabelPosition(self: *@This(), value: CommandBarLabelPosition) core.HResult!void {
         var this: ?*IAppBarToggleButton3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarToggleButton3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabelPosition(value);
     }
     pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppBarToggleButton4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarToggleButton4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyboardAcceleratorTextOverride();
     }
     pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppBarToggleButton4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarToggleButton4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putKeyboardAcceleratorTextOverride(value);
     }
     pub fn getTemplateSettings(self: *@This()) core.HResult!*AppBarToggleButtonTemplateSettings {
         var this: ?*IAppBarToggleButton5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarToggleButton5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTemplateSettings();
     }
     pub fn getIsCompact(self: *@This()) core.HResult!bool {
         var this: ?*ICommandBarElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCompact();
     }
     pub fn putIsCompact(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICommandBarElement = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsCompact(value);
     }
     pub fn getIsInOverflow(self: *@This()) core.HResult!bool {
         var this: ?*ICommandBarElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsInOverflow();
     }
     pub fn getDynamicOverflowOrder(self: *@This()) core.HResult!i32 {
         var this: ?*ICommandBarElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDynamicOverflowOrder();
     }
     pub fn putDynamicOverflowOrder(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ICommandBarElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDynamicOverflowOrder(value);
@@ -1462,96 +1573,112 @@ pub const ItemsControl = extern struct {
     }
     pub fn getItemsPanelRoot(self: *@This()) core.HResult!*Panel {
         var this: ?*IItemsControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItemsPanelRoot();
     }
     pub fn GroupHeaderContainerFromItemContainer(self: *@This(), itemContainer: *DependencyObject) core.HResult!*DependencyObject {
         var this: ?*IItemsControl3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControl3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GroupHeaderContainerFromItemContainer(itemContainer);
     }
     pub fn IsItemItsOwnContainerOverride(self: *@This(), item: *IInspectable) core.HResult!bool {
         var this: ?*IItemsControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsItemItsOwnContainerOverride(item);
     }
     pub fn GetContainerForItemOverride(self: *@This()) core.HResult!*DependencyObject {
         var this: ?*IItemsControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetContainerForItemOverride();
     }
     pub fn ClearContainerForItemOverride(self: *@This(), element: *DependencyObject, item: *IInspectable) core.HResult!void {
         var this: ?*IItemsControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ClearContainerForItemOverride(element, item);
     }
     pub fn PrepareContainerForItemOverride(self: *@This(), element: *DependencyObject, item: *IInspectable) core.HResult!void {
         var this: ?*IItemsControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrepareContainerForItemOverride(element, item);
     }
     pub fn OnItemsChanged(self: *@This(), e: *IInspectable) core.HResult!void {
         var this: ?*IItemsControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnItemsChanged(e);
     }
     pub fn OnItemContainerStyleChanged(self: *@This(), oldItemContainerStyle: *Style, newItemContainerStyle: *Style) core.HResult!void {
         var this: ?*IItemsControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnItemContainerStyleChanged(oldItemContainerStyle, newItemContainerStyle);
     }
     pub fn OnItemContainerStyleSelectorChanged(self: *@This(), oldItemContainerStyleSelector: *StyleSelector, newItemContainerStyleSelector: *StyleSelector) core.HResult!void {
         var this: ?*IItemsControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnItemContainerStyleSelectorChanged(oldItemContainerStyleSelector, newItemContainerStyleSelector);
     }
     pub fn OnItemTemplateChanged(self: *@This(), oldItemTemplate: *DataTemplate, newItemTemplate: *DataTemplate) core.HResult!void {
         var this: ?*IItemsControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnItemTemplateChanged(oldItemTemplate, newItemTemplate);
     }
     pub fn OnItemTemplateSelectorChanged(self: *@This(), oldItemTemplateSelector: *DataTemplateSelector, newItemTemplateSelector: *DataTemplateSelector) core.HResult!void {
         var this: ?*IItemsControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnItemTemplateSelectorChanged(oldItemTemplateSelector, newItemTemplateSelector);
     }
     pub fn OnGroupStyleSelectorChanged(self: *@This(), oldGroupStyleSelector: *GroupStyleSelector, newGroupStyleSelector: *GroupStyleSelector) core.HResult!void {
         var this: ?*IItemsControlOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnGroupStyleSelectorChanged(oldGroupStyleSelector, newGroupStyleSelector);
     }
     pub fn ItemFromContainer(self: *@This(), container: *DependencyObject) core.HResult!*IInspectable {
         var this: ?*IItemContainerMapping = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemContainerMapping.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ItemFromContainer(container);
     }
     pub fn ContainerFromItem(self: *@This(), item: *IInspectable) core.HResult!*DependencyObject {
         var this: ?*IItemContainerMapping = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemContainerMapping.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ContainerFromItem(item);
     }
     pub fn IndexFromContainer(self: *@This(), container: *DependencyObject) core.HResult!i32 {
         var this: ?*IItemContainerMapping = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemContainerMapping.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexFromContainer(container);
     }
     pub fn ContainerFromIndex(self: *@This(), index: i32) core.HResult!*DependencyObject {
         var this: ?*IItemContainerMapping = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemContainerMapping.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ContainerFromIndex(index);
@@ -1711,48 +1838,56 @@ pub const AutoSuggestBox = extern struct {
     }
     pub fn getQueryIcon(self: *@This()) core.HResult!*IconElement {
         var this: ?*IAutoSuggestBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutoSuggestBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getQueryIcon();
     }
     pub fn putQueryIcon(self: *@This(), value: *IconElement) core.HResult!void {
         var this: ?*IAutoSuggestBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutoSuggestBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putQueryIcon(value);
     }
     pub fn addQuerySubmitted(self: *@This(), handler: *TypedEventHandler(AutoSuggestBox,AutoSuggestBoxQuerySubmittedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IAutoSuggestBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutoSuggestBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addQuerySubmitted(handler);
     }
     pub fn removeQuerySubmitted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IAutoSuggestBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutoSuggestBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeQuerySubmitted(token);
     }
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var this: ?*IAutoSuggestBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutoSuggestBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLightDismissOverlayMode();
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         var this: ?*IAutoSuggestBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutoSuggestBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLightDismissOverlayMode(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IAutoSuggestBox4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutoSuggestBox4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn putDescription(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IAutoSuggestBox4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutoSuggestBox4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
@@ -2059,12 +2194,14 @@ pub const BitmapIcon = extern struct {
     }
     pub fn getShowAsMonochrome(self: *@This()) core.HResult!bool {
         var this: ?*IBitmapIcon2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapIcon2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShowAsMonochrome();
     }
     pub fn putShowAsMonochrome(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBitmapIcon2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapIcon2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putShowAsMonochrome(value);
@@ -2219,24 +2356,28 @@ pub const Border = extern struct {
     }
     pub fn getBackgroundSizing(self: *@This()) core.HResult!BackgroundSizing {
         var this: ?*IBorder2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBorder2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackgroundSizing();
     }
     pub fn putBackgroundSizing(self: *@This(), value: BackgroundSizing) core.HResult!void {
         var this: ?*IBorder2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBorder2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBackgroundSizing(value);
     }
     pub fn getBackgroundTransition(self: *@This()) core.HResult!*BrushTransition {
         var this: ?*IBorder2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBorder2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackgroundTransition();
     }
     pub fn putBackgroundTransition(self: *@This(), value: *BrushTransition) core.HResult!void {
         var this: ?*IBorder2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBorder2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBackgroundTransition(value);
@@ -2457,24 +2598,28 @@ pub const CalendarDatePicker = extern struct {
     }
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var this: ?*ICalendarDatePicker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarDatePicker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLightDismissOverlayMode();
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         var this: ?*ICalendarDatePicker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarDatePicker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLightDismissOverlayMode(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!*IInspectable {
         var this: ?*ICalendarDatePicker3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarDatePicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn putDescription(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*ICalendarDatePicker3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarDatePicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
@@ -3012,288 +3157,336 @@ pub const CalendarView = extern struct {
     }
     pub fn getSelectedDisabledBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedDisabledBorderBrush();
     }
     pub fn putSelectedDisabledBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedDisabledBorderBrush(value);
     }
     pub fn getTodaySelectedInnerBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTodaySelectedInnerBorderBrush();
     }
     pub fn putTodaySelectedInnerBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTodaySelectedInnerBorderBrush(value);
     }
     pub fn getBlackoutStrikethroughBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBlackoutStrikethroughBrush();
     }
     pub fn putBlackoutStrikethroughBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBlackoutStrikethroughBrush(value);
     }
     pub fn getBlackoutBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBlackoutBackground();
     }
     pub fn putBlackoutBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBlackoutBackground(value);
     }
     pub fn getCalendarItemHoverBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCalendarItemHoverBackground();
     }
     pub fn putCalendarItemHoverBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCalendarItemHoverBackground(value);
     }
     pub fn getCalendarItemPressedBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCalendarItemPressedBackground();
     }
     pub fn putCalendarItemPressedBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCalendarItemPressedBackground(value);
     }
     pub fn getCalendarItemDisabledBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCalendarItemDisabledBackground();
     }
     pub fn putCalendarItemDisabledBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCalendarItemDisabledBackground(value);
     }
     pub fn getTodayBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTodayBackground();
     }
     pub fn putTodayBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTodayBackground(value);
     }
     pub fn getTodayBlackoutBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTodayBlackoutBackground();
     }
     pub fn putTodayBlackoutBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTodayBlackoutBackground(value);
     }
     pub fn getTodayHoverBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTodayHoverBackground();
     }
     pub fn putTodayHoverBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTodayHoverBackground(value);
     }
     pub fn getTodayPressedBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTodayPressedBackground();
     }
     pub fn putTodayPressedBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTodayPressedBackground(value);
     }
     pub fn getTodayDisabledBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTodayDisabledBackground();
     }
     pub fn putTodayDisabledBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTodayDisabledBackground(value);
     }
     pub fn getTodayBlackoutForeground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTodayBlackoutForeground();
     }
     pub fn putTodayBlackoutForeground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTodayBlackoutForeground(value);
     }
     pub fn getSelectedHoverForeground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedHoverForeground();
     }
     pub fn putSelectedHoverForeground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedHoverForeground(value);
     }
     pub fn getSelectedPressedForeground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedPressedForeground();
     }
     pub fn putSelectedPressedForeground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedPressedForeground(value);
     }
     pub fn getSelectedDisabledForeground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedDisabledForeground();
     }
     pub fn putSelectedDisabledForeground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedDisabledForeground(value);
     }
     pub fn getOutOfScopeHoverForeground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutOfScopeHoverForeground();
     }
     pub fn putOutOfScopeHoverForeground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutOfScopeHoverForeground(value);
     }
     pub fn getOutOfScopePressedForeground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutOfScopePressedForeground();
     }
     pub fn putOutOfScopePressedForeground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutOfScopePressedForeground(value);
     }
     pub fn getDisabledForeground(self: *@This()) core.HResult!*Brush {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisabledForeground();
     }
     pub fn putDisabledForeground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisabledForeground(value);
     }
     pub fn getDayItemMargin(self: *@This()) core.HResult!Thickness {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDayItemMargin();
     }
     pub fn putDayItemMargin(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDayItemMargin(value);
     }
     pub fn getMonthYearItemMargin(self: *@This()) core.HResult!Thickness {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMonthYearItemMargin();
     }
     pub fn putMonthYearItemMargin(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMonthYearItemMargin(value);
     }
     pub fn getFirstOfMonthLabelMargin(self: *@This()) core.HResult!Thickness {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFirstOfMonthLabelMargin();
     }
     pub fn putFirstOfMonthLabelMargin(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFirstOfMonthLabelMargin(value);
     }
     pub fn getFirstOfYearDecadeLabelMargin(self: *@This()) core.HResult!Thickness {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFirstOfYearDecadeLabelMargin();
     }
     pub fn putFirstOfYearDecadeLabelMargin(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFirstOfYearDecadeLabelMargin(value);
     }
     pub fn getCalendarItemCornerRadius(self: *@This()) core.HResult!CornerRadius {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCalendarItemCornerRadius();
     }
     pub fn putCalendarItemCornerRadius(self: *@This(), value: CornerRadius) core.HResult!void {
         var this: ?*ICalendarView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICalendarView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCalendarItemCornerRadius(value);
@@ -3842,12 +4035,14 @@ pub const Panel = extern struct {
     }
     pub fn getBackgroundTransition(self: *@This()) core.HResult!*BrushTransition {
         var this: ?*IPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackgroundTransition();
     }
     pub fn putBackgroundTransition(self: *@This(), value: *BrushTransition) core.HResult!void {
         var this: ?*IPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBackgroundTransition(value);
@@ -4552,6 +4747,7 @@ pub const ColumnDefinitionCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(ColumnDefinition) {
         var this: ?*IIterable(ColumnDefinition) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(ColumnDefinition).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -4618,150 +4814,175 @@ pub const ComboBox = extern struct {
     }
     pub fn getHeader(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IComboBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeader();
     }
     pub fn putHeader(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IComboBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeader(value);
     }
     pub fn getHeaderTemplate(self: *@This()) core.HResult!*DataTemplate {
         var this: ?*IComboBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeaderTemplate();
     }
     pub fn putHeaderTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         var this: ?*IComboBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeaderTemplate(value);
     }
     pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IComboBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaceholderText();
     }
     pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IComboBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPlaceholderText(value);
     }
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var this: ?*IComboBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLightDismissOverlayMode();
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         var this: ?*IComboBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLightDismissOverlayMode(value);
     }
     pub fn getIsTextSearchEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IComboBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTextSearchEnabled();
     }
     pub fn putIsTextSearchEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IComboBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsTextSearchEnabled(value);
     }
     pub fn getSelectionChangedTrigger(self: *@This()) core.HResult!ComboBoxSelectionChangedTrigger {
         var this: ?*IComboBox4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionChangedTrigger();
     }
     pub fn putSelectionChangedTrigger(self: *@This(), value: ComboBoxSelectionChangedTrigger) core.HResult!void {
         var this: ?*IComboBox4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionChangedTrigger(value);
     }
     pub fn getPlaceholderForeground(self: *@This()) core.HResult!*Brush {
         var this: ?*IComboBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaceholderForeground();
     }
     pub fn putPlaceholderForeground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IComboBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPlaceholderForeground(value);
     }
     pub fn putIsEditable(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IComboBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEditable(value);
     }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IComboBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getText();
     }
     pub fn putText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IComboBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putText(value);
     }
     pub fn getTextBoxStyle(self: *@This()) core.HResult!*Style {
         var this: ?*IComboBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextBoxStyle();
     }
     pub fn putTextBoxStyle(self: *@This(), value: *Style) core.HResult!void {
         var this: ?*IComboBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextBoxStyle(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IComboBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn putDescription(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IComboBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn addTextSubmitted(self: *@This(), handler: *TypedEventHandler(ComboBox,ComboBoxTextSubmittedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IComboBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTextSubmitted(handler);
     }
     pub fn removeTextSubmitted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IComboBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextSubmitted(token);
     }
     pub fn OnDropDownClosed(self: *@This(), e: *IInspectable) core.HResult!void {
         var this: ?*IComboBoxOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBoxOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnDropDownClosed(e);
     }
     pub fn OnDropDownOpened(self: *@This(), e: *IInspectable) core.HResult!void {
         var this: ?*IComboBoxOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBoxOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnDropDownOpened(e);
@@ -4890,66 +5111,77 @@ pub const CommandBar = extern struct {
     }
     pub fn getCommandBarOverflowPresenterStyle(self: *@This()) core.HResult!*Style {
         var this: ?*ICommandBar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCommandBarOverflowPresenterStyle();
     }
     pub fn putCommandBarOverflowPresenterStyle(self: *@This(), value: *Style) core.HResult!void {
         var this: ?*ICommandBar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCommandBarOverflowPresenterStyle(value);
     }
     pub fn getCommandBarTemplateSettings(self: *@This()) core.HResult!*CommandBarTemplateSettings {
         var this: ?*ICommandBar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCommandBarTemplateSettings();
     }
     pub fn getDefaultLabelPosition(self: *@This()) core.HResult!CommandBarDefaultLabelPosition {
         var this: ?*ICommandBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDefaultLabelPosition();
     }
     pub fn putDefaultLabelPosition(self: *@This(), value: CommandBarDefaultLabelPosition) core.HResult!void {
         var this: ?*ICommandBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDefaultLabelPosition(value);
     }
     pub fn getOverflowButtonVisibility(self: *@This()) core.HResult!CommandBarOverflowButtonVisibility {
         var this: ?*ICommandBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOverflowButtonVisibility();
     }
     pub fn putOverflowButtonVisibility(self: *@This(), value: CommandBarOverflowButtonVisibility) core.HResult!void {
         var this: ?*ICommandBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOverflowButtonVisibility(value);
     }
     pub fn getIsDynamicOverflowEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ICommandBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDynamicOverflowEnabled();
     }
     pub fn putIsDynamicOverflowEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICommandBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsDynamicOverflowEnabled(value);
     }
     pub fn addDynamicOverflowItemsChanging(self: *@This(), handler: *TypedEventHandler(CommandBar,DynamicOverflowItemsChangingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICommandBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addDynamicOverflowItemsChanging(handler);
     }
     pub fn removeDynamicOverflowItemsChanging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICommandBar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeDynamicOverflowItemsChanging(token);
@@ -5245,102 +5477,119 @@ pub const ContentDialog = extern struct {
     }
     pub fn getCloseButtonText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCloseButtonText();
     }
     pub fn putCloseButtonText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCloseButtonText(value);
     }
     pub fn getCloseButtonCommand(self: *@This()) core.HResult!*ICommand {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCloseButtonCommand();
     }
     pub fn putCloseButtonCommand(self: *@This(), value: *ICommand) core.HResult!void {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCloseButtonCommand(value);
     }
     pub fn getCloseButtonCommandParameter(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCloseButtonCommandParameter();
     }
     pub fn putCloseButtonCommandParameter(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCloseButtonCommandParameter(value);
     }
     pub fn getPrimaryButtonStyle(self: *@This()) core.HResult!*Style {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPrimaryButtonStyle();
     }
     pub fn putPrimaryButtonStyle(self: *@This(), value: *Style) core.HResult!void {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrimaryButtonStyle(value);
     }
     pub fn getSecondaryButtonStyle(self: *@This()) core.HResult!*Style {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSecondaryButtonStyle();
     }
     pub fn putSecondaryButtonStyle(self: *@This(), value: *Style) core.HResult!void {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSecondaryButtonStyle(value);
     }
     pub fn getCloseButtonStyle(self: *@This()) core.HResult!*Style {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCloseButtonStyle();
     }
     pub fn putCloseButtonStyle(self: *@This(), value: *Style) core.HResult!void {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCloseButtonStyle(value);
     }
     pub fn getDefaultButton(self: *@This()) core.HResult!ContentDialogButton {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDefaultButton();
     }
     pub fn putDefaultButton(self: *@This(), value: ContentDialogButton) core.HResult!void {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDefaultButton(value);
     }
     pub fn addCloseButtonClick(self: *@This(), handler: *TypedEventHandler(ContentDialog,ContentDialogButtonClickEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCloseButtonClick(handler);
     }
     pub fn removeCloseButtonClick(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IContentDialog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCloseButtonClick(token);
     }
     pub fn ShowAsyncWithPlacement(self: *@This(), placement: ContentDialogPlacement) core.HResult!*IAsyncOperation(ContentDialogResult) {
         var this: ?*IContentDialog3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentDialog3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShowAsyncWithPlacement(placement);
@@ -5653,204 +5902,238 @@ pub const ContentPresenter = extern struct {
     }
     pub fn getOpticalMarginAlignment(self: *@This()) core.HResult!OpticalMarginAlignment {
         var this: ?*IContentPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOpticalMarginAlignment();
     }
     pub fn putOpticalMarginAlignment(self: *@This(), value: OpticalMarginAlignment) core.HResult!void {
         var this: ?*IContentPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOpticalMarginAlignment(value);
     }
     pub fn getTextLineBounds(self: *@This()) core.HResult!TextLineBounds {
         var this: ?*IContentPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextLineBounds();
     }
     pub fn putTextLineBounds(self: *@This(), value: TextLineBounds) core.HResult!void {
         var this: ?*IContentPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextLineBounds(value);
     }
     pub fn getIsTextScaleFactorEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IContentPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTextScaleFactorEnabled();
     }
     pub fn putIsTextScaleFactorEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IContentPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsTextScaleFactorEnabled(value);
     }
     pub fn getTextWrapping(self: *@This()) core.HResult!TextWrapping {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextWrapping();
     }
     pub fn putTextWrapping(self: *@This(), value: TextWrapping) core.HResult!void {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextWrapping(value);
     }
     pub fn getMaxLines(self: *@This()) core.HResult!i32 {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxLines();
     }
     pub fn putMaxLines(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxLines(value);
     }
     pub fn getLineStackingStrategy(self: *@This()) core.HResult!LineStackingStrategy {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLineStackingStrategy();
     }
     pub fn putLineStackingStrategy(self: *@This(), value: LineStackingStrategy) core.HResult!void {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLineStackingStrategy(value);
     }
     pub fn getLineHeight(self: *@This()) core.HResult!f64 {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLineHeight();
     }
     pub fn putLineHeight(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLineHeight(value);
     }
     pub fn getBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBorderBrush();
     }
     pub fn putBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBorderBrush(value);
     }
     pub fn getBorderThickness(self: *@This()) core.HResult!Thickness {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBorderThickness();
     }
     pub fn putBorderThickness(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBorderThickness(value);
     }
     pub fn getCornerRadius(self: *@This()) core.HResult!CornerRadius {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCornerRadius();
     }
     pub fn putCornerRadius(self: *@This(), value: CornerRadius) core.HResult!void {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCornerRadius(value);
     }
     pub fn getPadding(self: *@This()) core.HResult!Thickness {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPadding();
     }
     pub fn putPadding(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPadding(value);
     }
     pub fn getBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackground();
     }
     pub fn putBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBackground(value);
     }
     pub fn getHorizontalContentAlignment(self: *@This()) core.HResult!HorizontalAlignment {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalContentAlignment();
     }
     pub fn putHorizontalContentAlignment(self: *@This(), value: HorizontalAlignment) core.HResult!void {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHorizontalContentAlignment(value);
     }
     pub fn getVerticalContentAlignment(self: *@This()) core.HResult!VerticalAlignment {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticalContentAlignment();
     }
     pub fn putVerticalContentAlignment(self: *@This(), value: VerticalAlignment) core.HResult!void {
         var this: ?*IContentPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putVerticalContentAlignment(value);
     }
     pub fn getBackgroundTransition(self: *@This()) core.HResult!*BrushTransition {
         var this: ?*IContentPresenter5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackgroundTransition();
     }
     pub fn putBackgroundTransition(self: *@This(), value: *BrushTransition) core.HResult!void {
         var this: ?*IContentPresenter5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBackgroundTransition(value);
     }
     pub fn getBackgroundSizing(self: *@This()) core.HResult!BackgroundSizing {
         var this: ?*IContentPresenter5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackgroundSizing();
     }
     pub fn putBackgroundSizing(self: *@This(), value: BackgroundSizing) core.HResult!void {
         var this: ?*IContentPresenter5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenter5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBackgroundSizing(value);
     }
     pub fn OnContentTemplateChanged(self: *@This(), oldContentTemplate: *DataTemplate, newContentTemplate: *DataTemplate) core.HResult!void {
         var this: ?*IContentPresenterOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenterOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnContentTemplateChanged(oldContentTemplate, newContentTemplate);
     }
     pub fn OnContentTemplateSelectorChanged(self: *@This(), oldContentTemplateSelector: *DataTemplateSelector, newContentTemplateSelector: *DataTemplateSelector) core.HResult!void {
         var this: ?*IContentPresenterOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentPresenterOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnContentTemplateSelectorChanged(oldContentTemplateSelector, newContentTemplateSelector);
@@ -6123,30 +6406,35 @@ pub const DataTemplateSelector = extern struct {
     }
     pub fn SelectTemplate(self: *@This(), item: *IInspectable) core.HResult!*DataTemplate {
         var this: ?*IDataTemplateSelector2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataTemplateSelector2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectTemplate(item);
     }
     pub fn SelectTemplateCoreWithContainer(self: *@This(), item: *IInspectable, container: *DependencyObject) core.HResult!*DataTemplate {
         var this: ?*IDataTemplateSelectorOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataTemplateSelectorOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectTemplateCoreWithContainer(item, container);
     }
     pub fn SelectTemplateCore(self: *@This(), item: *IInspectable) core.HResult!*DataTemplate {
         var this: ?*IDataTemplateSelectorOverrides2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataTemplateSelectorOverrides2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectTemplateCore(item);
     }
     pub fn GetElement(self: *@This(), args: *ElementFactoryGetArgs) core.HResult!*UIElement {
         var this: ?*IElementFactory = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IElementFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetElement(args);
     }
     pub fn RecycleElement(self: *@This(), args: *ElementFactoryRecycleArgs) core.HResult!void {
         var this: ?*IElementFactory = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IElementFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RecycleElement(args);
@@ -6305,36 +6593,42 @@ pub const DatePicker = extern struct {
     }
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var this: ?*IDatePicker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePicker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLightDismissOverlayMode();
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         var this: ?*IDatePicker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePicker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLightDismissOverlayMode(value);
     }
     pub fn getSelectedDate(self: *@This()) core.HResult!*IReference(DateTime) {
         var this: ?*IDatePicker3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedDate();
     }
     pub fn putSelectedDate(self: *@This(), value: *IReference(DateTime)) core.HResult!void {
         var this: ?*IDatePicker3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedDate(value);
     }
     pub fn addSelectedDateChanged(self: *@This(), handler: *TypedEventHandler(DatePicker,DatePickerSelectedValueChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IDatePicker3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSelectedDateChanged(handler);
     }
     pub fn removeSelectedDateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IDatePicker3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSelectedDateChanged(token);
@@ -6488,36 +6782,42 @@ pub const DatePickerFlyout = extern struct {
     }
     pub fn getDayFormat(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDatePickerFlyout2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDayFormat();
     }
     pub fn putDayFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDatePickerFlyout2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDayFormat(value);
     }
     pub fn getMonthFormat(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDatePickerFlyout2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMonthFormat();
     }
     pub fn putMonthFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDatePickerFlyout2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMonthFormat(value);
     }
     pub fn getYearFormat(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDatePickerFlyout2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getYearFormat();
     }
     pub fn putYearFormat(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IDatePickerFlyout2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putYearFormat(value);
@@ -6598,24 +6898,28 @@ pub const DatePickerFlyoutItem = extern struct {
     }
     pub fn GetCustomProperty(self: *@This(), name: ?HSTRING) core.HResult!*ICustomProperty {
         var this: ?*ICustomPropertyProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomPropertyProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCustomProperty(name);
     }
     pub fn GetIndexedProperty(self: *@This(), name: ?HSTRING, ty: TypeName) core.HResult!*ICustomProperty {
         var this: ?*ICustomPropertyProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomPropertyProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIndexedProperty(name, ty);
     }
     pub fn GetStringRepresentation(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICustomPropertyProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomPropertyProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStringRepresentation();
     }
     pub fn getType(self: *@This()) core.HResult!TypeName {
         var this: ?*ICustomPropertyProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomPropertyProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -6642,12 +6946,14 @@ pub const DatePickerFlyoutPresenter = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsDefaultShadowEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IDatePickerFlyoutPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyoutPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDefaultShadowEnabled();
     }
     pub fn putIsDefaultShadowEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDatePickerFlyoutPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatePickerFlyoutPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsDefaultShadowEnabled(value);
@@ -6862,18 +7168,21 @@ pub const DropDownButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Expand();
@@ -6916,12 +7225,14 @@ pub const FlipView = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getUseTouchAnimationsForAllNavigation(self: *@This()) core.HResult!bool {
         var this: ?*IFlipView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlipView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseTouchAnimationsForAllNavigation();
     }
     pub fn putUseTouchAnimationsForAllNavigation(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFlipView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlipView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseTouchAnimationsForAllNavigation(value);
@@ -7006,12 +7317,14 @@ pub const FlyoutPresenter = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsDefaultShadowEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDefaultShadowEnabled();
     }
     pub fn putIsDefaultShadowEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFlyoutPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsDefaultShadowEnabled(value);
@@ -7047,12 +7360,14 @@ pub const FocusEngagedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var this: ?*IFocusEngagedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFocusEngagedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandled();
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFocusEngagedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFocusEngagedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);
@@ -7107,24 +7422,28 @@ pub const FontIcon = extern struct {
     }
     pub fn getIsTextScaleFactorEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IFontIcon2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFontIcon2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTextScaleFactorEnabled();
     }
     pub fn putIsTextScaleFactorEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFontIcon2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFontIcon2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsTextScaleFactorEnabled(value);
     }
     pub fn getMirroredWhenRightToLeft(self: *@This()) core.HResult!bool {
         var this: ?*IFontIcon3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFontIcon3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMirroredWhenRightToLeft();
     }
     pub fn putMirroredWhenRightToLeft(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFontIcon3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFontIcon3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMirroredWhenRightToLeft(value);
@@ -7363,54 +7682,63 @@ pub const Frame = extern struct {
     }
     pub fn getBackStack(self: *@This()) core.HResult!*IVector(PageStackEntry) {
         var this: ?*IFrame2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackStack();
     }
     pub fn getForwardStack(self: *@This()) core.HResult!*IVector(PageStackEntry) {
         var this: ?*IFrame2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getForwardStack();
     }
     pub fn NavigateWithParameterAndInfoOverride(self: *@This(), sourcePageType: TypeName, parameter: *IInspectable, infoOverride: *NavigationTransitionInfo) core.HResult!bool {
         var this: ?*IFrame2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NavigateWithParameterAndInfoOverride(sourcePageType, parameter, infoOverride);
     }
     pub fn GoBackWithTransitionInfoOverride(self: *@This(), transitionInfoOverride: *NavigationTransitionInfo) core.HResult!void {
         var this: ?*IFrame3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrame3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GoBackWithTransitionInfoOverride(transitionInfoOverride);
     }
     pub fn SetNavigationStateWithSuppressNavigate(self: *@This(), navigationState: ?HSTRING, suppressNavigate: bool) core.HResult!void {
         var this: ?*IFrame4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrame4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetNavigationStateWithSuppressNavigate(navigationState, suppressNavigate);
     }
     pub fn getIsNavigationStackEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IFrame5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrame5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsNavigationStackEnabled();
     }
     pub fn putIsNavigationStackEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFrame5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrame5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsNavigationStackEnabled(value);
     }
     pub fn NavigateToType(self: *@This(), sourcePageType: TypeName, parameter: *IInspectable, navigationOptions: *FrameNavigationOptions) core.HResult!bool {
         var this: ?*IFrame5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrame5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NavigateToType(sourcePageType, parameter, navigationOptions);
     }
     pub fn Navigate(self: *@This(), sourcePageType: TypeName) core.HResult!bool {
         var this: ?*INavigate = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigate.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Navigate(sourcePageType);
@@ -7480,84 +7808,98 @@ pub const Grid = extern struct {
     }
     pub fn getBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IGrid2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBorderBrush();
     }
     pub fn putBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IGrid2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBorderBrush(value);
     }
     pub fn getBorderThickness(self: *@This()) core.HResult!Thickness {
         var this: ?*IGrid2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBorderThickness();
     }
     pub fn putBorderThickness(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*IGrid2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBorderThickness(value);
     }
     pub fn getCornerRadius(self: *@This()) core.HResult!CornerRadius {
         var this: ?*IGrid2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCornerRadius();
     }
     pub fn putCornerRadius(self: *@This(), value: CornerRadius) core.HResult!void {
         var this: ?*IGrid2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCornerRadius(value);
     }
     pub fn getPadding(self: *@This()) core.HResult!Thickness {
         var this: ?*IGrid2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPadding();
     }
     pub fn putPadding(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*IGrid2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPadding(value);
     }
     pub fn getRowSpacing(self: *@This()) core.HResult!f64 {
         var this: ?*IGrid3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRowSpacing();
     }
     pub fn putRowSpacing(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IGrid3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRowSpacing(value);
     }
     pub fn getColumnSpacing(self: *@This()) core.HResult!f64 {
         var this: ?*IGrid3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getColumnSpacing();
     }
     pub fn putColumnSpacing(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IGrid3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putColumnSpacing(value);
     }
     pub fn getBackgroundSizing(self: *@This()) core.HResult!BackgroundSizing {
         var this: ?*IGrid4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackgroundSizing();
     }
     pub fn putBackgroundSizing(self: *@This(), value: BackgroundSizing) core.HResult!void {
         var this: ?*IGrid4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGrid4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBackgroundSizing(value);
@@ -7784,252 +8126,294 @@ pub const ListViewBase = extern struct {
     }
     pub fn getShowsScrollingPlaceholders(self: *@This()) core.HResult!bool {
         var this: ?*IListViewBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShowsScrollingPlaceholders();
     }
     pub fn putShowsScrollingPlaceholders(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IListViewBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putShowsScrollingPlaceholders(value);
     }
     pub fn addContainerContentChanging(self: *@This(), handler: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IListViewBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addContainerContentChanging(handler);
     }
     pub fn removeContainerContentChanging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IListViewBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeContainerContentChanging(token);
     }
     pub fn SetDesiredContainerUpdateDuration(self: *@This(), duration: TimeSpan) core.HResult!void {
         var this: ?*IListViewBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetDesiredContainerUpdateDuration(duration);
     }
     pub fn getFooter(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IListViewBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFooter();
     }
     pub fn putFooter(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IListViewBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFooter(value);
     }
     pub fn getFooterTemplate(self: *@This()) core.HResult!*DataTemplate {
         var this: ?*IListViewBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFooterTemplate();
     }
     pub fn putFooterTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         var this: ?*IListViewBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFooterTemplate(value);
     }
     pub fn getFooterTransitions(self: *@This()) core.HResult!*TransitionCollection {
         var this: ?*IListViewBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFooterTransitions();
     }
     pub fn putFooterTransitions(self: *@This(), value: *TransitionCollection) core.HResult!void {
         var this: ?*IListViewBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFooterTransitions(value);
     }
     pub fn getReorderMode(self: *@This()) core.HResult!ListViewReorderMode {
         var this: ?*IListViewBase3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReorderMode();
     }
     pub fn putReorderMode(self: *@This(), value: ListViewReorderMode) core.HResult!void {
         var this: ?*IListViewBase3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReorderMode(value);
     }
     pub fn getSelectedRanges(self: *@This()) core.HResult!*IVectorView(ItemIndexRange) {
         var this: ?*IListViewBase4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedRanges();
     }
     pub fn getIsMultiSelectCheckBoxEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IListViewBase4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsMultiSelectCheckBoxEnabled();
     }
     pub fn putIsMultiSelectCheckBoxEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IListViewBase4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsMultiSelectCheckBoxEnabled(value);
     }
     pub fn addDragItemsCompleted(self: *@This(), handler: *TypedEventHandler(ListViewBase,DragItemsCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IListViewBase4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addDragItemsCompleted(handler);
     }
     pub fn removeDragItemsCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IListViewBase4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeDragItemsCompleted(token);
     }
     pub fn addChoosingItemContainer(self: *@This(), handler: *TypedEventHandler(ListViewBase,ChoosingItemContainerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IListViewBase4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addChoosingItemContainer(handler);
     }
     pub fn removeChoosingItemContainer(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IListViewBase4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeChoosingItemContainer(token);
     }
     pub fn addChoosingGroupHeaderContainer(self: *@This(), handler: *TypedEventHandler(ListViewBase,ChoosingGroupHeaderContainerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IListViewBase4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addChoosingGroupHeaderContainer(handler);
     }
     pub fn removeChoosingGroupHeaderContainer(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IListViewBase4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeChoosingGroupHeaderContainer(token);
     }
     pub fn SelectRange(self: *@This(), itemIndexRange: *ItemIndexRange) core.HResult!void {
         var this: ?*IListViewBase4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectRange(itemIndexRange);
     }
     pub fn DeselectRange(self: *@This(), itemIndexRange: *ItemIndexRange) core.HResult!void {
         var this: ?*IListViewBase4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DeselectRange(itemIndexRange);
     }
     pub fn getSingleSelectionFollowsFocus(self: *@This()) core.HResult!bool {
         var this: ?*IListViewBase5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSingleSelectionFollowsFocus();
     }
     pub fn putSingleSelectionFollowsFocus(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IListViewBase5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSingleSelectionFollowsFocus(value);
     }
     pub fn IsDragSource(self: *@This()) core.HResult!bool {
         var this: ?*IListViewBase5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsDragSource();
     }
     pub fn TryStartConnectedAnimationAsync(self: *@This(), animation: *ConnectedAnimation, item: *IInspectable, elementName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IListViewBase6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryStartConnectedAnimationAsync(animation, item, elementName);
     }
     pub fn PrepareConnectedAnimation(self: *@This(), key: ?HSTRING, item: *IInspectable, elementName: ?HSTRING) core.HResult!*ConnectedAnimation {
         var this: ?*IListViewBase6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewBase6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrepareConnectedAnimation(key, item, elementName);
     }
     pub fn getSemanticZoomOwner(self: *@This()) core.HResult!*SemanticZoom {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSemanticZoomOwner();
     }
     pub fn putSemanticZoomOwner(self: *@This(), value: *SemanticZoom) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSemanticZoomOwner(value);
     }
     pub fn getIsActiveView(self: *@This()) core.HResult!bool {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsActiveView();
     }
     pub fn putIsActiveView(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsActiveView(value);
     }
     pub fn getIsZoomedInView(self: *@This()) core.HResult!bool {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsZoomedInView();
     }
     pub fn putIsZoomedInView(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsZoomedInView(value);
     }
     pub fn InitializeViewChange(self: *@This()) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InitializeViewChange();
     }
     pub fn CompleteViewChange(self: *@This()) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CompleteViewChange();
     }
     pub fn MakeVisible(self: *@This(), item: *SemanticZoomLocation) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MakeVisible(item);
     }
     pub fn StartViewChangeFrom(self: *@This(), source: *SemanticZoomLocation, destination: *SemanticZoomLocation) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartViewChangeFrom(source, destination);
     }
     pub fn StartViewChangeTo(self: *@This(), source: *SemanticZoomLocation, destination: *SemanticZoomLocation) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartViewChangeTo(source, destination);
     }
     pub fn CompleteViewChangeFrom(self: *@This(), source: *SemanticZoomLocation, destination: *SemanticZoomLocation) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CompleteViewChangeFrom(source, destination);
     }
     pub fn CompleteViewChangeTo(self: *@This(), source: *SemanticZoomLocation, destination: *SemanticZoomLocation) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CompleteViewChangeTo(source, destination);
@@ -8269,24 +8653,28 @@ pub const GroupStyle = extern struct {
     }
     pub fn getHeaderContainerStyle(self: *@This()) core.HResult!*Style {
         var this: ?*IGroupStyle2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGroupStyle2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeaderContainerStyle();
     }
     pub fn putHeaderContainerStyle(self: *@This(), value: *Style) core.HResult!void {
         var this: ?*IGroupStyle2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGroupStyle2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeaderContainerStyle(value);
     }
     pub fn addPropertyChanged(self: *@This(), handler: *PropertyChangedEventHandler) core.HResult!EventRegistrationToken {
         var this: ?*INotifyPropertyChanged = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INotifyPropertyChanged.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPropertyChanged(handler);
     }
     pub fn removePropertyChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*INotifyPropertyChanged = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INotifyPropertyChanged.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePropertyChanged(token);
@@ -8313,6 +8701,7 @@ pub const GroupStyleSelector = extern struct {
     }
     pub fn SelectGroupStyleCore(self: *@This(), group: *IInspectable, level: u32) core.HResult!*GroupStyle {
         var this: ?*IGroupStyleSelectorOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGroupStyleSelectorOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectGroupStyleCore(group, level);
@@ -8410,72 +8799,84 @@ pub const HandwritingView = extern struct {
     }
     pub fn getIsSwitchToKeyboardEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IHandwritingView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSwitchToKeyboardEnabled();
     }
     pub fn putIsSwitchToKeyboardEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IHandwritingView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsSwitchToKeyboardEnabled(value);
     }
     pub fn getIsCommandBarOpen(self: *@This()) core.HResult!bool {
         var this: ?*IHandwritingView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCommandBarOpen();
     }
     pub fn putIsCommandBarOpen(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IHandwritingView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsCommandBarOpen(value);
     }
     pub fn getInputDeviceTypes(self: *@This()) core.HResult!CoreInputDeviceTypes {
         var this: ?*IHandwritingView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInputDeviceTypes();
     }
     pub fn putInputDeviceTypes(self: *@This(), value: CoreInputDeviceTypes) core.HResult!void {
         var this: ?*IHandwritingView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putInputDeviceTypes(value);
     }
     pub fn addCandidatesChanged(self: *@This(), handler: *TypedEventHandler(HandwritingView,HandwritingViewCandidatesChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IHandwritingView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCandidatesChanged(handler);
     }
     pub fn removeCandidatesChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IHandwritingView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCandidatesChanged(token);
     }
     pub fn addTextSubmitted(self: *@This(), handler: *TypedEventHandler(HandwritingView,HandwritingViewTextSubmittedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IHandwritingView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTextSubmitted(handler);
     }
     pub fn removeTextSubmitted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IHandwritingView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextSubmitted(token);
     }
     pub fn GetCandidates(self: *@This(), candidatesSessionId: u32) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*IHandwritingView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCandidates(candidatesSessionId);
     }
     pub fn SelectCandidate(self: *@This(), candidatesSessionId: u32, selectedCandidateIndex: u32) core.HResult!void {
         var this: ?*IHandwritingView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHandwritingView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectCandidate(candidatesSessionId, selectedCandidateIndex);
@@ -8608,78 +9009,91 @@ pub const Hub = extern struct {
     }
     pub fn getSemanticZoomOwner(self: *@This()) core.HResult!*SemanticZoom {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSemanticZoomOwner();
     }
     pub fn putSemanticZoomOwner(self: *@This(), value: *SemanticZoom) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSemanticZoomOwner(value);
     }
     pub fn getIsActiveView(self: *@This()) core.HResult!bool {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsActiveView();
     }
     pub fn putIsActiveView(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsActiveView(value);
     }
     pub fn getIsZoomedInView(self: *@This()) core.HResult!bool {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsZoomedInView();
     }
     pub fn putIsZoomedInView(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsZoomedInView(value);
     }
     pub fn InitializeViewChange(self: *@This()) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InitializeViewChange();
     }
     pub fn CompleteViewChange(self: *@This()) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CompleteViewChange();
     }
     pub fn MakeVisible(self: *@This(), item: *SemanticZoomLocation) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MakeVisible(item);
     }
     pub fn StartViewChangeFrom(self: *@This(), source: *SemanticZoomLocation, destination: *SemanticZoomLocation) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartViewChangeFrom(source, destination);
     }
     pub fn StartViewChangeTo(self: *@This(), source: *SemanticZoomLocation, destination: *SemanticZoomLocation) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartViewChangeTo(source, destination);
     }
     pub fn CompleteViewChangeFrom(self: *@This(), source: *SemanticZoomLocation, destination: *SemanticZoomLocation) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CompleteViewChangeFrom(source, destination);
     }
     pub fn CompleteViewChangeTo(self: *@This(), source: *SemanticZoomLocation, destination: *SemanticZoomLocation) core.HResult!void {
         var this: ?*ISemanticZoomInformation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISemanticZoomInformation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CompleteViewChangeTo(source, destination);
@@ -8816,6 +9230,7 @@ pub const HubSectionCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(HubSection) {
         var this: ?*IIterable(HubSection) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(HubSection).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -48727,12 +49142,14 @@ pub const Image = extern struct {
     }
     pub fn GetAsCastingSource(self: *@This()) core.HResult!*CastingSource {
         var this: ?*IImage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IImage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAsCastingSource();
     }
     pub fn GetAlphaMask(self: *@This()) core.HResult!*CompositionBrush {
         var this: ?*IImage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IImage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAlphaMask();
@@ -48876,66 +49293,77 @@ pub const InkToolbar = extern struct {
     }
     pub fn getIsStencilButtonChecked(self: *@This()) core.HResult!bool {
         var this: ?*IInkToolbar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsStencilButtonChecked();
     }
     pub fn putIsStencilButtonChecked(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IInkToolbar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsStencilButtonChecked(value);
     }
     pub fn getButtonFlyoutPlacement(self: *@This()) core.HResult!InkToolbarButtonFlyoutPlacement {
         var this: ?*IInkToolbar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getButtonFlyoutPlacement();
     }
     pub fn putButtonFlyoutPlacement(self: *@This(), value: InkToolbarButtonFlyoutPlacement) core.HResult!void {
         var this: ?*IInkToolbar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putButtonFlyoutPlacement(value);
     }
     pub fn getOrientation(self: *@This()) core.HResult!Orientation {
         var this: ?*IInkToolbar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOrientation();
     }
     pub fn putOrientation(self: *@This(), value: Orientation) core.HResult!void {
         var this: ?*IInkToolbar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOrientation(value);
     }
     pub fn addIsStencilButtonCheckedChanged(self: *@This(), handler: *TypedEventHandler(InkToolbar,InkToolbarIsStencilButtonCheckedChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IInkToolbar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addIsStencilButtonCheckedChanged(handler);
     }
     pub fn removeIsStencilButtonCheckedChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IInkToolbar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeIsStencilButtonCheckedChanged(token);
     }
     pub fn GetMenuButton(self: *@This(), menu: InkToolbarMenuKind) core.HResult!*InkToolbarMenuButton {
         var this: ?*IInkToolbar2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbar2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMenuButton(menu);
     }
     pub fn getTargetInkPresenter(self: *@This()) core.HResult!*InkPresenter {
         var this: ?*IInkToolbar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTargetInkPresenter();
     }
     pub fn putTargetInkPresenter(self: *@This(), value: *InkPresenter) core.HResult!void {
         var this: ?*IInkToolbar3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbar3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTargetInkPresenter(value);
@@ -49167,6 +49595,7 @@ pub const InkToolbarCustomPen = extern struct {
     }
     pub fn CreateInkDrawingAttributesCore(self: *@This(), brush: *Brush, strokeWidth: f64) core.HResult!*InkDrawingAttributes {
         var this: ?*IInkToolbarCustomPenOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbarCustomPenOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateInkDrawingAttributesCore(brush, strokeWidth);
@@ -49291,12 +49720,14 @@ pub const InkToolbarEraserButton = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsClearAllVisible(self: *@This()) core.HResult!bool {
         var this: ?*IInkToolbarEraserButton2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbarEraserButton2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsClearAllVisible();
     }
     pub fn putIsClearAllVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IInkToolbarEraserButton2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkToolbarEraserButton2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsClearAllVisible(value);
@@ -49741,36 +50172,42 @@ pub const ItemCollection = extern struct {
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVector(IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
     pub fn GetView(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IVector(IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
         var this: ?*IVector(IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
         var this: ?*IVector(IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IVector(IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IInspectable) {
         var this: ?*IIterable(IInspectable) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IInspectable).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -49929,84 +50366,98 @@ pub const ItemsPresenter = extern struct {
     }
     pub fn getFooter(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IItemsPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFooter();
     }
     pub fn putFooter(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IItemsPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFooter(value);
     }
     pub fn getFooterTemplate(self: *@This()) core.HResult!*DataTemplate {
         var this: ?*IItemsPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFooterTemplate();
     }
     pub fn putFooterTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         var this: ?*IItemsPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFooterTemplate(value);
     }
     pub fn getFooterTransitions(self: *@This()) core.HResult!*TransitionCollection {
         var this: ?*IItemsPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFooterTransitions();
     }
     pub fn putFooterTransitions(self: *@This(), value: *TransitionCollection) core.HResult!void {
         var this: ?*IItemsPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFooterTransitions(value);
     }
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreHorizontalSnapPointsRegular();
     }
     pub fn getAreVerticalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreVerticalSnapPointsRegular();
     }
     pub fn addHorizontalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addHorizontalSnapPointsChanged(handler);
     }
     pub fn removeHorizontalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeHorizontalSnapPointsChanged(token);
     }
     pub fn addVerticalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addVerticalSnapPointsChanged(handler);
     }
     pub fn removeVerticalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeVerticalSnapPointsChanged(token);
     }
     pub fn GetIrregularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment) core.HResult!*IVectorView(f32) {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIrregularSnapPoints(orientation, alignment);
     }
     pub fn GetRegularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment, offset: f32) core.HResult!f32 {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRegularSnapPoints(orientation, alignment, offset);
@@ -50119,12 +50570,14 @@ pub const ItemsStackPanel = extern struct {
     }
     pub fn getAreStickyGroupHeadersEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IItemsStackPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsStackPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreStickyGroupHeadersEnabled();
     }
     pub fn putAreStickyGroupHeadersEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IItemsStackPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsStackPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAreStickyGroupHeadersEnabled(value);
@@ -50250,12 +50703,14 @@ pub const ItemsWrapGrid = extern struct {
     }
     pub fn getAreStickyGroupHeadersEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IItemsWrapGrid2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsWrapGrid2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreStickyGroupHeadersEnabled();
     }
     pub fn putAreStickyGroupHeadersEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IItemsWrapGrid2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsWrapGrid2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAreStickyGroupHeadersEnabled(value);
@@ -50337,12 +50792,14 @@ pub const ListBox = extern struct {
     }
     pub fn getSingleSelectionFollowsFocus(self: *@This()) core.HResult!bool {
         var this: ?*IListBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSingleSelectionFollowsFocus();
     }
     pub fn putSingleSelectionFollowsFocus(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IListBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSingleSelectionFollowsFocus(value);
@@ -51112,90 +51569,105 @@ pub const MediaElement = extern struct {
     }
     pub fn getAreTransportControlsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMediaElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreTransportControlsEnabled();
     }
     pub fn putAreTransportControlsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAreTransportControlsEnabled(value);
     }
     pub fn getStretch(self: *@This()) core.HResult!Stretch {
         var this: ?*IMediaElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStretch();
     }
     pub fn putStretch(self: *@This(), value: Stretch) core.HResult!void {
         var this: ?*IMediaElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStretch(value);
     }
     pub fn getIsFullWindow(self: *@This()) core.HResult!bool {
         var this: ?*IMediaElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsFullWindow();
     }
     pub fn putIsFullWindow(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsFullWindow(value);
     }
     pub fn SetMediaStreamSource(self: *@This(), source: *IMediaSource) core.HResult!void {
         var this: ?*IMediaElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetMediaStreamSource(source);
     }
     pub fn getPlayToPreferredSourceUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IMediaElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlayToPreferredSourceUri();
     }
     pub fn putPlayToPreferredSourceUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IMediaElement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPlayToPreferredSourceUri(value);
     }
     pub fn getTransportControls(self: *@This()) core.HResult!*MediaTransportControls {
         var this: ?*IMediaElement3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransportControls();
     }
     pub fn putTransportControls(self: *@This(), value: *MediaTransportControls) core.HResult!void {
         var this: ?*IMediaElement3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransportControls(value);
     }
     pub fn addPartialMediaFailureDetected(self: *@This(), handler: *TypedEventHandler(MediaElement,PartialMediaFailureDetectedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaElement3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPartialMediaFailureDetected(handler);
     }
     pub fn removePartialMediaFailureDetected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaElement3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePartialMediaFailureDetected(token);
     }
     pub fn SetPlaybackSource(self: *@This(), source: *IMediaPlaybackSource) core.HResult!void {
         var this: ?*IMediaElement3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPlaybackSource(source);
     }
     pub fn GetAsCastingSource(self: *@This()) core.HResult!*CastingSource {
         var this: ?*IMediaElement3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaElement3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAsCastingSource();
@@ -51666,168 +52138,196 @@ pub const MediaTransportControls = extern struct {
     }
     pub fn getIsSkipForwardButtonVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSkipForwardButtonVisible();
     }
     pub fn putIsSkipForwardButtonVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsSkipForwardButtonVisible(value);
     }
     pub fn getIsSkipForwardEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSkipForwardEnabled();
     }
     pub fn putIsSkipForwardEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsSkipForwardEnabled(value);
     }
     pub fn getIsSkipBackwardButtonVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSkipBackwardButtonVisible();
     }
     pub fn putIsSkipBackwardButtonVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsSkipBackwardButtonVisible(value);
     }
     pub fn getIsSkipBackwardEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSkipBackwardEnabled();
     }
     pub fn putIsSkipBackwardEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsSkipBackwardEnabled(value);
     }
     pub fn getIsNextTrackButtonVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsNextTrackButtonVisible();
     }
     pub fn putIsNextTrackButtonVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsNextTrackButtonVisible(value);
     }
     pub fn getIsPreviousTrackButtonVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPreviousTrackButtonVisible();
     }
     pub fn putIsPreviousTrackButtonVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsPreviousTrackButtonVisible(value);
     }
     pub fn getFastPlayFallbackBehaviour(self: *@This()) core.HResult!FastPlayFallbackBehaviour {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFastPlayFallbackBehaviour();
     }
     pub fn putFastPlayFallbackBehaviour(self: *@This(), value: FastPlayFallbackBehaviour) core.HResult!void {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFastPlayFallbackBehaviour(value);
     }
     pub fn addThumbnailRequested(self: *@This(), handler: *TypedEventHandler(MediaTransportControls,MediaTransportControlsThumbnailRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addThumbnailRequested(handler);
     }
     pub fn removeThumbnailRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaTransportControls2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeThumbnailRequested(token);
     }
     pub fn getShowAndHideAutomatically(self: *@This()) core.HResult!bool {
         var this: ?*IMediaTransportControls3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShowAndHideAutomatically();
     }
     pub fn putShowAndHideAutomatically(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaTransportControls3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putShowAndHideAutomatically(value);
     }
     pub fn getIsRepeatEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMediaTransportControls3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRepeatEnabled();
     }
     pub fn putIsRepeatEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaTransportControls3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsRepeatEnabled(value);
     }
     pub fn getIsRepeatButtonVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMediaTransportControls3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRepeatButtonVisible();
     }
     pub fn putIsRepeatButtonVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaTransportControls3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsRepeatButtonVisible(value);
     }
     pub fn Show(self: *@This()) core.HResult!void {
         var this: ?*IMediaTransportControls3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Show();
     }
     pub fn Hide(self: *@This()) core.HResult!void {
         var this: ?*IMediaTransportControls3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Hide();
     }
     pub fn getIsCompactOverlayButtonVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMediaTransportControls4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCompactOverlayButtonVisible();
     }
     pub fn putIsCompactOverlayButtonVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaTransportControls4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsCompactOverlayButtonVisible(value);
     }
     pub fn getIsCompactOverlayEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMediaTransportControls4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCompactOverlayEnabled();
     }
     pub fn putIsCompactOverlayEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaTransportControls4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTransportControls4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsCompactOverlayEnabled(value);
@@ -52068,6 +52568,7 @@ pub const MenuFlyout = extern struct {
     }
     pub fn ShowAt(self: *@This(), targetElement: *UIElement, point: Point) core.HResult!void {
         var this: ?*IMenuFlyout2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyout2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShowAt(targetElement, point);
@@ -52155,30 +52656,35 @@ pub const MenuFlyoutItem = extern struct {
     }
     pub fn getIcon(self: *@This()) core.HResult!*IconElement {
         var this: ?*IMenuFlyoutItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyoutItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIcon();
     }
     pub fn putIcon(self: *@This(), value: *IconElement) core.HResult!void {
         var this: ?*IMenuFlyoutItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyoutItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIcon(value);
     }
     pub fn getKeyboardAcceleratorTextOverride(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMenuFlyoutItem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyoutItem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyboardAcceleratorTextOverride();
     }
     pub fn putKeyboardAcceleratorTextOverride(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMenuFlyoutItem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyoutItem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putKeyboardAcceleratorTextOverride(value);
     }
     pub fn getTemplateSettings(self: *@This()) core.HResult!*MenuFlyoutItemTemplateSettings {
         var this: ?*IMenuFlyoutItem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyoutItem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTemplateSettings();
@@ -52224,18 +52730,21 @@ pub const MenuFlyoutPresenter = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getTemplateSettings(self: *@This()) core.HResult!*MenuFlyoutPresenterTemplateSettings {
         var this: ?*IMenuFlyoutPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyoutPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTemplateSettings();
     }
     pub fn getIsDefaultShadowEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMenuFlyoutPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyoutPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDefaultShadowEnabled();
     }
     pub fn putIsDefaultShadowEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMenuFlyoutPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyoutPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsDefaultShadowEnabled(value);
@@ -52291,12 +52800,14 @@ pub const MenuFlyoutSubItem = extern struct {
     }
     pub fn getIcon(self: *@This()) core.HResult!*IconElement {
         var this: ?*IMenuFlyoutSubItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyoutSubItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIcon();
     }
     pub fn putIcon(self: *@This(), value: *IconElement) core.HResult!void {
         var this: ?*IMenuFlyoutSubItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMenuFlyoutSubItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIcon(value);
@@ -52525,198 +53036,231 @@ pub const NavigationView = extern struct {
     }
     pub fn getIsBackButtonVisible(self: *@This()) core.HResult!NavigationViewBackButtonVisible {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsBackButtonVisible();
     }
     pub fn putIsBackButtonVisible(self: *@This(), value: NavigationViewBackButtonVisible) core.HResult!void {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsBackButtonVisible(value);
     }
     pub fn getIsBackEnabled(self: *@This()) core.HResult!bool {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsBackEnabled();
     }
     pub fn putIsBackEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsBackEnabled(value);
     }
     pub fn getPaneTitle(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPaneTitle();
     }
     pub fn putPaneTitle(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPaneTitle(value);
     }
     pub fn addBackRequested(self: *@This(), handler: *TypedEventHandler(NavigationView,NavigationViewBackRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addBackRequested(handler);
     }
     pub fn removeBackRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeBackRequested(token);
     }
     pub fn addPaneClosed(self: *@This(), handler: *TypedEventHandler(NavigationView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPaneClosed(handler);
     }
     pub fn removePaneClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePaneClosed(token);
     }
     pub fn addPaneClosing(self: *@This(), handler: *TypedEventHandler(NavigationView,NavigationViewPaneClosingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPaneClosing(handler);
     }
     pub fn removePaneClosing(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePaneClosing(token);
     }
     pub fn addPaneOpened(self: *@This(), handler: *TypedEventHandler(NavigationView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPaneOpened(handler);
     }
     pub fn removePaneOpened(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePaneOpened(token);
     }
     pub fn addPaneOpening(self: *@This(), handler: *TypedEventHandler(NavigationView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPaneOpening(handler);
     }
     pub fn removePaneOpening(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*INavigationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePaneOpening(token);
     }
     pub fn getPaneDisplayMode(self: *@This()) core.HResult!NavigationViewPaneDisplayMode {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPaneDisplayMode();
     }
     pub fn putPaneDisplayMode(self: *@This(), value: NavigationViewPaneDisplayMode) core.HResult!void {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPaneDisplayMode(value);
     }
     pub fn getPaneHeader(self: *@This()) core.HResult!*UIElement {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPaneHeader();
     }
     pub fn putPaneHeader(self: *@This(), value: *UIElement) core.HResult!void {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPaneHeader(value);
     }
     pub fn getPaneCustomContent(self: *@This()) core.HResult!*UIElement {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPaneCustomContent();
     }
     pub fn putPaneCustomContent(self: *@This(), value: *UIElement) core.HResult!void {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPaneCustomContent(value);
     }
     pub fn getContentOverlay(self: *@This()) core.HResult!*UIElement {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentOverlay();
     }
     pub fn putContentOverlay(self: *@This(), value: *UIElement) core.HResult!void {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContentOverlay(value);
     }
     pub fn getIsPaneVisible(self: *@This()) core.HResult!bool {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaneVisible();
     }
     pub fn putIsPaneVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsPaneVisible(value);
     }
     pub fn getSelectionFollowsFocus(self: *@This()) core.HResult!NavigationViewSelectionFollowsFocus {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionFollowsFocus();
     }
     pub fn putSelectionFollowsFocus(self: *@This(), value: NavigationViewSelectionFollowsFocus) core.HResult!void {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionFollowsFocus(value);
     }
     pub fn getTemplateSettings(self: *@This()) core.HResult!*NavigationViewTemplateSettings {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTemplateSettings();
     }
     pub fn getShoulderNavigationEnabled(self: *@This()) core.HResult!NavigationViewShoulderNavigationEnabled {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShoulderNavigationEnabled();
     }
     pub fn putShoulderNavigationEnabled(self: *@This(), value: NavigationViewShoulderNavigationEnabled) core.HResult!void {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putShoulderNavigationEnabled(value);
     }
     pub fn getOverflowLabelMode(self: *@This()) core.HResult!NavigationViewOverflowLabelMode {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOverflowLabelMode();
     }
     pub fn putOverflowLabelMode(self: *@This(), value: NavigationViewOverflowLabelMode) core.HResult!void {
         var this: ?*INavigationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOverflowLabelMode(value);
@@ -52932,12 +53476,14 @@ pub const NavigationViewItem = extern struct {
     }
     pub fn getSelectsOnInvoked(self: *@This()) core.HResult!bool {
         var this: ?*INavigationViewItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationViewItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectsOnInvoked();
     }
     pub fn putSelectsOnInvoked(self: *@This(), value: bool) core.HResult!void {
         var this: ?*INavigationViewItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationViewItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectsOnInvoked(value);
@@ -52998,12 +53544,14 @@ pub const NavigationViewItemInvokedEventArgs = extern struct {
     }
     pub fn getInvokedItemContainer(self: *@This()) core.HResult!*NavigationViewItemBase {
         var this: ?*INavigationViewItemInvokedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationViewItemInvokedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInvokedItemContainer();
     }
     pub fn getRecommendedNavigationTransitionInfo(self: *@This()) core.HResult!*NavigationTransitionInfo {
         var this: ?*INavigationViewItemInvokedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationViewItemInvokedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRecommendedNavigationTransitionInfo();
@@ -53093,12 +53641,14 @@ pub const NavigationViewSelectionChangedEventArgs = extern struct {
     }
     pub fn getSelectedItemContainer(self: *@This()) core.HResult!*NavigationViewItemBase {
         var this: ?*INavigationViewSelectionChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationViewSelectionChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedItemContainer();
     }
     pub fn getRecommendedNavigationTransitionInfo(self: *@This()) core.HResult!*NavigationTransitionInfo {
         var this: ?*INavigationViewSelectionChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationViewSelectionChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRecommendedNavigationTransitionInfo();
@@ -53199,6 +53749,7 @@ pub const NotifyEventArgs = extern struct {
     }
     pub fn getCallingUri(self: *@This()) core.HResult!*Uri {
         var this: ?*INotifyEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INotifyEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCallingUri();
@@ -53363,18 +53914,21 @@ pub const Page = extern struct {
     }
     pub fn OnNavigatedFrom(self: *@This(), e: *NavigationEventArgs) core.HResult!void {
         var this: ?*IPageOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPageOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnNavigatedFrom(e);
     }
     pub fn OnNavigatedTo(self: *@This(), e: *NavigationEventArgs) core.HResult!void {
         var this: ?*IPageOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPageOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnNavigatedTo(e);
     }
     pub fn OnNavigatingFrom(self: *@This(), e: *NavigatingCancelEventArgs) core.HResult!void {
         var this: ?*IPageOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPageOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnNavigatingFrom(e);
@@ -53664,156 +54218,182 @@ pub const PasswordBox = extern struct {
     }
     pub fn getHeader(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IPasswordBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeader();
     }
     pub fn putHeader(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IPasswordBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeader(value);
     }
     pub fn getHeaderTemplate(self: *@This()) core.HResult!*DataTemplate {
         var this: ?*IPasswordBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeaderTemplate();
     }
     pub fn putHeaderTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         var this: ?*IPasswordBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeaderTemplate(value);
     }
     pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPasswordBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaceholderText();
     }
     pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPasswordBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPlaceholderText(value);
     }
     pub fn getSelectionHighlightColor(self: *@This()) core.HResult!*SolidColorBrush {
         var this: ?*IPasswordBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionHighlightColor();
     }
     pub fn putSelectionHighlightColor(self: *@This(), value: *SolidColorBrush) core.HResult!void {
         var this: ?*IPasswordBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionHighlightColor(value);
     }
     pub fn getPreventKeyboardDisplayOnProgrammaticFocus(self: *@This()) core.HResult!bool {
         var this: ?*IPasswordBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreventKeyboardDisplayOnProgrammaticFocus();
     }
     pub fn putPreventKeyboardDisplayOnProgrammaticFocus(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IPasswordBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPreventKeyboardDisplayOnProgrammaticFocus(value);
     }
     pub fn addPaste(self: *@This(), handler: *TextControlPasteEventHandler) core.HResult!EventRegistrationToken {
         var this: ?*IPasswordBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPaste(handler);
     }
     pub fn removePaste(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPasswordBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePaste(token);
     }
     pub fn getPasswordRevealMode(self: *@This()) core.HResult!PasswordRevealMode {
         var this: ?*IPasswordBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPasswordRevealMode();
     }
     pub fn putPasswordRevealMode(self: *@This(), value: PasswordRevealMode) core.HResult!void {
         var this: ?*IPasswordBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPasswordRevealMode(value);
     }
     pub fn getTextReadingOrder(self: *@This()) core.HResult!TextReadingOrder {
         var this: ?*IPasswordBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextReadingOrder();
     }
     pub fn putTextReadingOrder(self: *@This(), value: TextReadingOrder) core.HResult!void {
         var this: ?*IPasswordBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextReadingOrder(value);
     }
     pub fn getInputScope(self: *@This()) core.HResult!*InputScope {
         var this: ?*IPasswordBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInputScope();
     }
     pub fn putInputScope(self: *@This(), value: *InputScope) core.HResult!void {
         var this: ?*IPasswordBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putInputScope(value);
     }
     pub fn addPasswordChanging(self: *@This(), handler: *TypedEventHandler(PasswordBox,PasswordBoxPasswordChangingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IPasswordBox4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPasswordChanging(handler);
     }
     pub fn removePasswordChanging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPasswordBox4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePasswordChanging(token);
     }
     pub fn getCanPasteClipboardContent(self: *@This()) core.HResult!bool {
         var this: ?*IPasswordBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanPasteClipboardContent();
     }
     pub fn getSelectionFlyout(self: *@This()) core.HResult!*FlyoutBase {
         var this: ?*IPasswordBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionFlyout();
     }
     pub fn putSelectionFlyout(self: *@This(), value: *FlyoutBase) core.HResult!void {
         var this: ?*IPasswordBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionFlyout(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IPasswordBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn putDescription(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IPasswordBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn PasteFromClipboard(self: *@This()) core.HResult!void {
         var this: ?*IPasswordBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPasswordBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PasteFromClipboard();
@@ -54277,72 +54857,84 @@ pub const Pivot = extern struct {
     }
     pub fn getLeftHeader(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IPivot2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPivot2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLeftHeader();
     }
     pub fn putLeftHeader(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IPivot2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPivot2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLeftHeader(value);
     }
     pub fn getLeftHeaderTemplate(self: *@This()) core.HResult!*DataTemplate {
         var this: ?*IPivot2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPivot2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLeftHeaderTemplate();
     }
     pub fn putLeftHeaderTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         var this: ?*IPivot2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPivot2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLeftHeaderTemplate(value);
     }
     pub fn getRightHeader(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IPivot2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPivot2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRightHeader();
     }
     pub fn putRightHeader(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IPivot2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPivot2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRightHeader(value);
     }
     pub fn getRightHeaderTemplate(self: *@This()) core.HResult!*DataTemplate {
         var this: ?*IPivot2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPivot2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRightHeaderTemplate();
     }
     pub fn putRightHeaderTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         var this: ?*IPivot2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPivot2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRightHeaderTemplate(value);
     }
     pub fn getHeaderFocusVisualPlacement(self: *@This()) core.HResult!PivotHeaderFocusVisualPlacement {
         var this: ?*IPivot3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPivot3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeaderFocusVisualPlacement();
     }
     pub fn putHeaderFocusVisualPlacement(self: *@This(), value: PivotHeaderFocusVisualPlacement) core.HResult!void {
         var this: ?*IPivot3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPivot3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeaderFocusVisualPlacement(value);
     }
     pub fn getIsHeaderItemsCarouselEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IPivot3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPivot3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsHeaderItemsCarouselEnabled();
     }
     pub fn putIsHeaderItemsCarouselEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IPivot3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPivot3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsHeaderItemsCarouselEnabled(value);
@@ -54495,36 +55087,42 @@ pub const VirtualizingPanel = extern struct {
     }
     pub fn AddInternalChild(self: *@This(), child: *UIElement) core.HResult!void {
         var this: ?*IVirtualizingPanelProtected = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizingPanelProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddInternalChild(child);
     }
     pub fn InsertInternalChild(self: *@This(), index: i32, child: *UIElement) core.HResult!void {
         var this: ?*IVirtualizingPanelProtected = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizingPanelProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertInternalChild(index, child);
     }
     pub fn RemoveInternalChildRange(self: *@This(), index: i32, range: i32) core.HResult!void {
         var this: ?*IVirtualizingPanelProtected = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizingPanelProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveInternalChildRange(index, range);
     }
     pub fn OnItemsChanged(self: *@This(), sender: *IInspectable, args: *ItemsChangedEventArgs) core.HResult!void {
         var this: ?*IVirtualizingPanelOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizingPanelOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnItemsChanged(sender, args);
     }
     pub fn OnClearChildren(self: *@This()) core.HResult!void {
         var this: ?*IVirtualizingPanelOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizingPanelOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnClearChildren();
     }
     pub fn BringIndexIntoView(self: *@This(), index: i32) core.HResult!void {
         var this: ?*IVirtualizingPanelOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizingPanelOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BringIndexIntoView(index);
@@ -54615,24 +55213,28 @@ pub const Slider = extern struct {
     }
     pub fn getHeader(self: *@This()) core.HResult!*IInspectable {
         var this: ?*ISlider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeader();
     }
     pub fn putHeader(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*ISlider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeader(value);
     }
     pub fn getHeaderTemplate(self: *@This()) core.HResult!*DataTemplate {
         var this: ?*ISlider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeaderTemplate();
     }
     pub fn putHeaderTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         var this: ?*ISlider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeaderTemplate(value);
@@ -55323,12 +55925,14 @@ pub const RelativePanel = extern struct {
     }
     pub fn getBackgroundSizing(self: *@This()) core.HResult!BackgroundSizing {
         var this: ?*IRelativePanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRelativePanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackgroundSizing();
     }
     pub fn putBackgroundSizing(self: *@This(), value: BackgroundSizing) core.HResult!void {
         var this: ?*IRelativePanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRelativePanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBackgroundSizing(value);
@@ -55654,402 +56258,469 @@ pub const RichEditBox = extern struct {
     }
     pub fn getHeader(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeader();
     }
     pub fn putHeader(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeader(value);
     }
     pub fn getHeaderTemplate(self: *@This()) core.HResult!*DataTemplate {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeaderTemplate();
     }
     pub fn putHeaderTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeaderTemplate(value);
     }
     pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaceholderText();
     }
     pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPlaceholderText(value);
     }
     pub fn getSelectionHighlightColor(self: *@This()) core.HResult!*SolidColorBrush {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionHighlightColor();
     }
     pub fn putSelectionHighlightColor(self: *@This(), value: *SolidColorBrush) core.HResult!void {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionHighlightColor(value);
     }
     pub fn getPreventKeyboardDisplayOnProgrammaticFocus(self: *@This()) core.HResult!bool {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreventKeyboardDisplayOnProgrammaticFocus();
     }
     pub fn putPreventKeyboardDisplayOnProgrammaticFocus(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPreventKeyboardDisplayOnProgrammaticFocus(value);
     }
     pub fn getIsColorFontEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsColorFontEnabled();
     }
     pub fn putIsColorFontEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsColorFontEnabled(value);
     }
     pub fn addPaste(self: *@This(), handler: *TextControlPasteEventHandler) core.HResult!EventRegistrationToken {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPaste(handler);
     }
     pub fn removePaste(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichEditBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePaste(token);
     }
     pub fn addTextCompositionStarted(self: *@This(), handler: *TypedEventHandler(RichEditBox,TextCompositionStartedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTextCompositionStarted(handler);
     }
     pub fn removeTextCompositionStarted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextCompositionStarted(token);
     }
     pub fn addTextCompositionChanged(self: *@This(), handler: *TypedEventHandler(RichEditBox,TextCompositionChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTextCompositionChanged(handler);
     }
     pub fn removeTextCompositionChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextCompositionChanged(token);
     }
     pub fn addTextCompositionEnded(self: *@This(), handler: *TypedEventHandler(RichEditBox,TextCompositionEndedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTextCompositionEnded(handler);
     }
     pub fn removeTextCompositionEnded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextCompositionEnded(token);
     }
     pub fn getTextReadingOrder(self: *@This()) core.HResult!TextReadingOrder {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextReadingOrder();
     }
     pub fn putTextReadingOrder(self: *@This(), value: TextReadingOrder) core.HResult!void {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextReadingOrder(value);
     }
     pub fn getDesiredCandidateWindowAlignment(self: *@This()) core.HResult!CandidateWindowAlignment {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredCandidateWindowAlignment();
     }
     pub fn putDesiredCandidateWindowAlignment(self: *@This(), value: CandidateWindowAlignment) core.HResult!void {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDesiredCandidateWindowAlignment(value);
     }
     pub fn addCandidateWindowBoundsChanged(self: *@This(), handler: *TypedEventHandler(RichEditBox,CandidateWindowBoundsChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCandidateWindowBoundsChanged(handler);
     }
     pub fn removeCandidateWindowBoundsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCandidateWindowBoundsChanged(token);
     }
     pub fn addTextChanging(self: *@This(), handler: *TypedEventHandler(RichEditBox,RichEditBoxTextChangingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTextChanging(handler);
     }
     pub fn removeTextChanging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichEditBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextChanging(token);
     }
     pub fn GetLinguisticAlternativesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var this: ?*IRichEditBox4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLinguisticAlternativesAsync();
     }
     pub fn getClipboardCopyFormat(self: *@This()) core.HResult!RichEditClipboardFormat {
         var this: ?*IRichEditBox4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getClipboardCopyFormat();
     }
     pub fn putClipboardCopyFormat(self: *@This(), value: RichEditClipboardFormat) core.HResult!void {
         var this: ?*IRichEditBox4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putClipboardCopyFormat(value);
     }
     pub fn getSelectionHighlightColorWhenNotFocused(self: *@This()) core.HResult!*SolidColorBrush {
         var this: ?*IRichEditBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionHighlightColorWhenNotFocused();
     }
     pub fn putSelectionHighlightColorWhenNotFocused(self: *@This(), value: *SolidColorBrush) core.HResult!void {
         var this: ?*IRichEditBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionHighlightColorWhenNotFocused(value);
     }
     pub fn getMaxLength(self: *@This()) core.HResult!i32 {
         var this: ?*IRichEditBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxLength();
     }
     pub fn putMaxLength(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IRichEditBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxLength(value);
     }
     pub fn getHorizontalTextAlignment(self: *@This()) core.HResult!TextAlignment {
         var this: ?*IRichEditBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalTextAlignment();
     }
     pub fn putHorizontalTextAlignment(self: *@This(), value: TextAlignment) core.HResult!void {
         var this: ?*IRichEditBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHorizontalTextAlignment(value);
     }
     pub fn getCharacterCasing(self: *@This()) core.HResult!CharacterCasing {
         var this: ?*IRichEditBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCharacterCasing();
     }
     pub fn putCharacterCasing(self: *@This(), value: CharacterCasing) core.HResult!void {
         var this: ?*IRichEditBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCharacterCasing(value);
     }
     pub fn getDisabledFormattingAccelerators(self: *@This()) core.HResult!DisabledFormattingAccelerators {
         var this: ?*IRichEditBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisabledFormattingAccelerators();
     }
     pub fn putDisabledFormattingAccelerators(self: *@This(), value: DisabledFormattingAccelerators) core.HResult!void {
         var this: ?*IRichEditBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisabledFormattingAccelerators(value);
     }
     pub fn addCopyingToClipboard(self: *@This(), handler: *TypedEventHandler(RichEditBox,TextControlCopyingToClipboardEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRichEditBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCopyingToClipboard(handler);
     }
     pub fn removeCopyingToClipboard(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichEditBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCopyingToClipboard(token);
     }
     pub fn addCuttingToClipboard(self: *@This(), handler: *TypedEventHandler(RichEditBox,TextControlCuttingToClipboardEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRichEditBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCuttingToClipboard(handler);
     }
     pub fn removeCuttingToClipboard(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichEditBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCuttingToClipboard(token);
     }
     pub fn getContentLinkForegroundColor(self: *@This()) core.HResult!*SolidColorBrush {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentLinkForegroundColor();
     }
     pub fn putContentLinkForegroundColor(self: *@This(), value: *SolidColorBrush) core.HResult!void {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContentLinkForegroundColor(value);
     }
     pub fn getContentLinkBackgroundColor(self: *@This()) core.HResult!*SolidColorBrush {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentLinkBackgroundColor();
     }
     pub fn putContentLinkBackgroundColor(self: *@This(), value: *SolidColorBrush) core.HResult!void {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContentLinkBackgroundColor(value);
     }
     pub fn getContentLinkProviders(self: *@This()) core.HResult!*ContentLinkProviderCollection {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentLinkProviders();
     }
     pub fn putContentLinkProviders(self: *@This(), value: *ContentLinkProviderCollection) core.HResult!void {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContentLinkProviders(value);
     }
     pub fn getHandwritingView(self: *@This()) core.HResult!*HandwritingView {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandwritingView();
     }
     pub fn putHandwritingView(self: *@This(), value: *HandwritingView) core.HResult!void {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandwritingView(value);
     }
     pub fn getIsHandwritingViewEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsHandwritingViewEnabled();
     }
     pub fn putIsHandwritingViewEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsHandwritingViewEnabled(value);
     }
     pub fn addContentLinkChanged(self: *@This(), handler: *TypedEventHandler(RichEditBox,ContentLinkChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addContentLinkChanged(handler);
     }
     pub fn removeContentLinkChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeContentLinkChanged(token);
     }
     pub fn addContentLinkInvoked(self: *@This(), handler: *TypedEventHandler(RichEditBox,ContentLinkInvokedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addContentLinkInvoked(handler);
     }
     pub fn removeContentLinkInvoked(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichEditBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeContentLinkInvoked(token);
     }
     pub fn getTextDocument(self: *@This()) core.HResult!*RichEditTextDocument {
         var this: ?*IRichEditBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextDocument();
     }
     pub fn getSelectionFlyout(self: *@This()) core.HResult!*FlyoutBase {
         var this: ?*IRichEditBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionFlyout();
     }
     pub fn putSelectionFlyout(self: *@This(), value: *FlyoutBase) core.HResult!void {
         var this: ?*IRichEditBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionFlyout(value);
     }
     pub fn getProofingMenuFlyout(self: *@This()) core.HResult!*FlyoutBase {
         var this: ?*IRichEditBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProofingMenuFlyout();
     }
     pub fn getDescription(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IRichEditBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn putDescription(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IRichEditBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn addSelectionChanging(self: *@This(), handler: *TypedEventHandler(RichEditBox,RichEditBoxSelectionChangingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRichEditBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSelectionChanging(handler);
     }
     pub fn removeSelectionChanging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichEditBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSelectionChanging(token);
@@ -56220,6 +56891,7 @@ pub const RichEditBoxTextChangingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsContentChanging(self: *@This()) core.HResult!bool {
         var this: ?*IRichEditBoxTextChangingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditBoxTextChangingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsContentChanging();
@@ -56430,150 +57102,175 @@ pub const RichTextBlock = extern struct {
     }
     pub fn getMaxLines(self: *@This()) core.HResult!i32 {
         var this: ?*IRichTextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxLines();
     }
     pub fn putMaxLines(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IRichTextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxLines(value);
     }
     pub fn getTextLineBounds(self: *@This()) core.HResult!TextLineBounds {
         var this: ?*IRichTextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextLineBounds();
     }
     pub fn putTextLineBounds(self: *@This(), value: TextLineBounds) core.HResult!void {
         var this: ?*IRichTextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextLineBounds(value);
     }
     pub fn getSelectionHighlightColor(self: *@This()) core.HResult!*SolidColorBrush {
         var this: ?*IRichTextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionHighlightColor();
     }
     pub fn putSelectionHighlightColor(self: *@This(), value: *SolidColorBrush) core.HResult!void {
         var this: ?*IRichTextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionHighlightColor(value);
     }
     pub fn getOpticalMarginAlignment(self: *@This()) core.HResult!OpticalMarginAlignment {
         var this: ?*IRichTextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOpticalMarginAlignment();
     }
     pub fn putOpticalMarginAlignment(self: *@This(), value: OpticalMarginAlignment) core.HResult!void {
         var this: ?*IRichTextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOpticalMarginAlignment(value);
     }
     pub fn getIsColorFontEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IRichTextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsColorFontEnabled();
     }
     pub fn putIsColorFontEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IRichTextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsColorFontEnabled(value);
     }
     pub fn getTextReadingOrder(self: *@This()) core.HResult!TextReadingOrder {
         var this: ?*IRichTextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextReadingOrder();
     }
     pub fn putTextReadingOrder(self: *@This(), value: TextReadingOrder) core.HResult!void {
         var this: ?*IRichTextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextReadingOrder(value);
     }
     pub fn getIsTextScaleFactorEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IRichTextBlock3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTextScaleFactorEnabled();
     }
     pub fn putIsTextScaleFactorEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IRichTextBlock3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsTextScaleFactorEnabled(value);
     }
     pub fn getTextDecorations(self: *@This()) core.HResult!TextDecorations {
         var this: ?*IRichTextBlock4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextDecorations();
     }
     pub fn putTextDecorations(self: *@This(), value: TextDecorations) core.HResult!void {
         var this: ?*IRichTextBlock4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextDecorations(value);
     }
     pub fn getIsTextTrimmed(self: *@This()) core.HResult!bool {
         var this: ?*IRichTextBlock5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTextTrimmed();
     }
     pub fn getHorizontalTextAlignment(self: *@This()) core.HResult!TextAlignment {
         var this: ?*IRichTextBlock5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalTextAlignment();
     }
     pub fn putHorizontalTextAlignment(self: *@This(), value: TextAlignment) core.HResult!void {
         var this: ?*IRichTextBlock5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHorizontalTextAlignment(value);
     }
     pub fn getTextHighlighters(self: *@This()) core.HResult!*IVector(TextHighlighter) {
         var this: ?*IRichTextBlock5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextHighlighters();
     }
     pub fn addIsTextTrimmedChanged(self: *@This(), handler: *TypedEventHandler(RichTextBlock,IsTextTrimmedChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRichTextBlock5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addIsTextTrimmedChanged(handler);
     }
     pub fn removeIsTextTrimmedChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichTextBlock5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeIsTextTrimmedChanged(token);
     }
     pub fn getSelectionFlyout(self: *@This()) core.HResult!*FlyoutBase {
         var this: ?*IRichTextBlock6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionFlyout();
     }
     pub fn putSelectionFlyout(self: *@This(), value: *FlyoutBase) core.HResult!void {
         var this: ?*IRichTextBlock6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionFlyout(value);
     }
     pub fn CopySelectionToClipboard(self: *@This()) core.HResult!void {
         var this: ?*IRichTextBlock6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlock6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CopySelectionToClipboard();
@@ -56762,30 +57459,35 @@ pub const RichTextBlockOverflow = extern struct {
     }
     pub fn getMaxLines(self: *@This()) core.HResult!i32 {
         var this: ?*IRichTextBlockOverflow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlockOverflow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxLines();
     }
     pub fn putMaxLines(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IRichTextBlockOverflow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlockOverflow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxLines(value);
     }
     pub fn getIsTextTrimmed(self: *@This()) core.HResult!bool {
         var this: ?*IRichTextBlockOverflow3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlockOverflow3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTextTrimmed();
     }
     pub fn addIsTextTrimmedChanged(self: *@This(), handler: *TypedEventHandler(RichTextBlockOverflow,IsTextTrimmedChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRichTextBlockOverflow3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlockOverflow3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addIsTextTrimmedChanged(handler);
     }
     pub fn removeIsTextTrimmedChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRichTextBlockOverflow3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichTextBlockOverflow3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeIsTextTrimmedChanged(token);
@@ -56908,6 +57610,7 @@ pub const RowDefinitionCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(RowDefinition) {
         var this: ?*IIterable(RowDefinition) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(RowDefinition).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -57036,24 +57739,28 @@ pub const ScrollContentPresenter = extern struct {
     }
     pub fn getCanContentRenderOutsideBounds(self: *@This()) core.HResult!bool {
         var this: ?*IScrollContentPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollContentPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanContentRenderOutsideBounds();
     }
     pub fn putCanContentRenderOutsideBounds(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IScrollContentPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollContentPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanContentRenderOutsideBounds(value);
     }
     pub fn getSizesContentToTemplatedParent(self: *@This()) core.HResult!bool {
         var this: ?*IScrollContentPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollContentPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSizesContentToTemplatedParent();
     }
     pub fn putSizesContentToTemplatedParent(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IScrollContentPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollContentPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSizesContentToTemplatedParent(value);
@@ -57334,162 +58041,189 @@ pub const ScrollViewer = extern struct {
     }
     pub fn getTopLeftHeader(self: *@This()) core.HResult!*UIElement {
         var this: ?*IScrollViewer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTopLeftHeader();
     }
     pub fn putTopLeftHeader(self: *@This(), value: *UIElement) core.HResult!void {
         var this: ?*IScrollViewer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTopLeftHeader(value);
     }
     pub fn getLeftHeader(self: *@This()) core.HResult!*UIElement {
         var this: ?*IScrollViewer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLeftHeader();
     }
     pub fn putLeftHeader(self: *@This(), value: *UIElement) core.HResult!void {
         var this: ?*IScrollViewer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLeftHeader(value);
     }
     pub fn getTopHeader(self: *@This()) core.HResult!*UIElement {
         var this: ?*IScrollViewer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTopHeader();
     }
     pub fn putTopHeader(self: *@This(), value: *UIElement) core.HResult!void {
         var this: ?*IScrollViewer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTopHeader(value);
     }
     pub fn addViewChanging(self: *@This(), handler: *EventHandler(ScrollViewerViewChangingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollViewer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addViewChanging(handler);
     }
     pub fn removeViewChanging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollViewer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeViewChanging(token);
     }
     pub fn ChangeView(self: *@This(), horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32)) core.HResult!bool {
         var this: ?*IScrollViewer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ChangeView(horizontalOffset, verticalOffset, zoomFactor);
     }
     pub fn ChangeViewWithDisableAnimation(self: *@This(), horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), disableAnimation: bool) core.HResult!bool {
         var this: ?*IScrollViewer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ChangeViewWithDisableAnimation(horizontalOffset, verticalOffset, zoomFactor, disableAnimation);
     }
     pub fn addDirectManipulationStarted(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollViewer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addDirectManipulationStarted(handler);
     }
     pub fn removeDirectManipulationStarted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollViewer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeDirectManipulationStarted(token);
     }
     pub fn addDirectManipulationCompleted(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollViewer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addDirectManipulationCompleted(handler);
     }
     pub fn removeDirectManipulationCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollViewer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeDirectManipulationCompleted(token);
     }
     pub fn getReduceViewportForCoreInputViewOcclusions(self: *@This()) core.HResult!bool {
         var this: ?*IScrollViewer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReduceViewportForCoreInputViewOcclusions();
     }
     pub fn putReduceViewportForCoreInputViewOcclusions(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IScrollViewer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReduceViewportForCoreInputViewOcclusions(value);
     }
     pub fn getHorizontalAnchorRatio(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollViewer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalAnchorRatio();
     }
     pub fn putHorizontalAnchorRatio(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IScrollViewer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHorizontalAnchorRatio(value);
     }
     pub fn getVerticalAnchorRatio(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollViewer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticalAnchorRatio();
     }
     pub fn putVerticalAnchorRatio(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IScrollViewer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putVerticalAnchorRatio(value);
     }
     pub fn getCanContentRenderOutsideBounds(self: *@This()) core.HResult!bool {
         var this: ?*IScrollViewer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanContentRenderOutsideBounds();
     }
     pub fn putCanContentRenderOutsideBounds(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IScrollViewer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanContentRenderOutsideBounds(value);
     }
     pub fn addAnchorRequested(self: *@This(), handler: *TypedEventHandler(ScrollViewer,AnchorRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollViewer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addAnchorRequested(handler);
     }
     pub fn removeAnchorRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollViewer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAnchorRequested(token);
     }
     pub fn getCurrentAnchor(self: *@This()) core.HResult!*UIElement {
         var this: ?*IScrollAnchorProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollAnchorProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCurrentAnchor();
     }
     pub fn RegisterAnchorCandidate(self: *@This(), element: *UIElement) core.HResult!void {
         var this: ?*IScrollAnchorProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollAnchorProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RegisterAnchorCandidate(element);
     }
     pub fn UnregisterAnchorCandidate(self: *@This(), element: *UIElement) core.HResult!void {
         var this: ?*IScrollAnchorProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollAnchorProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UnregisterAnchorCandidate(element);
@@ -58722,24 +59456,28 @@ pub const SplitButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Expand();
     }
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
@@ -58854,36 +59592,42 @@ pub const SplitView = extern struct {
     }
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var this: ?*ISplitView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISplitView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLightDismissOverlayMode();
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         var this: ?*ISplitView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISplitView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLightDismissOverlayMode(value);
     }
     pub fn addPaneOpening(self: *@This(), handler: *TypedEventHandler(SplitView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ISplitView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISplitView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPaneOpening(handler);
     }
     pub fn removePaneOpening(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ISplitView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISplitView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePaneOpening(token);
     }
     pub fn addPaneOpened(self: *@This(), handler: *TypedEventHandler(SplitView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ISplitView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISplitView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPaneOpened(handler);
     }
     pub fn removePaneOpened(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ISplitView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISplitView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePaneOpened(token);
@@ -58990,126 +59734,147 @@ pub const StackPanel = extern struct {
     }
     pub fn getBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IStackPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStackPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBorderBrush();
     }
     pub fn putBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IStackPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStackPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBorderBrush(value);
     }
     pub fn getBorderThickness(self: *@This()) core.HResult!Thickness {
         var this: ?*IStackPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStackPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBorderThickness();
     }
     pub fn putBorderThickness(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*IStackPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStackPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBorderThickness(value);
     }
     pub fn getCornerRadius(self: *@This()) core.HResult!CornerRadius {
         var this: ?*IStackPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStackPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCornerRadius();
     }
     pub fn putCornerRadius(self: *@This(), value: CornerRadius) core.HResult!void {
         var this: ?*IStackPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStackPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCornerRadius(value);
     }
     pub fn getPadding(self: *@This()) core.HResult!Thickness {
         var this: ?*IStackPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStackPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPadding();
     }
     pub fn putPadding(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*IStackPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStackPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPadding(value);
     }
     pub fn getSpacing(self: *@This()) core.HResult!f64 {
         var this: ?*IStackPanel4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStackPanel4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSpacing();
     }
     pub fn putSpacing(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IStackPanel4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStackPanel4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSpacing(value);
     }
     pub fn getBackgroundSizing(self: *@This()) core.HResult!BackgroundSizing {
         var this: ?*IStackPanel5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStackPanel5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackgroundSizing();
     }
     pub fn putBackgroundSizing(self: *@This(), value: BackgroundSizing) core.HResult!void {
         var this: ?*IStackPanel5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStackPanel5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBackgroundSizing(value);
     }
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreHorizontalSnapPointsRegular();
     }
     pub fn getAreVerticalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreVerticalSnapPointsRegular();
     }
     pub fn addHorizontalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addHorizontalSnapPointsChanged(handler);
     }
     pub fn removeHorizontalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeHorizontalSnapPointsChanged(token);
     }
     pub fn addVerticalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addVerticalSnapPointsChanged(handler);
     }
     pub fn removeVerticalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeVerticalSnapPointsChanged(token);
     }
     pub fn GetIrregularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment) core.HResult!*IVectorView(f32) {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIrregularSnapPoints(orientation, alignment);
     }
     pub fn GetRegularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment, offset: f32) core.HResult!f32 {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRegularSnapPoints(orientation, alignment, offset);
     }
     pub fn GetInsertionIndexes(self: *@This(), position: Point, first: i32, second: i32) core.HResult!void {
         var this: ?*IInsertionPanel = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInsertionPanel.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetInsertionIndexes(position, first, second);
@@ -59177,6 +59942,7 @@ pub const StyleSelector = extern struct {
     }
     pub fn SelectStyleCore(self: *@This(), item: *IInspectable, container: *DependencyObject) core.HResult!*Style {
         var this: ?*IStyleSelectorOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStyleSelectorOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectStyleCore(item, container);
@@ -59199,6 +59965,7 @@ pub const SwapChainBackgroundPanel = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn CreateCoreIndependentInputSource(self: *@This(), deviceTypes: CoreInputDeviceTypes) core.HResult!*CoreIndependentInputSource {
         var this: ?*ISwapChainBackgroundPanel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISwapChainBackgroundPanel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateCoreIndependentInputSource(deviceTypes);
@@ -59469,36 +60236,42 @@ pub const SwipeItems = extern struct {
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVector(SwipeItem) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(SwipeItem).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
     pub fn GetView(self: *@This()) core.HResult!*IVectorView(SwipeItem) {
         var this: ?*IVector(SwipeItem) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(SwipeItem).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
         var this: ?*IVector(SwipeItem) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(SwipeItem).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
         var this: ?*IVector(SwipeItem) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(SwipeItem).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IVector(SwipeItem) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(SwipeItem).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(SwipeItem) {
         var this: ?*IIterable(SwipeItem) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(SwipeItem).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -59968,156 +60741,182 @@ pub const TextBlock = extern struct {
     }
     pub fn getSelectionHighlightColor(self: *@This()) core.HResult!*SolidColorBrush {
         var this: ?*ITextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionHighlightColor();
     }
     pub fn putSelectionHighlightColor(self: *@This(), value: *SolidColorBrush) core.HResult!void {
         var this: ?*ITextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionHighlightColor(value);
     }
     pub fn getMaxLines(self: *@This()) core.HResult!i32 {
         var this: ?*ITextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxLines();
     }
     pub fn putMaxLines(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ITextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxLines(value);
     }
     pub fn getTextLineBounds(self: *@This()) core.HResult!TextLineBounds {
         var this: ?*ITextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextLineBounds();
     }
     pub fn putTextLineBounds(self: *@This(), value: TextLineBounds) core.HResult!void {
         var this: ?*ITextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextLineBounds(value);
     }
     pub fn getOpticalMarginAlignment(self: *@This()) core.HResult!OpticalMarginAlignment {
         var this: ?*ITextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOpticalMarginAlignment();
     }
     pub fn putOpticalMarginAlignment(self: *@This(), value: OpticalMarginAlignment) core.HResult!void {
         var this: ?*ITextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOpticalMarginAlignment(value);
     }
     pub fn getIsColorFontEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ITextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsColorFontEnabled();
     }
     pub fn putIsColorFontEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsColorFontEnabled(value);
     }
     pub fn getTextReadingOrder(self: *@This()) core.HResult!TextReadingOrder {
         var this: ?*ITextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextReadingOrder();
     }
     pub fn putTextReadingOrder(self: *@This(), value: TextReadingOrder) core.HResult!void {
         var this: ?*ITextBlock2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextReadingOrder(value);
     }
     pub fn getIsTextScaleFactorEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ITextBlock3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTextScaleFactorEnabled();
     }
     pub fn putIsTextScaleFactorEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITextBlock3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsTextScaleFactorEnabled(value);
     }
     pub fn GetAlphaMask(self: *@This()) core.HResult!*CompositionBrush {
         var this: ?*ITextBlock4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAlphaMask();
     }
     pub fn getTextDecorations(self: *@This()) core.HResult!TextDecorations {
         var this: ?*ITextBlock5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextDecorations();
     }
     pub fn putTextDecorations(self: *@This(), value: TextDecorations) core.HResult!void {
         var this: ?*ITextBlock5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextDecorations(value);
     }
     pub fn getIsTextTrimmed(self: *@This()) core.HResult!bool {
         var this: ?*ITextBlock6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTextTrimmed();
     }
     pub fn getHorizontalTextAlignment(self: *@This()) core.HResult!TextAlignment {
         var this: ?*ITextBlock6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalTextAlignment();
     }
     pub fn putHorizontalTextAlignment(self: *@This(), value: TextAlignment) core.HResult!void {
         var this: ?*ITextBlock6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHorizontalTextAlignment(value);
     }
     pub fn getTextHighlighters(self: *@This()) core.HResult!*IVector(TextHighlighter) {
         var this: ?*ITextBlock6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextHighlighters();
     }
     pub fn addIsTextTrimmedChanged(self: *@This(), handler: *TypedEventHandler(TextBlock,IsTextTrimmedChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITextBlock6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addIsTextTrimmedChanged(handler);
     }
     pub fn removeIsTextTrimmedChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITextBlock6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeIsTextTrimmedChanged(token);
     }
     pub fn getSelectionFlyout(self: *@This()) core.HResult!*FlyoutBase {
         var this: ?*ITextBlock7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionFlyout();
     }
     pub fn putSelectionFlyout(self: *@This(), value: *FlyoutBase) core.HResult!void {
         var this: ?*ITextBlock7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionFlyout(value);
     }
     pub fn CopySelectionToClipboard(self: *@This()) core.HResult!void {
         var this: ?*ITextBlock7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBlock7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CopySelectionToClipboard();
@@ -60386,378 +61185,441 @@ pub const TextBox = extern struct {
     }
     pub fn getHeader(self: *@This()) core.HResult!*IInspectable {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeader();
     }
     pub fn putHeader(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeader(value);
     }
     pub fn getHeaderTemplate(self: *@This()) core.HResult!*DataTemplate {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeaderTemplate();
     }
     pub fn putHeaderTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHeaderTemplate(value);
     }
     pub fn getPlaceholderText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaceholderText();
     }
     pub fn putPlaceholderText(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPlaceholderText(value);
     }
     pub fn getSelectionHighlightColor(self: *@This()) core.HResult!*SolidColorBrush {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionHighlightColor();
     }
     pub fn putSelectionHighlightColor(self: *@This(), value: *SolidColorBrush) core.HResult!void {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionHighlightColor(value);
     }
     pub fn getPreventKeyboardDisplayOnProgrammaticFocus(self: *@This()) core.HResult!bool {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreventKeyboardDisplayOnProgrammaticFocus();
     }
     pub fn putPreventKeyboardDisplayOnProgrammaticFocus(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPreventKeyboardDisplayOnProgrammaticFocus(value);
     }
     pub fn getIsColorFontEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsColorFontEnabled();
     }
     pub fn putIsColorFontEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsColorFontEnabled(value);
     }
     pub fn addPaste(self: *@This(), handler: *TextControlPasteEventHandler) core.HResult!EventRegistrationToken {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPaste(handler);
     }
     pub fn removePaste(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITextBox2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePaste(token);
     }
     pub fn addTextCompositionStarted(self: *@This(), handler: *TypedEventHandler(TextBox,TextCompositionStartedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTextCompositionStarted(handler);
     }
     pub fn removeTextCompositionStarted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextCompositionStarted(token);
     }
     pub fn addTextCompositionChanged(self: *@This(), handler: *TypedEventHandler(TextBox,TextCompositionChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTextCompositionChanged(handler);
     }
     pub fn removeTextCompositionChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextCompositionChanged(token);
     }
     pub fn addTextCompositionEnded(self: *@This(), handler: *TypedEventHandler(TextBox,TextCompositionEndedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTextCompositionEnded(handler);
     }
     pub fn removeTextCompositionEnded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextCompositionEnded(token);
     }
     pub fn getTextReadingOrder(self: *@This()) core.HResult!TextReadingOrder {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextReadingOrder();
     }
     pub fn putTextReadingOrder(self: *@This(), value: TextReadingOrder) core.HResult!void {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTextReadingOrder(value);
     }
     pub fn getDesiredCandidateWindowAlignment(self: *@This()) core.HResult!CandidateWindowAlignment {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredCandidateWindowAlignment();
     }
     pub fn putDesiredCandidateWindowAlignment(self: *@This(), value: CandidateWindowAlignment) core.HResult!void {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDesiredCandidateWindowAlignment(value);
     }
     pub fn addCandidateWindowBoundsChanged(self: *@This(), handler: *TypedEventHandler(TextBox,CandidateWindowBoundsChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCandidateWindowBoundsChanged(handler);
     }
     pub fn removeCandidateWindowBoundsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCandidateWindowBoundsChanged(token);
     }
     pub fn addTextChanging(self: *@This(), handler: *TypedEventHandler(TextBox,TextBoxTextChangingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTextChanging(handler);
     }
     pub fn removeTextChanging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITextBox3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextChanging(token);
     }
     pub fn GetLinguisticAlternativesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var this: ?*ITextBox4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLinguisticAlternativesAsync();
     }
     pub fn getSelectionHighlightColorWhenNotFocused(self: *@This()) core.HResult!*SolidColorBrush {
         var this: ?*ITextBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionHighlightColorWhenNotFocused();
     }
     pub fn putSelectionHighlightColorWhenNotFocused(self: *@This(), value: *SolidColorBrush) core.HResult!void {
         var this: ?*ITextBox5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionHighlightColorWhenNotFocused(value);
     }
     pub fn getHorizontalTextAlignment(self: *@This()) core.HResult!TextAlignment {
         var this: ?*ITextBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalTextAlignment();
     }
     pub fn putHorizontalTextAlignment(self: *@This(), value: TextAlignment) core.HResult!void {
         var this: ?*ITextBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHorizontalTextAlignment(value);
     }
     pub fn getCharacterCasing(self: *@This()) core.HResult!CharacterCasing {
         var this: ?*ITextBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCharacterCasing();
     }
     pub fn putCharacterCasing(self: *@This(), value: CharacterCasing) core.HResult!void {
         var this: ?*ITextBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCharacterCasing(value);
     }
     pub fn getPlaceholderForeground(self: *@This()) core.HResult!*Brush {
         var this: ?*ITextBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaceholderForeground();
     }
     pub fn putPlaceholderForeground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*ITextBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPlaceholderForeground(value);
     }
     pub fn addCopyingToClipboard(self: *@This(), handler: *TypedEventHandler(TextBox,TextControlCopyingToClipboardEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITextBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCopyingToClipboard(handler);
     }
     pub fn removeCopyingToClipboard(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITextBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCopyingToClipboard(token);
     }
     pub fn addCuttingToClipboard(self: *@This(), handler: *TypedEventHandler(TextBox,TextControlCuttingToClipboardEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITextBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCuttingToClipboard(handler);
     }
     pub fn removeCuttingToClipboard(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITextBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCuttingToClipboard(token);
     }
     pub fn addBeforeTextChanging(self: *@This(), handler: *TypedEventHandler(TextBox,TextBoxBeforeTextChangingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITextBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addBeforeTextChanging(handler);
     }
     pub fn removeBeforeTextChanging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITextBox6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeBeforeTextChanging(token);
     }
     pub fn getHandwritingView(self: *@This()) core.HResult!*HandwritingView {
         var this: ?*ITextBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandwritingView();
     }
     pub fn putHandwritingView(self: *@This(), value: *HandwritingView) core.HResult!void {
         var this: ?*ITextBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandwritingView(value);
     }
     pub fn getIsHandwritingViewEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ITextBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsHandwritingViewEnabled();
     }
     pub fn putIsHandwritingViewEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITextBox7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsHandwritingViewEnabled(value);
     }
     pub fn getCanPasteClipboardContent(self: *@This()) core.HResult!bool {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanPasteClipboardContent();
     }
     pub fn getCanUndo(self: *@This()) core.HResult!bool {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanUndo();
     }
     pub fn getCanRedo(self: *@This()) core.HResult!bool {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanRedo();
     }
     pub fn getSelectionFlyout(self: *@This()) core.HResult!*FlyoutBase {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionFlyout();
     }
     pub fn putSelectionFlyout(self: *@This(), value: *FlyoutBase) core.HResult!void {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionFlyout(value);
     }
     pub fn getProofingMenuFlyout(self: *@This()) core.HResult!*FlyoutBase {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProofingMenuFlyout();
     }
     pub fn getDescription(self: *@This()) core.HResult!*IInspectable {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn putDescription(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn addSelectionChanging(self: *@This(), handler: *TypedEventHandler(TextBox,TextBoxSelectionChangingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSelectionChanging(handler);
     }
     pub fn removeSelectionChanging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSelectionChanging(token);
     }
     pub fn Undo(self: *@This()) core.HResult!void {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Undo();
     }
     pub fn Redo(self: *@This()) core.HResult!void {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Redo();
     }
     pub fn PasteFromClipboard(self: *@This()) core.HResult!void {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PasteFromClipboard();
     }
     pub fn CopySelectionToClipboard(self: *@This()) core.HResult!void {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CopySelectionToClipboard();
     }
     pub fn CutSelectionToClipboard(self: *@This()) core.HResult!void {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CutSelectionToClipboard();
     }
     pub fn ClearUndoRedoHistory(self: *@This()) core.HResult!void {
         var this: ?*ITextBox8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBox8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ClearUndoRedoHistory();
@@ -60947,6 +61809,7 @@ pub const TextBoxTextChangingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsContentChanging(self: *@This()) core.HResult!bool {
         var this: ?*ITextBoxTextChangingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextBoxTextChangingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsContentChanging();
@@ -61331,36 +62194,42 @@ pub const TimePicker = extern struct {
     }
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var this: ?*ITimePicker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimePicker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLightDismissOverlayMode();
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         var this: ?*ITimePicker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimePicker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLightDismissOverlayMode(value);
     }
     pub fn getSelectedTime(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*ITimePicker3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimePicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedTime();
     }
     pub fn putSelectedTime(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         var this: ?*ITimePicker3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimePicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedTime(value);
     }
     pub fn addSelectedTimeChanged(self: *@This(), handler: *TypedEventHandler(TimePicker,TimePickerSelectedValueChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITimePicker3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimePicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSelectedTimeChanged(handler);
     }
     pub fn removeSelectedTimeChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITimePicker3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimePicker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSelectedTimeChanged(token);
@@ -61479,12 +62348,14 @@ pub const TimePickerFlyoutPresenter = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsDefaultShadowEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ITimePickerFlyoutPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimePickerFlyoutPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDefaultShadowEnabled();
     }
     pub fn putIsDefaultShadowEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITimePickerFlyoutPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimePickerFlyoutPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsDefaultShadowEnabled(value);
@@ -61600,30 +62471,35 @@ pub const ToggleSplitButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Expand();
     }
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getToggleState();
     }
     pub fn Toggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Toggle();
@@ -61722,24 +62598,28 @@ pub const ToggleSwitch = extern struct {
     }
     pub fn OnToggled(self: *@This()) core.HResult!void {
         var this: ?*IToggleSwitchOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleSwitchOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnToggled();
     }
     pub fn OnOnContentChanged(self: *@This(), oldContent: *IInspectable, newContent: *IInspectable) core.HResult!void {
         var this: ?*IToggleSwitchOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleSwitchOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnOnContentChanged(oldContent, newContent);
     }
     pub fn OnOffContentChanged(self: *@This(), oldContent: *IInspectable, newContent: *IInspectable) core.HResult!void {
         var this: ?*IToggleSwitchOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleSwitchOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnOffContentChanged(oldContent, newContent);
     }
     pub fn OnHeaderChanged(self: *@This(), oldContent: *IInspectable, newContent: *IInspectable) core.HResult!void {
         var this: ?*IToggleSwitchOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleSwitchOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnHeaderChanged(oldContent, newContent);
@@ -61851,12 +62731,14 @@ pub const ToolTip = extern struct {
     }
     pub fn getPlacementRect(self: *@This()) core.HResult!*IReference(Rect) {
         var this: ?*IToolTip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToolTip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlacementRect();
     }
     pub fn putPlacementRect(self: *@This(), value: *IReference(Rect)) core.HResult!void {
         var this: ?*IToolTip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToolTip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPlacementRect(value);
@@ -62005,144 +62887,168 @@ pub const TreeView = extern struct {
     }
     pub fn NodeFromContainer(self: *@This(), container: *DependencyObject) core.HResult!*TreeViewNode {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NodeFromContainer(container);
     }
     pub fn ContainerFromNode(self: *@This(), node: *TreeViewNode) core.HResult!*DependencyObject {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ContainerFromNode(node);
     }
     pub fn ItemFromContainer(self: *@This(), container: *DependencyObject) core.HResult!*IInspectable {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ItemFromContainer(container);
     }
     pub fn ContainerFromItem(self: *@This(), item: *IInspectable) core.HResult!*DependencyObject {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ContainerFromItem(item);
     }
     pub fn getCanDragItems(self: *@This()) core.HResult!bool {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanDragItems();
     }
     pub fn putCanDragItems(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanDragItems(value);
     }
     pub fn getCanReorderItems(self: *@This()) core.HResult!bool {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanReorderItems();
     }
     pub fn putCanReorderItems(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanReorderItems(value);
     }
     pub fn getItemTemplate(self: *@This()) core.HResult!*DataTemplate {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItemTemplate();
     }
     pub fn putItemTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putItemTemplate(value);
     }
     pub fn getItemTemplateSelector(self: *@This()) core.HResult!*DataTemplateSelector {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItemTemplateSelector();
     }
     pub fn putItemTemplateSelector(self: *@This(), value: *DataTemplateSelector) core.HResult!void {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putItemTemplateSelector(value);
     }
     pub fn getItemContainerStyle(self: *@This()) core.HResult!*Style {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItemContainerStyle();
     }
     pub fn putItemContainerStyle(self: *@This(), value: *Style) core.HResult!void {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putItemContainerStyle(value);
     }
     pub fn getItemContainerStyleSelector(self: *@This()) core.HResult!*StyleSelector {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItemContainerStyleSelector();
     }
     pub fn putItemContainerStyleSelector(self: *@This(), value: *StyleSelector) core.HResult!void {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putItemContainerStyleSelector(value);
     }
     pub fn getItemContainerTransitions(self: *@This()) core.HResult!*TransitionCollection {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItemContainerTransitions();
     }
     pub fn putItemContainerTransitions(self: *@This(), value: *TransitionCollection) core.HResult!void {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putItemContainerTransitions(value);
     }
     pub fn getItemsSource(self: *@This()) core.HResult!*IInspectable {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItemsSource();
     }
     pub fn putItemsSource(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putItemsSource(value);
     }
     pub fn addDragItemsStarting(self: *@This(), handler: *TypedEventHandler(TreeView,TreeViewDragItemsStartingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addDragItemsStarting(handler);
     }
     pub fn removeDragItemsStarting(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeDragItemsStarting(token);
     }
     pub fn addDragItemsCompleted(self: *@This(), handler: *TypedEventHandler(TreeView,TreeViewDragItemsCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addDragItemsCompleted(handler);
     }
     pub fn removeDragItemsCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ITreeView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeDragItemsCompleted(token);
@@ -62207,6 +63113,7 @@ pub const TreeViewCollapsedEventArgs = extern struct {
     }
     pub fn getItem(self: *@This()) core.HResult!*IInspectable {
         var this: ?*ITreeViewCollapsedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeViewCollapsedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItem();
@@ -62265,6 +63172,7 @@ pub const TreeViewExpandingEventArgs = extern struct {
     }
     pub fn getItem(self: *@This()) core.HResult!*IInspectable {
         var this: ?*ITreeViewExpandingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeViewExpandingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItem();
@@ -62331,24 +63239,28 @@ pub const TreeViewItem = extern struct {
     }
     pub fn getHasUnrealizedChildren(self: *@This()) core.HResult!bool {
         var this: ?*ITreeViewItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeViewItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHasUnrealizedChildren();
     }
     pub fn putHasUnrealizedChildren(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITreeViewItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeViewItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHasUnrealizedChildren(value);
     }
     pub fn getItemsSource(self: *@This()) core.HResult!*IInspectable {
         var this: ?*ITreeViewItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeViewItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItemsSource();
     }
     pub fn putItemsSource(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*ITreeViewItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITreeViewItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putItemsSource(value);
@@ -62732,6 +63644,7 @@ pub const UIElementCollection = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn Move(self: *@This(), oldIndex: u32, newIndex: u32) core.HResult!void {
         var this: ?*IUIElementCollection = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUIElementCollection.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Move(oldIndex, newIndex);
@@ -62758,6 +63671,7 @@ pub const UIElementCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(UIElement) {
         var this: ?*IIterable(UIElement) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(UIElement).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -62962,6 +63876,7 @@ pub const VirtualizingStackPanel = extern struct {
     }
     pub fn OnCleanUpVirtualizedItem(self: *@This(), e: *CleanUpVirtualizedItemEventArgs) core.HResult!void {
         var this: ?*IVirtualizingStackPanelOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizingStackPanelOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnCleanUpVirtualizedItem(e);
@@ -63069,384 +63984,448 @@ pub const WebView = extern struct {
     }
     pub fn getCanGoBack(self: *@This()) core.HResult!bool {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanGoBack();
     }
     pub fn getCanGoForward(self: *@This()) core.HResult!bool {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanGoForward();
     }
     pub fn getDocumentTitle(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDocumentTitle();
     }
     pub fn addNavigationStarting(self: *@This(), handler: *TypedEventHandler(WebView,WebViewNavigationStartingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addNavigationStarting(handler);
     }
     pub fn removeNavigationStarting(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeNavigationStarting(token);
     }
     pub fn addContentLoading(self: *@This(), handler: *TypedEventHandler(WebView,WebViewContentLoadingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addContentLoading(handler);
     }
     pub fn removeContentLoading(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeContentLoading(token);
     }
     pub fn addDOMContentLoaded(self: *@This(), handler: *TypedEventHandler(WebView,WebViewDOMContentLoadedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addDOMContentLoaded(handler);
     }
     pub fn removeDOMContentLoaded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeDOMContentLoaded(token);
     }
     pub fn GoForward(self: *@This()) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GoForward();
     }
     pub fn GoBack(self: *@This()) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GoBack();
     }
     pub fn Refresh(self: *@This()) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Refresh();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
     }
     pub fn CapturePreviewToStreamAsync(self: *@This(), stream: *IRandomAccessStream) core.HResult!*IAsyncAction {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CapturePreviewToStreamAsync(stream);
     }
     pub fn InvokeScriptAsync(self: *@This(), scriptName: ?HSTRING, arguments: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InvokeScriptAsync(scriptName, arguments);
     }
     pub fn CaptureSelectedContentToDataPackageAsync(self: *@This()) core.HResult!*IAsyncOperation(DataPackage) {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CaptureSelectedContentToDataPackageAsync();
     }
     pub fn NavigateToLocalStreamUri(self: *@This(), source: *Uri, streamResolver: *IUriToStreamResolver) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NavigateToLocalStreamUri(source, streamResolver);
     }
     pub fn BuildLocalStreamUri(self: *@This(), contentIdentifier: ?HSTRING, relativePath: ?HSTRING) core.HResult!*Uri {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BuildLocalStreamUri(contentIdentifier, relativePath);
     }
     pub fn getDefaultBackgroundColor(self: *@This()) core.HResult!Color {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDefaultBackgroundColor();
     }
     pub fn putDefaultBackgroundColor(self: *@This(), value: Color) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDefaultBackgroundColor(value);
     }
     pub fn addNavigationCompleted(self: *@This(), handler: *TypedEventHandler(WebView,WebViewNavigationCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addNavigationCompleted(handler);
     }
     pub fn removeNavigationCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeNavigationCompleted(token);
     }
     pub fn addFrameNavigationStarting(self: *@This(), handler: *TypedEventHandler(WebView,WebViewNavigationStartingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addFrameNavigationStarting(handler);
     }
     pub fn removeFrameNavigationStarting(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeFrameNavigationStarting(token);
     }
     pub fn addFrameContentLoading(self: *@This(), handler: *TypedEventHandler(WebView,WebViewContentLoadingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addFrameContentLoading(handler);
     }
     pub fn removeFrameContentLoading(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeFrameContentLoading(token);
     }
     pub fn addFrameDOMContentLoaded(self: *@This(), handler: *TypedEventHandler(WebView,WebViewDOMContentLoadedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addFrameDOMContentLoaded(handler);
     }
     pub fn removeFrameDOMContentLoaded(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeFrameDOMContentLoaded(token);
     }
     pub fn addFrameNavigationCompleted(self: *@This(), handler: *TypedEventHandler(WebView,WebViewNavigationCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addFrameNavigationCompleted(handler);
     }
     pub fn removeFrameNavigationCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeFrameNavigationCompleted(token);
     }
     pub fn addLongRunningScriptDetected(self: *@This(), handler: *TypedEventHandler(WebView,WebViewLongRunningScriptDetectedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addLongRunningScriptDetected(handler);
     }
     pub fn removeLongRunningScriptDetected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeLongRunningScriptDetected(token);
     }
     pub fn addUnsafeContentWarningDisplaying(self: *@This(), handler: *TypedEventHandler(WebView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addUnsafeContentWarningDisplaying(handler);
     }
     pub fn removeUnsafeContentWarningDisplaying(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeUnsafeContentWarningDisplaying(token);
     }
     pub fn addUnviewableContentIdentified(self: *@This(), handler: *TypedEventHandler(WebView,WebViewUnviewableContentIdentifiedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addUnviewableContentIdentified(handler);
     }
     pub fn removeUnviewableContentIdentified(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeUnviewableContentIdentified(token);
     }
     pub fn NavigateWithHttpRequestMessage(self: *@This(), requestMessage: *HttpRequestMessage) core.HResult!void {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NavigateWithHttpRequestMessage(requestMessage);
     }
     pub fn Focus(self: *@This(), value: FocusState) core.HResult!bool {
         var this: ?*IWebView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Focus(value);
     }
     pub fn getContainsFullScreenElement(self: *@This()) core.HResult!bool {
         var this: ?*IWebView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContainsFullScreenElement();
     }
     pub fn addContainsFullScreenElementChanged(self: *@This(), handler: *TypedEventHandler(WebView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addContainsFullScreenElementChanged(handler);
     }
     pub fn removeContainsFullScreenElementChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeContainsFullScreenElementChanged(token);
     }
     pub fn getExecutionMode(self: *@This()) core.HResult!WebViewExecutionMode {
         var this: ?*IWebView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExecutionMode();
     }
     pub fn getDeferredPermissionRequests(self: *@This()) core.HResult!*IVector(WebViewDeferredPermissionRequest) {
         var this: ?*IWebView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeferredPermissionRequests();
     }
     pub fn getSettings(self: *@This()) core.HResult!*WebViewSettings {
         var this: ?*IWebView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSettings();
     }
     pub fn addUnsupportedUriSchemeIdentified(self: *@This(), handler: *TypedEventHandler(WebView,WebViewUnsupportedUriSchemeIdentifiedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addUnsupportedUriSchemeIdentified(handler);
     }
     pub fn removeUnsupportedUriSchemeIdentified(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeUnsupportedUriSchemeIdentified(token);
     }
     pub fn addNewWindowRequested(self: *@This(), handler: *TypedEventHandler(WebView,WebViewNewWindowRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addNewWindowRequested(handler);
     }
     pub fn removeNewWindowRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeNewWindowRequested(token);
     }
     pub fn addPermissionRequested(self: *@This(), handler: *TypedEventHandler(WebView,WebViewPermissionRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPermissionRequested(handler);
     }
     pub fn removePermissionRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePermissionRequested(token);
     }
     pub fn AddWebAllowedObject(self: *@This(), name: ?HSTRING, pObject: *IInspectable) core.HResult!void {
         var this: ?*IWebView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddWebAllowedObject(name, pObject);
     }
     pub fn DeferredPermissionRequestById(self: *@This(), id: u32) core.HResult!*WebViewDeferredPermissionRequest {
         var this: ?*IWebView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DeferredPermissionRequestById(id);
     }
     pub fn getXYFocusLeft(self: *@This()) core.HResult!*DependencyObject {
         var this: ?*IWebView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getXYFocusLeft();
     }
     pub fn putXYFocusLeft(self: *@This(), value: *DependencyObject) core.HResult!void {
         var this: ?*IWebView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putXYFocusLeft(value);
     }
     pub fn getXYFocusRight(self: *@This()) core.HResult!*DependencyObject {
         var this: ?*IWebView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getXYFocusRight();
     }
     pub fn putXYFocusRight(self: *@This(), value: *DependencyObject) core.HResult!void {
         var this: ?*IWebView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putXYFocusRight(value);
     }
     pub fn getXYFocusUp(self: *@This()) core.HResult!*DependencyObject {
         var this: ?*IWebView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getXYFocusUp();
     }
     pub fn putXYFocusUp(self: *@This(), value: *DependencyObject) core.HResult!void {
         var this: ?*IWebView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putXYFocusUp(value);
     }
     pub fn getXYFocusDown(self: *@This()) core.HResult!*DependencyObject {
         var this: ?*IWebView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getXYFocusDown();
     }
     pub fn putXYFocusDown(self: *@This(), value: *DependencyObject) core.HResult!void {
         var this: ?*IWebView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putXYFocusDown(value);
     }
     pub fn addSeparateProcessLost(self: *@This(), handler: *TypedEventHandler(WebView,WebViewSeparateProcessLostEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSeparateProcessLost(handler);
     }
     pub fn removeSeparateProcessLost(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSeparateProcessLost(token);
     }
     pub fn addWebResourceRequested(self: *@This(), handler: *TypedEventHandler(WebView,WebViewWebResourceRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IWebView7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addWebResourceRequested(handler);
     }
     pub fn removeWebResourceRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IWebView7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebView7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeWebResourceRequested(token);
@@ -63945,6 +64924,7 @@ pub const WebViewUnviewableContentIdentifiedEventArgs = extern struct {
     }
     pub fn getMediaType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebViewUnviewableContentIdentifiedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewUnviewableContentIdentifiedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMediaType();

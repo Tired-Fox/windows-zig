@@ -106,6 +106,7 @@ pub const NetworkOperatorNotificationEventDetails = extern struct {
     }
     pub fn AuthorizeTethering(self: *@This(), allow: bool, entitlementFailureReason: ?HSTRING) core.HResult!void {
         var this: ?*INetworkOperatorTetheringEntitlementCheck = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringEntitlementCheck.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AuthorizeTethering(allow, entitlementFailureReason);
@@ -187,30 +188,35 @@ pub const ESim = extern struct {
     }
     pub fn Discover(self: *@This()) core.HResult!*ESimDiscoverResult {
         var this: ?*IESim2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Discover();
     }
     pub fn DiscoverWithServerAddressAndMatchingId(self: *@This(), serverAddress: ?HSTRING, matchingId: ?HSTRING) core.HResult!*ESimDiscoverResult {
         var this: ?*IESim2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DiscoverWithServerAddressAndMatchingId(serverAddress, matchingId);
     }
     pub fn DiscoverAsync(self: *@This()) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
         var this: ?*IESim2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DiscoverAsync();
     }
     pub fn DiscoverAsyncWithServerAddressAndMatchingId(self: *@This(), serverAddress: ?HSTRING, matchingId: ?HSTRING) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
         var this: ?*IESim2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DiscoverAsyncWithServerAddressAndMatchingId(serverAddress, matchingId);
     }
     pub fn getSlotIndex(self: *@This()) core.HResult!*IReference(i32) {
         var this: ?*IESim3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSlotIndex();
@@ -689,6 +695,7 @@ pub const HotspotAuthenticationContext = extern struct {
     }
     pub fn IssueCredentialsAsync(self: *@This(), userName: ?HSTRING, password: ?HSTRING, extraParameters: ?HSTRING, markAsManualConnectOnFailure: bool) core.HResult!*IAsyncOperation(HotspotCredentialsAuthenticationResult) {
         var this: ?*IHotspotAuthenticationContext2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHotspotAuthenticationContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IssueCredentialsAsync(userName, password, extraParameters, markAsManualConnectOnFailure);
@@ -5681,12 +5688,14 @@ pub const MobileBroadbandAccount = extern struct {
     }
     pub fn GetConnectionProfiles(self: *@This()) core.HResult!*IVectorView(ConnectionProfile) {
         var this: ?*IMobileBroadbandAccount2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandAccount2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConnectionProfiles();
     }
     pub fn getAccountExperienceUrl(self: *@This()) core.HResult!*Uri {
         var this: ?*IMobileBroadbandAccount3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandAccount3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAccountExperienceUrl();
@@ -6124,12 +6133,14 @@ pub const MobileBroadbandCellsInfo = extern struct {
     }
     pub fn getNeighboringCellsNR(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellNR) {
         var this: ?*IMobileBroadbandCellsInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandCellsInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNeighboringCellsNR();
     }
     pub fn getServingCellsNR(self: *@This()) core.HResult!*IVectorView(MobileBroadbandCellNR) {
         var this: ?*IMobileBroadbandCellsInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandCellsInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServingCellsNR();
@@ -6212,42 +6223,49 @@ pub const MobileBroadbandDeviceInformation = extern struct {
     }
     pub fn getPinManager(self: *@This()) core.HResult!*MobileBroadbandPinManager {
         var this: ?*IMobileBroadbandDeviceInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPinManager();
     }
     pub fn getRevision(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMobileBroadbandDeviceInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRevision();
     }
     pub fn getSerialNumber(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMobileBroadbandDeviceInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSerialNumber();
     }
     pub fn getSimSpn(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMobileBroadbandDeviceInformation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimSpn();
     }
     pub fn getSimPnn(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMobileBroadbandDeviceInformation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimPnn();
     }
     pub fn getSimGid1(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMobileBroadbandDeviceInformation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimGid1();
     }
     pub fn getSlotManager(self: *@This()) core.HResult!*MobileBroadbandSlotManager {
         var this: ?*IMobileBroadbandDeviceInformation4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceInformation4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSlotManager();
@@ -6338,12 +6356,14 @@ pub const MobileBroadbandDeviceServiceCommandSession = extern struct {
     }
     pub fn addCommandReceived(self: *@This(), handler: *TypedEventHandler(MobileBroadbandDeviceServiceCommandSession,MobileBroadbandDeviceServiceCommandEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMobileBroadbandDeviceServiceCommandSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceServiceCommandSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCommandReceived(handler);
     }
     pub fn removeCommandReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMobileBroadbandDeviceServiceCommandSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceServiceCommandSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCommandReceived(token);
@@ -6426,6 +6446,7 @@ pub const MobileBroadbandDeviceServiceTriggerDetails = extern struct {
     }
     pub fn getEventId(self: *@This()) core.HResult!u32 {
         var this: ?*IMobileBroadbandDeviceServiceTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandDeviceServiceTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEventId();
@@ -6486,60 +6507,70 @@ pub const MobileBroadbandModem = extern struct {
     }
     pub fn GetIsPassthroughEnabledAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMobileBroadbandModem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIsPassthroughEnabledAsync();
     }
     pub fn SetIsPassthroughEnabledAsync(self: *@This(), value: bool) core.HResult!*IAsyncOperation(MobileBroadbandModemStatus) {
         var this: ?*IMobileBroadbandModem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetIsPassthroughEnabledAsync(value);
     }
     pub fn TryGetPcoAsync(self: *@This()) core.HResult!*IAsyncOperation(MobileBroadbandPco) {
         var this: ?*IMobileBroadbandModem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetPcoAsync();
     }
     pub fn getIsInEmergencyCallMode(self: *@This()) core.HResult!bool {
         var this: ?*IMobileBroadbandModem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsInEmergencyCallMode();
     }
     pub fn addIsInEmergencyCallModeChanged(self: *@This(), handler: *TypedEventHandler(MobileBroadbandModem,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMobileBroadbandModem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addIsInEmergencyCallModeChanged(handler);
     }
     pub fn removeIsInEmergencyCallModeChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMobileBroadbandModem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeIsInEmergencyCallModeChanged(token);
     }
     pub fn SetIsPassthroughEnabledAsyncWithSlotindex(self: *@This(), value: bool, slotindex: i32) core.HResult!*IAsyncOperation(MobileBroadbandModemStatus) {
         var this: ?*IMobileBroadbandModem4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetIsPassthroughEnabledAsyncWithSlotindex(value, slotindex);
     }
     pub fn GetIsPassthroughEnabledAsyncWithSlotindex(self: *@This(), slotindex: i32) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMobileBroadbandModem4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIsPassthroughEnabledAsyncWithSlotindex(slotindex);
     }
     pub fn SetIsPassthroughEnabled(self: *@This(), value: bool, slotindex: i32) core.HResult!MobileBroadbandModemStatus {
         var this: ?*IMobileBroadbandModem4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetIsPassthroughEnabled(value, slotindex);
     }
     pub fn GetIsPassthroughEnabled(self: *@This(), slotindex: i32) core.HResult!bool {
         var this: ?*IMobileBroadbandModem4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIsPassthroughEnabled(slotindex);
@@ -6582,6 +6613,7 @@ pub const MobileBroadbandModemConfiguration = extern struct {
     }
     pub fn getSarManager(self: *@This()) core.HResult!*MobileBroadbandSarManager {
         var this: ?*IMobileBroadbandModemConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModemConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSarManager();
@@ -6674,18 +6706,21 @@ pub const MobileBroadbandNetwork = extern struct {
     }
     pub fn GetVoiceCallSupportAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMobileBroadbandNetwork2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandNetwork2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetVoiceCallSupportAsync();
     }
     pub fn getRegistrationUiccApps(self: *@This()) core.HResult!*IVectorView(MobileBroadbandUiccApp) {
         var this: ?*IMobileBroadbandNetwork2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandNetwork2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRegistrationUiccApps();
     }
     pub fn GetCellsInfoAsync(self: *@This()) core.HResult!*IAsyncOperation(MobileBroadbandCellsInfo) {
         var this: ?*IMobileBroadbandNetwork3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandNetwork3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCellsInfoAsync();
@@ -7012,6 +7047,7 @@ pub const MobileBroadbandSlotInfo = extern struct {
     }
     pub fn getIccId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMobileBroadbandSlotInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandSlotInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIccId();
@@ -7268,48 +7304,56 @@ pub const NetworkOperatorTetheringAccessPointConfiguration = extern struct {
     }
     pub fn IsBandSupported(self: *@This(), band: TetheringWiFiBand) core.HResult!bool {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsBandSupported(band);
     }
     pub fn IsBandSupportedAsync(self: *@This(), band: TetheringWiFiBand) core.HResult!*IAsyncOperation(bool) {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsBandSupportedAsync(band);
     }
     pub fn getBand(self: *@This()) core.HResult!TetheringWiFiBand {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBand();
     }
     pub fn putBand(self: *@This(), value: TetheringWiFiBand) core.HResult!void {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBand(value);
     }
     pub fn IsAuthenticationKindSupported(self: *@This(), authenticationKind: TetheringWiFiAuthenticationKind) core.HResult!bool {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsAuthenticationKindSupported(authenticationKind);
     }
     pub fn IsAuthenticationKindSupportedAsync(self: *@This(), authenticationKind: TetheringWiFiAuthenticationKind) core.HResult!*IAsyncOperation(bool) {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsAuthenticationKindSupportedAsync(authenticationKind);
     }
     pub fn getAuthenticationKind(self: *@This()) core.HResult!TetheringWiFiAuthenticationKind {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAuthenticationKind();
     }
     pub fn putAuthenticationKind(self: *@This(), value: TetheringWiFiAuthenticationKind) core.HResult!void {
         var this: ?*INetworkOperatorTetheringAccessPointConfiguration3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringAccessPointConfiguration3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAuthenticationKind(value);
@@ -7376,12 +7420,14 @@ pub const NetworkOperatorTetheringManager = extern struct {
     }
     pub fn GetTetheringClients(self: *@This()) core.HResult!*IVectorView(NetworkOperatorTetheringClient) {
         var this: ?*INetworkOperatorTetheringClientManager = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringClientManager.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetTetheringClients();
     }
     pub fn StartTetheringAsyncWithConfiguration(self: *@This(), configuration: *NetworkOperatorTetheringSessionAccessPointConfiguration) core.HResult!*IAsyncOperation(NetworkOperatorTetheringOperationResult) {
         var this: ?*INetworkOperatorTetheringManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartTetheringAsyncWithConfiguration(configuration);

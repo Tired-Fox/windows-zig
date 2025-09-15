@@ -110,6 +110,7 @@ pub const PerceptionTimestamp = extern struct {
     }
     pub fn getSystemRelativeTargetTime(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IPerceptionTimestamp2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPerceptionTimestamp2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSystemRelativeTargetTime();

@@ -1554,36 +1554,42 @@ pub const PrintTask = extern struct {
     }
     pub fn putIsPrinterTargetEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IPrintTaskTargetDeviceSupport = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskTargetDeviceSupport.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsPrinterTargetEnabled(value);
     }
     pub fn getIsPrinterTargetEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IPrintTaskTargetDeviceSupport = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskTargetDeviceSupport.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPrinterTargetEnabled();
     }
     pub fn putIs3DManufacturingTargetEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IPrintTaskTargetDeviceSupport = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskTargetDeviceSupport.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIs3DManufacturingTargetEnabled(value);
     }
     pub fn getIs3DManufacturingTargetEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IPrintTaskTargetDeviceSupport = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskTargetDeviceSupport.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIs3DManufacturingTargetEnabled();
     }
     pub fn putIsPreviewEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IPrintTask2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTask2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsPreviewEnabled(value);
     }
     pub fn getIsPreviewEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IPrintTask2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTask2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPreviewEnabled();
@@ -1620,180 +1626,210 @@ pub const PrintTaskOptions = extern struct {
     }
     pub fn putMediaSize(self: *@This(), value: PrintMediaSize) core.HResult!void {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMediaSize(value);
     }
     pub fn getMediaSize(self: *@This()) core.HResult!PrintMediaSize {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMediaSize();
     }
     pub fn putMediaType(self: *@This(), value: PrintMediaType) core.HResult!void {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMediaType(value);
     }
     pub fn getMediaType(self: *@This()) core.HResult!PrintMediaType {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMediaType();
     }
     pub fn putOrientation(self: *@This(), value: PrintOrientation) core.HResult!void {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOrientation(value);
     }
     pub fn getOrientation(self: *@This()) core.HResult!PrintOrientation {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOrientation();
     }
     pub fn putPrintQuality(self: *@This(), value: PrintQuality) core.HResult!void {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrintQuality(value);
     }
     pub fn getPrintQuality(self: *@This()) core.HResult!PrintQuality {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPrintQuality();
     }
     pub fn putColorMode(self: *@This(), value: PrintColorMode) core.HResult!void {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putColorMode(value);
     }
     pub fn getColorMode(self: *@This()) core.HResult!PrintColorMode {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getColorMode();
     }
     pub fn putDuplex(self: *@This(), value: PrintDuplex) core.HResult!void {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDuplex(value);
     }
     pub fn getDuplex(self: *@This()) core.HResult!PrintDuplex {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuplex();
     }
     pub fn putCollation(self: *@This(), value: PrintCollation) core.HResult!void {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCollation(value);
     }
     pub fn getCollation(self: *@This()) core.HResult!PrintCollation {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCollation();
     }
     pub fn putStaple(self: *@This(), value: PrintStaple) core.HResult!void {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStaple(value);
     }
     pub fn getStaple(self: *@This()) core.HResult!PrintStaple {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStaple();
     }
     pub fn putHolePunch(self: *@This(), value: PrintHolePunch) core.HResult!void {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHolePunch(value);
     }
     pub fn getHolePunch(self: *@This()) core.HResult!PrintHolePunch {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHolePunch();
     }
     pub fn putBinding(self: *@This(), value: PrintBinding) core.HResult!void {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBinding(value);
     }
     pub fn getBinding(self: *@This()) core.HResult!PrintBinding {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBinding();
     }
     pub fn getMinCopies(self: *@This()) core.HResult!u32 {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinCopies();
     }
     pub fn getMaxCopies(self: *@This()) core.HResult!u32 {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxCopies();
     }
     pub fn putNumberOfCopies(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNumberOfCopies(value);
     }
     pub fn getNumberOfCopies(self: *@This()) core.HResult!u32 {
         var this: ?*IPrintTaskOptionsCoreProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNumberOfCopies();
     }
     pub fn getDisplayedOptions(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IPrintTaskOptionsCoreUIConfiguration = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptionsCoreUIConfiguration.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayedOptions();
     }
     pub fn putBordering(self: *@This(), value: PrintBordering) core.HResult!void {
         var this: ?*IPrintTaskOptions = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBordering(value);
     }
     pub fn getBordering(self: *@This()) core.HResult!PrintBordering {
         var this: ?*IPrintTaskOptions = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBordering();
     }
     pub fn GetPagePrintTicket(self: *@This(), printPageInfo: *PrintPageInfo) core.HResult!*IRandomAccessStream {
         var this: ?*IPrintTaskOptions = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPagePrintTicket(printPageInfo);
     }
     pub fn getPageRangeOptions(self: *@This()) core.HResult!*PrintPageRangeOptions {
         var this: ?*IPrintTaskOptions2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPageRangeOptions();
     }
     pub fn getCustomPageRanges(self: *@This()) core.HResult!*IVector(PrintPageRange) {
         var this: ?*IPrintTaskOptions2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintTaskOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCustomPageRanges();

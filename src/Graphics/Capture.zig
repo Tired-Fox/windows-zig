@@ -15,18 +15,21 @@ pub const Direct3D11CaptureFrame = extern struct {
     }
     pub fn getDirtyRegions(self: *@This()) core.HResult!*IVectorView(RectInt32) {
         var this: ?*IDirect3D11CaptureFrame2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDirect3D11CaptureFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDirtyRegions();
     }
     pub fn getDirtyRegionMode(self: *@This()) core.HResult!GraphicsCaptureDirtyRegionMode {
         var this: ?*IDirect3D11CaptureFrame2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDirect3D11CaptureFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDirtyRegionMode();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -65,6 +68,7 @@ pub const Direct3D11CaptureFramePool = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -178,66 +182,77 @@ pub const GraphicsCaptureSession = extern struct {
     }
     pub fn getIsCursorCaptureEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IGraphicsCaptureSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCursorCaptureEnabled();
     }
     pub fn putIsCursorCaptureEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IGraphicsCaptureSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsCursorCaptureEnabled(value);
     }
     pub fn getIsBorderRequired(self: *@This()) core.HResult!bool {
         var this: ?*IGraphicsCaptureSession3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsBorderRequired();
     }
     pub fn putIsBorderRequired(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IGraphicsCaptureSession3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsBorderRequired(value);
     }
     pub fn getDirtyRegionMode(self: *@This()) core.HResult!GraphicsCaptureDirtyRegionMode {
         var this: ?*IGraphicsCaptureSession4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDirtyRegionMode();
     }
     pub fn putDirtyRegionMode(self: *@This(), value: GraphicsCaptureDirtyRegionMode) core.HResult!void {
         var this: ?*IGraphicsCaptureSession4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDirtyRegionMode(value);
     }
     pub fn getMinUpdateInterval(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IGraphicsCaptureSession5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinUpdateInterval();
     }
     pub fn putMinUpdateInterval(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IGraphicsCaptureSession5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMinUpdateInterval(value);
     }
     pub fn getIncludeSecondaryWindows(self: *@This()) core.HResult!bool {
         var this: ?*IGraphicsCaptureSession6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIncludeSecondaryWindows();
     }
     pub fn putIncludeSecondaryWindows(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IGraphicsCaptureSession6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsCaptureSession6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIncludeSecondaryWindows(value);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

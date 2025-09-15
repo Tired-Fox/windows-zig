@@ -382,42 +382,49 @@ pub const DisplayInformation = extern struct {
     }
     pub fn getRawPixelsPerViewPixel(self: *@This()) core.HResult!f64 {
         var this: ?*IDisplayInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawPixelsPerViewPixel();
     }
     pub fn getDiagonalSizeInInches(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*IDisplayInformation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayInformation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDiagonalSizeInInches();
     }
     pub fn getScreenWidthInRawPixels(self: *@This()) core.HResult!u32 {
         var this: ?*IDisplayInformation4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayInformation4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getScreenWidthInRawPixels();
     }
     pub fn getScreenHeightInRawPixels(self: *@This()) core.HResult!u32 {
         var this: ?*IDisplayInformation4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayInformation4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getScreenHeightInRawPixels();
     }
     pub fn GetAdvancedColorInfo(self: *@This()) core.HResult!*AdvancedColorInfo {
         var this: ?*IDisplayInformation5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayInformation5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAdvancedColorInfo();
     }
     pub fn addAdvancedColorInfoChanged(self: *@This(), handler: *TypedEventHandler(DisplayInformation,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IDisplayInformation5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayInformation5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addAdvancedColorInfoChanged(handler);
     }
     pub fn removeAdvancedColorInfoChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IDisplayInformation5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayInformation5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAdvancedColorInfoChanged(token);

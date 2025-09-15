@@ -35,48 +35,56 @@ pub const Accelerometer = extern struct {
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAccelerometerDeviceId = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccelerometerDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
     }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         var this: ?*IAccelerometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccelerometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReadingTransform(value);
     }
     pub fn getReadingTransform(self: *@This()) core.HResult!DisplayOrientations {
         var this: ?*IAccelerometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccelerometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReadingTransform();
     }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IAccelerometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccelerometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReportLatency(value);
     }
     pub fn getReportLatency(self: *@This()) core.HResult!u32 {
         var this: ?*IAccelerometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccelerometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportLatency();
     }
     pub fn getMaxBatchSize(self: *@This()) core.HResult!u32 {
         var this: ?*IAccelerometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccelerometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
     }
     pub fn getReadingType(self: *@This()) core.HResult!AccelerometerReadingType {
         var this: ?*IAccelerometer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccelerometer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReadingType();
     }
     pub fn getReportThreshold(self: *@This()) core.HResult!*AccelerometerDataThreshold {
         var this: ?*IAccelerometer5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccelerometer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
@@ -161,12 +169,14 @@ pub const AccelerometerReading = extern struct {
     }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IAccelerometerReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccelerometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IAccelerometerReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAccelerometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
@@ -388,18 +398,21 @@ pub const Altimeter = extern struct {
     }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IAltimeter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAltimeter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReportLatency(value);
     }
     pub fn getReportLatency(self: *@This()) core.HResult!u32 {
         var this: ?*IAltimeter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAltimeter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportLatency();
     }
     pub fn getMaxBatchSize(self: *@This()) core.HResult!u32 {
         var this: ?*IAltimeter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAltimeter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
@@ -430,12 +443,14 @@ pub const AltimeterReading = extern struct {
     }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IAltimeterReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAltimeterReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IAltimeterReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAltimeterReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
@@ -490,24 +505,28 @@ pub const Barometer = extern struct {
     }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IBarometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReportLatency(value);
     }
     pub fn getReportLatency(self: *@This()) core.HResult!u32 {
         var this: ?*IBarometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportLatency();
     }
     pub fn getMaxBatchSize(self: *@This()) core.HResult!u32 {
         var this: ?*IBarometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
     }
     pub fn getReportThreshold(self: *@This()) core.HResult!*BarometerDataThreshold {
         var this: ?*IBarometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
@@ -563,12 +582,14 @@ pub const BarometerReading = extern struct {
     }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IBarometerReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IBarometerReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
@@ -619,42 +640,49 @@ pub const Compass = extern struct {
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICompassDeviceId = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompassDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
     }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         var this: ?*ICompass2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompass2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReadingTransform(value);
     }
     pub fn getReadingTransform(self: *@This()) core.HResult!DisplayOrientations {
         var this: ?*ICompass2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompass2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReadingTransform();
     }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICompass3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompass3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReportLatency(value);
     }
     pub fn getReportLatency(self: *@This()) core.HResult!u32 {
         var this: ?*ICompass3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompass3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportLatency();
     }
     pub fn getMaxBatchSize(self: *@This()) core.HResult!u32 {
         var this: ?*ICompass3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompass3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
     }
     pub fn getReportThreshold(self: *@This()) core.HResult!*CompassDataThreshold {
         var this: ?*ICompass4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompass4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
@@ -714,18 +742,21 @@ pub const CompassReading = extern struct {
     }
     pub fn getHeadingAccuracy(self: *@This()) core.HResult!MagnetometerAccuracy {
         var this: ?*ICompassReadingHeadingAccuracy = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompassReadingHeadingAccuracy.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeadingAccuracy();
     }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*ICompassReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompassReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*ICompassReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompassReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
@@ -804,42 +835,49 @@ pub const Gyrometer = extern struct {
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGyrometerDeviceId = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGyrometerDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
     }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         var this: ?*IGyrometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGyrometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReadingTransform(value);
     }
     pub fn getReadingTransform(self: *@This()) core.HResult!DisplayOrientations {
         var this: ?*IGyrometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGyrometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReadingTransform();
     }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IGyrometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGyrometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReportLatency(value);
     }
     pub fn getReportLatency(self: *@This()) core.HResult!u32 {
         var this: ?*IGyrometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGyrometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportLatency();
     }
     pub fn getMaxBatchSize(self: *@This()) core.HResult!u32 {
         var this: ?*IGyrometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGyrometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
     }
     pub fn getReportThreshold(self: *@This()) core.HResult!*GyrometerDataThreshold {
         var this: ?*IGyrometer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGyrometer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
@@ -919,12 +957,14 @@ pub const GyrometerReading = extern struct {
     }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IGyrometerReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGyrometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IGyrometerReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGyrometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
@@ -1105,12 +1145,14 @@ pub const HumanPresenceFeatures = extern struct {
     }
     pub fn getIsAdaptiveDimmingSupported(self: *@This()) core.HResult!bool {
         var this: ?*IHumanPresenceFeatures2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceFeatures2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAdaptiveDimmingSupported();
     }
     pub fn getIsOnlookerDetectionSupported(self: *@This()) core.HResult!bool {
         var this: ?*IHumanPresenceFeatures3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceFeatures3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsOnlookerDetectionSupported();
@@ -1149,42 +1191,49 @@ pub const HumanPresenceSensor = extern struct {
     }
     pub fn getIsPresenceSupported(self: *@This()) core.HResult!bool {
         var this: ?*IHumanPresenceSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPresenceSupported();
     }
     pub fn getIsEngagementSupported(self: *@This()) core.HResult!bool {
         var this: ?*IHumanPresenceSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsEngagementSupported();
     }
     pub fn getMaxDetectablePersons(self: *@This()) core.HResult!i32 {
         var this: ?*IHumanPresenceSensor3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensor3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxDetectablePersons();
     }
     pub fn getMinDetectableAzimuthInDegrees(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*IHumanPresenceSensor3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensor3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinDetectableAzimuthInDegrees();
     }
     pub fn getMaxDetectableAzimuthInDegrees(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*IHumanPresenceSensor3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensor3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxDetectableAzimuthInDegrees();
     }
     pub fn getMinDetectableAltitudeInDegrees(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*IHumanPresenceSensor3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensor3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinDetectableAltitudeInDegrees();
     }
     pub fn getMaxDetectableAltitudeInDegrees(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*IHumanPresenceSensor3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensor3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxDetectableAltitudeInDegrees();
@@ -1240,18 +1289,21 @@ pub const HumanPresenceSensorReading = extern struct {
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IHumanPresenceSensorReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensorReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
     }
     pub fn getOnlookerPresence(self: *@This()) core.HResult!HumanPresence {
         var this: ?*IHumanPresenceSensorReading3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensorReading3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOnlookerPresence();
     }
     pub fn getDetectedPersons(self: *@This()) core.HResult!*IVectorView(DetectedPerson) {
         var this: ?*IHumanPresenceSensorReading3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensorReading3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDetectedPersons();
@@ -1310,12 +1362,14 @@ pub const HumanPresenceSensorReadingUpdate = extern struct {
     }
     pub fn getOnlookerPresence(self: *@This()) core.HResult!*IReference(HumanPresence) {
         var this: ?*IHumanPresenceSensorReadingUpdate2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensorReadingUpdate2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOnlookerPresence();
     }
     pub fn putOnlookerPresence(self: *@This(), value: *IReference(HumanPresence)) core.HResult!void {
         var this: ?*IHumanPresenceSensorReadingUpdate2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSensorReadingUpdate2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOnlookerPresence(value);
@@ -1394,48 +1448,56 @@ pub const HumanPresenceSettings = extern struct {
     }
     pub fn getIsAdaptiveDimmingEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IHumanPresenceSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAdaptiveDimmingEnabled();
     }
     pub fn putIsAdaptiveDimmingEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IHumanPresenceSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsAdaptiveDimmingEnabled(value);
     }
     pub fn getWakeOptions(self: *@This()) core.HResult!*WakeOnApproachOptions {
         var this: ?*IHumanPresenceSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWakeOptions();
     }
     pub fn getDimmingOptions(self: *@This()) core.HResult!*AdaptiveDimmingOptions {
         var this: ?*IHumanPresenceSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDimmingOptions();
     }
     pub fn getLockOptions(self: *@This()) core.HResult!*LockOnLeaveOptions {
         var this: ?*IHumanPresenceSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLockOptions();
     }
     pub fn getIsOnlookerDetectionEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IHumanPresenceSettings3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSettings3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsOnlookerDetectionEnabled();
     }
     pub fn putIsOnlookerDetectionEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IHumanPresenceSettings3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSettings3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsOnlookerDetectionEnabled(value);
     }
     pub fn getOnlookerDetectionOptions(self: *@This()) core.HResult!*OnlookerDetectionOptions {
         var this: ?*IHumanPresenceSettings3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHumanPresenceSettings3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOnlookerDetectionOptions();
@@ -6994,48 +7056,56 @@ pub const Inclinometer = extern struct {
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IInclinometerDeviceId = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometerDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
     }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         var this: ?*IInclinometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReadingTransform(value);
     }
     pub fn getReadingTransform(self: *@This()) core.HResult!DisplayOrientations {
         var this: ?*IInclinometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReadingTransform();
     }
     pub fn getReadingType(self: *@This()) core.HResult!SensorReadingType {
         var this: ?*IInclinometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReadingType();
     }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IInclinometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReportLatency(value);
     }
     pub fn getReportLatency(self: *@This()) core.HResult!u32 {
         var this: ?*IInclinometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportLatency();
     }
     pub fn getMaxBatchSize(self: *@This()) core.HResult!u32 {
         var this: ?*IInclinometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
     }
     pub fn getReportThreshold(self: *@This()) core.HResult!*InclinometerDataThreshold {
         var this: ?*IInclinometer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
@@ -7125,18 +7195,21 @@ pub const InclinometerReading = extern struct {
     }
     pub fn getYawAccuracy(self: *@This()) core.HResult!MagnetometerAccuracy {
         var this: ?*IInclinometerReadingYawAccuracy = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometerReadingYawAccuracy.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getYawAccuracy();
     }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IInclinometerReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IInclinometerReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInclinometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
@@ -7187,36 +7260,42 @@ pub const LightSensor = extern struct {
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILightSensorDeviceId = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensorDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
     }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ILightSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReportLatency(value);
     }
     pub fn getReportLatency(self: *@This()) core.HResult!u32 {
         var this: ?*ILightSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportLatency();
     }
     pub fn getMaxBatchSize(self: *@This()) core.HResult!u32 {
         var this: ?*ILightSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
     }
     pub fn getReportThreshold(self: *@This()) core.HResult!*LightSensorDataThreshold {
         var this: ?*ILightSensor3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensor3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
     }
     pub fn IsChromaticitySupported(self: *@This()) core.HResult!bool {
         var this: ?*ILightSensor4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensor4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsChromaticitySupported();
@@ -7268,12 +7347,14 @@ pub const LightSensorDataThreshold = extern struct {
     }
     pub fn getChromaticity(self: *@This()) core.HResult!LightSensorChromaticity {
         var this: ?*ILightSensorDataThreshold2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensorDataThreshold2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChromaticity();
     }
     pub fn putChromaticity(self: *@This(), value: LightSensorChromaticity) core.HResult!void {
         var this: ?*ILightSensorDataThreshold2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensorDataThreshold2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putChromaticity(value);
@@ -7296,18 +7377,21 @@ pub const LightSensorReading = extern struct {
     }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*ILightSensorReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensorReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*ILightSensorReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensorReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
     }
     pub fn getChromaticity(self: *@This()) core.HResult!LightSensorChromaticity {
         var this: ?*ILightSensorReading3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILightSensorReading3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChromaticity();
@@ -7374,42 +7458,49 @@ pub const Magnetometer = extern struct {
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMagnetometerDeviceId = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMagnetometerDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
     }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         var this: ?*IMagnetometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMagnetometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReadingTransform(value);
     }
     pub fn getReadingTransform(self: *@This()) core.HResult!DisplayOrientations {
         var this: ?*IMagnetometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMagnetometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReadingTransform();
     }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IMagnetometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMagnetometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReportLatency(value);
     }
     pub fn getReportLatency(self: *@This()) core.HResult!u32 {
         var this: ?*IMagnetometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMagnetometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportLatency();
     }
     pub fn getMaxBatchSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMagnetometer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMagnetometer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
     }
     pub fn getReportThreshold(self: *@This()) core.HResult!*MagnetometerDataThreshold {
         var this: ?*IMagnetometer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMagnetometer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
@@ -7499,12 +7590,14 @@ pub const MagnetometerReading = extern struct {
     }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IMagnetometerReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMagnetometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IMagnetometerReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMagnetometerReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
@@ -7590,42 +7683,49 @@ pub const OrientationSensor = extern struct {
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IOrientationSensorDeviceId = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOrientationSensorDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
     }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         var this: ?*IOrientationSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOrientationSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReadingTransform(value);
     }
     pub fn getReadingTransform(self: *@This()) core.HResult!DisplayOrientations {
         var this: ?*IOrientationSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOrientationSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReadingTransform();
     }
     pub fn getReadingType(self: *@This()) core.HResult!SensorReadingType {
         var this: ?*IOrientationSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOrientationSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReadingType();
     }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IOrientationSensor3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOrientationSensor3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReportLatency(value);
     }
     pub fn getReportLatency(self: *@This()) core.HResult!u32 {
         var this: ?*IOrientationSensor3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOrientationSensor3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportLatency();
     }
     pub fn getMaxBatchSize(self: *@This()) core.HResult!u32 {
         var this: ?*IOrientationSensor3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOrientationSensor3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
@@ -7687,18 +7787,21 @@ pub const OrientationSensorReading = extern struct {
     }
     pub fn getYawAccuracy(self: *@This()) core.HResult!MagnetometerAccuracy {
         var this: ?*IOrientationSensorReadingYawAccuracy = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOrientationSensorReadingYawAccuracy.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getYawAccuracy();
     }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IOrientationSensorReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOrientationSensorReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var this: ?*IOrientationSensorReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOrientationSensorReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
@@ -7753,6 +7856,7 @@ pub const Pedometer = extern struct {
     }
     pub fn GetCurrentReadings(self: *@This()) core.HResult!*IMapView(PedometerStepKind,PedometerReading) {
         var this: ?*IPedometer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPedometer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCurrentReadings();
@@ -8094,18 +8198,21 @@ pub const SimpleOrientationSensor = extern struct {
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISimpleOrientationSensorDeviceId = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISimpleOrientationSensorDeviceId.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
     }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         var this: ?*ISimpleOrientationSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISimpleOrientationSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReadingTransform(value);
     }
     pub fn getReadingTransform(self: *@This()) core.HResult!DisplayOrientations {
         var this: ?*ISimpleOrientationSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISimpleOrientationSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReadingTransform();

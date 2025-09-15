@@ -179,12 +179,14 @@ pub const CoreTextEditContext = extern struct {
     }
     pub fn addNotifyFocusLeaveCompleted(self: *@This(), handler: *TypedEventHandler(CoreTextEditContext,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreTextEditContext2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreTextEditContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addNotifyFocusLeaveCompleted(handler);
     }
     pub fn removeNotifyFocusLeaveCompleted(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreTextEditContext2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreTextEditContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeNotifyFocusLeaveCompleted(cookie);
@@ -371,6 +373,7 @@ pub const CoreTextLayoutRequest = extern struct {
     }
     pub fn getLayoutBoundsVisualPixels(self: *@This()) core.HResult!*CoreTextLayoutBounds {
         var this: ?*ICoreTextLayoutRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreTextLayoutRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLayoutBoundsVisualPixels();

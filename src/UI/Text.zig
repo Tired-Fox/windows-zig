@@ -1850,48 +1850,56 @@ pub const RichEditTextDocument = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getAlignmentIncludesTrailingWhitespace(self: *@This()) core.HResult!bool {
         var this: ?*ITextDocument2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAlignmentIncludesTrailingWhitespace();
     }
     pub fn putAlignmentIncludesTrailingWhitespace(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITextDocument2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAlignmentIncludesTrailingWhitespace(value);
     }
     pub fn getIgnoreTrailingCharacterSpacing(self: *@This()) core.HResult!bool {
         var this: ?*ITextDocument2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIgnoreTrailingCharacterSpacing();
     }
     pub fn putIgnoreTrailingCharacterSpacing(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITextDocument2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIgnoreTrailingCharacterSpacing(value);
     }
     pub fn ClearUndoRedoHistory(self: *@This()) core.HResult!void {
         var this: ?*ITextDocument3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ClearUndoRedoHistory();
     }
     pub fn SetMath(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ITextDocument4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetMath(value);
     }
     pub fn GetMath(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ITextDocument4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMath(value);
     }
     pub fn SetMathMode(self: *@This(), mode: RichEditMathMode) core.HResult!void {
         var this: ?*ITextDocument4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextDocument4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetMathMode(mode);
@@ -2014,12 +2022,14 @@ pub const RichEditTextRange = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getContentLinkInfo(self: *@This()) core.HResult!*ContentLinkInfo {
         var this: ?*IRichEditTextRange = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditTextRange.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentLinkInfo();
     }
     pub fn putContentLinkInfo(self: *@This(), value: *ContentLinkInfo) core.HResult!void {
         var this: ?*IRichEditTextRange = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRichEditTextRange.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContentLinkInfo(value);

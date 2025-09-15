@@ -769,6 +769,7 @@ pub const PenDevice = extern struct {
     }
     pub fn getSimpleHapticsController(self: *@This()) core.HResult!*SimpleHapticsController {
         var this: ?*IPenDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPenDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimpleHapticsController();
@@ -899,6 +900,7 @@ pub const PointerDevice = extern struct {
     }
     pub fn getMaxPointersWithZDistance(self: *@This()) core.HResult!u32 {
         var this: ?*IPointerDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointerDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxPointersWithZDistance();

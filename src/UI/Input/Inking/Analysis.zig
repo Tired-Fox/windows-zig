@@ -426,42 +426,49 @@ pub const InkAnalysisInkBullet = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStrokeIds();
@@ -488,42 +495,49 @@ pub const InkAnalysisInkDrawing = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStrokeIds();
@@ -546,42 +560,49 @@ pub const InkAnalysisInkWord = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStrokeIds();
@@ -604,42 +625,49 @@ pub const InkAnalysisLine = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStrokeIds();
@@ -658,42 +686,49 @@ pub const InkAnalysisListItem = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStrokeIds();
@@ -759,42 +794,49 @@ pub const InkAnalysisParagraph = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStrokeIds();
@@ -829,42 +871,49 @@ pub const InkAnalysisRoot = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStrokeIds();
@@ -892,42 +941,49 @@ pub const InkAnalysisWritingRegion = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn getKind(self: *@This()) core.HResult!InkAnalysisNodeKind {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBoundingRect();
     }
     pub fn getRotatedBoundingRect(self: *@This()) core.HResult!*IVectorView(Point) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotatedBoundingRect();
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(IInkAnalysisNode) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChildren();
     }
     pub fn getParent(self: *@This()) core.HResult!*IInkAnalysisNode {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getParent();
     }
     pub fn GetStrokeIds(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IInkAnalysisNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkAnalysisNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStrokeIds();

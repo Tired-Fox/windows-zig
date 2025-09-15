@@ -76,6 +76,7 @@ pub const XsltProcessor = extern struct {
     }
     pub fn TransformToDocument(self: *@This(), inputNode: *IXmlNode) core.HResult!*XmlDocument {
         var this: ?*IXsltProcessor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXsltProcessor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransformToDocument(inputNode);

@@ -27,12 +27,14 @@ pub const AppCapability = extern struct {
     }
     pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppCapability2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCapability2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayMessage();
     }
     pub fn putDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IAppCapability2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppCapability2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayMessage(value);

@@ -121,6 +121,7 @@ pub const HdmiDisplayMode = extern struct {
     }
     pub fn getIsDolbyVisionLowLatencySupported(self: *@This()) core.HResult!bool {
         var this: ?*IHdmiDisplayMode2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHdmiDisplayMode2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDolbyVisionLowLatencySupported();

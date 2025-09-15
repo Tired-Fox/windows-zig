@@ -1948,36 +1948,42 @@ pub const PhoneLine = extern struct {
     }
     pub fn EnableTextReply(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IPhoneLine2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableTextReply(value);
     }
     pub fn getTransportDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPhoneLine2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransportDeviceId();
     }
     pub fn DialWithResult(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!*PhoneLineDialResult {
         var this: ?*IPhoneLine3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DialWithResult(number, displayName);
     }
     pub fn DialWithResultAsync(self: *@This(), number: ?HSTRING, displayName: ?HSTRING) core.HResult!*IAsyncOperation(PhoneLineDialResult) {
         var this: ?*IPhoneLine3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DialWithResultAsync(number, displayName);
     }
     pub fn GetAllActivePhoneCalls(self: *@This()) core.HResult!*PhoneCallsResult {
         var this: ?*IPhoneLine3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllActivePhoneCalls();
     }
     pub fn GetAllActivePhoneCallsAsync(self: *@This()) core.HResult!*IAsyncOperation(PhoneCallsResult) {
         var this: ?*IPhoneLine3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLine3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllActivePhoneCallsAsync();
@@ -2118,36 +2124,42 @@ pub const PhoneLineTransportDevice = extern struct {
     }
     pub fn getAudioRoutingStatus(self: *@This()) core.HResult!TransportDeviceAudioRoutingStatus {
         var this: ?*IPhoneLineTransportDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAudioRoutingStatus();
     }
     pub fn addAudioRoutingStatusChanged(self: *@This(), handler: *TypedEventHandler(PhoneLineTransportDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IPhoneLineTransportDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addAudioRoutingStatusChanged(handler);
     }
     pub fn removeAudioRoutingStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPhoneLineTransportDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAudioRoutingStatusChanged(token);
     }
     pub fn getInBandRingingEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IPhoneLineTransportDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInBandRingingEnabled();
     }
     pub fn addInBandRingingEnabledChanged(self: *@This(), handler: *TypedEventHandler(PhoneLineTransportDevice,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IPhoneLineTransportDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addInBandRingingEnabledChanged(handler);
     }
     pub fn removeInBandRingingEnabledChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPhoneLineTransportDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhoneLineTransportDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeInBandRingingEnabledChanged(token);
@@ -2444,6 +2456,7 @@ pub const CallAnswerEventArgs = extern struct {
     }
     pub fn getSourceDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICallAnswerEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICallAnswerEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSourceDeviceId();
@@ -3791,48 +3804,56 @@ pub const VoipCallCoordinator = extern struct {
     }
     pub fn SetupNewAcceptedCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetupNewAcceptedCall(context, contactName, contactNumber, serviceName, media);
     }
     pub fn RequestNewAppInitiatedCall(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, serviceName: ?HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestNewAppInitiatedCall(context, contactName, contactNumber, serviceName, media);
     }
     pub fn RequestNewIncomingCallWithContactRemoteId(self: *@This(), context: ?HSTRING, contactName: ?HSTRING, contactNumber: ?HSTRING, contactImage: *Uri, serviceName: ?HSTRING, brandingImage: *Uri, callDetails: ?HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: ?HSTRING) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestNewIncomingCallWithContactRemoteId(context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout, contactRemoteId);
     }
     pub fn ReserveCallResourcesAsync(self: *@This()) core.HResult!*IAsyncOperation(VoipPhoneCallResourceReservationStatus) {
         var this: ?*IVoipCallCoordinator4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReserveCallResourcesAsync();
     }
     pub fn RequestNewIncomingCallWithOptions(self: *@This(), callOptions: *IncomingVoipPhoneCallOptions) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestNewIncomingCallWithOptions(callOptions);
     }
     pub fn RequestNewOutgoingCallWithOptions(self: *@This(), callOptions: *OutgoingVoipPhoneCallOptions) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestNewOutgoingCallWithOptions(callOptions);
     }
     pub fn SetupNewAcceptedCallWithOptions(self: *@This(), callOptions: *AcceptedVoipPhoneCallOptions) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetupNewAcceptedCallWithOptions(callOptions);
     }
     pub fn RequestNewAppInitiatedCallWithOptions(self: *@This(), callOptions: *AppInitiatedVoipPhoneCallOptions) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestNewAppInitiatedCallWithOptions(callOptions);
@@ -3944,48 +3965,56 @@ pub const VoipPhoneCall = extern struct {
     }
     pub fn TryShowAppUI(self: *@This()) core.HResult!void {
         var this: ?*IVoipPhoneCall2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryShowAppUI();
     }
     pub fn NotifyCallAccepted(self: *@This(), media: VoipPhoneCallMedia) core.HResult!void {
         var this: ?*IVoipPhoneCall3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NotifyCallAccepted(media);
     }
     pub fn getIsUsingAssociatedDevicesList(self: *@This()) core.HResult!bool {
         var this: ?*IVoipPhoneCall4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsUsingAssociatedDevicesList();
     }
     pub fn NotifyCallActiveWithAssociatedDeviceIds(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NotifyCallActiveWithAssociatedDeviceIds(associatedDeviceIds);
     }
     pub fn AddAssociatedCallControlDevice(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddAssociatedCallControlDevice(deviceId);
     }
     pub fn RemoveAssociatedCallControlDevice(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAssociatedCallControlDevice(deviceId);
     }
     pub fn SetAssociatedCallControlDevices(self: *@This(), associatedDeviceIds: *IIterable(?HSTRING)) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAssociatedCallControlDevices(associatedDeviceIds);
     }
     pub fn GetAssociatedCallControlDevices(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*IVoipPhoneCall4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAssociatedCallControlDevices();

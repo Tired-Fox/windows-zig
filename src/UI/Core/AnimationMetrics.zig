@@ -313,30 +313,35 @@ pub const OpacityAnimation = extern struct {
     }
     pub fn getType(self: *@This()) core.HResult!PropertyAnimationType {
         var this: ?*IPropertyAnimation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn getDelay(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IPropertyAnimation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDelay();
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IPropertyAnimation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
     pub fn getControl1(self: *@This()) core.HResult!Point {
         var this: ?*IPropertyAnimation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getControl1();
     }
     pub fn getControl2(self: *@This()) core.HResult!Point {
         var this: ?*IPropertyAnimation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getControl2();
@@ -404,30 +409,35 @@ pub const ScaleAnimation = extern struct {
     }
     pub fn getType(self: *@This()) core.HResult!PropertyAnimationType {
         var this: ?*IPropertyAnimation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn getDelay(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IPropertyAnimation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDelay();
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IPropertyAnimation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
     pub fn getControl1(self: *@This()) core.HResult!Point {
         var this: ?*IPropertyAnimation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getControl1();
     }
     pub fn getControl2(self: *@This()) core.HResult!Point {
         var this: ?*IPropertyAnimation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPropertyAnimation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getControl2();

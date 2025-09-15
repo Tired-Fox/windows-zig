@@ -707,6 +707,7 @@ pub const MarkupExtension = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn ProvideValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IMarkupExtensionOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMarkupExtensionOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ProvideValue();

@@ -515,78 +515,91 @@ pub const UserDataAccount = extern struct {
     }
     pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUserDataAccount2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEnterpriseId();
     }
     pub fn getIsProtectedUnderLock(self: *@This()) core.HResult!bool {
         var this: ?*IUserDataAccount2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsProtectedUnderLock();
     }
     pub fn getExplictReadAccessPackageFamilyNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IUserDataAccount3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExplictReadAccessPackageFamilyNames();
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUserDataAccount3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IUserDataAccount3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDisplayName(value);
     }
     pub fn getCanShowCreateContactGroup(self: *@This()) core.HResult!bool {
         var this: ?*IUserDataAccount4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanShowCreateContactGroup();
     }
     pub fn putCanShowCreateContactGroup(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IUserDataAccount4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanShowCreateContactGroup(value);
     }
     pub fn getProviderProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IUserDataAccount4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProviderProperties();
     }
     pub fn FindUserDataTaskListsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(UserDataTaskList)) {
         var this: ?*IUserDataAccount4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindUserDataTaskListsAsync();
     }
     pub fn FindContactGroupsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ContactGroup)) {
         var this: ?*IUserDataAccount4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindContactGroupsAsync();
     }
     pub fn TryShowCreateContactGroupAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IUserDataAccount4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryShowCreateContactGroupAsync();
     }
     pub fn putIsProtectedUnderLock(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IUserDataAccount4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsProtectedUnderLock(value);
     }
     pub fn putIcon(self: *@This(), value: *IRandomAccessStreamReference) core.HResult!void {
         var this: ?*IUserDataAccount4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccount4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIcon(value);
@@ -669,24 +682,28 @@ pub const UserDataAccountStore = extern struct {
     }
     pub fn CreateAccountAsyncWithPackageRelativeAppId(self: *@This(), userDisplayName: ?HSTRING, packageRelativeAppId: ?HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var this: ?*IUserDataAccountStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccountStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateAccountAsyncWithPackageRelativeAppId(userDisplayName, packageRelativeAppId);
     }
     pub fn addStoreChanged(self: *@This(), handler: *TypedEventHandler(UserDataAccountStore,UserDataAccountStoreChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IUserDataAccountStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccountStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addStoreChanged(handler);
     }
     pub fn removeStoreChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IUserDataAccountStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccountStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeStoreChanged(token);
     }
     pub fn CreateAccountAsyncWithPackageRelativeAppIdAndEnterpriseId(self: *@This(), userDisplayName: ?HSTRING, packageRelativeAppId: ?HSTRING, enterpriseId: ?HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var this: ?*IUserDataAccountStore3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccountStore3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateAccountAsyncWithPackageRelativeAppIdAndEnterpriseId(userDisplayName, packageRelativeAppId, enterpriseId);

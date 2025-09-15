@@ -482,18 +482,21 @@ pub const AcceleratorKeyEventArgs = extern struct {
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandled();
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAcceleratorKeyEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAcceleratorKeyEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
@@ -521,12 +524,14 @@ pub const AutomationProviderRequestedEventArgs = extern struct {
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandled();
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);
@@ -565,12 +570,14 @@ pub const CharacterReceivedEventArgs = extern struct {
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandled();
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);
@@ -656,228 +663,266 @@ pub const CoreComponentInputSource = extern struct {
     }
     pub fn ReleasePointerCapture(self: *@This()) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReleasePointerCapture();
     }
     pub fn SetPointerCapture(self: *@This()) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPointerCapture();
     }
     pub fn getHasCapture(self: *@This()) core.HResult!bool {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHasCapture();
     }
     pub fn getPointerPosition(self: *@This()) core.HResult!Point {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPointerPosition();
     }
     pub fn getPointerCursor(self: *@This()) core.HResult!*CoreCursor {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPointerCursor();
     }
     pub fn putPointerCursor(self: *@This(), value: *CoreCursor) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPointerCursor(value);
     }
     pub fn addPointerCaptureLost(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerCaptureLost(handler);
     }
     pub fn removePointerCaptureLost(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerCaptureLost(cookie);
     }
     pub fn addPointerEntered(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerEntered(handler);
     }
     pub fn removePointerEntered(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerEntered(cookie);
     }
     pub fn addPointerExited(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerExited(handler);
     }
     pub fn removePointerExited(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerExited(cookie);
     }
     pub fn addPointerMoved(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerMoved(handler);
     }
     pub fn removePointerMoved(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerMoved(cookie);
     }
     pub fn addPointerPressed(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerPressed(handler);
     }
     pub fn removePointerPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerPressed(cookie);
     }
     pub fn addPointerReleased(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerReleased(handler);
     }
     pub fn removePointerReleased(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerReleased(cookie);
     }
     pub fn addPointerWheelChanged(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerWheelChanged(handler);
     }
     pub fn removePointerWheelChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerWheelChanged(cookie);
     }
     pub fn GetCurrentKeyState(self: *@This(), virtualKey: VirtualKey) core.HResult!CoreVirtualKeyStates {
         var this: ?*ICoreKeyboardInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreKeyboardInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCurrentKeyState(virtualKey);
     }
     pub fn addCharacterReceived(self: *@This(), handler: *TypedEventHandler(IInspectable,CharacterReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreKeyboardInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreKeyboardInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCharacterReceived(handler);
     }
     pub fn removeCharacterReceived(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreKeyboardInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreKeyboardInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCharacterReceived(cookie);
     }
     pub fn addKeyDown(self: *@This(), handler: *TypedEventHandler(IInspectable,KeyEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreKeyboardInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreKeyboardInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addKeyDown(handler);
     }
     pub fn removeKeyDown(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreKeyboardInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreKeyboardInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeKeyDown(cookie);
     }
     pub fn addKeyUp(self: *@This(), handler: *TypedEventHandler(IInspectable,KeyEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreKeyboardInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreKeyboardInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addKeyUp(handler);
     }
     pub fn removeKeyUp(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreKeyboardInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreKeyboardInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeKeyUp(cookie);
     }
     pub fn getHasFocus(self: *@This()) core.HResult!bool {
         var this: ?*ICoreComponentFocusable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreComponentFocusable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHasFocus();
     }
     pub fn addGotFocus(self: *@This(), handler: *TypedEventHandler(IInspectable,CoreWindowEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreComponentFocusable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreComponentFocusable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addGotFocus(handler);
     }
     pub fn removeGotFocus(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreComponentFocusable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreComponentFocusable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeGotFocus(cookie);
     }
     pub fn addLostFocus(self: *@This(), handler: *TypedEventHandler(IInspectable,CoreWindowEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreComponentFocusable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreComponentFocusable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addLostFocus(handler);
     }
     pub fn removeLostFocus(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreComponentFocusable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreComponentFocusable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeLostFocus(cookie);
     }
     pub fn addTouchHitTesting(self: *@This(), handler: *TypedEventHandler(IInspectable,TouchHitTestingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreTouchHitTesting = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreTouchHitTesting.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTouchHitTesting(handler);
     }
     pub fn removeTouchHitTesting(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreTouchHitTesting = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreTouchHitTesting.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTouchHitTesting(cookie);
     }
     pub fn addClosestInteractiveBoundsRequested(self: *@This(), handler: *TypedEventHandler(CoreComponentInputSource,ClosestInteractiveBoundsRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreClosestInteractiveBoundsRequested = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreClosestInteractiveBoundsRequested.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addClosestInteractiveBoundsRequested(handler);
     }
     pub fn removeClosestInteractiveBoundsRequested(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreClosestInteractiveBoundsRequested = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreClosestInteractiveBoundsRequested.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosestInteractiveBoundsRequested(cookie);
     }
     pub fn GetCurrentKeyEventDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICoreKeyboardInputSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreKeyboardInputSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCurrentKeyEventDeviceId();
     }
     pub fn getDispatcherQueue(self: *@This()) core.HResult!*DispatcherQueue {
         var this: ?*ICorePointerInputSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDispatcherQueue();
@@ -950,54 +995,63 @@ pub const CoreDispatcher = extern struct {
     }
     pub fn addAcceleratorKeyActivated(self: *@This(), handler: *TypedEventHandler(CoreDispatcher,AcceleratorKeyEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreAcceleratorKeys = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreAcceleratorKeys.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addAcceleratorKeyActivated(handler);
     }
     pub fn removeAcceleratorKeyActivated(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreAcceleratorKeys = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreAcceleratorKeys.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAcceleratorKeyActivated(cookie);
     }
     pub fn getCurrentPriority(self: *@This()) core.HResult!CoreDispatcherPriority {
         var this: ?*ICoreDispatcherWithTaskPriority = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDispatcherWithTaskPriority.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCurrentPriority();
     }
     pub fn putCurrentPriority(self: *@This(), value: CoreDispatcherPriority) core.HResult!void {
         var this: ?*ICoreDispatcherWithTaskPriority = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDispatcherWithTaskPriority.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCurrentPriority(value);
     }
     pub fn ShouldYield(self: *@This()) core.HResult!bool {
         var this: ?*ICoreDispatcherWithTaskPriority = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDispatcherWithTaskPriority.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShouldYield();
     }
     pub fn ShouldYieldWithPriority(self: *@This(), priority: CoreDispatcherPriority) core.HResult!bool {
         var this: ?*ICoreDispatcherWithTaskPriority = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDispatcherWithTaskPriority.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShouldYieldWithPriority(priority);
     }
     pub fn StopProcessEvents(self: *@This()) core.HResult!void {
         var this: ?*ICoreDispatcherWithTaskPriority = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDispatcherWithTaskPriority.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopProcessEvents();
     }
     pub fn TryRunAsync(self: *@This(), priority: CoreDispatcherPriority, agileCallback: *DispatchedHandler) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ICoreDispatcher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDispatcher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryRunAsync(priority, agileCallback);
     }
     pub fn TryRunIdleAsync(self: *@This(), agileCallback: *IdleDispatchedHandler) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ICoreDispatcher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDispatcher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryRunIdleAsync(agileCallback);
@@ -1046,162 +1100,189 @@ pub const CoreIndependentInputSource = extern struct {
     }
     pub fn ReleasePointerCapture(self: *@This()) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReleasePointerCapture();
     }
     pub fn SetPointerCapture(self: *@This()) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPointerCapture();
     }
     pub fn getHasCapture(self: *@This()) core.HResult!bool {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHasCapture();
     }
     pub fn getPointerPosition(self: *@This()) core.HResult!Point {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPointerPosition();
     }
     pub fn getPointerCursor(self: *@This()) core.HResult!*CoreCursor {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPointerCursor();
     }
     pub fn putPointerCursor(self: *@This(), value: *CoreCursor) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPointerCursor(value);
     }
     pub fn addPointerCaptureLost(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerCaptureLost(handler);
     }
     pub fn removePointerCaptureLost(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerCaptureLost(cookie);
     }
     pub fn addPointerEntered(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerEntered(handler);
     }
     pub fn removePointerEntered(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerEntered(cookie);
     }
     pub fn addPointerExited(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerExited(handler);
     }
     pub fn removePointerExited(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerExited(cookie);
     }
     pub fn addPointerMoved(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerMoved(handler);
     }
     pub fn removePointerMoved(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerMoved(cookie);
     }
     pub fn addPointerPressed(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerPressed(handler);
     }
     pub fn removePointerPressed(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerPressed(cookie);
     }
     pub fn addPointerReleased(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerReleased(handler);
     }
     pub fn removePointerReleased(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerReleased(cookie);
     }
     pub fn addPointerWheelChanged(self: *@This(), handler: *TypedEventHandler(IInspectable,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerWheelChanged(handler);
     }
     pub fn removePointerWheelChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerInputSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerWheelChanged(cookie);
     }
     pub fn getDispatcherQueue(self: *@This()) core.HResult!*DispatcherQueue {
         var this: ?*ICorePointerInputSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerInputSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDispatcherQueue();
     }
     pub fn addPointerRoutedAway(self: *@This(), handler: *TypedEventHandler(ICorePointerRedirector,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerRedirector = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerRedirector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerRoutedAway(handler);
     }
     pub fn removePointerRoutedAway(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerRedirector = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerRedirector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerRoutedAway(cookie);
     }
     pub fn addPointerRoutedTo(self: *@This(), handler: *TypedEventHandler(ICorePointerRedirector,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerRedirector = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerRedirector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerRoutedTo(handler);
     }
     pub fn removePointerRoutedTo(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerRedirector = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerRedirector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerRoutedTo(cookie);
     }
     pub fn addPointerRoutedReleased(self: *@This(), handler: *TypedEventHandler(ICorePointerRedirector,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerRedirector = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerRedirector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerRoutedReleased(handler);
     }
     pub fn removePointerRoutedReleased(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerRedirector = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerRedirector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerRoutedReleased(cookie);
@@ -1244,6 +1325,7 @@ pub const CoreIndependentInputSourceController = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1511,102 +1593,119 @@ pub const CoreWindow = extern struct {
     }
     pub fn putPointerPosition(self: *@This(), value: Point) core.HResult!void {
         var this: ?*ICoreWindow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPointerPosition(value);
     }
     pub fn addPointerRoutedAway(self: *@This(), handler: *TypedEventHandler(ICorePointerRedirector,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerRedirector = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerRedirector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerRoutedAway(handler);
     }
     pub fn removePointerRoutedAway(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerRedirector = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerRedirector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerRoutedAway(cookie);
     }
     pub fn addPointerRoutedTo(self: *@This(), handler: *TypedEventHandler(ICorePointerRedirector,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerRedirector = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerRedirector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerRoutedTo(handler);
     }
     pub fn removePointerRoutedTo(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerRedirector = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerRedirector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerRoutedTo(cookie);
     }
     pub fn addPointerRoutedReleased(self: *@This(), handler: *TypedEventHandler(ICorePointerRedirector,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICorePointerRedirector = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerRedirector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPointerRoutedReleased(handler);
     }
     pub fn removePointerRoutedReleased(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICorePointerRedirector = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICorePointerRedirector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePointerRoutedReleased(cookie);
     }
     pub fn addClosestInteractiveBoundsRequested(self: *@This(), handler: *TypedEventHandler(CoreWindow,ClosestInteractiveBoundsRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreWindow3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindow3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addClosestInteractiveBoundsRequested(handler);
     }
     pub fn removeClosestInteractiveBoundsRequested(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreWindow3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindow3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosestInteractiveBoundsRequested(cookie);
     }
     pub fn GetCurrentKeyEventDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICoreWindow3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindow3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCurrentKeyEventDeviceId();
     }
     pub fn addResizeStarted(self: *@This(), handler: *TypedEventHandler(CoreWindow,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreWindow4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindow4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addResizeStarted(handler);
     }
     pub fn removeResizeStarted(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreWindow4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindow4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeResizeStarted(cookie);
     }
     pub fn addResizeCompleted(self: *@This(), handler: *TypedEventHandler(CoreWindow,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreWindow4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindow4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addResizeCompleted(handler);
     }
     pub fn removeResizeCompleted(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreWindow4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindow4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeResizeCompleted(cookie);
     }
     pub fn getDispatcherQueue(self: *@This()) core.HResult!*DispatcherQueue {
         var this: ?*ICoreWindow5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindow5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDispatcherQueue();
     }
     pub fn getActivationMode(self: *@This()) core.HResult!CoreWindowActivationMode {
         var this: ?*ICoreWindow5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindow5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActivationMode();
     }
     pub fn getUIContext(self: *@This()) core.HResult!*UIContext {
         var this: ?*ICoreWindowWithContext = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowWithContext.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUIContext();
@@ -1664,12 +1763,14 @@ pub const CoreWindowResizeManager = extern struct {
     }
     pub fn putShouldWaitForLayoutCompletion(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICoreWindowResizeManagerLayoutCapability = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowResizeManagerLayoutCapability.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putShouldWaitForLayoutCompletion(value);
     }
     pub fn getShouldWaitForLayoutCompletion(self: *@This()) core.HResult!bool {
         var this: ?*ICoreWindowResizeManagerLayoutCapability = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowResizeManagerLayoutCapability.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShouldWaitForLayoutCompletion();
@@ -3769,12 +3870,14 @@ pub const InputEnabledEventArgs = extern struct {
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandled();
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);
@@ -3797,18 +3900,21 @@ pub const KeyEventArgs = extern struct {
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandled();
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IKeyEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
@@ -3835,12 +3941,14 @@ pub const PointerEventArgs = extern struct {
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandled();
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);
@@ -3863,12 +3971,14 @@ pub const SystemNavigationManager = extern struct {
     }
     pub fn getAppViewBackButtonVisibility(self: *@This()) core.HResult!AppViewBackButtonVisibility {
         var this: ?*ISystemNavigationManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISystemNavigationManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppViewBackButtonVisibility();
     }
     pub fn putAppViewBackButtonVisibility(self: *@This(), value: AppViewBackButtonVisibility) core.HResult!void {
         var this: ?*ISystemNavigationManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISystemNavigationManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAppViewBackButtonVisibility(value);
@@ -3915,12 +4025,14 @@ pub const TouchHitTestingEventArgs = extern struct {
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandled();
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);
@@ -3939,12 +4051,14 @@ pub const VisibilityChangedEventArgs = extern struct {
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandled();
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);
@@ -3963,12 +4077,14 @@ pub const WindowActivatedEventArgs = extern struct {
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandled();
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);
@@ -3987,12 +4103,14 @@ pub const WindowSizeChangedEventArgs = extern struct {
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandled();
     }
     pub fn putHandled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICoreWindowEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreWindowEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHandled(value);

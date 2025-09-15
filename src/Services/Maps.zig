@@ -1443,6 +1443,7 @@ pub const MapAddress = extern struct {
     }
     pub fn getFormattedAddress(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMapAddress2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapAddress2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFormattedAddress();
@@ -1582,30 +1583,35 @@ pub const MapRoute = extern struct {
     }
     pub fn getViolatedRestrictions(self: *@This()) core.HResult!MapRouteRestrictions {
         var this: ?*IMapRoute2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRoute2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getViolatedRestrictions();
     }
     pub fn getHasBlockedRoads(self: *@This()) core.HResult!bool {
         var this: ?*IMapRoute2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRoute2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHasBlockedRoads();
     }
     pub fn getDurationWithoutTraffic(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMapRoute3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRoute3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDurationWithoutTraffic();
     }
     pub fn getTrafficCongestion(self: *@This()) core.HResult!TrafficCongestion {
         var this: ?*IMapRoute3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRoute3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTrafficCongestion();
     }
     pub fn getIsScenic(self: *@This()) core.HResult!bool {
         var this: ?*IMapRoute4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRoute4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsScenic();
@@ -1652,12 +1658,14 @@ pub const MapRouteDrivingOptions = extern struct {
     }
     pub fn getDepartureTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var this: ?*IMapRouteDrivingOptions2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRouteDrivingOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDepartureTime();
     }
     pub fn putDepartureTime(self: *@This(), value: *IReference(DateTime)) core.HResult!void {
         var this: ?*IMapRouteDrivingOptions2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRouteDrivingOptions2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDepartureTime(value);
@@ -1751,6 +1759,7 @@ pub const MapRouteFinderResult = extern struct {
     }
     pub fn getAlternateRoutes(self: *@This()) core.HResult!*IVectorView(MapRoute) {
         var this: ?*IMapRouteFinderResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRouteFinderResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAlternateRoutes();
@@ -1797,12 +1806,14 @@ pub const MapRouteLeg = extern struct {
     }
     pub fn getDurationWithoutTraffic(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMapRouteLeg2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRouteLeg2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDurationWithoutTraffic();
     }
     pub fn getTrafficCongestion(self: *@This()) core.HResult!TrafficCongestion {
         var this: ?*IMapRouteLeg2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRouteLeg2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTrafficCongestion();
@@ -1841,24 +1852,28 @@ pub const MapRouteManeuver = extern struct {
     }
     pub fn getStartHeading(self: *@This()) core.HResult!f64 {
         var this: ?*IMapRouteManeuver2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRouteManeuver2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStartHeading();
     }
     pub fn getEndHeading(self: *@This()) core.HResult!f64 {
         var this: ?*IMapRouteManeuver2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRouteManeuver2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEndHeading();
     }
     pub fn getStreetName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMapRouteManeuver2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRouteManeuver2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStreetName();
     }
     pub fn getWarnings(self: *@This()) core.HResult!*IVectorView(ManeuverWarning) {
         var this: ?*IMapRouteManeuver3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapRouteManeuver3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWarnings();

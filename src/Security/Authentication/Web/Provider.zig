@@ -983,6 +983,7 @@ pub const WebAccountProviderAddAccountOperation = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
@@ -1001,18 +1002,21 @@ pub const WebAccountProviderDeleteAccountOperation = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportCompleted();
     }
     pub fn ReportError(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportError(value);
@@ -1043,30 +1047,35 @@ pub const WebAccountProviderGetTokenSilentOperation = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn ReportUserInteractionRequired(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderSilentReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderSilentReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportUserInteractionRequired();
     }
     pub fn ReportUserInteractionRequiredWithValue(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderSilentReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderSilentReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportUserInteractionRequiredWithValue(value);
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportCompleted();
     }
     pub fn ReportError(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportError(value);
@@ -1089,6 +1098,7 @@ pub const WebAccountProviderManageAccountOperation = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
@@ -1128,24 +1138,28 @@ pub const WebAccountProviderRequestTokenOperation = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn ReportUserCanceled(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderUIReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderUIReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportUserCanceled();
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportCompleted();
     }
     pub fn ReportError(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportError(value);
@@ -1180,18 +1194,21 @@ pub const WebAccountProviderRetrieveCookiesOperation = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportCompleted();
     }
     pub fn ReportError(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportError(value);
@@ -1218,18 +1235,21 @@ pub const WebAccountProviderSignOutAccountOperation = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!WebAccountProviderOperationKind {
         var this: ?*IWebAccountProviderOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportCompleted();
     }
     pub fn ReportError(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderBaseReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportError(value);
@@ -1248,6 +1268,7 @@ pub const WebAccountProviderTriggerDetails = extern struct {
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IWebAccountProviderTokenObjects2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderTokenObjects2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
@@ -1290,24 +1311,28 @@ pub const WebProviderTokenRequest = extern struct {
     }
     pub fn GetApplicationTokenBindingKeyIdAsync(self: *@This(), keyType: TokenBindingKeyType, target: *Uri) core.HResult!*IAsyncOperation(IBuffer) {
         var this: ?*IWebProviderTokenRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebProviderTokenRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetApplicationTokenBindingKeyIdAsync(keyType, target);
     }
     pub fn getApplicationPackageFamilyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebProviderTokenRequest3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebProviderTokenRequest3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getApplicationPackageFamilyName();
     }
     pub fn getApplicationProcessName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IWebProviderTokenRequest3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebProviderTokenRequest3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getApplicationProcessName();
     }
     pub fn CheckApplicationForCapabilityAsync(self: *@This(), capabilityName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IWebProviderTokenRequest3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebProviderTokenRequest3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CheckApplicationForCapabilityAsync(capabilityName);

@@ -1132,6 +1132,7 @@ pub const SpatialAnchor = extern struct {
     }
     pub fn getRemovedByUser(self: *@This()) core.HResult!bool {
         var this: ?*ISpatialAnchor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialAnchor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemovedByUser();
@@ -1536,12 +1537,14 @@ pub const SpatialLocation = extern struct {
     }
     pub fn getAbsoluteAngularVelocityAxisAngle(self: *@This()) core.HResult!Vector3 {
         var this: ?*ISpatialLocation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialLocation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAbsoluteAngularVelocityAxisAngle();
     }
     pub fn getAbsoluteAngularAccelerationAxisAngle(self: *@This()) core.HResult!Vector3 {
         var this: ?*ISpatialLocation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialLocation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAbsoluteAngularAccelerationAxisAngle();

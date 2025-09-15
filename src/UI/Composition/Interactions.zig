@@ -51,6 +51,7 @@ pub const CompositionInteractionSourceCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(ICompositionInteractionSource) {
         var this: ?*IIterable(ICompositionInteractionSource) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(ICompositionInteractionSource).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1783,42 +1784,49 @@ pub const InteractionTracker = extern struct {
     }
     pub fn ConfigureCenterPointXInertiaModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IInteractionTracker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConfigureCenterPointXInertiaModifiers(conditionalValues);
     }
     pub fn ConfigureCenterPointYInertiaModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IInteractionTracker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConfigureCenterPointYInertiaModifiers(conditionalValues);
     }
     pub fn ConfigureVector2PositionInertiaModifiers(self: *@This(), modifiers: *IIterable(InteractionTrackerVector2InertiaModifier)) core.HResult!void {
         var this: ?*IInteractionTracker3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConfigureVector2PositionInertiaModifiers(modifiers);
     }
     pub fn TryUpdatePositionWithOption(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption) core.HResult!i32 {
         var this: ?*IInteractionTracker4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryUpdatePositionWithOption(value, option);
     }
     pub fn TryUpdatePositionByWithOption(self: *@This(), amount: Vector3, option: InteractionTrackerClampingOption) core.HResult!i32 {
         var this: ?*IInteractionTracker4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryUpdatePositionByWithOption(amount, option);
     }
     pub fn getIsInertiaFromImpulse(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTracker4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsInertiaFromImpulse();
     }
     pub fn TryUpdatePositionWithOptionAndPosUpdateOption(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption, posUpdateOption: InteractionTrackerPositionUpdateOption) core.HResult!i32 {
         var this: ?*IInteractionTracker5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryUpdatePositionWithOptionAndPosUpdateOption(value, option, posUpdateOption);
@@ -1862,6 +1870,7 @@ pub const InteractionTrackerCustomAnimationStateEnteredArgs = extern struct {
     }
     pub fn getIsFromBinding(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTrackerCustomAnimationStateEnteredArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerCustomAnimationStateEnteredArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsFromBinding();
@@ -1880,6 +1889,7 @@ pub const InteractionTrackerIdleStateEnteredArgs = extern struct {
     }
     pub fn getIsFromBinding(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTrackerIdleStateEnteredArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerIdleStateEnteredArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsFromBinding();
@@ -2030,12 +2040,14 @@ pub const InteractionTrackerInertiaStateEnteredArgs = extern struct {
     }
     pub fn getIsInertiaFromImpulse(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTrackerInertiaStateEnteredArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerInertiaStateEnteredArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsInertiaFromImpulse();
     }
     pub fn getIsFromBinding(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTrackerInertiaStateEnteredArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerInertiaStateEnteredArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsFromBinding();
@@ -2054,6 +2066,7 @@ pub const InteractionTrackerInteractingStateEnteredArgs = extern struct {
     }
     pub fn getIsFromBinding(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTrackerInteractingStateEnteredArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTrackerInteractingStateEnteredArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsFromBinding();
@@ -2228,72 +2241,84 @@ pub const VisualInteractionSource = extern struct {
     }
     pub fn getDeltaPosition(self: *@This()) core.HResult!Vector3 {
         var this: ?*IVisualInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeltaPosition();
     }
     pub fn getDeltaScale(self: *@This()) core.HResult!f32 {
         var this: ?*IVisualInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeltaScale();
     }
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         var this: ?*IVisualInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPosition();
     }
     pub fn getPositionVelocity(self: *@This()) core.HResult!Vector3 {
         var this: ?*IVisualInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPositionVelocity();
     }
     pub fn getScale(self: *@This()) core.HResult!f32 {
         var this: ?*IVisualInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getScale();
     }
     pub fn getScaleVelocity(self: *@This()) core.HResult!f32 {
         var this: ?*IVisualInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getScaleVelocity();
     }
     pub fn ConfigureCenterPointXModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IVisualInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConfigureCenterPointXModifiers(conditionalValues);
     }
     pub fn ConfigureCenterPointYModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IVisualInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConfigureCenterPointYModifiers(conditionalValues);
     }
     pub fn ConfigureDeltaPositionXModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IVisualInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConfigureDeltaPositionXModifiers(conditionalValues);
     }
     pub fn ConfigureDeltaPositionYModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IVisualInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConfigureDeltaPositionYModifiers(conditionalValues);
     }
     pub fn ConfigureDeltaScaleModifiers(self: *@This(), conditionalValues: *IIterable(CompositionConditionalValue)) core.HResult!void {
         var this: ?*IVisualInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConfigureDeltaScaleModifiers(conditionalValues);
     }
     pub fn getPointerWheelConfig(self: *@This()) core.HResult!*InteractionSourceConfiguration {
         var this: ?*IVisualInteractionSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisualInteractionSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPointerWheelConfig();

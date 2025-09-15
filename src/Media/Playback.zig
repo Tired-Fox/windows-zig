@@ -62,6 +62,7 @@ pub const CurrentMediaPlaybackItemChangedEventArgs = extern struct {
     }
     pub fn getReason(self: *@This()) core.HResult!MediaPlaybackItemChangedReason {
         var this: ?*ICurrentMediaPlaybackItemChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICurrentMediaPlaybackItemChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReason();
@@ -3694,30 +3695,35 @@ pub const MediaPlaybackAudioTrackList = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(AudioTrack) {
         var this: ?*IIterable(AudioTrack) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(AudioTrack).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
     pub fn addSelectedIndexChanged(self: *@This(), handler: *TypedEventHandler(ISingleSelectMediaTrackList,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ISingleSelectMediaTrackList = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISingleSelectMediaTrackList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSelectedIndexChanged(handler);
     }
     pub fn removeSelectedIndexChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ISingleSelectMediaTrackList = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISingleSelectMediaTrackList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSelectedIndexChanged(token);
     }
     pub fn putSelectedIndex(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ISingleSelectMediaTrackList = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISingleSelectMediaTrackList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedIndex(value);
     }
     pub fn getSelectedIndex(self: *@This()) core.HResult!i32 {
         var this: ?*ISingleSelectMediaTrackList = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISingleSelectMediaTrackList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedIndex();
@@ -4160,72 +4166,84 @@ pub const MediaPlaybackItem = extern struct {
     }
     pub fn getBreakSchedule(self: *@This()) core.HResult!*MediaBreakSchedule {
         var this: ?*IMediaPlaybackItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBreakSchedule();
     }
     pub fn getStartTime(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMediaPlaybackItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStartTime();
     }
     pub fn getDurationLimit(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IMediaPlaybackItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDurationLimit();
     }
     pub fn getCanSkip(self: *@This()) core.HResult!bool {
         var this: ?*IMediaPlaybackItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanSkip();
     }
     pub fn putCanSkip(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaPlaybackItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanSkip(value);
     }
     pub fn GetDisplayProperties(self: *@This()) core.HResult!*MediaItemDisplayProperties {
         var this: ?*IMediaPlaybackItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDisplayProperties();
     }
     pub fn ApplyDisplayProperties(self: *@This(), value: *MediaItemDisplayProperties) core.HResult!void {
         var this: ?*IMediaPlaybackItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ApplyDisplayProperties(value);
     }
     pub fn getIsDisabledInPlaybackList(self: *@This()) core.HResult!bool {
         var this: ?*IMediaPlaybackItem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackItem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDisabledInPlaybackList();
     }
     pub fn putIsDisabledInPlaybackList(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaPlaybackItem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackItem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsDisabledInPlaybackList(value);
     }
     pub fn getTotalDownloadProgress(self: *@This()) core.HResult!f64 {
         var this: ?*IMediaPlaybackItem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackItem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTotalDownloadProgress();
     }
     pub fn getAutoLoadedDisplayProperties(self: *@This()) core.HResult!AutoLoadedDisplayPropertyKind {
         var this: ?*IMediaPlaybackItem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackItem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAutoLoadedDisplayProperties();
     }
     pub fn putAutoLoadedDisplayProperties(self: *@This(), value: AutoLoadedDisplayPropertyKind) core.HResult!void {
         var this: ?*IMediaPlaybackItem3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackItem3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAutoLoadedDisplayProperties(value);
@@ -4384,48 +4402,56 @@ pub const MediaPlaybackList = extern struct {
     }
     pub fn getMaxPrefetchTime(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IMediaPlaybackList2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxPrefetchTime();
     }
     pub fn putMaxPrefetchTime(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         var this: ?*IMediaPlaybackList2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxPrefetchTime(value);
     }
     pub fn getStartingItem(self: *@This()) core.HResult!*MediaPlaybackItem {
         var this: ?*IMediaPlaybackList2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStartingItem();
     }
     pub fn putStartingItem(self: *@This(), value: *MediaPlaybackItem) core.HResult!void {
         var this: ?*IMediaPlaybackList2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStartingItem(value);
     }
     pub fn getShuffledItems(self: *@This()) core.HResult!*IVectorView(MediaPlaybackItem) {
         var this: ?*IMediaPlaybackList2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShuffledItems();
     }
     pub fn SetShuffledItems(self: *@This(), value: *IIterable(MediaPlaybackItem)) core.HResult!void {
         var this: ?*IMediaPlaybackList2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetShuffledItems(value);
     }
     pub fn getMaxPlayedItemsToKeepOpen(self: *@This()) core.HResult!*IReference(u32) {
         var this: ?*IMediaPlaybackList3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackList3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxPlayedItemsToKeepOpen();
     }
     pub fn putMaxPlayedItemsToKeepOpen(self: *@This(), value: *IReference(u32)) core.HResult!void {
         var this: ?*IMediaPlaybackList3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackList3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxPlayedItemsToKeepOpen(value);
@@ -4600,108 +4626,126 @@ pub const MediaPlaybackSession = extern struct {
     }
     pub fn addBufferedRangesChanged(self: *@This(), value: *TypedEventHandler(MediaPlaybackSession,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addBufferedRangesChanged(value);
     }
     pub fn removeBufferedRangesChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeBufferedRangesChanged(token);
     }
     pub fn addPlayedRangesChanged(self: *@This(), value: *TypedEventHandler(MediaPlaybackSession,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPlayedRangesChanged(value);
     }
     pub fn removePlayedRangesChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePlayedRangesChanged(token);
     }
     pub fn addSeekableRangesChanged(self: *@This(), value: *TypedEventHandler(MediaPlaybackSession,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSeekableRangesChanged(value);
     }
     pub fn removeSeekableRangesChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSeekableRangesChanged(token);
     }
     pub fn addSupportedPlaybackRatesChanged(self: *@This(), value: *TypedEventHandler(MediaPlaybackSession,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSupportedPlaybackRatesChanged(value);
     }
     pub fn removeSupportedPlaybackRatesChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSupportedPlaybackRatesChanged(token);
     }
     pub fn getSphericalVideoProjection(self: *@This()) core.HResult!*MediaPlaybackSphericalVideoProjection {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSphericalVideoProjection();
     }
     pub fn getIsMirroring(self: *@This()) core.HResult!bool {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsMirroring();
     }
     pub fn putIsMirroring(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsMirroring(value);
     }
     pub fn GetBufferedRanges(self: *@This()) core.HResult!*IVectorView(MediaTimeRange) {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetBufferedRanges();
     }
     pub fn GetPlayedRanges(self: *@This()) core.HResult!*IVectorView(MediaTimeRange) {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPlayedRanges();
     }
     pub fn GetSeekableRanges(self: *@This()) core.HResult!*IVectorView(MediaTimeRange) {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSeekableRanges();
     }
     pub fn IsSupportedPlaybackRateRange(self: *@This(), rate1: f64, rate2: f64) core.HResult!bool {
         var this: ?*IMediaPlaybackSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsSupportedPlaybackRateRange(rate1, rate2);
     }
     pub fn getPlaybackRotation(self: *@This()) core.HResult!MediaRotation {
         var this: ?*IMediaPlaybackSession3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaybackRotation();
     }
     pub fn putPlaybackRotation(self: *@This(), value: MediaRotation) core.HResult!void {
         var this: ?*IMediaPlaybackSession3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPlaybackRotation(value);
     }
     pub fn GetOutputDegradationPolicyState(self: *@This()) core.HResult!*MediaPlaybackSessionOutputDegradationPolicyState {
         var this: ?*IMediaPlaybackSession3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackSession3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetOutputDegradationPolicyState();
@@ -4808,30 +4852,35 @@ pub const MediaPlaybackTimedMetadataTrackList = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(TimedMetadataTrack) {
         var this: ?*IIterable(TimedMetadataTrack) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(TimedMetadataTrack).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
     pub fn addPresentationModeChanged(self: *@This(), handler: *TypedEventHandler(MediaPlaybackTimedMetadataTrackList,TimedMetadataPresentationModeChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaPlaybackTimedMetadataTrackList = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackTimedMetadataTrackList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPresentationModeChanged(handler);
     }
     pub fn removePresentationModeChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaPlaybackTimedMetadataTrackList = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackTimedMetadataTrackList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePresentationModeChanged(token);
     }
     pub fn GetPresentationMode(self: *@This(), index: u32) core.HResult!TimedMetadataTrackPresentationMode {
         var this: ?*IMediaPlaybackTimedMetadataTrackList = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackTimedMetadataTrackList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPresentationMode(index);
     }
     pub fn SetPresentationMode(self: *@This(), index: u32, value: TimedMetadataTrackPresentationMode) core.HResult!void {
         var this: ?*IMediaPlaybackTimedMetadataTrackList = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlaybackTimedMetadataTrackList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPresentationMode(index, value);
@@ -4850,30 +4899,35 @@ pub const MediaPlaybackVideoTrackList = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(VideoTrack) {
         var this: ?*IIterable(VideoTrack) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(VideoTrack).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
     pub fn addSelectedIndexChanged(self: *@This(), handler: *TypedEventHandler(ISingleSelectMediaTrackList,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ISingleSelectMediaTrackList = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISingleSelectMediaTrackList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSelectedIndexChanged(handler);
     }
     pub fn removeSelectedIndexChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ISingleSelectMediaTrackList = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISingleSelectMediaTrackList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSelectedIndexChanged(token);
     }
     pub fn putSelectedIndex(self: *@This(), value: i32) core.HResult!void {
         var this: ?*ISingleSelectMediaTrackList = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISingleSelectMediaTrackList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedIndex(value);
     }
     pub fn getSelectedIndex(self: *@This()) core.HResult!i32 {
         var this: ?*ISingleSelectMediaTrackList = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISingleSelectMediaTrackList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedIndex();
@@ -5056,312 +5110,364 @@ pub const MediaPlayer = extern struct {
     }
     pub fn getProtectionManager(self: *@This()) core.HResult!*MediaProtectionManager {
         var this: ?*IMediaPlayerSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayerSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProtectionManager();
     }
     pub fn putProtectionManager(self: *@This(), value: *MediaProtectionManager) core.HResult!void {
         var this: ?*IMediaPlayerSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayerSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProtectionManager(value);
     }
     pub fn SetFileSource(self: *@This(), file: *IStorageFile) core.HResult!void {
         var this: ?*IMediaPlayerSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayerSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetFileSource(file);
     }
     pub fn SetStreamSource(self: *@This(), stream: *IRandomAccessStream) core.HResult!void {
         var this: ?*IMediaPlayerSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayerSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetStreamSource(stream);
     }
     pub fn SetMediaSource(self: *@This(), source: *IMediaSource) core.HResult!void {
         var this: ?*IMediaPlayerSource = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayerSource.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetMediaSource(source);
     }
     pub fn getSource(self: *@This()) core.HResult!*IMediaPlaybackSource {
         var this: ?*IMediaPlayerSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayerSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSource();
     }
     pub fn putSource(self: *@This(), value: *IMediaPlaybackSource) core.HResult!void {
         var this: ?*IMediaPlayerSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayerSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSource(value);
     }
     pub fn getSystemMediaTransportControls(self: *@This()) core.HResult!*SystemMediaTransportControls {
         var this: ?*IMediaPlayer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSystemMediaTransportControls();
     }
     pub fn getAudioCategory(self: *@This()) core.HResult!MediaPlayerAudioCategory {
         var this: ?*IMediaPlayer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAudioCategory();
     }
     pub fn putAudioCategory(self: *@This(), value: MediaPlayerAudioCategory) core.HResult!void {
         var this: ?*IMediaPlayer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAudioCategory(value);
     }
     pub fn getAudioDeviceType(self: *@This()) core.HResult!MediaPlayerAudioDeviceType {
         var this: ?*IMediaPlayer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAudioDeviceType();
     }
     pub fn putAudioDeviceType(self: *@This(), value: MediaPlayerAudioDeviceType) core.HResult!void {
         var this: ?*IMediaPlayer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAudioDeviceType(value);
     }
     pub fn AddAudioEffect(self: *@This(), activatableClassId: ?HSTRING, effectOptional: bool, configuration: *IPropertySet) core.HResult!void {
         var this: ?*IMediaPlayerEffects = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayerEffects.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddAudioEffect(activatableClassId, effectOptional, configuration);
     }
     pub fn RemoveAllEffects(self: *@This()) core.HResult!void {
         var this: ?*IMediaPlayerEffects = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayerEffects.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAllEffects();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn addIsMutedChanged(self: *@This(), value: *TypedEventHandler(MediaPlayer,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addIsMutedChanged(value);
     }
     pub fn removeIsMutedChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeIsMutedChanged(token);
     }
     pub fn addSourceChanged(self: *@This(), value: *TypedEventHandler(MediaPlayer,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSourceChanged(value);
     }
     pub fn removeSourceChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSourceChanged(token);
     }
     pub fn getAudioBalance(self: *@This()) core.HResult!f64 {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAudioBalance();
     }
     pub fn putAudioBalance(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAudioBalance(value);
     }
     pub fn getRealTimePlayback(self: *@This()) core.HResult!bool {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRealTimePlayback();
     }
     pub fn putRealTimePlayback(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRealTimePlayback(value);
     }
     pub fn getStereoscopicVideoRenderMode(self: *@This()) core.HResult!StereoscopicVideoRenderMode {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStereoscopicVideoRenderMode();
     }
     pub fn putStereoscopicVideoRenderMode(self: *@This(), value: StereoscopicVideoRenderMode) core.HResult!void {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStereoscopicVideoRenderMode(value);
     }
     pub fn getBreakManager(self: *@This()) core.HResult!*MediaBreakManager {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBreakManager();
     }
     pub fn getCommandManager(self: *@This()) core.HResult!*MediaPlaybackCommandManager {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCommandManager();
     }
     pub fn getAudioDevice(self: *@This()) core.HResult!*DeviceInformation {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAudioDevice();
     }
     pub fn putAudioDevice(self: *@This(), value: *DeviceInformation) core.HResult!void {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAudioDevice(value);
     }
     pub fn getTimelineController(self: *@This()) core.HResult!*MediaTimelineController {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimelineController();
     }
     pub fn putTimelineController(self: *@This(), value: *MediaTimelineController) core.HResult!void {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTimelineController(value);
     }
     pub fn getTimelineControllerPositionOffset(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimelineControllerPositionOffset();
     }
     pub fn putTimelineControllerPositionOffset(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTimelineControllerPositionOffset(value);
     }
     pub fn getPlaybackSession(self: *@This()) core.HResult!*MediaPlaybackSession {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaybackSession();
     }
     pub fn StepForwardOneFrame(self: *@This()) core.HResult!void {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StepForwardOneFrame();
     }
     pub fn StepBackwardOneFrame(self: *@This()) core.HResult!void {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StepBackwardOneFrame();
     }
     pub fn GetAsCastingSource(self: *@This()) core.HResult!*CastingSource {
         var this: ?*IMediaPlayer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAsCastingSource();
     }
     pub fn SetSurfaceSize(self: *@This(), size: Size) core.HResult!void {
         var this: ?*IMediaPlayer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetSurfaceSize(size);
     }
     pub fn GetSurface(self: *@This(), compositor: *Compositor) core.HResult!*MediaPlayerSurface {
         var this: ?*IMediaPlayer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSurface(compositor);
     }
     pub fn AddVideoEffect(self: *@This(), activatableClassId: ?HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) core.HResult!void {
         var this: ?*IMediaPlayerEffects2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayerEffects2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddVideoEffect(activatableClassId, effectOptional, effectConfiguration);
     }
     pub fn addVideoFrameAvailable(self: *@This(), value: *TypedEventHandler(MediaPlayer,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaPlayer5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addVideoFrameAvailable(value);
     }
     pub fn removeVideoFrameAvailable(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaPlayer5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeVideoFrameAvailable(token);
     }
     pub fn getIsVideoFrameServerEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IMediaPlayer5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsVideoFrameServerEnabled();
     }
     pub fn putIsVideoFrameServerEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaPlayer5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsVideoFrameServerEnabled(value);
     }
     pub fn CopyFrameToVideoSurface(self: *@This(), destination: *IDirect3DSurface) core.HResult!void {
         var this: ?*IMediaPlayer5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CopyFrameToVideoSurface(destination);
     }
     pub fn CopyFrameToVideoSurfaceWithTargetRectangle(self: *@This(), destination: *IDirect3DSurface, targetRectangle: Rect) core.HResult!void {
         var this: ?*IMediaPlayer5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CopyFrameToVideoSurfaceWithTargetRectangle(destination, targetRectangle);
     }
     pub fn CopyFrameToStereoscopicVideoSurfaces(self: *@This(), destinationLeftEye: *IDirect3DSurface, destinationRightEye: *IDirect3DSurface) core.HResult!void {
         var this: ?*IMediaPlayer5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CopyFrameToStereoscopicVideoSurfaces(destinationLeftEye, destinationRightEye);
     }
     pub fn addSubtitleFrameChanged(self: *@This(), handler: *TypedEventHandler(MediaPlayer,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaPlayer6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSubtitleFrameChanged(handler);
     }
     pub fn removeSubtitleFrameChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaPlayer6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSubtitleFrameChanged(token);
     }
     pub fn RenderSubtitlesToSurface(self: *@This(), destination: *IDirect3DSurface) core.HResult!bool {
         var this: ?*IMediaPlayer6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RenderSubtitlesToSurface(destination);
     }
     pub fn RenderSubtitlesToSurfaceWithTargetRectangle(self: *@This(), destination: *IDirect3DSurface, targetRectangle: Rect) core.HResult!bool {
         var this: ?*IMediaPlayer6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RenderSubtitlesToSurfaceWithTargetRectangle(destination, targetRectangle);
     }
     pub fn getAudioStateMonitor(self: *@This()) core.HResult!*AudioStateMonitor {
         var this: ?*IMediaPlayer7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAudioStateMonitor();
@@ -5472,6 +5578,7 @@ pub const MediaPlayerSurface = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -5542,6 +5649,7 @@ pub const PlaybackMediaMarkerSequence = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(PlaybackMediaMarker) {
         var this: ?*IIterable(PlaybackMediaMarker) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(PlaybackMediaMarker).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

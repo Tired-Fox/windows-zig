@@ -529,24 +529,28 @@ pub const Calendar = extern struct {
     }
     pub fn GetTimeZone(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ITimeZoneOnCalendar = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimeZoneOnCalendar.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetTimeZone();
     }
     pub fn ChangeTimeZone(self: *@This(), timeZoneId: ?HSTRING) core.HResult!void {
         var this: ?*ITimeZoneOnCalendar = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimeZoneOnCalendar.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ChangeTimeZone(timeZoneId);
     }
     pub fn TimeZoneAsString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ITimeZoneOnCalendar = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimeZoneOnCalendar.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TimeZoneAsString();
     }
     pub fn TimeZoneAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!?HSTRING {
         var this: ?*ITimeZoneOnCalendar = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimeZoneOnCalendar.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TimeZoneAsStringWithIdealLength(idealLength);
@@ -4350,18 +4354,21 @@ pub const Language = extern struct {
     }
     pub fn GetExtensionSubtags(self: *@This(), singleton: ?HSTRING) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*ILanguageExtensionSubtags = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILanguageExtensionSubtags.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetExtensionSubtags(singleton);
     }
     pub fn getLayoutDirection(self: *@This()) core.HResult!LanguageLayoutDirection {
         var this: ?*ILanguage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILanguage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLayoutDirection();
     }
     pub fn getAbbreviatedName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILanguage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILanguage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAbbreviatedName();

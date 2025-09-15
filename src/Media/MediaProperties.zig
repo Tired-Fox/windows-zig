@@ -35,48 +35,56 @@ pub const AudioEncodingProperties = extern struct {
     }
     pub fn getProperties(self: *@This()) core.HResult!*MediaPropertySet {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
     }
     pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn putSubtype(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSubtype(value);
     }
     pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSubtype();
     }
     pub fn SetFormatUserData(self: *@This(), value: [*]u8) core.HResult!void {
         var this: ?*IAudioEncodingPropertiesWithFormatUserData = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEncodingPropertiesWithFormatUserData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetFormatUserData(value);
     }
     pub fn GetFormatUserData(self: *@This(), value: u8) core.HResult!void {
         var this: ?*IAudioEncodingPropertiesWithFormatUserData = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEncodingPropertiesWithFormatUserData.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFormatUserData(value);
     }
     pub fn getIsSpatial(self: *@This()) core.HResult!bool {
         var this: ?*IAudioEncodingProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEncodingProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSpatial();
     }
     pub fn Copy(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioEncodingProperties3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEncodingProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();
@@ -192,30 +200,35 @@ pub const ContainerEncodingProperties = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getProperties(self: *@This()) core.HResult!*MediaPropertySet {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
     }
     pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn putSubtype(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSubtype(value);
     }
     pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSubtype();
     }
     pub fn Copy(self: *@This()) core.HResult!*ContainerEncodingProperties {
         var this: ?*IContainerEncodingProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContainerEncodingProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();
@@ -2440,30 +2453,35 @@ pub const ImageEncodingProperties = extern struct {
     }
     pub fn getProperties(self: *@This()) core.HResult!*MediaPropertySet {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
     }
     pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn putSubtype(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSubtype(value);
     }
     pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSubtype();
     }
     pub fn Copy(self: *@This()) core.HResult!*ImageEncodingProperties {
         var this: ?*IImageEncodingProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IImageEncodingProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();
@@ -2537,36 +2555,42 @@ pub const MediaEncodingProfile = extern struct {
     }
     pub fn SetAudioTracks(self: *@This(), value: *IIterable(AudioStreamDescriptor)) core.HResult!void {
         var this: ?*IMediaEncodingProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAudioTracks(value);
     }
     pub fn GetAudioTracks(self: *@This()) core.HResult!*IVector(AudioStreamDescriptor) {
         var this: ?*IMediaEncodingProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAudioTracks();
     }
     pub fn SetVideoTracks(self: *@This(), value: *IIterable(VideoStreamDescriptor)) core.HResult!void {
         var this: ?*IMediaEncodingProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetVideoTracks(value);
     }
     pub fn GetVideoTracks(self: *@This()) core.HResult!*IVector(VideoStreamDescriptor) {
         var this: ?*IMediaEncodingProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetVideoTracks();
     }
     pub fn SetTimedMetadataTracks(self: *@This(), value: *IIterable(TimedMetadataStreamDescriptor)) core.HResult!void {
         var this: ?*IMediaEncodingProfile3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProfile3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetTimedMetadataTracks(value);
     }
     pub fn GetTimedMetadataTracks(self: *@This()) core.HResult!*IVector(TimedMetadataStreamDescriptor) {
         var this: ?*IMediaEncodingProfile3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProfile3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetTimedMetadataTracks();
@@ -2898,6 +2922,7 @@ pub const MediaPropertySet = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(Guid,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(Guid,IInspectable)) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(Guid,IInspectable)).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2993,18 +3018,21 @@ pub const TimedMetadataEncodingProperties = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn SetFormatUserData(self: *@This(), value: [*]u8) core.HResult!void {
         var this: ?*ITimedMetadataEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedMetadataEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetFormatUserData(value);
     }
     pub fn GetFormatUserData(self: *@This(), value: u8) core.HResult!void {
         var this: ?*ITimedMetadataEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedMetadataEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFormatUserData(value);
     }
     pub fn Copy(self: *@This()) core.HResult!*TimedMetadataEncodingProperties {
         var this: ?*ITimedMetadataEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedMetadataEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();
@@ -3092,66 +3120,77 @@ pub const VideoEncodingProperties = extern struct {
     }
     pub fn getProperties(self: *@This()) core.HResult!*MediaPropertySet {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
     }
     pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn putSubtype(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSubtype(value);
     }
     pub fn getSubtype(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaEncodingProperties = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSubtype();
     }
     pub fn SetFormatUserData(self: *@This(), value: [*]u8) core.HResult!void {
         var this: ?*IVideoEncodingProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoEncodingProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetFormatUserData(value);
     }
     pub fn GetFormatUserData(self: *@This(), value: u8) core.HResult!void {
         var this: ?*IVideoEncodingProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoEncodingProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFormatUserData(value);
     }
     pub fn putProfileId(self: *@This(), value: i32) core.HResult!void {
         var this: ?*IVideoEncodingProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoEncodingProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProfileId(value);
     }
     pub fn getProfileId(self: *@This()) core.HResult!i32 {
         var this: ?*IVideoEncodingProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoEncodingProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProfileId();
     }
     pub fn getStereoscopicVideoPackingMode(self: *@This()) core.HResult!StereoscopicVideoPackingMode {
         var this: ?*IVideoEncodingProperties3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoEncodingProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStereoscopicVideoPackingMode();
     }
     pub fn getSphericalVideoFrameFormat(self: *@This()) core.HResult!SphericalVideoFrameFormat {
         var this: ?*IVideoEncodingProperties4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoEncodingProperties4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSphericalVideoFrameFormat();
     }
     pub fn Copy(self: *@This()) core.HResult!*VideoEncodingProperties {
         var this: ?*IVideoEncodingProperties5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoEncodingProperties5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();

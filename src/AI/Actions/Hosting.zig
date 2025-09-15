@@ -15,24 +15,28 @@ pub const ActionCatalog = extern struct {
     }
     pub fn GetActionsForInputs(self: *@This(), inputEntities: [*]ActionEntity) core.HResult![*]ActionInstance {
         var this: ?*IActionCatalog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionCatalog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetActionsForInputs(inputEntities);
     }
     pub fn GetActionsForInputsWithInvokerWindowId(self: *@This(), inputEntities: [*]ActionEntity, invokerWindowId: WindowId) core.HResult![*]ActionInstance {
         var this: ?*IActionCatalog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionCatalog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetActionsForInputsWithInvokerWindowId(inputEntities, invokerWindowId);
     }
     pub fn GetActionsForCurrentApp(self: *@This()) core.HResult![*]ActionDefinition {
         var this: ?*IActionCatalog3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionCatalog3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetActionsForCurrentApp();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -75,36 +79,42 @@ pub const ActionDefinition = extern struct {
     }
     pub fn getDisplaysUI(self: *@This()) core.HResult!bool {
         var this: ?*IActionDefinition2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionDefinition2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplaysUI();
     }
     pub fn getUsesGenerativeAI(self: *@This()) core.HResult!bool {
         var this: ?*IActionDefinition2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionDefinition2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUsesGenerativeAI();
     }
     pub fn getSchemaVersion(self: *@This()) core.HResult!u32 {
         var this: ?*IActionDefinition2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionDefinition2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSchemaVersion();
     }
     pub fn getPackageRelativeApplicationId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IActionDefinition3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionDefinition3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPackageRelativeApplicationId();
     }
     pub fn getIsCurrentlyAvailable(self: *@This()) core.HResult!bool {
         var this: ?*IActionDefinition4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionDefinition4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCurrentlyAvailable();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -135,6 +145,7 @@ pub const ActionEntityRegistrationInfo = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -197,18 +208,21 @@ pub const ActionOverload = extern struct {
     }
     pub fn InvokeFeedbackAsync(self: *@This(), context: *ActionInvocationContext, feedback: *ActionFeedback) core.HResult!*IAsyncAction {
         var this: ?*IActionOverload2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionOverload2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InvokeFeedbackAsync(context, feedback);
     }
     pub fn GetSupportsFeedback(self: *@This()) core.HResult!bool {
         var this: ?*IActionOverload2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionOverload2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSupportsFeedback();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

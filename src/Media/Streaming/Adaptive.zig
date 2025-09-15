@@ -107,48 +107,56 @@ pub const AdaptiveMediaSource = extern struct {
     }
     pub fn getAdvancedSettings(self: *@This()) core.HResult!*AdaptiveMediaSourceAdvancedSettings {
         var this: ?*IAdaptiveMediaSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAdvancedSettings();
     }
     pub fn getMinLiveOffset(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IAdaptiveMediaSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinLiveOffset();
     }
     pub fn getMaxSeekableWindowSize(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IAdaptiveMediaSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxSeekableWindowSize();
     }
     pub fn getDesiredSeekableWindowSize(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IAdaptiveMediaSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredSeekableWindowSize();
     }
     pub fn putDesiredSeekableWindowSize(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         var this: ?*IAdaptiveMediaSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDesiredSeekableWindowSize(value);
     }
     pub fn getDiagnostics(self: *@This()) core.HResult!*AdaptiveMediaSourceDiagnostics {
         var this: ?*IAdaptiveMediaSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDiagnostics();
     }
     pub fn GetCorrelatedTimes(self: *@This()) core.HResult!*AdaptiveMediaSourceCorrelatedTimes {
         var this: ?*IAdaptiveMediaSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCorrelatedTimes();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -251,6 +259,7 @@ pub const AdaptiveMediaSourceCreationResult = extern struct {
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*IAdaptiveMediaSourceCreationResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceCreationResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtendedError();
@@ -310,18 +319,21 @@ pub const AdaptiveMediaSourceDiagnosticAvailableEventArgs = extern struct {
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*IAdaptiveMediaSourceDiagnosticAvailableEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDiagnosticAvailableEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtendedError();
     }
     pub fn getResourceDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IAdaptiveMediaSourceDiagnosticAvailableEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDiagnosticAvailableEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceDuration();
     }
     pub fn getResourceContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAdaptiveMediaSourceDiagnosticAvailableEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDiagnosticAvailableEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceContentType();
@@ -371,6 +383,7 @@ pub const AdaptiveMediaSourceDownloadBitrateChangedEventArgs = extern struct {
     }
     pub fn getReason(self: *@This()) core.HResult!AdaptiveMediaSourceDownloadBitrateChangedReason {
         var this: ?*IAdaptiveMediaSourceDownloadBitrateChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadBitrateChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReason();
@@ -414,30 +427,35 @@ pub const AdaptiveMediaSourceDownloadCompletedEventArgs = extern struct {
     }
     pub fn getRequestId(self: *@This()) core.HResult!i32 {
         var this: ?*IAdaptiveMediaSourceDownloadCompletedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadCompletedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRequestId();
     }
     pub fn getStatistics(self: *@This()) core.HResult!*AdaptiveMediaSourceDownloadStatistics {
         var this: ?*IAdaptiveMediaSourceDownloadCompletedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadCompletedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStatistics();
     }
     pub fn getPosition(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IAdaptiveMediaSourceDownloadCompletedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadCompletedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPosition();
     }
     pub fn getResourceDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IAdaptiveMediaSourceDownloadCompletedEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadCompletedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceDuration();
     }
     pub fn getResourceContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAdaptiveMediaSourceDownloadCompletedEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadCompletedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceContentType();
@@ -472,36 +490,42 @@ pub const AdaptiveMediaSourceDownloadFailedEventArgs = extern struct {
     }
     pub fn getRequestId(self: *@This()) core.HResult!i32 {
         var this: ?*IAdaptiveMediaSourceDownloadFailedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadFailedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRequestId();
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*IAdaptiveMediaSourceDownloadFailedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadFailedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtendedError();
     }
     pub fn getStatistics(self: *@This()) core.HResult!*AdaptiveMediaSourceDownloadStatistics {
         var this: ?*IAdaptiveMediaSourceDownloadFailedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadFailedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStatistics();
     }
     pub fn getPosition(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IAdaptiveMediaSourceDownloadFailedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadFailedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPosition();
     }
     pub fn getResourceDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IAdaptiveMediaSourceDownloadFailedEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadFailedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceDuration();
     }
     pub fn getResourceContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAdaptiveMediaSourceDownloadFailedEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadFailedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceContentType();
@@ -552,24 +576,28 @@ pub const AdaptiveMediaSourceDownloadRequestedEventArgs = extern struct {
     }
     pub fn getRequestId(self: *@This()) core.HResult!i32 {
         var this: ?*IAdaptiveMediaSourceDownloadRequestedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRequestId();
     }
     pub fn getPosition(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IAdaptiveMediaSourceDownloadRequestedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPosition();
     }
     pub fn getResourceDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IAdaptiveMediaSourceDownloadRequestedEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadRequestedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceDuration();
     }
     pub fn getResourceContentType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAdaptiveMediaSourceDownloadRequestedEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadRequestedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceContentType();
@@ -624,24 +652,28 @@ pub const AdaptiveMediaSourceDownloadResult = extern struct {
     }
     pub fn getResourceByteRangeOffset(self: *@This()) core.HResult!*IReference(u64) {
         var this: ?*IAdaptiveMediaSourceDownloadResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceByteRangeOffset();
     }
     pub fn putResourceByteRangeOffset(self: *@This(), value: *IReference(u64)) core.HResult!void {
         var this: ?*IAdaptiveMediaSourceDownloadResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putResourceByteRangeOffset(value);
     }
     pub fn getResourceByteRangeLength(self: *@This()) core.HResult!*IReference(u64) {
         var this: ?*IAdaptiveMediaSourceDownloadResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceByteRangeLength();
     }
     pub fn putResourceByteRangeLength(self: *@This(), value: *IReference(u64)) core.HResult!void {
         var this: ?*IAdaptiveMediaSourceDownloadResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveMediaSourceDownloadResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putResourceByteRangeLength(value);

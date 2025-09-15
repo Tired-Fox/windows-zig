@@ -36,12 +36,14 @@ pub const ContactPickerUI = extern struct {
     }
     pub fn AddContact(self: *@This(), contact: *Contact) core.HResult!AddContactResult {
         var this: ?*IContactPickerUI2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactPickerUI2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddContact(contact);
     }
     pub fn getDesiredFieldsWithContactFieldType(self: *@This()) core.HResult!*IVector(ContactFieldType) {
         var this: ?*IContactPickerUI2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactPickerUI2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredFieldsWithContactFieldType();

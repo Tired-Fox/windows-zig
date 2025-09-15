@@ -1812,78 +1812,91 @@ pub const IppPrintDevice = extern struct {
     }
     pub fn GetMaxSupportedPdfSize(self: *@This()) core.HResult!u64 {
         var this: ?*IIppPrintDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMaxSupportedPdfSize();
     }
     pub fn GetMaxSupportedPdfVersion(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IIppPrintDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMaxSupportedPdfVersion();
     }
     pub fn IsPdlPassthroughSupported(self: *@This(), pdlContentType: ?HSTRING) core.HResult!bool {
         var this: ?*IIppPrintDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsPdlPassthroughSupported(pdlContentType);
     }
     pub fn GetPdlPassthroughProvider(self: *@This()) core.HResult!*PdlPassthroughProvider {
         var this: ?*IIppPrintDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPdlPassthroughProvider();
     }
     pub fn getIsIppFaxOutPrinter(self: *@This()) core.HResult!bool {
         var this: ?*IIppPrintDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsIppFaxOutPrinter();
     }
     pub fn getDeviceKind(self: *@This()) core.HResult!IppPrintDeviceKind {
         var this: ?*IIppPrintDevice4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceKind();
     }
     pub fn getCanModifyUserDefaultPrintTicket(self: *@This()) core.HResult!bool {
         var this: ?*IIppPrintDevice4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanModifyUserDefaultPrintTicket();
     }
     pub fn getUserDefaultPrintTicket(self: *@This()) core.HResult!*WorkflowPrintTicket {
         var this: ?*IIppPrintDevice4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUserDefaultPrintTicket();
     }
     pub fn putUserDefaultPrintTicket(self: *@This(), value: *WorkflowPrintTicket) core.HResult!void {
         var this: ?*IIppPrintDevice4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUserDefaultPrintTicket(value);
     }
     pub fn RefreshPrintDeviceCapabilities(self: *@This()) core.HResult!void {
         var this: ?*IIppPrintDevice4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RefreshPrintDeviceCapabilities();
     }
     pub fn GetMaxSupportedPdlVersion(self: *@This(), pdlContentType: ?HSTRING) core.HResult!?HSTRING {
         var this: ?*IIppPrintDevice4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMaxSupportedPdlVersion(pdlContentType);
     }
     pub fn GetDeviceProperties(self: *@This()) core.HResult!*ValueSet {
         var this: ?*IIppPrintDevice5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDeviceProperties();
     }
     pub fn ReplaceDeviceProperties(self: *@This(), deviceProperties: *IIterable(IKeyValuePair(?HSTRING,IInspectable))) core.HResult!*ReplaceDevicePropertiesResult {
         var this: ?*IIppPrintDevice5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIppPrintDevice5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceDeviceProperties(deviceProperties);
@@ -2063,6 +2076,7 @@ pub const PdlPassthroughTarget = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

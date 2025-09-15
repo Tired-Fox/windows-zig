@@ -278,6 +278,7 @@ pub const PnpObjectCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(PnpObject) {
         var this: ?*IIterable(PnpObject) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(PnpObject).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

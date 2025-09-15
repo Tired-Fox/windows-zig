@@ -1085,42 +1085,49 @@ pub const SpeechRecognitionGrammarFileConstraint = extern struct {
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsEnabled();
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
     }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
     pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTag(value);
     }
     pub fn getType(self: *@This()) core.HResult!SpeechRecognitionConstraintType {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn getProbability(self: *@This()) core.HResult!SpeechRecognitionConstraintProbability {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProbability();
     }
     pub fn putProbability(self: *@This(), value: SpeechRecognitionConstraintProbability) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProbability(value);
@@ -1175,42 +1182,49 @@ pub const SpeechRecognitionListConstraint = extern struct {
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsEnabled();
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
     }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
     pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTag(value);
     }
     pub fn getType(self: *@This()) core.HResult!SpeechRecognitionConstraintType {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn getProbability(self: *@This()) core.HResult!SpeechRecognitionConstraintProbability {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProbability();
     }
     pub fn putProbability(self: *@This(), value: SpeechRecognitionConstraintProbability) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProbability(value);
@@ -1281,12 +1295,14 @@ pub const SpeechRecognitionResult = extern struct {
     }
     pub fn getPhraseStartTime(self: *@This()) core.HResult!DateTime {
         var this: ?*ISpeechRecognitionResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPhraseStartTime();
     }
     pub fn getPhraseDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*ISpeechRecognitionResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPhraseDuration();
@@ -1339,42 +1355,49 @@ pub const SpeechRecognitionTopicConstraint = extern struct {
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsEnabled();
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
     }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
     pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTag(value);
     }
     pub fn getType(self: *@This()) core.HResult!SpeechRecognitionConstraintType {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn getProbability(self: *@This()) core.HResult!SpeechRecognitionConstraintProbability {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProbability();
     }
     pub fn putProbability(self: *@This(), value: SpeechRecognitionConstraintProbability) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProbability(value);
@@ -1401,42 +1424,49 @@ pub const SpeechRecognitionVoiceCommandDefinitionConstraint = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsEnabled();
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
     }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
     pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTag(value);
     }
     pub fn getType(self: *@This()) core.HResult!SpeechRecognitionConstraintType {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn getProbability(self: *@This()) core.HResult!SpeechRecognitionConstraintProbability {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProbability();
     }
     pub fn putProbability(self: *@This(), value: SpeechRecognitionConstraintProbability) core.HResult!void {
         var this: ?*ISpeechRecognitionConstraint = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognitionConstraint.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProbability(value);
@@ -1495,36 +1525,42 @@ pub const SpeechRecognizer = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn getContinuousRecognitionSession(self: *@This()) core.HResult!*SpeechContinuousRecognitionSession {
         var this: ?*ISpeechRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContinuousRecognitionSession();
     }
     pub fn getState(self: *@This()) core.HResult!SpeechRecognizerState {
         var this: ?*ISpeechRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getState();
     }
     pub fn StopRecognitionAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*ISpeechRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopRecognitionAsync();
     }
     pub fn addHypothesisGenerated(self: *@This(), value: *TypedEventHandler(SpeechRecognizer,SpeechRecognitionHypothesisGeneratedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ISpeechRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addHypothesisGenerated(value);
     }
     pub fn removeHypothesisGenerated(self: *@This(), value: EventRegistrationToken) core.HResult!void {
         var this: ?*ISpeechRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpeechRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeHypothesisGenerated(value);

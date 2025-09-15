@@ -59,6 +59,7 @@ pub const HidBooleanControlDescription = extern struct {
     }
     pub fn getIsAbsolute(self: *@This()) core.HResult!bool {
         var this: ?*IHidBooleanControlDescription2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHidBooleanControlDescription2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAbsolute();
@@ -183,6 +184,7 @@ pub const HidDevice = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

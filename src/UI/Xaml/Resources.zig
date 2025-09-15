@@ -3,6 +3,7 @@ pub const CustomXamlResourceLoader = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn GetResource(self: *@This(), resourceId: ?HSTRING, objectType: ?HSTRING, propertyName: ?HSTRING, propertyType: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*ICustomXamlResourceLoaderOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomXamlResourceLoaderOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetResource(resourceId, objectType, propertyName, propertyType);

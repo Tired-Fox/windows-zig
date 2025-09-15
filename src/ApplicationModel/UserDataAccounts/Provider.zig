@@ -186,6 +186,7 @@ pub const UserDataAccountProviderAddAccountOperation = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!UserDataAccountProviderOperationKind {
         var this: ?*IUserDataAccountProviderOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccountProviderOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
@@ -217,6 +218,7 @@ pub const UserDataAccountProviderResolveErrorsOperation = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!UserDataAccountProviderOperationKind {
         var this: ?*IUserDataAccountProviderOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccountProviderOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
@@ -239,6 +241,7 @@ pub const UserDataAccountProviderSettingsOperation = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!UserDataAccountProviderOperationKind {
         var this: ?*IUserDataAccountProviderOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccountProviderOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();

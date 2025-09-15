@@ -2057,54 +2057,63 @@ pub const InkDrawingAttributes = extern struct {
     }
     pub fn getPenTipTransform(self: *@This()) core.HResult!Matrix3x2 {
         var this: ?*IInkDrawingAttributes2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkDrawingAttributes2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPenTipTransform();
     }
     pub fn putPenTipTransform(self: *@This(), value: Matrix3x2) core.HResult!void {
         var this: ?*IInkDrawingAttributes2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkDrawingAttributes2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPenTipTransform(value);
     }
     pub fn getDrawAsHighlighter(self: *@This()) core.HResult!bool {
         var this: ?*IInkDrawingAttributes2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkDrawingAttributes2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDrawAsHighlighter();
     }
     pub fn putDrawAsHighlighter(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IInkDrawingAttributes2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkDrawingAttributes2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDrawAsHighlighter(value);
     }
     pub fn getKind(self: *@This()) core.HResult!InkDrawingAttributesKind {
         var this: ?*IInkDrawingAttributes3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkDrawingAttributes3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getPencilProperties(self: *@This()) core.HResult!*InkDrawingAttributesPencilProperties {
         var this: ?*IInkDrawingAttributes3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkDrawingAttributes3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPencilProperties();
     }
     pub fn getIgnoreTilt(self: *@This()) core.HResult!bool {
         var this: ?*IInkDrawingAttributes4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkDrawingAttributes4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIgnoreTilt();
     }
     pub fn putIgnoreTilt(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IInkDrawingAttributes4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkDrawingAttributes4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIgnoreTilt(value);
     }
     pub fn getModelerAttributes(self: *@This()) core.HResult!*InkModelerAttributes {
         var this: ?*IInkDrawingAttributes5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkDrawingAttributes5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getModelerAttributes();
@@ -2173,12 +2182,14 @@ pub const InkInputConfiguration = extern struct {
     }
     pub fn getIsPenHapticFeedbackEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IInkInputConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkInputConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPenHapticFeedbackEnabled();
     }
     pub fn putIsPenHapticFeedbackEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IInkInputConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkInputConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsPenHapticFeedbackEnabled(value);
@@ -2254,102 +2265,119 @@ pub const InkManager = extern struct {
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBoundingRect();
     }
     pub fn AddStroke(self: *@This(), stroke: *InkStroke) core.HResult!void {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddStroke(stroke);
     }
     pub fn DeleteSelected(self: *@This()) core.HResult!Rect {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DeleteSelected();
     }
     pub fn MoveSelected(self: *@This(), translation: Point) core.HResult!Rect {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MoveSelected(translation);
     }
     pub fn SelectWithPolyLine(self: *@This(), polyline: *IIterable(Point)) core.HResult!Rect {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectWithPolyLine(polyline);
     }
     pub fn SelectWithLine(self: *@This(), from: Point, to: Point) core.HResult!Rect {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectWithLine(from, to);
     }
     pub fn CopySelectedToClipboard(self: *@This()) core.HResult!void {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CopySelectedToClipboard();
     }
     pub fn PasteFromClipboard(self: *@This(), position: Point) core.HResult!Rect {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PasteFromClipboard(position);
     }
     pub fn CanPasteFromClipboard(self: *@This()) core.HResult!bool {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CanPasteFromClipboard();
     }
     pub fn LoadAsync(self: *@This(), inputStream: *IInputStream) core.HResult!*IAsyncActionWithProgress(u64) {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LoadAsync(inputStream);
     }
     pub fn SaveAsync(self: *@This(), outputStream: *IOutputStream) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SaveAsync(outputStream);
     }
     pub fn UpdateRecognitionResults(self: *@This(), recognitionResults: *IVectorView(InkRecognitionResult)) core.HResult!void {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdateRecognitionResults(recognitionResults);
     }
     pub fn GetStrokes(self: *@This()) core.HResult!*IVectorView(InkStroke) {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStrokes();
     }
     pub fn GetRecognitionResults(self: *@This()) core.HResult!*IVectorView(InkRecognitionResult) {
         var this: ?*IInkStrokeContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRecognitionResults();
     }
     pub fn SetDefaultRecognizer(self: *@This(), recognizer: *InkRecognizer) core.HResult!void {
         var this: ?*IInkRecognizerContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetDefaultRecognizer(recognizer);
     }
     pub fn RecognizeAsyncWithStrokeCollectionAndRecognitionTarget(self: *@This(), strokeCollection: *InkStrokeContainer, recognitionTarget: InkRecognitionTarget) core.HResult!*IAsyncOperation(IVectorView(InkRecognitionResult)) {
         var this: ?*IInkRecognizerContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RecognizeAsyncWithStrokeCollectionAndRecognitionTarget(strokeCollection, recognitionTarget);
     }
     pub fn GetRecognizers(self: *@This()) core.HResult!*IVectorView(InkRecognizer) {
         var this: ?*IInkRecognizerContainer = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRecognizers();
@@ -2393,12 +2421,14 @@ pub const InkModelerAttributes = extern struct {
     }
     pub fn getUseVelocityBasedPressure(self: *@This()) core.HResult!bool {
         var this: ?*IInkModelerAttributes2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkModelerAttributes2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseVelocityBasedPressure();
     }
     pub fn putUseVelocityBasedPressure(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IInkModelerAttributes2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkModelerAttributes2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseVelocityBasedPressure(value);
@@ -2425,18 +2455,21 @@ pub const InkPoint = extern struct {
     }
     pub fn getTiltX(self: *@This()) core.HResult!f32 {
         var this: ?*IInkPoint2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPoint2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTiltX();
     }
     pub fn getTiltY(self: *@This()) core.HResult!f32 {
         var this: ?*IInkPoint2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPoint2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTiltY();
     }
     pub fn getTimestamp(self: *@This()) core.HResult!u64 {
         var this: ?*IInkPoint2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPoint2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTimestamp();
@@ -2532,18 +2565,21 @@ pub const InkPresenter = extern struct {
     }
     pub fn getHighContrastAdjustment(self: *@This()) core.HResult!InkHighContrastAdjustment {
         var this: ?*IInkPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHighContrastAdjustment();
     }
     pub fn putHighContrastAdjustment(self: *@This(), value: InkHighContrastAdjustment) core.HResult!void {
         var this: ?*IInkPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHighContrastAdjustment(value);
     }
     pub fn getInputConfiguration(self: *@This()) core.HResult!*InkInputConfiguration {
         var this: ?*IInkPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInputConfiguration();
@@ -2618,54 +2654,63 @@ pub const InkPresenterProtractor = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!InkPresenterStencilKind {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getIsVisible(self: *@This()) core.HResult!bool {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsVisible();
     }
     pub fn putIsVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsVisible(value);
     }
     pub fn getBackgroundColor(self: *@This()) core.HResult!Color {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackgroundColor();
     }
     pub fn putBackgroundColor(self: *@This(), value: Color) core.HResult!void {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBackgroundColor(value);
     }
     pub fn getForegroundColor(self: *@This()) core.HResult!Color {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getForegroundColor();
     }
     pub fn putForegroundColor(self: *@This(), value: Color) core.HResult!void {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putForegroundColor(value);
     }
     pub fn getTransform(self: *@This()) core.HResult!Matrix3x2 {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransform();
     }
     pub fn putTransform(self: *@This(), value: Matrix3x2) core.HResult!void {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransform(value);
@@ -2704,78 +2749,91 @@ pub const InkPresenterRuler = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!InkPresenterStencilKind {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getIsVisible(self: *@This()) core.HResult!bool {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsVisible();
     }
     pub fn putIsVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsVisible(value);
     }
     pub fn getBackgroundColor(self: *@This()) core.HResult!Color {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackgroundColor();
     }
     pub fn putBackgroundColor(self: *@This(), value: Color) core.HResult!void {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBackgroundColor(value);
     }
     pub fn getForegroundColor(self: *@This()) core.HResult!Color {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getForegroundColor();
     }
     pub fn putForegroundColor(self: *@This(), value: Color) core.HResult!void {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putForegroundColor(value);
     }
     pub fn getTransform(self: *@This()) core.HResult!Matrix3x2 {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransform();
     }
     pub fn putTransform(self: *@This(), value: Matrix3x2) core.HResult!void {
         var this: ?*IInkPresenterStencil = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterStencil.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransform(value);
     }
     pub fn getAreTickMarksVisible(self: *@This()) core.HResult!bool {
         var this: ?*IInkPresenterRuler2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterRuler2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreTickMarksVisible();
     }
     pub fn putAreTickMarksVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IInkPresenterRuler2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterRuler2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAreTickMarksVisible(value);
     }
     pub fn getIsCompassVisible(self: *@This()) core.HResult!bool {
         var this: ?*IInkPresenterRuler2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterRuler2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCompassVisible();
     }
     pub fn putIsCompassVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IInkPresenterRuler2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkPresenterRuler2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsCompassVisible(value);
@@ -2900,54 +2958,63 @@ pub const InkStroke = extern struct {
     }
     pub fn getPointTransform(self: *@This()) core.HResult!Matrix3x2 {
         var this: ?*IInkStroke2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStroke2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPointTransform();
     }
     pub fn putPointTransform(self: *@This(), value: Matrix3x2) core.HResult!void {
         var this: ?*IInkStroke2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStroke2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPointTransform(value);
     }
     pub fn GetInkPoints(self: *@This()) core.HResult!*IVectorView(InkPoint) {
         var this: ?*IInkStroke2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStroke2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetInkPoints();
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkStroke3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStroke3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn getStrokeStartedTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var this: ?*IInkStroke3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStroke3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStrokeStartedTime();
     }
     pub fn putStrokeStartedTime(self: *@This(), value: *IReference(DateTime)) core.HResult!void {
         var this: ?*IInkStroke3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStroke3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStrokeStartedTime(value);
     }
     pub fn getStrokeDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IInkStroke3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStroke3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStrokeDuration();
     }
     pub fn putStrokeDuration(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         var this: ?*IInkStroke3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStroke3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStrokeDuration(value);
     }
     pub fn getPointerId(self: *@This()) core.HResult!u32 {
         var this: ?*IInkStroke4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStroke4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPointerId();
@@ -2982,12 +3049,14 @@ pub const InkStrokeBuilder = extern struct {
     }
     pub fn CreateStrokeFromInkPoints(self: *@This(), inkPoints: *IIterable(InkPoint), transform: Matrix3x2) core.HResult!*InkStroke {
         var this: ?*IInkStrokeBuilder2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeBuilder2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateStrokeFromInkPoints(inkPoints, transform);
     }
     pub fn CreateStrokeFromInkPointsWithStrokeStartedTimeAndStrokeDuration(self: *@This(), inkPoints: *IIterable(InkPoint), transform: Matrix3x2, strokeStartedTime: *IReference(DateTime), strokeDuration: *IReference(TimeSpan)) core.HResult!*InkStroke {
         var this: ?*IInkStrokeBuilder3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeBuilder3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateStrokeFromInkPointsWithStrokeStartedTimeAndStrokeDuration(inkPoints, transform, strokeStartedTime, strokeDuration);
@@ -3066,24 +3135,28 @@ pub const InkStrokeContainer = extern struct {
     }
     pub fn AddStrokes(self: *@This(), strokes: *IIterable(InkStroke)) core.HResult!void {
         var this: ?*IInkStrokeContainer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddStrokes(strokes);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IInkStrokeContainer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
     pub fn SaveAsyncWithInkPersistenceFormat(self: *@This(), outputStream: *IOutputStream, inkPersistenceFormat: InkPersistenceFormat) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IInkStrokeContainer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SaveAsyncWithInkPersistenceFormat(outputStream, inkPersistenceFormat);
     }
     pub fn GetStrokeById(self: *@This(), id: u32) core.HResult!*InkStroke {
         var this: ?*IInkStrokeContainer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStrokeById(id);
@@ -3318,6 +3391,7 @@ pub const PenAndInkSettings = extern struct {
     }
     pub fn SetPenHandedness(self: *@This(), value: PenHandedness) core.HResult!void {
         var this: ?*IPenAndInkSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPenAndInkSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPenHandedness(value);

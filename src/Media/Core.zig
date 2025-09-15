@@ -18,72 +18,84 @@ pub const AudioStreamDescriptor = extern struct {
     }
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var this: ?*IMediaStreamDescriptor = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSelected();
     }
     pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putName(value);
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLanguage(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
     pub fn putLeadingEncoderPadding(self: *@This(), value: *IReference(u32)) core.HResult!void {
         var this: ?*IAudioStreamDescriptor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLeadingEncoderPadding(value);
     }
     pub fn getLeadingEncoderPadding(self: *@This()) core.HResult!*IReference(u32) {
         var this: ?*IAudioStreamDescriptor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLeadingEncoderPadding();
     }
     pub fn putTrailingEncoderPadding(self: *@This(), value: *IReference(u32)) core.HResult!void {
         var this: ?*IAudioStreamDescriptor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTrailingEncoderPadding(value);
     }
     pub fn getTrailingEncoderPadding(self: *@This()) core.HResult!*IReference(u32) {
         var this: ?*IAudioStreamDescriptor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTrailingEncoderPadding();
     }
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLabel();
     }
     pub fn Copy(self: *@This()) core.HResult!*AudioStreamDescriptor {
         var this: ?*IAudioStreamDescriptor3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioStreamDescriptor3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();
@@ -126,36 +138,42 @@ pub const AudioTrack = extern struct {
     }
     pub fn addOpenFailed(self: *@This(), handler: *TypedEventHandler(AudioTrack,AudioTrackOpenFailedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IAudioTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addOpenFailed(handler);
     }
     pub fn removeOpenFailed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IAudioTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeOpenFailed(token);
     }
     pub fn GetEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetEncodingProperties();
     }
     pub fn getPlaybackItem(self: *@This()) core.HResult!*MediaPlaybackItem {
         var this: ?*IAudioTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaybackItem();
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
     pub fn getSupportInfo(self: *@This()) core.HResult!*AudioTrackSupportInfo {
         var this: ?*IAudioTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportInfo();
@@ -214,36 +232,42 @@ pub const ChapterCue = extern struct {
     }
     pub fn putStartTime(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStartTime(value);
     }
     pub fn getStartTime(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStartTime();
     }
     pub fn putDuration(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDuration(value);
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
     pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putId(value);
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
@@ -543,42 +567,49 @@ pub const DataCue = extern struct {
     }
     pub fn putStartTime(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStartTime(value);
     }
     pub fn getStartTime(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStartTime();
     }
     pub fn putDuration(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDuration(value);
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
     pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putId(value);
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn getProperties(self: *@This()) core.HResult!*PropertySet {
         var this: ?*IDataCue2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataCue2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
@@ -637,6 +668,7 @@ pub const FaceDetectionEffect = extern struct {
     }
     pub fn SetProperties(self: *@This(), configuration: *IPropertySet) core.HResult!void {
         var this: ?*IMediaExtension = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaExtension.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetProperties(configuration);
@@ -659,24 +691,28 @@ pub const FaceDetectionEffectDefinition = extern struct {
     }
     pub fn putDetectionMode(self: *@This(), value: FaceDetectionMode) core.HResult!void {
         var this: ?*IFaceDetectionEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFaceDetectionEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDetectionMode(value);
     }
     pub fn getDetectionMode(self: *@This()) core.HResult!FaceDetectionMode {
         var this: ?*IFaceDetectionEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFaceDetectionEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDetectionMode();
     }
     pub fn putSynchronousDetectionEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFaceDetectionEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFaceDetectionEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSynchronousDetectionEnabled(value);
     }
     pub fn getSynchronousDetectionEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IFaceDetectionEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFaceDetectionEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSynchronousDetectionEnabled();
@@ -703,72 +739,84 @@ pub const FaceDetectionEffectFrame = extern struct {
     }
     pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadOnly();
     }
     pub fn putRelativeTime(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRelativeTime(value);
     }
     pub fn getRelativeTime(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRelativeTime();
     }
     pub fn putSystemRelativeTime(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSystemRelativeTime(value);
     }
     pub fn getSystemRelativeTime(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSystemRelativeTime();
     }
     pub fn putDuration(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDuration(value);
     }
     pub fn getDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
     pub fn putIsDiscontinuous(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsDiscontinuous(value);
     }
     pub fn getIsDiscontinuous(self: *@This()) core.HResult!bool {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDiscontinuous();
     }
     pub fn getExtendedProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtendedProperties();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -5525,36 +5573,42 @@ pub const ImageCue = extern struct {
     }
     pub fn putStartTime(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStartTime(value);
     }
     pub fn getStartTime(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStartTime();
     }
     pub fn putDuration(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDuration(value);
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
     pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putId(value);
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
@@ -5622,6 +5676,7 @@ pub const LowLightFusionResult = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -5700,18 +5755,21 @@ pub const MediaBindingEventArgs = extern struct {
     }
     pub fn SetAdaptiveMediaSource(self: *@This(), mediaSource: *AdaptiveMediaSource) core.HResult!void {
         var this: ?*IMediaBindingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaBindingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAdaptiveMediaSource(mediaSource);
     }
     pub fn SetStorageFile(self: *@This(), file: *IStorageFile) core.HResult!void {
         var this: ?*IMediaBindingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaBindingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetStorageFile(file);
     }
     pub fn SetDownloadOperation(self: *@This(), downloadOperation: *DownloadOperation) core.HResult!void {
         var this: ?*IMediaBindingEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaBindingEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetDownloadOperation(downloadOperation);
@@ -5772,66 +5830,77 @@ pub const MediaSource = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn addStateChanged(self: *@This(), handler: *TypedEventHandler(MediaSource,MediaSourceStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addStateChanged(handler);
     }
     pub fn removeStateChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeStateChanged(token);
     }
     pub fn getState(self: *@This()) core.HResult!MediaSourceState {
         var this: ?*IMediaSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getState();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IMediaSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Reset();
     }
     pub fn getAdaptiveMediaSource(self: *@This()) core.HResult!*AdaptiveMediaSource {
         var this: ?*IMediaSource4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaSource4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAdaptiveMediaSource();
     }
     pub fn getMediaStreamSource(self: *@This()) core.HResult!*MediaStreamSource {
         var this: ?*IMediaSource4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaSource4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMediaStreamSource();
     }
     pub fn getMseStreamSource(self: *@This()) core.HResult!*MseStreamSource {
         var this: ?*IMediaSource4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaSource4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMseStreamSource();
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IMediaSource4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaSource4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUri();
     }
     pub fn OpenAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IMediaSource4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaSource4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OpenAsync();
     }
     pub fn getDownloadOperation(self: *@This()) core.HResult!*DownloadOperation {
         var this: ?*IMediaSource5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaSource5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDownloadOperation();
@@ -6032,6 +6101,7 @@ pub const MediaStreamSample = extern struct {
     }
     pub fn getDirect3D11Surface(self: *@This()) core.HResult!*IDirect3DSurface {
         var this: ?*IMediaStreamSample2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamSample2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDirect3D11Surface();
@@ -6075,6 +6145,7 @@ pub const MediaStreamSamplePropertySet = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(Guid,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(Guid,IInspectable)) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(Guid,IInspectable)).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -6225,36 +6296,42 @@ pub const MediaStreamSource = extern struct {
     }
     pub fn addSampleRendered(self: *@This(), handler: *TypedEventHandler(MediaStreamSource,MediaStreamSourceSampleRenderedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaStreamSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addSampleRendered(handler);
     }
     pub fn removeSampleRendered(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IMediaStreamSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeSampleRendered(token);
     }
     pub fn putMaxSupportedPlaybackRate(self: *@This(), value: *IReference(f64)) core.HResult!void {
         var this: ?*IMediaStreamSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxSupportedPlaybackRate(value);
     }
     pub fn getMaxSupportedPlaybackRate(self: *@This()) core.HResult!*IReference(f64) {
         var this: ?*IMediaStreamSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxSupportedPlaybackRate();
     }
     pub fn putIsLive(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaStreamSource4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamSource4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsLive(value);
     }
     pub fn getIsLive(self: *@This()) core.HResult!bool {
         var this: ?*IMediaStreamSource4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamSource4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsLive();
@@ -6688,12 +6765,14 @@ pub const MseStreamSource = extern struct {
     }
     pub fn getLiveSeekableRange(self: *@This()) core.HResult!*IReference(MseTimeRange) {
         var this: ?*IMseStreamSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMseStreamSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLiveSeekableRange();
     }
     pub fn putLiveSeekableRange(self: *@This(), value: *IReference(MseTimeRange)) core.HResult!void {
         var this: ?*IMseStreamSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMseStreamSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLiveSeekableRange(value);
@@ -6745,6 +6824,7 @@ pub const SceneAnalysisEffect = extern struct {
     }
     pub fn SetProperties(self: *@This(), configuration: *IPropertySet) core.HResult!void {
         var this: ?*IMediaExtension = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaExtension.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetProperties(configuration);
@@ -6791,78 +6871,91 @@ pub const SceneAnalysisEffectFrame = extern struct {
     }
     pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadOnly();
     }
     pub fn putRelativeTime(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRelativeTime(value);
     }
     pub fn getRelativeTime(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRelativeTime();
     }
     pub fn putSystemRelativeTime(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSystemRelativeTime(value);
     }
     pub fn getSystemRelativeTime(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSystemRelativeTime();
     }
     pub fn putDuration(self: *@This(), value: *IReference(TimeSpan)) core.HResult!void {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDuration(value);
     }
     pub fn getDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
     pub fn putIsDiscontinuous(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsDiscontinuous(value);
     }
     pub fn getIsDiscontinuous(self: *@This()) core.HResult!bool {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDiscontinuous();
     }
     pub fn getExtendedProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IMediaFrame = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtendedProperties();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn getAnalysisRecommendation(self: *@This()) core.HResult!SceneAnalysisRecommendation {
         var this: ?*ISceneAnalysisEffectFrame2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISceneAnalysisEffectFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAnalysisRecommendation();
@@ -6918,36 +7011,42 @@ pub const SpeechCue = extern struct {
     }
     pub fn putStartTime(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStartTime(value);
     }
     pub fn getStartTime(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStartTime();
     }
     pub fn putDuration(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDuration(value);
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
     pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putId(value);
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
@@ -6980,24 +7079,28 @@ pub const TimedMetadataStreamDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getEncodingProperties(self: *@This()) core.HResult!*TimedMetadataEncodingProperties {
         var this: ?*ITimedMetadataStreamDescriptor = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedMetadataStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEncodingProperties();
     }
     pub fn Copy(self: *@This()) core.HResult!*TimedMetadataStreamDescriptor {
         var this: ?*ITimedMetadataStreamDescriptor = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedMetadataStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();
     }
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLabel();
@@ -7088,42 +7191,49 @@ pub const TimedMetadataTrack = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
     pub fn getTrackKind(self: *@This()) core.HResult!MediaTrackKind {
         var this: ?*IMediaTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTrackKind();
     }
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLabel();
     }
     pub fn getPlaybackItem(self: *@This()) core.HResult!*MediaPlaybackItem {
         var this: ?*ITimedMetadataTrack2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedMetadataTrack2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaybackItem();
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ITimedMetadataTrack2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedMetadataTrack2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
@@ -7247,36 +7357,42 @@ pub const TimedTextCue = extern struct {
     }
     pub fn putStartTime(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStartTime(value);
     }
     pub fn getStartTime(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStartTime();
     }
     pub fn putDuration(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDuration(value);
     }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDuration();
     }
     pub fn putId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putId(value);
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaCue = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
@@ -7708,84 +7824,98 @@ pub const TimedTextStyle = extern struct {
     }
     pub fn getFontStyle(self: *@This()) core.HResult!TimedTextFontStyle {
         var this: ?*ITimedTextStyle2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFontStyle();
     }
     pub fn putFontStyle(self: *@This(), value: TimedTextFontStyle) core.HResult!void {
         var this: ?*ITimedTextStyle2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFontStyle(value);
     }
     pub fn getIsUnderlineEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ITimedTextStyle2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsUnderlineEnabled();
     }
     pub fn putIsUnderlineEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITimedTextStyle2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsUnderlineEnabled(value);
     }
     pub fn getIsLineThroughEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ITimedTextStyle2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsLineThroughEnabled();
     }
     pub fn putIsLineThroughEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITimedTextStyle2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsLineThroughEnabled(value);
     }
     pub fn getIsOverlineEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ITimedTextStyle2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsOverlineEnabled();
     }
     pub fn putIsOverlineEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITimedTextStyle2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsOverlineEnabled(value);
     }
     pub fn getRuby(self: *@This()) core.HResult!*TimedTextRuby {
         var this: ?*ITimedTextStyle3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRuby();
     }
     pub fn getBouten(self: *@This()) core.HResult!*TimedTextBouten {
         var this: ?*ITimedTextStyle3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBouten();
     }
     pub fn getIsTextCombined(self: *@This()) core.HResult!bool {
         var this: ?*ITimedTextStyle3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTextCombined();
     }
     pub fn putIsTextCombined(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ITimedTextStyle3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsTextCombined(value);
     }
     pub fn getFontAngleInDegrees(self: *@This()) core.HResult!f64 {
         var this: ?*ITimedTextStyle3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFontAngleInDegrees();
     }
     pub fn putFontAngleInDegrees(self: *@This(), value: f64) core.HResult!void {
         var this: ?*ITimedTextStyle3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimedTextStyle3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFontAngleInDegrees(value);
@@ -7889,6 +8019,7 @@ pub const VideoStabilizationEffect = extern struct {
     }
     pub fn SetProperties(self: *@This(), configuration: *IPropertySet) core.HResult!void {
         var this: ?*IMediaExtension = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaExtension.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetProperties(configuration);
@@ -7948,48 +8079,56 @@ pub const VideoStreamDescriptor = extern struct {
     }
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var this: ?*IMediaStreamDescriptor = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSelected();
     }
     pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putName(value);
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
     pub fn putLanguage(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLanguage(value);
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
     pub fn putLabel(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IMediaStreamDescriptor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLabel(value);
     }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaStreamDescriptor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLabel();
     }
     pub fn Copy(self: *@This()) core.HResult!*VideoStreamDescriptor {
         var this: ?*IVideoStreamDescriptor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoStreamDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();
@@ -8032,36 +8171,42 @@ pub const VideoTrack = extern struct {
     }
     pub fn addOpenFailed(self: *@This(), handler: *TypedEventHandler(VideoTrack,VideoTrackOpenFailedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IVideoTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addOpenFailed(handler);
     }
     pub fn removeOpenFailed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IVideoTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeOpenFailed(token);
     }
     pub fn GetEncodingProperties(self: *@This()) core.HResult!*VideoEncodingProperties {
         var this: ?*IVideoTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetEncodingProperties();
     }
     pub fn getPlaybackItem(self: *@This()) core.HResult!*MediaPlaybackItem {
         var this: ?*IVideoTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlaybackItem();
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IVideoTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
     pub fn getSupportInfo(self: *@This()) core.HResult!*VideoTrackSupportInfo {
         var this: ?*IVideoTrack = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTrack.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportInfo();

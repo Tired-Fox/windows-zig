@@ -7,102 +7,119 @@ pub const AudioDeviceInputNode = extern struct {
     }
     pub fn getOutgoingConnections(self: *@This()) core.HResult!*IVectorView(AudioGraphConnection) {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingConnections();
     }
     pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOutgoingConnection(destination);
     }
     pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveOutgoingConnection(destination);
     }
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
         var this: ?*IAudioInputNode2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmitter();
@@ -128,84 +145,98 @@ pub const AudioDeviceOutputNode = extern struct {
     }
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn putListener(self: *@This(), value: *AudioNodeListener) core.HResult!void {
         var this: ?*IAudioNodeWithListener = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNodeWithListener.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putListener(value);
     }
     pub fn getListener(self: *@This()) core.HResult!*AudioNodeListener {
         var this: ?*IAudioNodeWithListener = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNodeWithListener.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getListener();
@@ -321,102 +352,119 @@ pub const AudioFileInputNode = extern struct {
     }
     pub fn getOutgoingConnections(self: *@This()) core.HResult!*IVectorView(AudioGraphConnection) {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingConnections();
     }
     pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOutgoingConnection(destination);
     }
     pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveOutgoingConnection(destination);
     }
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
         var this: ?*IAudioInputNode2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmitter();
@@ -450,72 +498,84 @@ pub const AudioFileOutputNode = extern struct {
     }
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -578,102 +638,119 @@ pub const AudioFrameInputNode = extern struct {
     }
     pub fn getOutgoingConnections(self: *@This()) core.HResult!*IVectorView(AudioGraphConnection) {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingConnections();
     }
     pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOutgoingConnection(destination);
     }
     pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveOutgoingConnection(destination);
     }
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
         var this: ?*IAudioInputNode2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmitter();
@@ -692,72 +769,84 @@ pub const AudioFrameOutputNode = extern struct {
     }
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -884,48 +973,56 @@ pub const AudioGraph = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn CreateFrameInputNodeWithEncodingPropertiesAndEmitter(self: *@This(), encodingProperties: *AudioEncodingProperties, emitter: *AudioNodeEmitter) core.HResult!*AudioFrameInputNode {
         var this: ?*IAudioGraph2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFrameInputNodeWithEncodingPropertiesAndEmitter(encodingProperties, emitter);
     }
     pub fn CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDeviceAndEmitter(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var this: ?*IAudioGraph2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDeviceAndEmitter(category, encodingProperties, device, emitter);
     }
     pub fn CreateFileInputNodeAsyncWithEmitter(self: *@This(), file: *IStorageFile, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioFileInputNodeResult) {
         var this: ?*IAudioGraph2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFileInputNodeAsyncWithEmitter(file, emitter);
     }
     pub fn CreateSubmixNodeWithEncodingPropertiesAndEmitter(self: *@This(), encodingProperties: *AudioEncodingProperties, emitter: *AudioNodeEmitter) core.HResult!*AudioSubmixNode {
         var this: ?*IAudioGraph2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateSubmixNodeWithEncodingPropertiesAndEmitter(encodingProperties, emitter);
     }
     pub fn CreateBatchUpdater(self: *@This()) core.HResult!*AudioGraphBatchUpdater {
         var this: ?*IAudioGraph2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateBatchUpdater();
     }
     pub fn CreateMediaSourceAudioInputNodeAsync(self: *@This(), mediaSource: *MediaSource) core.HResult!*IAsyncOperation(CreateMediaSourceAudioInputNodeResult) {
         var this: ?*IAudioGraph3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateMediaSourceAudioInputNodeAsync(mediaSource);
     }
     pub fn CreateMediaSourceAudioInputNodeAsyncWithEmitter(self: *@This(), mediaSource: *MediaSource, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateMediaSourceAudioInputNodeResult) {
         var this: ?*IAudioGraph3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateMediaSourceAudioInputNodeAsyncWithEmitter(mediaSource, emitter);
@@ -1034,12 +1131,14 @@ pub const AudioGraphSettings = extern struct {
     }
     pub fn putMaxPlaybackSpeedFactor(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioGraphSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraphSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxPlaybackSpeedFactor(value);
     }
     pub fn getMaxPlaybackSpeedFactor(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioGraphSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraphSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxPlaybackSpeedFactor();
@@ -1140,12 +1239,14 @@ pub const AudioNodeEmitter = extern struct {
     }
     pub fn getSpatialAudioModel(self: *@This()) core.HResult!SpatialAudioModel {
         var this: ?*IAudioNodeEmitter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNodeEmitter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSpatialAudioModel();
     }
     pub fn putSpatialAudioModel(self: *@This(), value: SpatialAudioModel) core.HResult!void {
         var this: ?*IAudioNodeEmitter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNodeEmitter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSpatialAudioModel(value);
@@ -1365,6 +1466,7 @@ pub const AudioPlaybackConnection = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1489,78 +1591,91 @@ pub const AudioSubmixNode = extern struct {
     }
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
         var this: ?*IAudioInputNode2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmitter();
@@ -1583,6 +1698,7 @@ pub const CreateAudioDeviceInputNodeResult = extern struct {
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*ICreateAudioDeviceInputNodeResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioDeviceInputNodeResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtendedError();
@@ -1605,6 +1721,7 @@ pub const CreateAudioDeviceOutputNodeResult = extern struct {
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*ICreateAudioDeviceOutputNodeResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioDeviceOutputNodeResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtendedError();
@@ -1627,6 +1744,7 @@ pub const CreateAudioFileInputNodeResult = extern struct {
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*ICreateAudioFileInputNodeResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioFileInputNodeResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtendedError();
@@ -1649,6 +1767,7 @@ pub const CreateAudioFileOutputNodeResult = extern struct {
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*ICreateAudioFileOutputNodeResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioFileOutputNodeResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtendedError();
@@ -1671,6 +1790,7 @@ pub const CreateAudioGraphResult = extern struct {
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*ICreateAudioGraphResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICreateAudioGraphResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtendedError();
@@ -1693,6 +1813,7 @@ pub const CreateMediaSourceAudioInputNodeResult = extern struct {
     }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var this: ?*ICreateMediaSourceAudioInputNodeResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICreateMediaSourceAudioInputNodeResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtendedError();
@@ -1731,12 +1852,14 @@ pub const EchoEffectDefinition = extern struct {
     }
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActivatableClassId();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IAudioEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
@@ -1795,12 +1918,14 @@ pub const EqualizerEffectDefinition = extern struct {
     }
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActivatableClassId();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IAudioEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
@@ -4815,12 +4940,14 @@ pub const LimiterEffectDefinition = extern struct {
     }
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActivatableClassId();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IAudioEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
@@ -4899,102 +5026,119 @@ pub const MediaSourceAudioInputNode = extern struct {
     }
     pub fn getOutgoingConnections(self: *@This()) core.HResult!*IVectorView(AudioGraphConnection) {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingConnections();
     }
     pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOutgoingConnection(destination);
     }
     pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveOutgoingConnection(destination);
     }
     pub fn getEffectDefinitions(self: *@This()) core.HResult!*IVector(IAudioEffectDefinition) {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectDefinitions();
     }
     pub fn putOutgoingGain(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutgoingGain(value);
     }
     pub fn getOutgoingGain(self: *@This()) core.HResult!f64 {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutgoingGain();
     }
     pub fn getEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEncodingProperties();
     }
     pub fn getConsumeInput(self: *@This()) core.HResult!bool {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConsumeInput();
     }
     pub fn putConsumeInput(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putConsumeInput(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Start();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
     }
     pub fn Reset(self: *@This()) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Reset();
     }
     pub fn DisableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DisableEffectsByDefinition(definition);
     }
     pub fn EnableEffectsByDefinition(self: *@This(), definition: *IAudioEffectDefinition) core.HResult!void {
         var this: ?*IAudioNode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableEffectsByDefinition(definition);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
         var this: ?*IAudioInputNode2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmitter();
@@ -5208,12 +5352,14 @@ pub const ReverbEffectDefinition = extern struct {
     }
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActivatableClassId();
     }
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IAudioEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();

@@ -63,54 +63,63 @@ pub const Certificate = extern struct {
     }
     pub fn getIsSecurityDeviceBound(self: *@This()) core.HResult!bool {
         var this: ?*ICertificate2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSecurityDeviceBound();
     }
     pub fn getKeyUsages(self: *@This()) core.HResult!*CertificateKeyUsages {
         var this: ?*ICertificate2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyUsages();
     }
     pub fn getKeyAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificate2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyAlgorithmName();
     }
     pub fn getSignatureAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificate2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSignatureAlgorithmName();
     }
     pub fn getSignatureHashAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificate2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSignatureHashAlgorithmName();
     }
     pub fn getSubjectAlternativeName(self: *@This()) core.HResult!*SubjectAlternativeNameInfo {
         var this: ?*ICertificate2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSubjectAlternativeName();
     }
     pub fn getIsPerUser(self: *@This()) core.HResult!bool {
         var this: ?*ICertificate3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPerUser();
     }
     pub fn getStoreName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificate3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStoreName();
     }
     pub fn getKeyStorageProviderName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificate3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificate3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyStorageProviderName();
@@ -354,36 +363,42 @@ pub const CertificateQuery = extern struct {
     }
     pub fn getIncludeDuplicates(self: *@This()) core.HResult!bool {
         var this: ?*ICertificateQuery2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateQuery2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIncludeDuplicates();
     }
     pub fn putIncludeDuplicates(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICertificateQuery2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateQuery2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIncludeDuplicates(value);
     }
     pub fn getIncludeExpiredCertificates(self: *@This()) core.HResult!bool {
         var this: ?*ICertificateQuery2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateQuery2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIncludeExpiredCertificates();
     }
     pub fn putIncludeExpiredCertificates(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICertificateQuery2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateQuery2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIncludeExpiredCertificates(value);
     }
     pub fn getStoreName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificateQuery2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateQuery2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStoreName();
     }
     pub fn putStoreName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICertificateQuery2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateQuery2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStoreName(value);
@@ -478,114 +493,133 @@ pub const CertificateRequestProperties = extern struct {
     }
     pub fn getSmartcardReaderName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificateRequestProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSmartcardReaderName();
     }
     pub fn putSmartcardReaderName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICertificateRequestProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSmartcardReaderName(value);
     }
     pub fn getSigningCertificate(self: *@This()) core.HResult!*Certificate {
         var this: ?*ICertificateRequestProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSigningCertificate();
     }
     pub fn putSigningCertificate(self: *@This(), value: *Certificate) core.HResult!void {
         var this: ?*ICertificateRequestProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSigningCertificate(value);
     }
     pub fn getAttestationCredentialCertificate(self: *@This()) core.HResult!*Certificate {
         var this: ?*ICertificateRequestProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAttestationCredentialCertificate();
     }
     pub fn putAttestationCredentialCertificate(self: *@This(), value: *Certificate) core.HResult!void {
         var this: ?*ICertificateRequestProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAttestationCredentialCertificate(value);
     }
     pub fn getCurveName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificateRequestProperties3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCurveName();
     }
     pub fn putCurveName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICertificateRequestProperties3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCurveName(value);
     }
     pub fn getCurveParameters(self: *@This()) core.HResult![*]u8 {
         var this: ?*ICertificateRequestProperties3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCurveParameters();
     }
     pub fn putCurveParameters(self: *@This(), value: [*]u8) core.HResult!void {
         var this: ?*ICertificateRequestProperties3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCurveParameters(value);
     }
     pub fn getContainerNamePrefix(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificateRequestProperties3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContainerNamePrefix();
     }
     pub fn putContainerNamePrefix(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICertificateRequestProperties3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContainerNamePrefix(value);
     }
     pub fn getContainerName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificateRequestProperties3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContainerName();
     }
     pub fn putContainerName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICertificateRequestProperties3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContainerName(value);
     }
     pub fn getUseExistingKey(self: *@This()) core.HResult!bool {
         var this: ?*ICertificateRequestProperties3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseExistingKey();
     }
     pub fn putUseExistingKey(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICertificateRequestProperties3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseExistingKey(value);
     }
     pub fn getSuppressedDefaults(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ICertificateRequestProperties4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSuppressedDefaults();
     }
     pub fn getSubjectAlternativeName(self: *@This()) core.HResult!*SubjectAlternativeNameInfo {
         var this: ?*ICertificateRequestProperties4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSubjectAlternativeName();
     }
     pub fn getExtensions(self: *@This()) core.HResult!*IVector(CertificateExtension) {
         var this: ?*ICertificateRequestProperties4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateRequestProperties4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtensions();
@@ -616,6 +650,7 @@ pub const CertificateStore = extern struct {
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICertificateStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICertificateStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
@@ -3184,42 +3219,49 @@ pub const SubjectAlternativeNameInfo = extern struct {
     }
     pub fn getEmailNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmailNames();
     }
     pub fn getIPAddresses(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIPAddresses();
     }
     pub fn getUrls(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUrls();
     }
     pub fn getDnsNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDnsNames();
     }
     pub fn getDistinguishedNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDistinguishedNames();
     }
     pub fn getPrincipalNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPrincipalNames();
     }
     pub fn getExtension(self: *@This()) core.HResult!*CertificateExtension {
         var this: ?*ISubjectAlternativeNameInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISubjectAlternativeNameInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtension();
@@ -3258,6 +3300,7 @@ pub const UserCertificateEnrollmentManager = extern struct {
     }
     pub fn ImportPfxDataAsync(self: *@This(), pfxData: ?HSTRING, password: ?HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
         var this: ?*IUserCertificateEnrollmentManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserCertificateEnrollmentManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ImportPfxDataAsync(pfxData, password, pfxImportParameters);

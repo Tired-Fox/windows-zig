@@ -975,24 +975,28 @@ pub const TextPredictionGenerator = extern struct {
     }
     pub fn GetCandidatesAsyncWithMaxCandidatesAndPredictionOptionsAndPreviousStrings(self: *@This(), input: ?HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var this: ?*ITextPredictionGenerator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCandidatesAsyncWithMaxCandidatesAndPredictionOptionsAndPreviousStrings(input, maxCandidates, predictionOptions, previousStrings);
     }
     pub fn GetNextWordCandidatesAsync(self: *@This(), maxCandidates: u32, previousStrings: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var this: ?*ITextPredictionGenerator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetNextWordCandidatesAsync(maxCandidates, previousStrings);
     }
     pub fn getInputScope(self: *@This()) core.HResult!CoreTextInputScope {
         var this: ?*ITextPredictionGenerator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInputScope();
     }
     pub fn putInputScope(self: *@This(), value: CoreTextInputScope) core.HResult!void {
         var this: ?*ITextPredictionGenerator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putInputScope(value);
@@ -1032,6 +1036,7 @@ pub const TextReverseConversionGenerator = extern struct {
     }
     pub fn GetPhonemesAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(TextPhoneme)) {
         var this: ?*ITextReverseConversionGenerator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextReverseConversionGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPhonemesAsync(input);

@@ -220,12 +220,14 @@ pub const AppWindowFrame = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn GetFrameStyle(self: *@This()) core.HResult!AppWindowFrameStyle {
         var this: ?*IAppWindowFrameStyle = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppWindowFrameStyle.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFrameStyle();
     }
     pub fn SetFrameStyle(self: *@This(), frameStyle: AppWindowFrameStyle) core.HResult!void {
         var this: ?*IAppWindowFrameStyle = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppWindowFrameStyle.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetFrameStyle(frameStyle);
@@ -313,12 +315,14 @@ pub const AppWindowTitleBar = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn GetPreferredVisibility(self: *@This()) core.HResult!AppWindowTitleBarVisibility {
         var this: ?*IAppWindowTitleBarVisibility = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppWindowTitleBarVisibility.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPreferredVisibility();
     }
     pub fn SetPreferredVisibility(self: *@This(), visibilityMode: AppWindowTitleBarVisibility) core.HResult!void {
         var this: ?*IAppWindowTitleBarVisibility = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppWindowTitleBarVisibility.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPreferredVisibility(visibilityMode);

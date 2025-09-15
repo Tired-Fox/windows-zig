@@ -88,36 +88,42 @@ pub const Binding = extern struct {
     }
     pub fn getFallbackValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IBinding2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBinding2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFallbackValue();
     }
     pub fn putFallbackValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IBinding2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBinding2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFallbackValue(value);
     }
     pub fn getTargetNullValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IBinding2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBinding2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTargetNullValue();
     }
     pub fn putTargetNullValue(self: *@This(), value: *IInspectable) core.HResult!void {
         var this: ?*IBinding2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBinding2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTargetNullValue(value);
     }
     pub fn getUpdateSourceTrigger(self: *@This()) core.HResult!UpdateSourceTrigger {
         var this: ?*IBinding2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBinding2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUpdateSourceTrigger();
     }
     pub fn putUpdateSourceTrigger(self: *@This(), value: UpdateSourceTrigger) core.HResult!void {
         var this: ?*IBinding2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBinding2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUpdateSourceTrigger(value);

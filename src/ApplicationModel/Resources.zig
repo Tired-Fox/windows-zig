@@ -189,6 +189,7 @@ pub const ResourceLoader = extern struct {
     }
     pub fn GetStringForUri(self: *@This(), uri: *Uri) core.HResult!?HSTRING {
         var this: ?*IResourceLoader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IResourceLoader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStringForUri(uri);

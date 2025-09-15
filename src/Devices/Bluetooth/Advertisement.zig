@@ -300,72 +300,84 @@ pub const BluetoothLEAdvertisementPublisher = extern struct {
     }
     pub fn getPreferredTransmitPowerLevelInDBm(self: *@This()) core.HResult!*IReference(i16) {
         var this: ?*IBluetoothLEAdvertisementPublisher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreferredTransmitPowerLevelInDBm();
     }
     pub fn putPreferredTransmitPowerLevelInDBm(self: *@This(), value: *IReference(i16)) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementPublisher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPreferredTransmitPowerLevelInDBm(value);
     }
     pub fn getUseExtendedAdvertisement(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementPublisher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseExtendedAdvertisement();
     }
     pub fn putUseExtendedAdvertisement(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementPublisher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseExtendedAdvertisement(value);
     }
     pub fn getIsAnonymous(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementPublisher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAnonymous();
     }
     pub fn putIsAnonymous(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementPublisher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsAnonymous(value);
     }
     pub fn getIncludeTransmitPowerLevel(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementPublisher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIncludeTransmitPowerLevel();
     }
     pub fn putIncludeTransmitPowerLevel(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementPublisher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIncludeTransmitPowerLevel(value);
     }
     pub fn getPrimaryPhy(self: *@This()) core.HResult!BluetoothLEAdvertisementPhyType {
         var this: ?*IBluetoothLEAdvertisementPublisher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPrimaryPhy();
     }
     pub fn putPrimaryPhy(self: *@This(), value: BluetoothLEAdvertisementPhyType) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementPublisher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrimaryPhy(value);
     }
     pub fn getSecondaryPhy(self: *@This()) core.HResult!BluetoothLEAdvertisementPhyType {
         var this: ?*IBluetoothLEAdvertisementPublisher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSecondaryPhy();
     }
     pub fn putSecondaryPhy(self: *@This(), value: BluetoothLEAdvertisementPhyType) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementPublisher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSecondaryPhy(value);
@@ -409,6 +421,7 @@ pub const BluetoothLEAdvertisementPublisherStatusChangedEventArgs = extern struc
     }
     pub fn getSelectedTransmitPowerLevelInDBm(self: *@This()) core.HResult!*IReference(i16) {
         var this: ?*IBluetoothLEAdvertisementPublisherStatusChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherStatusChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedTransmitPowerLevelInDBm();
@@ -443,54 +456,63 @@ pub const BluetoothLEAdvertisementReceivedEventArgs = extern struct {
     }
     pub fn getBluetoothAddressType(self: *@This()) core.HResult!BluetoothAddressType {
         var this: ?*IBluetoothLEAdvertisementReceivedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementReceivedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBluetoothAddressType();
     }
     pub fn getTransmitPowerLevelInDBm(self: *@This()) core.HResult!*IReference(i16) {
         var this: ?*IBluetoothLEAdvertisementReceivedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementReceivedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransmitPowerLevelInDBm();
     }
     pub fn getIsAnonymous(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementReceivedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementReceivedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAnonymous();
     }
     pub fn getIsConnectable(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementReceivedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementReceivedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsConnectable();
     }
     pub fn getIsScannable(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementReceivedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementReceivedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsScannable();
     }
     pub fn getIsDirected(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementReceivedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementReceivedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDirected();
     }
     pub fn getIsScanResponse(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementReceivedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementReceivedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsScanResponse();
     }
     pub fn getPrimaryPhy(self: *@This()) core.HResult!BluetoothLEAdvertisementPhyType {
         var this: ?*IBluetoothLEAdvertisementReceivedEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementReceivedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPrimaryPhy();
     }
     pub fn getSecondaryPhy(self: *@This()) core.HResult!BluetoothLEAdvertisementPhyType {
         var this: ?*IBluetoothLEAdvertisementReceivedEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementReceivedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSecondaryPhy();
@@ -609,60 +631,70 @@ pub const BluetoothLEAdvertisementWatcher = extern struct {
     }
     pub fn getAllowExtendedAdvertisements(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementWatcher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAllowExtendedAdvertisements();
     }
     pub fn putAllowExtendedAdvertisements(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementWatcher2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcher2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAllowExtendedAdvertisements(value);
     }
     pub fn getUseUncoded1MPhy(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementWatcher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseUncoded1MPhy();
     }
     pub fn putUseUncoded1MPhy(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementWatcher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseUncoded1MPhy(value);
     }
     pub fn getUseCodedPhy(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementWatcher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseCodedPhy();
     }
     pub fn putUseCodedPhy(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementWatcher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseCodedPhy(value);
     }
     pub fn getScanParameters(self: *@This()) core.HResult!*BluetoothLEAdvertisementScanParameters {
         var this: ?*IBluetoothLEAdvertisementWatcher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getScanParameters();
     }
     pub fn putScanParameters(self: *@This(), value: *BluetoothLEAdvertisementScanParameters) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementWatcher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putScanParameters(value);
     }
     pub fn getUseHardwareFilter(self: *@This()) core.HResult!bool {
         var this: ?*IBluetoothLEAdvertisementWatcher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseHardwareFilter();
     }
     pub fn putUseHardwareFilter(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBluetoothLEAdvertisementWatcher3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementWatcher3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseHardwareFilter(value);

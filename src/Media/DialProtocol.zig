@@ -69,12 +69,14 @@ pub const DialDevice = extern struct {
     }
     pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDialDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDialDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFriendlyName();
     }
     pub fn getThumbnail(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var this: ?*IDialDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDialDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getThumbnail();
@@ -229,6 +231,7 @@ pub const DialReceiverApp = extern struct {
     }
     pub fn GetUniqueDeviceNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IDialReceiverApp2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDialReceiverApp2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetUniqueDeviceNameAsync();

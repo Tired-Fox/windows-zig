@@ -1003,18 +1003,21 @@ pub const InputInjector = extern struct {
     }
     pub fn InitializeGamepadInjection(self: *@This()) core.HResult!void {
         var this: ?*IInputInjector2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputInjector2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InitializeGamepadInjection();
     }
     pub fn InjectGamepadInput(self: *@This(), input: *InjectedInputGamepadInfo) core.HResult!void {
         var this: ?*IInputInjector2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputInjector2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InjectGamepadInput(input);
     }
     pub fn UninitializeGamepadInjection(self: *@This()) core.HResult!void {
         var this: ?*IInputInjector2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputInjector2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UninitializeGamepadInjection();

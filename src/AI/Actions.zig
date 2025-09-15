@@ -11,12 +11,14 @@ pub const ActionEntity = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IActionEntity2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionEntity2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -39,6 +41,7 @@ pub const ActionEntityDisplayInfo = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -69,36 +72,42 @@ pub const ActionEntityFactory = extern struct {
     }
     pub fn CreateRemoteFileEntity(self: *@This(), sourceId: ?HSTRING, fileKind: RemoteFileKind, sourceUri: *Uri, fileId: ?HSTRING, contentType: ?HSTRING, driveId: ?HSTRING, accountId: ?HSTRING, extension: ?HSTRING) core.HResult!*RemoteFileActionEntity {
         var this: ?*IActionEntityFactory3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionEntityFactory3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRemoteFileEntity(sourceId, fileKind, sourceUri, fileId, contentType, driveId, accountId, extension);
     }
     pub fn CreateTextEntityWithTextFormat(self: *@This(), text: ?HSTRING, textFormat: ActionEntityTextFormat) core.HResult!*TextActionEntity {
         var this: ?*IActionEntityFactory3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionEntityFactory3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateTextEntityWithTextFormat(text, textFormat);
     }
     pub fn CreateStreamingTextActionEntityWriter(self: *@This(), textFormat: ActionEntityTextFormat) core.HResult!*StreamingTextActionEntityWriter {
         var this: ?*IActionEntityFactory3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionEntityFactory3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateStreamingTextActionEntityWriter(textFormat);
     }
     pub fn CreateTableEntity(self: *@This(), data: ?[*]HSTRING, columnCount: u32) core.HResult!*TableActionEntity {
         var this: ?*IActionEntityFactory4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionEntityFactory4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateTableEntity(data, columnCount);
     }
     pub fn CreateContactEntity(self: *@This(), contact: *Contact) core.HResult!*ContactActionEntity {
         var this: ?*IActionEntityFactory4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionEntityFactory4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateContactEntity(contact);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -136,6 +145,7 @@ pub const ActionFeedback = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -190,30 +200,35 @@ pub const ActionInvocationContext = extern struct {
     }
     pub fn getInvokerWindowId(self: *@This()) core.HResult!WindowId {
         var this: ?*IActionInvocationContext2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionInvocationContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInvokerWindowId();
     }
     pub fn getHelpDetails(self: *@This()) core.HResult!*ActionInvocationHelpDetails {
         var this: ?*IActionInvocationContext2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionInvocationContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHelpDetails();
     }
     pub fn getActionId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IActionInvocationContext2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionInvocationContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActionId();
     }
     pub fn getInvokerAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IActionInvocationContext2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionInvocationContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInvokerAppUserModelId();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -268,6 +283,7 @@ pub const ActionInvocationHelpDetails = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -305,48 +321,56 @@ pub const ActionRuntime = extern struct {
     }
     pub fn CreateActionFeedback(self: *@This(), feedbackKind: ActionFeedbackKind) core.HResult!*ActionFeedback {
         var this: ?*IActionRuntime2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionRuntime2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateActionFeedback(feedbackKind);
     }
     pub fn SetActionAvailability(self: *@This(), actionId: ?HSTRING, isAvailable: bool) core.HResult!void {
         var this: ?*IActionRuntime2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionRuntime2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetActionAvailability(actionId, isAvailable);
     }
     pub fn GetActionAvailability(self: *@This(), actionId: ?HSTRING) core.HResult!bool {
         var this: ?*IActionRuntime2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionRuntime2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetActionAvailability(actionId);
     }
     pub fn CreateInvocationContextWithWindowId(self: *@This(), actionId: ?HSTRING, invokerWindowId: WindowId) core.HResult!*ActionInvocationContext {
         var this: ?*IActionRuntime3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionRuntime3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateInvocationContextWithWindowId(actionId, invokerWindowId);
     }
     pub fn GetActionEntityById(self: *@This(), entityId: ?HSTRING) core.HResult!*ActionEntity {
         var this: ?*IActionRuntime3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionRuntime3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetActionEntityById(entityId);
     }
     pub fn getLatestSupportedSchemaVersion(self: *@This()) core.HResult!u32 {
         var this: ?*IActionRuntime3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionRuntime3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLatestSupportedSchemaVersion();
     }
     pub fn GetActionInvocationContextFromToken(self: *@This(), token: ?HSTRING) core.HResult!*ActionInvocationContext {
         var this: ?*IActionRuntime4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionRuntime4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetActionInvocationContextFromToken(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1399,6 +1423,7 @@ pub const NamedActionEntity = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1526,6 +1551,7 @@ pub const StreamingTextActionEntityWriter = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1564,6 +1590,7 @@ pub const TextActionEntity = extern struct {
     }
     pub fn getTextFormat(self: *@This()) core.HResult!ActionEntityTextFormat {
         var this: ?*ITextActionEntity2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextActionEntity2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextFormat();

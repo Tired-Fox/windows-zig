@@ -47,12 +47,14 @@ pub const BarcodeScanner = extern struct {
     }
     pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBarcodeScanner2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScanner2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVideoDeviceId();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -104,12 +106,14 @@ pub const BarcodeScannerCapabilities = extern struct {
     }
     pub fn getIsSoftwareTriggerSupported(self: *@This()) core.HResult!bool {
         var this: ?*IBarcodeScannerCapabilities1 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerCapabilities1.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSoftwareTriggerSupported();
     }
     pub fn getIsVideoPreviewSupported(self: *@This()) core.HResult!bool {
         var this: ?*IBarcodeScannerCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsVideoPreviewSupported();
@@ -714,6 +718,7 @@ pub const CashDrawer = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1016,66 +1021,77 @@ pub const ClaimedBarcodeScanner = extern struct {
     }
     pub fn StartSoftwareTriggerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IClaimedBarcodeScanner1 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner1.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartSoftwareTriggerAsync();
     }
     pub fn StopSoftwareTriggerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IClaimedBarcodeScanner1 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner1.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopSoftwareTriggerAsync();
     }
     pub fn GetSymbologyAttributesAsync(self: *@This(), barcodeSymbology: u32) core.HResult!*IAsyncOperation(BarcodeSymbologyAttributes) {
         var this: ?*IClaimedBarcodeScanner2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSymbologyAttributesAsync(barcodeSymbology);
     }
     pub fn SetSymbologyAttributesAsync(self: *@This(), barcodeSymbology: u32, attributes: *BarcodeSymbologyAttributes) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IClaimedBarcodeScanner2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetSymbologyAttributesAsync(barcodeSymbology, attributes);
     }
     pub fn ShowVideoPreviewAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IClaimedBarcodeScanner3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShowVideoPreviewAsync();
     }
     pub fn HideVideoPreview(self: *@This()) core.HResult!void {
         var this: ?*IClaimedBarcodeScanner3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.HideVideoPreview();
     }
     pub fn putIsVideoPreviewShownOnEnable(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IClaimedBarcodeScanner3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsVideoPreviewShownOnEnable(value);
     }
     pub fn getIsVideoPreviewShownOnEnable(self: *@This()) core.HResult!bool {
         var this: ?*IClaimedBarcodeScanner3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsVideoPreviewShownOnEnable();
     }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedBarcodeScanner,ClaimedBarcodeScannerClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedBarcodeScanner4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addClosed(handler);
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IClaimedBarcodeScanner4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedBarcodeScanner4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosed(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1146,18 +1162,21 @@ pub const ClaimedCashDrawer = extern struct {
     }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedCashDrawer,ClaimedCashDrawerClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedCashDrawer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedCashDrawer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addClosed(handler);
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IClaimedCashDrawer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedCashDrawer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosed(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1184,114 +1203,133 @@ pub const ClaimedJournalPrinter = extern struct {
     }
     pub fn putCharactersPerLine(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCharactersPerLine(value);
     }
     pub fn getCharactersPerLine(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCharactersPerLine();
     }
     pub fn putLineHeight(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLineHeight(value);
     }
     pub fn getLineHeight(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLineHeight();
     }
     pub fn putLineSpacing(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLineSpacing(value);
     }
     pub fn getLineSpacing(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLineSpacing();
     }
     pub fn getLineWidth(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLineWidth();
     }
     pub fn putIsLetterQuality(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsLetterQuality(value);
     }
     pub fn getIsLetterQuality(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsLetterQuality();
     }
     pub fn getIsPaperNearEnd(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaperNearEnd();
     }
     pub fn putColorCartridge(self: *@This(), value: PosPrinterColorCartridge) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putColorCartridge(value);
     }
     pub fn getColorCartridge(self: *@This()) core.HResult!PosPrinterColorCartridge {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getColorCartridge();
     }
     pub fn getIsCoverOpen(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCoverOpen();
     }
     pub fn getIsCartridgeRemoved(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCartridgeRemoved();
     }
     pub fn getIsCartridgeEmpty(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCartridgeEmpty();
     }
     pub fn getIsHeadCleaning(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsHeadCleaning();
     }
     pub fn getIsPaperEmpty(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaperEmpty();
     }
     pub fn getIsReadyToPrint(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadyToPrint();
     }
     pub fn ValidateData(self: *@This(), data: ?HSTRING) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ValidateData(data);
@@ -1350,120 +1388,140 @@ pub const ClaimedLineDisplay = extern struct {
     }
     pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStatisticsAsync(statisticsCategories);
     }
     pub fn CheckHealthAsync(self: *@This(), level: UnifiedPosHealthCheckLevel) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CheckHealthAsync(level);
     }
     pub fn CheckPowerStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(LineDisplayPowerStatus) {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CheckPowerStatusAsync();
     }
     pub fn addStatusUpdated(self: *@This(), handler: *TypedEventHandler(ClaimedLineDisplay,LineDisplayStatusUpdatedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addStatusUpdated(handler);
     }
     pub fn removeStatusUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeStatusUpdated(token);
     }
     pub fn getSupportedScreenSizesInCharacters(self: *@This()) core.HResult!*IVectorView(Size) {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedScreenSizesInCharacters();
     }
     pub fn getMaxBitmapSizeInPixels(self: *@This()) core.HResult!Size {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBitmapSizeInPixels();
     }
     pub fn getSupportedCharacterSets(self: *@This()) core.HResult!*IVectorView(i32) {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedCharacterSets();
     }
     pub fn getCustomGlyphs(self: *@This()) core.HResult!*LineDisplayCustomGlyphs {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCustomGlyphs();
     }
     pub fn GetAttributes(self: *@This()) core.HResult!*LineDisplayAttributes {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAttributes();
     }
     pub fn TryUpdateAttributesAsync(self: *@This(), attributes: *LineDisplayAttributes) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryUpdateAttributesAsync(attributes);
     }
     pub fn TrySetDescriptorAsync(self: *@This(), descriptor: u32, descriptorState: LineDisplayDescriptorState) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TrySetDescriptorAsync(descriptor, descriptorState);
     }
     pub fn TryClearDescriptorsAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryClearDescriptorsAsync();
     }
     pub fn TryCreateWindowAsync(self: *@This(), viewport: Rect, windowSize: Size) core.HResult!*IAsyncOperation(LineDisplayWindow) {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryCreateWindowAsync(viewport, windowSize);
     }
     pub fn TryStoreStorageFileBitmapAsync(self: *@This(), bitmap: *StorageFile) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryStoreStorageFileBitmapAsync(bitmap);
     }
     pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignment(bitmap, horizontalAlignment, verticalAlignment);
     }
     pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var this: ?*IClaimedLineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(bitmap, horizontalAlignment, verticalAlignment, widthInPixels);
     }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedLineDisplay,ClaimedLineDisplayClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedLineDisplay3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addClosed(handler);
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IClaimedLineDisplay3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosed(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1634,18 +1692,21 @@ pub const ClaimedMagneticStripeReader = extern struct {
     }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedMagneticStripeReader,ClaimedMagneticStripeReaderClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedMagneticStripeReader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedMagneticStripeReader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addClosed(handler);
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IClaimedMagneticStripeReader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedMagneticStripeReader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosed(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1744,18 +1805,21 @@ pub const ClaimedPosPrinter = extern struct {
     }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedPosPrinter,ClaimedPosPrinterClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedPosPrinter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedPosPrinter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addClosed(handler);
     }
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IClaimedPosPrinter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedPosPrinter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosed(token);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1802,114 +1866,133 @@ pub const ClaimedReceiptPrinter = extern struct {
     }
     pub fn putCharactersPerLine(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCharactersPerLine(value);
     }
     pub fn getCharactersPerLine(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCharactersPerLine();
     }
     pub fn putLineHeight(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLineHeight(value);
     }
     pub fn getLineHeight(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLineHeight();
     }
     pub fn putLineSpacing(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLineSpacing(value);
     }
     pub fn getLineSpacing(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLineSpacing();
     }
     pub fn getLineWidth(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLineWidth();
     }
     pub fn putIsLetterQuality(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsLetterQuality(value);
     }
     pub fn getIsLetterQuality(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsLetterQuality();
     }
     pub fn getIsPaperNearEnd(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaperNearEnd();
     }
     pub fn putColorCartridge(self: *@This(), value: PosPrinterColorCartridge) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putColorCartridge(value);
     }
     pub fn getColorCartridge(self: *@This()) core.HResult!PosPrinterColorCartridge {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getColorCartridge();
     }
     pub fn getIsCoverOpen(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCoverOpen();
     }
     pub fn getIsCartridgeRemoved(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCartridgeRemoved();
     }
     pub fn getIsCartridgeEmpty(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCartridgeEmpty();
     }
     pub fn getIsHeadCleaning(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsHeadCleaning();
     }
     pub fn getIsPaperEmpty(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaperEmpty();
     }
     pub fn getIsReadyToPrint(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadyToPrint();
     }
     pub fn ValidateData(self: *@This(), data: ?HSTRING) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ValidateData(data);
@@ -1976,114 +2059,133 @@ pub const ClaimedSlipPrinter = extern struct {
     }
     pub fn putCharactersPerLine(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCharactersPerLine(value);
     }
     pub fn getCharactersPerLine(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCharactersPerLine();
     }
     pub fn putLineHeight(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLineHeight(value);
     }
     pub fn getLineHeight(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLineHeight();
     }
     pub fn putLineSpacing(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLineSpacing(value);
     }
     pub fn getLineSpacing(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLineSpacing();
     }
     pub fn getLineWidth(self: *@This()) core.HResult!u32 {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLineWidth();
     }
     pub fn putIsLetterQuality(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsLetterQuality(value);
     }
     pub fn getIsLetterQuality(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsLetterQuality();
     }
     pub fn getIsPaperNearEnd(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaperNearEnd();
     }
     pub fn putColorCartridge(self: *@This(), value: PosPrinterColorCartridge) core.HResult!void {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putColorCartridge(value);
     }
     pub fn getColorCartridge(self: *@This()) core.HResult!PosPrinterColorCartridge {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getColorCartridge();
     }
     pub fn getIsCoverOpen(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCoverOpen();
     }
     pub fn getIsCartridgeRemoved(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCartridgeRemoved();
     }
     pub fn getIsCartridgeEmpty(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsCartridgeEmpty();
     }
     pub fn getIsHeadCleaning(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsHeadCleaning();
     }
     pub fn getIsPaperEmpty(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaperEmpty();
     }
     pub fn getIsReadyToPrint(self: *@This()) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadyToPrint();
     }
     pub fn ValidateData(self: *@This(), data: ?HSTRING) core.HResult!bool {
         var this: ?*ICommonClaimedPosPrinterStation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonClaimedPosPrinterStation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ValidateData(data);
@@ -8277,18 +8379,21 @@ pub const JournalPrintJob = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn PrintWithPrintOptions(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         var this: ?*IJournalPrintJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrintJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintWithPrintOptions(data, printOptions);
     }
     pub fn FeedPaperByLine(self: *@This(), lineCount: i32) core.HResult!void {
         var this: ?*IJournalPrintJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrintJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FeedPaperByLine(lineCount);
     }
     pub fn FeedPaperByMapModeUnit(self: *@This(), distance: i32) core.HResult!void {
         var this: ?*IJournalPrintJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrintJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FeedPaperByMapModeUnit(distance);
@@ -8319,114 +8424,133 @@ pub const JournalPrinterCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReverseVideoSupported();
     }
     pub fn getIsStrikethroughSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsStrikethroughSupported();
     }
     pub fn getIsSuperscriptSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSuperscriptSupported();
     }
     pub fn getIsSubscriptSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSubscriptSupported();
     }
     pub fn getIsReversePaperFeedByLineSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReversePaperFeedByLineSupported();
     }
     pub fn getIsReversePaperFeedByMapModeUnitSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReversePaperFeedByMapModeUnitSupported();
     }
     pub fn getIsPrinterPresent(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPrinterPresent();
     }
     pub fn getIsDualColorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDualColorSupported();
     }
     pub fn getColorCartridgeCapabilities(self: *@This()) core.HResult!PosPrinterColorCapabilities {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getColorCartridgeCapabilities();
     }
     pub fn getCartridgeSensors(self: *@This()) core.HResult!PosPrinterCartridgeSensors {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCartridgeSensors();
     }
     pub fn getIsBoldSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsBoldSupported();
     }
     pub fn getIsItalicSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsItalicSupported();
     }
     pub fn getIsUnderlineSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsUnderlineSupported();
     }
     pub fn getIsDoubleHighPrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDoubleHighPrintSupported();
     }
     pub fn getIsDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDoubleWidePrintSupported();
     }
     pub fn getIsDoubleHighDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDoubleHighDoubleWidePrintSupported();
     }
     pub fn getIsPaperEmptySensorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaperEmptySensorSupported();
     }
     pub fn getIsPaperNearEndSensorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaperNearEndSensorSupported();
     }
     pub fn getSupportedCharactersPerLine(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedCharactersPerLine();
@@ -8473,12 +8597,14 @@ pub const LineDisplay = extern struct {
     }
     pub fn CheckPowerStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(LineDisplayPowerStatus) {
         var this: ?*ILineDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CheckPowerStatusAsync();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -8942,60 +9068,70 @@ pub const LineDisplayWindow = extern struct {
     }
     pub fn getCursor(self: *@This()) core.HResult!*LineDisplayCursor {
         var this: ?*ILineDisplayWindow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCursor();
     }
     pub fn getMarquee(self: *@This()) core.HResult!*LineDisplayMarquee {
         var this: ?*ILineDisplayWindow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMarquee();
     }
     pub fn ReadCharacterAtCursorAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         var this: ?*ILineDisplayWindow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReadCharacterAtCursorAsync();
     }
     pub fn TryDisplayStoredBitmapAtCursorAsync(self: *@This(), bitmap: *LineDisplayStoredBitmap) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryDisplayStoredBitmapAtCursorAsync(bitmap);
     }
     pub fn TryDisplayStorageFileBitmapAtCursorAsync(self: *@This(), bitmap: *StorageFile) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryDisplayStorageFileBitmapAtCursorAsync(bitmap);
     }
     pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignment(bitmap, horizontalAlignment, verticalAlignment);
     }
     pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(bitmap, horizontalAlignment, verticalAlignment, widthInPixels);
     }
     pub fn TryDisplayStorageFileBitmapAtPointAsync(self: *@This(), bitmap: *StorageFile, offsetInPixels: Point) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryDisplayStorageFileBitmapAtPointAsync(bitmap, offsetInPixels);
     }
     pub fn TryDisplayStorageFileBitmapAtPointAsyncWithWidthInPixels(self: *@This(), bitmap: *StorageFile, offsetInPixels: Point, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryDisplayStorageFileBitmapAtPointAsyncWithWidthInPixels(bitmap, offsetInPixels, widthInPixels);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -9050,6 +9186,7 @@ pub const MagneticStripeReader = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -9514,18 +9651,21 @@ pub const PosPrinter = extern struct {
     }
     pub fn getSupportedBarcodeSymbologies(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*IPosPrinter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedBarcodeSymbologies();
     }
     pub fn GetFontProperty(self: *@This(), typeface: ?HSTRING) core.HResult!*PosPrinterFontProperty {
         var this: ?*IPosPrinter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFontProperty(typeface);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -9914,138 +10054,161 @@ pub const ReceiptPrintJob = extern struct {
     }
     pub fn StampPaper(self: *@This()) core.HResult!void {
         var this: ?*IReceiptPrintJob2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StampPaper();
     }
     pub fn PrintWithPrintOptions(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         var this: ?*IReceiptPrintJob2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintWithPrintOptions(data, printOptions);
     }
     pub fn FeedPaperByLine(self: *@This(), lineCount: i32) core.HResult!void {
         var this: ?*IReceiptPrintJob2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FeedPaperByLine(lineCount);
     }
     pub fn FeedPaperByMapModeUnit(self: *@This(), distance: i32) core.HResult!void {
         var this: ?*IReceiptPrintJob2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FeedPaperByMapModeUnit(distance);
     }
     pub fn SetBarcodeRotation(self: *@This(), value: PosPrinterRotation) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetBarcodeRotation(value);
     }
     pub fn SetPrintRotation(self: *@This(), value: PosPrinterRotation, includeBitmaps: bool) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPrintRotation(value, includeBitmaps);
     }
     pub fn SetPrintArea(self: *@This(), value: Rect) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPrintArea(value);
     }
     pub fn SetBitmap(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetBitmap(bitmapNumber, bitmap, alignment);
     }
     pub fn SetBitmapWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetBitmapWithWidth(bitmapNumber, bitmap, alignment, width);
     }
     pub fn SetCustomAlignedBitmap(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetCustomAlignedBitmap(bitmapNumber, bitmap, alignmentDistance);
     }
     pub fn SetCustomAlignedBitmapWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetCustomAlignedBitmapWithWidth(bitmapNumber, bitmap, alignmentDistance, width);
     }
     pub fn PrintSavedBitmap(self: *@This(), bitmapNumber: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintSavedBitmap(bitmapNumber);
     }
     pub fn DrawRuledLine(self: *@This(), positionList: ?HSTRING, lineDirection: PosPrinterLineDirection, lineWidth: u32, lineStyle: PosPrinterLineStyle, lineColor: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DrawRuledLine(positionList, lineDirection, lineWidth, lineStyle, lineColor);
     }
     pub fn PrintBarcode(self: *@This(), data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignment: PosPrinterAlignment) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintBarcode(data, symbology, height, width, textPosition, alignment);
     }
     pub fn PrintBarcodeCustomAlign(self: *@This(), data: ?HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignmentDistance: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintBarcodeCustomAlign(data, symbology, height, width, textPosition, alignmentDistance);
     }
     pub fn PrintBitmap(self: *@This(), bitmap: *BitmapFrame, alignment: PosPrinterAlignment) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintBitmap(bitmap, alignment);
     }
     pub fn PrintBitmapWithWidth(self: *@This(), bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintBitmapWithWidth(bitmap, alignment, width);
     }
     pub fn PrintCustomAlignedBitmap(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintCustomAlignedBitmap(bitmap, alignmentDistance);
     }
     pub fn PrintCustomAlignedBitmapWithWidth(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintCustomAlignedBitmapWithWidth(bitmap, alignmentDistance, width);
     }
     pub fn Print(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Print(data);
     }
     pub fn PrintLineWithData(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintLineWithData(data);
     }
     pub fn PrintLine(self: *@This()) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintLine();
     }
     pub fn ExecuteAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IPosPrinterJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ExecuteAsync();
@@ -10072,168 +10235,196 @@ pub const ReceiptPrinterCapabilities = extern struct {
     }
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var this: ?*IReceiptPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReverseVideoSupported();
     }
     pub fn getIsStrikethroughSupported(self: *@This()) core.HResult!bool {
         var this: ?*IReceiptPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsStrikethroughSupported();
     }
     pub fn getIsSuperscriptSupported(self: *@This()) core.HResult!bool {
         var this: ?*IReceiptPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSuperscriptSupported();
     }
     pub fn getIsSubscriptSupported(self: *@This()) core.HResult!bool {
         var this: ?*IReceiptPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSubscriptSupported();
     }
     pub fn getIsReversePaperFeedByLineSupported(self: *@This()) core.HResult!bool {
         var this: ?*IReceiptPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReversePaperFeedByLineSupported();
     }
     pub fn getIsReversePaperFeedByMapModeUnitSupported(self: *@This()) core.HResult!bool {
         var this: ?*IReceiptPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReversePaperFeedByMapModeUnitSupported();
     }
     pub fn getIsBarcodeSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsBarcodeSupported();
     }
     pub fn getIsBitmapSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsBitmapSupported();
     }
     pub fn getIsLeft90RotationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsLeft90RotationSupported();
     }
     pub fn getIsRight90RotationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRight90RotationSupported();
     }
     pub fn getIs180RotationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIs180RotationSupported();
     }
     pub fn getIsPrintAreaSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPrintAreaSupported();
     }
     pub fn getRuledLineCapabilities(self: *@This()) core.HResult!PosPrinterRuledLineCapabilities {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRuledLineCapabilities();
     }
     pub fn getSupportedBarcodeRotations(self: *@This()) core.HResult!*IVectorView(PosPrinterRotation) {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedBarcodeRotations();
     }
     pub fn getSupportedBitmapRotations(self: *@This()) core.HResult!*IVectorView(PosPrinterRotation) {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedBitmapRotations();
     }
     pub fn getIsPrinterPresent(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPrinterPresent();
     }
     pub fn getIsDualColorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDualColorSupported();
     }
     pub fn getColorCartridgeCapabilities(self: *@This()) core.HResult!PosPrinterColorCapabilities {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getColorCartridgeCapabilities();
     }
     pub fn getCartridgeSensors(self: *@This()) core.HResult!PosPrinterCartridgeSensors {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCartridgeSensors();
     }
     pub fn getIsBoldSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsBoldSupported();
     }
     pub fn getIsItalicSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsItalicSupported();
     }
     pub fn getIsUnderlineSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsUnderlineSupported();
     }
     pub fn getIsDoubleHighPrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDoubleHighPrintSupported();
     }
     pub fn getIsDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDoubleWidePrintSupported();
     }
     pub fn getIsDoubleHighDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDoubleHighDoubleWidePrintSupported();
     }
     pub fn getIsPaperEmptySensorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaperEmptySensorSupported();
     }
     pub fn getIsPaperNearEndSensorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaperNearEndSensorSupported();
     }
     pub fn getSupportedCharactersPerLine(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedCharactersPerLine();
@@ -10252,18 +10443,21 @@ pub const SlipPrintJob = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn PrintWithPrintOptions(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         var this: ?*ISlipPrintJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrintJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintWithPrintOptions(data, printOptions);
     }
     pub fn FeedPaperByLine(self: *@This(), lineCount: i32) core.HResult!void {
         var this: ?*ISlipPrintJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrintJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FeedPaperByLine(lineCount);
     }
     pub fn FeedPaperByMapModeUnit(self: *@This(), distance: i32) core.HResult!void {
         var this: ?*ISlipPrintJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrintJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FeedPaperByMapModeUnit(distance);
@@ -10330,24 +10524,28 @@ pub const SlipPrintJob = extern struct {
     }
     pub fn Print(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Print(data);
     }
     pub fn PrintLineWithData(self: *@This(), data: ?HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintLineWithData(data);
     }
     pub fn PrintLine(self: *@This()) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintLine();
     }
     pub fn ExecuteAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IPosPrinterJob = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ExecuteAsync();
@@ -10370,168 +10568,196 @@ pub const SlipPrinterCapabilities = extern struct {
     }
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISlipPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReverseVideoSupported();
     }
     pub fn getIsStrikethroughSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISlipPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsStrikethroughSupported();
     }
     pub fn getIsSuperscriptSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISlipPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSuperscriptSupported();
     }
     pub fn getIsSubscriptSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISlipPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSubscriptSupported();
     }
     pub fn getIsReversePaperFeedByLineSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISlipPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReversePaperFeedByLineSupported();
     }
     pub fn getIsReversePaperFeedByMapModeUnitSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISlipPrinterCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrinterCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReversePaperFeedByMapModeUnitSupported();
     }
     pub fn getIsBarcodeSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsBarcodeSupported();
     }
     pub fn getIsBitmapSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsBitmapSupported();
     }
     pub fn getIsLeft90RotationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsLeft90RotationSupported();
     }
     pub fn getIsRight90RotationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRight90RotationSupported();
     }
     pub fn getIs180RotationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIs180RotationSupported();
     }
     pub fn getIsPrintAreaSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPrintAreaSupported();
     }
     pub fn getRuledLineCapabilities(self: *@This()) core.HResult!PosPrinterRuledLineCapabilities {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRuledLineCapabilities();
     }
     pub fn getSupportedBarcodeRotations(self: *@This()) core.HResult!*IVectorView(PosPrinterRotation) {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedBarcodeRotations();
     }
     pub fn getSupportedBitmapRotations(self: *@This()) core.HResult!*IVectorView(PosPrinterRotation) {
         var this: ?*ICommonReceiptSlipCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonReceiptSlipCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedBitmapRotations();
     }
     pub fn getIsPrinterPresent(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPrinterPresent();
     }
     pub fn getIsDualColorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDualColorSupported();
     }
     pub fn getColorCartridgeCapabilities(self: *@This()) core.HResult!PosPrinterColorCapabilities {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getColorCartridgeCapabilities();
     }
     pub fn getCartridgeSensors(self: *@This()) core.HResult!PosPrinterCartridgeSensors {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCartridgeSensors();
     }
     pub fn getIsBoldSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsBoldSupported();
     }
     pub fn getIsItalicSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsItalicSupported();
     }
     pub fn getIsUnderlineSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsUnderlineSupported();
     }
     pub fn getIsDoubleHighPrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDoubleHighPrintSupported();
     }
     pub fn getIsDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDoubleWidePrintSupported();
     }
     pub fn getIsDoubleHighDoubleWidePrintSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDoubleHighDoubleWidePrintSupported();
     }
     pub fn getIsPaperEmptySensorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaperEmptySensorSupported();
     }
     pub fn getIsPaperNearEndSensorSupported(self: *@This()) core.HResult!bool {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPaperNearEndSensorSupported();
     }
     pub fn getSupportedCharactersPerLine(self: *@This()) core.HResult!*IVectorView(u32) {
         var this: ?*ICommonPosPrintStationCapabilities = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommonPosPrintStationCapabilities.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedCharactersPerLine();

@@ -448,12 +448,14 @@ pub const Print3DWorkflow = extern struct {
     }
     pub fn addPrinterChanged(self: *@This(), eventHandler: *TypedEventHandler(Print3DWorkflow,Print3DWorkflowPrinterChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IPrint3DWorkflow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrint3DWorkflow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPrinterChanged(eventHandler);
     }
     pub fn removePrinterChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IPrint3DWorkflow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrint3DWorkflow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePrinterChanged(eventCookie);

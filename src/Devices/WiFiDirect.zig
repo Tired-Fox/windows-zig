@@ -598,6 +598,7 @@ pub const WiFiDirectAdvertisement = extern struct {
     }
     pub fn getSupportedConfigurationMethods(self: *@This()) core.HResult!*IVector(WiFiDirectConfigurationMethod) {
         var this: ?*IWiFiDirectAdvertisement2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiDirectAdvertisement2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedConfigurationMethods();
@@ -716,18 +717,21 @@ pub const WiFiDirectConnectionParameters = extern struct {
     }
     pub fn getPreferenceOrderedConfigurationMethods(self: *@This()) core.HResult!*IVector(WiFiDirectConfigurationMethod) {
         var this: ?*IWiFiDirectConnectionParameters2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiDirectConnectionParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreferenceOrderedConfigurationMethods();
     }
     pub fn getPreferredPairingProcedure(self: *@This()) core.HResult!WiFiDirectPairingProcedure {
         var this: ?*IWiFiDirectConnectionParameters2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiDirectConnectionParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreferredPairingProcedure();
     }
     pub fn putPreferredPairingProcedure(self: *@This(), value: WiFiDirectPairingProcedure) core.HResult!void {
         var this: ?*IWiFiDirectConnectionParameters2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiDirectConnectionParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPreferredPairingProcedure(value);
@@ -759,6 +763,7 @@ pub const WiFiDirectConnectionRequest = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -809,6 +814,7 @@ pub const WiFiDirectDevice = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

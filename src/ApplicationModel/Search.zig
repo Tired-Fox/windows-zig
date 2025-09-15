@@ -980,6 +980,7 @@ pub const SearchPaneQuerySubmittedEventArgs = extern struct {
     }
     pub fn getLinguisticDetails(self: *@This()) core.HResult!*SearchPaneQueryLinguisticDetails {
         var this: ?*ISearchPaneQuerySubmittedEventArgsWithLinguisticDetails = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISearchPaneQuerySubmittedEventArgsWithLinguisticDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLinguisticDetails();
@@ -1042,18 +1043,21 @@ pub const SearchPaneSuggestionsRequestedEventArgs = extern struct {
     }
     pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISearchPaneQueryChangedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISearchPaneQueryChangedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getQueryText();
     }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISearchPaneQueryChangedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISearchPaneQueryChangedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLanguage();
     }
     pub fn getLinguisticDetails(self: *@This()) core.HResult!*SearchPaneQueryLinguisticDetails {
         var this: ?*ISearchPaneQueryChangedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISearchPaneQueryChangedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLinguisticDetails();

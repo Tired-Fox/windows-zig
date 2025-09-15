@@ -23,66 +23,77 @@ pub const CompositionObject = extern struct {
     }
     pub fn getComment(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICompositionObject2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getComment();
     }
     pub fn putComment(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICompositionObject2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putComment(value);
     }
     pub fn getImplicitAnimations(self: *@This()) core.HResult!*ImplicitAnimationCollection {
         var this: ?*ICompositionObject2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getImplicitAnimations();
     }
     pub fn putImplicitAnimations(self: *@This(), value: *ImplicitAnimationCollection) core.HResult!void {
         var this: ?*ICompositionObject2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putImplicitAnimations(value);
     }
     pub fn StartAnimationGroup(self: *@This(), value: *ICompositionAnimationBase) core.HResult!void {
         var this: ?*ICompositionObject2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartAnimationGroup(value);
     }
     pub fn StopAnimationGroup(self: *@This(), value: *ICompositionAnimationBase) core.HResult!void {
         var this: ?*ICompositionObject2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopAnimationGroup(value);
     }
     pub fn getDispatcherQueue(self: *@This()) core.HResult!*DispatcherQueue {
         var this: ?*ICompositionObject3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDispatcherQueue();
     }
     pub fn TryGetAnimationController(self: *@This(), propertyName: ?HSTRING) core.HResult!*AnimationController {
         var this: ?*ICompositionObject4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetAnimationController(propertyName);
     }
     pub fn StartAnimationWithAnimationController(self: *@This(), propertyName: ?HSTRING, animation: *CompositionAnimation, animationController: *AnimationController) core.HResult!void {
         var this: ?*ICompositionObject5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartAnimationWithAnimationController(propertyName, animation, animationController);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn PopulatePropertyInfo(self: *@This(), propertyName: ?HSTRING, propertyInfo: *AnimationPropertyInfo) core.HResult!void {
         var this: ?*IAnimationObject = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAnimationObject.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PopulatePropertyInfo(propertyName, propertyInfo);
@@ -114,18 +125,21 @@ pub const CompositionLight = extern struct {
     }
     pub fn getExclusionsFromTargets(self: *@This()) core.HResult!*VisualUnorderedCollection {
         var this: ?*ICompositionLight2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionLight2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExclusionsFromTargets();
     }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ICompositionLight3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionLight3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsEnabled();
     }
     pub fn putIsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICompositionLight3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionLight3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
@@ -152,12 +166,14 @@ pub const AmbientLight = extern struct {
     }
     pub fn getIntensity(self: *@This()) core.HResult!f32 {
         var this: ?*IAmbientLight2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAmbientLight2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIntensity();
     }
     pub fn putIntensity(self: *@This(), value: f32) core.HResult!void {
         var this: ?*IAmbientLight2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAmbientLight2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIntensity(value);
@@ -256,12 +272,14 @@ pub const AnimationPropertyInfo = extern struct {
     }
     pub fn GetResolvedCompositionObject(self: *@This()) core.HResult!*CompositionObject {
         var this: ?*IAnimationPropertyInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAnimationPropertyInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetResolvedCompositionObject();
     }
     pub fn GetResolvedCompositionObjectProperty(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAnimationPropertyInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAnimationPropertyInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetResolvedCompositionObjectProperty();
@@ -398,30 +416,35 @@ pub const CompositionAnimation = extern struct {
     }
     pub fn SetBooleanParameter(self: *@This(), key: ?HSTRING, value: bool) core.HResult!void {
         var this: ?*ICompositionAnimation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetBooleanParameter(key, value);
     }
     pub fn getTarget(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICompositionAnimation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTarget();
     }
     pub fn putTarget(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICompositionAnimation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTarget(value);
     }
     pub fn getInitialValueExpressions(self: *@This()) core.HResult!*InitialValueExpressionCollection {
         var this: ?*ICompositionAnimation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionAnimation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInitialValueExpressions();
     }
     pub fn SetExpressionReferenceParameter(self: *@This(), parameterName: ?HSTRING, source: *IAnimationObject) core.HResult!void {
         var this: ?*ICompositionAnimation4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionAnimation4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetExpressionReferenceParameter(parameterName, source);
@@ -492,24 +515,28 @@ pub const KeyFrameAnimation = extern struct {
     }
     pub fn getDirection(self: *@This()) core.HResult!AnimationDirection {
         var this: ?*IKeyFrameAnimation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyFrameAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDirection();
     }
     pub fn putDirection(self: *@This(), value: AnimationDirection) core.HResult!void {
         var this: ?*IKeyFrameAnimation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyFrameAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDirection(value);
     }
     pub fn getDelayBehavior(self: *@This()) core.HResult!AnimationDelayBehavior {
         var this: ?*IKeyFrameAnimation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyFrameAnimation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDelayBehavior();
     }
     pub fn putDelayBehavior(self: *@This(), value: AnimationDelayBehavior) core.HResult!void {
         var this: ?*IKeyFrameAnimation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyFrameAnimation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDelayBehavior(value);
@@ -828,6 +855,7 @@ pub const CompositionAnimationGroup = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(CompositionAnimation) {
         var this: ?*IIterable(CompositionAnimation) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(CompositionAnimation).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -931,84 +959,98 @@ pub const CompositionClip = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getAnchorPoint(self: *@This()) core.HResult!Vector2 {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAnchorPoint();
     }
     pub fn putAnchorPoint(self: *@This(), value: Vector2) core.HResult!void {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAnchorPoint(value);
     }
     pub fn getCenterPoint(self: *@This()) core.HResult!Vector2 {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCenterPoint();
     }
     pub fn putCenterPoint(self: *@This(), value: Vector2) core.HResult!void {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCenterPoint(value);
     }
     pub fn getOffset(self: *@This()) core.HResult!Vector2 {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOffset();
     }
     pub fn putOffset(self: *@This(), value: Vector2) core.HResult!void {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOffset(value);
     }
     pub fn getRotationAngle(self: *@This()) core.HResult!f32 {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotationAngle();
     }
     pub fn putRotationAngle(self: *@This(), value: f32) core.HResult!void {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRotationAngle(value);
     }
     pub fn getRotationAngleInDegrees(self: *@This()) core.HResult!f32 {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotationAngleInDegrees();
     }
     pub fn putRotationAngleInDegrees(self: *@This(), value: f32) core.HResult!void {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRotationAngleInDegrees(value);
     }
     pub fn getScale(self: *@This()) core.HResult!Vector2 {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getScale();
     }
     pub fn putScale(self: *@This(), value: Vector2) core.HResult!void {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putScale(value);
     }
     pub fn getTransformMatrix(self: *@This()) core.HResult!Matrix3x2 {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransformMatrix();
     }
     pub fn putTransformMatrix(self: *@This(), value: Matrix3x2) core.HResult!void {
         var this: ?*ICompositionClip2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionClip2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransformMatrix(value);
@@ -1067,36 +1109,42 @@ pub const CompositionColorGradientStopCollection = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn First(self: *@This()) core.HResult!*IIterator(CompositionColorGradientStop) {
         var this: ?*IIterable(CompositionColorGradientStop) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(CompositionColorGradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVector(CompositionColorGradientStop) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(CompositionColorGradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
     pub fn GetView(self: *@This()) core.HResult!*IVectorView(CompositionColorGradientStop) {
         var this: ?*IVector(CompositionColorGradientStop) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(CompositionColorGradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
         var this: ?*IVector(CompositionColorGradientStop) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(CompositionColorGradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
         var this: ?*IVector(CompositionColorGradientStop) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(CompositionColorGradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IVector(CompositionColorGradientStop) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector(CompositionColorGradientStop).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
@@ -1232,36 +1280,42 @@ pub const CompositionDrawingSurface = extern struct {
     }
     pub fn getSizeInt32(self: *@This()) core.HResult!SizeInt32 {
         var this: ?*ICompositionDrawingSurface2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionDrawingSurface2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSizeInt32();
     }
     pub fn Resize(self: *@This(), sizePixels: SizeInt32) core.HResult!void {
         var this: ?*ICompositionDrawingSurface2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionDrawingSurface2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Resize(sizePixels);
     }
     pub fn Scroll(self: *@This(), offset: PointInt32) core.HResult!void {
         var this: ?*ICompositionDrawingSurface2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionDrawingSurface2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Scroll(offset);
     }
     pub fn ScrollWithScrollRect(self: *@This(), offset: PointInt32, scrollRect: RectInt32) core.HResult!void {
         var this: ?*ICompositionDrawingSurface2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionDrawingSurface2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollWithScrollRect(offset, scrollRect);
     }
     pub fn ScrollWithClip(self: *@This(), offset: PointInt32, clipRect: RectInt32) core.HResult!void {
         var this: ?*ICompositionDrawingSurface2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionDrawingSurface2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollWithClip(offset, clipRect);
     }
     pub fn ScrollWithClipWithScrollRect(self: *@This(), offset: PointInt32, clipRect: RectInt32, scrollRect: RectInt32) core.HResult!void {
         var this: ?*ICompositionDrawingSurface2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionDrawingSurface2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollWithClipWithScrollRect(offset, clipRect, scrollRect);
@@ -1516,12 +1570,14 @@ pub const CompositionGradientBrush = extern struct {
     }
     pub fn getMappingMode(self: *@This()) core.HResult!CompositionMappingMode {
         var this: ?*ICompositionGradientBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionGradientBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMappingMode();
     }
     pub fn putMappingMode(self: *@This(), value: CompositionMappingMode) core.HResult!void {
         var this: ?*ICompositionGradientBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionGradientBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMappingMode(value);
@@ -1557,30 +1613,35 @@ pub const CompositionGraphicsDevice = extern struct {
     }
     pub fn CreateDrawingSurface2(self: *@This(), sizePixels: SizeInt32, pixelFormat: DirectXPixelFormat, alphaMode: DirectXAlphaMode) core.HResult!*CompositionDrawingSurface {
         var this: ?*ICompositionGraphicsDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionGraphicsDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateDrawingSurface2(sizePixels, pixelFormat, alphaMode);
     }
     pub fn CreateVirtualDrawingSurface(self: *@This(), sizePixels: SizeInt32, pixelFormat: DirectXPixelFormat, alphaMode: DirectXAlphaMode) core.HResult!*CompositionVirtualDrawingSurface {
         var this: ?*ICompositionGraphicsDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionGraphicsDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateVirtualDrawingSurface(sizePixels, pixelFormat, alphaMode);
     }
     pub fn CreateMipmapSurface(self: *@This(), sizePixels: SizeInt32, pixelFormat: DirectXPixelFormat, alphaMode: DirectXAlphaMode) core.HResult!*CompositionMipmapSurface {
         var this: ?*ICompositionGraphicsDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionGraphicsDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateMipmapSurface(sizePixels, pixelFormat, alphaMode);
     }
     pub fn Trim(self: *@This()) core.HResult!void {
         var this: ?*ICompositionGraphicsDevice3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionGraphicsDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Trim();
     }
     pub fn CaptureAsync(self: *@This(), captureVisual: *Visual, size: SizeInt32, pixelFormat: DirectXPixelFormat, alphaMode: DirectXAlphaMode, sdrBoost: f32) core.HResult!*IAsyncOperation(ICompositionSurface) {
         var this: ?*ICompositionGraphicsDevice4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionGraphicsDevice4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CaptureAsync(captureVisual, size, pixelFormat, alphaMode, sdrBoost);
@@ -1935,6 +1996,7 @@ pub const CompositionProjectedShadowCasterCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(CompositionProjectedShadowCaster) {
         var this: ?*IIterable(CompositionProjectedShadowCaster) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(CompositionProjectedShadowCaster).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1989,6 +2051,7 @@ pub const CompositionProjectedShadowReceiverUnorderedCollection = extern struct 
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(CompositionProjectedShadowReceiver) {
         var this: ?*IIterable(CompositionProjectedShadowReceiver) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(CompositionProjectedShadowReceiver).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2067,12 +2130,14 @@ pub const CompositionPropertySet = extern struct {
     }
     pub fn InsertBoolean(self: *@This(), propertyName: ?HSTRING, value: bool) core.HResult!void {
         var this: ?*ICompositionPropertySet2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionPropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertBoolean(propertyName, value);
     }
     pub fn TryGetBoolean(self: *@This(), propertyName: ?HSTRING, value: bool) core.HResult!CompositionGetValueStatus {
         var this: ?*ICompositionPropertySet2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionPropertySet2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetBoolean(propertyName, value);
@@ -2243,6 +2308,7 @@ pub const CompositionShapeCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(CompositionShape) {
         var this: ?*IIterable(CompositionShape) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(CompositionShape).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2389,6 +2455,7 @@ pub const CompositionStrokeDashArray = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(f32) {
         var this: ?*IIterable(f32) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(f32).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2449,96 +2516,112 @@ pub const CompositionSurfaceBrush = extern struct {
     }
     pub fn getAnchorPoint(self: *@This()) core.HResult!Vector2 {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAnchorPoint();
     }
     pub fn putAnchorPoint(self: *@This(), value: Vector2) core.HResult!void {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAnchorPoint(value);
     }
     pub fn getCenterPoint(self: *@This()) core.HResult!Vector2 {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCenterPoint();
     }
     pub fn putCenterPoint(self: *@This(), value: Vector2) core.HResult!void {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCenterPoint(value);
     }
     pub fn getOffset(self: *@This()) core.HResult!Vector2 {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOffset();
     }
     pub fn putOffset(self: *@This(), value: Vector2) core.HResult!void {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOffset(value);
     }
     pub fn getRotationAngle(self: *@This()) core.HResult!f32 {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotationAngle();
     }
     pub fn putRotationAngle(self: *@This(), value: f32) core.HResult!void {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRotationAngle(value);
     }
     pub fn getRotationAngleInDegrees(self: *@This()) core.HResult!f32 {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotationAngleInDegrees();
     }
     pub fn putRotationAngleInDegrees(self: *@This(), value: f32) core.HResult!void {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRotationAngleInDegrees(value);
     }
     pub fn getScale(self: *@This()) core.HResult!Vector2 {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getScale();
     }
     pub fn putScale(self: *@This(), value: Vector2) core.HResult!void {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putScale(value);
     }
     pub fn getTransformMatrix(self: *@This()) core.HResult!Matrix3x2 {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransformMatrix();
     }
     pub fn putTransformMatrix(self: *@This(), value: Matrix3x2) core.HResult!void {
         var this: ?*ICompositionSurfaceBrush2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransformMatrix(value);
     }
     pub fn getSnapToPixels(self: *@This()) core.HResult!bool {
         var this: ?*ICompositionSurfaceBrush3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSnapToPixels();
     }
     pub fn putSnapToPixels(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ICompositionSurfaceBrush3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionSurfaceBrush3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSnapToPixels(value);
@@ -2813,348 +2896,406 @@ pub const Compositor = extern struct {
     }
     pub fn CreateAmbientLight(self: *@This()) core.HResult!*AmbientLight {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateAmbientLight();
     }
     pub fn CreateAnimationGroup(self: *@This()) core.HResult!*CompositionAnimationGroup {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateAnimationGroup();
     }
     pub fn CreateBackdropBrush(self: *@This()) core.HResult!*CompositionBackdropBrush {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateBackdropBrush();
     }
     pub fn CreateDistantLight(self: *@This()) core.HResult!*DistantLight {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateDistantLight();
     }
     pub fn CreateDropShadow(self: *@This()) core.HResult!*DropShadow {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateDropShadow();
     }
     pub fn CreateImplicitAnimationCollection(self: *@This()) core.HResult!*ImplicitAnimationCollection {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateImplicitAnimationCollection();
     }
     pub fn CreateLayerVisual(self: *@This()) core.HResult!*LayerVisual {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLayerVisual();
     }
     pub fn CreateMaskBrush(self: *@This()) core.HResult!*CompositionMaskBrush {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateMaskBrush();
     }
     pub fn CreateNineGridBrush(self: *@This()) core.HResult!*CompositionNineGridBrush {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateNineGridBrush();
     }
     pub fn CreatePointLight(self: *@This()) core.HResult!*PointLight {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreatePointLight();
     }
     pub fn CreateSpotLight(self: *@This()) core.HResult!*SpotLight {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateSpotLight();
     }
     pub fn CreateStepEasingFunction(self: *@This()) core.HResult!*StepEasingFunction {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateStepEasingFunction();
     }
     pub fn CreateStepEasingFunctionWithStepCount(self: *@This(), stepCount: i32) core.HResult!*StepEasingFunction {
         var this: ?*ICompositor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateStepEasingFunctionWithStepCount(stepCount);
     }
     pub fn CreateHostBackdropBrush(self: *@This()) core.HResult!*CompositionBackdropBrush {
         var this: ?*ICompositor3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateHostBackdropBrush();
     }
     pub fn CreateColorGradientStop(self: *@This()) core.HResult!*CompositionColorGradientStop {
         var this: ?*ICompositor4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateColorGradientStop();
     }
     pub fn CreateColorGradientStopWithOffsetAndColor(self: *@This(), offset: f32, color: Color) core.HResult!*CompositionColorGradientStop {
         var this: ?*ICompositor4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateColorGradientStopWithOffsetAndColor(offset, color);
     }
     pub fn CreateLinearGradientBrush(self: *@This()) core.HResult!*CompositionLinearGradientBrush {
         var this: ?*ICompositor4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLinearGradientBrush();
     }
     pub fn CreateSpringScalarAnimation(self: *@This()) core.HResult!*SpringScalarNaturalMotionAnimation {
         var this: ?*ICompositor4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateSpringScalarAnimation();
     }
     pub fn CreateSpringVector2Animation(self: *@This()) core.HResult!*SpringVector2NaturalMotionAnimation {
         var this: ?*ICompositor4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateSpringVector2Animation();
     }
     pub fn CreateSpringVector3Animation(self: *@This()) core.HResult!*SpringVector3NaturalMotionAnimation {
         var this: ?*ICompositor4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateSpringVector3Animation();
     }
     pub fn getComment(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getComment();
     }
     pub fn putComment(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putComment(value);
     }
     pub fn getGlobalPlaybackRate(self: *@This()) core.HResult!f32 {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGlobalPlaybackRate();
     }
     pub fn putGlobalPlaybackRate(self: *@This(), value: f32) core.HResult!void {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putGlobalPlaybackRate(value);
     }
     pub fn CreateBounceScalarAnimation(self: *@This()) core.HResult!*BounceScalarNaturalMotionAnimation {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateBounceScalarAnimation();
     }
     pub fn CreateBounceVector2Animation(self: *@This()) core.HResult!*BounceVector2NaturalMotionAnimation {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateBounceVector2Animation();
     }
     pub fn CreateBounceVector3Animation(self: *@This()) core.HResult!*BounceVector3NaturalMotionAnimation {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateBounceVector3Animation();
     }
     pub fn CreateContainerShape(self: *@This()) core.HResult!*CompositionContainerShape {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateContainerShape();
     }
     pub fn CreateEllipseGeometry(self: *@This()) core.HResult!*CompositionEllipseGeometry {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateEllipseGeometry();
     }
     pub fn CreateLineGeometry(self: *@This()) core.HResult!*CompositionLineGeometry {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLineGeometry();
     }
     pub fn CreatePathGeometry(self: *@This()) core.HResult!*CompositionPathGeometry {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreatePathGeometry();
     }
     pub fn CreatePathGeometryWithPath(self: *@This(), path: *CompositionPath) core.HResult!*CompositionPathGeometry {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreatePathGeometryWithPath(path);
     }
     pub fn CreatePathKeyFrameAnimation(self: *@This()) core.HResult!*PathKeyFrameAnimation {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreatePathKeyFrameAnimation();
     }
     pub fn CreateRectangleGeometry(self: *@This()) core.HResult!*CompositionRectangleGeometry {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRectangleGeometry();
     }
     pub fn CreateRoundedRectangleGeometry(self: *@This()) core.HResult!*CompositionRoundedRectangleGeometry {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRoundedRectangleGeometry();
     }
     pub fn CreateShapeVisual(self: *@This()) core.HResult!*ShapeVisual {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateShapeVisual();
     }
     pub fn CreateSpriteShape(self: *@This()) core.HResult!*CompositionSpriteShape {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateSpriteShape();
     }
     pub fn CreateSpriteShapeWithGeometry(self: *@This(), geometry: *CompositionGeometry) core.HResult!*CompositionSpriteShape {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateSpriteShapeWithGeometry(geometry);
     }
     pub fn CreateViewBox(self: *@This()) core.HResult!*CompositionViewBox {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateViewBox();
     }
     pub fn RequestCommitAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*ICompositor5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestCommitAsync();
     }
     pub fn CreateGeometricClip(self: *@This()) core.HResult!*CompositionGeometricClip {
         var this: ?*ICompositor6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateGeometricClip();
     }
     pub fn CreateGeometricClipWithGeometry(self: *@This(), geometry: *CompositionGeometry) core.HResult!*CompositionGeometricClip {
         var this: ?*ICompositor6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateGeometricClipWithGeometry(geometry);
     }
     pub fn CreateRedirectVisual(self: *@This()) core.HResult!*RedirectVisual {
         var this: ?*ICompositor6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRedirectVisual();
     }
     pub fn CreateRedirectVisualWithSource(self: *@This(), source: *Visual) core.HResult!*RedirectVisual {
         var this: ?*ICompositor6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRedirectVisualWithSource(source);
     }
     pub fn CreateBooleanKeyFrameAnimation(self: *@This()) core.HResult!*BooleanKeyFrameAnimation {
         var this: ?*ICompositor6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateBooleanKeyFrameAnimation();
     }
     pub fn CreateProjectedShadowCaster(self: *@This()) core.HResult!*CompositionProjectedShadowCaster {
         var this: ?*ICompositorWithProjectedShadow = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositorWithProjectedShadow.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateProjectedShadowCaster();
     }
     pub fn CreateProjectedShadow(self: *@This()) core.HResult!*CompositionProjectedShadow {
         var this: ?*ICompositorWithProjectedShadow = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositorWithProjectedShadow.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateProjectedShadow();
     }
     pub fn CreateProjectedShadowReceiver(self: *@This()) core.HResult!*CompositionProjectedShadowReceiver {
         var this: ?*ICompositorWithProjectedShadow = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositorWithProjectedShadow.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateProjectedShadowReceiver();
     }
     pub fn CreateRadialGradientBrush(self: *@This()) core.HResult!*CompositionRadialGradientBrush {
         var this: ?*ICompositorWithRadialGradient = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositorWithRadialGradient.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRadialGradientBrush();
     }
     pub fn CreateVisualSurface(self: *@This()) core.HResult!*CompositionVisualSurface {
         var this: ?*ICompositorWithVisualSurface = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositorWithVisualSurface.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateVisualSurface();
     }
     pub fn getDispatcherQueue(self: *@This()) core.HResult!*DispatcherQueue {
         var this: ?*ICompositor7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDispatcherQueue();
     }
     pub fn CreateAnimationPropertyInfo(self: *@This()) core.HResult!*AnimationPropertyInfo {
         var this: ?*ICompositor7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateAnimationPropertyInfo();
     }
     pub fn CreateRectangleClip(self: *@This()) core.HResult!*RectangleClip {
         var this: ?*ICompositor7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRectangleClip();
     }
     pub fn CreateRectangleClipWithLeftAndTopAndRightAndBottom(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!*RectangleClip {
         var this: ?*ICompositor7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRectangleClipWithLeftAndTopAndRightAndBottom(left, top, right, bottom);
     }
     pub fn CreateRectangleClipWithLeftAndTopAndRightAndBottomAndTopLeftRadiusAndTopRightRadiusAndBottomRightRadiusAndBottomLeftRadius(self: *@This(), left: f32, top: f32, right: f32, bottom: f32, topLeftRadius: Vector2, topRightRadius: Vector2, bottomRightRadius: Vector2, bottomLeftRadius: Vector2) core.HResult!*RectangleClip {
         var this: ?*ICompositor7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRectangleClipWithLeftAndTopAndRightAndBottomAndTopLeftRadiusAndTopRightRadiusAndBottomRightRadiusAndBottomLeftRadius(left, top, right, bottom, topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius);
     }
     pub fn TryCreateBlurredWallpaperBackdropBrush(self: *@This()) core.HResult!*CompositionBackdropBrush {
         var this: ?*ICompositorWithBlurredWallpaperBackdropBrush = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositorWithBlurredWallpaperBackdropBrush.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryCreateBlurredWallpaperBackdropBrush();
     }
     pub fn CreateAnimationController(self: *@This()) core.HResult!*AnimationController {
         var this: ?*ICompositor8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateAnimationController();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -3318,60 +3459,70 @@ pub const Visual = extern struct {
     }
     pub fn getParentForTransform(self: *@This()) core.HResult!*Visual {
         var this: ?*IVisual2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisual2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getParentForTransform();
     }
     pub fn putParentForTransform(self: *@This(), value: *Visual) core.HResult!void {
         var this: ?*IVisual2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisual2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putParentForTransform(value);
     }
     pub fn getRelativeOffsetAdjustment(self: *@This()) core.HResult!Vector3 {
         var this: ?*IVisual2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisual2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRelativeOffsetAdjustment();
     }
     pub fn putRelativeOffsetAdjustment(self: *@This(), value: Vector3) core.HResult!void {
         var this: ?*IVisual2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisual2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRelativeOffsetAdjustment(value);
     }
     pub fn getRelativeSizeAdjustment(self: *@This()) core.HResult!Vector2 {
         var this: ?*IVisual2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisual2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRelativeSizeAdjustment();
     }
     pub fn putRelativeSizeAdjustment(self: *@This(), value: Vector2) core.HResult!void {
         var this: ?*IVisual2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisual2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRelativeSizeAdjustment(value);
     }
     pub fn getIsHitTestVisible(self: *@This()) core.HResult!bool {
         var this: ?*IVisual3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisual3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsHitTestVisible();
     }
     pub fn putIsHitTestVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVisual3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisual3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsHitTestVisible(value);
     }
     pub fn getIsPixelSnappingEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IVisual4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisual4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPixelSnappingEnabled();
     }
     pub fn putIsPixelSnappingEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IVisual4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVisual4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsPixelSnappingEnabled(value);
@@ -3482,12 +3633,14 @@ pub const DistantLight = extern struct {
     }
     pub fn getIntensity(self: *@This()) core.HResult!f32 {
         var this: ?*IDistantLight2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDistantLight2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIntensity();
     }
     pub fn putIntensity(self: *@This(), value: f32) core.HResult!void {
         var this: ?*IDistantLight2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDistantLight2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIntensity(value);
@@ -3542,12 +3695,14 @@ pub const DropShadow = extern struct {
     }
     pub fn getSourcePolicy(self: *@This()) core.HResult!CompositionDropShadowSourcePolicy {
         var this: ?*IDropShadow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDropShadow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSourcePolicy();
     }
     pub fn putSourcePolicy(self: *@This(), value: CompositionDropShadowSourcePolicy) core.HResult!void {
         var this: ?*IDropShadow2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDropShadow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSourcePolicy(value);
@@ -10992,24 +11147,28 @@ pub const ImplicitAnimationCollection = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,ICompositionAnimationBase)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,ICompositionAnimationBase)) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,ICompositionAnimationBase)).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(?HSTRING,ICompositionAnimationBase) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,ICompositionAnimationBase).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
     pub fn GetView(self: *@This()) core.HResult!*IMapView(?HSTRING,ICompositionAnimationBase) {
         var this: ?*IMap(?HSTRING,ICompositionAnimationBase) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,ICompositionAnimationBase).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IMap(?HSTRING,ICompositionAnimationBase) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap(?HSTRING,ICompositionAnimationBase).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
@@ -11036,6 +11195,7 @@ pub const InitialValueExpressionCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,?HSTRING)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,?HSTRING)) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,?HSTRING)).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -11102,12 +11262,14 @@ pub const LayerVisual = extern struct {
     }
     pub fn getShadow(self: *@This()) core.HResult!*CompositionShadow {
         var this: ?*ILayerVisual2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILayerVisual2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShadow();
     }
     pub fn putShadow(self: *@This(), value: *CompositionShadow) core.HResult!void {
         var this: ?*ILayerVisual2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILayerVisual2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putShadow(value);
@@ -11194,36 +11356,42 @@ pub const PointLight = extern struct {
     }
     pub fn getIntensity(self: *@This()) core.HResult!f32 {
         var this: ?*IPointLight2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointLight2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIntensity();
     }
     pub fn putIntensity(self: *@This(), value: f32) core.HResult!void {
         var this: ?*IPointLight2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointLight2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIntensity(value);
     }
     pub fn getMinAttenuationCutoff(self: *@This()) core.HResult!f32 {
         var this: ?*IPointLight3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointLight3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinAttenuationCutoff();
     }
     pub fn putMinAttenuationCutoff(self: *@This(), value: f32) core.HResult!void {
         var this: ?*IPointLight3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointLight3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMinAttenuationCutoff(value);
     }
     pub fn getMaxAttenuationCutoff(self: *@This()) core.HResult!f32 {
         var this: ?*IPointLight3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointLight3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxAttenuationCutoff();
     }
     pub fn putMaxAttenuationCutoff(self: *@This(), value: f32) core.HResult!void {
         var this: ?*IPointLight3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointLight3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxAttenuationCutoff(value);
@@ -11514,48 +11682,56 @@ pub const SpotLight = extern struct {
     }
     pub fn getInnerConeIntensity(self: *@This()) core.HResult!f32 {
         var this: ?*ISpotLight2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpotLight2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInnerConeIntensity();
     }
     pub fn putInnerConeIntensity(self: *@This(), value: f32) core.HResult!void {
         var this: ?*ISpotLight2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpotLight2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putInnerConeIntensity(value);
     }
     pub fn getOuterConeIntensity(self: *@This()) core.HResult!f32 {
         var this: ?*ISpotLight2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpotLight2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOuterConeIntensity();
     }
     pub fn putOuterConeIntensity(self: *@This(), value: f32) core.HResult!void {
         var this: ?*ISpotLight2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpotLight2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOuterConeIntensity(value);
     }
     pub fn getMinAttenuationCutoff(self: *@This()) core.HResult!f32 {
         var this: ?*ISpotLight3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpotLight3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinAttenuationCutoff();
     }
     pub fn putMinAttenuationCutoff(self: *@This(), value: f32) core.HResult!void {
         var this: ?*ISpotLight3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpotLight3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMinAttenuationCutoff(value);
     }
     pub fn getMaxAttenuationCutoff(self: *@This()) core.HResult!f32 {
         var this: ?*ISpotLight3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpotLight3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxAttenuationCutoff();
     }
     pub fn putMaxAttenuationCutoff(self: *@This(), value: f32) core.HResult!void {
         var this: ?*ISpotLight3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpotLight3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxAttenuationCutoff(value);
@@ -11650,12 +11826,14 @@ pub const SpriteVisual = extern struct {
     }
     pub fn getShadow(self: *@This()) core.HResult!*CompositionShadow {
         var this: ?*ISpriteVisual2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpriteVisual2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShadow();
     }
     pub fn putShadow(self: *@This(), value: *CompositionShadow) core.HResult!void {
         var this: ?*ISpriteVisual2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpriteVisual2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putShadow(value);
@@ -11794,6 +11972,7 @@ pub const VisualCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Visual) {
         var this: ?*IIterable(Visual) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Visual).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -11824,6 +12003,7 @@ pub const VisualUnorderedCollection = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(Visual) {
         var this: ?*IIterable(Visual) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Visual).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

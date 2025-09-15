@@ -129,18 +129,21 @@ pub const ChatConversation = extern struct {
     }
     pub fn getCanModifyParticipants(self: *@This()) core.HResult!bool {
         var this: ?*IChatConversation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatConversation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanModifyParticipants();
     }
     pub fn putCanModifyParticipants(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IChatConversation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatConversation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCanModifyParticipants(value);
     }
     pub fn getItemKind(self: *@This()) core.HResult!ChatItemKind {
         var this: ?*IChatItem = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatItem.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItemKind();
@@ -301,192 +304,224 @@ pub const ChatMessage = extern struct {
     }
     pub fn getEstimatedDownloadSize(self: *@This()) core.HResult!u64 {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEstimatedDownloadSize();
     }
     pub fn putEstimatedDownloadSize(self: *@This(), value: u64) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putEstimatedDownloadSize(value);
     }
     pub fn putFrom(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFrom(value);
     }
     pub fn getIsAutoReply(self: *@This()) core.HResult!bool {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAutoReply();
     }
     pub fn putIsAutoReply(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsAutoReply(value);
     }
     pub fn putIsForwardingDisabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsForwardingDisabled(value);
     }
     pub fn getIsReplyDisabled(self: *@This()) core.HResult!bool {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReplyDisabled();
     }
     pub fn putIsIncoming(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsIncoming(value);
     }
     pub fn putIsRead(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsRead(value);
     }
     pub fn getIsSeen(self: *@This()) core.HResult!bool {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSeen();
     }
     pub fn putIsSeen(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsSeen(value);
     }
     pub fn getIsSimMessage(self: *@This()) core.HResult!bool {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSimMessage();
     }
     pub fn putLocalTimestamp(self: *@This(), value: DateTime) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLocalTimestamp(value);
     }
     pub fn getMessageKind(self: *@This()) core.HResult!ChatMessageKind {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageKind();
     }
     pub fn putMessageKind(self: *@This(), value: ChatMessageKind) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMessageKind(value);
     }
     pub fn getMessageOperatorKind(self: *@This()) core.HResult!ChatMessageOperatorKind {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageOperatorKind();
     }
     pub fn putMessageOperatorKind(self: *@This(), value: ChatMessageOperatorKind) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMessageOperatorKind(value);
     }
     pub fn putNetworkTimestamp(self: *@This(), value: DateTime) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNetworkTimestamp(value);
     }
     pub fn getIsReceivedDuringQuietHours(self: *@This()) core.HResult!bool {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReceivedDuringQuietHours();
     }
     pub fn putIsReceivedDuringQuietHours(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsReceivedDuringQuietHours(value);
     }
     pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRemoteId(value);
     }
     pub fn putStatus(self: *@This(), value: ChatMessageStatus) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStatus(value);
     }
     pub fn putSubject(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSubject(value);
     }
     pub fn getShouldSuppressNotification(self: *@This()) core.HResult!bool {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShouldSuppressNotification();
     }
     pub fn putShouldSuppressNotification(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putShouldSuppressNotification(value);
     }
     pub fn getThreadingInfo(self: *@This()) core.HResult!*ChatConversationThreadingInfo {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getThreadingInfo();
     }
     pub fn putThreadingInfo(self: *@This(), value: *ChatConversationThreadingInfo) core.HResult!void {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putThreadingInfo(value);
     }
     pub fn getRecipientsDeliveryInfos(self: *@This()) core.HResult!*IVector(ChatRecipientDeliveryInfo) {
         var this: ?*IChatMessage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRecipientsDeliveryInfos();
     }
     pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IChatMessage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteId();
     }
     pub fn getSyncId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IChatMessage4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSyncId();
     }
     pub fn putSyncId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IChatMessage4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessage4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSyncId(value);
     }
     pub fn getItemKind(self: *@This()) core.HResult!ChatItemKind {
         var this: ?*IChatItem = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatItem.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItemKind();
@@ -541,36 +576,42 @@ pub const ChatMessageAttachment = extern struct {
     }
     pub fn getThumbnail(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var this: ?*IChatMessageAttachment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getThumbnail();
     }
     pub fn putThumbnail(self: *@This(), value: *IRandomAccessStreamReference) core.HResult!void {
         var this: ?*IChatMessageAttachment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putThumbnail(value);
     }
     pub fn getTransferProgress(self: *@This()) core.HResult!f64 {
         var this: ?*IChatMessageAttachment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransferProgress();
     }
     pub fn putTransferProgress(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IChatMessageAttachment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransferProgress(value);
     }
     pub fn getOriginalFileName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IChatMessageAttachment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOriginalFileName();
     }
     pub fn putOriginalFileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IChatMessageAttachment2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageAttachment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOriginalFileName(value);
@@ -744,24 +785,28 @@ pub const ChatMessageNotificationTriggerDetails = extern struct {
     }
     pub fn getShouldDisplayToast(self: *@This()) core.HResult!bool {
         var this: ?*IChatMessageNotificationTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageNotificationTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShouldDisplayToast();
     }
     pub fn getShouldUpdateDetailText(self: *@This()) core.HResult!bool {
         var this: ?*IChatMessageNotificationTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageNotificationTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShouldUpdateDetailText();
     }
     pub fn getShouldUpdateBadge(self: *@This()) core.HResult!bool {
         var this: ?*IChatMessageNotificationTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageNotificationTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShouldUpdateBadge();
     }
     pub fn getShouldUpdateActionCenter(self: *@This()) core.HResult!bool {
         var this: ?*IChatMessageNotificationTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageNotificationTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShouldUpdateActionCenter();
@@ -786,6 +831,7 @@ pub const ChatMessageReader = extern struct {
     }
     pub fn ReadBatchAsyncWithCount(self: *@This(), count: i32) core.HResult!*IAsyncOperation(IVectorView(ChatMessage)) {
         var this: ?*IChatMessageReader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageReader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReadBatchAsyncWithCount(count);
@@ -864,108 +910,126 @@ pub const ChatMessageStore = extern struct {
     }
     pub fn ForwardMessageAsync(self: *@This(), localChatMessageId: ?HSTRING, addresses: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(ChatMessage) {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ForwardMessageAsync(localChatMessageId, addresses);
     }
     pub fn GetConversationAsync(self: *@This(), conversationId: ?HSTRING) core.HResult!*IAsyncOperation(ChatConversation) {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConversationAsync(conversationId);
     }
     pub fn GetConversationAsyncWithTransportIds(self: *@This(), conversationId: ?HSTRING, transportIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(ChatConversation) {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConversationAsyncWithTransportIds(conversationId, transportIds);
     }
     pub fn GetConversationFromThreadingInfoAsync(self: *@This(), threadingInfo: *ChatConversationThreadingInfo) core.HResult!*IAsyncOperation(ChatConversation) {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConversationFromThreadingInfoAsync(threadingInfo);
     }
     pub fn GetConversationReader(self: *@This()) core.HResult!*ChatConversationReader {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConversationReader();
     }
     pub fn GetConversationReaderWithTransportIds(self: *@This(), transportIds: *IIterable(?HSTRING)) core.HResult!*ChatConversationReader {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConversationReaderWithTransportIds(transportIds);
     }
     pub fn GetMessageByRemoteIdAsync(self: *@This(), transportId: ?HSTRING, remoteId: ?HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMessageByRemoteIdAsync(transportId, remoteId);
     }
     pub fn GetUnseenCountAsync(self: *@This()) core.HResult!*IAsyncOperation(i32) {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetUnseenCountAsync();
     }
     pub fn GetUnseenCountAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(i32) {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetUnseenCountAsyncWithTransportIds(transportIds);
     }
     pub fn MarkAsSeenAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MarkAsSeenAsync();
     }
     pub fn MarkAsSeenAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(?HSTRING)) core.HResult!*IAsyncAction {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MarkAsSeenAsyncWithTransportIds(transportIds);
     }
     pub fn GetSearchReader(self: *@This(), value: *ChatQueryOptions) core.HResult!*ChatSearchReader {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSearchReader(value);
     }
     pub fn SaveMessageAsync(self: *@This(), chatMessage: *ChatMessage) core.HResult!*IAsyncAction {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SaveMessageAsync(chatMessage);
     }
     pub fn TryCancelDownloadMessageAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryCancelDownloadMessageAsync(localChatMessageId);
     }
     pub fn TryCancelSendMessageAsync(self: *@This(), localChatMessageId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryCancelSendMessageAsync(localChatMessageId);
     }
     pub fn addStoreChanged(self: *@This(), handler: *TypedEventHandler(ChatMessageStore,ChatMessageStoreChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addStoreChanged(handler);
     }
     pub fn removeStoreChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IChatMessageStore2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeStoreChanged(token);
     }
     pub fn GetMessageBySyncIdAsync(self: *@This(), syncId: ?HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
         var this: ?*IChatMessageStore3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMessageBySyncIdAsync(syncId);
@@ -1016,12 +1080,14 @@ pub const ChatMessageTransport = extern struct {
     }
     pub fn getConfiguration(self: *@This()) core.HResult!*ChatMessageTransportConfiguration {
         var this: ?*IChatMessageTransport2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageTransport2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConfiguration();
     }
     pub fn getTransportKind(self: *@This()) core.HResult!ChatMessageTransportKind {
         var this: ?*IChatMessageTransport2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageTransport2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransportKind();

@@ -67,54 +67,63 @@ pub const GattCharacteristic = extern struct {
     }
     pub fn getService(self: *@This()) core.HResult!*GattDeviceService {
         var this: ?*IGattCharacteristic2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristic2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getService();
     }
     pub fn GetAllDescriptors(self: *@This()) core.HResult!*IVectorView(GattDescriptor) {
         var this: ?*IGattCharacteristic2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristic2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllDescriptors();
     }
     pub fn GetDescriptorsAsync(self: *@This()) core.HResult!*IAsyncOperation(GattDescriptorsResult) {
         var this: ?*IGattCharacteristic3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristic3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDescriptorsAsync();
     }
     pub fn GetDescriptorsAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDescriptorsResult) {
         var this: ?*IGattCharacteristic3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristic3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDescriptorsAsyncWithCacheMode(cacheMode);
     }
     pub fn GetDescriptorsForUuidAsync(self: *@This(), descriptorUuid: *Guid) core.HResult!*IAsyncOperation(GattDescriptorsResult) {
         var this: ?*IGattCharacteristic3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristic3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDescriptorsForUuidAsync(descriptorUuid);
     }
     pub fn GetDescriptorsForUuidAsyncWithCacheMode(self: *@This(), descriptorUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDescriptorsResult) {
         var this: ?*IGattCharacteristic3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristic3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDescriptorsForUuidAsyncWithCacheMode(descriptorUuid, cacheMode);
     }
     pub fn WriteValueWithResultAsync(self: *@This(), value: *IBuffer) core.HResult!*IAsyncOperation(GattWriteResult) {
         var this: ?*IGattCharacteristic3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristic3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WriteValueWithResultAsync(value);
     }
     pub fn WriteValueWithResultAsyncWithWriteOption(self: *@This(), value: *IBuffer, writeOption: GattWriteOption) core.HResult!*IAsyncOperation(GattWriteResult) {
         var this: ?*IGattCharacteristic3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristic3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WriteValueWithResultAsyncWithWriteOption(value, writeOption);
     }
     pub fn WriteClientCharacteristicConfigurationDescriptorWithResultAsync(self: *@This(), clientCharacteristicConfigurationDescriptorValue: GattClientCharacteristicConfigurationDescriptorValue) core.HResult!*IAsyncOperation(GattWriteResult) {
         var this: ?*IGattCharacteristic3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristic3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WriteClientCharacteristicConfigurationDescriptorWithResultAsync(clientCharacteristicConfigurationDescriptorValue);
@@ -521,6 +530,7 @@ pub const GattClientNotificationResult = extern struct {
     }
     pub fn getBytesSent(self: *@This()) core.HResult!u16 {
         var this: ?*IGattClientNotificationResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattClientNotificationResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBytesSent();
@@ -569,6 +579,7 @@ pub const GattDescriptor = extern struct {
     }
     pub fn WriteValueWithResultAsync(self: *@This(), value: *IBuffer) core.HResult!*IAsyncOperation(GattWriteResult) {
         var this: ?*IGattDescriptor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDescriptor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WriteValueWithResultAsync(value);
@@ -664,108 +675,126 @@ pub const GattDeviceService = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn getDevice(self: *@This()) core.HResult!*BluetoothLEDevice {
         var this: ?*IGattDeviceService2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDevice();
     }
     pub fn getParentServices(self: *@This()) core.HResult!*IVectorView(GattDeviceService) {
         var this: ?*IGattDeviceService2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getParentServices();
     }
     pub fn GetAllCharacteristics(self: *@This()) core.HResult!*IVectorView(GattCharacteristic) {
         var this: ?*IGattDeviceService2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllCharacteristics();
     }
     pub fn GetAllIncludedServices(self: *@This()) core.HResult!*IVectorView(GattDeviceService) {
         var this: ?*IGattDeviceService2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllIncludedServices();
     }
     pub fn getDeviceAccessInformation(self: *@This()) core.HResult!*DeviceAccessInformation {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceAccessInformation();
     }
     pub fn getSession(self: *@This()) core.HResult!*GattSession {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSession();
     }
     pub fn getSharingMode(self: *@This()) core.HResult!GattSharingMode {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSharingMode();
     }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceAccessStatus) {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestAccessAsync();
     }
     pub fn OpenAsync(self: *@This(), sharingMode: GattSharingMode) core.HResult!*IAsyncOperation(GattOpenStatus) {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OpenAsync(sharingMode);
     }
     pub fn GetCharacteristicsAsync(self: *@This()) core.HResult!*IAsyncOperation(GattCharacteristicsResult) {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCharacteristicsAsync();
     }
     pub fn GetCharacteristicsAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattCharacteristicsResult) {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCharacteristicsAsyncWithCacheMode(cacheMode);
     }
     pub fn GetCharacteristicsForUuidAsync(self: *@This(), characteristicUuid: *Guid) core.HResult!*IAsyncOperation(GattCharacteristicsResult) {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCharacteristicsForUuidAsync(characteristicUuid);
     }
     pub fn GetCharacteristicsForUuidAsyncWithCacheMode(self: *@This(), characteristicUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattCharacteristicsResult) {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCharacteristicsForUuidAsyncWithCacheMode(characteristicUuid, cacheMode);
     }
     pub fn GetIncludedServicesAsync(self: *@This()) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIncludedServicesAsync();
     }
     pub fn GetIncludedServicesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIncludedServicesAsyncWithCacheMode(cacheMode);
     }
     pub fn GetIncludedServicesForUuidAsync(self: *@This(), serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIncludedServicesForUuidAsync(serviceUuid);
     }
     pub fn GetIncludedServicesForUuidAsyncWithCacheMode(self: *@This(), serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IGattDeviceService3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIncludedServicesForUuidAsyncWithCacheMode(serviceUuid, cacheMode);
@@ -1370,6 +1399,7 @@ pub const GattReadClientCharacteristicConfigurationDescriptorResult = extern str
     }
     pub fn getProtocolError(self: *@This()) core.HResult!*IReference(u8) {
         var this: ?*IGattReadClientCharacteristicConfigurationDescriptorResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattReadClientCharacteristicConfigurationDescriptorResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProtocolError();
@@ -1448,6 +1478,7 @@ pub const GattReadResult = extern struct {
     }
     pub fn getProtocolError(self: *@This()) core.HResult!*IReference(u8) {
         var this: ?*IGattReadResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattReadResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProtocolError();
@@ -1470,6 +1501,7 @@ pub const GattReliableWriteTransaction = extern struct {
     }
     pub fn CommitWithResultAsync(self: *@This()) core.HResult!*IAsyncOperation(GattWriteResult) {
         var this: ?*IGattReliableWriteTransaction2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattReliableWriteTransaction2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CommitWithResultAsync();
@@ -1541,6 +1573,7 @@ pub const GattServiceProvider = extern struct {
     }
     pub fn UpdateAdvertisingParameters(self: *@This(), parameters: *GattServiceProviderAdvertisingParameters) core.HResult!void {
         var this: ?*IGattServiceProvider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattServiceProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdateAdvertisingParameters(parameters);
@@ -1602,36 +1635,42 @@ pub const GattServiceProviderAdvertisingParameters = extern struct {
     }
     pub fn putServiceData(self: *@This(), value: *IBuffer) core.HResult!void {
         var this: ?*IGattServiceProviderAdvertisingParameters2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattServiceProviderAdvertisingParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putServiceData(value);
     }
     pub fn getServiceData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IGattServiceProviderAdvertisingParameters2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattServiceProviderAdvertisingParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServiceData();
     }
     pub fn getUseLowEnergyUncoded1MPhyAsSecondaryPhy(self: *@This()) core.HResult!bool {
         var this: ?*IGattServiceProviderAdvertisingParameters3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattServiceProviderAdvertisingParameters3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseLowEnergyUncoded1MPhyAsSecondaryPhy();
     }
     pub fn putUseLowEnergyUncoded1MPhyAsSecondaryPhy(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IGattServiceProviderAdvertisingParameters3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattServiceProviderAdvertisingParameters3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseLowEnergyUncoded1MPhyAsSecondaryPhy(value);
     }
     pub fn getUseLowEnergyUncoded2MPhyAsSecondaryPhy(self: *@This()) core.HResult!bool {
         var this: ?*IGattServiceProviderAdvertisingParameters3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattServiceProviderAdvertisingParameters3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUseLowEnergyUncoded2MPhyAsSecondaryPhy();
     }
     pub fn putUseLowEnergyUncoded2MPhyAsSecondaryPhy(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IGattServiceProviderAdvertisingParameters3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattServiceProviderAdvertisingParameters3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseLowEnergyUncoded2MPhyAsSecondaryPhy(value);
@@ -1808,6 +1847,7 @@ pub const GattSession = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

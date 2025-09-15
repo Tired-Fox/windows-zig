@@ -169,156 +169,182 @@ pub const ApplicationView = extern struct {
     }
     pub fn getSuppressSystemOverlays(self: *@This()) core.HResult!bool {
         var this: ?*IApplicationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSuppressSystemOverlays();
     }
     pub fn putSuppressSystemOverlays(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IApplicationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSuppressSystemOverlays(value);
     }
     pub fn getVisibleBounds(self: *@This()) core.HResult!Rect {
         var this: ?*IApplicationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVisibleBounds();
     }
     pub fn addVisibleBoundsChanged(self: *@This(), handler: *TypedEventHandler(ApplicationView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IApplicationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addVisibleBoundsChanged(handler);
     }
     pub fn removeVisibleBoundsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IApplicationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeVisibleBoundsChanged(token);
     }
     pub fn SetDesiredBoundsMode(self: *@This(), boundsMode: ApplicationViewBoundsMode) core.HResult!bool {
         var this: ?*IApplicationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetDesiredBoundsMode(boundsMode);
     }
     pub fn getDesiredBoundsMode(self: *@This()) core.HResult!ApplicationViewBoundsMode {
         var this: ?*IApplicationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredBoundsMode();
     }
     pub fn getTitleBar(self: *@This()) core.HResult!*ApplicationViewTitleBar {
         var this: ?*IApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTitleBar();
     }
     pub fn getFullScreenSystemOverlayMode(self: *@This()) core.HResult!FullScreenSystemOverlayMode {
         var this: ?*IApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFullScreenSystemOverlayMode();
     }
     pub fn putFullScreenSystemOverlayMode(self: *@This(), value: FullScreenSystemOverlayMode) core.HResult!void {
         var this: ?*IApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFullScreenSystemOverlayMode(value);
     }
     pub fn getIsFullScreenMode(self: *@This()) core.HResult!bool {
         var this: ?*IApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsFullScreenMode();
     }
     pub fn TryEnterFullScreenMode(self: *@This()) core.HResult!bool {
         var this: ?*IApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryEnterFullScreenMode();
     }
     pub fn ExitFullScreenMode(self: *@This()) core.HResult!void {
         var this: ?*IApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ExitFullScreenMode();
     }
     pub fn ShowStandardSystemOverlays(self: *@This()) core.HResult!void {
         var this: ?*IApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShowStandardSystemOverlays();
     }
     pub fn TryResizeView(self: *@This(), value: Size) core.HResult!bool {
         var this: ?*IApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryResizeView(value);
     }
     pub fn SetPreferredMinSize(self: *@This(), minSize: Size) core.HResult!void {
         var this: ?*IApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPreferredMinSize(minSize);
     }
     pub fn getViewMode(self: *@This()) core.HResult!ApplicationViewMode {
         var this: ?*IApplicationView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getViewMode();
     }
     pub fn IsViewModeSupported(self: *@This(), viewMode: ApplicationViewMode) core.HResult!bool {
         var this: ?*IApplicationView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsViewModeSupported(viewMode);
     }
     pub fn TryEnterViewModeAsync(self: *@This(), viewMode: ApplicationViewMode) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IApplicationView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryEnterViewModeAsync(viewMode);
     }
     pub fn TryEnterViewModeAsyncWithViewModePreferences(self: *@This(), viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IApplicationView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryEnterViewModeAsyncWithViewModePreferences(viewMode, viewModePreferences);
     }
     pub fn TryConsolidateAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IApplicationView4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryConsolidateAsync();
     }
     pub fn getPersistedStateId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IApplicationView7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPersistedStateId();
     }
     pub fn putPersistedStateId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IApplicationView7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPersistedStateId(value);
     }
     pub fn getWindowingEnvironment(self: *@This()) core.HResult!*WindowingEnvironment {
         var this: ?*IApplicationView9 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView9.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWindowingEnvironment();
     }
     pub fn GetDisplayRegions(self: *@This()) core.HResult!*IVectorView(DisplayRegion) {
         var this: ?*IApplicationView9 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView9.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDisplayRegions();
     }
     pub fn getUIContext(self: *@This()) core.HResult!*UIContext {
         var this: ?*IApplicationViewWithContext = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationViewWithContext.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUIContext();
@@ -402,6 +428,7 @@ pub const ApplicationViewConsolidatedEventArgs = extern struct {
     }
     pub fn getIsAppInitiated(self: *@This()) core.HResult!bool {
         var this: ?*IApplicationViewConsolidatedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationViewConsolidatedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAppInitiated();
@@ -2415,24 +2442,28 @@ pub const InputPane = extern struct {
     }
     pub fn TryShow(self: *@This()) core.HResult!bool {
         var this: ?*IInputPane2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputPane2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryShow();
     }
     pub fn TryHide(self: *@This()) core.HResult!bool {
         var this: ?*IInputPane2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputPane2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryHide();
     }
     pub fn getVisible(self: *@This()) core.HResult!bool {
         var this: ?*IInputPaneControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputPaneControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVisible();
     }
     pub fn putVisible(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IInputPaneControl = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputPaneControl.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putVisible(value);
@@ -2626,96 +2657,112 @@ pub const UISettings = extern struct {
     }
     pub fn getTextScaleFactor(self: *@This()) core.HResult!f64 {
         var this: ?*IUISettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTextScaleFactor();
     }
     pub fn addTextScaleFactorChanged(self: *@This(), handler: *TypedEventHandler(UISettings,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IUISettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addTextScaleFactorChanged(handler);
     }
     pub fn removeTextScaleFactorChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IUISettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTextScaleFactorChanged(cookie);
     }
     pub fn GetColorValue(self: *@This(), desiredColor: UIColorType) core.HResult!Color {
         var this: ?*IUISettings3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetColorValue(desiredColor);
     }
     pub fn addColorValuesChanged(self: *@This(), handler: *TypedEventHandler(UISettings,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IUISettings3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addColorValuesChanged(handler);
     }
     pub fn removeColorValuesChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IUISettings3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeColorValuesChanged(cookie);
     }
     pub fn getAdvancedEffectsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IUISettings4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAdvancedEffectsEnabled();
     }
     pub fn addAdvancedEffectsEnabledChanged(self: *@This(), handler: *TypedEventHandler(UISettings,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IUISettings4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addAdvancedEffectsEnabledChanged(handler);
     }
     pub fn removeAdvancedEffectsEnabledChanged(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IUISettings4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAdvancedEffectsEnabledChanged(cookie);
     }
     pub fn getAutoHideScrollBars(self: *@This()) core.HResult!bool {
         var this: ?*IUISettings5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAutoHideScrollBars();
     }
     pub fn addAutoHideScrollBarsChanged(self: *@This(), handler: *TypedEventHandler(UISettings,UISettingsAutoHideScrollBarsChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IUISettings5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addAutoHideScrollBarsChanged(handler);
     }
     pub fn removeAutoHideScrollBarsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IUISettings5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAutoHideScrollBarsChanged(token);
     }
     pub fn addAnimationsEnabledChanged(self: *@This(), handler: *TypedEventHandler(UISettings,UISettingsAnimationsEnabledChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IUISettings6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addAnimationsEnabledChanged(handler);
     }
     pub fn removeAnimationsEnabledChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IUISettings6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAnimationsEnabledChanged(token);
     }
     pub fn addMessageDurationChanged(self: *@This(), handler: *TypedEventHandler(UISettings,UISettingsMessageDurationChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IUISettings6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addMessageDurationChanged(handler);
     }
     pub fn removeMessageDurationChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IUISettings6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUISettings6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMessageDurationChanged(token);
@@ -2766,18 +2813,21 @@ pub const UIViewSettings = extern struct {
     }
     pub fn GetPreferredInteractionMode(self: *@This(), supportedModes: [*]UserInteractionMode) core.HResult!UserInteractionMode {
         var this: ?*IUIViewSettingsPreferredInteractionMode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUIViewSettingsPreferredInteractionMode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPreferredInteractionMode(supportedModes);
     }
     pub fn addPreferredInteractionModeChanged(self: *@This(), handler: *TypedEventHandler(UIViewSettings,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IUIViewSettingsPreferredInteractionMode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUIViewSettingsPreferredInteractionMode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPreferredInteractionModeChanged(handler);
     }
     pub fn removePreferredInteractionModeChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IUIViewSettingsPreferredInteractionMode = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUIViewSettingsPreferredInteractionMode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePreferredInteractionModeChanged(token);

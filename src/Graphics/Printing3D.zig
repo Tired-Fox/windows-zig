@@ -1886,12 +1886,14 @@ pub const Printing3D3MFPackage = extern struct {
     }
     pub fn getCompression(self: *@This()) core.HResult!Printing3DPackageCompression {
         var this: ?*IPrinting3D3MFPackage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3D3MFPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompression();
     }
     pub fn putCompression(self: *@This(), value: Printing3DPackageCompression) core.HResult!void {
         var this: ?*IPrinting3D3MFPackage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3D3MFPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompression(value);
@@ -2005,12 +2007,14 @@ pub const Printing3DColorMaterial = extern struct {
     }
     pub fn getColor(self: *@This()) core.HResult!Color {
         var this: ?*IPrinting3DColorMaterial2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DColorMaterial2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getColor();
     }
     pub fn putColor(self: *@This(), value: Color) core.HResult!void {
         var this: ?*IPrinting3DColorMaterial2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DColorMaterial2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putColor(value);
@@ -2181,12 +2185,14 @@ pub const Printing3DCompositeMaterialGroup = extern struct {
     }
     pub fn getBaseMaterialGroup(self: *@This()) core.HResult!*Printing3DBaseMaterialGroup {
         var this: ?*IPrinting3DCompositeMaterialGroup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DCompositeMaterialGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBaseMaterialGroup();
     }
     pub fn putBaseMaterialGroup(self: *@This(), value: *Printing3DBaseMaterialGroup) core.HResult!void {
         var this: ?*IPrinting3DCompositeMaterialGroup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DCompositeMaterialGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBaseMaterialGroup(value);
@@ -2477,36 +2483,42 @@ pub const Printing3DModel = extern struct {
     }
     pub fn TryPartialRepairAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IPrinting3DModel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DModel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryPartialRepairAsync();
     }
     pub fn TryPartialRepairAsyncWithMaxWaitTime(self: *@This(), maxWaitTime: TimeSpan) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IPrinting3DModel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DModel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryPartialRepairAsyncWithMaxWaitTime(maxWaitTime);
     }
     pub fn TryReduceFacesAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
         var this: ?*IPrinting3DModel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DModel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryReduceFacesAsync();
     }
     pub fn TryReduceFacesAsyncWithPrinting3DFaceReductionOptions(self: *@This(), printing3DFaceReductionOptions: *Printing3DFaceReductionOptions) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
         var this: ?*IPrinting3DModel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DModel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryReduceFacesAsyncWithPrinting3DFaceReductionOptions(printing3DFaceReductionOptions);
     }
     pub fn TryReduceFacesAsyncWithPrinting3DFaceReductionOptionsAndMaxWait(self: *@This(), printing3DFaceReductionOptions: *Printing3DFaceReductionOptions, maxWait: TimeSpan) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
         var this: ?*IPrinting3DModel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DModel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryReduceFacesAsyncWithPrinting3DFaceReductionOptionsAndMaxWait(printing3DFaceReductionOptions, maxWait);
     }
     pub fn RepairWithProgressAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
         var this: ?*IPrinting3DModel2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DModel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RepairWithProgressAsync();
@@ -2683,12 +2695,14 @@ pub const Printing3DTexture2CoordMaterialGroup = extern struct {
     }
     pub fn getTexture(self: *@This()) core.HResult!*Printing3DModelTexture {
         var this: ?*IPrinting3DTexture2CoordMaterialGroup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DTexture2CoordMaterialGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTexture();
     }
     pub fn putTexture(self: *@This(), value: *Printing3DModelTexture) core.HResult!void {
         var this: ?*IPrinting3DTexture2CoordMaterialGroup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DTexture2CoordMaterialGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTexture(value);

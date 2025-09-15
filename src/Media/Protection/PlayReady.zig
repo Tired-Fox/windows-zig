@@ -2341,12 +2341,14 @@ pub const PlayReadyContentHeader = extern struct {
     }
     pub fn getKeyIds(self: *@This()) core.HResult![*]Guid {
         var this: ?*IPlayReadyContentHeader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyContentHeader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyIds();
     }
     pub fn getKeyIdStrings(self: *@This()) core.HResult!?[*]HSTRING {
         var this: ?*IPlayReadyContentHeader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyContentHeader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyIdStrings();
@@ -2487,66 +2489,77 @@ pub const PlayReadyDomainJoinServiceRequest = extern struct {
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -2585,66 +2598,77 @@ pub const PlayReadyDomainLeaveServiceRequest = extern struct {
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -2704,66 +2728,77 @@ pub const PlayReadyIndividualizationServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -2814,24 +2849,28 @@ pub const PlayReadyLicense = extern struct {
     }
     pub fn getSecureStopId(self: *@This()) core.HResult!*Guid {
         var this: ?*IPlayReadyLicense2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicense2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSecureStopId();
     }
     pub fn getSecurityLevel(self: *@This()) core.HResult!u32 {
         var this: ?*IPlayReadyLicense2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicense2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSecurityLevel();
     }
     pub fn getInMemoryOnly(self: *@This()) core.HResult!bool {
         var this: ?*IPlayReadyLicense2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicense2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInMemoryOnly();
     }
     pub fn getExpiresInRealTime(self: *@This()) core.HResult!bool {
         var this: ?*IPlayReadyLicense2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicense2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpiresInRealTime();
@@ -2862,78 +2901,91 @@ pub const PlayReadyLicenseAcquisitionServiceRequest = extern struct {
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn getSessionId(self: *@This()) core.HResult!*Guid {
         var this: ?*IPlayReadyLicenseAcquisitionServiceRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicenseAcquisitionServiceRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSessionId();
     }
     pub fn CreateLicenseIterable(self: *@This(), contentHeader: *PlayReadyContentHeader, fullyEvaluated: bool) core.HResult!*PlayReadyLicenseIterable {
         var this: ?*IPlayReadyLicenseAcquisitionServiceRequest3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicenseAcquisitionServiceRequest3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLicenseIterable(contentHeader, fullyEvaluated);
@@ -3018,6 +3070,7 @@ pub const PlayReadyLicenseSession = extern struct {
     }
     pub fn CreateLicenseIterable(self: *@This(), contentHeader: *PlayReadyContentHeader, fullyEvaluated: bool) core.HResult!*PlayReadyLicenseIterable {
         var this: ?*IPlayReadyLicenseSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyLicenseSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLicenseIterable(contentHeader, fullyEvaluated);
@@ -3048,66 +3101,77 @@ pub const PlayReadyMeteringReportServiceRequest = extern struct {
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -3130,66 +3194,77 @@ pub const PlayReadyRevocationServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
@@ -3268,66 +3343,77 @@ pub const PlayReadySecureStopServiceRequest = extern struct {
     }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUri();
     }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUri(value);
     }
     pub fn getResponseCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResponseCustomData();
     }
     pub fn getChallengeCustomData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChallengeCustomData();
     }
     pub fn putChallengeCustomData(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putChallengeCustomData(value);
     }
     pub fn BeginServiceRequest(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BeginServiceRequest();
     }
     pub fn NextServiceRequest(self: *@This()) core.HResult!*IPlayReadyServiceRequest {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NextServiceRequest();
     }
     pub fn GenerateManualEnablingChallenge(self: *@This()) core.HResult!*PlayReadySoapMessage {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GenerateManualEnablingChallenge();
     }
     pub fn ProcessManualEnablingResponse(self: *@This(), responseBytes: [*]u8) core.HResult!HResult {
         var this: ?*IPlayReadyServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPlayReadyServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ProcessManualEnablingResponse(responseBytes);
     }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProtectionSystem();
     }
     pub fn getType(self: *@This()) core.HResult!*Guid {
         var this: ?*IMediaProtectionServiceRequest = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaProtectionServiceRequest.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();

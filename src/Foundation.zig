@@ -615,6 +615,7 @@ pub const Deferral = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -857,27 +858,27 @@ pub fn IAsyncActionWithProgress(TProgress: type) type {
         vtable: *const VTable,
         pub fn putProgress(self: *@This(), handler: *AsyncActionProgressHandler(TProgress)) core.HResult!void {
             const _c = self.vtable.put_Progress(@ptrCast(self), handler);
-        if (_c != 0) return core.hresultToError(_c).err;
+            if (_c != 0) return core.hresultToError(_c).err;
         }
         pub fn getProgress(self: *@This()) core.HResult!*AsyncActionProgressHandler(TProgress) {
-        var _r: *AsyncActionProgressHandler(TProgress) = undefined;
+            var _r: *AsyncActionProgressHandler(TProgress) = undefined;
             const _c = self.vtable.get_Progress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
-        return _r;
+            if (_c != 0) return core.hresultToError(_c).err;
+            return _r;
         }
         pub fn putCompleted(self: *@This(), handler: *AsyncActionWithProgressCompletedHandler(TProgress)) core.HResult!void {
             const _c = self.vtable.put_Completed(@ptrCast(self), handler);
-        if (_c != 0) return core.hresultToError(_c).err;
+            if (_c != 0) return core.hresultToError(_c).err;
         }
         pub fn getCompleted(self: *@This()) core.HResult!*AsyncActionWithProgressCompletedHandler(TProgress) {
-        var _r: *AsyncActionWithProgressCompletedHandler(TProgress) = undefined;
+            var _r: *AsyncActionWithProgressCompletedHandler(TProgress) = undefined;
             const _c = self.vtable.get_Completed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
-        return _r;
+            if (_c != 0) return core.hresultToError(_c).err;
+            return _r;
         }
         pub fn GetResults(self: *@This()) core.HResult!void {
             const _c = self.vtable.GetResults(@ptrCast(self));
-        if (_c != 0) return core.hresultToError(_c).err;
+            if (_c != 0) return core.hresultToError(_c).err;
         }
         pub const NAME: []const u8 = "Windows.Foundation.IAsyncActionWithProgress";
         pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -951,29 +952,29 @@ pub fn IAsyncOperationWithProgress(TResult: type, TProgress: type) type {
         vtable: *const VTable,
         pub fn putProgress(self: *@This(), handler: *AsyncOperationProgressHandler(TResult,TProgress)) core.HResult!void {
             const _c = self.vtable.put_Progress(@ptrCast(self), handler);
-        if (_c != 0) return core.hresultToError(_c).err;
+            if (_c != 0) return core.hresultToError(_c).err;
         }
         pub fn getProgress(self: *@This()) core.HResult!*AsyncOperationProgressHandler(TResult,TProgress) {
-        var _r: *AsyncOperationProgressHandler(TResult,TProgress) = undefined;
+            var _r: *AsyncOperationProgressHandler(TResult,TProgress) = undefined;
             const _c = self.vtable.get_Progress(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
-        return _r;
+            if (_c != 0) return core.hresultToError(_c).err;
+            return _r;
         }
         pub fn putCompleted(self: *@This(), handler: *AsyncOperationWithProgressCompletedHandler(TResult,TProgress)) core.HResult!void {
             const _c = self.vtable.put_Completed(@ptrCast(self), handler);
-        if (_c != 0) return core.hresultToError(_c).err;
+            if (_c != 0) return core.hresultToError(_c).err;
         }
         pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationWithProgressCompletedHandler(TResult,TProgress) {
-        var _r: *AsyncOperationWithProgressCompletedHandler(TResult,TProgress) = undefined;
+            var _r: *AsyncOperationWithProgressCompletedHandler(TResult,TProgress) = undefined;
             const _c = self.vtable.get_Completed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
-        return _r;
+            if (_c != 0) return core.hresultToError(_c).err;
+            return _r;
         }
         pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
-        var _r: core.generic(TResult) = undefined;
+            var _r: core.generic(TResult) = undefined;
             const _c = self.vtable.GetResults(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
-        return _r;
+            if (_c != 0) return core.hresultToError(_c).err;
+            return _r;
         }
         pub const NAME: []const u8 = "Windows.Foundation.IAsyncOperationWithProgress";
         pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1000,19 +1001,37 @@ pub fn IAsyncOperation(TResult: type) type {
         vtable: *const VTable,
         pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(TResult)) core.HResult!void {
             const _c = self.vtable.put_Completed(@ptrCast(self), handler);
-        if (_c != 0) return core.hresultToError(_c).err;
+            if (_c != 0) return core.hresultToError(_c).err;
         }
         pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(TResult) {
-        var _r: *AsyncOperationCompletedHandler(TResult) = undefined;
+            var _r: *AsyncOperationCompletedHandler(TResult) = undefined;
             const _c = self.vtable.get_Completed(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
-        return _r;
+            if (_c != 0) return core.hresultToError(_c).err;
+            return _r;
         }
         pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
-        var _r: core.generic(TResult) = undefined;
+            var _r: core.generic(TResult) = undefined;
             const _c = self.vtable.GetResults(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
-        return _r;
+            if (_c != 0) return core.hresultToError(_c).err;
+            return _r;
+        }
+        pub fn wait(self: *@This()) !void {
+            const asyncComplete = (struct {
+                pub fn asyncComplete(state: ?*anyopaque, result: *IAsyncOperation(TResult), status: AsyncStatus) void {
+                    _ = result;
+                    _ = status;
+                    const ctx: *@import("std").Thread.Semaphore = @ptrCast(@alignCast(state.?));
+                    ctx.post();
+                }
+            }).asyncComplete;
+            var _async_context: @import("std").Thread.Semaphore = .{};
+            const async_handler = try AsyncOperationCompletedHandler(TResult).initWithState(
+                asyncComplete,
+                &_async_context,
+            );
+            defer async_handler.deinit();
+            try self.putCompleted(async_handler);
+            _async_context.wait();
         }
         pub const NAME: []const u8 = "Windows.Foundation.IAsyncOperation";
         pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1641,10 +1660,10 @@ pub fn IReferenceArray(T: type) type {
     return extern struct {
         vtable: *const VTable,
         pub fn getValue(self: *@This()) core.HResult![*]core.generic(T) {
-        var _r: [*]core.generic(T) = undefined;
+            var _r: [*]core.generic(T) = undefined;
             const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
-        return _r;
+            if (_c != 0) return core.hresultToError(_c).err;
+            return _r;
         }
         pub const NAME: []const u8 = "Windows.Foundation.IReferenceArray";
         pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1666,10 +1685,10 @@ pub fn IReference(T: type) type {
     return extern struct {
         vtable: *const VTable,
         pub fn getValue(self: *@This()) core.HResult!core.generic(T) {
-        var _r: core.generic(T) = undefined;
+            var _r: core.generic(T) = undefined;
             const _c = self.vtable.get_Value(@ptrCast(self), &_r);
-        if (_c != 0) return core.hresultToError(_c).err;
-        return _r;
+            if (_c != 0) return core.hresultToError(_c).err;
+            return _r;
         }
         pub const NAME: []const u8 = "Windows.Foundation.IReference";
         pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2497,6 +2516,7 @@ pub const MemoryBuffer = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -2587,18 +2607,21 @@ pub const Uri = extern struct {
     }
     pub fn getAbsoluteCanonicalUri(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUriRuntimeClassWithAbsoluteCanonicalUri = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUriRuntimeClassWithAbsoluteCanonicalUri.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAbsoluteCanonicalUri();
     }
     pub fn getDisplayIri(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IUriRuntimeClassWithAbsoluteCanonicalUri = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUriRuntimeClassWithAbsoluteCanonicalUri.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayIri();
     }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IStringable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
@@ -2638,12 +2661,14 @@ pub const WwwFormUrlDecoder = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(IWwwFormUrlDecoderEntry) {
         var this: ?*IIterable(IWwwFormUrlDecoderEntry) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IWwwFormUrlDecoderEntry).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVectorView(IWwwFormUrlDecoderEntry) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView(IWwwFormUrlDecoderEntry).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();

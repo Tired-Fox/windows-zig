@@ -1597,6 +1597,7 @@ pub const PrintWorkflowConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn AbortPrintFlow(self: *@This(), reason: PrintWorkflowJobAbortReason) core.HResult!void {
         var this: ?*IPrintWorkflowConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AbortPrintFlow(reason);
@@ -1683,24 +1684,28 @@ pub const PrintWorkflowJobActivatedEventArgs = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!ActivationKind {
         var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
         var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreviousExecutionState();
     }
     pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
         var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSplashScreen();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IActivatedEventArgsWithUser = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgsWithUser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
@@ -1739,12 +1744,14 @@ pub const PrintWorkflowJobBackgroundSession = extern struct {
     }
     pub fn addJobIssueDetected(self: *@This(), handler: *TypedEventHandler(PrintWorkflowJobBackgroundSession,PrintWorkflowJobIssueDetectedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IPrintWorkflowJobBackgroundSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowJobBackgroundSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addJobIssueDetected(handler);
     }
     pub fn removeJobIssueDetected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPrintWorkflowJobBackgroundSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowJobBackgroundSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeJobIssueDetected(token);
@@ -1848,24 +1855,28 @@ pub const PrintWorkflowJobStartingEventArgs = extern struct {
     }
     pub fn getIsIppCompressionEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IPrintWorkflowJobStartingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowJobStartingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsIppCompressionEnabled();
     }
     pub fn DisableIppCompressionForJob(self: *@This()) core.HResult!void {
         var this: ?*IPrintWorkflowJobStartingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowJobStartingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DisableIppCompressionForJob();
     }
     pub fn getSkipSystemFaxUI(self: *@This()) core.HResult!bool {
         var this: ?*IPrintWorkflowJobStartingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowJobStartingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSkipSystemFaxUI();
     }
     pub fn putSkipSystemFaxUI(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IPrintWorkflowJobStartingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowJobStartingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSkipSystemFaxUI(value);
@@ -1916,12 +1927,14 @@ pub const PrintWorkflowJobUISession = extern struct {
     }
     pub fn addVirtualPrinterUIDataAvailable(self: *@This(), handler: *TypedEventHandler(PrintWorkflowJobUISession,PrintWorkflowVirtualPrinterUIEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IPrintWorkflowJobUISession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowJobUISession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addVirtualPrinterUIDataAvailable(handler);
     }
     pub fn removeVirtualPrinterUIDataAvailable(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPrintWorkflowJobUISession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowJobUISession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeVirtualPrinterUIDataAvailable(token);
@@ -1970,6 +1983,7 @@ pub const PrintWorkflowPdlConverter = extern struct {
     }
     pub fn ConvertPdlAsyncWithHostBasedProcessingOperations(self: *@This(), printTicket: *WorkflowPrintTicket, inputStream: *IInputStream, outputStream: *IOutputStream, hostBasedProcessingOperations: PdlConversionHostBasedProcessingOperations) core.HResult!*IAsyncAction {
         var this: ?*IPrintWorkflowPdlConverter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowPdlConverter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConvertPdlAsyncWithHostBasedProcessingOperations(printTicket, inputStream, outputStream, hostBasedProcessingOperations);
@@ -2044,12 +2058,14 @@ pub const PrintWorkflowPdlModificationRequestedEventArgs = extern struct {
     }
     pub fn CreateJobOnPrinterWithAttributesWithOperationAttributesAndJobAttributesMergePolicyAndOperationAttributesMergePolicy(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), targetContentType: ?HSTRING, operationAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
         var this: ?*IPrintWorkflowPdlModificationRequestedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowPdlModificationRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateJobOnPrinterWithAttributesWithOperationAttributesAndJobAttributesMergePolicyAndOperationAttributesMergePolicy(jobAttributes, targetContentType, operationAttributes, jobAttributesMergePolicy, operationAttributesMergePolicy);
     }
     pub fn CreateJobOnPrinterWithAttributesBufferWithOperationAttributesBufferAndJobAttributesMergePolicyAndOperationAttributesMergePolicy(self: *@This(), jobAttributesBuffer: *IBuffer, targetContentType: ?HSTRING, operationAttributesBuffer: *IBuffer, jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
         var this: ?*IPrintWorkflowPdlModificationRequestedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowPdlModificationRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateJobOnPrinterWithAttributesBufferWithOperationAttributesBufferAndJobAttributesMergePolicyAndOperationAttributesMergePolicy(jobAttributesBuffer, targetContentType, operationAttributesBuffer, jobAttributesMergePolicy, operationAttributesMergePolicy);
@@ -2132,6 +2148,7 @@ pub const PrintWorkflowPrinterJob = extern struct {
     }
     pub fn ConvertPrintTicketToJobAttributes(self: *@This(), printTicket: *WorkflowPrintTicket, targetPdlFormat: ?HSTRING) core.HResult!*IMap(?HSTRING,IppAttributeValue) {
         var this: ?*IPrintWorkflowPrinterJob2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowPrinterJob2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConvertPrintTicketToJobAttributes(printTicket, targetPdlFormat);
@@ -2280,24 +2297,28 @@ pub const PrintWorkflowUIActivatedEventArgs = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!ActivationKind {
         var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
         var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreviousExecutionState();
     }
     pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
         var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSplashScreen();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IActivatedEventArgsWithUser = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgsWithUser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();

@@ -22,12 +22,14 @@ pub const AdaptiveNotificationText = extern struct {
     }
     pub fn getKind(self: *@This()) core.HResult!AdaptiveNotificationContentKind {
         var this: ?*IAdaptiveNotificationContent = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveNotificationContent.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getHints(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         var this: ?*IAdaptiveNotificationContent = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdaptiveNotificationContent.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHints();
@@ -3098,72 +3100,84 @@ pub const ScheduledToastNotification = extern struct {
     }
     pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IScheduledToastNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTag(value);
     }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IScheduledToastNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
     pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IScheduledToastNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putGroup(value);
     }
     pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IScheduledToastNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGroup();
     }
     pub fn putSuppressPopup(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IScheduledToastNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSuppressPopup(value);
     }
     pub fn getSuppressPopup(self: *@This()) core.HResult!bool {
         var this: ?*IScheduledToastNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSuppressPopup();
     }
     pub fn getNotificationMirroring(self: *@This()) core.HResult!NotificationMirroring {
         var this: ?*IScheduledToastNotification3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNotificationMirroring();
     }
     pub fn putNotificationMirroring(self: *@This(), value: NotificationMirroring) core.HResult!void {
         var this: ?*IScheduledToastNotification3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNotificationMirroring(value);
     }
     pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IScheduledToastNotification3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteId();
     }
     pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IScheduledToastNotification3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRemoteId(value);
     }
     pub fn getExpirationTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var this: ?*IScheduledToastNotification4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpirationTime();
     }
     pub fn putExpirationTime(self: *@This(), value: *IReference(DateTime)) core.HResult!void {
         var this: ?*IScheduledToastNotification4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScheduledToastNotification4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putExpirationTime(value);
@@ -3580,18 +3594,21 @@ pub const TileUpdater = extern struct {
     }
     pub fn EnableNotificationQueueForSquare150x150(self: *@This(), enable: bool) core.HResult!void {
         var this: ?*ITileUpdater2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITileUpdater2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableNotificationQueueForSquare150x150(enable);
     }
     pub fn EnableNotificationQueueForWide310x150(self: *@This(), enable: bool) core.HResult!void {
         var this: ?*ITileUpdater2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITileUpdater2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableNotificationQueueForWide310x150(enable);
     }
     pub fn EnableNotificationQueueForSquare310x310(self: *@This(), enable: bool) core.HResult!void {
         var this: ?*ITileUpdater2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITileUpdater2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.EnableNotificationQueueForSquare310x310(enable);
@@ -3610,6 +3627,7 @@ pub const ToastActivatedEventArgs = extern struct {
     }
     pub fn getUserInput(self: *@This()) core.HResult!*ValueSet {
         var this: ?*IToastActivatedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastActivatedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUserInput();
@@ -3775,96 +3793,112 @@ pub const ToastNotification = extern struct {
     }
     pub fn putTag(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IToastNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTag(value);
     }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IToastNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
     pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IToastNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putGroup(value);
     }
     pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IToastNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGroup();
     }
     pub fn putSuppressPopup(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IToastNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSuppressPopup(value);
     }
     pub fn getSuppressPopup(self: *@This()) core.HResult!bool {
         var this: ?*IToastNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSuppressPopup();
     }
     pub fn getNotificationMirroring(self: *@This()) core.HResult!NotificationMirroring {
         var this: ?*IToastNotification3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNotificationMirroring();
     }
     pub fn putNotificationMirroring(self: *@This(), value: NotificationMirroring) core.HResult!void {
         var this: ?*IToastNotification3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNotificationMirroring(value);
     }
     pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IToastNotification3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemoteId();
     }
     pub fn putRemoteId(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IToastNotification3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRemoteId(value);
     }
     pub fn getData(self: *@This()) core.HResult!*NotificationData {
         var this: ?*IToastNotification4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getData();
     }
     pub fn putData(self: *@This(), value: *NotificationData) core.HResult!void {
         var this: ?*IToastNotification4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putData(value);
     }
     pub fn getPriority(self: *@This()) core.HResult!ToastNotificationPriority {
         var this: ?*IToastNotification4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPriority();
     }
     pub fn putPriority(self: *@This(), value: ToastNotificationPriority) core.HResult!void {
         var this: ?*IToastNotification4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPriority(value);
     }
     pub fn getExpiresOnReboot(self: *@This()) core.HResult!bool {
         var this: ?*IToastNotification6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpiresOnReboot();
     }
     pub fn putExpiresOnReboot(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IToastNotification6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotification6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putExpiresOnReboot(value);
@@ -3903,12 +3937,14 @@ pub const ToastNotificationHistory = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn GetHistory(self: *@This()) core.HResult!*IVectorView(ToastNotification) {
         var this: ?*IToastNotificationHistory2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationHistory2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetHistory();
     }
     pub fn GetHistoryWithApplicationId(self: *@This(), applicationId: ?HSTRING) core.HResult!*IVectorView(ToastNotification) {
         var this: ?*IToastNotificationHistory2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationHistory2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetHistoryWithApplicationId(applicationId);
@@ -3955,6 +3991,7 @@ pub const ToastNotificationHistoryChangedTriggerDetail = extern struct {
     }
     pub fn getCollectionId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IToastNotificationHistoryChangedTriggerDetail2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationHistoryChangedTriggerDetail2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCollectionId();
@@ -4025,42 +4062,49 @@ pub const ToastNotificationManagerForUser = extern struct {
     }
     pub fn GetToastNotifierForToastCollectionIdAsync(self: *@This(), collectionId: ?HSTRING) core.HResult!*IAsyncOperation(ToastNotifier) {
         var this: ?*IToastNotificationManagerForUser2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationManagerForUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetToastNotifierForToastCollectionIdAsync(collectionId);
     }
     pub fn GetHistoryForToastCollectionIdAsync(self: *@This(), collectionId: ?HSTRING) core.HResult!*IAsyncOperation(ToastNotificationHistory) {
         var this: ?*IToastNotificationManagerForUser2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationManagerForUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetHistoryForToastCollectionIdAsync(collectionId);
     }
     pub fn GetToastCollectionManager(self: *@This()) core.HResult!*ToastCollectionManager {
         var this: ?*IToastNotificationManagerForUser2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationManagerForUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetToastCollectionManager();
     }
     pub fn GetToastCollectionManagerWithAppId(self: *@This(), appId: ?HSTRING) core.HResult!*ToastCollectionManager {
         var this: ?*IToastNotificationManagerForUser2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationManagerForUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetToastCollectionManagerWithAppId(appId);
     }
     pub fn getNotificationMode(self: *@This()) core.HResult!ToastNotificationMode {
         var this: ?*IToastNotificationManagerForUser3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationManagerForUser3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNotificationMode();
     }
     pub fn addNotificationModeChanged(self: *@This(), handler: *TypedEventHandler(ToastNotificationManagerForUser,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IToastNotificationManagerForUser3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationManagerForUser3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addNotificationModeChanged(handler);
     }
     pub fn removeNotificationModeChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IToastNotificationManagerForUser3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationManagerForUser3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeNotificationModeChanged(token);
@@ -4108,24 +4152,28 @@ pub const ToastNotifier = extern struct {
     }
     pub fn UpdateWithGroup(self: *@This(), data: *NotificationData, tag: ?HSTRING, group: ?HSTRING) core.HResult!NotificationUpdateResult {
         var this: ?*IToastNotifier2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotifier2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdateWithGroup(data, tag, group);
     }
     pub fn Update(self: *@This(), data: *NotificationData, tag: ?HSTRING) core.HResult!NotificationUpdateResult {
         var this: ?*IToastNotifier2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotifier2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Update(data, tag);
     }
     pub fn addScheduledToastNotificationShowing(self: *@This(), handler: *TypedEventHandler(ToastNotifier,ScheduledToastNotificationShowingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IToastNotifier3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotifier3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addScheduledToastNotificationShowing(handler);
     }
     pub fn removeScheduledToastNotificationShowing(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IToastNotifier3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotifier3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeScheduledToastNotificationShowing(token);

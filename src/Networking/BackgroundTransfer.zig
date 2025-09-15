@@ -22,132 +22,154 @@ pub const BackgroundDownloader = extern struct {
     }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetRequestHeader(headerName, headerValue);
     }
     pub fn getServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCredential();
     }
     pub fn putServerCredential(self: *@This(), credential: *PasswordCredential) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putServerCredential(credential);
     }
     pub fn getProxyCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProxyCredential();
     }
     pub fn putProxyCredential(self: *@This(), credential: *PasswordCredential) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProxyCredential(credential);
     }
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMethod();
     }
     pub fn putMethod(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMethod(value);
     }
     pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGroup();
     }
     pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putGroup(value);
     }
     pub fn getCostPolicy(self: *@This()) core.HResult!BackgroundTransferCostPolicy {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCostPolicy();
     }
     pub fn putCostPolicy(self: *@This(), value: BackgroundTransferCostPolicy) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCostPolicy(value);
     }
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var this: ?*IBackgroundDownloader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransferGroup();
     }
     pub fn putTransferGroup(self: *@This(), value: *BackgroundTransferGroup) core.HResult!void {
         var this: ?*IBackgroundDownloader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransferGroup(value);
     }
     pub fn getSuccessToastNotification(self: *@This()) core.HResult!*ToastNotification {
         var this: ?*IBackgroundDownloader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSuccessToastNotification();
     }
     pub fn putSuccessToastNotification(self: *@This(), value: *ToastNotification) core.HResult!void {
         var this: ?*IBackgroundDownloader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSuccessToastNotification(value);
     }
     pub fn getFailureToastNotification(self: *@This()) core.HResult!*ToastNotification {
         var this: ?*IBackgroundDownloader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFailureToastNotification();
     }
     pub fn putFailureToastNotification(self: *@This(), value: *ToastNotification) core.HResult!void {
         var this: ?*IBackgroundDownloader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFailureToastNotification(value);
     }
     pub fn getSuccessTileNotification(self: *@This()) core.HResult!*TileNotification {
         var this: ?*IBackgroundDownloader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSuccessTileNotification();
     }
     pub fn putSuccessTileNotification(self: *@This(), value: *TileNotification) core.HResult!void {
         var this: ?*IBackgroundDownloader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSuccessTileNotification(value);
     }
     pub fn getFailureTileNotification(self: *@This()) core.HResult!*TileNotification {
         var this: ?*IBackgroundDownloader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFailureTileNotification();
     }
     pub fn putFailureTileNotification(self: *@This(), value: *TileNotification) core.HResult!void {
         var this: ?*IBackgroundDownloader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFailureTileNotification(value);
     }
     pub fn getCompletionGroup(self: *@This()) core.HResult!*BackgroundTransferCompletionGroup {
         var this: ?*IBackgroundDownloader3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundDownloader3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompletionGroup();
@@ -395,132 +417,154 @@ pub const BackgroundUploader = extern struct {
     }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetRequestHeader(headerName, headerValue);
     }
     pub fn getServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerCredential();
     }
     pub fn putServerCredential(self: *@This(), credential: *PasswordCredential) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putServerCredential(credential);
     }
     pub fn getProxyCredential(self: *@This()) core.HResult!*PasswordCredential {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProxyCredential();
     }
     pub fn putProxyCredential(self: *@This(), credential: *PasswordCredential) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProxyCredential(credential);
     }
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMethod();
     }
     pub fn putMethod(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMethod(value);
     }
     pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGroup();
     }
     pub fn putGroup(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putGroup(value);
     }
     pub fn getCostPolicy(self: *@This()) core.HResult!BackgroundTransferCostPolicy {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCostPolicy();
     }
     pub fn putCostPolicy(self: *@This(), value: BackgroundTransferCostPolicy) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCostPolicy(value);
     }
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var this: ?*IBackgroundUploader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransferGroup();
     }
     pub fn putTransferGroup(self: *@This(), value: *BackgroundTransferGroup) core.HResult!void {
         var this: ?*IBackgroundUploader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransferGroup(value);
     }
     pub fn getSuccessToastNotification(self: *@This()) core.HResult!*ToastNotification {
         var this: ?*IBackgroundUploader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSuccessToastNotification();
     }
     pub fn putSuccessToastNotification(self: *@This(), value: *ToastNotification) core.HResult!void {
         var this: ?*IBackgroundUploader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSuccessToastNotification(value);
     }
     pub fn getFailureToastNotification(self: *@This()) core.HResult!*ToastNotification {
         var this: ?*IBackgroundUploader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFailureToastNotification();
     }
     pub fn putFailureToastNotification(self: *@This(), value: *ToastNotification) core.HResult!void {
         var this: ?*IBackgroundUploader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFailureToastNotification(value);
     }
     pub fn getSuccessTileNotification(self: *@This()) core.HResult!*TileNotification {
         var this: ?*IBackgroundUploader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSuccessTileNotification();
     }
     pub fn putSuccessTileNotification(self: *@This(), value: *TileNotification) core.HResult!void {
         var this: ?*IBackgroundUploader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSuccessTileNotification(value);
     }
     pub fn getFailureTileNotification(self: *@This()) core.HResult!*TileNotification {
         var this: ?*IBackgroundUploader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFailureTileNotification();
     }
     pub fn putFailureTileNotification(self: *@This(), value: *TileNotification) core.HResult!void {
         var this: ?*IBackgroundUploader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFailureTileNotification(value);
     }
     pub fn getCompletionGroup(self: *@This()) core.HResult!*BackgroundTransferCompletionGroup {
         var this: ?*IBackgroundUploader3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundUploader3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompletionGroup();
@@ -617,138 +661,161 @@ pub const DownloadOperation = extern struct {
     }
     pub fn getGuid(self: *@This()) core.HResult!*Guid {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGuid();
     }
     pub fn getRequestedUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRequestedUri();
     }
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMethod();
     }
     pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGroup();
     }
     pub fn getCostPolicy(self: *@This()) core.HResult!BackgroundTransferCostPolicy {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCostPolicy();
     }
     pub fn putCostPolicy(self: *@This(), value: BackgroundTransferCostPolicy) core.HResult!void {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCostPolicy(value);
     }
     pub fn GetResultStreamAt(self: *@This(), position: u64) core.HResult!*IInputStream {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetResultStreamAt(position);
     }
     pub fn GetResponseInformation(self: *@This()) core.HResult!*ResponseInformation {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetResponseInformation();
     }
     pub fn getPriority(self: *@This()) core.HResult!BackgroundTransferPriority {
         var this: ?*IBackgroundTransferOperationPriority = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperationPriority.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPriority();
     }
     pub fn putPriority(self: *@This(), value: BackgroundTransferPriority) core.HResult!void {
         var this: ?*IBackgroundTransferOperationPriority = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperationPriority.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPriority(value);
     }
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var this: ?*IDownloadOperation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransferGroup();
     }
     pub fn getIsRandomAccessRequired(self: *@This()) core.HResult!bool {
         var this: ?*IDownloadOperation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRandomAccessRequired();
     }
     pub fn putIsRandomAccessRequired(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IDownloadOperation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsRandomAccessRequired(value);
     }
     pub fn GetResultRandomAccessStreamReference(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var this: ?*IDownloadOperation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetResultRandomAccessStreamReference();
     }
     pub fn GetDownloadedRanges(self: *@This()) core.HResult!*IVector(BackgroundTransferFileRange) {
         var this: ?*IDownloadOperation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDownloadedRanges();
     }
     pub fn addRangesDownloaded(self: *@This(), eventHandler: *TypedEventHandler(DownloadOperation,BackgroundTransferRangesDownloadedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IDownloadOperation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addRangesDownloaded(eventHandler);
     }
     pub fn removeRangesDownloaded(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IDownloadOperation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeRangesDownloaded(eventCookie);
     }
     pub fn putRequestedUri(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IDownloadOperation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRequestedUri(value);
     }
     pub fn getRecoverableWebErrorStatuses(self: *@This()) core.HResult!*IVector(WebErrorStatus) {
         var this: ?*IDownloadOperation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRecoverableWebErrorStatuses();
     }
     pub fn getCurrentWebErrorStatus(self: *@This()) core.HResult!*IReference(WebErrorStatus) {
         var this: ?*IDownloadOperation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCurrentWebErrorStatus();
     }
     pub fn MakeCurrentInTransferGroup(self: *@This()) core.HResult!void {
         var this: ?*IDownloadOperation4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MakeCurrentInTransferGroup();
     }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IDownloadOperation5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetRequestHeader(headerName, headerValue);
     }
     pub fn RemoveRequestHeader(self: *@This(), headerName: ?HSTRING) core.HResult!void {
         var this: ?*IDownloadOperation5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDownloadOperation5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveRequestHeader(headerName);
@@ -2158,84 +2225,98 @@ pub const UploadOperation = extern struct {
     }
     pub fn getGuid(self: *@This()) core.HResult!*Guid {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGuid();
     }
     pub fn getRequestedUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRequestedUri();
     }
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMethod();
     }
     pub fn getGroup(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getGroup();
     }
     pub fn getCostPolicy(self: *@This()) core.HResult!BackgroundTransferCostPolicy {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCostPolicy();
     }
     pub fn putCostPolicy(self: *@This(), value: BackgroundTransferCostPolicy) core.HResult!void {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCostPolicy(value);
     }
     pub fn GetResultStreamAt(self: *@This(), position: u64) core.HResult!*IInputStream {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetResultStreamAt(position);
     }
     pub fn GetResponseInformation(self: *@This()) core.HResult!*ResponseInformation {
         var this: ?*IBackgroundTransferOperation = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetResponseInformation();
     }
     pub fn getPriority(self: *@This()) core.HResult!BackgroundTransferPriority {
         var this: ?*IBackgroundTransferOperationPriority = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperationPriority.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPriority();
     }
     pub fn putPriority(self: *@This(), value: BackgroundTransferPriority) core.HResult!void {
         var this: ?*IBackgroundTransferOperationPriority = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTransferOperationPriority.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPriority(value);
     }
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var this: ?*IUploadOperation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTransferGroup();
     }
     pub fn MakeCurrentInTransferGroup(self: *@This()) core.HResult!void {
         var this: ?*IUploadOperation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MakeCurrentInTransferGroup();
     }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         var this: ?*IUploadOperation4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetRequestHeader(headerName, headerValue);
     }
     pub fn RemoveRequestHeader(self: *@This(), headerName: ?HSTRING) core.HResult!void {
         var this: ?*IUploadOperation4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUploadOperation4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveRequestHeader(headerName);

@@ -93,12 +93,14 @@ pub const WwanConnectionProfileDetails = extern struct {
     }
     pub fn getIPKind(self: *@This()) core.HResult!WwanNetworkIPKind {
         var this: ?*IWwanConnectionProfileDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWwanConnectionProfileDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIPKind();
     }
     pub fn getPurposeGuids(self: *@This()) core.HResult!*IVectorView(Guid) {
         var this: ?*IWwanConnectionProfileDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWwanConnectionProfileDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPurposeGuids();
@@ -230,12 +232,14 @@ pub const CellularApnContext = extern struct {
     }
     pub fn getProfileName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ICellularApnContext2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICellularApnContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProfileName();
     }
     pub fn putProfileName(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ICellularApnContext2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICellularApnContext2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProfileName(value);
@@ -274,6 +278,7 @@ pub const ConnectionCost = extern struct {
     }
     pub fn getBackgroundDataUsageRestricted(self: *@This()) core.HResult!bool {
         var this: ?*IConnectionCost2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionCost2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBackgroundDataUsageRestricted();
@@ -324,84 +329,98 @@ pub const ConnectionProfile = extern struct {
     }
     pub fn getIsWwanConnectionProfile(self: *@This()) core.HResult!bool {
         var this: ?*IConnectionProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsWwanConnectionProfile();
     }
     pub fn getIsWlanConnectionProfile(self: *@This()) core.HResult!bool {
         var this: ?*IConnectionProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsWlanConnectionProfile();
     }
     pub fn getWwanConnectionProfileDetails(self: *@This()) core.HResult!*WwanConnectionProfileDetails {
         var this: ?*IConnectionProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWwanConnectionProfileDetails();
     }
     pub fn getWlanConnectionProfileDetails(self: *@This()) core.HResult!*WlanConnectionProfileDetails {
         var this: ?*IConnectionProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWlanConnectionProfileDetails();
     }
     pub fn getServiceProviderGuid(self: *@This()) core.HResult!*IReference(Guid) {
         var this: ?*IConnectionProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServiceProviderGuid();
     }
     pub fn GetSignalBars(self: *@This()) core.HResult!*IReference(u8) {
         var this: ?*IConnectionProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSignalBars();
     }
     pub fn GetDomainConnectivityLevel(self: *@This()) core.HResult!DomainConnectivityLevel {
         var this: ?*IConnectionProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDomainConnectivityLevel();
     }
     pub fn GetNetworkUsageAsync(self: *@This(), startTime: DateTime, endTime: DateTime, granularity: DataUsageGranularity, states: NetworkUsageStates) core.HResult!*IAsyncOperation(IVectorView(NetworkUsage)) {
         var this: ?*IConnectionProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetNetworkUsageAsync(startTime, endTime, granularity, states);
     }
     pub fn GetConnectivityIntervalsAsync(self: *@This(), startTime: DateTime, endTime: DateTime, states: NetworkUsageStates) core.HResult!*IAsyncOperation(IVectorView(ConnectivityInterval)) {
         var this: ?*IConnectionProfile2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConnectivityIntervalsAsync(startTime, endTime, states);
     }
     pub fn GetAttributedNetworkUsageAsync(self: *@This(), startTime: DateTime, endTime: DateTime, states: NetworkUsageStates) core.HResult!*IAsyncOperation(IVectorView(AttributedNetworkUsage)) {
         var this: ?*IConnectionProfile3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAttributedNetworkUsageAsync(startTime, endTime, states);
     }
     pub fn GetProviderNetworkUsageAsync(self: *@This(), startTime: DateTime, endTime: DateTime, states: NetworkUsageStates) core.HResult!*IAsyncOperation(IVectorView(ProviderNetworkUsage)) {
         var this: ?*IConnectionProfile4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetProviderNetworkUsageAsync(startTime, endTime, states);
     }
     pub fn getCanDelete(self: *@This()) core.HResult!bool {
         var this: ?*IConnectionProfile5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanDelete();
     }
     pub fn TryDeleteAsync(self: *@This()) core.HResult!*IAsyncOperation(ConnectionProfileDeleteStatus) {
         var this: ?*IConnectionProfile5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryDeleteAsync();
     }
     pub fn IsDomainAuthenticatedBy(self: *@This(), kind: DomainAuthenticationKind) core.HResult!bool {
         var this: ?*IConnectionProfile6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfile6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsDomainAuthenticatedBy(kind);
@@ -462,54 +481,63 @@ pub const ConnectionProfileFilter = extern struct {
     }
     pub fn putIsRoaming(self: *@This(), value: *IReference(bool)) core.HResult!void {
         var this: ?*IConnectionProfileFilter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsRoaming(value);
     }
     pub fn getIsRoaming(self: *@This()) core.HResult!*IReference(bool) {
         var this: ?*IConnectionProfileFilter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRoaming();
     }
     pub fn putIsOverDataLimit(self: *@This(), value: *IReference(bool)) core.HResult!void {
         var this: ?*IConnectionProfileFilter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsOverDataLimit(value);
     }
     pub fn getIsOverDataLimit(self: *@This()) core.HResult!*IReference(bool) {
         var this: ?*IConnectionProfileFilter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsOverDataLimit();
     }
     pub fn putIsBackgroundDataUsageRestricted(self: *@This(), value: *IReference(bool)) core.HResult!void {
         var this: ?*IConnectionProfileFilter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsBackgroundDataUsageRestricted(value);
     }
     pub fn getIsBackgroundDataUsageRestricted(self: *@This()) core.HResult!*IReference(bool) {
         var this: ?*IConnectionProfileFilter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsBackgroundDataUsageRestricted();
     }
     pub fn getRawData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IConnectionProfileFilter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRawData();
     }
     pub fn putPurposeGuid(self: *@This(), value: *IReference(Guid)) core.HResult!void {
         var this: ?*IConnectionProfileFilter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPurposeGuid(value);
     }
     pub fn getPurposeGuid(self: *@This()) core.HResult!*IReference(Guid) {
         var this: ?*IConnectionProfileFilter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectionProfileFilter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPurposeGuid();
@@ -536,6 +564,7 @@ pub const ConnectionSession = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -2337,12 +2366,14 @@ pub const NetworkStateChangeEventDetails = extern struct {
     }
     pub fn getHasNewTetheringOperationalState(self: *@This()) core.HResult!bool {
         var this: ?*INetworkStateChangeEventDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkStateChangeEventDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHasNewTetheringOperationalState();
     }
     pub fn getHasNewTetheringClientCount(self: *@This()) core.HResult!bool {
         var this: ?*INetworkStateChangeEventDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkStateChangeEventDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHasNewTetheringClientCount();

@@ -593,12 +593,14 @@ pub const WiFiAdapter = extern struct {
     }
     pub fn GetWpsConfigurationAsync(self: *@This(), availableNetwork: *WiFiAvailableNetwork) core.HResult!*IAsyncOperation(WiFiWpsConfigurationResult) {
         var this: ?*IWiFiAdapter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiAdapter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetWpsConfigurationAsync(availableNetwork);
     }
     pub fn ConnectAsyncWithPasswordCredentialAndSsidAndConnectionMethod(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: ?HSTRING, connectionMethod: WiFiConnectionMethod) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
         var this: ?*IWiFiAdapter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiAdapter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConnectAsyncWithPasswordCredentialAndSsidAndConnectionMethod(availableNetwork, reconnectionKind, passwordCredential, ssid, connectionMethod);

@@ -1101,24 +1101,28 @@ pub const PeerInformation = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPeerInformation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPeerInformation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn getDiscoveryData(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IPeerInformation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPeerInformation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDiscoveryData();
     }
     pub fn getHostName(self: *@This()) core.HResult!*HostName {
         var this: ?*IPeerInformationWithHostAndService = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPeerInformationWithHostAndService.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHostName();
     }
     pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPeerInformationWithHostAndService = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPeerInformationWithHostAndService.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServiceName();

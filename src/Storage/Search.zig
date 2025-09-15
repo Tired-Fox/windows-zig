@@ -54,18 +54,21 @@ pub const ContentIndexer = extern struct {
     }
     pub fn CreateQueryWithSortOrderAndSearchFilterLanguage(self: *@This(), searchFilter: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: ?HSTRING) core.HResult!*ContentIndexerQuery {
         var this: ?*IContentIndexerQueryOperations = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentIndexerQueryOperations.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateQueryWithSortOrderAndSearchFilterLanguage(searchFilter, propertiesToRetrieve, sortOrder, searchFilterLanguage);
     }
     pub fn CreateQueryWithSortOrder(self: *@This(), searchFilter: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING), sortOrder: *IIterable(SortEntry)) core.HResult!*ContentIndexerQuery {
         var this: ?*IContentIndexerQueryOperations = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentIndexerQueryOperations.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateQueryWithSortOrder(searchFilter, propertiesToRetrieve, sortOrder);
     }
     pub fn CreateQuery(self: *@This(), searchFilter: ?HSTRING, propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*ContentIndexerQuery {
         var this: ?*IContentIndexerQueryOperations = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentIndexerQueryOperations.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateQuery(searchFilter, propertiesToRetrieve);
@@ -1110,6 +1113,7 @@ pub const QueryOptions = extern struct {
     }
     pub fn getStorageProviderIdFilter(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var this: ?*IQueryOptionsWithProviderFilter = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IQueryOptionsWithProviderFilter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStorageProviderIdFilter();
@@ -1165,6 +1169,7 @@ pub const SortEntryVector = extern struct {
     }
     pub fn First(self: *@This()) core.HResult!*IIterator(SortEntry) {
         var this: ?*IIterable(SortEntry) = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(SortEntry).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1187,60 +1192,70 @@ pub const StorageFileQueryResult = extern struct {
     }
     pub fn GetItemCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetItemCountAsync();
     }
     pub fn getFolder(self: *@This()) core.HResult!*StorageFolder {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFolder();
     }
     pub fn addContentsChanged(self: *@This(), handler: *TypedEventHandler(IStorageQueryResultBase,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addContentsChanged(handler);
     }
     pub fn removeContentsChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeContentsChanged(eventCookie);
     }
     pub fn addOptionsChanged(self: *@This(), changedHandler: *TypedEventHandler(IStorageQueryResultBase,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addOptionsChanged(changedHandler);
     }
     pub fn removeOptionsChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeOptionsChanged(eventCookie);
     }
     pub fn FindStartIndexAsync(self: *@This(), value: *IInspectable) core.HResult!*IAsyncOperation(u32) {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindStartIndexAsync(value);
     }
     pub fn GetCurrentQueryOptions(self: *@This()) core.HResult!*QueryOptions {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCurrentQueryOptions();
     }
     pub fn ApplyNewQueryOptions(self: *@This(), newQueryOptions: *QueryOptions) core.HResult!void {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ApplyNewQueryOptions(newQueryOptions);
     }
     pub fn GetMatchingPropertiesWithRanges(self: *@This(), file: *StorageFile) core.HResult!*IMap(?HSTRING,IVectorView(TextSegment)) {
         var this: ?*IStorageFileQueryResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFileQueryResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMatchingPropertiesWithRanges(file);
@@ -1263,54 +1278,63 @@ pub const StorageFolderQueryResult = extern struct {
     }
     pub fn GetItemCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetItemCountAsync();
     }
     pub fn getFolder(self: *@This()) core.HResult!*StorageFolder {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFolder();
     }
     pub fn addContentsChanged(self: *@This(), handler: *TypedEventHandler(IStorageQueryResultBase,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addContentsChanged(handler);
     }
     pub fn removeContentsChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeContentsChanged(eventCookie);
     }
     pub fn addOptionsChanged(self: *@This(), changedHandler: *TypedEventHandler(IStorageQueryResultBase,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addOptionsChanged(changedHandler);
     }
     pub fn removeOptionsChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeOptionsChanged(eventCookie);
     }
     pub fn FindStartIndexAsync(self: *@This(), value: *IInspectable) core.HResult!*IAsyncOperation(u32) {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindStartIndexAsync(value);
     }
     pub fn GetCurrentQueryOptions(self: *@This()) core.HResult!*QueryOptions {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCurrentQueryOptions();
     }
     pub fn ApplyNewQueryOptions(self: *@This(), newQueryOptions: *QueryOptions) core.HResult!void {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ApplyNewQueryOptions(newQueryOptions);
@@ -1333,54 +1357,63 @@ pub const StorageItemQueryResult = extern struct {
     }
     pub fn GetItemCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetItemCountAsync();
     }
     pub fn getFolder(self: *@This()) core.HResult!*StorageFolder {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFolder();
     }
     pub fn addContentsChanged(self: *@This(), handler: *TypedEventHandler(IStorageQueryResultBase,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addContentsChanged(handler);
     }
     pub fn removeContentsChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeContentsChanged(eventCookie);
     }
     pub fn addOptionsChanged(self: *@This(), changedHandler: *TypedEventHandler(IStorageQueryResultBase,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addOptionsChanged(changedHandler);
     }
     pub fn removeOptionsChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeOptionsChanged(eventCookie);
     }
     pub fn FindStartIndexAsync(self: *@This(), value: *IInspectable) core.HResult!*IAsyncOperation(u32) {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindStartIndexAsync(value);
     }
     pub fn GetCurrentQueryOptions(self: *@This()) core.HResult!*QueryOptions {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCurrentQueryOptions();
     }
     pub fn ApplyNewQueryOptions(self: *@This(), newQueryOptions: *QueryOptions) core.HResult!void {
         var this: ?*IStorageQueryResultBase = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageQueryResultBase.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ApplyNewQueryOptions(newQueryOptions);

@@ -913,24 +913,28 @@ pub const PrintSupportExtensionSession = extern struct {
     }
     pub fn addPrinterSelected(self: *@This(), handler: *TypedEventHandler(PrintSupportExtensionSession,PrintSupportPrinterSelectedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IPrintSupportExtensionSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportExtensionSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPrinterSelected(handler);
     }
     pub fn removePrinterSelected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPrintSupportExtensionSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportExtensionSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePrinterSelected(token);
     }
     pub fn addCommunicationErrorDetected(self: *@This(), handler: *TypedEventHandler(PrintSupportExtensionSession,PrintSupportCommunicationErrorDetectedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IPrintSupportExtensionSession3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportExtensionSession3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCommunicationErrorDetected(handler);
     }
     pub fn removeCommunicationErrorDetected(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPrintSupportExtensionSession3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportExtensionSession3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCommunicationErrorDetected(token);
@@ -1089,42 +1093,49 @@ pub const PrintSupportPrintDeviceCapabilitiesChangedEventArgs = extern struct {
     }
     pub fn SetSupportedPdlPassthroughContentTypes(self: *@This(), supportedPdlContentTypes: *IIterable(?HSTRING)) core.HResult!void {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetSupportedPdlPassthroughContentTypes(supportedPdlContentTypes);
     }
     pub fn getResourceLanguage(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResourceLanguage();
     }
     pub fn GetCurrentPrintDeviceResources(self: *@This()) core.HResult!*XmlDocument {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCurrentPrintDeviceResources();
     }
     pub fn UpdatePrintDeviceResources(self: *@This(), updatedPdr: *XmlDocument) core.HResult!void {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdatePrintDeviceResources(updatedPdr);
     }
     pub fn SetPrintDeviceCapabilitiesUpdatePolicy(self: *@This(), updatePolicy: *PrintSupportPrintDeviceCapabilitiesUpdatePolicy) core.HResult!void {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPrintDeviceCapabilitiesUpdatePolicy(updatePolicy);
     }
     pub fn getCommunicationConfiguration(self: *@This()) core.HResult!*PrintSupportIppCommunicationConfiguration {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCommunicationConfiguration();
     }
     pub fn getMxdcImageQualityConfiguration(self: *@This()) core.HResult!*PrintSupportMxdcImageQualityConfiguration {
         var this: ?*IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportPrintDeviceCapabilitiesChangedEventArgs4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMxdcImageQualityConfiguration();
@@ -1275,30 +1286,35 @@ pub const PrintSupportSettingsActivatedEventArgs = extern struct {
     }
     pub fn getOwnerWindowId(self: *@This()) core.HResult!WindowId {
         var this: ?*IPrintSupportSettingsActivatedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintSupportSettingsActivatedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOwnerWindowId();
     }
     pub fn getKind(self: *@This()) core.HResult!ActivationKind {
         var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
     }
     pub fn getPreviousExecutionState(self: *@This()) core.HResult!ApplicationExecutionState {
         var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreviousExecutionState();
     }
     pub fn getSplashScreen(self: *@This()) core.HResult!*SplashScreen {
         var this: ?*IActivatedEventArgs = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgs.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSplashScreen();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IActivatedEventArgsWithUser = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActivatedEventArgsWithUser.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();

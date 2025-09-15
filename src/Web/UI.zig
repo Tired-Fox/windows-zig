@@ -1066,18 +1066,21 @@ pub const WebViewControlNewWindowRequestedEventArgs = extern struct {
     }
     pub fn getNewWindow(self: *@This()) core.HResult!*IWebViewControl {
         var this: ?*IWebViewControlNewWindowRequestedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlNewWindowRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNewWindow();
     }
     pub fn putNewWindow(self: *@This(), value: *IWebViewControl) core.HResult!void {
         var this: ?*IWebViewControlNewWindowRequestedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlNewWindowRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putNewWindow(value);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var this: ?*IWebViewControlNewWindowRequestedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebViewControlNewWindowRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDeferral();

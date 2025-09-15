@@ -16,6 +16,7 @@ pub const BluetoothLEAdvertisementPublisherTriggerDetails = extern struct {
     }
     pub fn getSelectedTransmitPowerLevelInDBm(self: *@This()) core.HResult!*IReference(i16) {
         var this: ?*IBluetoothLEAdvertisementPublisherTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEAdvertisementPublisherTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedTransmitPowerLevelInDBm();
@@ -58,18 +59,21 @@ pub const GattCharacteristicNotificationTriggerDetails = extern struct {
     }
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         var this: ?*IGattCharacteristicNotificationTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristicNotificationTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getError();
     }
     pub fn getEventTriggeringMode(self: *@This()) core.HResult!BluetoothEventTriggeringMode {
         var this: ?*IGattCharacteristicNotificationTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristicNotificationTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEventTriggeringMode();
     }
     pub fn getValueChangedEvents(self: *@This()) core.HResult!*IVectorView(GattValueChangedEventArgs) {
         var this: ?*IGattCharacteristicNotificationTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristicNotificationTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValueChangedEvents();
@@ -96,6 +100,7 @@ pub const GattServiceProviderConnection = extern struct {
     }
     pub fn UpdateAdvertisingParameters(self: *@This(), parameters: *GattServiceProviderAdvertisingParameters) core.HResult!void {
         var this: ?*IGattServiceProviderConnection2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattServiceProviderConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdateAdvertisingParameters(parameters);

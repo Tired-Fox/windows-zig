@@ -1622,6 +1622,7 @@ pub const PaymentMediator = extern struct {
     }
     pub fn CanMakePaymentAsync(self: *@This(), paymentRequest: *PaymentRequest) core.HResult!*IAsyncOperation(PaymentCanMakePaymentResult) {
         var this: ?*IPaymentMediator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPaymentMediator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CanMakePaymentAsync(paymentRequest);
@@ -1778,6 +1779,7 @@ pub const PaymentRequest = extern struct {
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPaymentRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPaymentRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();

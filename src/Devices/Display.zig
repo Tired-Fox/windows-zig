@@ -83,6 +83,7 @@ pub const DisplayMonitor = extern struct {
     }
     pub fn getIsDolbyVisionSupportedInHdrMode(self: *@This()) core.HResult!bool {
         var this: ?*IDisplayMonitor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayMonitor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDolbyVisionSupportedInHdrMode();

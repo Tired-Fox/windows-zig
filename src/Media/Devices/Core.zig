@@ -43,30 +43,35 @@ pub const CameraIntrinsics = extern struct {
     }
     pub fn getUndistortedProjectionTransform(self: *@This()) core.HResult!Matrix4x4 {
         var this: ?*ICameraIntrinsics2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICameraIntrinsics2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUndistortedProjectionTransform();
     }
     pub fn DistortPoint(self: *@This(), input: Point) core.HResult!Point {
         var this: ?*ICameraIntrinsics2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICameraIntrinsics2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DistortPoint(input);
     }
     pub fn DistortPoints(self: *@This(), inputs: [*]Point, results: [*]Point) core.HResult!void {
         var this: ?*ICameraIntrinsics2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICameraIntrinsics2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DistortPoints(inputs, results);
     }
     pub fn UndistortPoint(self: *@This(), input: Point) core.HResult!Point {
         var this: ?*ICameraIntrinsics2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICameraIntrinsics2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UndistortPoint(input);
     }
     pub fn UndistortPoints(self: *@This(), inputs: [*]Point, results: [*]Point) core.HResult!void {
         var this: ?*ICameraIntrinsics2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICameraIntrinsics2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UndistortPoints(inputs, results);
@@ -105,6 +110,7 @@ pub const DepthCorrelatedCoordinateMapper = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -139,6 +145,7 @@ pub const FrameControlCapabilities = extern struct {
     }
     pub fn getFlash(self: *@This()) core.HResult!*FrameFlashCapabilities {
         var this: ?*IFrameControlCapabilities2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrameControlCapabilities2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFlash();
@@ -177,6 +184,7 @@ pub const FrameController = extern struct {
     }
     pub fn getFlashControl(self: *@This()) core.HResult!*FrameFlashControl {
         var this: ?*IFrameController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrameController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFlashControl();

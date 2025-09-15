@@ -120,6 +120,7 @@ pub const ToggleButton = extern struct {
     }
     pub fn OnToggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleButtonOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleButtonOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnToggle();
@@ -305,168 +306,196 @@ pub const FlyoutBase = extern struct {
     }
     pub fn getTarget(self: *@This()) core.HResult!*FrameworkElement {
         var this: ?*IFlyoutBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTarget();
     }
     pub fn getAllowFocusOnInteraction(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAllowFocusOnInteraction();
     }
     pub fn putAllowFocusOnInteraction(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFlyoutBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAllowFocusOnInteraction(value);
     }
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var this: ?*IFlyoutBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLightDismissOverlayMode();
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         var this: ?*IFlyoutBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLightDismissOverlayMode(value);
     }
     pub fn getAllowFocusWhenDisabled(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAllowFocusWhenDisabled();
     }
     pub fn putAllowFocusWhenDisabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFlyoutBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAllowFocusWhenDisabled(value);
     }
     pub fn getElementSoundMode(self: *@This()) core.HResult!ElementSoundMode {
         var this: ?*IFlyoutBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getElementSoundMode();
     }
     pub fn putElementSoundMode(self: *@This(), value: ElementSoundMode) core.HResult!void {
         var this: ?*IFlyoutBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putElementSoundMode(value);
     }
     pub fn addClosing(self: *@This(), handler: *TypedEventHandler(FlyoutBase,FlyoutBaseClosingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IFlyoutBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addClosing(handler);
     }
     pub fn removeClosing(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IFlyoutBase2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosing(token);
     }
     pub fn getOverlayInputPassThroughElement(self: *@This()) core.HResult!*DependencyObject {
         var this: ?*IFlyoutBase3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOverlayInputPassThroughElement();
     }
     pub fn putOverlayInputPassThroughElement(self: *@This(), value: *DependencyObject) core.HResult!void {
         var this: ?*IFlyoutBase3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOverlayInputPassThroughElement(value);
     }
     pub fn TryInvokeKeyboardAccelerator(self: *@This(), args: *ProcessKeyboardAcceleratorEventArgs) core.HResult!void {
         var this: ?*IFlyoutBase4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryInvokeKeyboardAccelerator(args);
     }
     pub fn getShowMode(self: *@This()) core.HResult!FlyoutShowMode {
         var this: ?*IFlyoutBase5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShowMode();
     }
     pub fn putShowMode(self: *@This(), value: FlyoutShowMode) core.HResult!void {
         var this: ?*IFlyoutBase5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putShowMode(value);
     }
     pub fn getInputDevicePrefersPrimaryCommands(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInputDevicePrefersPrimaryCommands();
     }
     pub fn getAreOpenCloseAnimationsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreOpenCloseAnimationsEnabled();
     }
     pub fn putAreOpenCloseAnimationsEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFlyoutBase5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAreOpenCloseAnimationsEnabled(value);
     }
     pub fn getIsOpen(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsOpen();
     }
     pub fn ShowAtWithPlacementTargetAndShowOptions(self: *@This(), placementTarget: *DependencyObject, showOptions: *FlyoutShowOptions) core.HResult!void {
         var this: ?*IFlyoutBase5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShowAtWithPlacementTargetAndShowOptions(placementTarget, showOptions);
     }
     pub fn getShouldConstrainToRootBounds(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShouldConstrainToRootBounds();
     }
     pub fn putShouldConstrainToRootBounds(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFlyoutBase6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putShouldConstrainToRootBounds(value);
     }
     pub fn getIsConstrainedToRootBounds(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsConstrainedToRootBounds();
     }
     pub fn getXamlRoot(self: *@This()) core.HResult!*XamlRoot {
         var this: ?*IFlyoutBase6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getXamlRoot();
     }
     pub fn putXamlRoot(self: *@This(), value: *XamlRoot) core.HResult!void {
         var this: ?*IFlyoutBase6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putXamlRoot(value);
     }
     pub fn CreatePresenter(self: *@This()) core.HResult!*Control {
         var this: ?*IFlyoutBaseOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBaseOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreatePresenter();
     }
     pub fn OnProcessKeyboardAccelerators(self: *@This(), args: *ProcessKeyboardAcceleratorEventArgs) core.HResult!void {
         var this: ?*IFlyoutBaseOverrides4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBaseOverrides4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnProcessKeyboardAccelerators(args);
@@ -558,12 +587,14 @@ pub const PickerFlyoutBase = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn OnConfirmed(self: *@This()) core.HResult!void {
         var this: ?*IPickerFlyoutBaseOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPickerFlyoutBaseOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnConfirmed();
     }
     pub fn ShouldShowConfirmationButtons(self: *@This()) core.HResult!bool {
         var this: ?*IPickerFlyoutBaseOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPickerFlyoutBaseOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShouldShowConfirmationButtons();
@@ -645,18 +676,21 @@ pub const AppBarTemplateSettings = extern struct {
     }
     pub fn getNegativeCompactVerticalDelta(self: *@This()) core.HResult!f64 {
         var this: ?*IAppBarTemplateSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarTemplateSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNegativeCompactVerticalDelta();
     }
     pub fn getNegativeMinimalVerticalDelta(self: *@This()) core.HResult!f64 {
         var this: ?*IAppBarTemplateSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarTemplateSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNegativeMinimalVerticalDelta();
     }
     pub fn getNegativeHiddenVerticalDelta(self: *@This()) core.HResult!f64 {
         var this: ?*IAppBarTemplateSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppBarTemplateSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNegativeHiddenVerticalDelta();
@@ -875,48 +909,56 @@ pub const CarouselPanel = extern struct {
     }
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreHorizontalSnapPointsRegular();
     }
     pub fn getAreVerticalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreVerticalSnapPointsRegular();
     }
     pub fn addHorizontalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addHorizontalSnapPointsChanged(handler);
     }
     pub fn removeHorizontalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeHorizontalSnapPointsChanged(token);
     }
     pub fn addVerticalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addVerticalSnapPointsChanged(handler);
     }
     pub fn removeVerticalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeVerticalSnapPointsChanged(token);
     }
     pub fn GetIrregularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment) core.HResult!*IVectorView(f32) {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIrregularSnapPoints(orientation, alignment);
     }
     pub fn GetRegularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment, offset: f32) core.HResult!f32 {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRegularSnapPoints(orientation, alignment, offset);
@@ -987,18 +1029,21 @@ pub const RangeBase = extern struct {
     }
     pub fn OnMinimumChanged(self: *@This(), oldMinimum: f64, newMinimum: f64) core.HResult!void {
         var this: ?*IRangeBaseOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeBaseOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnMinimumChanged(oldMinimum, newMinimum);
     }
     pub fn OnMaximumChanged(self: *@This(), oldMaximum: f64, newMaximum: f64) core.HResult!void {
         var this: ?*IRangeBaseOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeBaseOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnMaximumChanged(oldMaximum, newMaximum);
     }
     pub fn OnValueChanged(self: *@This(), oldValue: f64, newValue: f64) core.HResult!void {
         var this: ?*IRangeBaseOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeBaseOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnValueChanged(oldValue, newValue);
@@ -1232,6 +1277,7 @@ pub const ComboBoxTemplateSettings = extern struct {
     }
     pub fn getDropDownContentMinWidth(self: *@This()) core.HResult!f64 {
         var this: ?*IComboBoxTemplateSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IComboBoxTemplateSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDropDownContentMinWidth();
@@ -1382,30 +1428,35 @@ pub const CommandBarTemplateSettings = extern struct {
     }
     pub fn getOverflowContentMaxWidth(self: *@This()) core.HResult!f64 {
         var this: ?*ICommandBarTemplateSettings2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOverflowContentMaxWidth();
     }
     pub fn getEffectiveOverflowButtonVisibility(self: *@This()) core.HResult!Visibility {
         var this: ?*ICommandBarTemplateSettings3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectiveOverflowButtonVisibility();
     }
     pub fn getOverflowContentCompactYTranslation(self: *@This()) core.HResult!f64 {
         var this: ?*ICommandBarTemplateSettings4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOverflowContentCompactYTranslation();
     }
     pub fn getOverflowContentMinimalYTranslation(self: *@This()) core.HResult!f64 {
         var this: ?*ICommandBarTemplateSettings4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOverflowContentMinimalYTranslation();
     }
     pub fn getOverflowContentHiddenYTranslation(self: *@This()) core.HResult!f64 {
         var this: ?*ICommandBarTemplateSettings4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommandBarTemplateSettings4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOverflowContentHiddenYTranslation();
@@ -9023,12 +9074,14 @@ pub const JumpListItemBackgroundConverter = extern struct {
     }
     pub fn Convert(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IValueConverter = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Convert(value, targetType, parameter, language);
     }
     pub fn ConvertBack(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IValueConverter = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConvertBack(value, targetType, parameter, language);
@@ -9076,12 +9129,14 @@ pub const JumpListItemForegroundConverter = extern struct {
     }
     pub fn Convert(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IValueConverter = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Convert(value, targetType, parameter, language);
     }
     pub fn ConvertBack(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IValueConverter = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConvertBack(value, targetType, parameter, language);
@@ -9314,444 +9369,518 @@ pub const ListViewItemPresenter = extern struct {
     }
     pub fn getSelectedPressedBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedPressedBackground();
     }
     pub fn putSelectedPressedBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedPressedBackground(value);
     }
     pub fn getPressedBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPressedBackground();
     }
     pub fn putPressedBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPressedBackground(value);
     }
     pub fn getCheckBoxBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxBrush();
     }
     pub fn putCheckBoxBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxBrush(value);
     }
     pub fn getFocusSecondaryBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFocusSecondaryBorderBrush();
     }
     pub fn putFocusSecondaryBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putFocusSecondaryBorderBrush(value);
     }
     pub fn getCheckMode(self: *@This()) core.HResult!ListViewItemPresenterCheckMode {
         var this: ?*IListViewItemPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckMode();
     }
     pub fn putCheckMode(self: *@This(), value: ListViewItemPresenterCheckMode) core.HResult!void {
         var this: ?*IListViewItemPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckMode(value);
     }
     pub fn getPointerOverForeground(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPointerOverForeground();
     }
     pub fn putPointerOverForeground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPointerOverForeground(value);
     }
     pub fn getRevealBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRevealBackground();
     }
     pub fn putRevealBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRevealBackground(value);
     }
     pub fn getRevealBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRevealBorderBrush();
     }
     pub fn putRevealBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRevealBorderBrush(value);
     }
     pub fn getRevealBorderThickness(self: *@This()) core.HResult!Thickness {
         var this: ?*IListViewItemPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRevealBorderThickness();
     }
     pub fn putRevealBorderThickness(self: *@This(), value: Thickness) core.HResult!void {
         var this: ?*IListViewItemPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRevealBorderThickness(value);
     }
     pub fn getRevealBackgroundShowsAboveContent(self: *@This()) core.HResult!bool {
         var this: ?*IListViewItemPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRevealBackgroundShowsAboveContent();
     }
     pub fn putRevealBackgroundShowsAboveContent(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IListViewItemPresenter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRevealBackgroundShowsAboveContent(value);
     }
     pub fn getSelectedDisabledBackground(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedDisabledBackground();
     }
     pub fn putSelectedDisabledBackground(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedDisabledBackground(value);
     }
     pub fn getCheckPressedBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckPressedBrush();
     }
     pub fn putCheckPressedBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckPressedBrush(value);
     }
     pub fn getCheckDisabledBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckDisabledBrush();
     }
     pub fn putCheckDisabledBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckDisabledBrush(value);
     }
     pub fn getCheckBoxPointerOverBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxPointerOverBrush();
     }
     pub fn putCheckBoxPointerOverBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxPointerOverBrush(value);
     }
     pub fn getCheckBoxPressedBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxPressedBrush();
     }
     pub fn putCheckBoxPressedBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxPressedBrush(value);
     }
     pub fn getCheckBoxDisabledBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxDisabledBrush();
     }
     pub fn putCheckBoxDisabledBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxDisabledBrush(value);
     }
     pub fn getCheckBoxSelectedBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxSelectedBrush();
     }
     pub fn putCheckBoxSelectedBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxSelectedBrush(value);
     }
     pub fn getCheckBoxSelectedPointerOverBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxSelectedPointerOverBrush();
     }
     pub fn putCheckBoxSelectedPointerOverBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxSelectedPointerOverBrush(value);
     }
     pub fn getCheckBoxSelectedPressedBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxSelectedPressedBrush();
     }
     pub fn putCheckBoxSelectedPressedBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxSelectedPressedBrush(value);
     }
     pub fn getCheckBoxSelectedDisabledBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxSelectedDisabledBrush();
     }
     pub fn putCheckBoxSelectedDisabledBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxSelectedDisabledBrush(value);
     }
     pub fn getCheckBoxBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxBorderBrush();
     }
     pub fn putCheckBoxBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxBorderBrush(value);
     }
     pub fn getCheckBoxPointerOverBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxPointerOverBorderBrush();
     }
     pub fn putCheckBoxPointerOverBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxPointerOverBorderBrush(value);
     }
     pub fn getCheckBoxPressedBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxPressedBorderBrush();
     }
     pub fn putCheckBoxPressedBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxPressedBorderBrush(value);
     }
     pub fn getCheckBoxDisabledBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxDisabledBorderBrush();
     }
     pub fn putCheckBoxDisabledBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxDisabledBorderBrush(value);
     }
     pub fn getCheckBoxCornerRadius(self: *@This()) core.HResult!CornerRadius {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCheckBoxCornerRadius();
     }
     pub fn putCheckBoxCornerRadius(self: *@This(), value: CornerRadius) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCheckBoxCornerRadius(value);
     }
     pub fn getSelectionIndicatorCornerRadius(self: *@This()) core.HResult!CornerRadius {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionIndicatorCornerRadius();
     }
     pub fn putSelectionIndicatorCornerRadius(self: *@This(), value: CornerRadius) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionIndicatorCornerRadius(value);
     }
     pub fn getSelectionIndicatorVisualEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionIndicatorVisualEnabled();
     }
     pub fn putSelectionIndicatorVisualEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionIndicatorVisualEnabled(value);
     }
     pub fn getSelectionIndicatorMode(self: *@This()) core.HResult!ListViewItemPresenterSelectionIndicatorMode {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionIndicatorMode();
     }
     pub fn putSelectionIndicatorMode(self: *@This(), value: ListViewItemPresenterSelectionIndicatorMode) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionIndicatorMode(value);
     }
     pub fn getSelectionIndicatorBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionIndicatorBrush();
     }
     pub fn putSelectionIndicatorBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionIndicatorBrush(value);
     }
     pub fn getSelectionIndicatorPointerOverBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionIndicatorPointerOverBrush();
     }
     pub fn putSelectionIndicatorPointerOverBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionIndicatorPointerOverBrush(value);
     }
     pub fn getSelectionIndicatorPressedBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionIndicatorPressedBrush();
     }
     pub fn putSelectionIndicatorPressedBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionIndicatorPressedBrush(value);
     }
     pub fn getSelectionIndicatorDisabledBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionIndicatorDisabledBrush();
     }
     pub fn putSelectionIndicatorDisabledBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectionIndicatorDisabledBrush(value);
     }
     pub fn getSelectedBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedBorderBrush();
     }
     pub fn putSelectedBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedBorderBrush(value);
     }
     pub fn getSelectedPressedBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedPressedBorderBrush();
     }
     pub fn putSelectedPressedBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedPressedBorderBrush(value);
     }
     pub fn getSelectedDisabledBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedDisabledBorderBrush();
     }
     pub fn putSelectedDisabledBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedDisabledBorderBrush(value);
     }
     pub fn getSelectedInnerBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectedInnerBorderBrush();
     }
     pub fn putSelectedInnerBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSelectedInnerBorderBrush(value);
     }
     pub fn getPointerOverBorderBrush(self: *@This()) core.HResult!*Brush {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPointerOverBorderBrush();
     }
     pub fn putPointerOverBorderBrush(self: *@This(), value: *Brush) core.HResult!void {
         var this: ?*IListViewItemPresenter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListViewItemPresenter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPointerOverBorderBrush(value);
@@ -10146,48 +10275,56 @@ pub const LoopingSelectorPanel = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreHorizontalSnapPointsRegular();
     }
     pub fn getAreVerticalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreVerticalSnapPointsRegular();
     }
     pub fn addHorizontalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addHorizontalSnapPointsChanged(handler);
     }
     pub fn removeHorizontalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeHorizontalSnapPointsChanged(token);
     }
     pub fn addVerticalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addVerticalSnapPointsChanged(handler);
     }
     pub fn removeVerticalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeVerticalSnapPointsChanged(token);
     }
     pub fn GetIrregularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment) core.HResult!*IVectorView(f32) {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIrregularSnapPoints(orientation, alignment);
     }
     pub fn GetRegularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment, offset: f32) core.HResult!f32 {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRegularSnapPoints(orientation, alignment, offset);
@@ -10363,54 +10500,63 @@ pub const OrientedVirtualizingPanel = extern struct {
     }
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreHorizontalSnapPointsRegular();
     }
     pub fn getAreVerticalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreVerticalSnapPointsRegular();
     }
     pub fn addHorizontalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addHorizontalSnapPointsChanged(handler);
     }
     pub fn removeHorizontalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeHorizontalSnapPointsChanged(token);
     }
     pub fn addVerticalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addVerticalSnapPointsChanged(handler);
     }
     pub fn removeVerticalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeVerticalSnapPointsChanged(token);
     }
     pub fn GetIrregularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment) core.HResult!*IVectorView(f32) {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIrregularSnapPoints(orientation, alignment);
     }
     pub fn GetRegularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment, offset: f32) core.HResult!f32 {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRegularSnapPoints(orientation, alignment, offset);
     }
     pub fn GetInsertionIndexes(self: *@This(), position: Point, first: i32, second: i32) core.HResult!void {
         var this: ?*IInsertionPanel = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInsertionPanel.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetInsertionIndexes(position, first, second);
@@ -10461,48 +10607,56 @@ pub const PivotPanel = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreHorizontalSnapPointsRegular();
     }
     pub fn getAreVerticalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAreVerticalSnapPointsRegular();
     }
     pub fn addHorizontalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addHorizontalSnapPointsChanged(handler);
     }
     pub fn removeHorizontalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeHorizontalSnapPointsChanged(token);
     }
     pub fn addVerticalSnapPointsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addVerticalSnapPointsChanged(handler);
     }
     pub fn removeVerticalSnapPointsChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeVerticalSnapPointsChanged(token);
     }
     pub fn GetIrregularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment) core.HResult!*IVectorView(f32) {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIrregularSnapPoints(orientation, alignment);
     }
     pub fn GetRegularSnapPoints(self: *@This(), orientation: Orientation, alignment: SnapPointsAlignment, offset: f32) core.HResult!f32 {
         var this: ?*IScrollSnapPointsInfo = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollSnapPointsInfo.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRegularSnapPoints(orientation, alignment, offset);
@@ -10596,72 +10750,84 @@ pub const Popup = extern struct {
     }
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var this: ?*IPopup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLightDismissOverlayMode();
     }
     pub fn putLightDismissOverlayMode(self: *@This(), value: LightDismissOverlayMode) core.HResult!void {
         var this: ?*IPopup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLightDismissOverlayMode(value);
     }
     pub fn getShouldConstrainToRootBounds(self: *@This()) core.HResult!bool {
         var this: ?*IPopup3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShouldConstrainToRootBounds();
     }
     pub fn putShouldConstrainToRootBounds(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IPopup3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putShouldConstrainToRootBounds(value);
     }
     pub fn getIsConstrainedToRootBounds(self: *@This()) core.HResult!bool {
         var this: ?*IPopup3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsConstrainedToRootBounds();
     }
     pub fn getPlacementTarget(self: *@This()) core.HResult!*FrameworkElement {
         var this: ?*IPopup4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPlacementTarget();
     }
     pub fn putPlacementTarget(self: *@This(), value: *FrameworkElement) core.HResult!void {
         var this: ?*IPopup4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPlacementTarget(value);
     }
     pub fn getDesiredPlacement(self: *@This()) core.HResult!PopupPlacementMode {
         var this: ?*IPopup4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredPlacement();
     }
     pub fn putDesiredPlacement(self: *@This(), value: PopupPlacementMode) core.HResult!void {
         var this: ?*IPopup4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDesiredPlacement(value);
     }
     pub fn getActualPlacement(self: *@This()) core.HResult!PopupPlacementMode {
         var this: ?*IPopup4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActualPlacement();
     }
     pub fn addActualPlacementChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IPopup4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addActualPlacementChanged(handler);
     }
     pub fn removeActualPlacementChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPopup4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPopup4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeActualPlacementChanged(token);

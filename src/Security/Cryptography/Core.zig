@@ -121,12 +121,14 @@ pub const AsymmetricKeyAlgorithmProvider = extern struct {
     }
     pub fn CreateKeyPairWithCurveName(self: *@This(), curveName: ?HSTRING) core.HResult!*CryptographicKey {
         var this: ?*IAsymmetricKeyAlgorithmProvider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsymmetricKeyAlgorithmProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateKeyPairWithCurveName(curveName);
     }
     pub fn CreateKeyPairWithCurveParameters(self: *@This(), parameters: [*]u8) core.HResult!*CryptographicKey {
         var this: ?*IAsymmetricKeyAlgorithmProvider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAsymmetricKeyAlgorithmProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateKeyPairWithCurveParameters(parameters);
@@ -2370,12 +2372,14 @@ pub const KeyDerivationParameters = extern struct {
     }
     pub fn getCapi1KdfTargetAlgorithm(self: *@This()) core.HResult!Capi1KdfTargetAlgorithm {
         var this: ?*IKeyDerivationParameters2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyDerivationParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCapi1KdfTargetAlgorithm();
     }
     pub fn putCapi1KdfTargetAlgorithm(self: *@This(), value: Capi1KdfTargetAlgorithm) core.HResult!void {
         var this: ?*IKeyDerivationParameters2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyDerivationParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCapi1KdfTargetAlgorithm(value);
@@ -2456,6 +2460,7 @@ pub const MacAlgorithmProvider = extern struct {
     }
     pub fn CreateHash(self: *@This(), keyMaterial: *IBuffer) core.HResult!*CryptographicHash {
         var this: ?*IMacAlgorithmProvider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMacAlgorithmProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateHash(keyMaterial);

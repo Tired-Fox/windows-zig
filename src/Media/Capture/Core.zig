@@ -183,6 +183,7 @@ pub const VariablePhotoSequenceCapture = extern struct {
     }
     pub fn UpdateSettingsAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IVariablePhotoSequenceCapture2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVariablePhotoSequenceCapture2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdateSettingsAsync();

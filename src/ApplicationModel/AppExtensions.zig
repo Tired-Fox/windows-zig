@@ -31,24 +31,28 @@ pub const AppExtension = extern struct {
     }
     pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppExtension2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppExtension2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppUserModelId();
     }
     pub fn GetExtensionProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*IAppExtension3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppExtension3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetExtensionProperties();
     }
     pub fn GetPublicPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppExtension3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppExtension3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPublicPath();
     }
     pub fn GetPublicFolder(self: *@This()) core.HResult!*StorageFolder {
         var this: ?*IAppExtension3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppExtension3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPublicFolder();
@@ -111,6 +115,7 @@ pub const AppExtensionCatalog = extern struct {
     }
     pub fn FindAll(self: *@This()) core.HResult!*IVectorView(AppExtension) {
         var this: ?*IAppExtensionCatalog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppExtensionCatalog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindAll();

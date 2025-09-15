@@ -274,6 +274,7 @@ pub const RemoteDesktopConnectionInfo = extern struct {
     }
     pub fn PerformLocalActionFromRemote(self: *@This(), action: RemoteDesktopLocalAction) core.HResult!void {
         var this: ?*IRemoteDesktopConnectionInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteDesktopConnectionInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PerformLocalActionFromRemote(action);
@@ -316,6 +317,7 @@ pub const RemoteDesktopConnectionRemoteInfo = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

@@ -74,24 +74,28 @@ pub const AppServiceConnection = extern struct {
     }
     pub fn OpenRemoteAsync(self: *@This(), remoteSystemConnectionRequest: *RemoteSystemConnectionRequest) core.HResult!*IAsyncOperation(AppServiceConnectionStatus) {
         var this: ?*IAppServiceConnection2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppServiceConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OpenRemoteAsync(remoteSystemConnectionRequest);
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IAppServiceConnection2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppServiceConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
     }
     pub fn putUser(self: *@This(), value: *User) core.HResult!void {
         var this: ?*IAppServiceConnection2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppServiceConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUser(value);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -218,18 +222,21 @@ pub const AppServiceTriggerDetails = extern struct {
     }
     pub fn getIsRemoteSystemConnection(self: *@This()) core.HResult!bool {
         var this: ?*IAppServiceTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppServiceTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsRemoteSystemConnection();
     }
     pub fn CheckCallerForCapabilityAsync(self: *@This(), capabilityName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppServiceTriggerDetails3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppServiceTriggerDetails3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CheckCallerForCapabilityAsync(capabilityName);
     }
     pub fn getCallerRemoteConnectionToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppServiceTriggerDetails4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppServiceTriggerDetails4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCallerRemoteConnectionToken();

@@ -11,12 +11,14 @@ pub const BarcodeScannerDisableScannerRequest = extern struct {
     }
     pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerDisableScannerRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerDisableScannerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
     pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerDisableScannerRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerDisableScannerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReasonAndFailedReasonDescription(reason, failedReasonDescription);
@@ -55,12 +57,14 @@ pub const BarcodeScannerEnableScannerRequest = extern struct {
     }
     pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerEnableScannerRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerEnableScannerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
     pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerEnableScannerRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerEnableScannerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReasonAndFailedReasonDescription(reason, failedReasonDescription);
@@ -115,6 +119,7 @@ pub const BarcodeScannerFrameReader = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -153,12 +158,14 @@ pub const BarcodeScannerGetSymbologyAttributesRequest = extern struct {
     }
     pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerGetSymbologyAttributesRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerGetSymbologyAttributesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
     pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerGetSymbologyAttributesRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerGetSymbologyAttributesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReasonAndFailedReasonDescription(reason, failedReasonDescription);
@@ -197,12 +204,14 @@ pub const BarcodeScannerHideVideoPreviewRequest = extern struct {
     }
     pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerHideVideoPreviewRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerHideVideoPreviewRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
     pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerHideVideoPreviewRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerHideVideoPreviewRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReasonAndFailedReasonDescription(reason, failedReasonDescription);
@@ -353,24 +362,28 @@ pub const BarcodeScannerProviderConnection = extern struct {
     }
     pub fn CreateFrameReaderAsync(self: *@This()) core.HResult!*IAsyncOperation(BarcodeScannerFrameReader) {
         var this: ?*IBarcodeScannerProviderConnection2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerProviderConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFrameReaderAsync();
     }
     pub fn CreateFrameReaderAsyncWithPreferredFormat(self: *@This(), preferredFormat: BitmapPixelFormat) core.HResult!*IAsyncOperation(BarcodeScannerFrameReader) {
         var this: ?*IBarcodeScannerProviderConnection2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerProviderConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFrameReaderAsyncWithPreferredFormat(preferredFormat);
     }
     pub fn CreateFrameReaderAsyncWithPreferredFormatAndPreferredSize(self: *@This(), preferredFormat: BitmapPixelFormat, preferredSize: BitmapSize) core.HResult!*IAsyncOperation(BarcodeScannerFrameReader) {
         var this: ?*IBarcodeScannerProviderConnection2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerProviderConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFrameReaderAsyncWithPreferredFormatAndPreferredSize(preferredFormat, preferredSize);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -409,12 +422,14 @@ pub const BarcodeScannerSetActiveSymbologiesRequest = extern struct {
     }
     pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerSetActiveSymbologiesRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerSetActiveSymbologiesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
     pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerSetActiveSymbologiesRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerSetActiveSymbologiesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReasonAndFailedReasonDescription(reason, failedReasonDescription);
@@ -461,12 +476,14 @@ pub const BarcodeScannerSetSymbologyAttributesRequest = extern struct {
     }
     pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerSetSymbologyAttributesRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerSetSymbologyAttributesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
     pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerSetSymbologyAttributesRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerSetSymbologyAttributesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReasonAndFailedReasonDescription(reason, failedReasonDescription);
@@ -505,12 +522,14 @@ pub const BarcodeScannerStartSoftwareTriggerRequest = extern struct {
     }
     pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerStartSoftwareTriggerRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerStartSoftwareTriggerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
     pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerStartSoftwareTriggerRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerStartSoftwareTriggerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReasonAndFailedReasonDescription(reason, failedReasonDescription);
@@ -549,12 +568,14 @@ pub const BarcodeScannerStopSoftwareTriggerRequest = extern struct {
     }
     pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerStopSoftwareTriggerRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerStopSoftwareTriggerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReason(reason);
     }
     pub fn ReportFailedAsyncWithReasonAndFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: ?HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerStopSoftwareTriggerRequest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerStopSoftwareTriggerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportFailedAsyncWithReasonAndFailedReasonDescription(reason, failedReasonDescription);
@@ -605,6 +626,7 @@ pub const BarcodeScannerVideoFrame = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

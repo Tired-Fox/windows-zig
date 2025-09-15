@@ -31,18 +31,21 @@ pub const CustomSensor = extern struct {
     }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         var this: ?*ICustomSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReportLatency(value);
     }
     pub fn getReportLatency(self: *@This()) core.HResult!u32 {
         var this: ?*ICustomSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportLatency();
     }
     pub fn getMaxBatchSize(self: *@This()) core.HResult!u32 {
         var this: ?*ICustomSensor2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomSensor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
@@ -77,6 +80,7 @@ pub const CustomSensorReading = extern struct {
     }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var this: ?*ICustomSensorReading2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomSensorReading2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPerformanceCount();

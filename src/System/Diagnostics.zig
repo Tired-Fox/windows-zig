@@ -32,6 +32,7 @@ pub const DiagnosticInvoker = extern struct {
     }
     pub fn RunDiagnosticActionFromStringAsync(self: *@This(), context: ?HSTRING) core.HResult!*IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState) {
         var this: ?*IDiagnosticInvoker2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDiagnosticInvoker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RunDiagnosticActionFromStringAsync(context);
@@ -839,12 +840,14 @@ pub const ProcessDiagnosticInfo = extern struct {
     }
     pub fn GetAppDiagnosticInfos(self: *@This()) core.HResult!*IVector(AppDiagnosticInfo) {
         var this: ?*IProcessDiagnosticInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProcessDiagnosticInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAppDiagnosticInfos();
     }
     pub fn getIsPackaged(self: *@This()) core.HResult!bool {
         var this: ?*IProcessDiagnosticInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProcessDiagnosticInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPackaged();

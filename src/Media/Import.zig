@@ -1406,6 +1406,7 @@ pub const PhotoImportFindItemsResult = extern struct {
     }
     pub fn AddItemsInDateRangeToSelection(self: *@This(), rangeStart: DateTime, rangeLength: TimeSpan) core.HResult!void {
         var this: ?*IPhotoImportFindItemsResult2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhotoImportFindItemsResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddItemsInDateRangeToSelection(rangeStart, rangeLength);
@@ -1542,6 +1543,7 @@ pub const PhotoImportItem = extern struct {
     }
     pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPhotoImportItem2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhotoImportItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPath();
@@ -1690,30 +1692,35 @@ pub const PhotoImportSession = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn putSubfolderDateFormat(self: *@This(), value: PhotoImportSubfolderDateFormat) core.HResult!void {
         var this: ?*IPhotoImportSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhotoImportSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSubfolderDateFormat(value);
     }
     pub fn getSubfolderDateFormat(self: *@This()) core.HResult!PhotoImportSubfolderDateFormat {
         var this: ?*IPhotoImportSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhotoImportSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSubfolderDateFormat();
     }
     pub fn putRememberDeselectedItems(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IPhotoImportSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhotoImportSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRememberDeselectedItems(value);
     }
     pub fn getRememberDeselectedItems(self: *@This()) core.HResult!bool {
         var this: ?*IPhotoImportSession2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPhotoImportSession2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRememberDeselectedItems();

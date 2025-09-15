@@ -35,12 +35,14 @@ pub const DisplayAdapter = extern struct {
     }
     pub fn getIsIndirectDisplayDevice(self: *@This()) core.HResult!bool {
         var this: ?*IDisplayAdapter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayAdapter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsIndirectDisplayDevice();
     }
     pub fn getPreferredRenderAdapter(self: *@This()) core.HResult!*DisplayAdapter {
         var this: ?*IDisplayAdapter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayAdapter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPreferredRenderAdapter();
@@ -100,12 +102,14 @@ pub const DisplayDevice = extern struct {
     }
     pub fn CreateSimpleScanoutWithDirtyRectsAndOptions(self: *@This(), source: *DisplaySource, surface: *DisplaySurface, subresourceIndex: u32, syncInterval: u32, dirtyRects: *IIterable(RectInt32), options: DisplayScanoutOptions) core.HResult!*DisplayScanout {
         var this: ?*IDisplayDevice2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateSimpleScanoutWithDirtyRectsAndOptions(source, surface, subresourceIndex, syncInterval, dirtyRects, options);
     }
     pub fn getRenderAdapterId(self: *@This()) core.HResult!DisplayAdapterId {
         var this: ?*IDisplayDeviceRenderAdapter = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayDeviceRenderAdapter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRenderAdapterId();
@@ -207,18 +211,21 @@ pub const DisplayManager = extern struct {
     }
     pub fn TryReadCurrentStateForModeQuery(self: *@This()) core.HResult!*DisplayManagerResultWithState {
         var this: ?*IDisplayManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryReadCurrentStateForModeQuery();
     }
     pub fn CreateDisplayDeviceForIndirectAdapter(self: *@This(), indirectAdapter: *DisplayAdapter, renderAdapter: *DisplayAdapter) core.HResult!*DisplayDevice {
         var this: ?*IDisplayManager3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayManager3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateDisplayDeviceForIndirectAdapter(indirectAdapter, renderAdapter);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -389,6 +396,7 @@ pub const DisplayModeInfo = extern struct {
     }
     pub fn getPhysicalPresentationRate(self: *@This()) core.HResult!DisplayPresentationRate {
         var this: ?*IDisplayModeInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayModeInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPhysicalPresentationRate();
@@ -447,6 +455,7 @@ pub const DisplayMuxDevice = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -569,12 +578,14 @@ pub const DisplayPath = extern struct {
     }
     pub fn getPhysicalPresentationRate(self: *@This()) core.HResult!*IReference(DisplayPresentationRate) {
         var this: ?*IDisplayPath2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayPath2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPhysicalPresentationRate();
     }
     pub fn putPhysicalPresentationRate(self: *@This(), value: *IReference(DisplayPresentationRate)) core.HResult!void {
         var this: ?*IDisplayPath2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayPath2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPhysicalPresentationRate(value);
@@ -696,18 +707,21 @@ pub const DisplaySource = extern struct {
     }
     pub fn getStatus(self: *@This()) core.HResult!DisplaySourceStatus {
         var this: ?*IDisplaySource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplaySource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStatus();
     }
     pub fn addStatusChanged(self: *@This(), handler: *TypedEventHandler(DisplaySource,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IDisplaySource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplaySource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addStatusChanged(handler);
     }
     pub fn removeStatusChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IDisplaySource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplaySource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeStatusChanged(token);
@@ -916,6 +930,7 @@ pub const DisplayTask = extern struct {
     }
     pub fn SetSignal(self: *@This(), signalKind: DisplayTaskSignalKind, fence: *DisplayFence) core.HResult!void {
         var this: ?*IDisplayTask2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayTask2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetSignal(signalKind, fence);
@@ -938,6 +953,7 @@ pub const DisplayTaskPool = extern struct {
     }
     pub fn TryExecuteTask(self: *@This(), task: *DisplayTask) core.HResult!*DisplayTaskResult {
         var this: ?*IDisplayTaskPool2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDisplayTaskPool2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryExecuteTask(task);

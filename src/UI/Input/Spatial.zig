@@ -1908,12 +1908,14 @@ pub const SpatialInteractionController = extern struct {
     }
     pub fn TryGetRenderableModelAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
         var this: ?*ISpatialInteractionController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetRenderableModelAsync();
     }
     pub fn TryGetBatteryReport(self: *@This()) core.HResult!*BatteryReport {
         var this: ?*ISpatialInteractionController3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionController3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetBatteryReport();
@@ -1976,6 +1978,7 @@ pub const SpatialInteractionDetectedEventArgs = extern struct {
     }
     pub fn getInteractionSource(self: *@This()) core.HResult!*SpatialInteractionSource {
         var this: ?*ISpatialInteractionDetectedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionDetectedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInteractionSource();
@@ -2079,48 +2082,56 @@ pub const SpatialInteractionSource = extern struct {
     }
     pub fn getIsPointingSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISpatialInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPointingSupported();
     }
     pub fn getIsMenuSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISpatialInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsMenuSupported();
     }
     pub fn getIsGraspSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISpatialInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsGraspSupported();
     }
     pub fn getController(self: *@This()) core.HResult!*SpatialInteractionController {
         var this: ?*ISpatialInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getController();
     }
     pub fn TryGetStateAtTimestamp(self: *@This(), timestamp: *PerceptionTimestamp) core.HResult!*SpatialInteractionSourceState {
         var this: ?*ISpatialInteractionSource2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSource2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetStateAtTimestamp(timestamp);
     }
     pub fn getHandedness(self: *@This()) core.HResult!SpatialInteractionSourceHandedness {
         var this: ?*ISpatialInteractionSource3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSource3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHandedness();
     }
     pub fn TryCreateHandMeshObserver(self: *@This()) core.HResult!*HandMeshObserver {
         var this: ?*ISpatialInteractionSource4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSource4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryCreateHandMeshObserver();
     }
     pub fn TryCreateHandMeshObserverAsync(self: *@This()) core.HResult!*IAsyncOperation(HandMeshObserver) {
         var this: ?*ISpatialInteractionSource4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSource4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryCreateHandMeshObserverAsync();
@@ -2139,6 +2150,7 @@ pub const SpatialInteractionSourceEventArgs = extern struct {
     }
     pub fn getPressKind(self: *@This()) core.HResult!SpatialInteractionPressKind {
         var this: ?*ISpatialInteractionSourceEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSourceEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPressKind();
@@ -2172,24 +2184,28 @@ pub const SpatialInteractionSourceLocation = extern struct {
     }
     pub fn getOrientation(self: *@This()) core.HResult!*IReference(Quaternion) {
         var this: ?*ISpatialInteractionSourceLocation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSourceLocation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOrientation();
     }
     pub fn getPositionAccuracy(self: *@This()) core.HResult!SpatialInteractionSourcePositionAccuracy {
         var this: ?*ISpatialInteractionSourceLocation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSourceLocation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPositionAccuracy();
     }
     pub fn getAngularVelocity(self: *@This()) core.HResult!*IReference(Vector3) {
         var this: ?*ISpatialInteractionSourceLocation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSourceLocation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAngularVelocity();
     }
     pub fn getSourcePointerPose(self: *@This()) core.HResult!*SpatialPointerInteractionSourcePose {
         var this: ?*ISpatialInteractionSourceLocation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSourceLocation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSourcePointerPose();
@@ -2248,36 +2264,42 @@ pub const SpatialInteractionSourceState = extern struct {
     }
     pub fn getIsSelectPressed(self: *@This()) core.HResult!bool {
         var this: ?*ISpatialInteractionSourceState2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSourceState2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSelectPressed();
     }
     pub fn getIsMenuPressed(self: *@This()) core.HResult!bool {
         var this: ?*ISpatialInteractionSourceState2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSourceState2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsMenuPressed();
     }
     pub fn getIsGrasped(self: *@This()) core.HResult!bool {
         var this: ?*ISpatialInteractionSourceState2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSourceState2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsGrasped();
     }
     pub fn getSelectPressedValue(self: *@This()) core.HResult!f64 {
         var this: ?*ISpatialInteractionSourceState2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSourceState2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectPressedValue();
     }
     pub fn getControllerProperties(self: *@This()) core.HResult!*SpatialInteractionControllerProperties {
         var this: ?*ISpatialInteractionSourceState2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSourceState2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getControllerProperties();
     }
     pub fn TryGetHandPose(self: *@This()) core.HResult!*HandPose {
         var this: ?*ISpatialInteractionSourceState3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialInteractionSourceState3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetHandPose();
@@ -2448,12 +2470,14 @@ pub const SpatialPointerInteractionSourcePose = extern struct {
     }
     pub fn getOrientation(self: *@This()) core.HResult!Quaternion {
         var this: ?*ISpatialPointerInteractionSourcePose2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialPointerInteractionSourcePose2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOrientation();
     }
     pub fn getPositionAccuracy(self: *@This()) core.HResult!SpatialInteractionSourcePositionAccuracy {
         var this: ?*ISpatialPointerInteractionSourcePose2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialPointerInteractionSourcePose2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPositionAccuracy();
@@ -2476,18 +2500,21 @@ pub const SpatialPointerPose = extern struct {
     }
     pub fn TryGetInteractionSourcePose(self: *@This(), source: *SpatialInteractionSource) core.HResult!*SpatialPointerInteractionSourcePose {
         var this: ?*ISpatialPointerPose2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialPointerPose2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetInteractionSourcePose(source);
     }
     pub fn getEyes(self: *@This()) core.HResult!*EyesPose {
         var this: ?*ISpatialPointerPose3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialPointerPose3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEyes();
     }
     pub fn getIsHeadCapturedBySystem(self: *@This()) core.HResult!bool {
         var this: ?*ISpatialPointerPose3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialPointerPose3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsHeadCapturedBySystem();

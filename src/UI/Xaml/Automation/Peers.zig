@@ -140,420 +140,490 @@ pub const AutomationPeer = extern struct {
     }
     pub fn Navigate(self: *@This(), direction: AutomationNavigationDirection) core.HResult!*IInspectable {
         var this: ?*IAutomationPeer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Navigate(direction);
     }
     pub fn GetElementFromPoint(self: *@This(), pointInWindowCoordinates: Point) core.HResult!*IInspectable {
         var this: ?*IAutomationPeer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetElementFromPoint(pointInWindowCoordinates);
     }
     pub fn GetFocusedElement(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IAutomationPeer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFocusedElement();
     }
     pub fn ShowContextMenu(self: *@This()) core.HResult!void {
         var this: ?*IAutomationPeer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShowContextMenu();
     }
     pub fn GetControlledPeers(self: *@This()) core.HResult!*IVectorView(AutomationPeer) {
         var this: ?*IAutomationPeer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetControlledPeers();
     }
     pub fn GetAnnotations(self: *@This()) core.HResult!*IVector(AutomationPeerAnnotation) {
         var this: ?*IAutomationPeer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAnnotations();
     }
     pub fn SetParent(self: *@This(), peer: *AutomationPeer) core.HResult!void {
         var this: ?*IAutomationPeer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetParent(peer);
     }
     pub fn RaiseTextEditTextChangedEvent(self: *@This(), automationTextEditChangeType: AutomationTextEditChangeType, changedData: *IVectorView(?HSTRING)) core.HResult!void {
         var this: ?*IAutomationPeer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RaiseTextEditTextChangedEvent(automationTextEditChangeType, changedData);
     }
     pub fn GetPositionInSet(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPositionInSet();
     }
     pub fn GetSizeOfSet(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSizeOfSet();
     }
     pub fn GetLevel(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLevel();
     }
     pub fn RaiseStructureChangedEvent(self: *@This(), structureChangeType: AutomationStructureChangeType, child: *AutomationPeer) core.HResult!void {
         var this: ?*IAutomationPeer3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RaiseStructureChangedEvent(structureChangeType, child);
     }
     pub fn GetLandmarkType(self: *@This()) core.HResult!AutomationLandmarkType {
         var this: ?*IAutomationPeer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLandmarkType();
     }
     pub fn GetLocalizedLandmarkType(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeer4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLocalizedLandmarkType();
     }
     pub fn IsPeripheral(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeer5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsPeripheral();
     }
     pub fn IsDataValidForForm(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeer5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsDataValidForForm();
     }
     pub fn GetFullDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeer5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFullDescription();
     }
     pub fn GetCulture(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeer6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCulture();
     }
     pub fn RaiseNotificationEvent(self: *@This(), notificationKind: AutomationNotificationKind, notificationProcessing: AutomationNotificationProcessing, displayString: ?HSTRING, activityId: ?HSTRING) core.HResult!void {
         var this: ?*IAutomationPeer7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RaiseNotificationEvent(notificationKind, notificationProcessing, displayString, activityId);
     }
     pub fn GetHeadingLevel(self: *@This()) core.HResult!AutomationHeadingLevel {
         var this: ?*IAutomationPeer8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetHeadingLevel();
     }
     pub fn IsDialog(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeer9 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeer9.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsDialog();
     }
     pub fn PeerFromProvider(self: *@This(), provider: *IRawElementProviderSimple) core.HResult!*AutomationPeer {
         var this: ?*IAutomationPeerProtected = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PeerFromProvider(provider);
     }
     pub fn ProviderFromPeer(self: *@This(), peer: *AutomationPeer) core.HResult!*IRawElementProviderSimple {
         var this: ?*IAutomationPeerProtected = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerProtected.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ProviderFromPeer(peer);
     }
     pub fn GetPatternCore(self: *@This(), patternInterface: PatternInterface) core.HResult!*IInspectable {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPatternCore(patternInterface);
     }
     pub fn GetAcceleratorKeyCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAcceleratorKeyCore();
     }
     pub fn GetAccessKeyCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAccessKeyCore();
     }
     pub fn GetAutomationControlTypeCore(self: *@This()) core.HResult!AutomationControlType {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAutomationControlTypeCore();
     }
     pub fn GetAutomationIdCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAutomationIdCore();
     }
     pub fn GetBoundingRectangleCore(self: *@This()) core.HResult!Rect {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetBoundingRectangleCore();
     }
     pub fn GetChildrenCore(self: *@This()) core.HResult!*IVector(AutomationPeer) {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetChildrenCore();
     }
     pub fn GetClassNameCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetClassNameCore();
     }
     pub fn GetClickablePointCore(self: *@This()) core.HResult!Point {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetClickablePointCore();
     }
     pub fn GetHelpTextCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetHelpTextCore();
     }
     pub fn GetItemStatusCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetItemStatusCore();
     }
     pub fn GetItemTypeCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetItemTypeCore();
     }
     pub fn GetLabeledByCore(self: *@This()) core.HResult!*AutomationPeer {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLabeledByCore();
     }
     pub fn GetLocalizedControlTypeCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLocalizedControlTypeCore();
     }
     pub fn GetNameCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetNameCore();
     }
     pub fn GetOrientationCore(self: *@This()) core.HResult!AutomationOrientation {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetOrientationCore();
     }
     pub fn HasKeyboardFocusCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.HasKeyboardFocusCore();
     }
     pub fn IsContentElementCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsContentElementCore();
     }
     pub fn IsControlElementCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsControlElementCore();
     }
     pub fn IsEnabledCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsEnabledCore();
     }
     pub fn IsKeyboardFocusableCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsKeyboardFocusableCore();
     }
     pub fn IsOffscreenCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsOffscreenCore();
     }
     pub fn IsPasswordCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsPasswordCore();
     }
     pub fn IsRequiredForFormCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsRequiredForFormCore();
     }
     pub fn SetFocusCore(self: *@This()) core.HResult!void {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetFocusCore();
     }
     pub fn GetPeerFromPointCore(self: *@This(), point: Point) core.HResult!*AutomationPeer {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPeerFromPointCore(point);
     }
     pub fn GetLiveSettingCore(self: *@This()) core.HResult!AutomationLiveSetting {
         var this: ?*IAutomationPeerOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLiveSettingCore();
     }
     pub fn ShowContextMenuCore(self: *@This()) core.HResult!void {
         var this: ?*IAutomationPeerOverrides2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShowContextMenuCore();
     }
     pub fn GetControlledPeersCore(self: *@This()) core.HResult!*IVectorView(AutomationPeer) {
         var this: ?*IAutomationPeerOverrides2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetControlledPeersCore();
     }
     pub fn NavigateCore(self: *@This(), direction: AutomationNavigationDirection) core.HResult!*IInspectable {
         var this: ?*IAutomationPeerOverrides3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.NavigateCore(direction);
     }
     pub fn GetElementFromPointCore(self: *@This(), pointInWindowCoordinates: Point) core.HResult!*IInspectable {
         var this: ?*IAutomationPeerOverrides3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetElementFromPointCore(pointInWindowCoordinates);
     }
     pub fn GetFocusedElementCore(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IAutomationPeerOverrides3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFocusedElementCore();
     }
     pub fn GetAnnotationsCore(self: *@This()) core.HResult!*IVector(AutomationPeerAnnotation) {
         var this: ?*IAutomationPeerOverrides3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAnnotationsCore();
     }
     pub fn GetPositionInSetCore(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeerOverrides3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPositionInSetCore();
     }
     pub fn GetSizeOfSetCore(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeerOverrides3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSizeOfSetCore();
     }
     pub fn GetLevelCore(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeerOverrides3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLevelCore();
     }
     pub fn GetLandmarkTypeCore(self: *@This()) core.HResult!AutomationLandmarkType {
         var this: ?*IAutomationPeerOverrides4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLandmarkTypeCore();
     }
     pub fn GetLocalizedLandmarkTypeCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLocalizedLandmarkTypeCore();
     }
     pub fn IsPeripheralCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsPeripheralCore();
     }
     pub fn IsDataValidForFormCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsDataValidForFormCore();
     }
     pub fn GetFullDescriptionCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAutomationPeerOverrides5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFullDescriptionCore();
     }
     pub fn GetDescribedByCore(self: *@This()) core.HResult!*IIterable(AutomationPeer) {
         var this: ?*IAutomationPeerOverrides5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDescribedByCore();
     }
     pub fn GetFlowsToCore(self: *@This()) core.HResult!*IIterable(AutomationPeer) {
         var this: ?*IAutomationPeerOverrides5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFlowsToCore();
     }
     pub fn GetFlowsFromCore(self: *@This()) core.HResult!*IIterable(AutomationPeer) {
         var this: ?*IAutomationPeerOverrides5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFlowsFromCore();
     }
     pub fn GetCultureCore(self: *@This()) core.HResult!i32 {
         var this: ?*IAutomationPeerOverrides6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCultureCore();
     }
     pub fn GetHeadingLevelCore(self: *@This()) core.HResult!AutomationHeadingLevel {
         var this: ?*IAutomationPeerOverrides8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetHeadingLevelCore();
     }
     pub fn IsDialogCore(self: *@This()) core.HResult!bool {
         var this: ?*IAutomationPeerOverrides9 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAutomationPeerOverrides9.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsDialogCore();
@@ -615,84 +685,98 @@ pub const AppBarAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getToggleState();
     }
     pub fn Toggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Toggle();
     }
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Expand();
     }
     pub fn getIsModal(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsModal();
     }
     pub fn getIsTopmost(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTopmost();
     }
     pub fn getMaximizable(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaximizable();
     }
     pub fn getMinimizable(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinimizable();
     }
     pub fn getInteractionState(self: *@This()) core.HResult!WindowInteractionState {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInteractionState();
     }
     pub fn getVisualState(self: *@This()) core.HResult!WindowVisualState {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVisualState();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn SetVisualState(self: *@This(), state: WindowVisualState) core.HResult!void {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetVisualState(state);
     }
     pub fn WaitForInputIdle(self: *@This(), milliseconds: i32) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WaitForInputIdle(milliseconds);
@@ -731,6 +815,7 @@ pub const ButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
@@ -753,18 +838,21 @@ pub const AppBarButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Expand();
@@ -787,12 +875,14 @@ pub const ToggleButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getToggleState();
     }
     pub fn Toggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Toggle();
@@ -831,6 +921,7 @@ pub const AutoSuggestBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
@@ -1037,24 +1128,28 @@ pub const CalendarDatePickerAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
     }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var this: ?*IValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadOnly();
     }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValue();
     }
     pub fn SetValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetValue(value);
@@ -1109,42 +1204,49 @@ pub const RangeBaseAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var this: ?*IRangeValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadOnly();
     }
     pub fn getLargeChange(self: *@This()) core.HResult!f64 {
         var this: ?*IRangeValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLargeChange();
     }
     pub fn getMaximum(self: *@This()) core.HResult!f64 {
         var this: ?*IRangeValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaximum();
     }
     pub fn getMinimum(self: *@This()) core.HResult!f64 {
         var this: ?*IRangeValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinimum();
     }
     pub fn getSmallChange(self: *@This()) core.HResult!f64 {
         var this: ?*IRangeValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSmallChange();
     }
     pub fn getValue(self: *@This()) core.HResult!f64 {
         var this: ?*IRangeValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValue();
     }
     pub fn SetValue(self: *@This(), value: f64) core.HResult!void {
         var this: ?*IRangeValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRangeValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetValue(value);
@@ -1215,18 +1317,21 @@ pub const ItemsControlAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn CreateItemAutomationPeer(self: *@This(), item: *IInspectable) core.HResult!*ItemAutomationPeer {
         var this: ?*IItemsControlAutomationPeer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlAutomationPeer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateItemAutomationPeer(item);
     }
     pub fn OnCreateItemAutomationPeer(self: *@This(), item: *IInspectable) core.HResult!*ItemAutomationPeer {
         var this: ?*IItemsControlAutomationPeerOverrides2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemsControlAutomationPeerOverrides2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnCreateItemAutomationPeer(item);
     }
     pub fn FindItemByProperty(self: *@This(), startAfter: *IRawElementProviderSimple, automationProperty: *AutomationProperty, value: *IInspectable) core.HResult!*IRawElementProviderSimple {
         var this: ?*IItemContainerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemContainerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindItemByProperty(startAfter, automationProperty, value);
@@ -1249,18 +1354,21 @@ pub const SelectorAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getCanSelectMultiple(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanSelectMultiple();
     }
     pub fn getIsSelectionRequired(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSelectionRequired();
     }
     pub fn GetSelection(self: *@This()) core.HResult![*]IRawElementProviderSimple {
         var this: ?*ISelectionProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSelection();
@@ -1283,90 +1391,105 @@ pub const ComboBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var this: ?*IValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReadOnly();
     }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValue();
     }
     pub fn SetValue(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*IValueProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetValue(value);
     }
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Expand();
     }
     pub fn getIsModal(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsModal();
     }
     pub fn getIsTopmost(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsTopmost();
     }
     pub fn getMaximizable(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaximizable();
     }
     pub fn getMinimizable(self: *@This()) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinimizable();
     }
     pub fn getInteractionState(self: *@This()) core.HResult!WindowInteractionState {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInteractionState();
     }
     pub fn getVisualState(self: *@This()) core.HResult!WindowVisualState {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVisualState();
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn SetVisualState(self: *@This(), state: WindowVisualState) core.HResult!void {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetVisualState(state);
     }
     pub fn WaitForInputIdle(self: *@This(), milliseconds: i32) core.HResult!bool {
         var this: ?*IWindowProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWindowProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WaitForInputIdle(milliseconds);
@@ -1413,6 +1536,7 @@ pub const ItemAutomationPeer = extern struct {
     }
     pub fn Realize(self: *@This()) core.HResult!void {
         var this: ?*IVirtualizedItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizedItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Realize();
@@ -1435,30 +1559,35 @@ pub const SelectorItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSelected();
     }
     pub fn getSelectionContainer(self: *@This()) core.HResult!*IRawElementProviderSimple {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionContainer();
     }
     pub fn AddToSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddToSelection();
     }
     pub fn RemoveFromSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveFromSelection();
     }
     pub fn Select(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Select();
@@ -1481,6 +1610,7 @@ pub const ComboBoxItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
@@ -1559,6 +1689,7 @@ pub const FlipViewItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
@@ -1597,12 +1728,14 @@ pub const ListViewBaseAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getDropEffect(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDropTargetProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDropTargetProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDropEffect();
     }
     pub fn getDropEffects(self: *@This()) core.HResult!?[*]HSTRING {
         var this: ?*IDropTargetProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDropTargetProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDropEffects();
@@ -1689,6 +1822,7 @@ pub const GridViewItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
@@ -1743,6 +1877,7 @@ pub const HubSectionAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
@@ -1765,6 +1900,7 @@ pub const HyperlinkButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
@@ -6319,6 +6455,7 @@ pub const ListBoxItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
@@ -6397,6 +6534,7 @@ pub const ListViewItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
@@ -6419,90 +6557,105 @@ pub const LoopingSelectorAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getCanSelectMultiple(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanSelectMultiple();
     }
     pub fn getIsSelectionRequired(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSelectionRequired();
     }
     pub fn GetSelection(self: *@This()) core.HResult![*]IRawElementProviderSimple {
         var this: ?*ISelectionProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSelection();
     }
     pub fn FindItemByProperty(self: *@This(), startAfter: *IRawElementProviderSimple, automationProperty: *AutomationProperty, value: *IInspectable) core.HResult!*IRawElementProviderSimple {
         var this: ?*IItemContainerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IItemContainerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindItemByProperty(startAfter, automationProperty, value);
     }
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Expand();
     }
     pub fn getHorizontallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontallyScrollable();
     }
     pub fn getHorizontalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalScrollPercent();
     }
     pub fn getHorizontalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalViewSize();
     }
     pub fn getVerticallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticallyScrollable();
     }
     pub fn getVerticalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticalScrollPercent();
     }
     pub fn getVerticalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticalViewSize();
     }
     pub fn Scroll(self: *@This(), horizontalAmount: ScrollAmount, verticalAmount: ScrollAmount) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Scroll(horizontalAmount, verticalAmount);
     }
     pub fn SetScrollPercent(self: *@This(), horizontalPercent: f64, verticalPercent: f64) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetScrollPercent(horizontalPercent, verticalPercent);
@@ -6517,36 +6670,42 @@ pub const LoopingSelectorItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
     }
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSelected();
     }
     pub fn getSelectionContainer(self: *@This()) core.HResult!*IRawElementProviderSimple {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionContainer();
     }
     pub fn AddToSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddToSelection();
     }
     pub fn RemoveFromSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveFromSelection();
     }
     pub fn Select(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Select();
@@ -6561,6 +6720,7 @@ pub const LoopingSelectorItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn Realize(self: *@This()) core.HResult!void {
         var this: ?*IVirtualizedItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizedItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Realize();
@@ -6575,120 +6735,140 @@ pub const MapControlAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getHorizontallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontallyScrollable();
     }
     pub fn getHorizontalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalScrollPercent();
     }
     pub fn getHorizontalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalViewSize();
     }
     pub fn getVerticallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticallyScrollable();
     }
     pub fn getVerticalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticalScrollPercent();
     }
     pub fn getVerticalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticalViewSize();
     }
     pub fn Scroll(self: *@This(), horizontalAmount: ScrollAmount, verticalAmount: ScrollAmount) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Scroll(horizontalAmount, verticalAmount);
     }
     pub fn SetScrollPercent(self: *@This(), horizontalPercent: f64, verticalPercent: f64) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetScrollPercent(horizontalPercent, verticalPercent);
     }
     pub fn getCanZoom(self: *@This()) core.HResult!bool {
         var this: ?*ITransformProvider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanZoom();
     }
     pub fn getZoomLevel(self: *@This()) core.HResult!f64 {
         var this: ?*ITransformProvider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getZoomLevel();
     }
     pub fn getMaxZoom(self: *@This()) core.HResult!f64 {
         var this: ?*ITransformProvider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxZoom();
     }
     pub fn getMinZoom(self: *@This()) core.HResult!f64 {
         var this: ?*ITransformProvider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinZoom();
     }
     pub fn Zoom(self: *@This(), zoom: f64) core.HResult!void {
         var this: ?*ITransformProvider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Zoom(zoom);
     }
     pub fn ZoomByUnit(self: *@This(), zoomUnit: ZoomUnit) core.HResult!void {
         var this: ?*ITransformProvider2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ZoomByUnit(zoomUnit);
     }
     pub fn getCanMove(self: *@This()) core.HResult!bool {
         var this: ?*ITransformProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanMove();
     }
     pub fn getCanResize(self: *@This()) core.HResult!bool {
         var this: ?*ITransformProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanResize();
     }
     pub fn getCanRotate(self: *@This()) core.HResult!bool {
         var this: ?*ITransformProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanRotate();
     }
     pub fn Move(self: *@This(), x: f64, y: f64) core.HResult!void {
         var this: ?*ITransformProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Move(x, y);
     }
     pub fn Resize(self: *@This(), width: f64, height: f64) core.HResult!void {
         var this: ?*ITransformProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Resize(width, height);
     }
     pub fn Rotate(self: *@This(), degrees: f64) core.HResult!void {
         var this: ?*ITransformProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITransformProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Rotate(degrees);
@@ -6767,24 +6947,28 @@ pub const MenuBarItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Expand();
     }
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
@@ -6807,6 +6991,7 @@ pub const MenuFlyoutItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
@@ -6937,66 +7122,77 @@ pub const PivotAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getCanSelectMultiple(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanSelectMultiple();
     }
     pub fn getIsSelectionRequired(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSelectionRequired();
     }
     pub fn GetSelection(self: *@This()) core.HResult![*]IRawElementProviderSimple {
         var this: ?*ISelectionProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSelection();
     }
     pub fn getHorizontallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontallyScrollable();
     }
     pub fn getHorizontalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalScrollPercent();
     }
     pub fn getHorizontalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalViewSize();
     }
     pub fn getVerticallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticallyScrollable();
     }
     pub fn getVerticalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticalScrollPercent();
     }
     pub fn getVerticalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticalViewSize();
     }
     pub fn Scroll(self: *@This(), horizontalAmount: ScrollAmount, verticalAmount: ScrollAmount) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Scroll(horizontalAmount, verticalAmount);
     }
     pub fn SetScrollPercent(self: *@This(), horizontalPercent: f64, verticalPercent: f64) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetScrollPercent(horizontalPercent, verticalPercent);
@@ -7035,42 +7231,49 @@ pub const PivotItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
     }
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSelected();
     }
     pub fn getSelectionContainer(self: *@This()) core.HResult!*IRawElementProviderSimple {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionContainer();
     }
     pub fn AddToSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddToSelection();
     }
     pub fn RemoveFromSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveFromSelection();
     }
     pub fn Select(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Select();
     }
     pub fn Realize(self: *@This()) core.HResult!void {
         var this: ?*IVirtualizedItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVirtualizedItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Realize();
@@ -7125,30 +7328,35 @@ pub const RadioButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSelected();
     }
     pub fn getSelectionContainer(self: *@This()) core.HResult!*IRawElementProviderSimple {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSelectionContainer();
     }
     pub fn AddToSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddToSelection();
     }
     pub fn RemoveFromSelection(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveFromSelection();
     }
     pub fn Select(self: *@This()) core.HResult!void {
         var this: ?*ISelectionItemProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISelectionItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Select();
@@ -7191,6 +7399,7 @@ pub const RepeatButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
@@ -7277,48 +7486,56 @@ pub const ScrollViewerAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getHorizontallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontallyScrollable();
     }
     pub fn getHorizontalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalScrollPercent();
     }
     pub fn getHorizontalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHorizontalViewSize();
     }
     pub fn getVerticallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticallyScrollable();
     }
     pub fn getVerticalScrollPercent(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticalScrollPercent();
     }
     pub fn getVerticalViewSize(self: *@This()) core.HResult!f64 {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVerticalViewSize();
     }
     pub fn Scroll(self: *@This(), horizontalAmount: ScrollAmount, verticalAmount: ScrollAmount) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Scroll(horizontalAmount, verticalAmount);
     }
     pub fn SetScrollPercent(self: *@This(), horizontalPercent: f64, verticalPercent: f64) core.HResult!void {
         var this: ?*IScrollProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetScrollPercent(horizontalPercent, verticalPercent);
@@ -7357,12 +7574,14 @@ pub const SemanticZoomAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getToggleState();
     }
     pub fn Toggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Toggle();
@@ -7473,12 +7692,14 @@ pub const ToggleMenuFlyoutItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getToggleState();
     }
     pub fn Toggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Toggle();
@@ -7501,12 +7722,14 @@ pub const ToggleSwitchAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getToggleState();
     }
     pub fn Toggle(self: *@This()) core.HResult!void {
         var this: ?*IToggleProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Toggle();
@@ -7529,18 +7752,21 @@ pub const TreeViewItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExpandCollapseState();
     }
     pub fn Collapse(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Collapse();
     }
     pub fn Expand(self: *@This()) core.HResult!void {
         var this: ?*IExpandCollapseProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IExpandCollapseProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Expand();

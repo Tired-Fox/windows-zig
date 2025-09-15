@@ -164,18 +164,21 @@ pub const AppInfo = extern struct {
     }
     pub fn getPackage(self: *@This()) core.HResult!*Package {
         var this: ?*IAppInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPackage();
     }
     pub fn getExecutionContext(self: *@This()) core.HResult!AppExecutionContext {
         var this: ?*IAppInfo3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInfo3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExecutionContext();
     }
     pub fn getSupportedFileExtensions(self: *@This()) core.HResult!?[*]HSTRING {
         var this: ?*IAppInfo4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInfo4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedFileExtensions();
@@ -210,90 +213,105 @@ pub const AppInstallerInfo = extern struct {
     }
     pub fn getOnLaunch(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOnLaunch();
     }
     pub fn getHoursBetweenUpdateChecks(self: *@This()) core.HResult!u32 {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHoursBetweenUpdateChecks();
     }
     pub fn getShowPrompt(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShowPrompt();
     }
     pub fn getUpdateBlocksActivation(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUpdateBlocksActivation();
     }
     pub fn getAutomaticBackgroundTask(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAutomaticBackgroundTask();
     }
     pub fn getForceUpdateFromAnyVersion(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getForceUpdateFromAnyVersion();
     }
     pub fn getIsAutoRepairEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAutoRepairEnabled();
     }
     pub fn getVersion(self: *@This()) core.HResult!PackageVersion {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVersion();
     }
     pub fn getLastChecked(self: *@This()) core.HResult!DateTime {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLastChecked();
     }
     pub fn getPausedUntil(self: *@This()) core.HResult!*IReference(DateTime) {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPausedUntil();
     }
     pub fn getUpdateUris(self: *@This()) core.HResult!*IVectorView(Uri) {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUpdateUris();
     }
     pub fn getRepairUris(self: *@This()) core.HResult!*IVectorView(Uri) {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRepairUris();
     }
     pub fn getDependencyPackageUris(self: *@This()) core.HResult!*IVectorView(Uri) {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDependencyPackageUris();
     }
     pub fn getOptionalPackageUris(self: *@This()) core.HResult!*IVectorView(Uri) {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOptionalPackageUris();
     }
     pub fn getPolicySource(self: *@This()) core.HResult!AppInstallerPolicySource {
         var this: ?*IAppInstallerInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallerInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPolicySource();
@@ -2696,234 +2714,273 @@ pub const Package = extern struct {
     }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplayName();
     }
     pub fn getPublisherDisplayName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPublisherDisplayName();
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn getLogo(self: *@This()) core.HResult!*Uri {
         var this: ?*IPackage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLogo();
     }
     pub fn getIsResourcePackage(self: *@This()) core.HResult!bool {
         var this: ?*IPackage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsResourcePackage();
     }
     pub fn getIsBundle(self: *@This()) core.HResult!bool {
         var this: ?*IPackage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsBundle();
     }
     pub fn getIsDevelopmentMode(self: *@This()) core.HResult!bool {
         var this: ?*IPackage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsDevelopmentMode();
     }
     pub fn getStatus(self: *@This()) core.HResult!*PackageStatus {
         var this: ?*IPackage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStatus();
     }
     pub fn getInstalledDate(self: *@This()) core.HResult!DateTime {
         var this: ?*IPackage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInstalledDate();
     }
     pub fn GetAppListEntriesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(AppListEntry)) {
         var this: ?*IPackage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAppListEntriesAsync();
     }
     pub fn getInstallDate(self: *@This()) core.HResult!DateTime {
         var this: ?*IPackageWithMetadata = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInstallDate();
     }
     pub fn GetThumbnailToken(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackageWithMetadata = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetThumbnailToken();
     }
     pub fn Launch(self: *@This(), parameters: ?HSTRING) core.HResult!void {
         var this: ?*IPackageWithMetadata = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Launch(parameters);
     }
     pub fn getSignatureKind(self: *@This()) core.HResult!PackageSignatureKind {
         var this: ?*IPackage4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSignatureKind();
     }
     pub fn getIsOptional(self: *@This()) core.HResult!bool {
         var this: ?*IPackage4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsOptional();
     }
     pub fn VerifyContentIntegrityAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IPackage4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.VerifyContentIntegrityAsync();
     }
     pub fn GetContentGroupsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
         var this: ?*IPackage5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetContentGroupsAsync();
     }
     pub fn GetContentGroupAsync(self: *@This(), name: ?HSTRING) core.HResult!*IAsyncOperation(PackageContentGroup) {
         var this: ?*IPackage5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetContentGroupAsync(name);
     }
     pub fn StageContentGroupsAsync(self: *@This(), names: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
         var this: ?*IPackage5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StageContentGroupsAsync(names);
     }
     pub fn StageContentGroupsAsyncWithMoveToHeadOfQueue(self: *@This(), names: *IIterable(?HSTRING), moveToHeadOfQueue: bool) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
         var this: ?*IPackage5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StageContentGroupsAsyncWithMoveToHeadOfQueue(names, moveToHeadOfQueue);
     }
     pub fn SetInUseAsync(self: *@This(), inUse: bool) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IPackage5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetInUseAsync(inUse);
     }
     pub fn GetAppInstallerInfo(self: *@This()) core.HResult!*AppInstallerInfo {
         var this: ?*IPackage6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAppInstallerInfo();
     }
     pub fn CheckUpdateAvailabilityAsync(self: *@This()) core.HResult!*IAsyncOperation(PackageUpdateAvailabilityResult) {
         var this: ?*IPackage6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CheckUpdateAvailabilityAsync();
     }
     pub fn getMutableLocation(self: *@This()) core.HResult!*StorageFolder {
         var this: ?*IPackage7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMutableLocation();
     }
     pub fn getEffectiveLocation(self: *@This()) core.HResult!*StorageFolder {
         var this: ?*IPackage7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectiveLocation();
     }
     pub fn getEffectiveExternalLocation(self: *@This()) core.HResult!*StorageFolder {
         var this: ?*IPackage8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectiveExternalLocation();
     }
     pub fn getMachineExternalLocation(self: *@This()) core.HResult!*StorageFolder {
         var this: ?*IPackage8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMachineExternalLocation();
     }
     pub fn getUserExternalLocation(self: *@This()) core.HResult!*StorageFolder {
         var this: ?*IPackage8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUserExternalLocation();
     }
     pub fn getInstalledPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInstalledPath();
     }
     pub fn getMutablePath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMutablePath();
     }
     pub fn getEffectivePath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectivePath();
     }
     pub fn getEffectiveExternalPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectiveExternalPath();
     }
     pub fn getMachineExternalPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMachineExternalPath();
     }
     pub fn getUserExternalPath(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUserExternalPath();
     }
     pub fn GetLogoAsRandomAccessStreamReference(self: *@This(), size: Size) core.HResult!*RandomAccessStreamReference {
         var this: ?*IPackage8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetLogoAsRandomAccessStreamReference(size);
     }
     pub fn GetAppListEntries(self: *@This()) core.HResult!*IVectorView(AppListEntry) {
         var this: ?*IPackage8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAppListEntries();
     }
     pub fn getIsStub(self: *@This()) core.HResult!bool {
         var this: ?*IPackage8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsStub();
     }
     pub fn FindRelatedPackages(self: *@This(), options: *FindRelatedPackagesOptions) core.HResult!*IVector(Package) {
         var this: ?*IPackage9 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage9.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindRelatedPackages(options);
     }
     pub fn getSourceUriSchemeName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackage9 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage9.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSourceUriSchemeName();
@@ -2986,36 +3043,42 @@ pub const PackageCatalog = extern struct {
     }
     pub fn addPackageContentGroupStaging(self: *@This(), handler: *TypedEventHandler(PackageCatalog,PackageContentGroupStagingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IPackageCatalog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageCatalog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addPackageContentGroupStaging(handler);
     }
     pub fn removePackageContentGroupStaging(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IPackageCatalog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageCatalog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePackageContentGroupStaging(token);
     }
     pub fn AddOptionalPackageAsync(self: *@This(), optionalPackageFamilyName: ?HSTRING) core.HResult!*IAsyncOperation(PackageCatalogAddOptionalPackageResult) {
         var this: ?*IPackageCatalog2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageCatalog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOptionalPackageAsync(optionalPackageFamilyName);
     }
     pub fn RemoveOptionalPackagesAsync(self: *@This(), optionalPackageFamilyNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(PackageCatalogRemoveOptionalPackagesResult) {
         var this: ?*IPackageCatalog3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageCatalog3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveOptionalPackagesAsync(optionalPackageFamilyNames);
     }
     pub fn AddResourcePackageAsync(self: *@This(), resourcePackageFamilyName: ?HSTRING, resourceID: ?HSTRING, options: AddResourcePackageOptions) core.HResult!*IAsyncOperationWithProgress(PackageCatalogAddResourcePackageResult,PackageInstallProgress) {
         var this: ?*IPackageCatalog4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageCatalog4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddResourcePackageAsync(resourcePackageFamilyName, resourceID, options);
     }
     pub fn RemoveResourcePackagesAsync(self: *@This(), resourcePackages: *IIterable(Package)) core.HResult!*IAsyncOperation(PackageCatalogRemoveResourcePackagesResult) {
         var this: ?*IPackageCatalog4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageCatalog4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveResourcePackagesAsync(resourcePackages);
@@ -3221,12 +3284,14 @@ pub const PackageId = extern struct {
     }
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackageIdWithMetadata = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageIdWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProductId();
     }
     pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IPackageIdWithMetadata = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageIdWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAuthor();
@@ -3360,6 +3425,7 @@ pub const PackageStatus = extern struct {
     }
     pub fn getIsPartiallyStaged(self: *@This()) core.HResult!bool {
         var this: ?*IPackageStatus2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageStatus2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPartiallyStaged();

@@ -3,6 +3,7 @@ pub const AttachableInputObject = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -39,6 +40,7 @@ pub const CrossSlidingEventArgs = extern struct {
     }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*ICrossSlidingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICrossSlidingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContactCount();
@@ -74,6 +76,7 @@ pub const DraggingEventArgs = extern struct {
     }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IDraggingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDraggingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContactCount();
@@ -388,96 +391,112 @@ pub const GestureRecognizer = extern struct {
     }
     pub fn getTapMinContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTapMinContactCount();
     }
     pub fn putTapMinContactCount(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTapMinContactCount(value);
     }
     pub fn getTapMaxContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTapMaxContactCount();
     }
     pub fn putTapMaxContactCount(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTapMaxContactCount(value);
     }
     pub fn getHoldMinContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHoldMinContactCount();
     }
     pub fn putHoldMinContactCount(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHoldMinContactCount(value);
     }
     pub fn getHoldMaxContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHoldMaxContactCount();
     }
     pub fn putHoldMaxContactCount(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHoldMaxContactCount(value);
     }
     pub fn getHoldRadius(self: *@This()) core.HResult!f32 {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHoldRadius();
     }
     pub fn putHoldRadius(self: *@This(), value: f32) core.HResult!void {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHoldRadius(value);
     }
     pub fn getHoldStartDelay(self: *@This()) core.HResult!TimeSpan {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHoldStartDelay();
     }
     pub fn putHoldStartDelay(self: *@This(), value: TimeSpan) core.HResult!void {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putHoldStartDelay(value);
     }
     pub fn getTranslationMinContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTranslationMinContactCount();
     }
     pub fn putTranslationMinContactCount(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTranslationMinContactCount(value);
     }
     pub fn getTranslationMaxContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTranslationMaxContactCount();
     }
     pub fn putTranslationMaxContactCount(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IGestureRecognizer2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGestureRecognizer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTranslationMaxContactCount(value);
@@ -532,12 +551,14 @@ pub const HoldingEventArgs = extern struct {
     }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IHoldingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHoldingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContactCount();
     }
     pub fn getCurrentContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IHoldingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHoldingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCurrentContactCount();
@@ -3984,12 +4005,14 @@ pub const ManipulationCompletedEventArgs = extern struct {
     }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IManipulationCompletedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IManipulationCompletedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContactCount();
     }
     pub fn getCurrentContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IManipulationCompletedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IManipulationCompletedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCurrentContactCount();
@@ -4030,6 +4053,7 @@ pub const ManipulationInertiaStartingEventArgs = extern struct {
     }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IManipulationInertiaStartingEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IManipulationInertiaStartingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContactCount();
@@ -4056,6 +4080,7 @@ pub const ManipulationStartedEventArgs = extern struct {
     }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IManipulationStartedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IManipulationStartedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContactCount();
@@ -4090,12 +4115,14 @@ pub const ManipulationUpdatedEventArgs = extern struct {
     }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IManipulationUpdatedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IManipulationUpdatedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContactCount();
     }
     pub fn getCurrentContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IManipulationUpdatedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IManipulationUpdatedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCurrentContactCount();
@@ -4335,12 +4362,14 @@ pub const PointerPoint = extern struct {
     }
     pub fn getIsPhysicalPositionSupported(self: *@This()) core.HResult!bool {
         var this: ?*IPointerPointPhysicalPosition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointerPointPhysicalPosition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPhysicalPositionSupported();
     }
     pub fn getPhysicalPosition(self: *@This()) core.HResult!Point {
         var this: ?*IPointerPointPhysicalPosition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointerPointPhysicalPosition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPhysicalPosition();
@@ -4471,6 +4500,7 @@ pub const PointerPointProperties = extern struct {
     }
     pub fn getZDistance(self: *@This()) core.HResult!*IReference(f32) {
         var this: ?*IPointerPointProperties2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointerPointProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getZDistance();
@@ -4606,36 +4636,42 @@ pub const RadialController = extern struct {
     }
     pub fn addButtonPressed(self: *@This(), handler: *TypedEventHandler(RadialController,RadialControllerButtonPressedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRadialController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addButtonPressed(handler);
     }
     pub fn removeButtonPressed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRadialController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeButtonPressed(token);
     }
     pub fn addButtonHolding(self: *@This(), handler: *TypedEventHandler(RadialController,RadialControllerButtonHoldingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRadialController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addButtonHolding(handler);
     }
     pub fn removeButtonHolding(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRadialController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeButtonHolding(token);
     }
     pub fn addButtonReleased(self: *@This(), handler: *TypedEventHandler(RadialController,RadialControllerButtonReleasedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IRadialController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addButtonReleased(handler);
     }
     pub fn removeButtonReleased(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IRadialController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeButtonReleased(token);
@@ -4666,6 +4702,7 @@ pub const RadialControllerButtonClickedEventArgs = extern struct {
     }
     pub fn getSimpleHapticsController(self: *@This()) core.HResult!*SimpleHapticsController {
         var this: ?*IRadialControllerButtonClickedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerButtonClickedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimpleHapticsController();
@@ -4740,24 +4777,28 @@ pub const RadialControllerConfiguration = extern struct {
     }
     pub fn putActiveControllerWhenMenuIsSuppressed(self: *@This(), value: *RadialController) core.HResult!void {
         var this: ?*IRadialControllerConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putActiveControllerWhenMenuIsSuppressed(value);
     }
     pub fn getActiveControllerWhenMenuIsSuppressed(self: *@This()) core.HResult!*RadialController {
         var this: ?*IRadialControllerConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getActiveControllerWhenMenuIsSuppressed();
     }
     pub fn putIsMenuSuppressed(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IRadialControllerConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsMenuSuppressed(value);
     }
     pub fn getIsMenuSuppressed(self: *@This()) core.HResult!bool {
         var this: ?*IRadialControllerConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsMenuSuppressed();
@@ -4801,12 +4842,14 @@ pub const RadialControllerControlAcquiredEventArgs = extern struct {
     }
     pub fn getIsButtonPressed(self: *@This()) core.HResult!bool {
         var this: ?*IRadialControllerControlAcquiredEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerControlAcquiredEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsButtonPressed();
     }
     pub fn getSimpleHapticsController(self: *@This()) core.HResult!*SimpleHapticsController {
         var this: ?*IRadialControllerControlAcquiredEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerControlAcquiredEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimpleHapticsController();
@@ -4921,12 +4964,14 @@ pub const RadialControllerRotationChangedEventArgs = extern struct {
     }
     pub fn getIsButtonPressed(self: *@This()) core.HResult!bool {
         var this: ?*IRadialControllerRotationChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerRotationChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsButtonPressed();
     }
     pub fn getSimpleHapticsController(self: *@This()) core.HResult!*SimpleHapticsController {
         var this: ?*IRadialControllerRotationChangedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerRotationChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimpleHapticsController();
@@ -4961,12 +5006,14 @@ pub const RadialControllerScreenContactContinuedEventArgs = extern struct {
     }
     pub fn getIsButtonPressed(self: *@This()) core.HResult!bool {
         var this: ?*IRadialControllerScreenContactContinuedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerScreenContactContinuedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsButtonPressed();
     }
     pub fn getSimpleHapticsController(self: *@This()) core.HResult!*SimpleHapticsController {
         var this: ?*IRadialControllerScreenContactContinuedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerScreenContactContinuedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimpleHapticsController();
@@ -5001,12 +5048,14 @@ pub const RadialControllerScreenContactStartedEventArgs = extern struct {
     }
     pub fn getIsButtonPressed(self: *@This()) core.HResult!bool {
         var this: ?*IRadialControllerScreenContactStartedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerScreenContactStartedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsButtonPressed();
     }
     pub fn getSimpleHapticsController(self: *@This()) core.HResult!*SimpleHapticsController {
         var this: ?*IRadialControllerScreenContactStartedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRadialControllerScreenContactStartedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimpleHapticsController();
@@ -5036,6 +5085,7 @@ pub const RightTappedEventArgs = extern struct {
     }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*IRightTappedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRightTappedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContactCount();
@@ -5178,6 +5228,7 @@ pub const TappedEventArgs = extern struct {
     }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var this: ?*ITappedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITappedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContactCount();

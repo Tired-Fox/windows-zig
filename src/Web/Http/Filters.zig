@@ -79,60 +79,70 @@ pub const HttpBaseProtocolFilter = extern struct {
     }
     pub fn getMaxVersion(self: *@This()) core.HResult!HttpVersion {
         var this: ?*IHttpBaseProtocolFilter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxVersion();
     }
     pub fn putMaxVersion(self: *@This(), value: HttpVersion) core.HResult!void {
         var this: ?*IHttpBaseProtocolFilter2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMaxVersion(value);
     }
     pub fn getCookieUsageBehavior(self: *@This()) core.HResult!HttpCookieUsageBehavior {
         var this: ?*IHttpBaseProtocolFilter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCookieUsageBehavior();
     }
     pub fn putCookieUsageBehavior(self: *@This(), value: HttpCookieUsageBehavior) core.HResult!void {
         var this: ?*IHttpBaseProtocolFilter3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCookieUsageBehavior(value);
     }
     pub fn addServerCustomValidationRequested(self: *@This(), handler: *TypedEventHandler(HttpBaseProtocolFilter,HttpServerCustomValidationRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IHttpBaseProtocolFilter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addServerCustomValidationRequested(handler);
     }
     pub fn removeServerCustomValidationRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IHttpBaseProtocolFilter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeServerCustomValidationRequested(token);
     }
     pub fn ClearAuthenticationCache(self: *@This()) core.HResult!void {
         var this: ?*IHttpBaseProtocolFilter4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ClearAuthenticationCache();
     }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var this: ?*IHttpBaseProtocolFilter5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpBaseProtocolFilter5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
     }
     pub fn SendRequestAsync(self: *@This(), request: *HttpRequestMessage) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var this: ?*IHttpFilter = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpFilter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SendRequestAsync(request);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

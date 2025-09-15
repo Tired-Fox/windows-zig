@@ -1532,42 +1532,49 @@ pub const SmartCardAppletIdGroup = extern struct {
     }
     pub fn getLogo(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var this: ?*ISmartCardAppletIdGroup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAppletIdGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLogo();
     }
     pub fn putLogo(self: *@This(), value: *IRandomAccessStreamReference) core.HResult!void {
         var this: ?*ISmartCardAppletIdGroup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAppletIdGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putLogo(value);
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmartCardAppletIdGroup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAppletIdGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         var this: ?*ISmartCardAppletIdGroup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAppletIdGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDescription(value);
     }
     pub fn getProperties(self: *@This()) core.HResult!*ValueSet {
         var this: ?*ISmartCardAppletIdGroup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAppletIdGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
     }
     pub fn getSecureUserAuthenticationRequired(self: *@This()) core.HResult!bool {
         var this: ?*ISmartCardAppletIdGroup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAppletIdGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSecureUserAuthenticationRequired();
     }
     pub fn putSecureUserAuthenticationRequired(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISmartCardAppletIdGroup2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAppletIdGroup2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSecureUserAuthenticationRequired(value);
@@ -1625,12 +1632,14 @@ pub const SmartCardAppletIdGroupRegistration = extern struct {
     }
     pub fn getSmartCardReaderId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmartCardAppletIdGroupRegistration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAppletIdGroupRegistration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSmartCardReaderId();
     }
     pub fn SetPropertiesAsync(self: *@This(), props: *ValueSet) core.HResult!*IAsyncAction {
         var this: ?*ISmartCardAppletIdGroupRegistration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAppletIdGroupRegistration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPropertiesAsync(props);
@@ -1685,36 +1694,42 @@ pub const SmartCardAutomaticResponseApdu = extern struct {
     }
     pub fn getInputState(self: *@This()) core.HResult!*IReference(u32) {
         var this: ?*ISmartCardAutomaticResponseApdu2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAutomaticResponseApdu2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInputState();
     }
     pub fn putInputState(self: *@This(), value: *IReference(u32)) core.HResult!void {
         var this: ?*ISmartCardAutomaticResponseApdu2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAutomaticResponseApdu2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putInputState(value);
     }
     pub fn getOutputState(self: *@This()) core.HResult!*IReference(u32) {
         var this: ?*ISmartCardAutomaticResponseApdu2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAutomaticResponseApdu2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutputState();
     }
     pub fn putOutputState(self: *@This(), value: *IReference(u32)) core.HResult!void {
         var this: ?*ISmartCardAutomaticResponseApdu2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAutomaticResponseApdu2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutputState(value);
     }
     pub fn getAllowWhenCryptogramGeneratorNotPrepared(self: *@This()) core.HResult!bool {
         var this: ?*ISmartCardAutomaticResponseApdu3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAutomaticResponseApdu3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAllowWhenCryptogramGeneratorNotPrepared();
     }
     pub fn putAllowWhenCryptogramGeneratorNotPrepared(self: *@This(), value: bool) core.HResult!void {
         var this: ?*ISmartCardAutomaticResponseApdu3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardAutomaticResponseApdu3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAllowWhenCryptogramGeneratorNotPrepared(value);
@@ -1801,30 +1816,35 @@ pub const SmartCardCryptogramGenerator = extern struct {
     }
     pub fn ValidateRequestApduAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, apduToValidate: *IBuffer, cryptogramPlacementSteps: *IIterable(SmartCardCryptogramPlacementStep)) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         var this: ?*ISmartCardCryptogramGenerator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardCryptogramGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ValidateRequestApduAsync(promptingBehavior, apduToValidate, cryptogramPlacementSteps);
     }
     pub fn GetAllCryptogramStorageKeyCharacteristicsAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramStorageKeyCharacteristicsResult) {
         var this: ?*ISmartCardCryptogramGenerator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardCryptogramGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllCryptogramStorageKeyCharacteristicsAsync();
     }
     pub fn GetAllCryptogramMaterialPackageCharacteristicsAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult) {
         var this: ?*ISmartCardCryptogramGenerator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardCryptogramGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllCryptogramMaterialPackageCharacteristicsAsync();
     }
     pub fn GetAllCryptogramMaterialPackageCharacteristicsAsyncWithStorageKeyName(self: *@This(), storageKeyName: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult) {
         var this: ?*ISmartCardCryptogramGenerator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardCryptogramGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllCryptogramMaterialPackageCharacteristicsAsyncWithStorageKeyName(storageKeyName);
     }
     pub fn GetAllCryptogramMaterialCharacteristicsAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, materialPackageName: ?HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult) {
         var this: ?*ISmartCardCryptogramGenerator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardCryptogramGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllCryptogramMaterialCharacteristicsAsync(promptingBehavior, materialPackageName);
@@ -2217,6 +2237,7 @@ pub const SmartCardCryptogramStorageKeyInfo = extern struct {
     }
     pub fn getOperationalRequirements(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISmartCardCryptogramStorageKeyInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardCryptogramStorageKeyInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOperationalRequirements();
@@ -2254,36 +2275,42 @@ pub const SmartCardEmulator = extern struct {
     }
     pub fn addApduReceived(self: *@This(), value: *TypedEventHandler(SmartCardEmulator,SmartCardEmulatorApduReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ISmartCardEmulator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardEmulator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addApduReceived(value);
     }
     pub fn removeApduReceived(self: *@This(), value: EventRegistrationToken) core.HResult!void {
         var this: ?*ISmartCardEmulator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardEmulator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeApduReceived(value);
     }
     pub fn addConnectionDeactivated(self: *@This(), value: *TypedEventHandler(SmartCardEmulator,SmartCardEmulatorConnectionDeactivatedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ISmartCardEmulator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardEmulator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addConnectionDeactivated(value);
     }
     pub fn removeConnectionDeactivated(self: *@This(), value: EventRegistrationToken) core.HResult!void {
         var this: ?*ISmartCardEmulator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardEmulator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeConnectionDeactivated(value);
     }
     pub fn Start(self: *@This()) core.HResult!void {
         var this: ?*ISmartCardEmulator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardEmulator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Start();
     }
     pub fn IsHostCardEmulationSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISmartCardEmulator2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardEmulator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsHostCardEmulationSupported();
@@ -2344,24 +2371,28 @@ pub const SmartCardEmulatorApduReceivedEventArgs = extern struct {
     }
     pub fn TryRespondWithCryptogramsAsync(self: *@This(), responseTemplate: *IBuffer, cryptogramPlacementSteps: *IIterable(SmartCardCryptogramPlacementStep)) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         var this: ?*ISmartCardEmulatorApduReceivedEventArgsWithCryptograms = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardEmulatorApduReceivedEventArgsWithCryptograms.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryRespondWithCryptogramsAsync(responseTemplate, cryptogramPlacementSteps);
     }
     pub fn TryRespondWithCryptogramsAsyncWithNextState(self: *@This(), responseTemplate: *IBuffer, cryptogramPlacementSteps: *IIterable(SmartCardCryptogramPlacementStep), nextState: *IReference(u32)) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         var this: ?*ISmartCardEmulatorApduReceivedEventArgsWithCryptograms = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardEmulatorApduReceivedEventArgsWithCryptograms.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryRespondWithCryptogramsAsyncWithNextState(responseTemplate, cryptogramPlacementSteps, nextState);
     }
     pub fn getState(self: *@This()) core.HResult!u32 {
         var this: ?*ISmartCardEmulatorApduReceivedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardEmulatorApduReceivedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getState();
     }
     pub fn TryRespondAsyncWithNextState(self: *@This(), responseApdu: *IBuffer, nextState: *IReference(u32)) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ISmartCardEmulatorApduReceivedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardEmulatorApduReceivedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryRespondAsyncWithNextState(responseApdu, nextState);
@@ -2540,24 +2571,28 @@ pub const SmartCardTriggerDetails = extern struct {
     }
     pub fn getEmulator(self: *@This()) core.HResult!*SmartCardEmulator {
         var this: ?*ISmartCardTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEmulator();
     }
     pub fn TryLaunchCurrentAppAsync(self: *@This(), arguments: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ISmartCardTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryLaunchCurrentAppAsync(arguments);
     }
     pub fn TryLaunchCurrentAppAsyncWithBehavior(self: *@This(), arguments: ?HSTRING, behavior: SmartCardLaunchBehavior) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ISmartCardTriggerDetails2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryLaunchCurrentAppAsyncWithBehavior(arguments, behavior);
     }
     pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
         var this: ?*ISmartCardTriggerDetails3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardTriggerDetails3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSmartCard();
@@ -3214,6 +3249,7 @@ pub const SmartCard = extern struct {
     }
     pub fn ConnectAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardConnection) {
         var this: ?*ISmartCardConnect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardConnect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConnectAsync();
@@ -3248,6 +3284,7 @@ pub const SmartCardChallengeContext = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -3266,6 +3303,7 @@ pub const SmartCardConnection = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -3498,6 +3536,7 @@ pub const SmartCardProvisioning = extern struct {
     }
     pub fn GetAuthorityKeyContainerNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var this: ?*ISmartCardProvisioning2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardProvisioning2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAuthorityKeyContainerNameAsync();

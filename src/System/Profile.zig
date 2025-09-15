@@ -545,6 +545,7 @@ pub const AnalyticsVersionInfo = extern struct {
     }
     pub fn getProductName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAnalyticsVersionInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAnalyticsVersionInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProductName();

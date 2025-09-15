@@ -796,24 +796,28 @@ pub const AudioDeviceController = extern struct {
     }
     pub fn GetAvailableMediaStreamProperties(self: *@This(), mediaStreamType: MediaStreamType) core.HResult!*IVectorView(IMediaEncodingProperties) {
         var this: ?*IMediaDeviceController = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaDeviceController.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAvailableMediaStreamProperties(mediaStreamType);
     }
     pub fn GetMediaStreamProperties(self: *@This(), mediaStreamType: MediaStreamType) core.HResult!*IMediaEncodingProperties {
         var this: ?*IMediaDeviceController = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaDeviceController.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMediaStreamProperties(mediaStreamType);
     }
     pub fn SetMediaStreamPropertiesAsync(self: *@This(), mediaStreamType: MediaStreamType, mediaEncodingProperties: *IMediaEncodingProperties) core.HResult!*IAsyncAction {
         var this: ?*IMediaDeviceController = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaDeviceController.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetMediaStreamPropertiesAsync(mediaStreamType, mediaEncodingProperties);
     }
     pub fn getAudioCaptureEffectsManager(self: *@This()) core.HResult!*AudioCaptureEffectsManager {
         var this: ?*IAudioDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAudioCaptureEffectsManager();
@@ -1294,18 +1298,21 @@ pub const FlashControl = extern struct {
     }
     pub fn getAssistantLightSupported(self: *@This()) core.HResult!bool {
         var this: ?*IFlashControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlashControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAssistantLightSupported();
     }
     pub fn getAssistantLightEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IFlashControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlashControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAssistantLightEnabled();
     }
     pub fn putAssistantLightEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IFlashControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlashControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAssistantLightEnabled(value);
@@ -1364,60 +1371,70 @@ pub const FocusControl = extern struct {
     }
     pub fn getFocusChangedSupported(self: *@This()) core.HResult!bool {
         var this: ?*IFocusControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFocusControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFocusChangedSupported();
     }
     pub fn getWaitForFocusSupported(self: *@This()) core.HResult!bool {
         var this: ?*IFocusControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFocusControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWaitForFocusSupported();
     }
     pub fn getSupportedFocusModes(self: *@This()) core.HResult!*IVectorView(FocusMode) {
         var this: ?*IFocusControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFocusControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedFocusModes();
     }
     pub fn getSupportedFocusDistances(self: *@This()) core.HResult!*IVectorView(ManualFocusDistance) {
         var this: ?*IFocusControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFocusControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedFocusDistances();
     }
     pub fn getSupportedFocusRanges(self: *@This()) core.HResult!*IVectorView(AutoFocusRange) {
         var this: ?*IFocusControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFocusControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedFocusRanges();
     }
     pub fn getMode(self: *@This()) core.HResult!FocusMode {
         var this: ?*IFocusControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFocusControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMode();
     }
     pub fn getFocusState(self: *@This()) core.HResult!MediaCaptureFocusState {
         var this: ?*IFocusControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFocusControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFocusState();
     }
     pub fn UnlockAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IFocusControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFocusControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UnlockAsync();
     }
     pub fn LockAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IFocusControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFocusControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LockAsync();
     }
     pub fn Configure(self: *@This(), settings: *FocusSettings) core.HResult!void {
         var this: ?*IFocusControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFocusControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Configure(settings);
@@ -4604,42 +4621,49 @@ pub const IsoSpeedControl = extern struct {
     }
     pub fn getMin(self: *@This()) core.HResult!u32 {
         var this: ?*IIsoSpeedControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsoSpeedControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMin();
     }
     pub fn getMax(self: *@This()) core.HResult!u32 {
         var this: ?*IIsoSpeedControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsoSpeedControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMax();
     }
     pub fn getStep(self: *@This()) core.HResult!u32 {
         var this: ?*IIsoSpeedControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsoSpeedControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getStep();
     }
     pub fn getValue(self: *@This()) core.HResult!u32 {
         var this: ?*IIsoSpeedControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsoSpeedControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValue();
     }
     pub fn SetValueAsync(self: *@This(), isoSpeed: u32) core.HResult!*IAsyncAction {
         var this: ?*IIsoSpeedControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsoSpeedControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetValueAsync(isoSpeed);
     }
     pub fn getAuto(self: *@This()) core.HResult!bool {
         var this: ?*IIsoSpeedControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsoSpeedControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAuto();
     }
     pub fn SetAutoAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IIsoSpeedControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsoSpeedControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAutoAsync();
@@ -5039,36 +5063,42 @@ pub const RegionOfInterest = extern struct {
     }
     pub fn getType(self: *@This()) core.HResult!RegionOfInterestType {
         var this: ?*IRegionOfInterest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRegionOfInterest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
     pub fn putType(self: *@This(), value: RegionOfInterestType) core.HResult!void {
         var this: ?*IRegionOfInterest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRegionOfInterest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putType(value);
     }
     pub fn getBoundsNormalized(self: *@This()) core.HResult!bool {
         var this: ?*IRegionOfInterest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRegionOfInterest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getBoundsNormalized();
     }
     pub fn putBoundsNormalized(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IRegionOfInterest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRegionOfInterest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBoundsNormalized(value);
     }
     pub fn getWeight(self: *@This()) core.HResult!u32 {
         var this: ?*IRegionOfInterest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRegionOfInterest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWeight();
     }
     pub fn putWeight(self: *@This(), value: u32) core.HResult!void {
         var this: ?*IRegionOfInterest2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRegionOfInterest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWeight(value);
@@ -5239,228 +5269,266 @@ pub const VideoDeviceController = extern struct {
     }
     pub fn GetAvailableMediaStreamProperties(self: *@This(), mediaStreamType: MediaStreamType) core.HResult!*IVectorView(IMediaEncodingProperties) {
         var this: ?*IMediaDeviceController = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaDeviceController.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAvailableMediaStreamProperties(mediaStreamType);
     }
     pub fn GetMediaStreamProperties(self: *@This(), mediaStreamType: MediaStreamType) core.HResult!*IMediaEncodingProperties {
         var this: ?*IMediaDeviceController = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaDeviceController.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMediaStreamProperties(mediaStreamType);
     }
     pub fn SetMediaStreamPropertiesAsync(self: *@This(), mediaStreamType: MediaStreamType, mediaEncodingProperties: *IMediaEncodingProperties) core.HResult!*IAsyncAction {
         var this: ?*IMediaDeviceController = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaDeviceController.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetMediaStreamPropertiesAsync(mediaStreamType, mediaEncodingProperties);
     }
     pub fn SetDeviceProperty(self: *@This(), propertyId: ?HSTRING, propertyValue: *IInspectable) core.HResult!void {
         var this: ?*IAdvancedVideoCaptureDeviceController = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetDeviceProperty(propertyId, propertyValue);
     }
     pub fn GetDeviceProperty(self: *@This(), propertyId: ?HSTRING) core.HResult!*IInspectable {
         var this: ?*IAdvancedVideoCaptureDeviceController = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDeviceProperty(propertyId);
     }
     pub fn getLowLagPhotoSequence(self: *@This()) core.HResult!*LowLagPhotoSequenceControl {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLowLagPhotoSequence();
     }
     pub fn getLowLagPhoto(self: *@This()) core.HResult!*LowLagPhotoControl {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLowLagPhoto();
     }
     pub fn getSceneModeControl(self: *@This()) core.HResult!*SceneModeControl {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSceneModeControl();
     }
     pub fn getTorchControl(self: *@This()) core.HResult!*TorchControl {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTorchControl();
     }
     pub fn getFlashControl(self: *@This()) core.HResult!*FlashControl {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFlashControl();
     }
     pub fn getWhiteBalanceControl(self: *@This()) core.HResult!*WhiteBalanceControl {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getWhiteBalanceControl();
     }
     pub fn getExposureControl(self: *@This()) core.HResult!*ExposureControl {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExposureControl();
     }
     pub fn getFocusControl(self: *@This()) core.HResult!*FocusControl {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFocusControl();
     }
     pub fn getExposureCompensationControl(self: *@This()) core.HResult!*ExposureCompensationControl {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExposureCompensationControl();
     }
     pub fn getIsoSpeedControl(self: *@This()) core.HResult!*IsoSpeedControl {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsoSpeedControl();
     }
     pub fn getRegionsOfInterestControl(self: *@This()) core.HResult!*RegionsOfInterestControl {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRegionsOfInterestControl();
     }
     pub fn getPrimaryUse(self: *@This()) core.HResult!CaptureUse {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPrimaryUse();
     }
     pub fn putPrimaryUse(self: *@This(), value: CaptureUse) core.HResult!void {
         var this: ?*IAdvancedVideoCaptureDeviceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrimaryUse(value);
     }
     pub fn getVariablePhotoSequenceController(self: *@This()) core.HResult!*VariablePhotoSequenceController {
         var this: ?*IAdvancedVideoCaptureDeviceController3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVariablePhotoSequenceController();
     }
     pub fn getPhotoConfirmationControl(self: *@This()) core.HResult!*PhotoConfirmationControl {
         var this: ?*IAdvancedVideoCaptureDeviceController3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPhotoConfirmationControl();
     }
     pub fn getZoomControl(self: *@This()) core.HResult!*ZoomControl {
         var this: ?*IAdvancedVideoCaptureDeviceController3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getZoomControl();
     }
     pub fn getExposurePriorityVideoControl(self: *@This()) core.HResult!*ExposurePriorityVideoControl {
         var this: ?*IAdvancedVideoCaptureDeviceController4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExposurePriorityVideoControl();
     }
     pub fn getDesiredOptimization(self: *@This()) core.HResult!MediaCaptureOptimization {
         var this: ?*IAdvancedVideoCaptureDeviceController4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDesiredOptimization();
     }
     pub fn putDesiredOptimization(self: *@This(), value: MediaCaptureOptimization) core.HResult!void {
         var this: ?*IAdvancedVideoCaptureDeviceController4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDesiredOptimization(value);
     }
     pub fn getHdrVideoControl(self: *@This()) core.HResult!*HdrVideoControl {
         var this: ?*IAdvancedVideoCaptureDeviceController4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHdrVideoControl();
     }
     pub fn getOpticalImageStabilizationControl(self: *@This()) core.HResult!*OpticalImageStabilizationControl {
         var this: ?*IAdvancedVideoCaptureDeviceController4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOpticalImageStabilizationControl();
     }
     pub fn getAdvancedPhotoControl(self: *@This()) core.HResult!*AdvancedPhotoControl {
         var this: ?*IAdvancedVideoCaptureDeviceController4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAdvancedPhotoControl();
     }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAdvancedVideoCaptureDeviceController5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
     }
     pub fn GetDevicePropertyById(self: *@This(), propertyId: ?HSTRING, maxPropertyValueSize: *IReference(u32)) core.HResult!*VideoDeviceControllerGetDevicePropertyResult {
         var this: ?*IAdvancedVideoCaptureDeviceController5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDevicePropertyById(propertyId, maxPropertyValueSize);
     }
     pub fn SetDevicePropertyById(self: *@This(), propertyId: ?HSTRING, propertyValue: *IInspectable) core.HResult!VideoDeviceControllerSetDevicePropertyStatus {
         var this: ?*IAdvancedVideoCaptureDeviceController5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetDevicePropertyById(propertyId, propertyValue);
     }
     pub fn GetDevicePropertyByExtendedId(self: *@This(), extendedPropertyId: [*]u8, maxPropertyValueSize: *IReference(u32)) core.HResult!*VideoDeviceControllerGetDevicePropertyResult {
         var this: ?*IAdvancedVideoCaptureDeviceController5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDevicePropertyByExtendedId(extendedPropertyId, maxPropertyValueSize);
     }
     pub fn SetDevicePropertyByExtendedId(self: *@This(), extendedPropertyId: [*]u8, propertyValue: [*]u8) core.HResult!VideoDeviceControllerSetDevicePropertyStatus {
         var this: ?*IAdvancedVideoCaptureDeviceController5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetDevicePropertyByExtendedId(extendedPropertyId, propertyValue);
     }
     pub fn getVideoTemporalDenoisingControl(self: *@This()) core.HResult!*VideoTemporalDenoisingControl {
         var this: ?*IAdvancedVideoCaptureDeviceController6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVideoTemporalDenoisingControl();
     }
     pub fn getInfraredTorchControl(self: *@This()) core.HResult!*InfraredTorchControl {
         var this: ?*IAdvancedVideoCaptureDeviceController7 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getInfraredTorchControl();
     }
     pub fn getPanelBasedOptimizationControl(self: *@This()) core.HResult!*PanelBasedOptimizationControl {
         var this: ?*IAdvancedVideoCaptureDeviceController8 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController8.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPanelBasedOptimizationControl();
     }
     pub fn getDigitalWindowControl(self: *@This()) core.HResult!*DigitalWindowControl {
         var this: ?*IAdvancedVideoCaptureDeviceController9 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController9.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDigitalWindowControl();
     }
     pub fn getCameraOcclusionInfo(self: *@This()) core.HResult!*CameraOcclusionInfo {
         var this: ?*IAdvancedVideoCaptureDeviceController10 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController10.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCameraOcclusionInfo();
     }
     pub fn TryAcquireExclusiveControl(self: *@This(), deviceId: ?HSTRING, mode: MediaCaptureDeviceExclusiveControlReleaseMode) core.HResult!bool {
         var this: ?*IAdvancedVideoCaptureDeviceController11 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAdvancedVideoCaptureDeviceController11.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryAcquireExclusiveControl(deviceId, mode);
@@ -5601,18 +5669,21 @@ pub const ZoomControl = extern struct {
     }
     pub fn getSupportedModes(self: *@This()) core.HResult!*IVectorView(ZoomTransitionMode) {
         var this: ?*IZoomControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IZoomControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedModes();
     }
     pub fn getMode(self: *@This()) core.HResult!ZoomTransitionMode {
         var this: ?*IZoomControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IZoomControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMode();
     }
     pub fn Configure(self: *@This(), settings: *ZoomSettings) core.HResult!void {
         var this: ?*IZoomControl2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IZoomControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Configure(settings);

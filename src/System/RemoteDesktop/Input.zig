@@ -140,12 +140,14 @@ pub const RemoteTextConnection = extern struct {
     }
     pub fn ReportPredictedKeyEvent(self: *@This(), scanCode: u16, attributes: RemoteKeyEventAttributes) core.HResult!void {
         var this: ?*IRemoteTextConnection2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteTextConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportPredictedKeyEvent(scanCode, attributes);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

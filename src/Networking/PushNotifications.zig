@@ -474,12 +474,14 @@ pub const PushNotificationChannelManagerForUser = extern struct {
     }
     pub fn CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsync(self: *@This(), appServerKey: *IBuffer, channelId: ?HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         var this: ?*IPushNotificationChannelManagerForUser2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPushNotificationChannelManagerForUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsync(appServerKey, channelId);
     }
     pub fn CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithAppId(self: *@This(), appServerKey: *IBuffer, channelId: ?HSTRING, appId: ?HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         var this: ?*IPushNotificationChannelManagerForUser2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPushNotificationChannelManagerForUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithAppId(appServerKey, channelId, appId);
@@ -549,18 +551,21 @@ pub const RawNotification = extern struct {
     }
     pub fn getHeaders(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
         var this: ?*IRawNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRawNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHeaders();
     }
     pub fn getChannelId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IRawNotification2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRawNotification2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChannelId();
     }
     pub fn getContentBytes(self: *@This()) core.HResult!*IBuffer {
         var this: ?*IRawNotification3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRawNotification3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContentBytes();

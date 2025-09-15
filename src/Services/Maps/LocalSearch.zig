@@ -396,18 +396,21 @@ pub const LocalLocation = extern struct {
     }
     pub fn getCategory(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ILocalLocation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILocalLocation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCategory();
     }
     pub fn getRatingInfo(self: *@This()) core.HResult!*LocalLocationRatingInfo {
         var this: ?*ILocalLocation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILocalLocation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRatingInfo();
     }
     pub fn getHoursOfOperation(self: *@This()) core.HResult!*IVectorView(LocalLocationHoursOfOperationItem) {
         var this: ?*ILocalLocation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILocalLocation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHoursOfOperation();

@@ -556,18 +556,21 @@ pub const GettingFocusEventArgs = extern struct {
     }
     pub fn TryCancel(self: *@This()) core.HResult!bool {
         var this: ?*IGettingFocusEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGettingFocusEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryCancel();
     }
     pub fn TrySetNewFocusedElement(self: *@This(), element: *DependencyObject) core.HResult!bool {
         var this: ?*IGettingFocusEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGettingFocusEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TrySetNewFocusedElement(element);
     }
     pub fn getCorrelationId(self: *@This()) core.HResult!*Guid {
         var this: ?*IGettingFocusEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGettingFocusEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCorrelationId();
@@ -3602,12 +3605,14 @@ pub const KeyRoutedEventArgs = extern struct {
     }
     pub fn getOriginalKey(self: *@This()) core.HResult!VirtualKey {
         var this: ?*IKeyRoutedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyRoutedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOriginalKey();
     }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IKeyRoutedEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyRoutedEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
@@ -3716,6 +3721,7 @@ pub const KeyboardAcceleratorInvokedEventArgs = extern struct {
     }
     pub fn getKeyboardAccelerator(self: *@This()) core.HResult!*KeyboardAccelerator {
         var this: ?*IKeyboardAcceleratorInvokedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyboardAcceleratorInvokedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyboardAccelerator();
@@ -3779,18 +3785,21 @@ pub const LosingFocusEventArgs = extern struct {
     }
     pub fn TryCancel(self: *@This()) core.HResult!bool {
         var this: ?*ILosingFocusEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILosingFocusEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryCancel();
     }
     pub fn TrySetNewFocusedElement(self: *@This(), element: *DependencyObject) core.HResult!bool {
         var this: ?*ILosingFocusEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILosingFocusEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TrySetNewFocusedElement(element);
     }
     pub fn getCorrelationId(self: *@This()) core.HResult!*Guid {
         var this: ?*ILosingFocusEventArgs3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILosingFocusEventArgs3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCorrelationId();
@@ -4726,6 +4735,7 @@ pub const PointerRoutedEventArgs = extern struct {
     }
     pub fn getIsGenerated(self: *@This()) core.HResult!bool {
         var this: ?*IPointerRoutedEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointerRoutedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsGenerated();
@@ -4949,24 +4959,28 @@ pub const XamlUICommand = extern struct {
     }
     pub fn addCanExecuteChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ICommand = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommand.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addCanExecuteChanged(handler);
     }
     pub fn removeCanExecuteChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICommand = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommand.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeCanExecuteChanged(token);
     }
     pub fn CanExecute(self: *@This(), parameter: *IInspectable) core.HResult!bool {
         var this: ?*ICommand = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommand.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CanExecute(parameter);
     }
     pub fn Execute(self: *@This(), parameter: *IInspectable) core.HResult!void {
         var this: ?*ICommand = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICommand.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Execute(parameter);
@@ -5018,6 +5032,7 @@ pub const StandardUICommand = extern struct {
     }
     pub fn putKind(self: *@This(), value: StandardUICommandKind) core.HResult!void {
         var this: ?*IStandardUICommand2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStandardUICommand2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putKind(value);

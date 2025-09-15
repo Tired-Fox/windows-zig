@@ -568,12 +568,14 @@ pub const NavigatingCancelEventArgs = extern struct {
     }
     pub fn getParameter(self: *@This()) core.HResult!*IInspectable {
         var this: ?*INavigatingCancelEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigatingCancelEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getParameter();
     }
     pub fn getNavigationTransitionInfo(self: *@This()) core.HResult!*NavigationTransitionInfo {
         var this: ?*INavigatingCancelEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigatingCancelEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNavigationTransitionInfo();
@@ -706,6 +708,7 @@ pub const NavigationEventArgs = extern struct {
     }
     pub fn getNavigationTransitionInfo(self: *@This()) core.HResult!*NavigationTransitionInfo {
         var this: ?*INavigationEventArgs2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigationEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getNavigationTransitionInfo();

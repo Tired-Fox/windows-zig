@@ -1225,24 +1225,28 @@ pub const ListingInformation = extern struct {
     }
     pub fn getFormattedBasePrice(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IListingInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListingInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFormattedBasePrice();
     }
     pub fn getSaleEndDate(self: *@This()) core.HResult!DateTime {
         var this: ?*IListingInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListingInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSaleEndDate();
     }
     pub fn getIsOnSale(self: *@This()) core.HResult!bool {
         var this: ?*IListingInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListingInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsOnSale();
     }
     pub fn getCurrencyCode(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IListingInformation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IListingInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCurrencyCode();
@@ -1269,6 +1273,7 @@ pub const ProductLicense = extern struct {
     }
     pub fn getIsConsumable(self: *@This()) core.HResult!bool {
         var this: ?*IProductLicenseWithFulfillment = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProductLicenseWithFulfillment.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsConsumable();
@@ -1295,54 +1300,63 @@ pub const ProductListing = extern struct {
     }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IProductListingWithMetadata = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProductListingWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDescription();
     }
     pub fn getKeywords(self: *@This()) core.HResult!*IIterable(?HSTRING) {
         var this: ?*IProductListingWithMetadata = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProductListingWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeywords();
     }
     pub fn getProductType(self: *@This()) core.HResult!ProductType {
         var this: ?*IProductListingWithMetadata = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProductListingWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProductType();
     }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IProductListingWithMetadata = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProductListingWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTag();
     }
     pub fn getImageUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IProductListingWithMetadata = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProductListingWithMetadata.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getImageUri();
     }
     pub fn getFormattedBasePrice(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IProductListing2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProductListing2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFormattedBasePrice();
     }
     pub fn getSaleEndDate(self: *@This()) core.HResult!DateTime {
         var this: ?*IProductListing2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProductListing2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSaleEndDate();
     }
     pub fn getIsOnSale(self: *@This()) core.HResult!bool {
         var this: ?*IProductListing2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProductListing2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsOnSale();
     }
     pub fn getCurrencyCode(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IProductListing2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProductListing2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCurrencyCode();

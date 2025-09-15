@@ -39,24 +39,28 @@ pub const AudioEffect = extern struct {
     }
     pub fn getAcousticEchoCancellationConfiguration(self: *@This()) core.HResult!*AcousticEchoCancellationConfiguration {
         var this: ?*IAudioEffect2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffect2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAcousticEchoCancellationConfiguration();
     }
     pub fn getCanSetState(self: *@This()) core.HResult!bool {
         var this: ?*IAudioEffect2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffect2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanSetState();
     }
     pub fn getState(self: *@This()) core.HResult!AudioEffectState {
         var this: ?*IAudioEffect2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffect2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getState();
     }
     pub fn SetState(self: *@This(), newState: AudioEffectState) core.HResult!void {
         var this: ?*IAudioEffect2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioEffect2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetState(newState);
@@ -162,18 +166,21 @@ pub const AudioRenderEffectsManager = extern struct {
     }
     pub fn getEffectsProviderThumbnail(self: *@This()) core.HResult!*IRandomAccessStreamWithContentType {
         var this: ?*IAudioRenderEffectsManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioRenderEffectsManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectsProviderThumbnail();
     }
     pub fn getEffectsProviderSettingsLabel(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAudioRenderEffectsManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioRenderEffectsManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEffectsProviderSettingsLabel();
     }
     pub fn ShowSettingsUI(self: *@This()) core.HResult!void {
         var this: ?*IAudioRenderEffectsManager2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioRenderEffectsManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShowSettingsUI();
@@ -1182,78 +1189,91 @@ pub const VideoTransformEffectDefinition = extern struct {
     }
     pub fn getPaddingColor(self: *@This()) core.HResult!Color {
         var this: ?*IVideoTransformEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPaddingColor();
     }
     pub fn putPaddingColor(self: *@This(), value: Color) core.HResult!void {
         var this: ?*IVideoTransformEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPaddingColor(value);
     }
     pub fn getOutputSize(self: *@This()) core.HResult!Size {
         var this: ?*IVideoTransformEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOutputSize();
     }
     pub fn putOutputSize(self: *@This(), value: Size) core.HResult!void {
         var this: ?*IVideoTransformEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOutputSize(value);
     }
     pub fn getCropRectangle(self: *@This()) core.HResult!Rect {
         var this: ?*IVideoTransformEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCropRectangle();
     }
     pub fn putCropRectangle(self: *@This(), value: Rect) core.HResult!void {
         var this: ?*IVideoTransformEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCropRectangle(value);
     }
     pub fn getRotation(self: *@This()) core.HResult!MediaRotation {
         var this: ?*IVideoTransformEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRotation();
     }
     pub fn putRotation(self: *@This(), value: MediaRotation) core.HResult!void {
         var this: ?*IVideoTransformEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRotation(value);
     }
     pub fn getMirror(self: *@This()) core.HResult!MediaMirroringOptions {
         var this: ?*IVideoTransformEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMirror();
     }
     pub fn putMirror(self: *@This(), value: MediaMirroringOptions) core.HResult!void {
         var this: ?*IVideoTransformEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMirror(value);
     }
     pub fn putProcessingAlgorithm(self: *@This(), value: MediaVideoProcessingAlgorithm) core.HResult!void {
         var this: ?*IVideoTransformEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putProcessingAlgorithm(value);
     }
     pub fn getProcessingAlgorithm(self: *@This()) core.HResult!MediaVideoProcessingAlgorithm {
         var this: ?*IVideoTransformEffectDefinition = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProcessingAlgorithm();
     }
     pub fn getSphericalProjection(self: *@This()) core.HResult!*VideoTransformSphericalProjection {
         var this: ?*IVideoTransformEffectDefinition2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoTransformEffectDefinition2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSphericalProjection();

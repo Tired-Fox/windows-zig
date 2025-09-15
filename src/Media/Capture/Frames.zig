@@ -55,12 +55,14 @@ pub const DepthMediaFrame = extern struct {
     }
     pub fn getMaxReliableDepth(self: *@This()) core.HResult!u32 {
         var this: ?*IDepthMediaFrame2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDepthMediaFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxReliableDepth();
     }
     pub fn getMinReliableDepth(self: *@This()) core.HResult!u32 {
         var this: ?*IDepthMediaFrame2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDepthMediaFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMinReliableDepth();
@@ -1246,6 +1248,7 @@ pub const MediaFrameFormat = extern struct {
     }
     pub fn getAudioEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var this: ?*IMediaFrameFormat2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrameFormat2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAudioEncodingProperties();
@@ -1280,18 +1283,21 @@ pub const MediaFrameReader = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn putAcquisitionMode(self: *@This(), value: MediaFrameReaderAcquisitionMode) core.HResult!void {
         var this: ?*IMediaFrameReader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrameReader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAcquisitionMode(value);
     }
     pub fn getAcquisitionMode(self: *@This()) core.HResult!MediaFrameReaderAcquisitionMode {
         var this: ?*IMediaFrameReader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrameReader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAcquisitionMode();
@@ -1349,12 +1355,14 @@ pub const MediaFrameReference = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn getAudioMediaFrame(self: *@This()) core.HResult!*AudioMediaFrame {
         var this: ?*IMediaFrameReference2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrameReference2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAudioMediaFrame();
@@ -1421,18 +1429,21 @@ pub const MediaFrameSourceController = extern struct {
     }
     pub fn GetPropertyByExtendedIdAsync(self: *@This(), extendedPropertyId: [*]u8, maxPropertyValueSize: *IReference(u32)) core.HResult!*IAsyncOperation(MediaFrameSourceGetPropertyResult) {
         var this: ?*IMediaFrameSourceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrameSourceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPropertyByExtendedIdAsync(extendedPropertyId, maxPropertyValueSize);
     }
     pub fn SetPropertyByExtendedIdAsync(self: *@This(), extendedPropertyId: [*]u8, propertyValue: [*]u8) core.HResult!*IAsyncOperation(MediaFrameSourceSetPropertyStatus) {
         var this: ?*IMediaFrameSourceController2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrameSourceController2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPropertyByExtendedIdAsync(extendedPropertyId, propertyValue);
     }
     pub fn getAudioDeviceController(self: *@This()) core.HResult!*AudioDeviceController {
         var this: ?*IMediaFrameSourceController3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrameSourceController3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAudioDeviceController();
@@ -1535,24 +1546,28 @@ pub const MediaFrameSourceInfo = extern struct {
     }
     pub fn getProfileId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IMediaFrameSourceInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrameSourceInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProfileId();
     }
     pub fn getVideoProfileMediaDescription(self: *@This()) core.HResult!*IVectorView(MediaCaptureVideoProfileMediaDescription) {
         var this: ?*IMediaFrameSourceInfo2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrameSourceInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVideoProfileMediaDescription();
     }
     pub fn GetRelativePanel(self: *@This(), displayRegion: *DisplayRegion) core.HResult!Panel {
         var this: ?*IMediaFrameSourceInfo3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrameSourceInfo3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRelativePanel(displayRegion);
     }
     pub fn getIsShareable(self: *@This()) core.HResult!bool {
         var this: ?*IMediaFrameSourceInfo4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaFrameSourceInfo4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsShareable();
@@ -1612,18 +1627,21 @@ pub const MultiSourceMediaFrameReader = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
     pub fn putAcquisitionMode(self: *@This(), value: MediaFrameReaderAcquisitionMode) core.HResult!void {
         var this: ?*IMultiSourceMediaFrameReader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMultiSourceMediaFrameReader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAcquisitionMode(value);
     }
     pub fn getAcquisitionMode(self: *@This()) core.HResult!MediaFrameReaderAcquisitionMode {
         var this: ?*IMultiSourceMediaFrameReader2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMultiSourceMediaFrameReader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAcquisitionMode();
@@ -1649,6 +1667,7 @@ pub const MultiSourceMediaFrameReference = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();

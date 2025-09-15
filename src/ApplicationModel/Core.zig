@@ -11,18 +11,21 @@ pub const AppListEntry = extern struct {
     }
     pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IAppListEntry2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppUserModelId();
     }
     pub fn LaunchForUserAsync(self: *@This(), user: *User) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppListEntry3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppListEntry3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LaunchForUserAsync(user);
     }
     pub fn getAppInfo(self: *@This()) core.HResult!*AppInfo {
         var this: ?*IAppListEntry4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppListEntry4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppInfo();
@@ -200,42 +203,49 @@ pub const CoreApplicationView = extern struct {
     }
     pub fn getDispatcher(self: *@This()) core.HResult!*CoreDispatcher {
         var this: ?*ICoreApplicationView2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreApplicationView2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDispatcher();
     }
     pub fn getIsComponent(self: *@This()) core.HResult!bool {
         var this: ?*ICoreApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsComponent();
     }
     pub fn getTitleBar(self: *@This()) core.HResult!*CoreApplicationViewTitleBar {
         var this: ?*ICoreApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getTitleBar();
     }
     pub fn addHostedViewClosing(self: *@This(), handler: *TypedEventHandler(CoreApplicationView,HostedViewClosingEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addHostedViewClosing(handler);
     }
     pub fn removeHostedViewClosing(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*ICoreApplicationView3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreApplicationView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeHostedViewClosing(token);
     }
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         var this: ?*ICoreApplicationView5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreApplicationView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getProperties();
     }
     pub fn getDispatcherQueue(self: *@This()) core.HResult!*DispatcherQueue {
         var this: ?*ICoreApplicationView6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreApplicationView6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDispatcherQueue();

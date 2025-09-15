@@ -262,12 +262,14 @@ pub const ShareOperation = extern struct {
     }
     pub fn DismissUI(self: *@This()) core.HResult!void {
         var this: ?*IShareOperation2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IShareOperation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DismissUI();
     }
     pub fn getContacts(self: *@This()) core.HResult!*IVectorView(Contact) {
         var this: ?*IShareOperation3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IShareOperation3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getContacts();

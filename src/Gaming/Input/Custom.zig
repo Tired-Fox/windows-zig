@@ -76,30 +76,35 @@ pub const GipGameControllerProvider = extern struct {
     }
     pub fn getFirmwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFirmwareVersionInfo();
     }
     pub fn getHardwareProductId(self: *@This()) core.HResult!u16 {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHardwareProductId();
     }
     pub fn getHardwareVendorId(self: *@This()) core.HResult!u16 {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHardwareVendorId();
     }
     pub fn getHardwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHardwareVersionInfo();
     }
     pub fn getIsConnected(self: *@This()) core.HResult!bool {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsConnected();
@@ -139,30 +144,35 @@ pub const HidGameControllerProvider = extern struct {
     }
     pub fn getFirmwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFirmwareVersionInfo();
     }
     pub fn getHardwareProductId(self: *@This()) core.HResult!u16 {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHardwareProductId();
     }
     pub fn getHardwareVendorId(self: *@This()) core.HResult!u16 {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHardwareVendorId();
     }
     pub fn getHardwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHardwareVersionInfo();
     }
     pub fn getIsConnected(self: *@This()) core.HResult!bool {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsConnected();
@@ -566,30 +576,35 @@ pub const XusbGameControllerProvider = extern struct {
     }
     pub fn getFirmwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFirmwareVersionInfo();
     }
     pub fn getHardwareProductId(self: *@This()) core.HResult!u16 {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHardwareProductId();
     }
     pub fn getHardwareVendorId(self: *@This()) core.HResult!u16 {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHardwareVendorId();
     }
     pub fn getHardwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getHardwareVersionInfo();
     }
     pub fn getIsConnected(self: *@This()) core.HResult!bool {
         var this: ?*IGameControllerProvider = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameControllerProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsConnected();

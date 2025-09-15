@@ -104,48 +104,56 @@ pub const BitmapImage = extern struct {
     }
     pub fn getDecodePixelType(self: *@This()) core.HResult!DecodePixelType {
         var this: ?*IBitmapImage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapImage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDecodePixelType();
     }
     pub fn putDecodePixelType(self: *@This(), value: DecodePixelType) core.HResult!void {
         var this: ?*IBitmapImage2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapImage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDecodePixelType(value);
     }
     pub fn getIsAnimatedBitmap(self: *@This()) core.HResult!bool {
         var this: ?*IBitmapImage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapImage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAnimatedBitmap();
     }
     pub fn getIsPlaying(self: *@This()) core.HResult!bool {
         var this: ?*IBitmapImage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapImage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPlaying();
     }
     pub fn getAutoPlay(self: *@This()) core.HResult!bool {
         var this: ?*IBitmapImage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapImage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAutoPlay();
     }
     pub fn putAutoPlay(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBitmapImage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapImage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAutoPlay(value);
     }
     pub fn Play(self: *@This()) core.HResult!void {
         var this: ?*IBitmapImage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapImage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Play();
     }
     pub fn Stop(self: *@This()) core.HResult!void {
         var this: ?*IBitmapImage3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapImage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
@@ -1292,6 +1300,7 @@ pub const SoftwareBitmapSource = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -1481,6 +1490,7 @@ pub const XamlRenderingBackgroundTask = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn OnRun(self: *@This(), taskInstance: *IBackgroundTaskInstance) core.HResult!void {
         var this: ?*IXamlRenderingBackgroundTaskOverrides = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXamlRenderingBackgroundTaskOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnRun(taskInstance);

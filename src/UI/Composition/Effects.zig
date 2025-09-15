@@ -147,24 +147,28 @@ pub const SceneLightingEffect = extern struct {
     }
     pub fn getReflectanceModel(self: *@This()) core.HResult!SceneLightingEffectReflectanceModel {
         var this: ?*ISceneLightingEffect2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISceneLightingEffect2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReflectanceModel();
     }
     pub fn putReflectanceModel(self: *@This(), value: SceneLightingEffectReflectanceModel) core.HResult!void {
         var this: ?*ISceneLightingEffect2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISceneLightingEffect2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReflectanceModel(value);
     }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IGraphicsEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getName();
     }
     pub fn putName(self: *@This(), name: ?HSTRING) core.HResult!void {
         var this: ?*IGraphicsEffect = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGraphicsEffect.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putName(name);

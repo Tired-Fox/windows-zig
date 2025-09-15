@@ -35,72 +35,84 @@ pub const HolographicCamera = extern struct {
     }
     pub fn getLeftViewportParameters(self: *@This()) core.HResult!*HolographicCameraViewportParameters {
         var this: ?*IHolographicCamera2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getLeftViewportParameters();
     }
     pub fn getRightViewportParameters(self: *@This()) core.HResult!*HolographicCameraViewportParameters {
         var this: ?*IHolographicCamera2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRightViewportParameters();
     }
     pub fn getDisplay(self: *@This()) core.HResult!*HolographicDisplay {
         var this: ?*IHolographicCamera2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDisplay();
     }
     pub fn getIsPrimaryLayerEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IHolographicCamera3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPrimaryLayerEnabled();
     }
     pub fn putIsPrimaryLayerEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IHolographicCamera3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsPrimaryLayerEnabled(value);
     }
     pub fn getMaxQuadLayerCount(self: *@This()) core.HResult!u32 {
         var this: ?*IHolographicCamera3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxQuadLayerCount();
     }
     pub fn getQuadLayers(self: *@This()) core.HResult!*IVector(HolographicQuadLayer) {
         var this: ?*IHolographicCamera3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getQuadLayers();
     }
     pub fn getCanOverrideViewport(self: *@This()) core.HResult!bool {
         var this: ?*IHolographicCamera4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanOverrideViewport();
     }
     pub fn getIsHardwareContentProtectionSupported(self: *@This()) core.HResult!bool {
         var this: ?*IHolographicCamera5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsHardwareContentProtectionSupported();
     }
     pub fn getIsHardwareContentProtectionEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IHolographicCamera5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsHardwareContentProtectionEnabled();
     }
     pub fn putIsHardwareContentProtectionEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IHolographicCamera5 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsHardwareContentProtectionEnabled(value);
     }
     pub fn getViewConfiguration(self: *@This()) core.HResult!*HolographicViewConfiguration {
         var this: ?*IHolographicCamera6 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCamera6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getViewConfiguration();
@@ -147,18 +159,21 @@ pub const HolographicCameraPose = extern struct {
     }
     pub fn OverrideViewTransform(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, coordinateSystemToViewTransform: HolographicStereoTransform) core.HResult!void {
         var this: ?*IHolographicCameraPose2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraPose2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OverrideViewTransform(coordinateSystem, coordinateSystemToViewTransform);
     }
     pub fn OverrideProjectionTransform(self: *@This(), projectionTransform: HolographicStereoTransform) core.HResult!void {
         var this: ?*IHolographicCameraPose2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraPose2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OverrideProjectionTransform(projectionTransform);
     }
     pub fn OverrideViewport(self: *@This(), leftViewport: Rect, rightViewport: Rect) core.HResult!void {
         var this: ?*IHolographicCameraPose2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraPose2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OverrideViewport(leftViewport, rightViewport);
@@ -193,42 +208,49 @@ pub const HolographicCameraRenderingParameters = extern struct {
     }
     pub fn getReprojectionMode(self: *@This()) core.HResult!HolographicReprojectionMode {
         var this: ?*IHolographicCameraRenderingParameters2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReprojectionMode();
     }
     pub fn putReprojectionMode(self: *@This(), value: HolographicReprojectionMode) core.HResult!void {
         var this: ?*IHolographicCameraRenderingParameters2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putReprojectionMode(value);
     }
     pub fn CommitDirect3D11DepthBuffer(self: *@This(), value: *IDirect3DSurface) core.HResult!void {
         var this: ?*IHolographicCameraRenderingParameters2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CommitDirect3D11DepthBuffer(value);
     }
     pub fn getIsContentProtectionEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IHolographicCameraRenderingParameters3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsContentProtectionEnabled();
     }
     pub fn putIsContentProtectionEnabled(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IHolographicCameraRenderingParameters3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsContentProtectionEnabled(value);
     }
     pub fn getDepthReprojectionMethod(self: *@This()) core.HResult!HolographicDepthReprojectionMethod {
         var this: ?*IHolographicCameraRenderingParameters4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDepthReprojectionMethod();
     }
     pub fn putDepthReprojectionMethod(self: *@This(), value: HolographicDepthReprojectionMethod) core.HResult!void {
         var this: ?*IHolographicCameraRenderingParameters4 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicCameraRenderingParameters4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDepthReprojectionMethod(value);
@@ -287,12 +309,14 @@ pub const HolographicDisplay = extern struct {
     }
     pub fn getRefreshRate(self: *@This()) core.HResult!f64 {
         var this: ?*IHolographicDisplay2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRefreshRate();
     }
     pub fn TryGetViewConfiguration(self: *@This(), kind: HolographicViewConfigurationKind) core.HResult!*HolographicViewConfiguration {
         var this: ?*IHolographicDisplay3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicDisplay3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetViewConfiguration(kind);
@@ -351,12 +375,14 @@ pub const HolographicFrame = extern struct {
     }
     pub fn GetQuadLayerUpdateParameters(self: *@This(), layer: *HolographicQuadLayer) core.HResult!*HolographicQuadLayerUpdateParameters {
         var this: ?*IHolographicFrame2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetQuadLayerUpdateParameters(layer);
     }
     pub fn getId(self: *@This()) core.HResult!HolographicFrameId {
         var this: ?*IHolographicFrame3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicFrame3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getId();
@@ -402,6 +428,7 @@ pub const HolographicFramePresentationMonitor = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -476,6 +503,7 @@ pub const HolographicFrameScanoutMonitor = extern struct {
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -518,6 +546,7 @@ pub const HolographicQuadLayer = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
@@ -576,12 +605,14 @@ pub const HolographicQuadLayerUpdateParameters = extern struct {
     }
     pub fn getCanAcquireWithHardwareProtection(self: *@This()) core.HResult!bool {
         var this: ?*IHolographicQuadLayerUpdateParameters2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicQuadLayerUpdateParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanAcquireWithHardwareProtection();
     }
     pub fn AcquireBufferToUpdateContentWithHardwareProtection(self: *@This()) core.HResult!*IDirect3DSurface {
         var this: ?*IHolographicQuadLayerUpdateParameters2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicQuadLayerUpdateParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AcquireBufferToUpdateContentWithHardwareProtection();
@@ -629,42 +660,49 @@ pub const HolographicSpace = extern struct {
     }
     pub fn getUserPresence(self: *@This()) core.HResult!HolographicSpaceUserPresence {
         var this: ?*IHolographicSpace2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUserPresence();
     }
     pub fn addUserPresenceChanged(self: *@This(), handler: *TypedEventHandler(HolographicSpace,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IHolographicSpace2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addUserPresenceChanged(handler);
     }
     pub fn removeUserPresenceChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         var this: ?*IHolographicSpace2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeUserPresenceChanged(token);
     }
     pub fn WaitForNextFrameReady(self: *@This()) core.HResult!void {
         var this: ?*IHolographicSpace2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WaitForNextFrameReady();
     }
     pub fn WaitForNextFrameReadyWithHeadStart(self: *@This(), requestedHeadStartDuration: TimeSpan) core.HResult!void {
         var this: ?*IHolographicSpace2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WaitForNextFrameReadyWithHeadStart(requestedHeadStartDuration);
     }
     pub fn CreateFramePresentationMonitor(self: *@This(), maxQueuedReports: u32) core.HResult!*HolographicFramePresentationMonitor {
         var this: ?*IHolographicSpace2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFramePresentationMonitor(maxQueuedReports);
     }
     pub fn CreateFrameScanoutMonitor(self: *@This(), maxQueuedReports: u32) core.HResult!*HolographicFrameScanoutMonitor {
         var this: ?*IHolographicSpace3 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicSpace3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFrameScanoutMonitor(maxQueuedReports);
@@ -794,6 +832,7 @@ pub const HolographicViewConfiguration = extern struct {
     }
     pub fn getSupportedDepthReprojectionMethods(self: *@This()) core.HResult!*IVectorView(HolographicDepthReprojectionMethod) {
         var this: ?*IHolographicViewConfiguration2 = undefined;
+        defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHolographicViewConfiguration2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedDepthReprojectionMethods();
