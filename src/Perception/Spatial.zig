@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ISpatialAnchor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCoordinateSystem(self: *@This()) core.HResult!*SpatialCoordinateSystem {
         var _r: *SpatialCoordinateSystem = undefined;
         const _c = self.vtable.get_CoordinateSystem(@ptrCast(self), &_r);
@@ -43,6 +49,12 @@ pub const ISpatialAnchor = extern struct {
 };
 pub const ISpatialAnchor2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemovedByUser(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_RemovedByUser(@ptrCast(self), &_r);
@@ -66,6 +78,12 @@ pub const ISpatialAnchor2 = extern struct {
 };
 pub const ISpatialAnchorExportSufficiency = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsMinimallySufficient(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsMinimallySufficient(@ptrCast(self), &_r);
@@ -103,6 +121,12 @@ pub const ISpatialAnchorExportSufficiency = extern struct {
 };
 pub const ISpatialAnchorExporter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAnchorExportSufficiencyAsync(self: *@This(), anchor: *SpatialAnchor, purpose: SpatialAnchorExportPurpose) core.HResult!*IAsyncOperation(SpatialAnchorExportSufficiency) {
         var _r: *IAsyncOperation(SpatialAnchorExportSufficiency) = undefined;
         const _c = self.vtable.GetAnchorExportSufficiencyAsync(@ptrCast(self), anchor, purpose, &_r);
@@ -133,6 +157,12 @@ pub const ISpatialAnchorExporter = extern struct {
 };
 pub const ISpatialAnchorExporterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*SpatialAnchorExporter {
         var _r: *SpatialAnchorExporter = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -163,6 +193,12 @@ pub const ISpatialAnchorExporterStatics = extern struct {
 };
 pub const ISpatialAnchorManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestStoreAsync(self: *@This()) core.HResult!*IAsyncOperation(SpatialAnchorStore) {
         var _r: *IAsyncOperation(SpatialAnchorStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), &_r);
@@ -186,6 +222,12 @@ pub const ISpatialAnchorManagerStatics = extern struct {
 };
 pub const ISpatialAnchorRawCoordinateSystemAdjustedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOldRawCoordinateSystemToNewRawCoordinateSystemTransform(self: *@This()) core.HResult!Matrix4x4 {
         var _r: Matrix4x4 = undefined;
         const _c = self.vtable.get_OldRawCoordinateSystemToNewRawCoordinateSystemTransform(@ptrCast(self), &_r);
@@ -209,6 +251,12 @@ pub const ISpatialAnchorRawCoordinateSystemAdjustedEventArgs = extern struct {
 };
 pub const ISpatialAnchorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryCreateRelativeTo(self: *@This(), coordinateSystem: *SpatialCoordinateSystem) core.HResult!*SpatialAnchor {
         var _r: *SpatialAnchor = undefined;
         const _c = self.vtable.TryCreateRelativeTo(@ptrCast(self), coordinateSystem, &_r);
@@ -246,6 +294,12 @@ pub const ISpatialAnchorStatics = extern struct {
 };
 pub const ISpatialAnchorStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAllSavedAnchors(self: *@This()) core.HResult!*IMapView(?HSTRING,SpatialAnchor) {
         var _r: *IMapView(?HSTRING,SpatialAnchor) = undefined;
         const _c = self.vtable.GetAllSavedAnchors(@ptrCast(self), &_r);
@@ -286,6 +340,12 @@ pub const ISpatialAnchorStore = extern struct {
 };
 pub const ISpatialAnchorTransferManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryImportAnchorsAsync(self: *@This(), stream: *IInputStream) core.HResult!*IAsyncOperation(IMapView(?HSTRING,SpatialAnchor)) {
         var _r: *IAsyncOperation(IMapView(?HSTRING,SpatialAnchor)) = undefined;
         const _c = self.vtable.TryImportAnchorsAsync(@ptrCast(self), stream, &_r);
@@ -323,6 +383,12 @@ pub const ISpatialAnchorTransferManagerStatics = extern struct {
 };
 pub const ISpatialBoundingVolume = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.ISpatialBoundingVolume";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "fb2065da-68c3-33df-b7af-4c787207999c";
@@ -339,6 +405,12 @@ pub const ISpatialBoundingVolume = extern struct {
 };
 pub const ISpatialBoundingVolumeStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromBox(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, box: SpatialBoundingBox) core.HResult!*SpatialBoundingVolume {
         var _r: *SpatialBoundingVolume = undefined;
         const _c = self.vtable.FromBox(@ptrCast(self), coordinateSystem, box, &_r);
@@ -383,6 +455,12 @@ pub const ISpatialBoundingVolumeStatics = extern struct {
 };
 pub const ISpatialCoordinateSystem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetTransformTo(self: *@This(), target: *SpatialCoordinateSystem) core.HResult!*IReference(Matrix4x4) {
         var _r: *IReference(Matrix4x4) = undefined;
         const _c = self.vtable.TryGetTransformTo(@ptrCast(self), target, &_r);
@@ -406,6 +484,12 @@ pub const ISpatialCoordinateSystem = extern struct {
 };
 pub const ISpatialEntity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -443,6 +527,12 @@ pub const ISpatialEntity = extern struct {
 };
 pub const ISpatialEntityAddedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntity(self: *@This()) core.HResult!*SpatialEntity {
         var _r: *SpatialEntity = undefined;
         const _c = self.vtable.get_Entity(@ptrCast(self), &_r);
@@ -466,6 +556,12 @@ pub const ISpatialEntityAddedEventArgs = extern struct {
 };
 pub const ISpatialEntityFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithSpatialAnchor(self: *@This(), spatialAnchor: *SpatialAnchor) core.HResult!*SpatialEntity {
         var _r: *SpatialEntity = undefined;
         const _c = self.vtable.CreateWithSpatialAnchor(@ptrCast(self), spatialAnchor, &_r);
@@ -496,6 +592,12 @@ pub const ISpatialEntityFactory = extern struct {
 };
 pub const ISpatialEntityRemovedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntity(self: *@This()) core.HResult!*SpatialEntity {
         var _r: *SpatialEntity = undefined;
         const _c = self.vtable.get_Entity(@ptrCast(self), &_r);
@@ -519,6 +621,12 @@ pub const ISpatialEntityRemovedEventArgs = extern struct {
 };
 pub const ISpatialEntityStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SaveAsync(self: *@This(), entity: *SpatialEntity) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SaveAsync(@ptrCast(self), entity, &_r);
@@ -556,6 +664,12 @@ pub const ISpatialEntityStore = extern struct {
 };
 pub const ISpatialEntityStoreStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
@@ -586,6 +700,12 @@ pub const ISpatialEntityStoreStatics = extern struct {
 };
 pub const ISpatialEntityUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntity(self: *@This()) core.HResult!*SpatialEntity {
         var _r: *SpatialEntity = undefined;
         const _c = self.vtable.get_Entity(@ptrCast(self), &_r);
@@ -609,6 +729,12 @@ pub const ISpatialEntityUpdatedEventArgs = extern struct {
 };
 pub const ISpatialEntityWatcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!SpatialEntityWatcherStatus {
         var _r: SpatialEntityWatcherStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -690,6 +816,12 @@ pub const ISpatialEntityWatcher = extern struct {
 };
 pub const ISpatialLocation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -748,6 +880,12 @@ pub const ISpatialLocation = extern struct {
 };
 pub const ISpatialLocation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAbsoluteAngularVelocityAxisAngle(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_AbsoluteAngularVelocityAxisAngle(@ptrCast(self), &_r);
@@ -778,6 +916,12 @@ pub const ISpatialLocation2 = extern struct {
 };
 pub const ISpatialLocator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocatability(self: *@This()) core.HResult!SpatialLocatability {
         var _r: SpatialLocatability = undefined;
         const _c = self.vtable.get_Locatability(@ptrCast(self), &_r);
@@ -888,6 +1032,12 @@ pub const ISpatialLocator = extern struct {
 };
 pub const ISpatialLocatorAttachedFrameOfReference = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelativePosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_RelativePosition(@ptrCast(self), &_r);
@@ -947,6 +1097,12 @@ pub const ISpatialLocatorAttachedFrameOfReference = extern struct {
 };
 pub const ISpatialLocatorPositionalTrackingDeactivatingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanceled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Canceled(@ptrCast(self), &_r);
@@ -975,6 +1131,12 @@ pub const ISpatialLocatorPositionalTrackingDeactivatingEventArgs = extern struct
 };
 pub const ISpatialLocatorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*SpatialLocator {
         var _r: *SpatialLocator = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -998,6 +1160,12 @@ pub const ISpatialLocatorStatics = extern struct {
 };
 pub const ISpatialStageFrameOfReference = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCoordinateSystem(self: *@This()) core.HResult!*SpatialCoordinateSystem {
         var _r: *SpatialCoordinateSystem = undefined;
         const _c = self.vtable.get_CoordinateSystem(@ptrCast(self), &_r);
@@ -1049,6 +1217,12 @@ pub const ISpatialStageFrameOfReference = extern struct {
 };
 pub const ISpatialStageFrameOfReferenceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrent(self: *@This()) core.HResult!*SpatialStageFrameOfReference {
         var _r: *SpatialStageFrameOfReference = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
@@ -1091,6 +1265,12 @@ pub const ISpatialStageFrameOfReferenceStatics = extern struct {
 };
 pub const ISpatialStationaryFrameOfReference = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCoordinateSystem(self: *@This()) core.HResult!*SpatialCoordinateSystem {
         var _r: *SpatialCoordinateSystem = undefined;
         const _c = self.vtable.get_CoordinateSystem(@ptrCast(self), &_r);
@@ -1114,6 +1294,18 @@ pub const ISpatialStationaryFrameOfReference = extern struct {
 };
 pub const SpatialAnchor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCoordinateSystem(self: *@This()) core.HResult!*SpatialCoordinateSystem {
         const this: *ISpatialAnchor = @ptrCast(self);
         return try this.getCoordinateSystem();
@@ -1136,9 +1328,6 @@ pub const SpatialAnchor = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISpatialAnchor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRemovedByUser();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryCreateRelativeTo(coordinateSystem: *SpatialCoordinateSystem) core.HResult!*SpatialAnchor {
         const _f = try @This()._ISpatialAnchorStaticsCache.get();
@@ -1165,6 +1354,18 @@ pub const SpatialAnchorExportPurpose = enum(i32) {
 };
 pub const SpatialAnchorExportSufficiency = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsMinimallySufficient(self: *@This()) core.HResult!bool {
         const this: *ISpatialAnchorExportSufficiency = @ptrCast(self);
         return try this.getIsMinimallySufficient();
@@ -1185,6 +1386,18 @@ pub const SpatialAnchorExportSufficiency = extern struct {
 };
 pub const SpatialAnchorExporter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAnchorExportSufficiencyAsync(self: *@This(), anchor: *SpatialAnchor, purpose: SpatialAnchorExportPurpose) core.HResult!*IAsyncOperation(SpatialAnchorExportSufficiency) {
         const this: *ISpatialAnchorExporter = @ptrCast(self);
         return try this.GetAnchorExportSufficiencyAsync(anchor, purpose);
@@ -1192,9 +1405,6 @@ pub const SpatialAnchorExporter = extern struct {
     pub fn TryExportAnchorAsync(self: *@This(), anchor: *SpatialAnchor, purpose: SpatialAnchorExportPurpose, stream: *IOutputStream) core.HResult!*IAsyncOperation(bool) {
         const this: *ISpatialAnchorExporter = @ptrCast(self);
         return try this.TryExportAnchorAsync(anchor, purpose, stream);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*SpatialAnchorExporter {
         const _f = try @This()._ISpatialAnchorExporterStaticsCache.get();
@@ -1213,6 +1423,15 @@ pub const SpatialAnchorExporter = extern struct {
 };
 pub const SpatialAnchorManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1226,6 +1445,18 @@ pub const SpatialAnchorManager = extern struct {
 };
 pub const SpatialAnchorRawCoordinateSystemAdjustedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOldRawCoordinateSystemToNewRawCoordinateSystemTransform(self: *@This()) core.HResult!Matrix4x4 {
         const this: *ISpatialAnchorRawCoordinateSystemAdjustedEventArgs = @ptrCast(self);
         return try this.getOldRawCoordinateSystemToNewRawCoordinateSystemTransform();
@@ -1238,6 +1469,18 @@ pub const SpatialAnchorRawCoordinateSystemAdjustedEventArgs = extern struct {
 };
 pub const SpatialAnchorStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAllSavedAnchors(self: *@This()) core.HResult!*IMapView(?HSTRING,SpatialAnchor) {
         const this: *ISpatialAnchorStore = @ptrCast(self);
         return try this.GetAllSavedAnchors();
@@ -1262,6 +1505,15 @@ pub const SpatialAnchorStore = extern struct {
 };
 pub const SpatialAnchorTransferManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1304,6 +1556,15 @@ pub const SpatialBoundingSphere = extern struct {
 };
 pub const SpatialBoundingVolume = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1332,6 +1593,18 @@ pub const SpatialBoundingVolume = extern struct {
 };
 pub const SpatialCoordinateSystem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetTransformTo(self: *@This(), target: *SpatialCoordinateSystem) core.HResult!*IReference(Matrix4x4) {
         const this: *ISpatialCoordinateSystem = @ptrCast(self);
         return try this.TryGetTransformTo(target);
@@ -1344,6 +1617,18 @@ pub const SpatialCoordinateSystem = extern struct {
 };
 pub const SpatialEntity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpatialEntity = @ptrCast(self);
         return try this.getId();
@@ -1355,9 +1640,6 @@ pub const SpatialEntity = extern struct {
     pub fn getProperties(self: *@This()) core.HResult!*ValueSet {
         const this: *ISpatialEntity = @ptrCast(self);
         return try this.getProperties();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithSpatialAnchor(spatialAnchor: *SpatialAnchor) core.HResult!*SpatialEntity {
         const _f = try @This()._ISpatialEntityFactoryCache.get();
@@ -1376,6 +1658,18 @@ pub const SpatialEntity = extern struct {
 };
 pub const SpatialEntityAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntity(self: *@This()) core.HResult!*SpatialEntity {
         const this: *ISpatialEntityAddedEventArgs = @ptrCast(self);
         return try this.getEntity();
@@ -1388,6 +1682,18 @@ pub const SpatialEntityAddedEventArgs = extern struct {
 };
 pub const SpatialEntityRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntity(self: *@This()) core.HResult!*SpatialEntity {
         const this: *ISpatialEntityRemovedEventArgs = @ptrCast(self);
         return try this.getEntity();
@@ -1400,6 +1706,18 @@ pub const SpatialEntityRemovedEventArgs = extern struct {
 };
 pub const SpatialEntityStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SaveAsync(self: *@This(), entity: *SpatialEntity) core.HResult!*IAsyncAction {
         const this: *ISpatialEntityStore = @ptrCast(self);
         return try this.SaveAsync(entity);
@@ -1411,9 +1729,6 @@ pub const SpatialEntityStore = extern struct {
     pub fn CreateEntityWatcher(self: *@This()) core.HResult!*SpatialEntityWatcher {
         const this: *ISpatialEntityStore = @ptrCast(self);
         return try this.CreateEntityWatcher();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsSupported() core.HResult!bool {
         const _f = try @This()._ISpatialEntityStoreStaticsCache.get();
@@ -1432,6 +1747,18 @@ pub const SpatialEntityStore = extern struct {
 };
 pub const SpatialEntityUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntity(self: *@This()) core.HResult!*SpatialEntity {
         const this: *ISpatialEntityUpdatedEventArgs = @ptrCast(self);
         return try this.getEntity();
@@ -1444,6 +1771,18 @@ pub const SpatialEntityUpdatedEventArgs = extern struct {
 };
 pub const SpatialEntityWatcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!SpatialEntityWatcherStatus {
         const this: *ISpatialEntityWatcher = @ptrCast(self);
         return try this.getStatus();
@@ -1511,6 +1850,18 @@ pub const SpatialLocatability = enum(i32) {
 };
 pub const SpatialLocation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         const this: *ISpatialLocation = @ptrCast(self);
         return try this.getPosition();
@@ -1557,6 +1908,18 @@ pub const SpatialLocation = extern struct {
 };
 pub const SpatialLocator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocatability(self: *@This()) core.HResult!SpatialLocatability {
         const this: *ISpatialLocator = @ptrCast(self);
         return try this.getLocatability();
@@ -1613,9 +1976,6 @@ pub const SpatialLocator = extern struct {
         const this: *ISpatialLocator = @ptrCast(self);
         return try this.CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionAndRelativeOrientationAndRelativeHeadingInRadians(relativePosition, relativeOrientation, relativeHeadingInRadians);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*SpatialLocator {
         const _f = try @This()._ISpatialLocatorStaticsCache.get();
         return try _f.GetDefault();
@@ -1629,6 +1989,18 @@ pub const SpatialLocator = extern struct {
 };
 pub const SpatialLocatorAttachedFrameOfReference = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelativePosition(self: *@This()) core.HResult!Vector3 {
         const this: *ISpatialLocatorAttachedFrameOfReference = @ptrCast(self);
         return try this.getRelativePosition();
@@ -1665,6 +2037,18 @@ pub const SpatialLocatorAttachedFrameOfReference = extern struct {
 };
 pub const SpatialLocatorPositionalTrackingDeactivatingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanceled(self: *@This()) core.HResult!bool {
         const this: *ISpatialLocatorPositionalTrackingDeactivatingEventArgs = @ptrCast(self);
         return try this.getCanceled();
@@ -1699,6 +2083,18 @@ pub const SpatialRay = extern struct {
 };
 pub const SpatialStageFrameOfReference = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCoordinateSystem(self: *@This()) core.HResult!*SpatialCoordinateSystem {
         const this: *ISpatialStageFrameOfReference = @ptrCast(self);
         return try this.getCoordinateSystem();
@@ -1718,9 +2114,6 @@ pub const SpatialStageFrameOfReference = extern struct {
     pub fn TryGetMovementBounds(self: *@This(), coordinateSystem: *SpatialCoordinateSystem) core.HResult![*]Vector3 {
         const this: *ISpatialStageFrameOfReference = @ptrCast(self);
         return try this.TryGetMovementBounds(coordinateSystem);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrent() core.HResult!*SpatialStageFrameOfReference {
         const _f = try @This()._ISpatialStageFrameOfReferenceStaticsCache.get();
@@ -1747,6 +2140,18 @@ pub const SpatialStageFrameOfReference = extern struct {
 };
 pub const SpatialStationaryFrameOfReference = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCoordinateSystem(self: *@This()) core.HResult!*SpatialCoordinateSystem {
         const this: *ISpatialStationaryFrameOfReference = @ptrCast(self);
         return try this.getCoordinateSystem();

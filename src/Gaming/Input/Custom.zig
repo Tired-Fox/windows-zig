@@ -1,6 +1,15 @@
 // ----- This code is automatically generated -----
 pub const GameControllerFactoryManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -37,6 +46,18 @@ pub const GipFirmwareUpdateProgress = extern struct {
 };
 pub const GipFirmwareUpdateResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedErrorCode(self: *@This()) core.HResult!u32 {
         const this: *IGipFirmwareUpdateResult = @ptrCast(self);
         return try this.getExtendedErrorCode();
@@ -62,6 +83,18 @@ pub const GipFirmwareUpdateStatus = enum(i32) {
 };
 pub const GipGameControllerProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendMessage(self: *@This(), messageClass: GipMessageClass, messageId: u8, messageBuffer: [*]u8) core.HResult!void {
         const this: *IGipGameControllerProvider = @ptrCast(self);
         return try this.SendMessage(messageClass, messageId, messageBuffer);
@@ -122,6 +155,18 @@ pub const GipMessageClass = enum(i32) {
 };
 pub const HidGameControllerProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUsageId(self: *@This()) core.HResult!u16 {
         const this: *IHidGameControllerProvider = @ptrCast(self);
         return try this.getUsageId();
@@ -185,6 +230,12 @@ pub const HidGameControllerProvider = extern struct {
 };
 pub const ICustomGameControllerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateGameController(self: *@This(), provider: *IGameControllerProvider) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateGameController(@ptrCast(self), provider, &_r);
@@ -218,6 +269,12 @@ pub const ICustomGameControllerFactory = extern struct {
 };
 pub const IGameControllerFactoryManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RegisterCustomFactoryForGipInterface(self: *@This(), factory: *ICustomGameControllerFactory, interfaceId: *Guid) core.HResult!void {
         const _c = self.vtable.RegisterCustomFactoryForGipInterface(@ptrCast(self), factory, interfaceId);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -249,6 +306,12 @@ pub const IGameControllerFactoryManagerStatics = extern struct {
 };
 pub const IGameControllerFactoryManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetFactoryControllerFromGameController(self: *@This(), factory: *ICustomGameControllerFactory, gameController: *IGameController) core.HResult!*IGameController {
         var _r: *IGameController = undefined;
         const _c = self.vtable.TryGetFactoryControllerFromGameController(@ptrCast(self), factory, gameController, &_r);
@@ -272,6 +335,12 @@ pub const IGameControllerFactoryManagerStatics2 = extern struct {
 };
 pub const IGameControllerInputSink = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnInputResumed(self: *@This(), timestamp: u64) core.HResult!void {
         const _c = self.vtable.OnInputResumed(@ptrCast(self), timestamp);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -298,6 +367,12 @@ pub const IGameControllerInputSink = extern struct {
 };
 pub const IGameControllerProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFirmwareVersionInfo(self: *@This()) core.HResult!GameControllerVersionInfo {
         var _r: GameControllerVersionInfo = undefined;
         const _c = self.vtable.get_FirmwareVersionInfo(@ptrCast(self), &_r);
@@ -349,6 +424,12 @@ pub const IGameControllerProvider = extern struct {
 };
 pub const IGipFirmwareUpdateResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedErrorCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ExtendedErrorCode(@ptrCast(self), &_r);
@@ -386,6 +467,12 @@ pub const IGipFirmwareUpdateResult = extern struct {
 };
 pub const IGipGameControllerInputSink = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnKeyReceived(self: *@This(), timestamp: u64, keyCode: u8, isPressed: bool) core.HResult!void {
         const _c = self.vtable.OnKeyReceived(@ptrCast(self), timestamp, keyCode, isPressed);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -412,6 +499,12 @@ pub const IGipGameControllerInputSink = extern struct {
 };
 pub const IGipGameControllerProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendMessage(self: *@This(), messageClass: GipMessageClass, messageId: u8, messageBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.SendMessage(@ptrCast(self), messageClass, messageId, messageBuffer);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -445,6 +538,12 @@ pub const IGipGameControllerProvider = extern struct {
 };
 pub const IHidGameControllerInputSink = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnInputReportReceived(self: *@This(), timestamp: u64, reportId: u8, reportBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.OnInputReportReceived(@ptrCast(self), timestamp, reportId, reportBuffer);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -466,6 +565,12 @@ pub const IHidGameControllerInputSink = extern struct {
 };
 pub const IHidGameControllerProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUsageId(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_UsageId(@ptrCast(self), &_r);
@@ -511,6 +616,12 @@ pub const IHidGameControllerProvider = extern struct {
 };
 pub const IXusbGameControllerInputSink = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnInputReceived(self: *@This(), timestamp: u64, reportId: u8, inputBuffer: [*]u8) core.HResult!void {
         const _c = self.vtable.OnInputReceived(@ptrCast(self), timestamp, reportId, inputBuffer);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -532,6 +643,12 @@ pub const IXusbGameControllerInputSink = extern struct {
 };
 pub const IXusbGameControllerProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetVibration(self: *@This(), lowFrequencyMotorSpeed: f64, highFrequencyMotorSpeed: f64) core.HResult!void {
         const _c = self.vtable.SetVibration(@ptrCast(self), lowFrequencyMotorSpeed, highFrequencyMotorSpeed);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -570,6 +687,18 @@ pub const XusbDeviceType = enum(i32) {
 };
 pub const XusbGameControllerProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetVibration(self: *@This(), lowFrequencyMotorSpeed: f64, highFrequencyMotorSpeed: f64) core.HResult!void {
         const this: *IXusbGameControllerProvider = @ptrCast(self);
         return try this.SetVibration(lowFrequencyMotorSpeed, highFrequencyMotorSpeed);

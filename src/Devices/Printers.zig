@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPrint3DDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrintSchema(self: *@This()) core.HResult!*PrintSchema {
         var _r: *PrintSchema = undefined;
         const _c = self.vtable.get_PrintSchema(@ptrCast(self), &_r);
@@ -24,6 +30,12 @@ pub const IPrint3DDevice = extern struct {
 };
 pub const IPrint3DDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Print3DDevice) {
         var _r: *IAsyncOperation(Print3DDevice) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
@@ -54,6 +66,12 @@ pub const IPrint3DDeviceStatics = extern struct {
 };
 pub const IPrintSchema = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultPrintTicketAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
         var _r: *IAsyncOperation(IRandomAccessStreamWithContentType) = undefined;
         const _c = self.vtable.GetDefaultPrintTicketAsync(@ptrCast(self), &_r);
@@ -91,12 +109,21 @@ pub const IPrintSchema = extern struct {
 };
 pub const Print3DDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPrintSchema(self: *@This()) core.HResult!*PrintSchema {
-        const this: *IPrint3DDevice = @ptrCast(self);
-        return try this.getPrintSchema();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getPrintSchema(self: *@This()) core.HResult!*PrintSchema {
+        const this: *IPrint3DDevice = @ptrCast(self);
+        return try this.getPrintSchema();
     }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Print3DDevice) {
         const _f = try @This()._IPrint3DDeviceStaticsCache.get();
@@ -115,6 +142,18 @@ pub const Print3DDevice = extern struct {
 };
 pub const PrintSchema = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultPrintTicketAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
         const this: *IPrintSchema = @ptrCast(self);
         return try this.GetDefaultPrintTicketAsync();
@@ -135,6 +174,12 @@ pub const PrintSchema = extern struct {
 };
 pub const IIppAttributeError = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!IppAttributeErrorReason {
         var _r: IppAttributeErrorReason = undefined;
         const _c = self.vtable.get_Reason(@ptrCast(self), &_r);
@@ -172,6 +217,12 @@ pub const IIppAttributeError = extern struct {
 };
 pub const IIppAttributeValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!IppAttributeValueKind {
         var _r: IppAttributeValueKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -321,6 +372,12 @@ pub const IIppAttributeValue = extern struct {
 };
 pub const IIppAttributeValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateUnsupported(self: *@This()) core.HResult!*IppAttributeValue {
         var _r: *IppAttributeValue = undefined;
         const _c = self.vtable.CreateUnsupported(@ptrCast(self), &_r);
@@ -610,6 +667,12 @@ pub const IIppAttributeValueStatics = extern struct {
 };
 pub const IIppIntegerRange = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStart(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Start(@ptrCast(self), &_r);
@@ -640,6 +703,12 @@ pub const IIppIntegerRange = extern struct {
 };
 pub const IIppIntegerRangeFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), start: i32, end: i32) core.HResult!*IppIntegerRange {
         var _r: *IppIntegerRange = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), start, end, &_r);
@@ -663,6 +732,12 @@ pub const IIppIntegerRangeFactory = extern struct {
 };
 pub const IIppPrintDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrinterName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrinterName(@ptrCast(self), &_r);
@@ -721,6 +796,12 @@ pub const IIppPrintDevice = extern struct {
 };
 pub const IIppPrintDevice2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetMaxSupportedPdfSize(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.GetMaxSupportedPdfSize(@ptrCast(self), &_r);
@@ -765,6 +846,12 @@ pub const IIppPrintDevice2 = extern struct {
 };
 pub const IIppPrintDevice3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsIppFaxOutPrinter(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsIppFaxOutPrinter(@ptrCast(self), &_r);
@@ -788,6 +875,12 @@ pub const IIppPrintDevice3 = extern struct {
 };
 pub const IIppPrintDevice4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceKind(self: *@This()) core.HResult!IppPrintDeviceKind {
         var _r: IppPrintDeviceKind = undefined;
         const _c = self.vtable.get_DeviceKind(@ptrCast(self), &_r);
@@ -842,6 +935,12 @@ pub const IIppPrintDevice4 = extern struct {
 };
 pub const IIppPrintDevice5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceProperties(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.GetDeviceProperties(@ptrCast(self), &_r);
@@ -872,6 +971,12 @@ pub const IIppPrintDevice5 = extern struct {
 };
 pub const IIppPrintDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -916,6 +1021,12 @@ pub const IIppPrintDeviceStatics = extern struct {
 };
 pub const IIppResolution = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWidth(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Width(@ptrCast(self), &_r);
@@ -953,6 +1064,12 @@ pub const IIppResolution = extern struct {
 };
 pub const IIppResolutionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), width: i32, height: i32, unit: IppResolutionUnit) core.HResult!*IppResolution {
         var _r: *IppResolution = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), width, height, unit, &_r);
@@ -976,6 +1093,12 @@ pub const IIppResolutionFactory = extern struct {
 };
 pub const IIppSetAttributesResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Succeeded(@ptrCast(self), &_r);
@@ -1006,6 +1129,12 @@ pub const IIppSetAttributesResult = extern struct {
 };
 pub const IIppTextWithLanguage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
@@ -1036,6 +1165,12 @@ pub const IIppTextWithLanguage = extern struct {
 };
 pub const IIppTextWithLanguageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), language: ?HSTRING, text: ?HSTRING) core.HResult!*IppTextWithLanguage {
         var _r: *IppTextWithLanguage = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), language, text, &_r);
@@ -1059,6 +1194,12 @@ pub const IIppTextWithLanguageFactory = extern struct {
 };
 pub const IPageConfigurationSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOrientationSource(self: *@This()) core.HResult!PageConfigurationSource {
         var _r: PageConfigurationSource = undefined;
         const _c = self.vtable.get_OrientationSource(@ptrCast(self), &_r);
@@ -1099,6 +1240,12 @@ pub const IPageConfigurationSettings = extern struct {
 };
 pub const IPdlPassthroughProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedPdlContentTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedPdlContentTypes(@ptrCast(self), &_r);
@@ -1136,6 +1283,12 @@ pub const IPdlPassthroughProvider = extern struct {
 };
 pub const IPdlPassthroughTarget = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrintJobId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_PrintJobId(@ptrCast(self), &_r);
@@ -1171,6 +1324,12 @@ pub const IPdlPassthroughTarget = extern struct {
 };
 pub const IReplaceDevicePropertiesResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!ReplaceDevicePropertiesStatus {
         var _r: ReplaceDevicePropertiesStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1201,6 +1360,12 @@ pub const IReplaceDevicePropertiesResult = extern struct {
 };
 pub const IVirtualPrinterInstallationParameters = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrinterName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrinterName(@ptrCast(self), &_r);
@@ -1303,6 +1468,12 @@ pub const IVirtualPrinterInstallationParameters = extern struct {
 };
 pub const IVirtualPrinterInstallationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!VirtualPrinterInstallationStatus {
         var _r: VirtualPrinterInstallationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1333,6 +1504,12 @@ pub const IVirtualPrinterInstallationResult = extern struct {
 };
 pub const IVirtualPrinterManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InstallVirtualPrinterAsync(self: *@This(), parameters: *VirtualPrinterInstallationParameters) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
         var _r: *IAsyncOperation(VirtualPrinterInstallationResult) = undefined;
         const _c = self.vtable.InstallVirtualPrinterAsync(@ptrCast(self), parameters, &_r);
@@ -1405,6 +1582,12 @@ pub const IVirtualPrinterManagerStatics = extern struct {
 };
 pub const IVirtualPrinterSupportedFormat = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentType(@ptrCast(self), &_r);
@@ -1445,6 +1628,12 @@ pub const IVirtualPrinterSupportedFormat = extern struct {
 };
 pub const IVirtualPrinterSupportedFormatFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), contentType: ?HSTRING, maxSupportedVersion: ?HSTRING) core.HResult!*VirtualPrinterSupportedFormat {
         var _r: *VirtualPrinterSupportedFormat = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), contentType, maxSupportedVersion, &_r);
@@ -1468,6 +1657,18 @@ pub const IVirtualPrinterSupportedFormatFactory = extern struct {
 };
 pub const IppAttributeError = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!IppAttributeErrorReason {
         const this: *IIppAttributeError = @ptrCast(self);
         return try this.getReason();
@@ -1495,6 +1696,18 @@ pub const IppAttributeErrorReason = enum(i32) {
 };
 pub const IppAttributeValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!IppAttributeValueKind {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.getKind();
@@ -1570,9 +1783,6 @@ pub const IppAttributeValue = extern struct {
     pub fn GetMimeMediaTypeArray(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IIppAttributeValue = @ptrCast(self);
         return try this.GetMimeMediaTypeArray();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateUnsupported() core.HResult!*IppAttributeValue {
         const _f = try @This()._IIppAttributeValueStaticsCache.get();
@@ -1762,6 +1972,18 @@ pub const IppAttributeValueKind = enum(i32) {
 };
 pub const IppIntegerRange = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStart(self: *@This()) core.HResult!i32 {
         const this: *IIppIntegerRange = @ptrCast(self);
         return try this.getStart();
@@ -1769,9 +1991,6 @@ pub const IppIntegerRange = extern struct {
     pub fn getEnd(self: *@This()) core.HResult!i32 {
         const this: *IIppIntegerRange = @ptrCast(self);
         return try this.getEnd();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(start: i32, end: i32) core.HResult!*IppIntegerRange {
         const _f = try @This()._IIppIntegerRangeFactoryCache.get();
@@ -1786,6 +2005,18 @@ pub const IppIntegerRange = extern struct {
 };
 pub const IppPrintDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrinterName(self: *@This()) core.HResult!?HSTRING {
         const this: *IIppPrintDevice = @ptrCast(self);
         return try this.getPrinterName();
@@ -1901,9 +2132,6 @@ pub const IppPrintDevice = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceDeviceProperties(deviceProperties);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IIppPrintDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
@@ -1934,6 +2162,18 @@ pub const IppPrintDeviceKind = enum(i32) {
 };
 pub const IppResolution = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWidth(self: *@This()) core.HResult!i32 {
         const this: *IIppResolution = @ptrCast(self);
         return try this.getWidth();
@@ -1945,9 +2185,6 @@ pub const IppResolution = extern struct {
     pub fn getUnit(self: *@This()) core.HResult!IppResolutionUnit {
         const this: *IIppResolution = @ptrCast(self);
         return try this.getUnit();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(width: i32, height: i32, unit: IppResolutionUnit) core.HResult!*IppResolution {
         const _f = try @This()._IIppResolutionFactoryCache.get();
@@ -1966,6 +2203,18 @@ pub const IppResolutionUnit = enum(i32) {
 };
 pub const IppSetAttributesResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         const this: *IIppSetAttributesResult = @ptrCast(self);
         return try this.getSucceeded();
@@ -1982,6 +2231,18 @@ pub const IppSetAttributesResult = extern struct {
 };
 pub const IppTextWithLanguage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IIppTextWithLanguage = @ptrCast(self);
         return try this.getLanguage();
@@ -1989,9 +2250,6 @@ pub const IppTextWithLanguage = extern struct {
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IIppTextWithLanguage = @ptrCast(self);
         return try this.getValue();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(language: ?HSTRING, text: ?HSTRING) core.HResult!*IppTextWithLanguage {
         const _f = try @This()._IIppTextWithLanguageFactoryCache.get();
@@ -2006,6 +2264,18 @@ pub const IppTextWithLanguage = extern struct {
 };
 pub const PageConfigurationSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOrientationSource(self: *@This()) core.HResult!PageConfigurationSource {
         const this: *IPageConfigurationSettings = @ptrCast(self);
         return try this.getOrientationSource();
@@ -2021,9 +2291,6 @@ pub const PageConfigurationSettings = extern struct {
     pub fn putSizeSource(self: *@This(), value: PageConfigurationSource) core.HResult!void {
         const this: *IPageConfigurationSettings = @ptrCast(self);
         return try this.putSizeSource(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2042,6 +2309,18 @@ pub const PageConfigurationSource = enum(i32) {
 };
 pub const PdlPassthroughProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedPdlContentTypes(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IPdlPassthroughProvider = @ptrCast(self);
         return try this.getSupportedPdlContentTypes();
@@ -2062,6 +2341,18 @@ pub const PdlPassthroughProvider = extern struct {
 };
 pub const PdlPassthroughTarget = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrintJobId(self: *@This()) core.HResult!i32 {
         const this: *IPdlPassthroughTarget = @ptrCast(self);
         return try this.getPrintJobId();
@@ -2089,6 +2380,18 @@ pub const PdlPassthroughTarget = extern struct {
 };
 pub const ReplaceDevicePropertiesResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!ReplaceDevicePropertiesStatus {
         const this: *IReplaceDevicePropertiesResult = @ptrCast(self);
         return try this.getStatus();
@@ -2110,6 +2413,18 @@ pub const ReplaceDevicePropertiesStatus = enum(i32) {
 };
 pub const VirtualPrinterInstallationParameters = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrinterName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.getPrinterName();
@@ -2166,9 +2481,6 @@ pub const VirtualPrinterInstallationParameters = extern struct {
         const this: *IVirtualPrinterInstallationParameters = @ptrCast(self);
         return try this.putEntryPoint(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVirtualPrinterInstallationParameters.IID)));
@@ -2182,6 +2494,18 @@ pub const VirtualPrinterInstallationParameters = extern struct {
 };
 pub const VirtualPrinterInstallationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!VirtualPrinterInstallationStatus {
         const this: *IVirtualPrinterInstallationResult = @ptrCast(self);
         return try this.getStatus();
@@ -2204,6 +2528,15 @@ pub const VirtualPrinterInstallationStatus = enum(i32) {
 };
 pub const VirtualPrinterManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2249,6 +2582,18 @@ pub const VirtualPrinterPreferredInputFormat = enum(i32) {
 };
 pub const VirtualPrinterSupportedFormat = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         const this: *IVirtualPrinterSupportedFormat = @ptrCast(self);
         return try this.getContentType();
@@ -2264,9 +2609,6 @@ pub const VirtualPrinterSupportedFormat = extern struct {
     pub fn putMaxSupportedVersion(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IVirtualPrinterSupportedFormat = @ptrCast(self);
         return try this.putMaxSupportedVersion(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(contentType: ?HSTRING, maxSupportedVersion: ?HSTRING) core.HResult!*VirtualPrinterSupportedFormat {
         const _f = try @This()._IVirtualPrinterSupportedFormatFactoryCache.get();

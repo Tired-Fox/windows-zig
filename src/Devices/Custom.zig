@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CustomDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInputStream(self: *@This()) core.HResult!*IInputStream {
         const this: *ICustomDevice = @ptrCast(self);
         return try this.getInputStream();
@@ -16,9 +28,6 @@ pub const CustomDevice = extern struct {
     pub fn TrySendIOControlAsync(self: *@This(), ioControlCode: *IIOControlCode, inputBuffer: *IBuffer, outputBuffer: *IBuffer) core.HResult!*IAsyncOperation(bool) {
         const this: *ICustomDevice = @ptrCast(self);
         return try this.TrySendIOControlAsync(ioControlCode, inputBuffer, outputBuffer);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(classGuid: *Guid) core.HResult!?HSTRING {
         const _f = try @This()._ICustomDeviceStaticsCache.get();
@@ -46,6 +55,12 @@ pub const DeviceSharingMode = enum(i32) {
 };
 pub const ICustomDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInputStream(self: *@This()) core.HResult!*IInputStream {
         var _r: *IInputStream = undefined;
         const _c = self.vtable.get_InputStream(@ptrCast(self), &_r);
@@ -90,6 +105,12 @@ pub const ICustomDevice = extern struct {
 };
 pub const ICustomDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This(), classGuid: *Guid) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), classGuid, &_r);
@@ -120,6 +141,12 @@ pub const ICustomDeviceStatics = extern struct {
 };
 pub const IIOControlCode = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccessMode(self: *@This()) core.HResult!IOControlAccessMode {
         var _r: IOControlAccessMode = undefined;
         const _c = self.vtable.get_AccessMode(@ptrCast(self), &_r);
@@ -171,6 +198,12 @@ pub const IIOControlCode = extern struct {
 };
 pub const IIOControlCodeFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateIOControlCode(self: *@This(), deviceType: u16, function: u16, accessMode: IOControlAccessMode, bufferingMethod: IOControlBufferingMethod) core.HResult!*IOControlCode {
         var _r: *IOControlCode = undefined;
         const _c = self.vtable.CreateIOControlCode(@ptrCast(self), deviceType, function, accessMode, bufferingMethod, &_r);
@@ -194,6 +227,12 @@ pub const IIOControlCodeFactory = extern struct {
 };
 pub const IKnownDeviceTypesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnknown(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Unknown(@ptrCast(self), &_r);
@@ -229,6 +268,18 @@ pub const IOControlBufferingMethod = enum(i32) {
 };
 pub const IOControlCode = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccessMode(self: *@This()) core.HResult!IOControlAccessMode {
         const this: *IIOControlCode = @ptrCast(self);
         return try this.getAccessMode();
@@ -249,9 +300,6 @@ pub const IOControlCode = extern struct {
         const this: *IIOControlCode = @ptrCast(self);
         return try this.getControlCode();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateIOControlCode(deviceType: u16, function: u16, accessMode: IOControlAccessMode, bufferingMethod: IOControlBufferingMethod) core.HResult!*IOControlCode {
         const _f = try @This()._IIOControlCodeFactoryCache.get();
         return try _f.CreateIOControlCode(deviceType, function, accessMode, bufferingMethod);
@@ -265,6 +313,15 @@ pub const IOControlCode = extern struct {
 };
 pub const KnownDeviceTypes = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

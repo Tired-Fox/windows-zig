@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const EyesPose = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCalibrationValid(self: *@This()) core.HResult!bool {
         const this: *IEyesPose = @ptrCast(self);
         return try this.getIsCalibrationValid();
@@ -12,9 +24,6 @@ pub const EyesPose = extern struct {
     pub fn getUpdateTimestamp(self: *@This()) core.HResult!*PerceptionTimestamp {
         const this: *IEyesPose = @ptrCast(self);
         return try this.getUpdateTimestamp();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
         const _f = try @This()._IEyesPoseStaticsCache.get();
@@ -61,6 +70,18 @@ pub const HandJointKind = enum(i32) {
 };
 pub const HandMeshObserver = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*SpatialInteractionSource {
         const this: *IHandMeshObserver = @ptrCast(self);
         return try this.getSource();
@@ -105,6 +126,18 @@ pub const HandMeshVertex = extern struct {
 };
 pub const HandMeshVertexState = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCoordinateSystem(self: *@This()) core.HResult!*SpatialCoordinateSystem {
         const this: *IHandMeshVertexState = @ptrCast(self);
         return try this.getCoordinateSystem();
@@ -125,6 +158,18 @@ pub const HandMeshVertexState = extern struct {
 };
 pub const HandPose = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetJoint(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, joint: HandJointKind, jointPose: JointPose) core.HResult!bool {
         const this: *IHandPose = @ptrCast(self);
         return try this.TryGetJoint(coordinateSystem, joint, jointPose);
@@ -149,6 +194,18 @@ pub const HandPose = extern struct {
 };
 pub const HeadPose = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         const this: *IHeadPose = @ptrCast(self);
         return try this.getPosition();
@@ -169,6 +226,12 @@ pub const HeadPose = extern struct {
 };
 pub const IEyesPose = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCalibrationValid(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCalibrationValid(@ptrCast(self), &_r);
@@ -206,6 +269,12 @@ pub const IEyesPose = extern struct {
 };
 pub const IEyesPoseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
@@ -236,6 +305,12 @@ pub const IEyesPoseStatics = extern struct {
 };
 pub const IHandMeshObserver = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*SpatialInteractionSource {
         var _r: *SpatialInteractionSource = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
@@ -306,6 +381,12 @@ pub const IHandMeshObserver = extern struct {
 };
 pub const IHandMeshVertexState = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCoordinateSystem(self: *@This()) core.HResult!*SpatialCoordinateSystem {
         var _r: *SpatialCoordinateSystem = undefined;
         const _c = self.vtable.get_CoordinateSystem(@ptrCast(self), &_r);
@@ -341,6 +422,12 @@ pub const IHandMeshVertexState = extern struct {
 };
 pub const IHandPose = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetJoint(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, joint: HandJointKind, jointPose: JointPose) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryGetJoint(@ptrCast(self), coordinateSystem, joint, jointPose, &_r);
@@ -383,6 +470,12 @@ pub const IHandPose = extern struct {
 };
 pub const IHeadPose = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);

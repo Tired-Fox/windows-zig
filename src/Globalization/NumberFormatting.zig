@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CurrencyFormatter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrency(self: *@This()) core.HResult!?HSTRING {
         const this: *ICurrencyFormatter = @ptrCast(self);
         return try this.getCurrency();
@@ -233,9 +245,6 @@ pub const CurrencyFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsZeroSigned(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateCurrencyFormatterCode(currencyCode: ?HSTRING) core.HResult!*CurrencyFormatter {
         const _f = try @This()._ICurrencyFormatterFactoryCache.get();
         return try _f.CreateCurrencyFormatterCode(currencyCode);
@@ -257,6 +266,18 @@ pub const CurrencyFormatterMode = enum(i32) {
 };
 pub const DecimalFormatter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -451,9 +472,6 @@ pub const DecimalFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsZeroSigned(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumberFormatter.IID)));
@@ -472,6 +490,12 @@ pub const DecimalFormatter = extern struct {
 };
 pub const ICurrencyFormatter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrency(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Currency(@ptrCast(self), &_r);
@@ -500,6 +524,12 @@ pub const ICurrencyFormatter = extern struct {
 };
 pub const ICurrencyFormatter2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CurrencyFormatterMode {
         var _r: CurrencyFormatterMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -533,6 +563,12 @@ pub const ICurrencyFormatter2 = extern struct {
 };
 pub const ICurrencyFormatterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateCurrencyFormatterCode(self: *@This(), currencyCode: ?HSTRING) core.HResult!*CurrencyFormatter {
         var _r: *CurrencyFormatter = undefined;
         const _c = self.vtable.CreateCurrencyFormatterCode(@ptrCast(self), currencyCode, &_r);
@@ -563,6 +599,12 @@ pub const ICurrencyFormatterFactory = extern struct {
 };
 pub const IDecimalFormatterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateDecimalFormatter(self: *@This(), languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*DecimalFormatter {
         var _r: *DecimalFormatter = undefined;
         const _c = self.vtable.CreateDecimalFormatter(@ptrCast(self), languages, geographicRegion, &_r);
@@ -586,6 +628,12 @@ pub const IDecimalFormatterFactory = extern struct {
 };
 pub const IIncrementNumberRounder = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRoundingAlgorithm(self: *@This()) core.HResult!RoundingAlgorithm {
         var _r: RoundingAlgorithm = undefined;
         const _c = self.vtable.get_RoundingAlgorithm(@ptrCast(self), &_r);
@@ -626,6 +674,12 @@ pub const IIncrementNumberRounder = extern struct {
 };
 pub const INumberFormatter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatWithValueInt64(@ptrCast(self), value, &_r);
@@ -663,6 +717,12 @@ pub const INumberFormatter = extern struct {
 };
 pub const INumberFormatter2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FormatInt(self: *@This(), value: i64) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.FormatInt(@ptrCast(self), value, &_r);
@@ -700,6 +760,12 @@ pub const INumberFormatter2 = extern struct {
 };
 pub const INumberFormatterOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Languages(@ptrCast(self), &_r);
@@ -804,6 +870,12 @@ pub const INumberFormatterOptions = extern struct {
 };
 pub const INumberParser = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseInt(self: *@This(), text: ?HSTRING) core.HResult!*IReference(i64) {
         var _r: *IReference(i64) = undefined;
         const _c = self.vtable.ParseInt(@ptrCast(self), text, &_r);
@@ -841,6 +913,12 @@ pub const INumberParser = extern struct {
 };
 pub const INumberRounder = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RoundInt32(self: *@This(), value: i32) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.RoundInt32(@ptrCast(self), value, &_r);
@@ -899,6 +977,12 @@ pub const INumberRounder = extern struct {
 };
 pub const INumberRounderOption = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNumberRounder(self: *@This()) core.HResult!*INumberRounder {
         var _r: *INumberRounder = undefined;
         const _c = self.vtable.get_NumberRounder(@ptrCast(self), &_r);
@@ -927,6 +1011,12 @@ pub const INumberRounderOption = extern struct {
 };
 pub const INumeralSystemTranslator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Languages(@ptrCast(self), &_r);
@@ -976,6 +1066,12 @@ pub const INumeralSystemTranslator = extern struct {
 };
 pub const INumeralSystemTranslatorFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), languages: *IIterable(?HSTRING)) core.HResult!*NumeralSystemTranslator {
         var _r: *NumeralSystemTranslator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), languages, &_r);
@@ -999,6 +1095,12 @@ pub const INumeralSystemTranslatorFactory = extern struct {
 };
 pub const IPercentFormatterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreatePercentFormatter(self: *@This(), languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*PercentFormatter {
         var _r: *PercentFormatter = undefined;
         const _c = self.vtable.CreatePercentFormatter(@ptrCast(self), languages, geographicRegion, &_r);
@@ -1022,6 +1124,12 @@ pub const IPercentFormatterFactory = extern struct {
 };
 pub const IPermilleFormatterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreatePermilleFormatter(self: *@This(), languages: *IIterable(?HSTRING), geographicRegion: ?HSTRING) core.HResult!*PermilleFormatter {
         var _r: *PermilleFormatter = undefined;
         const _c = self.vtable.CreatePermilleFormatter(@ptrCast(self), languages, geographicRegion, &_r);
@@ -1045,6 +1153,12 @@ pub const IPermilleFormatterFactory = extern struct {
 };
 pub const ISignedZeroOption = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsZeroSigned(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsZeroSigned(@ptrCast(self), &_r);
@@ -1073,6 +1187,12 @@ pub const ISignedZeroOption = extern struct {
 };
 pub const ISignificantDigitsNumberRounder = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRoundingAlgorithm(self: *@This()) core.HResult!RoundingAlgorithm {
         var _r: RoundingAlgorithm = undefined;
         const _c = self.vtable.get_RoundingAlgorithm(@ptrCast(self), &_r);
@@ -1113,6 +1233,12 @@ pub const ISignificantDigitsNumberRounder = extern struct {
 };
 pub const ISignificantDigitsOption = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSignificantDigits(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_SignificantDigits(@ptrCast(self), &_r);
@@ -1141,6 +1267,18 @@ pub const ISignificantDigitsOption = extern struct {
 };
 pub const IncrementNumberRounder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RoundInt32(self: *@This(), value: i32) core.HResult!i32 {
         const this: *INumberRounder = @ptrCast(self);
         return try this.RoundInt32(value);
@@ -1193,9 +1331,6 @@ pub const IncrementNumberRounder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIncrement(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumberRounder.IID)));
@@ -1209,6 +1344,18 @@ pub const IncrementNumberRounder = extern struct {
 };
 pub const NumeralSystemTranslator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *INumeralSystemTranslator = @ptrCast(self);
         return try this.getLanguages();
@@ -1229,9 +1376,6 @@ pub const NumeralSystemTranslator = extern struct {
         const this: *INumeralSystemTranslator = @ptrCast(self);
         return try this.TranslateNumerals(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumeralSystemTranslator.IID)));
@@ -1250,6 +1394,18 @@ pub const NumeralSystemTranslator = extern struct {
 };
 pub const PercentFormatter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1443,9 +1599,6 @@ pub const PercentFormatter = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsZeroSigned(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1465,6 +1618,18 @@ pub const PercentFormatter = extern struct {
 };
 pub const PermilleFormatter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1658,9 +1823,6 @@ pub const PermilleFormatter = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignedZeroOption.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsZeroSigned(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1693,6 +1855,18 @@ pub const RoundingAlgorithm = enum(i32) {
 };
 pub const SignificantDigitsNumberRounder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RoundInt32(self: *@This(), value: i32) core.HResult!i32 {
         const this: *INumberRounder = @ptrCast(self);
         return try this.RoundInt32(value);
@@ -1744,9 +1918,6 @@ pub const SignificantDigitsNumberRounder = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISignificantDigitsNumberRounder.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSignificantDigits(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

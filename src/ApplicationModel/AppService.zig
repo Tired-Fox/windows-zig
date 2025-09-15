@@ -1,6 +1,15 @@
 // ----- This code is automatically generated -----
 pub const AppServiceCatalog = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -14,6 +23,18 @@ pub const AppServiceCatalog = extern struct {
 };
 pub const AppServiceClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!AppServiceClosedStatus {
         const this: *IAppServiceClosedEventArgs = @ptrCast(self);
         return try this.getStatus();
@@ -32,6 +53,18 @@ pub const AppServiceClosedStatus = enum(i32) {
 };
 pub const AppServiceConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppServiceConnection = @ptrCast(self);
         return try this.getAppServiceName();
@@ -100,9 +133,6 @@ pub const AppServiceConnection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAppServiceConnection.IID)));
@@ -135,6 +165,18 @@ pub const AppServiceConnectionStatus = enum(i32) {
 };
 pub const AppServiceDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IAppServiceDeferral = @ptrCast(self);
         return try this.Complete();
@@ -147,6 +189,18 @@ pub const AppServiceDeferral = extern struct {
 };
 pub const AppServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!*ValueSet {
         const this: *IAppServiceRequest = @ptrCast(self);
         return try this.getMessage();
@@ -163,6 +217,18 @@ pub const AppServiceRequest = extern struct {
 };
 pub const AppServiceRequestReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppServiceRequest {
         const this: *IAppServiceRequestReceivedEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -179,6 +245,18 @@ pub const AppServiceRequestReceivedEventArgs = extern struct {
 };
 pub const AppServiceResponse = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!*ValueSet {
         const this: *IAppServiceResponse = @ptrCast(self);
         return try this.getMessage();
@@ -208,6 +286,18 @@ pub const AppServiceResponseStatus = enum(i32) {
 };
 pub const AppServiceTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppServiceTriggerDetails = @ptrCast(self);
         return try this.getName();
@@ -249,6 +339,12 @@ pub const AppServiceTriggerDetails = extern struct {
 };
 pub const IAppServiceCatalogStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAppServiceProvidersAsync(self: *@This(), appServiceName: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
         var _r: *IAsyncOperation(IVectorView(AppInfo)) = undefined;
         const _c = self.vtable.FindAppServiceProvidersAsync(@ptrCast(self), appServiceName, &_r);
@@ -272,6 +368,12 @@ pub const IAppServiceCatalogStatics = extern struct {
 };
 pub const IAppServiceClosedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!AppServiceClosedStatus {
         var _r: AppServiceClosedStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -295,6 +397,12 @@ pub const IAppServiceClosedEventArgs = extern struct {
 };
 pub const IAppServiceConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppServiceName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppServiceName(@ptrCast(self), &_r);
@@ -373,6 +481,12 @@ pub const IAppServiceConnection = extern struct {
 };
 pub const IAppServiceConnection2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenRemoteAsync(self: *@This(), remoteSystemConnectionRequest: *RemoteSystemConnectionRequest) core.HResult!*IAsyncOperation(AppServiceConnectionStatus) {
         var _r: *IAsyncOperation(AppServiceConnectionStatus) = undefined;
         const _c = self.vtable.OpenRemoteAsync(@ptrCast(self), remoteSystemConnectionRequest, &_r);
@@ -408,6 +522,12 @@ pub const IAppServiceConnection2 = extern struct {
 };
 pub const IAppServiceConnectionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendStatelessMessageAsync(self: *@This(), connection: *AppServiceConnection, connectionRequest: *RemoteSystemConnectionRequest, message: *ValueSet) core.HResult!*IAsyncOperation(StatelessAppServiceResponse) {
         var _r: *IAsyncOperation(StatelessAppServiceResponse) = undefined;
         const _c = self.vtable.SendStatelessMessageAsync(@ptrCast(self), connection, connectionRequest, message, &_r);
@@ -431,6 +551,12 @@ pub const IAppServiceConnectionStatics = extern struct {
 };
 pub const IAppServiceDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -452,6 +578,12 @@ pub const IAppServiceDeferral = extern struct {
 };
 pub const IAppServiceRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
@@ -482,6 +614,12 @@ pub const IAppServiceRequest = extern struct {
 };
 pub const IAppServiceRequestReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppServiceRequest {
         var _r: *AppServiceRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -512,6 +650,12 @@ pub const IAppServiceRequestReceivedEventArgs = extern struct {
 };
 pub const IAppServiceResponse = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
@@ -542,6 +686,12 @@ pub const IAppServiceResponse = extern struct {
 };
 pub const IAppServiceTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -579,6 +729,12 @@ pub const IAppServiceTriggerDetails = extern struct {
 };
 pub const IAppServiceTriggerDetails2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsRemoteSystemConnection(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRemoteSystemConnection(@ptrCast(self), &_r);
@@ -602,6 +758,12 @@ pub const IAppServiceTriggerDetails2 = extern struct {
 };
 pub const IAppServiceTriggerDetails3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CheckCallerForCapabilityAsync(self: *@This(), capabilityName: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.CheckCallerForCapabilityAsync(@ptrCast(self), capabilityName, &_r);
@@ -625,6 +787,12 @@ pub const IAppServiceTriggerDetails3 = extern struct {
 };
 pub const IAppServiceTriggerDetails4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCallerRemoteConnectionToken(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CallerRemoteConnectionToken(@ptrCast(self), &_r);
@@ -648,6 +816,12 @@ pub const IAppServiceTriggerDetails4 = extern struct {
 };
 pub const IStatelessAppServiceResponse = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
@@ -678,6 +852,18 @@ pub const IStatelessAppServiceResponse = extern struct {
 };
 pub const StatelessAppServiceResponse = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!*ValueSet {
         const this: *IStatelessAppServiceResponse = @ptrCast(self);
         return try this.getMessage();

@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CoreTextCompositionCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCanceled(self: *@This()) core.HResult!bool {
         const this: *ICoreTextCompositionCompletedEventArgs = @ptrCast(self);
         return try this.getIsCanceled();
@@ -21,6 +33,18 @@ pub const CoreTextCompositionCompletedEventArgs = extern struct {
 };
 pub const CoreTextCompositionSegment = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreconversionString(self: *@This()) core.HResult!?HSTRING {
         const this: *ICoreTextCompositionSegment = @ptrCast(self);
         return try this.getPreconversionString();
@@ -37,6 +61,18 @@ pub const CoreTextCompositionSegment = extern struct {
 };
 pub const CoreTextCompositionStartedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCanceled(self: *@This()) core.HResult!bool {
         const this: *ICoreTextCompositionStartedEventArgs = @ptrCast(self);
         return try this.getIsCanceled();
@@ -53,6 +89,18 @@ pub const CoreTextCompositionStartedEventArgs = extern struct {
 };
 pub const CoreTextEditContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ICoreTextEditContext = @ptrCast(self);
         return try this.getName();
@@ -199,6 +247,18 @@ pub const CoreTextEditContext = extern struct {
 };
 pub const CoreTextFormatUpdatingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRange(self: *@This()) core.HResult!CoreTextRange {
         const this: *ICoreTextFormatUpdatingEventArgs = @ptrCast(self);
         return try this.getRange();
@@ -331,6 +391,18 @@ pub const CoreTextInputScope = enum(i32) {
 };
 pub const CoreTextLayoutBounds = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextBounds(self: *@This()) core.HResult!Rect {
         const this: *ICoreTextLayoutBounds = @ptrCast(self);
         return try this.getTextBounds();
@@ -355,6 +427,18 @@ pub const CoreTextLayoutBounds = extern struct {
 };
 pub const CoreTextLayoutRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRange(self: *@This()) core.HResult!CoreTextRange {
         const this: *ICoreTextLayoutRequest = @ptrCast(self);
         return try this.getRange();
@@ -386,6 +470,18 @@ pub const CoreTextLayoutRequest = extern struct {
 };
 pub const CoreTextLayoutRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*CoreTextLayoutRequest {
         const this: *ICoreTextLayoutRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -402,6 +498,18 @@ pub const CoreTextRange = extern struct {
 };
 pub const CoreTextSelectionRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelection(self: *@This()) core.HResult!CoreTextRange {
         const this: *ICoreTextSelectionRequest = @ptrCast(self);
         return try this.getSelection();
@@ -426,6 +534,18 @@ pub const CoreTextSelectionRequest = extern struct {
 };
 pub const CoreTextSelectionRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*CoreTextSelectionRequest {
         const this: *ICoreTextSelectionRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -438,6 +558,18 @@ pub const CoreTextSelectionRequestedEventArgs = extern struct {
 };
 pub const CoreTextSelectionUpdatingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelection(self: *@This()) core.HResult!CoreTextRange {
         const this: *ICoreTextSelectionUpdatingEventArgs = @ptrCast(self);
         return try this.getSelection();
@@ -470,6 +602,15 @@ pub const CoreTextSelectionUpdatingResult = enum(i32) {
 };
 pub const CoreTextServicesConstants = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -483,6 +624,18 @@ pub const CoreTextServicesConstants = extern struct {
 };
 pub const CoreTextServicesManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInputLanguage(self: *@This()) core.HResult!*Language {
         const this: *ICoreTextServicesManager = @ptrCast(self);
         return try this.getInputLanguage();
@@ -499,9 +652,6 @@ pub const CoreTextServicesManager = extern struct {
         const this: *ICoreTextServicesManager = @ptrCast(self);
         return try this.CreateEditContext();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*CoreTextServicesManager {
         const _f = try @This()._ICoreTextServicesManagerStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -515,6 +665,18 @@ pub const CoreTextServicesManager = extern struct {
 };
 pub const CoreTextTextRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRange(self: *@This()) core.HResult!CoreTextRange {
         const this: *ICoreTextTextRequest = @ptrCast(self);
         return try this.getRange();
@@ -543,6 +705,18 @@ pub const CoreTextTextRequest = extern struct {
 };
 pub const CoreTextTextRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*CoreTextTextRequest {
         const this: *ICoreTextTextRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -555,6 +729,18 @@ pub const CoreTextTextRequestedEventArgs = extern struct {
 };
 pub const CoreTextTextUpdatingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRange(self: *@This()) core.HResult!CoreTextRange {
         const this: *ICoreTextTextUpdatingEventArgs = @ptrCast(self);
         return try this.getRange();
@@ -599,6 +785,12 @@ pub const CoreTextTextUpdatingResult = enum(i32) {
 };
 pub const ICoreTextCompositionCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCanceled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCanceled(@ptrCast(self), &_r);
@@ -636,6 +828,12 @@ pub const ICoreTextCompositionCompletedEventArgs = extern struct {
 };
 pub const ICoreTextCompositionSegment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreconversionString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PreconversionString(@ptrCast(self), &_r);
@@ -666,6 +864,12 @@ pub const ICoreTextCompositionSegment = extern struct {
 };
 pub const ICoreTextCompositionStartedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCanceled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCanceled(@ptrCast(self), &_r);
@@ -696,6 +900,12 @@ pub const ICoreTextCompositionStartedEventArgs = extern struct {
 };
 pub const ICoreTextEditContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -893,6 +1103,12 @@ pub const ICoreTextEditContext = extern struct {
 };
 pub const ICoreTextEditContext2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addNotifyFocusLeaveCompleted(self: *@This(), handler: *TypedEventHandler(CoreTextEditContext,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_NotifyFocusLeaveCompleted(@ptrCast(self), handler, &_r);
@@ -921,6 +1137,12 @@ pub const ICoreTextEditContext2 = extern struct {
 };
 pub const ICoreTextFormatUpdatingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRange(self: *@This()) core.HResult!CoreTextRange {
         var _r: CoreTextRange = undefined;
         const _c = self.vtable.get_Range(@ptrCast(self), &_r);
@@ -1005,6 +1227,12 @@ pub const ICoreTextFormatUpdatingEventArgs = extern struct {
 };
 pub const ICoreTextLayoutBounds = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextBounds(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_TextBounds(@ptrCast(self), &_r);
@@ -1045,6 +1273,12 @@ pub const ICoreTextLayoutBounds = extern struct {
 };
 pub const ICoreTextLayoutRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRange(self: *@This()) core.HResult!CoreTextRange {
         var _r: CoreTextRange = undefined;
         const _c = self.vtable.get_Range(@ptrCast(self), &_r);
@@ -1089,6 +1323,12 @@ pub const ICoreTextLayoutRequest = extern struct {
 };
 pub const ICoreTextLayoutRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLayoutBoundsVisualPixels(self: *@This()) core.HResult!*CoreTextLayoutBounds {
         var _r: *CoreTextLayoutBounds = undefined;
         const _c = self.vtable.get_LayoutBoundsVisualPixels(@ptrCast(self), &_r);
@@ -1112,6 +1352,12 @@ pub const ICoreTextLayoutRequest2 = extern struct {
 };
 pub const ICoreTextLayoutRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*CoreTextLayoutRequest {
         var _r: *CoreTextLayoutRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -1135,6 +1381,12 @@ pub const ICoreTextLayoutRequestedEventArgs = extern struct {
 };
 pub const ICoreTextSelectionRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelection(self: *@This()) core.HResult!CoreTextRange {
         var _r: CoreTextRange = undefined;
         const _c = self.vtable.get_Selection(@ptrCast(self), &_r);
@@ -1177,6 +1429,12 @@ pub const ICoreTextSelectionRequest = extern struct {
 };
 pub const ICoreTextSelectionRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*CoreTextSelectionRequest {
         var _r: *CoreTextSelectionRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -1200,6 +1458,12 @@ pub const ICoreTextSelectionRequestedEventArgs = extern struct {
 };
 pub const ICoreTextSelectionUpdatingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelection(self: *@This()) core.HResult!CoreTextRange {
         var _r: CoreTextRange = undefined;
         const _c = self.vtable.get_Selection(@ptrCast(self), &_r);
@@ -1249,6 +1513,12 @@ pub const ICoreTextSelectionUpdatingEventArgs = extern struct {
 };
 pub const ICoreTextServicesManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInputLanguage(self: *@This()) core.HResult!*Language {
         var _r: *Language = undefined;
         const _c = self.vtable.get_InputLanguage(@ptrCast(self), &_r);
@@ -1291,6 +1561,12 @@ pub const ICoreTextServicesManager = extern struct {
 };
 pub const ICoreTextServicesManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*CoreTextServicesManager {
         var _r: *CoreTextServicesManager = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -1314,6 +1590,12 @@ pub const ICoreTextServicesManagerStatics = extern struct {
 };
 pub const ICoreTextServicesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHiddenCharacter(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_HiddenCharacter(@ptrCast(self), &_r);
@@ -1337,6 +1619,12 @@ pub const ICoreTextServicesStatics = extern struct {
 };
 pub const ICoreTextTextRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRange(self: *@This()) core.HResult!CoreTextRange {
         var _r: CoreTextRange = undefined;
         const _c = self.vtable.get_Range(@ptrCast(self), &_r);
@@ -1386,6 +1674,12 @@ pub const ICoreTextTextRequest = extern struct {
 };
 pub const ICoreTextTextRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*CoreTextTextRequest {
         var _r: *CoreTextTextRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -1409,6 +1703,12 @@ pub const ICoreTextTextRequestedEventArgs = extern struct {
 };
 pub const ICoreTextTextUpdatingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRange(self: *@This()) core.HResult!CoreTextRange {
         var _r: CoreTextRange = undefined;
         const _c = self.vtable.get_Range(@ptrCast(self), &_r);

@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IMediaTranscoder = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putTrimStartTime(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_TrimStartTime(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -104,6 +110,12 @@ pub const IMediaTranscoder = extern struct {
 };
 pub const IMediaTranscoder2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn PrepareMediaStreamSourceTranscodeAsync(self: *@This(), source: *IMediaSource, destination: *IRandomAccessStream, profile: *MediaEncodingProfile) core.HResult!*IAsyncOperation(PrepareTranscodeResult) {
         var _r: *IAsyncOperation(PrepareTranscodeResult) = undefined;
         const _c = self.vtable.PrepareMediaStreamSourceTranscodeAsync(@ptrCast(self), source, destination, profile, &_r);
@@ -139,6 +151,12 @@ pub const IMediaTranscoder2 = extern struct {
 };
 pub const IPrepareTranscodeResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanTranscode(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanTranscode(@ptrCast(self), &_r);
@@ -176,6 +194,18 @@ pub const IPrepareTranscodeResult = extern struct {
 };
 pub const MediaTranscoder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putTrimStartTime(self: *@This(), value: TimeSpan) core.HResult!void {
         const this: *IMediaTranscoder = @ptrCast(self);
         return try this.putTrimStartTime(value);
@@ -257,9 +287,6 @@ pub const MediaTranscoder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getVideoProcessingAlgorithm();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaTranscoder.IID)));
@@ -277,6 +304,18 @@ pub const MediaVideoProcessingAlgorithm = enum(i32) {
 };
 pub const PrepareTranscodeResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanTranscode(self: *@This()) core.HResult!bool {
         const this: *IPrepareTranscodeResult = @ptrCast(self);
         return try this.getCanTranscode();

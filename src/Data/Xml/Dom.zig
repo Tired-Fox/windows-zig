@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const DtdEntity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPublicId(self: *@This()) core.HResult!*IInspectable {
         const this: *IDtdEntity = @ptrCast(self);
         return try this.getPublicId();
@@ -231,6 +243,18 @@ pub const DtdEntity = extern struct {
 };
 pub const DtdNotation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPublicId(self: *@This()) core.HResult!*IInspectable {
         const this: *IDtdNotation = @ptrCast(self);
         return try this.getPublicId();
@@ -457,6 +481,12 @@ pub const DtdNotation = extern struct {
 };
 pub const IDtdEntity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPublicId(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_PublicId(@ptrCast(self), &_r);
@@ -494,6 +524,12 @@ pub const IDtdEntity = extern struct {
 };
 pub const IDtdNotation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPublicId(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_PublicId(@ptrCast(self), &_r);
@@ -524,6 +560,12 @@ pub const IDtdNotation = extern struct {
 };
 pub const IXmlAttribute = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -566,6 +608,12 @@ pub const IXmlAttribute = extern struct {
 };
 pub const IXmlCDataSection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlCDataSection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "4d04b46f-c8bd-45b4-8899-0400d7c2c60f";
@@ -582,6 +630,12 @@ pub const IXmlCDataSection = extern struct {
 };
 pub const IXmlCharacterData = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
@@ -644,6 +698,12 @@ pub const IXmlCharacterData = extern struct {
 };
 pub const IXmlComment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlComment";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "bca474d5-b61f-4611-9cac-2e92e3476d47";
@@ -660,6 +720,12 @@ pub const IXmlComment = extern struct {
 };
 pub const IXmlDocument = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDoctype(self: *@This()) core.HResult!*XmlDocumentType {
         var _r: *XmlDocumentType = undefined;
         const _c = self.vtable.get_Doctype(@ptrCast(self), &_r);
@@ -795,6 +861,12 @@ pub const IXmlDocument = extern struct {
 };
 pub const IXmlDocumentFragment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlDocumentFragment";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e2ea6a96-0c21-44a5-8bc9-9e4a262708ec";
@@ -811,6 +883,12 @@ pub const IXmlDocumentFragment = extern struct {
 };
 pub const IXmlDocumentIO = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadXml(self: *@This(), xml: ?HSTRING) core.HResult!void {
         const _c = self.vtable.LoadXml(@ptrCast(self), xml);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -844,6 +922,12 @@ pub const IXmlDocumentIO = extern struct {
 };
 pub const IXmlDocumentIO2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadXmlFromBuffer(self: *@This(), buffer: *IBuffer) core.HResult!void {
         const _c = self.vtable.LoadXmlFromBuffer(@ptrCast(self), buffer);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -870,6 +954,12 @@ pub const IXmlDocumentIO2 = extern struct {
 };
 pub const IXmlDocumentStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadFromUriAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperation(XmlDocument) {
         var _r: *IAsyncOperation(XmlDocument) = undefined;
         const _c = self.vtable.LoadFromUriAsync(@ptrCast(self), uri, &_r);
@@ -914,6 +1004,12 @@ pub const IXmlDocumentStatics = extern struct {
 };
 pub const IXmlDocumentType = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -951,6 +1047,12 @@ pub const IXmlDocumentType = extern struct {
 };
 pub const IXmlDomImplementation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn HasFeature(self: *@This(), feature: ?HSTRING, version: *IInspectable) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.HasFeature(@ptrCast(self), feature, version, &_r);
@@ -974,6 +1076,12 @@ pub const IXmlDomImplementation = extern struct {
 };
 pub const IXmlElement = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTagName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TagName(@ptrCast(self), &_r);
@@ -1073,6 +1181,12 @@ pub const IXmlElement = extern struct {
 };
 pub const IXmlEntityReference = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlEntityReference";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "2e2f47bc-c3d0-4ccf-bb86-0ab8c36a61cf";
@@ -1089,6 +1203,12 @@ pub const IXmlEntityReference = extern struct {
 };
 pub const IXmlLoadSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxElementDepth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxElementDepth(@ptrCast(self), &_r);
@@ -1165,6 +1285,12 @@ pub const IXmlLoadSettings = extern struct {
 };
 pub const IXmlNamedNodeMap = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Length(@ptrCast(self), &_r);
@@ -1237,6 +1363,12 @@ pub const IXmlNamedNodeMap = extern struct {
 };
 pub const IXmlNode = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_NodeValue(@ptrCast(self), &_r);
@@ -1408,6 +1540,12 @@ pub const IXmlNode = extern struct {
 };
 pub const IXmlNodeList = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Length(@ptrCast(self), &_r);
@@ -1438,6 +1576,12 @@ pub const IXmlNodeList = extern struct {
 };
 pub const IXmlNodeSelector = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SelectSingleNode(self: *@This(), xpath: ?HSTRING) core.HResult!*IXmlNode {
         var _r: *IXmlNode = undefined;
         const _c = self.vtable.SelectSingleNode(@ptrCast(self), xpath, &_r);
@@ -1482,6 +1626,12 @@ pub const IXmlNodeSelector = extern struct {
 };
 pub const IXmlNodeSerializer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetXml(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetXml(@ptrCast(self), &_r);
@@ -1517,6 +1667,12 @@ pub const IXmlNodeSerializer = extern struct {
 };
 pub const IXmlProcessingInstruction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTarget(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Target(@ptrCast(self), &_r);
@@ -1552,6 +1708,12 @@ pub const IXmlProcessingInstruction = extern struct {
 };
 pub const IXmlText = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SplitText(self: *@This(), offset: u32) core.HResult!*IXmlText {
         var _r: *IXmlText = undefined;
         const _c = self.vtable.SplitText(@ptrCast(self), offset, &_r);
@@ -1590,6 +1752,18 @@ pub const NodeType = enum(i32) {
 };
 pub const XmlAttribute = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IXmlAttribute = @ptrCast(self);
         return try this.getName();
@@ -1824,6 +1998,18 @@ pub const XmlAttribute = extern struct {
 };
 pub const XmlCDataSection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SplitText(self: *@This(), offset: u32) core.HResult!*IXmlText {
         var this: ?*IXmlText = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -2105,6 +2291,18 @@ pub const XmlCDataSection = extern struct {
 };
 pub const XmlComment = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IXmlCharacterData = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -2379,6 +2577,18 @@ pub const XmlComment = extern struct {
 };
 pub const XmlDocument = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDoctype(self: *@This()) core.HResult!*XmlDocumentType {
         const this: *IXmlDocument = @ptrCast(self);
         return try this.getDoctype();
@@ -2692,9 +2902,6 @@ pub const XmlDocument = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LoadXmlFromBufferWithLoadSettings(buffer, loadSettings);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IXmlDocument.IID)));
@@ -2725,6 +2932,18 @@ pub const XmlDocument = extern struct {
 };
 pub const XmlDocumentFragment = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -2943,6 +3162,18 @@ pub const XmlDocumentFragment = extern struct {
 };
 pub const XmlDocumentType = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IXmlDocumentType = @ptrCast(self);
         return try this.getName();
@@ -3173,6 +3404,18 @@ pub const XmlDocumentType = extern struct {
 };
 pub const XmlDomImplementation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn HasFeature(self: *@This(), feature: ?HSTRING, version: *IInspectable) core.HResult!bool {
         const this: *IXmlDomImplementation = @ptrCast(self);
         return try this.HasFeature(feature, version);
@@ -3185,6 +3428,18 @@ pub const XmlDomImplementation = extern struct {
 };
 pub const XmlElement = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTagName(self: *@This()) core.HResult!?HSTRING {
         const this: *IXmlElement = @ptrCast(self);
         return try this.getTagName();
@@ -3455,6 +3710,18 @@ pub const XmlElement = extern struct {
 };
 pub const XmlEntityReference = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNodeValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IXmlNode = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -3673,6 +3940,18 @@ pub const XmlEntityReference = extern struct {
 };
 pub const XmlLoadSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxElementDepth(self: *@This()) core.HResult!u32 {
         const this: *IXmlLoadSettings = @ptrCast(self);
         return try this.getMaxElementDepth();
@@ -3713,9 +3992,6 @@ pub const XmlLoadSettings = extern struct {
         const this: *IXmlLoadSettings = @ptrCast(self);
         return try this.putElementContentWhiteSpace(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IXmlLoadSettings.IID)));
@@ -3729,6 +4005,18 @@ pub const XmlLoadSettings = extern struct {
 };
 pub const XmlNamedNodeMap = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLength(self: *@This()) core.HResult!u32 {
         const this: *IXmlNamedNodeMap = @ptrCast(self);
         return try this.getLength();
@@ -3783,6 +4071,18 @@ pub const XmlNamedNodeMap = extern struct {
 };
 pub const XmlNodeList = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLength(self: *@This()) core.HResult!u32 {
         const this: *IXmlNodeList = @ptrCast(self);
         return try this.getLength();
@@ -3813,6 +4113,18 @@ pub const XmlNodeList = extern struct {
 };
 pub const XmlProcessingInstruction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTarget(self: *@This()) core.HResult!?HSTRING {
         const this: *IXmlProcessingInstruction = @ptrCast(self);
         return try this.getTarget();
@@ -4043,6 +4355,18 @@ pub const XmlProcessingInstruction = extern struct {
 };
 pub const XmlText = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SplitText(self: *@This(), offset: u32) core.HResult!*IXmlText {
         const this: *IXmlText = @ptrCast(self);
         return try this.SplitText(offset);

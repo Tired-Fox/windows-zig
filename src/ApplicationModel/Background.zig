@@ -1,6 +1,15 @@
 // ----- This code is automatically generated -----
 pub const CommunicationBlockingAppSetAsActiveTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -17,6 +26,12 @@ pub const CommunicationBlockingAppSetAsActiveTrigger = extern struct {
 };
 pub const ICommunicationBlockingAppSetAsActiveTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ICommunicationBlockingAppSetAsActiveTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "fb91f28a-16a5-486d-974c-7835a8477be2";
@@ -33,6 +48,12 @@ pub const ICommunicationBlockingAppSetAsActiveTrigger = extern struct {
 };
 pub const IPhoneTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOneShot(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_OneShot(@ptrCast(self), &_r);
@@ -63,6 +84,12 @@ pub const IPhoneTrigger = extern struct {
 };
 pub const IPhoneTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), ty: PhoneTriggerType, oneShot: bool) core.HResult!*PhoneTrigger {
         var _r: *PhoneTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), ty, oneShot, &_r);
@@ -86,6 +113,18 @@ pub const IPhoneTriggerFactory = extern struct {
 };
 pub const PhoneTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOneShot(self: *@This()) core.HResult!bool {
         const this: *IPhoneTrigger = @ptrCast(self);
         return try this.getOneShot();
@@ -93,9 +132,6 @@ pub const PhoneTrigger = extern struct {
     pub fn getTriggerType(self: *@This()) core.HResult!PhoneTriggerType {
         const this: *IPhoneTrigger = @ptrCast(self);
         return try this.getTriggerType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(ty: PhoneTriggerType, oneShot: bool) core.HResult!*PhoneTrigger {
         const _f = try @This()._IPhoneTriggerFactoryCache.get();
@@ -110,6 +146,12 @@ pub const PhoneTrigger = extern struct {
 };
 pub const ISmartCardTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
         var _r: SmartCardTriggerType = undefined;
         const _c = self.vtable.get_TriggerType(@ptrCast(self), &_r);
@@ -133,6 +175,12 @@ pub const ISmartCardTrigger = extern struct {
 };
 pub const ISmartCardTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), triggerType: SmartCardTriggerType) core.HResult!*SmartCardTrigger {
         var _r: *SmartCardTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), triggerType, &_r);
@@ -156,12 +204,21 @@ pub const ISmartCardTriggerFactory = extern struct {
 };
 pub const SmartCardTrigger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
-        const this: *ISmartCardTrigger = @ptrCast(self);
-        return try this.getTriggerType();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
+        const this: *ISmartCardTrigger = @ptrCast(self);
+        return try this.getTriggerType();
     }
     pub fn Create(triggerType: SmartCardTriggerType) core.HResult!*SmartCardTrigger {
         const _f = try @This()._ISmartCardTriggerFactoryCache.get();
@@ -182,6 +239,15 @@ pub const AlarmAccessStatus = enum(i32) {
 };
 pub const AlarmApplicationManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -199,6 +265,12 @@ pub const AlarmApplicationManager = extern struct {
 };
 pub const IAlarmApplicationManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(AlarmAccessStatus) {
         var _r: *IAsyncOperation(AlarmAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
@@ -229,6 +301,18 @@ pub const IAlarmApplicationManagerStatics = extern struct {
 };
 pub const ActivitySensorTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSubscribedActivities(self: *@This()) core.HResult!*IVector(ActivityType) {
         const this: *IActivitySensorTrigger = @ptrCast(self);
         return try this.getSubscribedActivities();
@@ -245,9 +329,6 @@ pub const ActivitySensorTrigger = extern struct {
         const this: *IActivitySensorTrigger = @ptrCast(self);
         return try this.getMinimumReportInterval();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(reportIntervalInMilliseconds: u32) core.HResult!*ActivitySensorTrigger {
         const _f = try @This()._IActivitySensorTriggerFactoryCache.get();
         return try _f.Create(reportIntervalInMilliseconds);
@@ -261,6 +342,18 @@ pub const ActivitySensorTrigger = extern struct {
 };
 pub const ApplicationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAsync(self: *@This()) core.HResult!*IAsyncOperation(ApplicationTriggerResult) {
         const this: *IApplicationTrigger = @ptrCast(self);
         return try this.RequestAsync();
@@ -268,9 +361,6 @@ pub const ApplicationTrigger = extern struct {
     pub fn RequestAsyncWithArguments(self: *@This(), arguments: *ValueSet) core.HResult!*IAsyncOperation(ApplicationTriggerResult) {
         const this: *IApplicationTrigger = @ptrCast(self);
         return try this.RequestAsyncWithArguments(arguments);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -285,6 +375,18 @@ pub const ApplicationTrigger = extern struct {
 };
 pub const ApplicationTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getArguments(self: *@This()) core.HResult!*ValueSet {
         const this: *IApplicationTriggerDetails = @ptrCast(self);
         return try this.getArguments();
@@ -303,6 +405,15 @@ pub const ApplicationTriggerResult = enum(i32) {
 };
 pub const AppointmentStoreNotificationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -333,6 +444,15 @@ pub const BackgroundAccessStatus = enum(i32) {
 };
 pub const BackgroundExecutionManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -384,6 +504,18 @@ pub const BackgroundExecutionManager = extern struct {
 };
 pub const BackgroundTaskBuilder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putTaskEntryPoint(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IBackgroundTaskBuilder = @ptrCast(self);
         return try this.putTaskEntryPoint(value);
@@ -488,9 +620,6 @@ pub const BackgroundTaskBuilder = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RegisterWithTaskName(taskName);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -613,6 +742,18 @@ pub const BackgroundTaskCancellationReason = enum(i32) {
 };
 pub const BackgroundTaskCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInstanceId(self: *@This()) core.HResult!*Guid {
         const this: *IBackgroundTaskCompletedEventArgs = @ptrCast(self);
         return try this.getInstanceId();
@@ -718,6 +859,18 @@ pub const BackgroundTaskCompletedEventHandler = extern struct {
 };
 pub const BackgroundTaskDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IBackgroundTaskDeferral = @ptrCast(self);
         return try this.Complete();
@@ -730,6 +883,18 @@ pub const BackgroundTaskDeferral = extern struct {
 };
 pub const BackgroundTaskProgressEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInstanceId(self: *@This()) core.HResult!*Guid {
         const this: *IBackgroundTaskProgressEventArgs = @ptrCast(self);
         return try this.getInstanceId();
@@ -835,6 +1000,18 @@ pub const BackgroundTaskProgressEventHandler = extern struct {
 };
 pub const BackgroundTaskRegistration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskId(self: *@This()) core.HResult!*Guid {
         const this: *IBackgroundTaskRegistration = @ptrCast(self);
         return try this.getTaskId();
@@ -891,9 +1068,6 @@ pub const BackgroundTaskRegistration = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppEnergyUsePredictionContribution();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getAllTasks() core.HResult!*IMapView(Guid,IBackgroundTaskRegistration) {
         const _f = try @This()._IBackgroundTaskRegistrationStaticsCache.get();
         return try _f.getAllTasks();
@@ -916,6 +1090,18 @@ pub const BackgroundTaskRegistration = extern struct {
 };
 pub const BackgroundTaskRegistrationGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBackgroundTaskRegistrationGroup = @ptrCast(self);
         return try this.getId();
@@ -935,9 +1121,6 @@ pub const BackgroundTaskRegistrationGroup = extern struct {
     pub fn getAllTasks(self: *@This()) core.HResult!*IMapView(Guid,BackgroundTaskRegistration) {
         const this: *IBackgroundTaskRegistrationGroup = @ptrCast(self);
         return try this.getAllTasks();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(id: ?HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
         const _f = try @This()._IBackgroundTaskRegistrationGroupFactoryCache.get();
@@ -961,6 +1144,15 @@ pub const BackgroundTaskThrottleCounter = enum(i32) {
 };
 pub const BackgroundWorkCost = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -992,6 +1184,18 @@ pub const BackgroundWorkCostValue = enum(i32) {
 };
 pub const BluetoothLEAdvertisementPublisherTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdvertisement(self: *@This()) core.HResult!*BluetoothLEAdvertisement {
         const this: *IBluetoothLEAdvertisementPublisherTrigger = @ptrCast(self);
         return try this.getAdvertisement();
@@ -1080,9 +1284,6 @@ pub const BluetoothLEAdvertisementPublisherTrigger = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSecondaryPhy(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBluetoothLEAdvertisementPublisherTrigger.IID)));
@@ -1096,6 +1297,18 @@ pub const BluetoothLEAdvertisementPublisherTrigger = extern struct {
 };
 pub const BluetoothLEAdvertisementWatcherTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinSamplingInterval(self: *@This()) core.HResult!TimeSpan {
         const this: *IBluetoothLEAdvertisementWatcherTrigger = @ptrCast(self);
         return try this.getMinSamplingInterval();
@@ -1184,9 +1397,6 @@ pub const BluetoothLEAdvertisementWatcherTrigger = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putScanParameters(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBluetoothLEAdvertisementWatcherTrigger.IID)));
@@ -1200,6 +1410,15 @@ pub const BluetoothLEAdvertisementWatcherTrigger = extern struct {
 };
 pub const CachedFileUpdaterTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1216,6 +1435,18 @@ pub const CachedFileUpdaterTrigger = extern struct {
 };
 pub const CachedFileUpdaterTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUpdateTarget(self: *@This()) core.HResult!CachedFileTarget {
         const this: *ICachedFileUpdaterTriggerDetails = @ptrCast(self);
         return try this.getUpdateTarget();
@@ -1236,6 +1467,15 @@ pub const CachedFileUpdaterTriggerDetails = extern struct {
 };
 pub const ChatMessageNotificationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1252,6 +1492,15 @@ pub const ChatMessageNotificationTrigger = extern struct {
 };
 pub const ChatMessageReceivedNotificationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1268,6 +1517,15 @@ pub const ChatMessageReceivedNotificationTrigger = extern struct {
 };
 pub const ContactStoreNotificationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1284,12 +1542,21 @@ pub const ContactStoreNotificationTrigger = extern struct {
 };
 pub const ContentPrefetchTrigger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getWaitInterval(self: *@This()) core.HResult!TimeSpan {
-        const this: *IContentPrefetchTrigger = @ptrCast(self);
-        return try this.getWaitInterval();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getWaitInterval(self: *@This()) core.HResult!TimeSpan {
+        const this: *IContentPrefetchTrigger = @ptrCast(self);
+        return try this.getWaitInterval();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1309,6 +1576,15 @@ pub const ContentPrefetchTrigger = extern struct {
 };
 pub const ConversationalAgentTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1325,6 +1601,18 @@ pub const ConversationalAgentTrigger = extern struct {
 };
 pub const CustomSystemEventTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTriggerId(self: *@This()) core.HResult!?HSTRING {
         const this: *ICustomSystemEventTrigger = @ptrCast(self);
         return try this.getTriggerId();
@@ -1332,9 +1620,6 @@ pub const CustomSystemEventTrigger = extern struct {
     pub fn getRecurrence(self: *@This()) core.HResult!CustomSystemEventTriggerRecurrence {
         const this: *ICustomSystemEventTrigger = @ptrCast(self);
         return try this.getRecurrence();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(triggerId: ?HSTRING, recurrence: CustomSystemEventTriggerRecurrence) core.HResult!*CustomSystemEventTrigger {
         const _f = try @This()._ICustomSystemEventTriggerFactoryCache.get();
@@ -1353,6 +1638,18 @@ pub const CustomSystemEventTriggerRecurrence = enum(i32) {
 };
 pub const DeviceConnectionChangeTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceConnectionChangeTrigger = @ptrCast(self);
         return try this.getDeviceId();
@@ -1369,9 +1666,6 @@ pub const DeviceConnectionChangeTrigger = extern struct {
         const this: *IDeviceConnectionChangeTrigger = @ptrCast(self);
         return try this.putMaintainConnection(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceConnectionChangeTrigger) {
         const _f = try @This()._IDeviceConnectionChangeTriggerStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
@@ -1385,6 +1679,18 @@ pub const DeviceConnectionChangeTrigger = extern struct {
 };
 pub const DeviceManufacturerNotificationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTriggerQualifier(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceManufacturerNotificationTrigger = @ptrCast(self);
         return try this.getTriggerQualifier();
@@ -1392,9 +1698,6 @@ pub const DeviceManufacturerNotificationTrigger = extern struct {
     pub fn getOneShot(self: *@This()) core.HResult!bool {
         const this: *IDeviceManufacturerNotificationTrigger = @ptrCast(self);
         return try this.getOneShot();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(triggerQualifier: ?HSTRING, oneShot: bool) core.HResult!*DeviceManufacturerNotificationTrigger {
         const _f = try @This()._IDeviceManufacturerNotificationTriggerFactoryCache.get();
@@ -1409,6 +1712,18 @@ pub const DeviceManufacturerNotificationTrigger = extern struct {
 };
 pub const DeviceServicingTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAsync(self: *@This(), deviceId: ?HSTRING, expectedDuration: TimeSpan) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         const this: *IDeviceServicingTrigger = @ptrCast(self);
         return try this.RequestAsync(deviceId, expectedDuration);
@@ -1416,9 +1731,6 @@ pub const DeviceServicingTrigger = extern struct {
     pub fn RequestAsyncWithArguments(self: *@This(), deviceId: ?HSTRING, expectedDuration: TimeSpan, arguments: ?HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         const this: *IDeviceServicingTrigger = @ptrCast(self);
         return try this.RequestAsyncWithArguments(deviceId, expectedDuration, arguments);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1439,6 +1751,18 @@ pub const DeviceTriggerResult = enum(i32) {
 };
 pub const DeviceUseTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         const this: *IDeviceUseTrigger = @ptrCast(self);
         return try this.RequestAsync(deviceId);
@@ -1446,9 +1770,6 @@ pub const DeviceUseTrigger = extern struct {
     pub fn RequestAsyncWithArguments(self: *@This(), deviceId: ?HSTRING, arguments: ?HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         const this: *IDeviceUseTrigger = @ptrCast(self);
         return try this.RequestAsyncWithArguments(deviceId, arguments);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1463,6 +1784,18 @@ pub const DeviceUseTrigger = extern struct {
 };
 pub const DeviceWatcherTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.DeviceWatcherTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IDeviceWatcherTrigger.GUID;
@@ -1471,6 +1804,15 @@ pub const DeviceWatcherTrigger = extern struct {
 };
 pub const EmailStoreNotificationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1493,6 +1835,18 @@ pub const EnergyUseLevel = enum(i32) {
 };
 pub const GattCharacteristicNotificationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharacteristic(self: *@This()) core.HResult!*GattCharacteristic {
         const this: *IGattCharacteristicNotificationTrigger = @ptrCast(self);
         return try this.getCharacteristic();
@@ -1503,9 +1857,6 @@ pub const GattCharacteristicNotificationTrigger = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristicNotificationTrigger2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getEventTriggeringMode();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(characteristic: *GattCharacteristic) core.HResult!*GattCharacteristicNotificationTrigger {
         const _f = try @This()._IGattCharacteristicNotificationTriggerFactoryCache.get();
@@ -1525,6 +1876,18 @@ pub const GattCharacteristicNotificationTrigger = extern struct {
 };
 pub const GattServiceProviderTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTriggerId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGattServiceProviderTrigger = @ptrCast(self);
         return try this.getTriggerId();
@@ -1541,9 +1904,6 @@ pub const GattServiceProviderTrigger = extern struct {
         const this: *IGattServiceProviderTrigger = @ptrCast(self);
         return try this.getAdvertisingParameters();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateAsync(triggerId: ?HSTRING, serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattServiceProviderTriggerResult) {
         const _f = try @This()._IGattServiceProviderTriggerStaticsCache.get();
         return try _f.CreateAsync(triggerId, serviceUuid);
@@ -1557,6 +1917,18 @@ pub const GattServiceProviderTrigger = extern struct {
 };
 pub const GattServiceProviderTriggerResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrigger(self: *@This()) core.HResult!*GattServiceProviderTrigger {
         const this: *IGattServiceProviderTriggerResult = @ptrCast(self);
         return try this.getTrigger();
@@ -1573,6 +1945,18 @@ pub const GattServiceProviderTriggerResult = extern struct {
 };
 pub const GeovisitTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMonitoringScope(self: *@This()) core.HResult!VisitMonitoringScope {
         const this: *IGeovisitTrigger = @ptrCast(self);
         return try this.getMonitoringScope();
@@ -1580,9 +1964,6 @@ pub const GeovisitTrigger = extern struct {
     pub fn putMonitoringScope(self: *@This(), value: VisitMonitoringScope) core.HResult!void {
         const this: *IGeovisitTrigger = @ptrCast(self);
         return try this.putMonitoringScope(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1597,6 +1978,12 @@ pub const GeovisitTrigger = extern struct {
 };
 pub const IActivitySensorTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSubscribedActivities(self: *@This()) core.HResult!*IVector(ActivityType) {
         var _r: *IVector(ActivityType) = undefined;
         const _c = self.vtable.get_SubscribedActivities(@ptrCast(self), &_r);
@@ -1641,6 +2028,12 @@ pub const IActivitySensorTrigger = extern struct {
 };
 pub const IActivitySensorTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), reportIntervalInMilliseconds: u32) core.HResult!*ActivitySensorTrigger {
         var _r: *ActivitySensorTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), reportIntervalInMilliseconds, &_r);
@@ -1664,6 +2057,12 @@ pub const IActivitySensorTriggerFactory = extern struct {
 };
 pub const IApplicationTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAsync(self: *@This()) core.HResult!*IAsyncOperation(ApplicationTriggerResult) {
         var _r: *IAsyncOperation(ApplicationTriggerResult) = undefined;
         const _c = self.vtable.RequestAsync(@ptrCast(self), &_r);
@@ -1694,6 +2093,12 @@ pub const IApplicationTrigger = extern struct {
 };
 pub const IApplicationTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getArguments(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_Arguments(@ptrCast(self), &_r);
@@ -1717,6 +2122,12 @@ pub const IApplicationTriggerDetails = extern struct {
 };
 pub const IAppointmentStoreNotificationTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IAppointmentStoreNotificationTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "64d4040c-c201-42ad-aa2a-e21ba3425b6d";
@@ -1733,6 +2144,12 @@ pub const IAppointmentStoreNotificationTrigger = extern struct {
 };
 pub const IBackgroundCondition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IBackgroundCondition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ae48a1ee-8951-400a-8302-9c9c9a2a3a3b";
@@ -1749,6 +2166,12 @@ pub const IBackgroundCondition = extern struct {
 };
 pub const IBackgroundExecutionManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(BackgroundAccessStatus) {
         var _r: *IAsyncOperation(BackgroundAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
@@ -1803,6 +2226,12 @@ pub const IBackgroundExecutionManagerStatics = extern struct {
 };
 pub const IBackgroundExecutionManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAccessKindAsync(self: *@This(), requestedAccess: BackgroundAccessRequestKind, reason: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestAccessKindAsync(@ptrCast(self), requestedAccess, reason, &_r);
@@ -1826,6 +2255,12 @@ pub const IBackgroundExecutionManagerStatics2 = extern struct {
 };
 pub const IBackgroundExecutionManagerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAccessKindForModernStandbyAsync(self: *@This(), requestedAccess: BackgroundAccessRequestKind, reason: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestAccessKindForModernStandbyAsync(@ptrCast(self), requestedAccess, reason, &_r);
@@ -1863,6 +2298,12 @@ pub const IBackgroundExecutionManagerStatics3 = extern struct {
 };
 pub const IBackgroundTask = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Run(self: *@This(), taskInstance: *IBackgroundTaskInstance) core.HResult!void {
         const _c = self.vtable.Run(@ptrCast(self), taskInstance);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1884,6 +2325,12 @@ pub const IBackgroundTask = extern struct {
 };
 pub const IBackgroundTaskBuilder = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putTaskEntryPoint(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TaskEntryPoint(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1941,6 +2388,12 @@ pub const IBackgroundTaskBuilder = extern struct {
 };
 pub const IBackgroundTaskBuilder2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCancelOnConditionLoss(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CancelOnConditionLoss(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1969,6 +2422,12 @@ pub const IBackgroundTaskBuilder2 = extern struct {
 };
 pub const IBackgroundTaskBuilder3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putIsNetworkRequested(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsNetworkRequested(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1997,6 +2456,12 @@ pub const IBackgroundTaskBuilder3 = extern struct {
 };
 pub const IBackgroundTaskBuilder4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskGroup(self: *@This()) core.HResult!*BackgroundTaskRegistrationGroup {
         var _r: *BackgroundTaskRegistrationGroup = undefined;
         const _c = self.vtable.get_TaskGroup(@ptrCast(self), &_r);
@@ -2025,6 +2490,12 @@ pub const IBackgroundTaskBuilder4 = extern struct {
 };
 pub const IBackgroundTaskBuilder5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetTaskEntryPointClsid(self: *@This(), TaskEntryPoint: *Guid) core.HResult!void {
         const _c = self.vtable.SetTaskEntryPointClsid(@ptrCast(self), TaskEntryPoint);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2046,6 +2517,12 @@ pub const IBackgroundTaskBuilder5 = extern struct {
 };
 pub const IBackgroundTaskBuilder6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowRunningTaskInStandby(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowRunningTaskInStandby(@ptrCast(self), &_r);
@@ -2088,6 +2565,12 @@ pub const IBackgroundTaskBuilder6 = extern struct {
 };
 pub const IBackgroundTaskBuilderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsRunningTaskInStandbySupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRunningTaskInStandbySupported(@ptrCast(self), &_r);
@@ -2111,6 +2594,12 @@ pub const IBackgroundTaskBuilderStatics = extern struct {
 };
 pub const IBackgroundTaskCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInstanceId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_InstanceId(@ptrCast(self), &_r);
@@ -2139,6 +2628,12 @@ pub const IBackgroundTaskCompletedEventArgs = extern struct {
 };
 pub const IBackgroundTaskDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2160,6 +2655,12 @@ pub const IBackgroundTaskDeferral = extern struct {
 };
 pub const IBackgroundTaskInstance = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInstanceId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_InstanceId(@ptrCast(self), &_r);
@@ -2235,6 +2736,12 @@ pub const IBackgroundTaskInstance = extern struct {
 };
 pub const IBackgroundTaskInstance2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetThrottleCount(self: *@This(), counter: BackgroundTaskThrottleCounter) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.GetThrottleCount(@ptrCast(self), counter, &_r);
@@ -2258,6 +2765,12 @@ pub const IBackgroundTaskInstance2 = extern struct {
 };
 pub const IBackgroundTaskInstance4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -2281,6 +2794,12 @@ pub const IBackgroundTaskInstance4 = extern struct {
 };
 pub const IBackgroundTaskProgressEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInstanceId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_InstanceId(@ptrCast(self), &_r);
@@ -2311,6 +2830,12 @@ pub const IBackgroundTaskProgressEventArgs = extern struct {
 };
 pub const IBackgroundTaskRegistration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_TaskId(@ptrCast(self), &_r);
@@ -2370,6 +2895,12 @@ pub const IBackgroundTaskRegistration = extern struct {
 };
 pub const IBackgroundTaskRegistration2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
         var _r: *IBackgroundTrigger = undefined;
         const _c = self.vtable.get_Trigger(@ptrCast(self), &_r);
@@ -2393,6 +2924,12 @@ pub const IBackgroundTaskRegistration2 = extern struct {
 };
 pub const IBackgroundTaskRegistration3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskGroup(self: *@This()) core.HResult!*BackgroundTaskRegistrationGroup {
         var _r: *BackgroundTaskRegistrationGroup = undefined;
         const _c = self.vtable.get_TaskGroup(@ptrCast(self), &_r);
@@ -2416,6 +2953,12 @@ pub const IBackgroundTaskRegistration3 = extern struct {
 };
 pub const IBackgroundTaskRegistration4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskLastThrottledInStandbyTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_TaskLastThrottledInStandbyTimestamp(@ptrCast(self), &_r);
@@ -2446,6 +2989,12 @@ pub const IBackgroundTaskRegistration4 = extern struct {
 };
 pub const IBackgroundTaskRegistrationGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -2495,6 +3044,12 @@ pub const IBackgroundTaskRegistrationGroup = extern struct {
 };
 pub const IBackgroundTaskRegistrationGroupFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), id: ?HSTRING) core.HResult!*BackgroundTaskRegistrationGroup {
         var _r: *BackgroundTaskRegistrationGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), id, &_r);
@@ -2525,6 +3080,12 @@ pub const IBackgroundTaskRegistrationGroupFactory = extern struct {
 };
 pub const IBackgroundTaskRegistrationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllTasks(self: *@This()) core.HResult!*IMapView(Guid,IBackgroundTaskRegistration) {
         var _r: *IMapView(Guid,IBackgroundTaskRegistration) = undefined;
         const _c = self.vtable.get_AllTasks(@ptrCast(self), &_r);
@@ -2548,6 +3109,12 @@ pub const IBackgroundTaskRegistrationStatics = extern struct {
 };
 pub const IBackgroundTaskRegistrationStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllTaskGroups(self: *@This()) core.HResult!*IMapView(?HSTRING,BackgroundTaskRegistrationGroup) {
         var _r: *IMapView(?HSTRING,BackgroundTaskRegistrationGroup) = undefined;
         const _c = self.vtable.get_AllTaskGroups(@ptrCast(self), &_r);
@@ -2578,6 +3145,12 @@ pub const IBackgroundTaskRegistrationStatics2 = extern struct {
 };
 pub const IBackgroundTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IBackgroundTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "84b3a058-6027-4b87-9790-bdf3f757dbd7";
@@ -2594,6 +3167,12 @@ pub const IBackgroundTrigger = extern struct {
 };
 pub const IBackgroundWorkCostStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentBackgroundWorkCost(self: *@This()) core.HResult!BackgroundWorkCostValue {
         var _r: BackgroundWorkCostValue = undefined;
         const _c = self.vtable.get_CurrentBackgroundWorkCost(@ptrCast(self), &_r);
@@ -2617,6 +3196,12 @@ pub const IBackgroundWorkCostStatics = extern struct {
 };
 pub const IBackgroundWorkCostStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppEnergyUseLevel(self: *@This()) core.HResult!EnergyUseLevel {
         var _r: EnergyUseLevel = undefined;
         const _c = self.vtable.get_AppEnergyUseLevel(@ptrCast(self), &_r);
@@ -2654,6 +3239,12 @@ pub const IBackgroundWorkCostStatics2 = extern struct {
 };
 pub const IBluetoothLEAdvertisementPublisherTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdvertisement(self: *@This()) core.HResult!*BluetoothLEAdvertisement {
         var _r: *BluetoothLEAdvertisement = undefined;
         const _c = self.vtable.get_Advertisement(@ptrCast(self), &_r);
@@ -2677,6 +3268,12 @@ pub const IBluetoothLEAdvertisementPublisherTrigger = extern struct {
 };
 pub const IBluetoothLEAdvertisementPublisherTrigger2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreferredTransmitPowerLevelInDBm(self: *@This()) core.HResult!*IReference(i16) {
         var _r: *IReference(i16) = undefined;
         const _c = self.vtable.get_PreferredTransmitPowerLevelInDBm(@ptrCast(self), &_r);
@@ -2741,6 +3338,12 @@ pub const IBluetoothLEAdvertisementPublisherTrigger2 = extern struct {
 };
 pub const IBluetoothLEAdvertisementPublisherTrigger3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrimaryPhy(self: *@This()) core.HResult!BluetoothLEAdvertisementPhyType {
         var _r: BluetoothLEAdvertisementPhyType = undefined;
         const _c = self.vtable.get_PrimaryPhy(@ptrCast(self), &_r);
@@ -2781,6 +3384,12 @@ pub const IBluetoothLEAdvertisementPublisherTrigger3 = extern struct {
 };
 pub const IBluetoothLEAdvertisementWatcherTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinSamplingInterval(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_MinSamplingInterval(@ptrCast(self), &_r);
@@ -2849,6 +3458,12 @@ pub const IBluetoothLEAdvertisementWatcherTrigger = extern struct {
 };
 pub const IBluetoothLEAdvertisementWatcherTrigger2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowExtendedAdvertisements(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowExtendedAdvertisements(@ptrCast(self), &_r);
@@ -2877,6 +3492,12 @@ pub const IBluetoothLEAdvertisementWatcherTrigger2 = extern struct {
 };
 pub const IBluetoothLEAdvertisementWatcherTrigger3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUseUncoded1MPhy(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_UseUncoded1MPhy(@ptrCast(self), &_r);
@@ -2929,6 +3550,12 @@ pub const IBluetoothLEAdvertisementWatcherTrigger3 = extern struct {
 };
 pub const ICachedFileUpdaterTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ICachedFileUpdaterTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e21caeeb-32f2-4d31-b553-b9e01bde37e0";
@@ -2945,6 +3572,12 @@ pub const ICachedFileUpdaterTrigger = extern struct {
 };
 pub const ICachedFileUpdaterTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUpdateTarget(self: *@This()) core.HResult!CachedFileTarget {
         var _r: CachedFileTarget = undefined;
         const _c = self.vtable.get_UpdateTarget(@ptrCast(self), &_r);
@@ -2982,6 +3615,12 @@ pub const ICachedFileUpdaterTriggerDetails = extern struct {
 };
 pub const IChatMessageNotificationTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IChatMessageNotificationTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "513b43bf-1d40-5c5d-78f5-c923fee3739e";
@@ -2998,6 +3637,12 @@ pub const IChatMessageNotificationTrigger = extern struct {
 };
 pub const IChatMessageReceivedNotificationTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IChatMessageReceivedNotificationTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "3ea3760e-baf5-4077-88e9-060cf6f0c6d5";
@@ -3014,6 +3659,12 @@ pub const IChatMessageReceivedNotificationTrigger = extern struct {
 };
 pub const IContactStoreNotificationTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IContactStoreNotificationTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c833419b-4705-4571-9a16-06b997bf9c96";
@@ -3030,6 +3681,12 @@ pub const IContactStoreNotificationTrigger = extern struct {
 };
 pub const IContentPrefetchTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWaitInterval(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_WaitInterval(@ptrCast(self), &_r);
@@ -3053,6 +3710,12 @@ pub const IContentPrefetchTrigger = extern struct {
 };
 pub const IContentPrefetchTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), waitInterval: TimeSpan) core.HResult!*ContentPrefetchTrigger {
         var _r: *ContentPrefetchTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), waitInterval, &_r);
@@ -3076,6 +3739,12 @@ pub const IContentPrefetchTriggerFactory = extern struct {
 };
 pub const ICustomSystemEventTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTriggerId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TriggerId(@ptrCast(self), &_r);
@@ -3106,6 +3775,12 @@ pub const ICustomSystemEventTrigger = extern struct {
 };
 pub const ICustomSystemEventTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), triggerId: ?HSTRING, recurrence: CustomSystemEventTriggerRecurrence) core.HResult!*CustomSystemEventTrigger {
         var _r: *CustomSystemEventTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), triggerId, recurrence, &_r);
@@ -3129,6 +3804,12 @@ pub const ICustomSystemEventTriggerFactory = extern struct {
 };
 pub const IDeviceConnectionChangeTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -3171,6 +3852,12 @@ pub const IDeviceConnectionChangeTrigger = extern struct {
 };
 pub const IDeviceConnectionChangeTriggerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceConnectionChangeTrigger) {
         var _r: *IAsyncOperation(DeviceConnectionChangeTrigger) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
@@ -3194,6 +3881,12 @@ pub const IDeviceConnectionChangeTriggerStatics = extern struct {
 };
 pub const IDeviceManufacturerNotificationTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTriggerQualifier(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TriggerQualifier(@ptrCast(self), &_r);
@@ -3224,6 +3917,12 @@ pub const IDeviceManufacturerNotificationTrigger = extern struct {
 };
 pub const IDeviceManufacturerNotificationTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), triggerQualifier: ?HSTRING, oneShot: bool) core.HResult!*DeviceManufacturerNotificationTrigger {
         var _r: *DeviceManufacturerNotificationTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), triggerQualifier, oneShot, &_r);
@@ -3247,6 +3946,12 @@ pub const IDeviceManufacturerNotificationTriggerFactory = extern struct {
 };
 pub const IDeviceServicingTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAsync(self: *@This(), deviceId: ?HSTRING, expectedDuration: TimeSpan) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         var _r: *IAsyncOperation(DeviceTriggerResult) = undefined;
         const _c = self.vtable.RequestAsync(@ptrCast(self), deviceId, expectedDuration, &_r);
@@ -3277,6 +3982,12 @@ pub const IDeviceServicingTrigger = extern struct {
 };
 pub const IDeviceUseTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         var _r: *IAsyncOperation(DeviceTriggerResult) = undefined;
         const _c = self.vtable.RequestAsync(@ptrCast(self), deviceId, &_r);
@@ -3307,6 +4018,12 @@ pub const IDeviceUseTrigger = extern struct {
 };
 pub const IDeviceWatcherTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IDeviceWatcherTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a4617fdd-8573-4260-befc-5bec89cb693d";
@@ -3323,6 +4040,12 @@ pub const IDeviceWatcherTrigger = extern struct {
 };
 pub const IEmailStoreNotificationTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IEmailStoreNotificationTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "986d06da-47eb-4268-a4f2-f3f77188388a";
@@ -3339,6 +4062,12 @@ pub const IEmailStoreNotificationTrigger = extern struct {
 };
 pub const IGattCharacteristicNotificationTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharacteristic(self: *@This()) core.HResult!*GattCharacteristic {
         var _r: *GattCharacteristic = undefined;
         const _c = self.vtable.get_Characteristic(@ptrCast(self), &_r);
@@ -3362,6 +4091,12 @@ pub const IGattCharacteristicNotificationTrigger = extern struct {
 };
 pub const IGattCharacteristicNotificationTrigger2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEventTriggeringMode(self: *@This()) core.HResult!BluetoothEventTriggeringMode {
         var _r: BluetoothEventTriggeringMode = undefined;
         const _c = self.vtable.get_EventTriggeringMode(@ptrCast(self), &_r);
@@ -3385,6 +4120,12 @@ pub const IGattCharacteristicNotificationTrigger2 = extern struct {
 };
 pub const IGattCharacteristicNotificationTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), characteristic: *GattCharacteristic) core.HResult!*GattCharacteristicNotificationTrigger {
         var _r: *GattCharacteristicNotificationTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), characteristic, &_r);
@@ -3408,6 +4149,12 @@ pub const IGattCharacteristicNotificationTriggerFactory = extern struct {
 };
 pub const IGattCharacteristicNotificationTriggerFactory2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), characteristic: *GattCharacteristic, eventTriggeringMode: BluetoothEventTriggeringMode) core.HResult!*GattCharacteristicNotificationTrigger {
         var _r: *GattCharacteristicNotificationTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), characteristic, eventTriggeringMode, &_r);
@@ -3431,6 +4178,12 @@ pub const IGattCharacteristicNotificationTriggerFactory2 = extern struct {
 };
 pub const IGattServiceProviderTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTriggerId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TriggerId(@ptrCast(self), &_r);
@@ -3473,6 +4226,12 @@ pub const IGattServiceProviderTrigger = extern struct {
 };
 pub const IGattServiceProviderTriggerResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrigger(self: *@This()) core.HResult!*GattServiceProviderTrigger {
         var _r: *GattServiceProviderTrigger = undefined;
         const _c = self.vtable.get_Trigger(@ptrCast(self), &_r);
@@ -3503,6 +4262,12 @@ pub const IGattServiceProviderTriggerResult = extern struct {
 };
 pub const IGattServiceProviderTriggerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAsync(self: *@This(), triggerId: ?HSTRING, serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattServiceProviderTriggerResult) {
         var _r: *IAsyncOperation(GattServiceProviderTriggerResult) = undefined;
         const _c = self.vtable.CreateAsync(@ptrCast(self), triggerId, serviceUuid, &_r);
@@ -3526,6 +4291,12 @@ pub const IGattServiceProviderTriggerStatics = extern struct {
 };
 pub const IGeovisitTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMonitoringScope(self: *@This()) core.HResult!VisitMonitoringScope {
         var _r: VisitMonitoringScope = undefined;
         const _c = self.vtable.get_MonitoringScope(@ptrCast(self), &_r);
@@ -3554,6 +4325,12 @@ pub const IGeovisitTrigger = extern struct {
 };
 pub const ILocationTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTriggerType(self: *@This()) core.HResult!LocationTriggerType {
         var _r: LocationTriggerType = undefined;
         const _c = self.vtable.get_TriggerType(@ptrCast(self), &_r);
@@ -3577,6 +4354,12 @@ pub const ILocationTrigger = extern struct {
 };
 pub const ILocationTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), triggerType: LocationTriggerType) core.HResult!*LocationTrigger {
         var _r: *LocationTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), triggerType, &_r);
@@ -3600,6 +4383,12 @@ pub const ILocationTriggerFactory = extern struct {
 };
 pub const IMaintenanceTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFreshnessTime(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_FreshnessTime(@ptrCast(self), &_r);
@@ -3630,6 +4419,12 @@ pub const IMaintenanceTrigger = extern struct {
 };
 pub const IMaintenanceTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), freshnessTime: u32, oneShot: bool) core.HResult!*MaintenanceTrigger {
         var _r: *MaintenanceTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), freshnessTime, oneShot, &_r);
@@ -3653,6 +4448,12 @@ pub const IMaintenanceTriggerFactory = extern struct {
 };
 pub const IMediaProcessingTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAsync(self: *@This()) core.HResult!*IAsyncOperation(MediaProcessingTriggerResult) {
         var _r: *IAsyncOperation(MediaProcessingTriggerResult) = undefined;
         const _c = self.vtable.RequestAsync(@ptrCast(self), &_r);
@@ -3683,6 +4484,12 @@ pub const IMediaProcessingTrigger = extern struct {
 };
 pub const INetworkOperatorHotspotAuthenticationTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.INetworkOperatorHotspotAuthenticationTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e756c791-3001-4de5-83c7-de61d88831d0";
@@ -3699,6 +4506,12 @@ pub const INetworkOperatorHotspotAuthenticationTrigger = extern struct {
 };
 pub const INetworkOperatorNotificationTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NetworkAccountId(@ptrCast(self), &_r);
@@ -3722,6 +4535,12 @@ pub const INetworkOperatorNotificationTrigger = extern struct {
 };
 pub const INetworkOperatorNotificationTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), networkAccountId: ?HSTRING) core.HResult!*NetworkOperatorNotificationTrigger {
         var _r: *NetworkOperatorNotificationTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), networkAccountId, &_r);
@@ -3745,6 +4564,12 @@ pub const INetworkOperatorNotificationTriggerFactory = extern struct {
 };
 pub const IPushNotificationTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), applicationId: ?HSTRING) core.HResult!*PushNotificationTrigger {
         var _r: *PushNotificationTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), applicationId, &_r);
@@ -3768,6 +4593,12 @@ pub const IPushNotificationTriggerFactory = extern struct {
 };
 pub const IRcsEndUserMessageAvailableTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IRcsEndUserMessageAvailableTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "986d0d6a-b2f6-467f-a978-a44091c11a66";
@@ -3784,6 +4615,12 @@ pub const IRcsEndUserMessageAvailableTrigger = extern struct {
 };
 pub const IRfcommConnectionTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInboundConnection(self: *@This()) core.HResult!*RfcommInboundConnectionInformation {
         var _r: *RfcommInboundConnectionInformation = undefined;
         const _c = self.vtable.get_InboundConnection(@ptrCast(self), &_r);
@@ -3850,6 +4687,12 @@ pub const IRfcommConnectionTrigger = extern struct {
 };
 pub const ISecondaryAuthenticationFactorAuthenticationTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ISecondaryAuthenticationFactorAuthenticationTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "f237f327-5181-4f24-96a7-700a4e5fac62";
@@ -3866,6 +4709,12 @@ pub const ISecondaryAuthenticationFactorAuthenticationTrigger = extern struct {
 };
 pub const ISensorDataThresholdTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.ISensorDataThresholdTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "5bc0f372-d48b-4b7f-abec-15f9bacc12e2";
@@ -3882,6 +4731,12 @@ pub const ISensorDataThresholdTrigger = extern struct {
 };
 pub const ISensorDataThresholdTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), threshold: *ISensorDataThreshold) core.HResult!*SensorDataThresholdTrigger {
         var _r: *SensorDataThresholdTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), threshold, &_r);
@@ -3905,6 +4760,12 @@ pub const ISensorDataThresholdTriggerFactory = extern struct {
 };
 pub const ISmsMessageReceivedTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), filterRules: *SmsFilterRules) core.HResult!*SmsMessageReceivedTrigger {
         var _r: *SmsMessageReceivedTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), filterRules, &_r);
@@ -3928,6 +4789,12 @@ pub const ISmsMessageReceivedTriggerFactory = extern struct {
 };
 pub const ISocketActivityTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsWakeFromLowPowerSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsWakeFromLowPowerSupported(@ptrCast(self), &_r);
@@ -3951,6 +4818,12 @@ pub const ISocketActivityTrigger = extern struct {
 };
 pub const IStorageLibraryChangeTrackerTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), tracker: *StorageLibraryChangeTracker) core.HResult!*StorageLibraryChangeTrackerTrigger {
         var _r: *StorageLibraryChangeTrackerTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), tracker, &_r);
@@ -3974,6 +4847,12 @@ pub const IStorageLibraryChangeTrackerTriggerFactory = extern struct {
 };
 pub const IStorageLibraryContentChangedTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.IStorageLibraryContentChangedTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1637e0a7-829c-45bc-929b-a1e7ea78d89b";
@@ -3990,6 +4869,12 @@ pub const IStorageLibraryContentChangedTrigger = extern struct {
 };
 pub const IStorageLibraryContentChangedTriggerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), storageLibrary: *StorageLibrary) core.HResult!*StorageLibraryContentChangedTrigger {
         var _r: *StorageLibraryContentChangedTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), storageLibrary, &_r);
@@ -4020,6 +4905,12 @@ pub const IStorageLibraryContentChangedTriggerStatics = extern struct {
 };
 pub const ISystemCondition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConditionType(self: *@This()) core.HResult!SystemConditionType {
         var _r: SystemConditionType = undefined;
         const _c = self.vtable.get_ConditionType(@ptrCast(self), &_r);
@@ -4043,6 +4934,12 @@ pub const ISystemCondition = extern struct {
 };
 pub const ISystemConditionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), conditionType: SystemConditionType) core.HResult!*SystemCondition {
         var _r: *SystemCondition = undefined;
         const _c = self.vtable.Create(@ptrCast(self), conditionType, &_r);
@@ -4066,6 +4963,12 @@ pub const ISystemConditionFactory = extern struct {
 };
 pub const ISystemTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOneShot(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_OneShot(@ptrCast(self), &_r);
@@ -4096,6 +4999,12 @@ pub const ISystemTrigger = extern struct {
 };
 pub const ISystemTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), triggerType: SystemTriggerType, oneShot: bool) core.HResult!*SystemTrigger {
         var _r: *SystemTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), triggerType, oneShot, &_r);
@@ -4119,6 +5028,12 @@ pub const ISystemTriggerFactory = extern struct {
 };
 pub const ITimeTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFreshnessTime(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_FreshnessTime(@ptrCast(self), &_r);
@@ -4149,6 +5064,12 @@ pub const ITimeTrigger = extern struct {
 };
 pub const ITimeTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), freshnessTime: u32, oneShot: bool) core.HResult!*TimeTrigger {
         var _r: *TimeTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), freshnessTime, oneShot, &_r);
@@ -4172,6 +5093,12 @@ pub const ITimeTriggerFactory = extern struct {
 };
 pub const IToastNotificationActionTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), applicationId: ?HSTRING) core.HResult!*ToastNotificationActionTrigger {
         var _r: *ToastNotificationActionTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), applicationId, &_r);
@@ -4195,6 +5122,12 @@ pub const IToastNotificationActionTriggerFactory = extern struct {
 };
 pub const IToastNotificationHistoryChangedTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), applicationId: ?HSTRING) core.HResult!*ToastNotificationHistoryChangedTrigger {
         var _r: *ToastNotificationHistoryChangedTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), applicationId, &_r);
@@ -4218,6 +5151,12 @@ pub const IToastNotificationHistoryChangedTriggerFactory = extern struct {
 };
 pub const IUserNotificationChangedTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), notificationKinds: NotificationKinds) core.HResult!*UserNotificationChangedTrigger {
         var _r: *UserNotificationChangedTrigger = undefined;
         const _c = self.vtable.Create(@ptrCast(self), notificationKinds, &_r);
@@ -4241,12 +5180,21 @@ pub const IUserNotificationChangedTriggerFactory = extern struct {
 };
 pub const LocationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getTriggerType(self: *@This()) core.HResult!LocationTriggerType {
-        const this: *ILocationTrigger = @ptrCast(self);
-        return try this.getTriggerType();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getTriggerType(self: *@This()) core.HResult!LocationTriggerType {
+        const this: *ILocationTrigger = @ptrCast(self);
+        return try this.getTriggerType();
     }
     pub fn Create(triggerType: LocationTriggerType) core.HResult!*LocationTrigger {
         const _f = try @This()._ILocationTriggerFactoryCache.get();
@@ -4264,6 +5212,18 @@ pub const LocationTriggerType = enum(i32) {
 };
 pub const MaintenanceTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFreshnessTime(self: *@This()) core.HResult!u32 {
         const this: *IMaintenanceTrigger = @ptrCast(self);
         return try this.getFreshnessTime();
@@ -4271,9 +5231,6 @@ pub const MaintenanceTrigger = extern struct {
     pub fn getOneShot(self: *@This()) core.HResult!bool {
         const this: *IMaintenanceTrigger = @ptrCast(self);
         return try this.getOneShot();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(freshnessTime: u32, oneShot: bool) core.HResult!*MaintenanceTrigger {
         const _f = try @This()._IMaintenanceTriggerFactoryCache.get();
@@ -4288,6 +5245,18 @@ pub const MaintenanceTrigger = extern struct {
 };
 pub const MediaProcessingTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAsync(self: *@This()) core.HResult!*IAsyncOperation(MediaProcessingTriggerResult) {
         const this: *IMediaProcessingTrigger = @ptrCast(self);
         return try this.RequestAsync();
@@ -4295,9 +5264,6 @@ pub const MediaProcessingTrigger = extern struct {
     pub fn RequestAsyncWithArguments(self: *@This(), arguments: *ValueSet) core.HResult!*IAsyncOperation(MediaProcessingTriggerResult) {
         const this: *IMediaProcessingTrigger = @ptrCast(self);
         return try this.RequestAsyncWithArguments(arguments);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -4318,6 +5284,15 @@ pub const MediaProcessingTriggerResult = enum(i32) {
 };
 pub const MobileBroadbandDeviceServiceNotificationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4334,6 +5309,15 @@ pub const MobileBroadbandDeviceServiceNotificationTrigger = extern struct {
 };
 pub const MobileBroadbandPcoDataChangeTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4350,6 +5334,15 @@ pub const MobileBroadbandPcoDataChangeTrigger = extern struct {
 };
 pub const MobileBroadbandPinLockStateChangeTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4366,6 +5359,15 @@ pub const MobileBroadbandPinLockStateChangeTrigger = extern struct {
 };
 pub const MobileBroadbandRadioStateChangeTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4382,6 +5384,15 @@ pub const MobileBroadbandRadioStateChangeTrigger = extern struct {
 };
 pub const MobileBroadbandRegistrationStateChangeTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4398,6 +5409,15 @@ pub const MobileBroadbandRegistrationStateChangeTrigger = extern struct {
 };
 pub const NetworkOperatorDataUsageTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4414,6 +5434,15 @@ pub const NetworkOperatorDataUsageTrigger = extern struct {
 };
 pub const NetworkOperatorHotspotAuthenticationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4430,12 +5459,21 @@ pub const NetworkOperatorHotspotAuthenticationTrigger = extern struct {
 };
 pub const NetworkOperatorNotificationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
-        const this: *INetworkOperatorNotificationTrigger = @ptrCast(self);
-        return try this.getNetworkAccountId();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getNetworkAccountId(self: *@This()) core.HResult!?HSTRING {
+        const this: *INetworkOperatorNotificationTrigger = @ptrCast(self);
+        return try this.getNetworkAccountId();
     }
     pub fn Create(networkAccountId: ?HSTRING) core.HResult!*NetworkOperatorNotificationTrigger {
         const _f = try @This()._INetworkOperatorNotificationTriggerFactoryCache.get();
@@ -4450,6 +5488,15 @@ pub const NetworkOperatorNotificationTrigger = extern struct {
 };
 pub const PaymentAppCanMakePaymentTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4466,6 +5513,15 @@ pub const PaymentAppCanMakePaymentTrigger = extern struct {
 };
 pub const PushNotificationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4487,6 +5543,15 @@ pub const PushNotificationTrigger = extern struct {
 };
 pub const RcsEndUserMessageAvailableTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4503,6 +5568,18 @@ pub const RcsEndUserMessageAvailableTrigger = extern struct {
 };
 pub const RfcommConnectionTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInboundConnection(self: *@This()) core.HResult!*RfcommInboundConnectionInformation {
         const this: *IRfcommConnectionTrigger = @ptrCast(self);
         return try this.getInboundConnection();
@@ -4535,9 +5612,6 @@ pub const RfcommConnectionTrigger = extern struct {
         const this: *IRfcommConnectionTrigger = @ptrCast(self);
         return try this.putRemoteHostName(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRfcommConnectionTrigger.IID)));
@@ -4551,6 +5625,15 @@ pub const RfcommConnectionTrigger = extern struct {
 };
 pub const SecondaryAuthenticationFactorAuthenticationTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4567,6 +5650,15 @@ pub const SecondaryAuthenticationFactorAuthenticationTrigger = extern struct {
 };
 pub const SensorDataThresholdTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4583,6 +5675,15 @@ pub const SensorDataThresholdTrigger = extern struct {
 };
 pub const SmsMessageReceivedTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4599,15 +5700,24 @@ pub const SmsMessageReceivedTrigger = extern struct {
 };
 pub const SocketActivityTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsWakeFromLowPowerSupported(self: *@This()) core.HResult!bool {
         var this: ?*ISocketActivityTrigger = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISocketActivityTrigger.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsWakeFromLowPowerSupported();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -4622,6 +5732,15 @@ pub const SocketActivityTrigger = extern struct {
 };
 pub const StorageLibraryChangeTrackerTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4638,6 +5757,15 @@ pub const StorageLibraryChangeTrackerTrigger = extern struct {
 };
 pub const StorageLibraryContentChangedTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4658,12 +5786,21 @@ pub const StorageLibraryContentChangedTrigger = extern struct {
 };
 pub const SystemCondition = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getConditionType(self: *@This()) core.HResult!SystemConditionType {
-        const this: *ISystemCondition = @ptrCast(self);
-        return try this.getConditionType();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getConditionType(self: *@This()) core.HResult!SystemConditionType {
+        const this: *ISystemCondition = @ptrCast(self);
+        return try this.getConditionType();
     }
     pub fn Create(conditionType: SystemConditionType) core.HResult!*SystemCondition {
         const _f = try @This()._ISystemConditionFactoryCache.get();
@@ -4689,6 +5826,18 @@ pub const SystemConditionType = enum(i32) {
 };
 pub const SystemTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOneShot(self: *@This()) core.HResult!bool {
         const this: *ISystemTrigger = @ptrCast(self);
         return try this.getOneShot();
@@ -4696,9 +5845,6 @@ pub const SystemTrigger = extern struct {
     pub fn getTriggerType(self: *@This()) core.HResult!SystemTriggerType {
         const this: *ISystemTrigger = @ptrCast(self);
         return try this.getTriggerType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(triggerType: SystemTriggerType, oneShot: bool) core.HResult!*SystemTrigger {
         const _f = try @This()._ISystemTriggerFactoryCache.get();
@@ -4731,6 +5877,15 @@ pub const SystemTriggerType = enum(i32) {
 };
 pub const TetheringEntitlementCheckTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4747,6 +5902,18 @@ pub const TetheringEntitlementCheckTrigger = extern struct {
 };
 pub const TimeTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFreshnessTime(self: *@This()) core.HResult!u32 {
         const this: *ITimeTrigger = @ptrCast(self);
         return try this.getFreshnessTime();
@@ -4754,9 +5921,6 @@ pub const TimeTrigger = extern struct {
     pub fn getOneShot(self: *@This()) core.HResult!bool {
         const this: *ITimeTrigger = @ptrCast(self);
         return try this.getOneShot();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(freshnessTime: u32, oneShot: bool) core.HResult!*TimeTrigger {
         const _f = try @This()._ITimeTriggerFactoryCache.get();
@@ -4771,6 +5935,15 @@ pub const TimeTrigger = extern struct {
 };
 pub const ToastNotificationActionTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4792,6 +5965,15 @@ pub const ToastNotificationActionTrigger = extern struct {
 };
 pub const ToastNotificationHistoryChangedTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4813,6 +5995,15 @@ pub const ToastNotificationHistoryChangedTrigger = extern struct {
 };
 pub const UserNotificationChangedTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4829,6 +6020,15 @@ pub const UserNotificationChangedTrigger = extern struct {
 };
 pub const WiFiOnDemandHotspotConnectTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4845,6 +6045,15 @@ pub const WiFiOnDemandHotspotConnectTrigger = extern struct {
 };
 pub const WiFiOnDemandHotspotUpdateMetadataTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4861,6 +6070,18 @@ pub const WiFiOnDemandHotspotUpdateMetadataTrigger = extern struct {
 };
 pub const AppBroadcastTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putProviderInfo(self: *@This(), value: *AppBroadcastTriggerProviderInfo) core.HResult!void {
         const this: *IAppBroadcastTrigger = @ptrCast(self);
         return try this.putProviderInfo(value);
@@ -4868,9 +6089,6 @@ pub const AppBroadcastTrigger = extern struct {
     pub fn getProviderInfo(self: *@This()) core.HResult!*AppBroadcastTriggerProviderInfo {
         const this: *IAppBroadcastTrigger = @ptrCast(self);
         return try this.getProviderInfo();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAppBroadcastTrigger(providerKey: ?HSTRING) core.HResult!*AppBroadcastTrigger {
         const _f = try @This()._IAppBroadcastTriggerFactoryCache.get();
@@ -4885,6 +6103,18 @@ pub const AppBroadcastTrigger = extern struct {
 };
 pub const AppBroadcastTriggerProviderInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putDisplayNameResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppBroadcastTriggerProviderInfo = @ptrCast(self);
         return try this.putDisplayNameResource(value);
@@ -4941,6 +6171,12 @@ pub const AppBroadcastTriggerProviderInfo = extern struct {
 };
 pub const IAppBroadcastTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putProviderInfo(self: *@This(), value: *AppBroadcastTriggerProviderInfo) core.HResult!void {
         const _c = self.vtable.put_ProviderInfo(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4969,6 +6205,12 @@ pub const IAppBroadcastTrigger = extern struct {
 };
 pub const IAppBroadcastTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAppBroadcastTrigger(self: *@This(), providerKey: ?HSTRING) core.HResult!*AppBroadcastTrigger {
         var _r: *AppBroadcastTrigger = undefined;
         const _c = self.vtable.CreateAppBroadcastTrigger(@ptrCast(self), providerKey, &_r);
@@ -4992,6 +6234,12 @@ pub const IAppBroadcastTriggerFactory = extern struct {
 };
 pub const IAppBroadcastTriggerProviderInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putDisplayNameResource(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayNameResource(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;

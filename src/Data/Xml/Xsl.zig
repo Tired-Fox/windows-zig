@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IXsltProcessor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TransformToString(self: *@This(), inputNode: *IXmlNode) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.TransformToString(@ptrCast(self), inputNode, &_r);
@@ -24,6 +30,12 @@ pub const IXsltProcessor = extern struct {
 };
 pub const IXsltProcessor2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TransformToDocument(self: *@This(), inputNode: *IXmlNode) core.HResult!*XmlDocument {
         var _r: *XmlDocument = undefined;
         const _c = self.vtable.TransformToDocument(@ptrCast(self), inputNode, &_r);
@@ -47,6 +59,12 @@ pub const IXsltProcessor2 = extern struct {
 };
 pub const IXsltProcessorFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), document: *XmlDocument) core.HResult!*XsltProcessor {
         var _r: *XsltProcessor = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), document, &_r);
@@ -70,6 +88,18 @@ pub const IXsltProcessorFactory = extern struct {
 };
 pub const XsltProcessor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TransformToString(self: *@This(), inputNode: *IXmlNode) core.HResult!?HSTRING {
         const this: *IXsltProcessor = @ptrCast(self);
         return try this.TransformToString(inputNode);
@@ -80,9 +110,6 @@ pub const XsltProcessor = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXsltProcessor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransformToDocument(inputNode);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(document: *XmlDocument) core.HResult!*XsltProcessor {
         const _f = try @This()._IXsltProcessorFactoryCache.get();

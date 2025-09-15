@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ILowLevelDevicesAggregateProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdcControllerProvider(self: *@This()) core.HResult!*IAdcControllerProvider {
         var _r: *IAdcControllerProvider = undefined;
         const _c = self.vtable.get_AdcControllerProvider(@ptrCast(self), &_r);
@@ -52,6 +58,12 @@ pub const ILowLevelDevicesAggregateProvider = extern struct {
 };
 pub const ILowLevelDevicesAggregateProviderFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), adc: *IAdcControllerProvider, pwm: *IPwmControllerProvider, gpio: *IGpioControllerProvider, i2c: *II2cControllerProvider, spi: *ISpiControllerProvider) core.HResult!*LowLevelDevicesAggregateProvider {
         var _r: *LowLevelDevicesAggregateProvider = undefined;
         const _c = self.vtable.Create(@ptrCast(self), adc, pwm, gpio, i2c, spi, &_r);
@@ -75,6 +87,12 @@ pub const ILowLevelDevicesAggregateProviderFactory = extern struct {
 };
 pub const ILowLevelDevicesController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.ILowLevelDevicesController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "2ec23dd4-179b-45de-9b39-3ae02527de52";
@@ -91,6 +109,12 @@ pub const ILowLevelDevicesController = extern struct {
 };
 pub const ILowLevelDevicesControllerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDefaultProvider(self: *@This()) core.HResult!*ILowLevelDevicesAggregateProvider {
         var _r: *ILowLevelDevicesAggregateProvider = undefined;
         const _c = self.vtable.get_DefaultProvider(@ptrCast(self), &_r);
@@ -119,6 +143,18 @@ pub const ILowLevelDevicesControllerStatics = extern struct {
 };
 pub const LowLevelDevicesAggregateProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdcControllerProvider(self: *@This()) core.HResult!*IAdcControllerProvider {
         const this: *ILowLevelDevicesAggregateProvider = @ptrCast(self);
         return try this.getAdcControllerProvider();
@@ -139,9 +175,6 @@ pub const LowLevelDevicesAggregateProvider = extern struct {
         const this: *ILowLevelDevicesAggregateProvider = @ptrCast(self);
         return try this.getSpiControllerProvider();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(adc: *IAdcControllerProvider, pwm: *IPwmControllerProvider, gpio: *IGpioControllerProvider, i2c: *II2cControllerProvider, spi: *ISpiControllerProvider) core.HResult!*LowLevelDevicesAggregateProvider {
         const _f = try @This()._ILowLevelDevicesAggregateProviderFactoryCache.get();
         return try _f.Create(adc, pwm, gpio, i2c, spi);
@@ -155,6 +188,15 @@ pub const LowLevelDevicesAggregateProvider = extern struct {
 };
 pub const LowLevelDevicesController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -173,9 +215,9 @@ pub const LowLevelDevicesController = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ILowLevelDevicesController.SIGNATURE);
     var _ILowLevelDevicesControllerStaticsCache: FactoryCache(ILowLevelDevicesControllerStatics, RUNTIME_NAME) = .{};
 };
+const IUnknown = @import("./root.zig").IUnknown;
 const IAdcControllerProvider = @import("./Devices/Adc/Provider.zig").IAdcControllerProvider;
 const HSTRING = @import("./root.zig").HSTRING;
-const IUnknown = @import("./root.zig").IUnknown;
 const Guid = @import("./root.zig").Guid;
 const HRESULT = @import("./root.zig").HRESULT;
 const core = @import("./root.zig").core;

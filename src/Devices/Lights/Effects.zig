@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ILampArrayBitmapEffect = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
@@ -72,6 +78,12 @@ pub const ILampArrayBitmapEffect = extern struct {
 };
 pub const ILampArrayBitmapEffectFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayBitmapEffect {
         var _r: *LampArrayBitmapEffect = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), lampArray, lampIndexes, &_r);
@@ -95,6 +107,12 @@ pub const ILampArrayBitmapEffectFactory = extern struct {
 };
 pub const ILampArrayBitmapRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSinceStarted(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SinceStarted(@ptrCast(self), &_r);
@@ -123,6 +141,12 @@ pub const ILampArrayBitmapRequestedEventArgs = extern struct {
 };
 pub const ILampArrayBlinkEffect = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
@@ -235,6 +259,12 @@ pub const ILampArrayBlinkEffect = extern struct {
 };
 pub const ILampArrayBlinkEffectFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayBlinkEffect {
         var _r: *LampArrayBlinkEffect = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), lampArray, lampIndexes, &_r);
@@ -258,6 +288,12 @@ pub const ILampArrayBlinkEffectFactory = extern struct {
 };
 pub const ILampArrayColorRampEffect = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
@@ -322,6 +358,12 @@ pub const ILampArrayColorRampEffect = extern struct {
 };
 pub const ILampArrayColorRampEffectFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayColorRampEffect {
         var _r: *LampArrayColorRampEffect = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), lampArray, lampIndexes, &_r);
@@ -345,6 +387,12 @@ pub const ILampArrayColorRampEffectFactory = extern struct {
 };
 pub const ILampArrayCustomEffect = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
@@ -397,6 +445,12 @@ pub const ILampArrayCustomEffect = extern struct {
 };
 pub const ILampArrayCustomEffectFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayCustomEffect {
         var _r: *LampArrayCustomEffect = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), lampArray, lampIndexes, &_r);
@@ -420,6 +474,12 @@ pub const ILampArrayCustomEffectFactory = extern struct {
 };
 pub const ILampArrayEffect = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getZIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ZIndex(@ptrCast(self), &_r);
@@ -448,6 +508,12 @@ pub const ILampArrayEffect = extern struct {
 };
 pub const ILampArrayEffectPlaylist = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Append(self: *@This(), effect: *ILampArrayEffect) core.HResult!void {
         const _c = self.vtable.Append(@ptrCast(self), effect);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -525,6 +591,12 @@ pub const ILampArrayEffectPlaylist = extern struct {
 };
 pub const ILampArrayEffectPlaylistStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartAll(self: *@This(), value: *IIterable(LampArrayEffectPlaylist)) core.HResult!void {
         const _c = self.vtable.StartAll(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -556,6 +628,12 @@ pub const ILampArrayEffectPlaylistStatics = extern struct {
 };
 pub const ILampArraySolidEffect = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
@@ -620,6 +698,12 @@ pub const ILampArraySolidEffect = extern struct {
 };
 pub const ILampArraySolidEffectFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArraySolidEffect {
         var _r: *LampArraySolidEffect = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), lampArray, lampIndexes, &_r);
@@ -643,6 +727,12 @@ pub const ILampArraySolidEffectFactory = extern struct {
 };
 pub const ILampArrayUpdateRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSinceStarted(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_SinceStarted(@ptrCast(self), &_r);
@@ -686,6 +776,18 @@ pub const ILampArrayUpdateRequestedEventArgs = extern struct {
 };
 pub const LampArrayBitmapEffect = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         const this: *ILampArrayBitmapEffect = @ptrCast(self);
         return try this.getDuration();
@@ -736,9 +838,6 @@ pub const LampArrayBitmapEffect = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putZIndex(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayBitmapEffect {
         const _f = try @This()._ILampArrayBitmapEffectFactoryCache.get();
         return try _f.CreateInstance(lampArray, lampIndexes);
@@ -752,6 +851,18 @@ pub const LampArrayBitmapEffect = extern struct {
 };
 pub const LampArrayBitmapRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSinceStarted(self: *@This()) core.HResult!TimeSpan {
         const this: *ILampArrayBitmapRequestedEventArgs = @ptrCast(self);
         return try this.getSinceStarted();
@@ -768,6 +879,18 @@ pub const LampArrayBitmapRequestedEventArgs = extern struct {
 };
 pub const LampArrayBlinkEffect = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         const this: *ILampArrayBlinkEffect = @ptrCast(self);
         return try this.getColor();
@@ -846,9 +969,6 @@ pub const LampArrayBlinkEffect = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putZIndex(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayBlinkEffect {
         const _f = try @This()._ILampArrayBlinkEffectFactoryCache.get();
         return try _f.CreateInstance(lampArray, lampIndexes);
@@ -862,6 +982,18 @@ pub const LampArrayBlinkEffect = extern struct {
 };
 pub const LampArrayColorRampEffect = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         const this: *ILampArrayColorRampEffect = @ptrCast(self);
         return try this.getColor();
@@ -908,9 +1040,6 @@ pub const LampArrayColorRampEffect = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putZIndex(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayColorRampEffect {
         const _f = try @This()._ILampArrayColorRampEffectFactoryCache.get();
         return try _f.CreateInstance(lampArray, lampIndexes);
@@ -924,6 +1053,18 @@ pub const LampArrayColorRampEffect = extern struct {
 };
 pub const LampArrayCustomEffect = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         const this: *ILampArrayCustomEffect = @ptrCast(self);
         return try this.getDuration();
@@ -962,9 +1103,6 @@ pub const LampArrayCustomEffect = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putZIndex(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayCustomEffect {
         const _f = try @This()._ILampArrayCustomEffectFactoryCache.get();
         return try _f.CreateInstance(lampArray, lampIndexes);
@@ -982,6 +1120,18 @@ pub const LampArrayEffectCompletionBehavior = enum(i32) {
 };
 pub const LampArrayEffectPlaylist = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Append(self: *@This(), effect: *ILampArrayEffect) core.HResult!void {
         const this: *ILampArrayEffectPlaylist = @ptrCast(self);
         return try this.Append(effect);
@@ -1040,9 +1190,6 @@ pub const LampArrayEffectPlaylist = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILampArrayEffectPlaylist.IID)));
@@ -1077,6 +1224,18 @@ pub const LampArrayRepetitionMode = enum(i32) {
 };
 pub const LampArraySolidEffect = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         const this: *ILampArraySolidEffect = @ptrCast(self);
         return try this.getColor();
@@ -1123,9 +1282,6 @@ pub const LampArraySolidEffect = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putZIndex(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArraySolidEffect {
         const _f = try @This()._ILampArraySolidEffectFactoryCache.get();
         return try _f.CreateInstance(lampArray, lampIndexes);
@@ -1139,6 +1295,18 @@ pub const LampArraySolidEffect = extern struct {
 };
 pub const LampArrayUpdateRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSinceStarted(self: *@This()) core.HResult!TimeSpan {
         const this: *ILampArrayUpdateRequestedEventArgs = @ptrCast(self);
         return try this.getSinceStarted();

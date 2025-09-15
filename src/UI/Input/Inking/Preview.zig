@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPalmRejectionDelayZonePreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Preview.IPalmRejectionDelayZonePreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "62b496cb-539d-5343-a65f-41f5300ec70c";
@@ -17,6 +23,12 @@ pub const IPalmRejectionDelayZonePreview = extern struct {
 };
 pub const IPalmRejectionDelayZonePreviewStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateForVisual(self: *@This(), inputPanelVisual: *Visual, inputPanelRect: Rect) core.HResult!*PalmRejectionDelayZonePreview {
         var _r: *PalmRejectionDelayZonePreview = undefined;
         const _c = self.vtable.CreateForVisual(@ptrCast(self), inputPanelVisual, inputPanelRect, &_r);
@@ -47,15 +59,24 @@ pub const IPalmRejectionDelayZonePreviewStatics = extern struct {
 };
 pub const PalmRejectionDelayZonePreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateForVisual(inputPanelVisual: *Visual, inputPanelRect: Rect) core.HResult!*PalmRejectionDelayZonePreview {
         const _f = try @This()._IPalmRejectionDelayZonePreviewStaticsCache.get();

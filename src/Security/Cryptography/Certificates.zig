@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const Certificate = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn BuildChainAsync(self: *@This(), certificates: *IIterable(Certificate)) core.HResult!*IAsyncOperation(CertificateChain) {
         const this: *ICertificate = @ptrCast(self);
         return try this.BuildChainAsync(certificates);
@@ -124,9 +136,6 @@ pub const Certificate = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyStorageProviderName();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateCertificate(certBlob: *IBuffer) core.HResult!*Certificate {
         const _f = try @This()._ICertificateFactoryCache.get();
         return try _f.CreateCertificate(certBlob);
@@ -140,6 +149,18 @@ pub const Certificate = extern struct {
 };
 pub const CertificateChain = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Validate(self: *@This()) core.HResult!ChainValidationResult {
         const this: *ICertificateChain = @ptrCast(self);
         return try this.Validate();
@@ -166,6 +187,15 @@ pub const CertificateChainPolicy = enum(i32) {
 };
 pub const CertificateEnrollmentManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -201,6 +231,18 @@ pub const CertificateEnrollmentManager = extern struct {
 };
 pub const CertificateExtension = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getObjectId(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificateExtension = @ptrCast(self);
         return try this.getObjectId();
@@ -229,9 +271,6 @@ pub const CertificateExtension = extern struct {
         const this: *ICertificateExtension = @ptrCast(self);
         return try this.putValue(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICertificateExtension.IID)));
@@ -245,6 +284,18 @@ pub const CertificateExtension = extern struct {
 };
 pub const CertificateKeyUsages = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEncipherOnly(self: *@This()) core.HResult!bool {
         const this: *ICertificateKeyUsages = @ptrCast(self);
         return try this.getEncipherOnly();
@@ -309,9 +360,6 @@ pub const CertificateKeyUsages = extern struct {
         const this: *ICertificateKeyUsages = @ptrCast(self);
         return try this.putDigitalSignature(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICertificateKeyUsages.IID)));
@@ -325,6 +373,18 @@ pub const CertificateKeyUsages = extern struct {
 };
 pub const CertificateQuery = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *ICertificateQuery = @ptrCast(self);
         return try this.getEnhancedKeyUsages();
@@ -403,9 +463,6 @@ pub const CertificateQuery = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putStoreName(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICertificateQuery.IID)));
@@ -419,6 +476,18 @@ pub const CertificateQuery = extern struct {
 };
 pub const CertificateRequestProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *ICertificateRequestProperties = @ptrCast(self);
         return try this.getSubject();
@@ -624,9 +693,6 @@ pub const CertificateRequestProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtensions();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICertificateRequestProperties.IID)));
@@ -640,6 +706,18 @@ pub const CertificateRequestProperties = extern struct {
 };
 pub const CertificateStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), certificate: *Certificate) core.HResult!void {
         const this: *ICertificateStore = @ptrCast(self);
         return try this.Add(certificate);
@@ -663,6 +741,15 @@ pub const CertificateStore = extern struct {
 };
 pub const CertificateStores = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -697,6 +784,18 @@ pub const CertificateStores = extern struct {
 };
 pub const ChainBuildingParameters = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IChainBuildingParameters = @ptrCast(self);
         return try this.getEnhancedKeyUsages();
@@ -745,9 +844,6 @@ pub const ChainBuildingParameters = extern struct {
         const this: *IChainBuildingParameters = @ptrCast(self);
         return try this.getExclusiveTrustRoots();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IChainBuildingParameters.IID)));
@@ -761,6 +857,18 @@ pub const ChainBuildingParameters = extern struct {
 };
 pub const ChainValidationParameters = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCertificateChainPolicy(self: *@This()) core.HResult!CertificateChainPolicy {
         const this: *IChainValidationParameters = @ptrCast(self);
         return try this.getCertificateChainPolicy();
@@ -776,9 +884,6 @@ pub const ChainValidationParameters = extern struct {
     pub fn putServerDnsName(self: *@This(), value: *HostName) core.HResult!void {
         const this: *IChainValidationParameters = @ptrCast(self);
         return try this.putServerDnsName(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -809,6 +914,18 @@ pub const ChainValidationResult = enum(i32) {
 };
 pub const CmsAttachedSignature = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCertificates(self: *@This()) core.HResult!*IVectorView(Certificate) {
         const this: *ICmsAttachedSignature = @ptrCast(self);
         return try this.getCertificates();
@@ -824,9 +941,6 @@ pub const CmsAttachedSignature = extern struct {
     pub fn VerifySignature(self: *@This()) core.HResult!SignatureValidationResult {
         const this: *ICmsAttachedSignature = @ptrCast(self);
         return try this.VerifySignature();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCmsAttachedSignature(inputBlob: *IBuffer) core.HResult!*CmsAttachedSignature {
         const _f = try @This()._ICmsAttachedSignatureFactoryCache.get();
@@ -846,6 +960,18 @@ pub const CmsAttachedSignature = extern struct {
 };
 pub const CmsDetachedSignature = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCertificates(self: *@This()) core.HResult!*IVectorView(Certificate) {
         const this: *ICmsDetachedSignature = @ptrCast(self);
         return try this.getCertificates();
@@ -857,9 +983,6 @@ pub const CmsDetachedSignature = extern struct {
     pub fn VerifySignatureAsync(self: *@This(), data: *IInputStream) core.HResult!*IAsyncOperation(SignatureValidationResult) {
         const this: *ICmsDetachedSignature = @ptrCast(self);
         return try this.VerifySignatureAsync(data);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCmsDetachedSignature(inputBlob: *IBuffer) core.HResult!*CmsDetachedSignature {
         const _f = try @This()._ICmsDetachedSignatureFactoryCache.get();
@@ -879,6 +1002,18 @@ pub const CmsDetachedSignature = extern struct {
 };
 pub const CmsSignerInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCertificate(self: *@This()) core.HResult!*Certificate {
         const this: *ICmsSignerInfo = @ptrCast(self);
         return try this.getCertificate();
@@ -899,9 +1034,6 @@ pub const CmsSignerInfo = extern struct {
         const this: *ICmsSignerInfo = @ptrCast(self);
         return try this.getTimestampInfo();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICmsSignerInfo.IID)));
@@ -915,6 +1047,18 @@ pub const CmsSignerInfo = extern struct {
 };
 pub const CmsTimestampInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSigningCertificate(self: *@This()) core.HResult!*Certificate {
         const this: *ICmsTimestampInfo = @ptrCast(self);
         return try this.getSigningCertificate();
@@ -946,6 +1090,12 @@ pub const ExportOption = enum(i32) {
 };
 pub const ICertificate = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn BuildChainAsync(self: *@This(), certificates: *IIterable(Certificate)) core.HResult!*IAsyncOperation(CertificateChain) {
         var _r: *IAsyncOperation(CertificateChain) = undefined;
         const _c = self.vtable.BuildChainAsync(@ptrCast(self), certificates, &_r);
@@ -1065,6 +1215,12 @@ pub const ICertificate = extern struct {
 };
 pub const ICertificate2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSecurityDeviceBound(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSecurityDeviceBound(@ptrCast(self), &_r);
@@ -1123,6 +1279,12 @@ pub const ICertificate2 = extern struct {
 };
 pub const ICertificate3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPerUser(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPerUser(@ptrCast(self), &_r);
@@ -1160,6 +1322,12 @@ pub const ICertificate3 = extern struct {
 };
 pub const ICertificateChain = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Validate(self: *@This()) core.HResult!ChainValidationResult {
         var _r: ChainValidationResult = undefined;
         const _c = self.vtable.Validate(@ptrCast(self), &_r);
@@ -1197,6 +1365,12 @@ pub const ICertificateChain = extern struct {
 };
 pub const ICertificateEnrollmentManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateRequestAsync(self: *@This(), request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CreateRequestAsync(@ptrCast(self), request, &_r);
@@ -1234,6 +1408,12 @@ pub const ICertificateEnrollmentManagerStatics = extern struct {
 };
 pub const ICertificateEnrollmentManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserCertificateEnrollmentManager(self: *@This()) core.HResult!*UserCertificateEnrollmentManager {
         var _r: *UserCertificateEnrollmentManager = undefined;
         const _c = self.vtable.get_UserCertificateEnrollmentManager(@ptrCast(self), &_r);
@@ -1264,6 +1444,12 @@ pub const ICertificateEnrollmentManagerStatics2 = extern struct {
 };
 pub const ICertificateEnrollmentManagerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ImportPfxDataAsync(self: *@This(), pfxData: ?HSTRING, password: ?HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ImportPfxDataAsync(@ptrCast(self), pfxData, password, pfxImportParameters, &_r);
@@ -1287,6 +1473,12 @@ pub const ICertificateEnrollmentManagerStatics3 = extern struct {
 };
 pub const ICertificateExtension = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getObjectId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ObjectId(@ptrCast(self), &_r);
@@ -1344,6 +1536,12 @@ pub const ICertificateExtension = extern struct {
 };
 pub const ICertificateFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateCertificate(self: *@This(), certBlob: *IBuffer) core.HResult!*Certificate {
         var _r: *Certificate = undefined;
         const _c = self.vtable.CreateCertificate(@ptrCast(self), certBlob, &_r);
@@ -1367,6 +1565,12 @@ pub const ICertificateFactory = extern struct {
 };
 pub const ICertificateKeyUsages = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEncipherOnly(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_EncipherOnly(@ptrCast(self), &_r);
@@ -1479,6 +1683,12 @@ pub const ICertificateKeyUsages = extern struct {
 };
 pub const ICertificateQuery = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_EnhancedKeyUsages(@ptrCast(self), &_r);
@@ -1550,6 +1760,12 @@ pub const ICertificateQuery = extern struct {
 };
 pub const ICertificateQuery2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIncludeDuplicates(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IncludeDuplicates(@ptrCast(self), &_r);
@@ -1602,6 +1818,12 @@ pub const ICertificateQuery2 = extern struct {
 };
 pub const ICertificateRequestProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
@@ -1726,6 +1948,12 @@ pub const ICertificateRequestProperties = extern struct {
 };
 pub const ICertificateRequestProperties2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSmartcardReaderName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SmartcardReaderName(@ptrCast(self), &_r);
@@ -1778,6 +2006,12 @@ pub const ICertificateRequestProperties2 = extern struct {
 };
 pub const ICertificateRequestProperties3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurveName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CurveName(@ptrCast(self), &_r);
@@ -1854,6 +2088,12 @@ pub const ICertificateRequestProperties3 = extern struct {
 };
 pub const ICertificateRequestProperties4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSuppressedDefaults(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_SuppressedDefaults(@ptrCast(self), &_r);
@@ -1891,6 +2131,12 @@ pub const ICertificateRequestProperties4 = extern struct {
 };
 pub const ICertificateStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), certificate: *Certificate) core.HResult!void {
         const _c = self.vtable.Add(@ptrCast(self), certificate);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1917,6 +2163,12 @@ pub const ICertificateStore = extern struct {
 };
 pub const ICertificateStore2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -1940,6 +2192,12 @@ pub const ICertificateStore2 = extern struct {
 };
 pub const ICertificateStoresStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAllAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(Certificate)) {
         var _r: *IAsyncOperation(IVectorView(Certificate)) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), &_r);
@@ -1991,6 +2249,12 @@ pub const ICertificateStoresStatics = extern struct {
 };
 pub const ICertificateStoresStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetUserStoreByName(self: *@This(), storeName: ?HSTRING) core.HResult!*UserCertificateStore {
         var _r: *UserCertificateStore = undefined;
         const _c = self.vtable.GetUserStoreByName(@ptrCast(self), storeName, &_r);
@@ -2014,6 +2278,12 @@ pub const ICertificateStoresStatics2 = extern struct {
 };
 pub const IChainBuildingParameters = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnhancedKeyUsages(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_EnhancedKeyUsages(@ptrCast(self), &_r);
@@ -2104,6 +2374,12 @@ pub const IChainBuildingParameters = extern struct {
 };
 pub const IChainValidationParameters = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCertificateChainPolicy(self: *@This()) core.HResult!CertificateChainPolicy {
         var _r: CertificateChainPolicy = undefined;
         const _c = self.vtable.get_CertificateChainPolicy(@ptrCast(self), &_r);
@@ -2144,6 +2420,12 @@ pub const IChainValidationParameters = extern struct {
 };
 pub const ICmsAttachedSignature = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCertificates(self: *@This()) core.HResult!*IVectorView(Certificate) {
         var _r: *IVectorView(Certificate) = undefined;
         const _c = self.vtable.get_Certificates(@ptrCast(self), &_r);
@@ -2188,6 +2470,12 @@ pub const ICmsAttachedSignature = extern struct {
 };
 pub const ICmsAttachedSignatureFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateCmsAttachedSignature(self: *@This(), inputBlob: *IBuffer) core.HResult!*CmsAttachedSignature {
         var _r: *CmsAttachedSignature = undefined;
         const _c = self.vtable.CreateCmsAttachedSignature(@ptrCast(self), inputBlob, &_r);
@@ -2211,6 +2499,12 @@ pub const ICmsAttachedSignatureFactory = extern struct {
 };
 pub const ICmsAttachedSignatureStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GenerateSignatureAsync(self: *@This(), data: *IBuffer, signers: *IIterable(CmsSignerInfo), certificates: *IIterable(Certificate)) core.HResult!*IAsyncOperation(IBuffer) {
         var _r: *IAsyncOperation(IBuffer) = undefined;
         const _c = self.vtable.GenerateSignatureAsync(@ptrCast(self), data, signers, certificates, &_r);
@@ -2234,6 +2528,12 @@ pub const ICmsAttachedSignatureStatics = extern struct {
 };
 pub const ICmsDetachedSignature = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCertificates(self: *@This()) core.HResult!*IVectorView(Certificate) {
         var _r: *IVectorView(Certificate) = undefined;
         const _c = self.vtable.get_Certificates(@ptrCast(self), &_r);
@@ -2271,6 +2571,12 @@ pub const ICmsDetachedSignature = extern struct {
 };
 pub const ICmsDetachedSignatureFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateCmsDetachedSignature(self: *@This(), inputBlob: *IBuffer) core.HResult!*CmsDetachedSignature {
         var _r: *CmsDetachedSignature = undefined;
         const _c = self.vtable.CreateCmsDetachedSignature(@ptrCast(self), inputBlob, &_r);
@@ -2294,6 +2600,12 @@ pub const ICmsDetachedSignatureFactory = extern struct {
 };
 pub const ICmsDetachedSignatureStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GenerateSignatureAsync(self: *@This(), data: *IInputStream, signers: *IIterable(CmsSignerInfo), certificates: *IIterable(Certificate)) core.HResult!*IAsyncOperation(IBuffer) {
         var _r: *IAsyncOperation(IBuffer) = undefined;
         const _c = self.vtable.GenerateSignatureAsync(@ptrCast(self), data, signers, certificates, &_r);
@@ -2317,6 +2629,12 @@ pub const ICmsDetachedSignatureStatics = extern struct {
 };
 pub const ICmsSignerInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCertificate(self: *@This()) core.HResult!*Certificate {
         var _r: *Certificate = undefined;
         const _c = self.vtable.get_Certificate(@ptrCast(self), &_r);
@@ -2364,6 +2682,12 @@ pub const ICmsSignerInfo = extern struct {
 };
 pub const ICmsTimestampInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSigningCertificate(self: *@This()) core.HResult!*Certificate {
         var _r: *Certificate = undefined;
         const _c = self.vtable.get_SigningCertificate(@ptrCast(self), &_r);
@@ -2401,6 +2725,12 @@ pub const ICmsTimestampInfo = extern struct {
 };
 pub const IKeyAlgorithmNamesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRsa(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Rsa(@ptrCast(self), &_r);
@@ -2473,6 +2803,12 @@ pub const IKeyAlgorithmNamesStatics = extern struct {
 };
 pub const IKeyAlgorithmNamesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEcdsa(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Ecdsa(@ptrCast(self), &_r);
@@ -2503,6 +2839,12 @@ pub const IKeyAlgorithmNamesStatics2 = extern struct {
 };
 pub const IKeyAttestationHelperStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DecryptTpmAttestationCredentialAsync(self: *@This(), credential: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.DecryptTpmAttestationCredentialAsync(@ptrCast(self), credential, &_r);
@@ -2533,6 +2875,12 @@ pub const IKeyAttestationHelperStatics = extern struct {
 };
 pub const IKeyAttestationHelperStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DecryptTpmAttestationCredentialAsync(self: *@This(), credential: ?HSTRING, containerName: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.DecryptTpmAttestationCredentialAsync(@ptrCast(self), credential, containerName, &_r);
@@ -2556,6 +2904,12 @@ pub const IKeyAttestationHelperStatics2 = extern struct {
 };
 pub const IKeyStorageProviderNamesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSoftwareKeyStorageProvider(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SoftwareKeyStorageProvider(@ptrCast(self), &_r);
@@ -2593,6 +2947,12 @@ pub const IKeyStorageProviderNamesStatics = extern struct {
 };
 pub const IKeyStorageProviderNamesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPassportKeyStorageProvider(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PassportKeyStorageProvider(@ptrCast(self), &_r);
@@ -2616,6 +2976,12 @@ pub const IKeyStorageProviderNamesStatics2 = extern struct {
 };
 pub const IPfxImportParameters = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExportable(self: *@This()) core.HResult!ExportOption {
         var _r: ExportOption = undefined;
         const _c = self.vtable.get_Exportable(@ptrCast(self), &_r);
@@ -2716,6 +3082,12 @@ pub const IPfxImportParameters = extern struct {
 };
 pub const IStandardCertificateStoreNamesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPersonal(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Personal(@ptrCast(self), &_r);
@@ -2753,6 +3125,12 @@ pub const IStandardCertificateStoreNamesStatics = extern struct {
 };
 pub const ISubjectAlternativeNameInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEmailName(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_EmailName(@ptrCast(self), &_r);
@@ -2811,6 +3189,12 @@ pub const ISubjectAlternativeNameInfo = extern struct {
 };
 pub const ISubjectAlternativeNameInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEmailNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_EmailNames(@ptrCast(self), &_r);
@@ -2876,6 +3260,12 @@ pub const ISubjectAlternativeNameInfo2 = extern struct {
 };
 pub const IUserCertificateEnrollmentManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateRequestAsync(self: *@This(), request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.CreateRequestAsync(@ptrCast(self), request, &_r);
@@ -2920,6 +3310,12 @@ pub const IUserCertificateEnrollmentManager = extern struct {
 };
 pub const IUserCertificateEnrollmentManager2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ImportPfxDataAsync(self: *@This(), pfxData: ?HSTRING, password: ?HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ImportPfxDataAsync(@ptrCast(self), pfxData, password, pfxImportParameters, &_r);
@@ -2943,6 +3339,12 @@ pub const IUserCertificateEnrollmentManager2 = extern struct {
 };
 pub const IUserCertificateStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAddAsync(self: *@This(), certificate: *Certificate) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.RequestAddAsync(@ptrCast(self), certificate, &_r);
@@ -2984,6 +3386,15 @@ pub const InstallOptions = enum(i32) {
 };
 pub const KeyAlgorithmNames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3034,6 +3445,15 @@ pub const KeyAlgorithmNames = extern struct {
 };
 pub const KeyAttestationHelper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3067,6 +3487,15 @@ pub const KeySize = enum(i32) {
 };
 pub const KeyStorageProviderNames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3093,6 +3522,18 @@ pub const KeyStorageProviderNames = extern struct {
 };
 pub const PfxImportParameters = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExportable(self: *@This()) core.HResult!ExportOption {
         const this: *IPfxImportParameters = @ptrCast(self);
         return try this.getExportable();
@@ -3149,9 +3590,6 @@ pub const PfxImportParameters = extern struct {
         const this: *IPfxImportParameters = @ptrCast(self);
         return try this.putReaderName(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPfxImportParameters.IID)));
@@ -3172,6 +3610,15 @@ pub const SignatureValidationResult = enum(i32) {
 };
 pub const StandardCertificateStoreNames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3193,6 +3640,18 @@ pub const StandardCertificateStoreNames = extern struct {
 };
 pub const SubjectAlternativeNameInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEmailName(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ISubjectAlternativeNameInfo = @ptrCast(self);
         return try this.getEmailName();
@@ -3266,9 +3725,6 @@ pub const SubjectAlternativeNameInfo = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getExtension();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISubjectAlternativeNameInfo.IID)));
@@ -3282,6 +3738,18 @@ pub const SubjectAlternativeNameInfo = extern struct {
 };
 pub const UserCertificateEnrollmentManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateRequestAsync(self: *@This(), request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IUserCertificateEnrollmentManager = @ptrCast(self);
         return try this.CreateRequestAsync(request);
@@ -3313,6 +3781,18 @@ pub const UserCertificateEnrollmentManager = extern struct {
 };
 pub const UserCertificateStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAddAsync(self: *@This(), certificate: *Certificate) core.HResult!*IAsyncOperation(bool) {
         const this: *IUserCertificateStore = @ptrCast(self);
         return try this.RequestAddAsync(certificate);

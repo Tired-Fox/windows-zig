@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const DevicePortalConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(DevicePortalConnection,DevicePortalConnectionClosedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IDevicePortalConnection = @ptrCast(self);
         return try this.addClosed(handler);
@@ -52,9 +64,6 @@ pub const DevicePortalConnection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetServerStreamWebSocketForRequestWithProtocolAndOutboundBufferSizeInBytesAndNoDelay(request, protocol, outboundBufferSizeInBytes, noDelay);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForAppServiceConnection(appServiceConnection: *AppServiceConnection) core.HResult!*DevicePortalConnection {
         const _f = try @This()._IDevicePortalConnectionStaticsCache.get();
         return try _f.GetForAppServiceConnection(appServiceConnection);
@@ -68,6 +77,18 @@ pub const DevicePortalConnection = extern struct {
 };
 pub const DevicePortalConnectionClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!DevicePortalConnectionClosedReason {
         const this: *IDevicePortalConnectionClosedEventArgs = @ptrCast(self);
         return try this.getReason();
@@ -88,6 +109,18 @@ pub const DevicePortalConnectionClosedReason = enum(i32) {
 };
 pub const DevicePortalConnectionRequestReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestMessage(self: *@This()) core.HResult!*HttpRequestMessage {
         const this: *IDevicePortalConnectionRequestReceivedEventArgs = @ptrCast(self);
         return try this.getRequestMessage();
@@ -125,6 +158,12 @@ pub const DevicePortalConnectionRequestReceivedEventArgs = extern struct {
 };
 pub const IDevicePortalConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(DevicePortalConnection,DevicePortalConnectionClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
@@ -165,6 +204,12 @@ pub const IDevicePortalConnection = extern struct {
 };
 pub const IDevicePortalConnectionClosedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!DevicePortalConnectionClosedReason {
         var _r: DevicePortalConnectionClosedReason = undefined;
         const _c = self.vtable.get_Reason(@ptrCast(self), &_r);
@@ -188,6 +233,12 @@ pub const IDevicePortalConnectionClosedEventArgs = extern struct {
 };
 pub const IDevicePortalConnectionRequestReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestMessage(self: *@This()) core.HResult!*HttpRequestMessage {
         var _r: *HttpRequestMessage = undefined;
         const _c = self.vtable.get_RequestMessage(@ptrCast(self), &_r);
@@ -218,6 +269,12 @@ pub const IDevicePortalConnectionRequestReceivedEventArgs = extern struct {
 };
 pub const IDevicePortalConnectionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForAppServiceConnection(self: *@This(), appServiceConnection: *AppServiceConnection) core.HResult!*DevicePortalConnection {
         var _r: *DevicePortalConnection = undefined;
         const _c = self.vtable.GetForAppServiceConnection(@ptrCast(self), appServiceConnection, &_r);
@@ -241,6 +298,12 @@ pub const IDevicePortalConnectionStatics = extern struct {
 };
 pub const IDevicePortalWebSocketConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetServerMessageWebSocketForRequest(self: *@This(), request: *HttpRequestMessage) core.HResult!*ServerMessageWebSocket {
         var _r: *ServerMessageWebSocket = undefined;
         const _c = self.vtable.GetServerMessageWebSocketForRequest(@ptrCast(self), request, &_r);
@@ -292,6 +355,12 @@ pub const IDevicePortalWebSocketConnection = extern struct {
 };
 pub const IDevicePortalWebSocketConnectionRequestReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsWebSocketUpgradeRequest(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsWebSocketUpgradeRequest(@ptrCast(self), &_r);

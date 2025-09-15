@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const BarcodeScannerDisableScannerRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportCompletedAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IBarcodeScannerDisableScannerRequest = @ptrCast(self);
         return try this.ReportCompletedAsync();
@@ -31,6 +43,18 @@ pub const BarcodeScannerDisableScannerRequest = extern struct {
 };
 pub const BarcodeScannerDisableScannerRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerDisableScannerRequest {
         const this: *IBarcodeScannerDisableScannerRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -47,6 +71,18 @@ pub const BarcodeScannerDisableScannerRequestEventArgs = extern struct {
 };
 pub const BarcodeScannerEnableScannerRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportCompletedAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IBarcodeScannerEnableScannerRequest = @ptrCast(self);
         return try this.ReportCompletedAsync();
@@ -77,6 +113,18 @@ pub const BarcodeScannerEnableScannerRequest = extern struct {
 };
 pub const BarcodeScannerEnableScannerRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerEnableScannerRequest {
         const this: *IBarcodeScannerEnableScannerRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -93,6 +141,18 @@ pub const BarcodeScannerEnableScannerRequestEventArgs = extern struct {
 };
 pub const BarcodeScannerFrameReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         const this: *IBarcodeScannerFrameReader = @ptrCast(self);
         return try this.StartAsync();
@@ -132,6 +192,18 @@ pub const BarcodeScannerFrameReader = extern struct {
 };
 pub const BarcodeScannerFrameReaderFrameArrivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *IBarcodeScannerFrameReaderFrameArrivedEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -144,6 +216,18 @@ pub const BarcodeScannerFrameReaderFrameArrivedEventArgs = extern struct {
 };
 pub const BarcodeScannerGetSymbologyAttributesRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSymbology(self: *@This()) core.HResult!u32 {
         const this: *IBarcodeScannerGetSymbologyAttributesRequest = @ptrCast(self);
         return try this.getSymbology();
@@ -178,6 +262,18 @@ pub const BarcodeScannerGetSymbologyAttributesRequest = extern struct {
 };
 pub const BarcodeScannerGetSymbologyAttributesRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerGetSymbologyAttributesRequest {
         const this: *IBarcodeScannerGetSymbologyAttributesRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -194,6 +290,18 @@ pub const BarcodeScannerGetSymbologyAttributesRequestEventArgs = extern struct {
 };
 pub const BarcodeScannerHideVideoPreviewRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportCompletedAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IBarcodeScannerHideVideoPreviewRequest = @ptrCast(self);
         return try this.ReportCompletedAsync();
@@ -224,6 +332,18 @@ pub const BarcodeScannerHideVideoPreviewRequest = extern struct {
 };
 pub const BarcodeScannerHideVideoPreviewRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerHideVideoPreviewRequest {
         const this: *IBarcodeScannerHideVideoPreviewRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -240,6 +360,18 @@ pub const BarcodeScannerHideVideoPreviewRequestEventArgs = extern struct {
 };
 pub const BarcodeScannerProviderConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
         return try this.getId();
@@ -396,6 +528,18 @@ pub const BarcodeScannerProviderConnection = extern struct {
 };
 pub const BarcodeScannerProviderTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*BarcodeScannerProviderConnection {
         const this: *IBarcodeScannerProviderTriggerDetails = @ptrCast(self);
         return try this.getConnection();
@@ -408,6 +552,18 @@ pub const BarcodeScannerProviderTriggerDetails = extern struct {
 };
 pub const BarcodeScannerSetActiveSymbologiesRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSymbologies(self: *@This()) core.HResult!*IVectorView(u32) {
         const this: *IBarcodeScannerSetActiveSymbologiesRequest = @ptrCast(self);
         return try this.getSymbologies();
@@ -442,6 +598,18 @@ pub const BarcodeScannerSetActiveSymbologiesRequest = extern struct {
 };
 pub const BarcodeScannerSetActiveSymbologiesRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerSetActiveSymbologiesRequest {
         const this: *IBarcodeScannerSetActiveSymbologiesRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -458,6 +626,18 @@ pub const BarcodeScannerSetActiveSymbologiesRequestEventArgs = extern struct {
 };
 pub const BarcodeScannerSetSymbologyAttributesRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSymbology(self: *@This()) core.HResult!u32 {
         const this: *IBarcodeScannerSetSymbologyAttributesRequest = @ptrCast(self);
         return try this.getSymbology();
@@ -496,6 +676,18 @@ pub const BarcodeScannerSetSymbologyAttributesRequest = extern struct {
 };
 pub const BarcodeScannerSetSymbologyAttributesRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerSetSymbologyAttributesRequest {
         const this: *IBarcodeScannerSetSymbologyAttributesRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -512,6 +704,18 @@ pub const BarcodeScannerSetSymbologyAttributesRequestEventArgs = extern struct {
 };
 pub const BarcodeScannerStartSoftwareTriggerRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportCompletedAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IBarcodeScannerStartSoftwareTriggerRequest = @ptrCast(self);
         return try this.ReportCompletedAsync();
@@ -542,6 +746,18 @@ pub const BarcodeScannerStartSoftwareTriggerRequest = extern struct {
 };
 pub const BarcodeScannerStartSoftwareTriggerRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerStartSoftwareTriggerRequest {
         const this: *IBarcodeScannerStartSoftwareTriggerRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -558,6 +774,18 @@ pub const BarcodeScannerStartSoftwareTriggerRequestEventArgs = extern struct {
 };
 pub const BarcodeScannerStopSoftwareTriggerRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportCompletedAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IBarcodeScannerStopSoftwareTriggerRequest = @ptrCast(self);
         return try this.ReportCompletedAsync();
@@ -588,6 +816,18 @@ pub const BarcodeScannerStopSoftwareTriggerRequest = extern struct {
 };
 pub const BarcodeScannerStopSoftwareTriggerRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerStopSoftwareTriggerRequest {
         const this: *IBarcodeScannerStopSoftwareTriggerRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -608,6 +848,18 @@ pub const BarcodeScannerTriggerState = enum(i32) {
 };
 pub const BarcodeScannerVideoFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         const this: *IBarcodeScannerVideoFrame = @ptrCast(self);
         return try this.getFormat();
@@ -639,6 +891,18 @@ pub const BarcodeScannerVideoFrame = extern struct {
 };
 pub const BarcodeSymbologyAttributesBuilder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCheckDigitValidationSupported(self: *@This()) core.HResult!bool {
         const this: *IBarcodeSymbologyAttributesBuilder = @ptrCast(self);
         return try this.getIsCheckDigitValidationSupported();
@@ -667,9 +931,6 @@ pub const BarcodeSymbologyAttributesBuilder = extern struct {
         const this: *IBarcodeSymbologyAttributesBuilder = @ptrCast(self);
         return try this.CreateAttributes();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBarcodeSymbologyAttributesBuilder.IID)));
@@ -683,6 +944,12 @@ pub const BarcodeSymbologyAttributesBuilder = extern struct {
 };
 pub const IBarcodeScannerDisableScannerRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportCompletedAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportCompletedAsync(@ptrCast(self), &_r);
@@ -713,6 +980,12 @@ pub const IBarcodeScannerDisableScannerRequest = extern struct {
 };
 pub const IBarcodeScannerDisableScannerRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsync(@ptrCast(self), reason, &_r);
@@ -743,6 +1016,12 @@ pub const IBarcodeScannerDisableScannerRequest2 = extern struct {
 };
 pub const IBarcodeScannerDisableScannerRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerDisableScannerRequest {
         var _r: *BarcodeScannerDisableScannerRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -773,6 +1052,12 @@ pub const IBarcodeScannerDisableScannerRequestEventArgs = extern struct {
 };
 pub const IBarcodeScannerEnableScannerRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportCompletedAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportCompletedAsync(@ptrCast(self), &_r);
@@ -803,6 +1088,12 @@ pub const IBarcodeScannerEnableScannerRequest = extern struct {
 };
 pub const IBarcodeScannerEnableScannerRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsync(@ptrCast(self), reason, &_r);
@@ -833,6 +1124,12 @@ pub const IBarcodeScannerEnableScannerRequest2 = extern struct {
 };
 pub const IBarcodeScannerEnableScannerRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerEnableScannerRequest {
         var _r: *BarcodeScannerEnableScannerRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -863,6 +1160,12 @@ pub const IBarcodeScannerEnableScannerRequestEventArgs = extern struct {
 };
 pub const IBarcodeScannerFrameReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.StartAsync(@ptrCast(self), &_r);
@@ -919,6 +1222,12 @@ pub const IBarcodeScannerFrameReader = extern struct {
 };
 pub const IBarcodeScannerFrameReaderFrameArrivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -942,6 +1251,12 @@ pub const IBarcodeScannerFrameReaderFrameArrivedEventArgs = extern struct {
 };
 pub const IBarcodeScannerGetSymbologyAttributesRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSymbology(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Symbology(@ptrCast(self), &_r);
@@ -979,6 +1294,12 @@ pub const IBarcodeScannerGetSymbologyAttributesRequest = extern struct {
 };
 pub const IBarcodeScannerGetSymbologyAttributesRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsync(@ptrCast(self), reason, &_r);
@@ -1009,6 +1330,12 @@ pub const IBarcodeScannerGetSymbologyAttributesRequest2 = extern struct {
 };
 pub const IBarcodeScannerGetSymbologyAttributesRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerGetSymbologyAttributesRequest {
         var _r: *BarcodeScannerGetSymbologyAttributesRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -1039,6 +1366,12 @@ pub const IBarcodeScannerGetSymbologyAttributesRequestEventArgs = extern struct 
 };
 pub const IBarcodeScannerHideVideoPreviewRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportCompletedAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportCompletedAsync(@ptrCast(self), &_r);
@@ -1069,6 +1402,12 @@ pub const IBarcodeScannerHideVideoPreviewRequest = extern struct {
 };
 pub const IBarcodeScannerHideVideoPreviewRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsync(@ptrCast(self), reason, &_r);
@@ -1099,6 +1438,12 @@ pub const IBarcodeScannerHideVideoPreviewRequest2 = extern struct {
 };
 pub const IBarcodeScannerHideVideoPreviewRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerHideVideoPreviewRequest {
         var _r: *BarcodeScannerHideVideoPreviewRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -1129,6 +1474,12 @@ pub const IBarcodeScannerHideVideoPreviewRequestEventArgs = extern struct {
 };
 pub const IBarcodeScannerProviderConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -1331,6 +1682,12 @@ pub const IBarcodeScannerProviderConnection = extern struct {
 };
 pub const IBarcodeScannerProviderConnection2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFrameReaderAsync(self: *@This()) core.HResult!*IAsyncOperation(BarcodeScannerFrameReader) {
         var _r: *IAsyncOperation(BarcodeScannerFrameReader) = undefined;
         const _c = self.vtable.CreateFrameReaderAsync(@ptrCast(self), &_r);
@@ -1368,6 +1725,12 @@ pub const IBarcodeScannerProviderConnection2 = extern struct {
 };
 pub const IBarcodeScannerProviderTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*BarcodeScannerProviderConnection {
         var _r: *BarcodeScannerProviderConnection = undefined;
         const _c = self.vtable.get_Connection(@ptrCast(self), &_r);
@@ -1391,6 +1754,12 @@ pub const IBarcodeScannerProviderTriggerDetails = extern struct {
 };
 pub const IBarcodeScannerSetActiveSymbologiesRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSymbologies(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_Symbologies(@ptrCast(self), &_r);
@@ -1428,6 +1797,12 @@ pub const IBarcodeScannerSetActiveSymbologiesRequest = extern struct {
 };
 pub const IBarcodeScannerSetActiveSymbologiesRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsync(@ptrCast(self), reason, &_r);
@@ -1458,6 +1833,12 @@ pub const IBarcodeScannerSetActiveSymbologiesRequest2 = extern struct {
 };
 pub const IBarcodeScannerSetActiveSymbologiesRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerSetActiveSymbologiesRequest {
         var _r: *BarcodeScannerSetActiveSymbologiesRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -1488,6 +1869,12 @@ pub const IBarcodeScannerSetActiveSymbologiesRequestEventArgs = extern struct {
 };
 pub const IBarcodeScannerSetSymbologyAttributesRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSymbology(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Symbology(@ptrCast(self), &_r);
@@ -1532,6 +1919,12 @@ pub const IBarcodeScannerSetSymbologyAttributesRequest = extern struct {
 };
 pub const IBarcodeScannerSetSymbologyAttributesRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsync(@ptrCast(self), reason, &_r);
@@ -1562,6 +1955,12 @@ pub const IBarcodeScannerSetSymbologyAttributesRequest2 = extern struct {
 };
 pub const IBarcodeScannerSetSymbologyAttributesRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerSetSymbologyAttributesRequest {
         var _r: *BarcodeScannerSetSymbologyAttributesRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -1592,6 +1991,12 @@ pub const IBarcodeScannerSetSymbologyAttributesRequestEventArgs = extern struct 
 };
 pub const IBarcodeScannerStartSoftwareTriggerRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportCompletedAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportCompletedAsync(@ptrCast(self), &_r);
@@ -1622,6 +2027,12 @@ pub const IBarcodeScannerStartSoftwareTriggerRequest = extern struct {
 };
 pub const IBarcodeScannerStartSoftwareTriggerRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsync(@ptrCast(self), reason, &_r);
@@ -1652,6 +2063,12 @@ pub const IBarcodeScannerStartSoftwareTriggerRequest2 = extern struct {
 };
 pub const IBarcodeScannerStartSoftwareTriggerRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerStartSoftwareTriggerRequest {
         var _r: *BarcodeScannerStartSoftwareTriggerRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -1682,6 +2099,12 @@ pub const IBarcodeScannerStartSoftwareTriggerRequestEventArgs = extern struct {
 };
 pub const IBarcodeScannerStopSoftwareTriggerRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportCompletedAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportCompletedAsync(@ptrCast(self), &_r);
@@ -1712,6 +2135,12 @@ pub const IBarcodeScannerStopSoftwareTriggerRequest = extern struct {
 };
 pub const IBarcodeScannerStopSoftwareTriggerRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ReportFailedAsync(@ptrCast(self), reason, &_r);
@@ -1742,6 +2171,12 @@ pub const IBarcodeScannerStopSoftwareTriggerRequest2 = extern struct {
 };
 pub const IBarcodeScannerStopSoftwareTriggerRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*BarcodeScannerStopSoftwareTriggerRequest {
         var _r: *BarcodeScannerStopSoftwareTriggerRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -1772,6 +2207,12 @@ pub const IBarcodeScannerStopSoftwareTriggerRequestEventArgs = extern struct {
 };
 pub const IBarcodeScannerVideoFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         var _r: BitmapPixelFormat = undefined;
         const _c = self.vtable.get_Format(@ptrCast(self), &_r);
@@ -1816,6 +2257,12 @@ pub const IBarcodeScannerVideoFrame = extern struct {
 };
 pub const IBarcodeSymbologyAttributesBuilder = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCheckDigitValidationSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCheckDigitValidationSupported(@ptrCast(self), &_r);

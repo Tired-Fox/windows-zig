@@ -6,6 +6,18 @@ pub const BluetoothEventTriggeringMode = enum(i32) {
 };
 pub const BluetoothLEAdvertisementPublisherTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!BluetoothLEAdvertisementPublisherStatus {
         const this: *IBluetoothLEAdvertisementPublisherTriggerDetails = @ptrCast(self);
         return try this.getStatus();
@@ -29,6 +41,18 @@ pub const BluetoothLEAdvertisementPublisherTriggerDetails = extern struct {
 };
 pub const BluetoothLEAdvertisementWatcherTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         const this: *IBluetoothLEAdvertisementWatcherTriggerDetails = @ptrCast(self);
         return try this.getError();
@@ -49,6 +73,18 @@ pub const BluetoothLEAdvertisementWatcherTriggerDetails = extern struct {
 };
 pub const GattCharacteristicNotificationTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharacteristic(self: *@This()) core.HResult!*GattCharacteristic {
         const this: *IGattCharacteristicNotificationTriggerDetails = @ptrCast(self);
         return try this.getCharacteristic();
@@ -86,6 +122,18 @@ pub const GattCharacteristicNotificationTriggerDetails = extern struct {
 };
 pub const GattServiceProviderConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTriggerId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGattServiceProviderConnection = @ptrCast(self);
         return try this.getTriggerId();
@@ -105,9 +153,6 @@ pub const GattServiceProviderConnection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdateAdvertisingParameters(parameters);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getAllServices() core.HResult!*IMapView(?HSTRING,GattServiceProviderConnection) {
         const _f = try @This()._IGattServiceProviderConnectionStaticsCache.get();
         return try _f.getAllServices();
@@ -121,6 +166,18 @@ pub const GattServiceProviderConnection = extern struct {
 };
 pub const GattServiceProviderTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*GattServiceProviderConnection {
         const this: *IGattServiceProviderTriggerDetails = @ptrCast(self);
         return try this.getConnection();
@@ -133,6 +190,12 @@ pub const GattServiceProviderTriggerDetails = extern struct {
 };
 pub const IBluetoothLEAdvertisementPublisherTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!BluetoothLEAdvertisementPublisherStatus {
         var _r: BluetoothLEAdvertisementPublisherStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -163,6 +226,12 @@ pub const IBluetoothLEAdvertisementPublisherTriggerDetails = extern struct {
 };
 pub const IBluetoothLEAdvertisementPublisherTriggerDetails2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedTransmitPowerLevelInDBm(self: *@This()) core.HResult!*IReference(i16) {
         var _r: *IReference(i16) = undefined;
         const _c = self.vtable.get_SelectedTransmitPowerLevelInDBm(@ptrCast(self), &_r);
@@ -186,6 +255,12 @@ pub const IBluetoothLEAdvertisementPublisherTriggerDetails2 = extern struct {
 };
 pub const IBluetoothLEAdvertisementWatcherTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         var _r: BluetoothError = undefined;
         const _c = self.vtable.get_Error(@ptrCast(self), &_r);
@@ -223,6 +298,12 @@ pub const IBluetoothLEAdvertisementWatcherTriggerDetails = extern struct {
 };
 pub const IGattCharacteristicNotificationTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharacteristic(self: *@This()) core.HResult!*GattCharacteristic {
         var _r: *GattCharacteristic = undefined;
         const _c = self.vtable.get_Characteristic(@ptrCast(self), &_r);
@@ -253,6 +334,12 @@ pub const IGattCharacteristicNotificationTriggerDetails = extern struct {
 };
 pub const IGattCharacteristicNotificationTriggerDetails2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         var _r: BluetoothError = undefined;
         const _c = self.vtable.get_Error(@ptrCast(self), &_r);
@@ -290,6 +377,12 @@ pub const IGattCharacteristicNotificationTriggerDetails2 = extern struct {
 };
 pub const IGattServiceProviderConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTriggerId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TriggerId(@ptrCast(self), &_r);
@@ -325,6 +418,12 @@ pub const IGattServiceProviderConnection = extern struct {
 };
 pub const IGattServiceProviderConnection2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn UpdateAdvertisingParameters(self: *@This(), parameters: *GattServiceProviderAdvertisingParameters) core.HResult!void {
         const _c = self.vtable.UpdateAdvertisingParameters(@ptrCast(self), parameters);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -346,6 +445,12 @@ pub const IGattServiceProviderConnection2 = extern struct {
 };
 pub const IGattServiceProviderConnectionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllServices(self: *@This()) core.HResult!*IMapView(?HSTRING,GattServiceProviderConnection) {
         var _r: *IMapView(?HSTRING,GattServiceProviderConnection) = undefined;
         const _c = self.vtable.get_AllServices(@ptrCast(self), &_r);
@@ -369,6 +474,12 @@ pub const IGattServiceProviderConnectionStatics = extern struct {
 };
 pub const IGattServiceProviderTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*GattServiceProviderConnection {
         var _r: *GattServiceProviderConnection = undefined;
         const _c = self.vtable.get_Connection(@ptrCast(self), &_r);
@@ -392,6 +503,12 @@ pub const IGattServiceProviderTriggerDetails = extern struct {
 };
 pub const IRfcommConnectionTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSocket(self: *@This()) core.HResult!*StreamSocket {
         var _r: *StreamSocket = undefined;
         const _c = self.vtable.get_Socket(@ptrCast(self), &_r);
@@ -429,6 +546,12 @@ pub const IRfcommConnectionTriggerDetails = extern struct {
 };
 pub const IRfcommInboundConnectionInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSdpRecord(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_SdpRecord(@ptrCast(self), &_r);
@@ -481,6 +604,12 @@ pub const IRfcommInboundConnectionInformation = extern struct {
 };
 pub const IRfcommOutboundConnectionInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteServiceId(self: *@This()) core.HResult!*RfcommServiceId {
         var _r: *RfcommServiceId = undefined;
         const _c = self.vtable.get_RemoteServiceId(@ptrCast(self), &_r);
@@ -509,6 +638,18 @@ pub const IRfcommOutboundConnectionInformation = extern struct {
 };
 pub const RfcommConnectionTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSocket(self: *@This()) core.HResult!*StreamSocket {
         const this: *IRfcommConnectionTriggerDetails = @ptrCast(self);
         return try this.getSocket();
@@ -529,6 +670,18 @@ pub const RfcommConnectionTriggerDetails = extern struct {
 };
 pub const RfcommInboundConnectionInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSdpRecord(self: *@This()) core.HResult!*IBuffer {
         const this: *IRfcommInboundConnectionInformation = @ptrCast(self);
         return try this.getSdpRecord();
@@ -561,6 +714,18 @@ pub const RfcommInboundConnectionInformation = extern struct {
 };
 pub const RfcommOutboundConnectionInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteServiceId(self: *@This()) core.HResult!*RfcommServiceId {
         const this: *IRfcommOutboundConnectionInformation = @ptrCast(self);
         return try this.getRemoteServiceId();

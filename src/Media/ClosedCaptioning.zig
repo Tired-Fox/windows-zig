@@ -27,6 +27,15 @@ pub const ClosedCaptionOpacity = enum(i32) {
 };
 pub const ClosedCaptionProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -110,6 +119,12 @@ pub const ClosedCaptionStyle = enum(i32) {
 };
 pub const IClosedCaptionPropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFontColor(self: *@This()) core.HResult!ClosedCaptionColor {
         var _r: ClosedCaptionColor = undefined;
         const _c = self.vtable.get_FontColor(@ptrCast(self), &_r);
@@ -210,6 +225,12 @@ pub const IClosedCaptionPropertiesStatics = extern struct {
 };
 pub const IClosedCaptionPropertiesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addPropertiesChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PropertiesChanged(@ptrCast(self), handler, &_r);

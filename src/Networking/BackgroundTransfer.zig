@@ -8,6 +8,18 @@ pub const BackgroundDownloadProgress = extern struct {
 };
 pub const BackgroundDownloader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateDownload(self: *@This(), uri: *Uri, resultFile: *IStorageFile) core.HResult!*DownloadOperation {
         const this: *IBackgroundDownloader = @ptrCast(self);
         return try this.CreateDownload(uri, resultFile);
@@ -174,9 +186,6 @@ pub const BackgroundDownloader = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompletionGroup();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundDownloader.IID)));
@@ -218,6 +227,18 @@ pub const BackgroundTransferBehavior = enum(i32) {
 };
 pub const BackgroundTransferCompletionGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
         const this: *IBackgroundTransferCompletionGroup = @ptrCast(self);
         return try this.getTrigger();
@@ -229,9 +250,6 @@ pub const BackgroundTransferCompletionGroup = extern struct {
     pub fn Enable(self: *@This()) core.HResult!void {
         const this: *IBackgroundTransferCompletionGroup = @ptrCast(self);
         return try this.Enable();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -246,6 +264,18 @@ pub const BackgroundTransferCompletionGroup = extern struct {
 };
 pub const BackgroundTransferCompletionGroupTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDownloads(self: *@This()) core.HResult!*IVectorView(DownloadOperation) {
         const this: *IBackgroundTransferCompletionGroupTriggerDetails = @ptrCast(self);
         return try this.getDownloads();
@@ -262,6 +292,18 @@ pub const BackgroundTransferCompletionGroupTriggerDetails = extern struct {
 };
 pub const BackgroundTransferContentPart = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const this: *IBackgroundTransferContentPart = @ptrCast(self);
         return try this.SetHeader(headerName, headerValue);
@@ -273,9 +315,6 @@ pub const BackgroundTransferContentPart = extern struct {
     pub fn SetFile(self: *@This(), value: *IStorageFile) core.HResult!void {
         const this: *IBackgroundTransferContentPart = @ptrCast(self);
         return try this.SetFile(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -304,6 +343,15 @@ pub const BackgroundTransferCostPolicy = enum(i32) {
 };
 pub const BackgroundTransferError = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -321,6 +369,18 @@ pub const BackgroundTransferFileRange = extern struct {
 };
 pub const BackgroundTransferGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IBackgroundTransferGroup = @ptrCast(self);
         return try this.getName();
@@ -332,9 +392,6 @@ pub const BackgroundTransferGroup = extern struct {
     pub fn putTransferBehavior(self: *@This(), value: BackgroundTransferBehavior) core.HResult!void {
         const this: *IBackgroundTransferGroup = @ptrCast(self);
         return try this.putTransferBehavior(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateGroup(name: ?HSTRING) core.HResult!*BackgroundTransferGroup {
         const _f = try @This()._IBackgroundTransferGroupStaticsCache.get();
@@ -354,6 +411,18 @@ pub const BackgroundTransferPriority = enum(i32) {
 };
 pub const BackgroundTransferRangesDownloadedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWasDownloadRestarted(self: *@This()) core.HResult!bool {
         const this: *IBackgroundTransferRangesDownloadedEventArgs = @ptrCast(self);
         return try this.getWasDownloadRestarted();
@@ -395,6 +464,18 @@ pub const BackgroundUploadProgress = extern struct {
 };
 pub const BackgroundUploader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateUpload(self: *@This(), uri: *Uri, sourceFile: *IStorageFile) core.HResult!*UploadOperation {
         const this: *IBackgroundUploader = @ptrCast(self);
         return try this.CreateUpload(uri, sourceFile);
@@ -569,9 +650,6 @@ pub const BackgroundUploader = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCompletionGroup();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundUploader.IID)));
@@ -609,6 +687,15 @@ pub const BackgroundUploader = extern struct {
 };
 pub const ContentPrefetcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -635,6 +722,18 @@ pub const ContentPrefetcher = extern struct {
 };
 pub const DownloadOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResultFile(self: *@This()) core.HResult!*IStorageFile {
         const this: *IDownloadOperation = @ptrCast(self);
         return try this.getResultFile();
@@ -828,6 +927,12 @@ pub const DownloadOperation = extern struct {
 };
 pub const IBackgroundDownloader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateDownload(self: *@This(), uri: *Uri, resultFile: *IStorageFile) core.HResult!*DownloadOperation {
         var _r: *DownloadOperation = undefined;
         const _c = self.vtable.CreateDownload(@ptrCast(self), uri, resultFile, &_r);
@@ -865,6 +970,12 @@ pub const IBackgroundDownloader = extern struct {
 };
 pub const IBackgroundDownloader2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var _r: *BackgroundTransferGroup = undefined;
         const _c = self.vtable.get_TransferGroup(@ptrCast(self), &_r);
@@ -941,6 +1052,12 @@ pub const IBackgroundDownloader2 = extern struct {
 };
 pub const IBackgroundDownloader3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompletionGroup(self: *@This()) core.HResult!*BackgroundTransferCompletionGroup {
         var _r: *BackgroundTransferCompletionGroup = undefined;
         const _c = self.vtable.get_CompletionGroup(@ptrCast(self), &_r);
@@ -964,6 +1081,12 @@ pub const IBackgroundDownloader3 = extern struct {
 };
 pub const IBackgroundDownloaderFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithCompletionGroup(self: *@This(), completionGroup: *BackgroundTransferCompletionGroup) core.HResult!*BackgroundDownloader {
         var _r: *BackgroundDownloader = undefined;
         const _c = self.vtable.CreateWithCompletionGroup(@ptrCast(self), completionGroup, &_r);
@@ -987,6 +1110,12 @@ pub const IBackgroundDownloaderFactory = extern struct {
 };
 pub const IBackgroundDownloaderStaticMethods = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentDownloadsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
         var _r: *IAsyncOperation(IVectorView(DownloadOperation)) = undefined;
         const _c = self.vtable.GetCurrentDownloadsAsync(@ptrCast(self), &_r);
@@ -1017,6 +1146,12 @@ pub const IBackgroundDownloaderStaticMethods = extern struct {
 };
 pub const IBackgroundDownloaderStaticMethods2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentDownloadsForTransferGroupAsync(self: *@This(), group: *BackgroundTransferGroup) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
         var _r: *IAsyncOperation(IVectorView(DownloadOperation)) = undefined;
         const _c = self.vtable.GetCurrentDownloadsForTransferGroupAsync(@ptrCast(self), group, &_r);
@@ -1040,6 +1175,12 @@ pub const IBackgroundDownloaderStaticMethods2 = extern struct {
 };
 pub const IBackgroundDownloaderUserConsent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestUnconstrainedDownloadsAsync(self: *@This(), operations: *IIterable(DownloadOperation)) core.HResult!*IAsyncOperation(UnconstrainedTransferRequestResult) {
         var _r: *IAsyncOperation(UnconstrainedTransferRequestResult) = undefined;
         const _c = self.vtable.RequestUnconstrainedDownloadsAsync(@ptrCast(self), operations, &_r);
@@ -1063,6 +1204,12 @@ pub const IBackgroundDownloaderUserConsent = extern struct {
 };
 pub const IBackgroundTransferBase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetRequestHeader(@ptrCast(self), headerName, headerValue);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1144,6 +1291,12 @@ pub const IBackgroundTransferBase = extern struct {
 };
 pub const IBackgroundTransferCompletionGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrigger(self: *@This()) core.HResult!*IBackgroundTrigger {
         var _r: *IBackgroundTrigger = undefined;
         const _c = self.vtable.get_Trigger(@ptrCast(self), &_r);
@@ -1179,6 +1332,12 @@ pub const IBackgroundTransferCompletionGroup = extern struct {
 };
 pub const IBackgroundTransferCompletionGroupTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDownloads(self: *@This()) core.HResult!*IVectorView(DownloadOperation) {
         var _r: *IVectorView(DownloadOperation) = undefined;
         const _c = self.vtable.get_Downloads(@ptrCast(self), &_r);
@@ -1209,6 +1368,12 @@ pub const IBackgroundTransferCompletionGroupTriggerDetails = extern struct {
 };
 pub const IBackgroundTransferContentPart = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetHeader(@ptrCast(self), headerName, headerValue);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1240,6 +1405,12 @@ pub const IBackgroundTransferContentPart = extern struct {
 };
 pub const IBackgroundTransferContentPartFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithName(self: *@This(), name: ?HSTRING) core.HResult!*BackgroundTransferContentPart {
         var _r: *BackgroundTransferContentPart = undefined;
         const _c = self.vtable.CreateWithName(@ptrCast(self), name, &_r);
@@ -1270,6 +1441,12 @@ pub const IBackgroundTransferContentPartFactory = extern struct {
 };
 pub const IBackgroundTransferErrorStaticMethods = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetStatus(self: *@This(), hresult: i32) core.HResult!WebErrorStatus {
         var _r: WebErrorStatus = undefined;
         const _c = self.vtable.GetStatus(@ptrCast(self), hresult, &_r);
@@ -1293,6 +1470,12 @@ pub const IBackgroundTransferErrorStaticMethods = extern struct {
 };
 pub const IBackgroundTransferGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -1328,6 +1511,12 @@ pub const IBackgroundTransferGroup = extern struct {
 };
 pub const IBackgroundTransferGroupStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateGroup(self: *@This(), name: ?HSTRING) core.HResult!*BackgroundTransferGroup {
         var _r: *BackgroundTransferGroup = undefined;
         const _c = self.vtable.CreateGroup(@ptrCast(self), name, &_r);
@@ -1351,6 +1540,12 @@ pub const IBackgroundTransferGroupStatics = extern struct {
 };
 pub const IBackgroundTransferOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGuid(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Guid(@ptrCast(self), &_r);
@@ -1421,6 +1616,12 @@ pub const IBackgroundTransferOperation = extern struct {
 };
 pub const IBackgroundTransferOperationPriority = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPriority(self: *@This()) core.HResult!BackgroundTransferPriority {
         var _r: BackgroundTransferPriority = undefined;
         const _c = self.vtable.get_Priority(@ptrCast(self), &_r);
@@ -1449,6 +1650,12 @@ pub const IBackgroundTransferOperationPriority = extern struct {
 };
 pub const IBackgroundTransferRangesDownloadedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWasDownloadRestarted(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_WasDownloadRestarted(@ptrCast(self), &_r);
@@ -1486,6 +1693,12 @@ pub const IBackgroundTransferRangesDownloadedEventArgs = extern struct {
 };
 pub const IBackgroundUploader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateUpload(self: *@This(), uri: *Uri, sourceFile: *IStorageFile) core.HResult!*UploadOperation {
         var _r: *UploadOperation = undefined;
         const _c = self.vtable.CreateUpload(@ptrCast(self), uri, sourceFile, &_r);
@@ -1537,6 +1750,12 @@ pub const IBackgroundUploader = extern struct {
 };
 pub const IBackgroundUploader2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var _r: *BackgroundTransferGroup = undefined;
         const _c = self.vtable.get_TransferGroup(@ptrCast(self), &_r);
@@ -1613,6 +1832,12 @@ pub const IBackgroundUploader2 = extern struct {
 };
 pub const IBackgroundUploader3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompletionGroup(self: *@This()) core.HResult!*BackgroundTransferCompletionGroup {
         var _r: *BackgroundTransferCompletionGroup = undefined;
         const _c = self.vtable.get_CompletionGroup(@ptrCast(self), &_r);
@@ -1636,6 +1861,12 @@ pub const IBackgroundUploader3 = extern struct {
 };
 pub const IBackgroundUploaderFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithCompletionGroup(self: *@This(), completionGroup: *BackgroundTransferCompletionGroup) core.HResult!*BackgroundUploader {
         var _r: *BackgroundUploader = undefined;
         const _c = self.vtable.CreateWithCompletionGroup(@ptrCast(self), completionGroup, &_r);
@@ -1659,6 +1890,12 @@ pub const IBackgroundUploaderFactory = extern struct {
 };
 pub const IBackgroundUploaderStaticMethods = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentUploadsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
         var _r: *IAsyncOperation(IVectorView(UploadOperation)) = undefined;
         const _c = self.vtable.GetCurrentUploadsAsync(@ptrCast(self), &_r);
@@ -1689,6 +1926,12 @@ pub const IBackgroundUploaderStaticMethods = extern struct {
 };
 pub const IBackgroundUploaderStaticMethods2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentUploadsForTransferGroupAsync(self: *@This(), group: *BackgroundTransferGroup) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
         var _r: *IAsyncOperation(IVectorView(UploadOperation)) = undefined;
         const _c = self.vtable.GetCurrentUploadsForTransferGroupAsync(@ptrCast(self), group, &_r);
@@ -1712,6 +1955,12 @@ pub const IBackgroundUploaderStaticMethods2 = extern struct {
 };
 pub const IBackgroundUploaderUserConsent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestUnconstrainedUploadsAsync(self: *@This(), operations: *IIterable(UploadOperation)) core.HResult!*IAsyncOperation(UnconstrainedTransferRequestResult) {
         var _r: *IAsyncOperation(UnconstrainedTransferRequestResult) = undefined;
         const _c = self.vtable.RequestUnconstrainedUploadsAsync(@ptrCast(self), operations, &_r);
@@ -1735,6 +1984,12 @@ pub const IBackgroundUploaderUserConsent = extern struct {
 };
 pub const IContentPrefetcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentUris(self: *@This()) core.HResult!*IVector(Uri) {
         var _r: *IVector(Uri) = undefined;
         const _c = self.vtable.get_ContentUris(@ptrCast(self), &_r);
@@ -1770,6 +2025,12 @@ pub const IContentPrefetcher = extern struct {
 };
 pub const IContentPrefetcherTime = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLastSuccessfulPrefetchTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_LastSuccessfulPrefetchTime(@ptrCast(self), &_r);
@@ -1793,6 +2054,12 @@ pub const IContentPrefetcherTime = extern struct {
 };
 pub const IDownloadOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResultFile(self: *@This()) core.HResult!*IStorageFile {
         var _r: *IStorageFile = undefined;
         const _c = self.vtable.get_ResultFile(@ptrCast(self), &_r);
@@ -1847,6 +2114,12 @@ pub const IDownloadOperation = extern struct {
 };
 pub const IDownloadOperation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var _r: *BackgroundTransferGroup = undefined;
         const _c = self.vtable.get_TransferGroup(@ptrCast(self), &_r);
@@ -1870,6 +2143,12 @@ pub const IDownloadOperation2 = extern struct {
 };
 pub const IDownloadOperation3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsRandomAccessRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRandomAccessRequired(@ptrCast(self), &_r);
@@ -1943,6 +2222,12 @@ pub const IDownloadOperation3 = extern struct {
 };
 pub const IDownloadOperation4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn MakeCurrentInTransferGroup(self: *@This()) core.HResult!void {
         const _c = self.vtable.MakeCurrentInTransferGroup(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1964,6 +2249,12 @@ pub const IDownloadOperation4 = extern struct {
 };
 pub const IDownloadOperation5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetRequestHeader(@ptrCast(self), headerName, headerValue);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1990,6 +2281,12 @@ pub const IDownloadOperation5 = extern struct {
 };
 pub const IResponseInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsResumable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsResumable(@ptrCast(self), &_r);
@@ -2034,6 +2331,12 @@ pub const IResponseInformation = extern struct {
 };
 pub const IUnconstrainedTransferRequestResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsUnconstrained(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsUnconstrained(@ptrCast(self), &_r);
@@ -2057,6 +2360,12 @@ pub const IUnconstrainedTransferRequestResult = extern struct {
 };
 pub const IUploadOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceFile(self: *@This()) core.HResult!*IStorageFile {
         var _r: *IStorageFile = undefined;
         const _c = self.vtable.get_SourceFile(@ptrCast(self), &_r);
@@ -2101,6 +2410,12 @@ pub const IUploadOperation = extern struct {
 };
 pub const IUploadOperation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransferGroup(self: *@This()) core.HResult!*BackgroundTransferGroup {
         var _r: *BackgroundTransferGroup = undefined;
         const _c = self.vtable.get_TransferGroup(@ptrCast(self), &_r);
@@ -2124,6 +2439,12 @@ pub const IUploadOperation2 = extern struct {
 };
 pub const IUploadOperation3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn MakeCurrentInTransferGroup(self: *@This()) core.HResult!void {
         const _c = self.vtable.MakeCurrentInTransferGroup(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2145,6 +2466,12 @@ pub const IUploadOperation3 = extern struct {
 };
 pub const IUploadOperation4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetRequestHeader(self: *@This(), headerName: ?HSTRING, headerValue: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetRequestHeader(@ptrCast(self), headerName, headerValue);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2171,6 +2498,18 @@ pub const IUploadOperation4 = extern struct {
 };
 pub const ResponseInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsResumable(self: *@This()) core.HResult!bool {
         const this: *IResponseInformation = @ptrCast(self);
         return try this.getIsResumable();
@@ -2195,6 +2534,18 @@ pub const ResponseInformation = extern struct {
 };
 pub const UnconstrainedTransferRequestResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsUnconstrained(self: *@This()) core.HResult!bool {
         const this: *IUnconstrainedTransferRequestResult = @ptrCast(self);
         return try this.getIsUnconstrained();
@@ -2207,6 +2558,18 @@ pub const UnconstrainedTransferRequestResult = extern struct {
 };
 pub const UploadOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceFile(self: *@This()) core.HResult!*IStorageFile {
         const this: *IUploadOperation = @ptrCast(self);
         return try this.getSourceFile();

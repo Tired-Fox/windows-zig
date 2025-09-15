@@ -1,6 +1,15 @@
 // ----- This code is automatically generated -----
 pub const CurrentApp = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -86,6 +95,15 @@ pub const CurrentApp = extern struct {
 };
 pub const CurrentAppSimulator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -169,6 +187,12 @@ pub const FulfillmentResult = enum(i32) {
 };
 pub const ICurrentApp = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLicenseInformation(self: *@This()) core.HResult!*LicenseInformation {
         var _r: *LicenseInformation = undefined;
         const _c = self.vtable.get_LicenseInformation(@ptrCast(self), &_r);
@@ -241,6 +265,12 @@ pub const ICurrentApp = extern struct {
 };
 pub const ICurrentApp2Statics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCustomerPurchaseIdAsync(self: *@This(), serviceTicket: ?HSTRING, publisherUserId: ?HSTRING) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetCustomerPurchaseIdAsync(@ptrCast(self), serviceTicket, publisherUserId, &_r);
@@ -271,6 +301,12 @@ pub const ICurrentApp2Statics = extern struct {
 };
 pub const ICurrentAppSimulator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLicenseInformation(self: *@This()) core.HResult!*LicenseInformation {
         var _r: *LicenseInformation = undefined;
         const _c = self.vtable.get_LicenseInformation(@ptrCast(self), &_r);
@@ -350,6 +386,12 @@ pub const ICurrentAppSimulator = extern struct {
 };
 pub const ICurrentAppSimulatorStaticsWithFiltering = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadListingInformationByProductIdsAsync(self: *@This(), productIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(ListingInformation) {
         var _r: *IAsyncOperation(ListingInformation) = undefined;
         const _c = self.vtable.LoadListingInformationByProductIdsAsync(@ptrCast(self), productIds, &_r);
@@ -380,6 +422,12 @@ pub const ICurrentAppSimulatorStaticsWithFiltering = extern struct {
 };
 pub const ICurrentAppSimulatorWithCampaignId = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAppPurchaseCampaignIdAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetAppPurchaseCampaignIdAsync(@ptrCast(self), &_r);
@@ -403,6 +451,12 @@ pub const ICurrentAppSimulatorWithCampaignId = extern struct {
 };
 pub const ICurrentAppSimulatorWithConsumables = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportConsumableFulfillmentAsync(self: *@This(), productId: ?HSTRING, transactionId: *Guid) core.HResult!*IAsyncOperation(FulfillmentResult) {
         var _r: *IAsyncOperation(FulfillmentResult) = undefined;
         const _c = self.vtable.ReportConsumableFulfillmentAsync(@ptrCast(self), productId, transactionId, &_r);
@@ -447,6 +501,12 @@ pub const ICurrentAppSimulatorWithConsumables = extern struct {
 };
 pub const ICurrentAppStaticsWithFiltering = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadListingInformationByProductIdsAsync(self: *@This(), productIds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(ListingInformation) {
         var _r: *IAsyncOperation(ListingInformation) = undefined;
         const _c = self.vtable.LoadListingInformationByProductIdsAsync(@ptrCast(self), productIds, &_r);
@@ -482,6 +542,12 @@ pub const ICurrentAppStaticsWithFiltering = extern struct {
 };
 pub const ICurrentAppWithCampaignId = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAppPurchaseCampaignIdAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetAppPurchaseCampaignIdAsync(@ptrCast(self), &_r);
@@ -505,6 +571,12 @@ pub const ICurrentAppWithCampaignId = extern struct {
 };
 pub const ICurrentAppWithConsumables = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportConsumableFulfillmentAsync(self: *@This(), productId: ?HSTRING, transactionId: *Guid) core.HResult!*IAsyncOperation(FulfillmentResult) {
         var _r: *IAsyncOperation(FulfillmentResult) = undefined;
         const _c = self.vtable.ReportConsumableFulfillmentAsync(@ptrCast(self), productId, transactionId, &_r);
@@ -549,6 +621,12 @@ pub const ICurrentAppWithConsumables = extern struct {
 };
 pub const ILicenseInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductLicenses(self: *@This()) core.HResult!*IMapView(?HSTRING,ProductLicense) {
         var _r: *IMapView(?HSTRING,ProductLicense) = undefined;
         const _c = self.vtable.get_ProductLicenses(@ptrCast(self), &_r);
@@ -605,6 +683,12 @@ pub const ILicenseInformation = extern struct {
 };
 pub const IListingInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentMarket(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CurrentMarket(@ptrCast(self), &_r);
@@ -663,6 +747,12 @@ pub const IListingInformation = extern struct {
 };
 pub const IListingInformation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormattedBasePrice(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FormattedBasePrice(@ptrCast(self), &_r);
@@ -707,6 +797,12 @@ pub const IListingInformation2 = extern struct {
 };
 pub const IProductLicense = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductId(@ptrCast(self), &_r);
@@ -744,6 +840,12 @@ pub const IProductLicense = extern struct {
 };
 pub const IProductLicenseWithFulfillment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsConsumable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsConsumable(@ptrCast(self), &_r);
@@ -767,6 +869,12 @@ pub const IProductLicenseWithFulfillment = extern struct {
 };
 pub const IProductListing = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductId(@ptrCast(self), &_r);
@@ -804,6 +912,12 @@ pub const IProductListing = extern struct {
 };
 pub const IProductListing2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormattedBasePrice(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FormattedBasePrice(@ptrCast(self), &_r);
@@ -848,6 +962,12 @@ pub const IProductListing2 = extern struct {
 };
 pub const IProductListingWithConsumables = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductType(self: *@This()) core.HResult!ProductType {
         var _r: ProductType = undefined;
         const _c = self.vtable.get_ProductType(@ptrCast(self), &_r);
@@ -871,6 +991,12 @@ pub const IProductListingWithConsumables = extern struct {
 };
 pub const IProductListingWithMetadata = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
@@ -922,6 +1048,12 @@ pub const IProductListingWithMetadata = extern struct {
 };
 pub const IProductPurchaseDisplayProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -974,6 +1106,12 @@ pub const IProductPurchaseDisplayProperties = extern struct {
 };
 pub const IProductPurchaseDisplayPropertiesFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateProductPurchaseDisplayProperties(self: *@This(), name: ?HSTRING) core.HResult!*ProductPurchaseDisplayProperties {
         var _r: *ProductPurchaseDisplayProperties = undefined;
         const _c = self.vtable.CreateProductPurchaseDisplayProperties(@ptrCast(self), name, &_r);
@@ -997,6 +1135,12 @@ pub const IProductPurchaseDisplayPropertiesFactory = extern struct {
 };
 pub const IPurchaseResults = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!ProductPurchaseStatus {
         var _r: ProductPurchaseStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1041,6 +1185,12 @@ pub const IPurchaseResults = extern struct {
 };
 pub const IUnfulfilledConsumable = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductId(@ptrCast(self), &_r);
@@ -1167,6 +1317,18 @@ pub const LicenseChangedEventHandler = extern struct {
 };
 pub const LicenseInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductLicenses(self: *@This()) core.HResult!*IMapView(?HSTRING,ProductLicense) {
         const this: *ILicenseInformation = @ptrCast(self);
         return try this.getProductLicenses();
@@ -1199,6 +1361,18 @@ pub const LicenseInformation = extern struct {
 };
 pub const ListingInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentMarket(self: *@This()) core.HResult!?HSTRING {
         const this: *IListingInformation = @ptrCast(self);
         return try this.getCurrentMarket();
@@ -1259,6 +1433,18 @@ pub const ListingInformation = extern struct {
 };
 pub const ProductLicense = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         const this: *IProductLicense = @ptrCast(self);
         return try this.getProductId();
@@ -1286,6 +1472,18 @@ pub const ProductLicense = extern struct {
 };
 pub const ProductListing = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         const this: *IProductListing = @ptrCast(self);
         return try this.getProductId();
@@ -1369,6 +1567,18 @@ pub const ProductListing = extern struct {
 };
 pub const ProductPurchaseDisplayProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IProductPurchaseDisplayProperties = @ptrCast(self);
         return try this.getName();
@@ -1392,9 +1602,6 @@ pub const ProductPurchaseDisplayProperties = extern struct {
     pub fn putImage(self: *@This(), value: *Uri) core.HResult!void {
         const this: *IProductPurchaseDisplayProperties = @ptrCast(self);
         return try this.putImage(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1425,6 +1632,18 @@ pub const ProductType = enum(i32) {
 };
 pub const PurchaseResults = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!ProductPurchaseStatus {
         const this: *IPurchaseResults = @ptrCast(self);
         return try this.getStatus();
@@ -1449,6 +1668,18 @@ pub const PurchaseResults = extern struct {
 };
 pub const UnfulfilledConsumable = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUnfulfilledConsumable = @ptrCast(self);
         return try this.getProductId();

@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AppInstallItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppInstallItem = @ptrCast(self);
         return try this.getProductId();
@@ -176,6 +188,18 @@ pub const AppInstallItem = extern struct {
 };
 pub const AppInstallManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppInstallItems(self: *@This()) core.HResult!*IVectorView(AppInstallItem) {
         const this: *IAppInstallManager = @ptrCast(self);
         return try this.getAppInstallItems();
@@ -455,9 +479,6 @@ pub const AppInstallManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanInstallForAllUsers();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAppInstallManager.IID)));
@@ -471,6 +492,18 @@ pub const AppInstallManager = extern struct {
 };
 pub const AppInstallManagerItemEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItem(self: *@This()) core.HResult!*AppInstallItem {
         const this: *IAppInstallManagerItemEventArgs = @ptrCast(self);
         return try this.getItem();
@@ -483,6 +516,18 @@ pub const AppInstallManagerItemEventArgs = extern struct {
 };
 pub const AppInstallOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCatalogId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppInstallOptions = @ptrCast(self);
         return try this.getCatalogId();
@@ -657,9 +702,6 @@ pub const AppInstallOptions = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putExtendedCampaignId(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAppInstallOptions.IID)));
@@ -689,6 +731,18 @@ pub const AppInstallState = enum(i32) {
 };
 pub const AppInstallStatus = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInstallState(self: *@This()) core.HResult!AppInstallState {
         const this: *IAppInstallStatus = @ptrCast(self);
         return try this.getInstallState();
@@ -749,6 +803,18 @@ pub const AppInstallationToastNotificationMode = enum(i32) {
 };
 pub const AppUpdateOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCatalogId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppUpdateOptions = @ptrCast(self);
         return try this.getCatalogId();
@@ -779,9 +845,6 @@ pub const AppUpdateOptions = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAutomaticallyDownloadAndInstallUpdateIfFound(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAppUpdateOptions.IID)));
@@ -801,6 +864,18 @@ pub const AutoUpdateSetting = enum(i32) {
 };
 pub const GetEntitlementResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GetEntitlementStatus {
         const this: *IGetEntitlementResult = @ptrCast(self);
         return try this.getStatus();
@@ -847,6 +922,12 @@ pub const GetEntitlementStatus = enum(i32) {
 };
 pub const IAppInstallItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductId(@ptrCast(self), &_r);
@@ -937,6 +1018,12 @@ pub const IAppInstallItem = extern struct {
 };
 pub const IAppInstallItem2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Cancel(self: *@This(), correlationVector: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Cancel(@ptrCast(self), correlationVector);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -968,6 +1055,12 @@ pub const IAppInstallItem2 = extern struct {
 };
 pub const IAppInstallItem3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(AppInstallItem) {
         var _r: *IVectorView(AppInstallItem) = undefined;
         const _c = self.vtable.get_Children(@ptrCast(self), &_r);
@@ -998,6 +1091,12 @@ pub const IAppInstallItem3 = extern struct {
 };
 pub const IAppInstallItem4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLaunchAfterInstall(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_LaunchAfterInstall(@ptrCast(self), &_r);
@@ -1026,6 +1125,12 @@ pub const IAppInstallItem4 = extern struct {
 };
 pub const IAppInstallItem5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPinToDesktopAfterInstall(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_PinToDesktopAfterInstall(@ptrCast(self), &_r);
@@ -1102,6 +1207,12 @@ pub const IAppInstallItem5 = extern struct {
 };
 pub const IAppInstallManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppInstallItems(self: *@This()) core.HResult!*IVectorView(AppInstallItem) {
         var _r: *IVectorView(AppInstallItem) = undefined;
         const _c = self.vtable.get_AppInstallItems(@ptrCast(self), &_r);
@@ -1237,6 +1348,12 @@ pub const IAppInstallManager = extern struct {
 };
 pub const IAppInstallManager2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartAppInstallAsync(self: *@This(), productId: ?HSTRING, skuId: ?HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, catalogId: ?HSTRING, bundleId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var _r: *IAsyncOperation(AppInstallItem) = undefined;
         const _c = self.vtable.StartAppInstallAsync(@ptrCast(self), productId, skuId, repair, forceUseOfNonRemovableStorage, catalogId, bundleId, correlationVector, &_r);
@@ -1303,6 +1420,12 @@ pub const IAppInstallManager2 = extern struct {
 };
 pub const IAppInstallManager3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartProductInstallAsync(self: *@This(), productId: ?HSTRING, catalogId: ?HSTRING, flightId: ?HSTRING, clientId: ?HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: ?HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var _r: *IAsyncOperation(IVectorView(AppInstallItem)) = undefined;
         const _c = self.vtable.StartProductInstallAsync(@ptrCast(self), productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume, &_r);
@@ -1373,6 +1496,12 @@ pub const IAppInstallManager3 = extern struct {
 };
 pub const IAppInstallManager4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetFreeUserEntitlementAsync(self: *@This(), storeId: ?HSTRING, campaignId: ?HSTRING, correlationVector: ?HSTRING) core.HResult!*IAsyncOperation(GetEntitlementResult) {
         var _r: *IAsyncOperation(GetEntitlementResult) = undefined;
         const _c = self.vtable.GetFreeUserEntitlementAsync(@ptrCast(self), storeId, campaignId, correlationVector, &_r);
@@ -1410,6 +1539,12 @@ pub const IAppInstallManager4 = extern struct {
 };
 pub const IAppInstallManager5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppInstallItemsWithGroupSupport(self: *@This()) core.HResult!*IVectorView(AppInstallItem) {
         var _r: *IVectorView(AppInstallItem) = undefined;
         const _c = self.vtable.get_AppInstallItemsWithGroupSupport(@ptrCast(self), &_r);
@@ -1433,6 +1568,12 @@ pub const IAppInstallManager5 = extern struct {
 };
 pub const IAppInstallManager6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SearchForAllUpdatesAsync(self: *@This(), correlationVector: ?HSTRING, clientId: ?HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var _r: *IAsyncOperation(IVectorView(AppInstallItem)) = undefined;
         const _c = self.vtable.SearchForAllUpdatesAsync(@ptrCast(self), correlationVector, clientId, updateOptions, &_r);
@@ -1505,6 +1646,12 @@ pub const IAppInstallManager6 = extern struct {
 };
 pub const IAppInstallManager7 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanInstallForAllUsers(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanInstallForAllUsers(@ptrCast(self), &_r);
@@ -1528,6 +1675,12 @@ pub const IAppInstallManager7 = extern struct {
 };
 pub const IAppInstallManagerItemEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItem(self: *@This()) core.HResult!*AppInstallItem {
         var _r: *AppInstallItem = undefined;
         const _c = self.vtable.get_Item(@ptrCast(self), &_r);
@@ -1551,6 +1704,12 @@ pub const IAppInstallManagerItemEventArgs = extern struct {
 };
 pub const IAppInstallOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCatalogId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CatalogId(@ptrCast(self), &_r);
@@ -1639,6 +1798,12 @@ pub const IAppInstallOptions = extern struct {
 };
 pub const IAppInstallOptions2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPinToDesktopAfterInstall(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_PinToDesktopAfterInstall(@ptrCast(self), &_r);
@@ -1763,6 +1928,12 @@ pub const IAppInstallOptions2 = extern struct {
 };
 pub const IAppInstallStatus = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInstallState(self: *@This()) core.HResult!AppInstallState {
         var _r: AppInstallState = undefined;
         const _c = self.vtable.get_InstallState(@ptrCast(self), &_r);
@@ -1814,6 +1985,12 @@ pub const IAppInstallStatus = extern struct {
 };
 pub const IAppInstallStatus2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -1844,6 +2021,12 @@ pub const IAppInstallStatus2 = extern struct {
 };
 pub const IAppInstallStatus3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsStaged(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStaged(@ptrCast(self), &_r);
@@ -1867,6 +2050,12 @@ pub const IAppInstallStatus3 = extern struct {
 };
 pub const IAppUpdateOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCatalogId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CatalogId(@ptrCast(self), &_r);
@@ -1907,6 +2096,12 @@ pub const IAppUpdateOptions = extern struct {
 };
 pub const IAppUpdateOptions2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAutomaticallyDownloadAndInstallUpdateIfFound(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AutomaticallyDownloadAndInstallUpdateIfFound(@ptrCast(self), &_r);
@@ -1935,6 +2130,12 @@ pub const IAppUpdateOptions2 = extern struct {
 };
 pub const IGetEntitlementResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GetEntitlementStatus {
         var _r: GetEntitlementStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1958,6 +2159,12 @@ pub const IGetEntitlementResult = extern struct {
 };
 pub const IGetEntitlementResult2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAlreadyOwned(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAlreadyOwned(@ptrCast(self), &_r);

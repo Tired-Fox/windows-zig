@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPlatformDiagnosticActionsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsScenarioEnabled(self: *@This(), scenarioId: *Guid) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsScenarioEnabled(@ptrCast(self), scenarioId, &_r);
@@ -73,6 +79,12 @@ pub const IPlatformDiagnosticActionsStatics = extern struct {
 };
 pub const IPlatformDiagnosticTraceInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScenarioId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ScenarioId(@ptrCast(self), &_r);
@@ -131,6 +143,12 @@ pub const IPlatformDiagnosticTraceInfo = extern struct {
 };
 pub const IPlatformDiagnosticTraceRuntimeInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRuntimeFileTime(self: *@This()) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.get_RuntimeFileTime(@ptrCast(self), &_r);
@@ -166,6 +184,15 @@ pub const PlatformDiagnosticActionState = enum(i32) {
 };
 pub const PlatformDiagnosticActions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -216,6 +243,18 @@ pub const PlatformDiagnosticEventBufferLatencies = enum(i32) {
 };
 pub const PlatformDiagnosticTraceInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScenarioId(self: *@This()) core.HResult!*Guid {
         const this: *IPlatformDiagnosticTraceInfo = @ptrCast(self);
         return try this.getScenarioId();
@@ -252,6 +291,18 @@ pub const PlatformDiagnosticTracePriority = enum(i32) {
 };
 pub const PlatformDiagnosticTraceRuntimeInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRuntimeFileTime(self: *@This()) core.HResult!i64 {
         const this: *IPlatformDiagnosticTraceRuntimeInfo = @ptrCast(self);
         return try this.getRuntimeFileTime();
@@ -276,7 +327,6 @@ pub const PlatformDiagnosticTraceSlotType = enum(i32) {
     AlwaysOn = 1,
     Mini = 2,
 };
-const HSTRING = @import("../../root.zig").HSTRING;
 const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;
 const HRESULT = @import("../../root.zig").HRESULT;
@@ -286,3 +336,4 @@ const IInspectable = @import("../../Foundation.zig").IInspectable;
 const FactoryCache = @import("../../core.zig").FactoryCache;
 const IMapView = @import("../../Foundation/Collections.zig").IMapView;
 const TrustLevel = @import("../../root.zig").TrustLevel;
+const HSTRING = @import("../../root.zig").HSTRING;

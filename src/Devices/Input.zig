@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IKeyboardCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyboardPresent(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_KeyboardPresent(@ptrCast(self), &_r);
@@ -24,6 +30,12 @@ pub const IKeyboardCapabilities = extern struct {
 };
 pub const IMouseCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMousePresent(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MousePresent(@ptrCast(self), &_r);
@@ -75,6 +87,12 @@ pub const IMouseCapabilities = extern struct {
 };
 pub const IMouseDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMouseMoved(self: *@This(), handler: *TypedEventHandler(MouseDevice,MouseEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MouseMoved(@ptrCast(self), handler, &_r);
@@ -103,6 +121,12 @@ pub const IMouseDevice = extern struct {
 };
 pub const IMouseDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*MouseDevice {
         var _r: *MouseDevice = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -126,6 +150,12 @@ pub const IMouseDeviceStatics = extern struct {
 };
 pub const IMouseEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMouseDelta(self: *@This()) core.HResult!MouseDelta {
         var _r: MouseDelta = undefined;
         const _c = self.vtable.get_MouseDelta(@ptrCast(self), &_r);
@@ -149,6 +179,12 @@ pub const IMouseEventArgs = extern struct {
 };
 pub const IPenButtonListener = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
@@ -220,6 +256,12 @@ pub const IPenButtonListener = extern struct {
 };
 pub const IPenButtonListenerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*PenButtonListener {
         var _r: *PenButtonListener = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -243,6 +285,12 @@ pub const IPenButtonListenerStatics = extern struct {
 };
 pub const IPenDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPenId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_PenId(@ptrCast(self), &_r);
@@ -266,6 +314,12 @@ pub const IPenDevice = extern struct {
 };
 pub const IPenDevice2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSimpleHapticsController(self: *@This()) core.HResult!*SimpleHapticsController {
         var _r: *SimpleHapticsController = undefined;
         const _c = self.vtable.get_SimpleHapticsController(@ptrCast(self), &_r);
@@ -289,6 +343,12 @@ pub const IPenDevice2 = extern struct {
 };
 pub const IPenDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetFromPointerId(self: *@This(), pointerId: u32) core.HResult!*PenDevice {
         var _r: *PenDevice = undefined;
         const _c = self.vtable.GetFromPointerId(@ptrCast(self), pointerId, &_r);
@@ -312,6 +372,12 @@ pub const IPenDeviceStatics = extern struct {
 };
 pub const IPenDockListener = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
@@ -371,6 +437,12 @@ pub const IPenDockListener = extern struct {
 };
 pub const IPenDockListenerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*PenDockListener {
         var _r: *PenDockListener = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -394,6 +466,12 @@ pub const IPenDockListenerStatics = extern struct {
 };
 pub const IPenDockedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Input.IPenDockedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "fd4277c6-ca63-5d4e-9ed3-a28a54521c8c";
@@ -410,6 +488,12 @@ pub const IPenDockedEventArgs = extern struct {
 };
 pub const IPenTailButtonClickedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Input.IPenTailButtonClickedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "5d2fb7b6-6ad3-5d3e-ab29-05ea2410e390";
@@ -426,6 +510,12 @@ pub const IPenTailButtonClickedEventArgs = extern struct {
 };
 pub const IPenTailButtonDoubleClickedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Input.IPenTailButtonDoubleClickedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "846321a2-618a-5478-b04c-b358231da4a7";
@@ -442,6 +532,12 @@ pub const IPenTailButtonDoubleClickedEventArgs = extern struct {
 };
 pub const IPenTailButtonLongPressedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Input.IPenTailButtonLongPressedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "f37c606e-c60a-5f42-b818-a53112406c13";
@@ -458,6 +554,12 @@ pub const IPenTailButtonLongPressedEventArgs = extern struct {
 };
 pub const IPenUndockedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Input.IPenUndockedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ccd09150-261b-59e6-a5d4-c1964cd03feb";
@@ -474,6 +576,12 @@ pub const IPenUndockedEventArgs = extern struct {
 };
 pub const IPointerDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
@@ -532,6 +640,12 @@ pub const IPointerDevice = extern struct {
 };
 pub const IPointerDevice2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxPointersWithZDistance(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxPointersWithZDistance(@ptrCast(self), &_r);
@@ -555,6 +669,12 @@ pub const IPointerDevice2 = extern struct {
 };
 pub const IPointerDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPointerDevice(self: *@This(), pointerId: u32) core.HResult!*PointerDevice {
         var _r: *PointerDevice = undefined;
         const _c = self.vtable.GetPointerDevice(@ptrCast(self), pointerId, &_r);
@@ -585,6 +705,12 @@ pub const IPointerDeviceStatics = extern struct {
 };
 pub const ITouchCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTouchPresent(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_TouchPresent(@ptrCast(self), &_r);
@@ -615,12 +741,21 @@ pub const ITouchCapabilities = extern struct {
 };
 pub const KeyboardCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getKeyboardPresent(self: *@This()) core.HResult!i32 {
-        const this: *IKeyboardCapabilities = @ptrCast(self);
-        return try this.getKeyboardPresent();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getKeyboardPresent(self: *@This()) core.HResult!i32 {
+        const this: *IKeyboardCapabilities = @ptrCast(self);
+        return try this.getKeyboardPresent();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -635,6 +770,18 @@ pub const KeyboardCapabilities = extern struct {
 };
 pub const MouseCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMousePresent(self: *@This()) core.HResult!i32 {
         const this: *IMouseCapabilities = @ptrCast(self);
         return try this.getMousePresent();
@@ -655,9 +802,6 @@ pub const MouseCapabilities = extern struct {
         const this: *IMouseCapabilities = @ptrCast(self);
         return try this.getNumberOfButtons();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMouseCapabilities.IID)));
@@ -675,6 +819,18 @@ pub const MouseDelta = extern struct {
 };
 pub const MouseDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMouseMoved(self: *@This(), handler: *TypedEventHandler(MouseDevice,MouseEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IMouseDevice = @ptrCast(self);
         return try this.addMouseMoved(handler);
@@ -682,9 +838,6 @@ pub const MouseDevice = extern struct {
     pub fn removeMouseMoved(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const this: *IMouseDevice = @ptrCast(self);
         return try this.removeMouseMoved(cookie);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*MouseDevice {
         const _f = try @This()._IMouseDeviceStaticsCache.get();
@@ -699,6 +852,18 @@ pub const MouseDevice = extern struct {
 };
 pub const MouseEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMouseDelta(self: *@This()) core.HResult!MouseDelta {
         const this: *IMouseEventArgs = @ptrCast(self);
         return try this.getMouseDelta();
@@ -711,6 +876,18 @@ pub const MouseEventArgs = extern struct {
 };
 pub const PenButtonListener = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         const this: *IPenButtonListener = @ptrCast(self);
         return try this.IsSupported();
@@ -747,9 +924,6 @@ pub const PenButtonListener = extern struct {
         const this: *IPenButtonListener = @ptrCast(self);
         return try this.removeTailButtonLongPressed(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*PenButtonListener {
         const _f = try @This()._IPenButtonListenerStaticsCache.get();
         return try _f.GetDefault();
@@ -763,6 +937,18 @@ pub const PenButtonListener = extern struct {
 };
 pub const PenDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPenId(self: *@This()) core.HResult!*Guid {
         const this: *IPenDevice = @ptrCast(self);
         return try this.getPenId();
@@ -773,9 +959,6 @@ pub const PenDevice = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPenDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimpleHapticsController();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetFromPointerId(pointerId: u32) core.HResult!*PenDevice {
         const _f = try @This()._IPenDeviceStaticsCache.get();
@@ -790,6 +973,18 @@ pub const PenDevice = extern struct {
 };
 pub const PenDockListener = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         const this: *IPenDockListener = @ptrCast(self);
         return try this.IsSupported();
@@ -818,9 +1013,6 @@ pub const PenDockListener = extern struct {
         const this: *IPenDockListener = @ptrCast(self);
         return try this.removeUndocked(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*PenDockListener {
         const _f = try @This()._IPenDockListenerStaticsCache.get();
         return try _f.GetDefault();
@@ -834,6 +1026,18 @@ pub const PenDockListener = extern struct {
 };
 pub const PenDockedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Input.PenDockedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IPenDockedEventArgs.GUID;
@@ -842,6 +1046,18 @@ pub const PenDockedEventArgs = extern struct {
 };
 pub const PenTailButtonClickedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Input.PenTailButtonClickedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IPenTailButtonClickedEventArgs.GUID;
@@ -850,6 +1066,18 @@ pub const PenTailButtonClickedEventArgs = extern struct {
 };
 pub const PenTailButtonDoubleClickedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Input.PenTailButtonDoubleClickedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IPenTailButtonDoubleClickedEventArgs.GUID;
@@ -858,6 +1086,18 @@ pub const PenTailButtonDoubleClickedEventArgs = extern struct {
 };
 pub const PenTailButtonLongPressedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Input.PenTailButtonLongPressedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IPenTailButtonLongPressedEventArgs.GUID;
@@ -866,6 +1106,18 @@ pub const PenTailButtonLongPressedEventArgs = extern struct {
 };
 pub const PenUndockedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Input.PenUndockedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IPenUndockedEventArgs.GUID;
@@ -874,6 +1126,18 @@ pub const PenUndockedEventArgs = extern struct {
 };
 pub const PointerDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         const this: *IPointerDevice = @ptrCast(self);
         return try this.getPointerDeviceType();
@@ -904,9 +1168,6 @@ pub const PointerDevice = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPointerDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxPointersWithZDistance();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetPointerDevice(pointerId: u32) core.HResult!*PointerDevice {
         const _f = try @This()._IPointerDeviceStaticsCache.get();
@@ -941,6 +1202,18 @@ pub const PointerDeviceUsage = extern struct {
 };
 pub const TouchCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTouchPresent(self: *@This()) core.HResult!i32 {
         const this: *ITouchCapabilities = @ptrCast(self);
         return try this.getTouchPresent();
@@ -948,9 +1221,6 @@ pub const TouchCapabilities = extern struct {
     pub fn getContacts(self: *@This()) core.HResult!u32 {
         const this: *ITouchCapabilities = @ptrCast(self);
         return try this.getContacts();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -963,8 +1233,8 @@ pub const TouchCapabilities = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ITouchCapabilities.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-const HSTRING = @import("../root.zig").HSTRING;
 const IUnknown = @import("../root.zig").IUnknown;
+const HSTRING = @import("../root.zig").HSTRING;
 const Guid = @import("../root.zig").Guid;
 const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;

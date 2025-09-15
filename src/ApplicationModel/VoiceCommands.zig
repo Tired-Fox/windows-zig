@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IVoiceCommand = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCommandName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CommandName(@ptrCast(self), &_r);
@@ -38,6 +44,12 @@ pub const IVoiceCommand = extern struct {
 };
 pub const IVoiceCommandCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!VoiceCommandCompletionReason {
         var _r: VoiceCommandCompletionReason = undefined;
         const _c = self.vtable.get_Reason(@ptrCast(self), &_r);
@@ -61,6 +73,12 @@ pub const IVoiceCommandCompletedEventArgs = extern struct {
 };
 pub const IVoiceCommandConfirmationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfirmed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Confirmed(@ptrCast(self), &_r);
@@ -84,6 +102,12 @@ pub const IVoiceCommandConfirmationResult = extern struct {
 };
 pub const IVoiceCommandContentTile = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -196,6 +220,12 @@ pub const IVoiceCommandContentTile = extern struct {
 };
 pub const IVoiceCommandDefinition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Language(@ptrCast(self), &_r);
@@ -233,6 +263,12 @@ pub const IVoiceCommandDefinition = extern struct {
 };
 pub const IVoiceCommandDefinitionManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InstallCommandDefinitionsFromStorageFileAsync(self: *@This(), file: *StorageFile) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.InstallCommandDefinitionsFromStorageFileAsync(@ptrCast(self), file, &_r);
@@ -263,6 +299,12 @@ pub const IVoiceCommandDefinitionManagerStatics = extern struct {
 };
 pub const IVoiceCommandDisambiguationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedItem(self: *@This()) core.HResult!*VoiceCommandContentTile {
         var _r: *VoiceCommandContentTile = undefined;
         const _c = self.vtable.get_SelectedItem(@ptrCast(self), &_r);
@@ -286,6 +328,12 @@ pub const IVoiceCommandDisambiguationResult = extern struct {
 };
 pub const IVoiceCommandResponse = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!*VoiceCommandUserMessage {
         var _r: *VoiceCommandUserMessage = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
@@ -345,6 +393,12 @@ pub const IVoiceCommandResponse = extern struct {
 };
 pub const IVoiceCommandResponseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxSupportedVoiceCommandContentTiles(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxSupportedVoiceCommandContentTiles(@ptrCast(self), &_r);
@@ -396,6 +450,12 @@ pub const IVoiceCommandResponseStatics = extern struct {
 };
 pub const IVoiceCommandServiceConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetVoiceCommandAsync(self: *@This()) core.HResult!*IAsyncOperation(VoiceCommand) {
         var _r: *IAsyncOperation(VoiceCommand) = undefined;
         const _c = self.vtable.GetVoiceCommandAsync(@ptrCast(self), &_r);
@@ -480,6 +540,12 @@ pub const IVoiceCommandServiceConnection = extern struct {
 };
 pub const IVoiceCommandServiceConnectionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromAppServiceTriggerDetails(self: *@This(), triggerDetails: *AppServiceTriggerDetails) core.HResult!*VoiceCommandServiceConnection {
         var _r: *VoiceCommandServiceConnection = undefined;
         const _c = self.vtable.FromAppServiceTriggerDetails(@ptrCast(self), triggerDetails, &_r);
@@ -503,6 +569,12 @@ pub const IVoiceCommandServiceConnectionStatics = extern struct {
 };
 pub const IVoiceCommandUserMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayMessage(@ptrCast(self), &_r);
@@ -543,6 +615,18 @@ pub const IVoiceCommandUserMessage = extern struct {
 };
 pub const VoiceCommand = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCommandName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommand = @ptrCast(self);
         return try this.getCommandName();
@@ -563,6 +647,18 @@ pub const VoiceCommand = extern struct {
 };
 pub const VoiceCommandCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!VoiceCommandCompletionReason {
         const this: *IVoiceCommandCompletedEventArgs = @ptrCast(self);
         return try this.getReason();
@@ -584,6 +680,18 @@ pub const VoiceCommandCompletionReason = enum(i32) {
 };
 pub const VoiceCommandConfirmationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfirmed(self: *@This()) core.HResult!bool {
         const this: *IVoiceCommandConfirmationResult = @ptrCast(self);
         return try this.getConfirmed();
@@ -596,6 +704,18 @@ pub const VoiceCommandConfirmationResult = extern struct {
 };
 pub const VoiceCommandContentTile = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.getTitle();
@@ -660,9 +780,6 @@ pub const VoiceCommandContentTile = extern struct {
         const this: *IVoiceCommandContentTile = @ptrCast(self);
         return try this.putContentTileType(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVoiceCommandContentTile.IID)));
@@ -686,6 +803,18 @@ pub const VoiceCommandContentTileType = enum(i32) {
 };
 pub const VoiceCommandDefinition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandDefinition = @ptrCast(self);
         return try this.getLanguage();
@@ -706,6 +835,15 @@ pub const VoiceCommandDefinition = extern struct {
 };
 pub const VoiceCommandDefinitionManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -723,6 +861,18 @@ pub const VoiceCommandDefinitionManager = extern struct {
 };
 pub const VoiceCommandDisambiguationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedItem(self: *@This()) core.HResult!*VoiceCommandContentTile {
         const this: *IVoiceCommandDisambiguationResult = @ptrCast(self);
         return try this.getSelectedItem();
@@ -735,6 +885,18 @@ pub const VoiceCommandDisambiguationResult = extern struct {
 };
 pub const VoiceCommandResponse = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!*VoiceCommandUserMessage {
         const this: *IVoiceCommandResponse = @ptrCast(self);
         return try this.getMessage();
@@ -762,9 +924,6 @@ pub const VoiceCommandResponse = extern struct {
     pub fn getVoiceCommandContentTiles(self: *@This()) core.HResult!*IVector(VoiceCommandContentTile) {
         const this: *IVoiceCommandResponse = @ptrCast(self);
         return try this.getVoiceCommandContentTiles();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getMaxSupportedVoiceCommandContentTiles() core.HResult!u32 {
         const _f = try @This()._IVoiceCommandResponseStaticsCache.get();
@@ -795,6 +954,18 @@ pub const VoiceCommandResponse = extern struct {
 };
 pub const VoiceCommandServiceConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetVoiceCommandAsync(self: *@This()) core.HResult!*IAsyncOperation(VoiceCommand) {
         const this: *IVoiceCommandServiceConnection = @ptrCast(self);
         return try this.GetVoiceCommandAsync();
@@ -835,9 +1006,6 @@ pub const VoiceCommandServiceConnection = extern struct {
         const this: *IVoiceCommandServiceConnection = @ptrCast(self);
         return try this.removeVoiceCommandCompleted(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromAppServiceTriggerDetails(triggerDetails: *AppServiceTriggerDetails) core.HResult!*VoiceCommandServiceConnection {
         const _f = try @This()._IVoiceCommandServiceConnectionStaticsCache.get();
         return try _f.FromAppServiceTriggerDetails(triggerDetails);
@@ -851,6 +1019,18 @@ pub const VoiceCommandServiceConnection = extern struct {
 };
 pub const VoiceCommandUserMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceCommandUserMessage = @ptrCast(self);
         return try this.getDisplayMessage();
@@ -867,9 +1047,6 @@ pub const VoiceCommandUserMessage = extern struct {
         const this: *IVoiceCommandUserMessage = @ptrCast(self);
         return try this.putSpokenMessage(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVoiceCommandUserMessage.IID)));
@@ -881,8 +1058,8 @@ pub const VoiceCommandUserMessage = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IVoiceCommandUserMessage.SIGNATURE);
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };
-const HSTRING = @import("../root.zig").HSTRING;
 const IUnknown = @import("../root.zig").IUnknown;
+const HSTRING = @import("../root.zig").HSTRING;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const Guid = @import("../root.zig").Guid;
 const IVectorView = @import("../Foundation/Collections.zig").IVectorView;

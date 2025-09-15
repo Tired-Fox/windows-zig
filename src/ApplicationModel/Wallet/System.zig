@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IWalletItemSystemStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetItemsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(WalletItem)) {
         var _r: *IAsyncOperation(IVectorView(WalletItem)) = undefined;
         const _c = self.vtable.GetItemsAsync(@ptrCast(self), &_r);
@@ -52,6 +58,12 @@ pub const IWalletItemSystemStore = extern struct {
 };
 pub const IWalletItemSystemStore2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addItemsChanged(self: *@This(), handler: *TypedEventHandler(WalletItemSystemStore,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ItemsChanged(@ptrCast(self), handler, &_r);
@@ -80,6 +92,12 @@ pub const IWalletItemSystemStore2 = extern struct {
 };
 pub const IWalletManagerSystemStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestStoreAsync(self: *@This()) core.HResult!*IAsyncOperation(WalletItemSystemStore) {
         var _r: *IAsyncOperation(WalletItemSystemStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), &_r);
@@ -108,6 +126,18 @@ pub const WalletItemAppAssociation = enum(i32) {
 };
 pub const WalletItemSystemStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetItemsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(WalletItem)) {
         const this: *IWalletItemSystemStore = @ptrCast(self);
         return try this.GetItemsAsync();
@@ -150,6 +180,15 @@ pub const WalletItemSystemStore = extern struct {
 };
 pub const WalletManagerSystem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -161,8 +200,8 @@ pub const WalletManagerSystem = extern struct {
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     var _IWalletManagerSystemStaticsCache: FactoryCache(IWalletManagerSystemStatics, RUNTIME_NAME) = .{};
 };
-const IRandomAccessStreamReference = @import("../../Storage/Streams.zig").IRandomAccessStreamReference;
 const IUnknown = @import("../../root.zig").IUnknown;
+const IRandomAccessStreamReference = @import("../../Storage/Streams.zig").IRandomAccessStreamReference;
 const Guid = @import("../../root.zig").Guid;
 const HRESULT = @import("../../root.zig").HRESULT;
 const core = @import("../../root.zig").core;

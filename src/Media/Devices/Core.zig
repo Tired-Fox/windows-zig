@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CameraIntrinsics = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFocalLength(self: *@This()) core.HResult!Vector2 {
         const this: *ICameraIntrinsics = @ptrCast(self);
         return try this.getFocalLength();
@@ -76,9 +88,6 @@ pub const CameraIntrinsics = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UndistortPoints(inputs, results);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(focalLength: Vector2, principalPoint: Vector2, radialDistortion: Vector3, tangentialDistortion: Vector2, imageWidth: u32, imageHeight: u32) core.HResult!*CameraIntrinsics {
         const _f = try @This()._ICameraIntrinsicsFactoryCache.get();
         return try _f.Create(focalLength, principalPoint, radialDistortion, tangentialDistortion, imageWidth, imageHeight);
@@ -92,6 +101,18 @@ pub const CameraIntrinsics = extern struct {
 };
 pub const DepthCorrelatedCoordinateMapper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn UnprojectPoint(self: *@This(), sourcePoint: Point, targetCoordinateSystem: *SpatialCoordinateSystem) core.HResult!Vector3 {
         const this: *IDepthCorrelatedCoordinateMapper = @ptrCast(self);
         return try this.UnprojectPoint(sourcePoint, targetCoordinateSystem);
@@ -123,6 +144,18 @@ pub const DepthCorrelatedCoordinateMapper = extern struct {
 };
 pub const FrameControlCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExposure(self: *@This()) core.HResult!*FrameExposureCapabilities {
         const this: *IFrameControlCapabilities = @ptrCast(self);
         return try this.getExposure();
@@ -158,6 +191,18 @@ pub const FrameControlCapabilities = extern struct {
 };
 pub const FrameController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExposureControl(self: *@This()) core.HResult!*FrameExposureControl {
         const this: *IFrameController = @ptrCast(self);
         return try this.getExposureControl();
@@ -189,9 +234,6 @@ pub const FrameController = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFlashControl();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFrameController.IID)));
@@ -205,6 +247,18 @@ pub const FrameController = extern struct {
 };
 pub const FrameExposureCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IFrameExposureCapabilities = @ptrCast(self);
         return try this.getSupported();
@@ -229,6 +283,18 @@ pub const FrameExposureCapabilities = extern struct {
 };
 pub const FrameExposureCompensationCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IFrameExposureCompensationCapabilities = @ptrCast(self);
         return try this.getSupported();
@@ -253,6 +319,18 @@ pub const FrameExposureCompensationCapabilities = extern struct {
 };
 pub const FrameExposureCompensationControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!*IReference(f32) {
         const this: *IFrameExposureCompensationControl = @ptrCast(self);
         return try this.getValue();
@@ -269,6 +347,18 @@ pub const FrameExposureCompensationControl = extern struct {
 };
 pub const FrameExposureControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuto(self: *@This()) core.HResult!bool {
         const this: *IFrameExposureControl = @ptrCast(self);
         return try this.getAuto();
@@ -293,6 +383,18 @@ pub const FrameExposureControl = extern struct {
 };
 pub const FrameFlashCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IFrameFlashCapabilities = @ptrCast(self);
         return try this.getSupported();
@@ -313,6 +415,18 @@ pub const FrameFlashCapabilities = extern struct {
 };
 pub const FrameFlashControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!FrameFlashMode {
         const this: *IFrameFlashControl = @ptrCast(self);
         return try this.getMode();
@@ -358,6 +472,18 @@ pub const FrameFlashMode = enum(i32) {
 };
 pub const FrameFocusCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IFrameFocusCapabilities = @ptrCast(self);
         return try this.getSupported();
@@ -382,6 +508,18 @@ pub const FrameFocusCapabilities = extern struct {
 };
 pub const FrameFocusControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!*IReference(u32) {
         const this: *IFrameFocusControl = @ptrCast(self);
         return try this.getValue();
@@ -398,6 +536,18 @@ pub const FrameFocusControl = extern struct {
 };
 pub const FrameIsoSpeedCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IFrameIsoSpeedCapabilities = @ptrCast(self);
         return try this.getSupported();
@@ -422,6 +572,18 @@ pub const FrameIsoSpeedCapabilities = extern struct {
 };
 pub const FrameIsoSpeedControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuto(self: *@This()) core.HResult!bool {
         const this: *IFrameIsoSpeedControl = @ptrCast(self);
         return try this.getAuto();
@@ -446,6 +608,12 @@ pub const FrameIsoSpeedControl = extern struct {
 };
 pub const ICameraIntrinsics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFocalLength(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_FocalLength(@ptrCast(self), &_r);
@@ -528,6 +696,12 @@ pub const ICameraIntrinsics = extern struct {
 };
 pub const ICameraIntrinsics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUndistortedProjectionTransform(self: *@This()) core.HResult!Matrix4x4 {
         var _r: Matrix4x4 = undefined;
         const _c = self.vtable.get_UndistortedProjectionTransform(@ptrCast(self), &_r);
@@ -575,6 +749,12 @@ pub const ICameraIntrinsics2 = extern struct {
 };
 pub const ICameraIntrinsicsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), focalLength: Vector2, principalPoint: Vector2, radialDistortion: Vector3, tangentialDistortion: Vector2, imageWidth: u32, imageHeight: u32) core.HResult!*CameraIntrinsics {
         var _r: *CameraIntrinsics = undefined;
         const _c = self.vtable.Create(@ptrCast(self), focalLength, principalPoint, radialDistortion, tangentialDistortion, imageWidth, imageHeight, &_r);
@@ -598,6 +778,12 @@ pub const ICameraIntrinsicsFactory = extern struct {
 };
 pub const IDepthCorrelatedCoordinateMapper = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn UnprojectPoint(self: *@This(), sourcePoint: Point, targetCoordinateSystem: *SpatialCoordinateSystem) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.UnprojectPoint(@ptrCast(self), sourcePoint, targetCoordinateSystem, &_r);
@@ -638,6 +824,12 @@ pub const IDepthCorrelatedCoordinateMapper = extern struct {
 };
 pub const IFrameControlCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExposure(self: *@This()) core.HResult!*FrameExposureCapabilities {
         var _r: *FrameExposureCapabilities = undefined;
         const _c = self.vtable.get_Exposure(@ptrCast(self), &_r);
@@ -689,6 +881,12 @@ pub const IFrameControlCapabilities = extern struct {
 };
 pub const IFrameControlCapabilities2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFlash(self: *@This()) core.HResult!*FrameFlashCapabilities {
         var _r: *FrameFlashCapabilities = undefined;
         const _c = self.vtable.get_Flash(@ptrCast(self), &_r);
@@ -712,6 +910,12 @@ pub const IFrameControlCapabilities2 = extern struct {
 };
 pub const IFrameController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExposureControl(self: *@This()) core.HResult!*FrameExposureControl {
         var _r: *FrameExposureControl = undefined;
         const _c = self.vtable.get_ExposureControl(@ptrCast(self), &_r);
@@ -768,6 +972,12 @@ pub const IFrameController = extern struct {
 };
 pub const IFrameController2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFlashControl(self: *@This()) core.HResult!*FrameFlashControl {
         var _r: *FrameFlashControl = undefined;
         const _c = self.vtable.get_FlashControl(@ptrCast(self), &_r);
@@ -791,6 +1001,12 @@ pub const IFrameController2 = extern struct {
 };
 pub const IFrameExposureCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -835,6 +1051,12 @@ pub const IFrameExposureCapabilities = extern struct {
 };
 pub const IFrameExposureCompensationCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -879,6 +1101,12 @@ pub const IFrameExposureCompensationCapabilities = extern struct {
 };
 pub const IFrameExposureCompensationControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
@@ -907,6 +1135,12 @@ pub const IFrameExposureCompensationControl = extern struct {
 };
 pub const IFrameExposureControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuto(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Auto(@ptrCast(self), &_r);
@@ -947,6 +1181,12 @@ pub const IFrameExposureControl = extern struct {
 };
 pub const IFrameFlashCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -984,6 +1224,12 @@ pub const IFrameFlashCapabilities = extern struct {
 };
 pub const IFrameFlashControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!FrameFlashMode {
         var _r: FrameFlashMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -1048,6 +1294,12 @@ pub const IFrameFlashControl = extern struct {
 };
 pub const IFrameFocusCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -1092,6 +1344,12 @@ pub const IFrameFocusCapabilities = extern struct {
 };
 pub const IFrameFocusControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
@@ -1120,6 +1378,12 @@ pub const IFrameFocusControl = extern struct {
 };
 pub const IFrameIsoSpeedCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -1164,6 +1428,12 @@ pub const IFrameIsoSpeedCapabilities = extern struct {
 };
 pub const IFrameIsoSpeedControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuto(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Auto(@ptrCast(self), &_r);
@@ -1204,6 +1474,12 @@ pub const IFrameIsoSpeedControl = extern struct {
 };
 pub const IVariablePhotoSequenceController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -1274,6 +1550,18 @@ pub const IVariablePhotoSequenceController = extern struct {
 };
 pub const VariablePhotoSequenceController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IVariablePhotoSequenceController = @ptrCast(self);
         return try this.getSupported();

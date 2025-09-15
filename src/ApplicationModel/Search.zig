@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ILocalContentSuggestionSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Enabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -55,6 +61,12 @@ pub const ILocalContentSuggestionSettings = extern struct {
 };
 pub const ISearchPaneQueryLinguisticDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQueryTextAlternatives(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_QueryTextAlternatives(@ptrCast(self), &_r);
@@ -92,6 +104,12 @@ pub const ISearchPaneQueryLinguisticDetails = extern struct {
 };
 pub const ISearchQueryLinguisticDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQueryTextAlternatives(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_QueryTextAlternatives(@ptrCast(self), &_r);
@@ -129,6 +147,12 @@ pub const ISearchQueryLinguisticDetails = extern struct {
 };
 pub const ISearchQueryLinguisticDetailsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), queryTextAlternatives: *IIterable(?HSTRING), queryTextCompositionStart: u32, queryTextCompositionLength: u32) core.HResult!*SearchQueryLinguisticDetails {
         var _r: *SearchQueryLinguisticDetails = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), queryTextAlternatives, queryTextCompositionStart, queryTextCompositionLength, &_r);
@@ -152,6 +176,12 @@ pub const ISearchQueryLinguisticDetailsFactory = extern struct {
 };
 pub const ISearchSuggestionCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Size(@ptrCast(self), &_r);
@@ -195,6 +225,12 @@ pub const ISearchSuggestionCollection = extern struct {
 };
 pub const ISearchSuggestionsRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCanceled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCanceled(@ptrCast(self), &_r);
@@ -232,6 +268,12 @@ pub const ISearchSuggestionsRequest = extern struct {
 };
 pub const ISearchSuggestionsRequestDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -253,6 +295,18 @@ pub const ISearchSuggestionsRequestDeferral = extern struct {
 };
 pub const LocalContentSuggestionSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putEnabled(self: *@This(), value: bool) core.HResult!void {
         const this: *ILocalContentSuggestionSettings = @ptrCast(self);
         return try this.putEnabled(value);
@@ -277,9 +331,6 @@ pub const LocalContentSuggestionSettings = extern struct {
         const this: *ILocalContentSuggestionSettings = @ptrCast(self);
         return try this.getPropertiesToMatch();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILocalContentSuggestionSettings.IID)));
@@ -293,6 +344,18 @@ pub const LocalContentSuggestionSettings = extern struct {
 };
 pub const SearchPaneQueryLinguisticDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQueryTextAlternatives(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ISearchPaneQueryLinguisticDetails = @ptrCast(self);
         return try this.getQueryTextAlternatives();
@@ -313,6 +376,18 @@ pub const SearchPaneQueryLinguisticDetails = extern struct {
 };
 pub const SearchQueryLinguisticDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQueryTextAlternatives(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ISearchQueryLinguisticDetails = @ptrCast(self);
         return try this.getQueryTextAlternatives();
@@ -324,9 +399,6 @@ pub const SearchQueryLinguisticDetails = extern struct {
     pub fn getQueryTextCompositionLength(self: *@This()) core.HResult!u32 {
         const this: *ISearchQueryLinguisticDetails = @ptrCast(self);
         return try this.getQueryTextCompositionLength();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(queryTextAlternatives: *IIterable(?HSTRING), queryTextCompositionStart: u32, queryTextCompositionLength: u32) core.HResult!*SearchQueryLinguisticDetails {
         const _f = try @This()._ISearchQueryLinguisticDetailsFactoryCache.get();
@@ -341,6 +413,18 @@ pub const SearchQueryLinguisticDetails = extern struct {
 };
 pub const SearchSuggestionCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *ISearchSuggestionCollection = @ptrCast(self);
         return try this.getSize();
@@ -369,6 +453,18 @@ pub const SearchSuggestionCollection = extern struct {
 };
 pub const SearchSuggestionsRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCanceled(self: *@This()) core.HResult!bool {
         const this: *ISearchSuggestionsRequest = @ptrCast(self);
         return try this.getIsCanceled();
@@ -389,6 +485,18 @@ pub const SearchSuggestionsRequest = extern struct {
 };
 pub const SearchSuggestionsRequestDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *ISearchSuggestionsRequestDeferral = @ptrCast(self);
         return try this.Complete();
@@ -401,6 +509,12 @@ pub const SearchSuggestionsRequestDeferral = extern struct {
 };
 pub const ISearchPane = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putSearchHistoryEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_SearchHistoryEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -568,6 +682,12 @@ pub const ISearchPane = extern struct {
 };
 pub const ISearchPaneQueryChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
@@ -605,6 +725,12 @@ pub const ISearchPaneQueryChangedEventArgs = extern struct {
 };
 pub const ISearchPaneQuerySubmittedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
@@ -635,6 +761,12 @@ pub const ISearchPaneQuerySubmittedEventArgs = extern struct {
 };
 pub const ISearchPaneQuerySubmittedEventArgsWithLinguisticDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLinguisticDetails(self: *@This()) core.HResult!*SearchPaneQueryLinguisticDetails {
         var _r: *SearchPaneQueryLinguisticDetails = undefined;
         const _c = self.vtable.get_LinguisticDetails(@ptrCast(self), &_r);
@@ -658,6 +790,12 @@ pub const ISearchPaneQuerySubmittedEventArgsWithLinguisticDetails = extern struc
 };
 pub const ISearchPaneResultSuggestionChosenEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
@@ -681,6 +819,12 @@ pub const ISearchPaneResultSuggestionChosenEventArgs = extern struct {
 };
 pub const ISearchPaneStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*SearchPane {
         var _r: *SearchPane = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -704,6 +848,12 @@ pub const ISearchPaneStatics = extern struct {
 };
 pub const ISearchPaneStaticsWithHideThisApplication = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn HideThisApplication(self: *@This()) core.HResult!void {
         const _c = self.vtable.HideThisApplication(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -725,6 +875,12 @@ pub const ISearchPaneStaticsWithHideThisApplication = extern struct {
 };
 pub const ISearchPaneSuggestionsRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCanceled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCanceled(@ptrCast(self), &_r);
@@ -762,6 +918,12 @@ pub const ISearchPaneSuggestionsRequest = extern struct {
 };
 pub const ISearchPaneSuggestionsRequestDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -783,6 +945,12 @@ pub const ISearchPaneSuggestionsRequestDeferral = extern struct {
 };
 pub const ISearchPaneSuggestionsRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*SearchPaneSuggestionsRequest {
         var _r: *SearchPaneSuggestionsRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -806,6 +974,12 @@ pub const ISearchPaneSuggestionsRequestedEventArgs = extern struct {
 };
 pub const ISearchPaneVisibilityChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Visible(@ptrCast(self), &_r);
@@ -829,6 +1003,18 @@ pub const ISearchPaneVisibilityChangedEventArgs = extern struct {
 };
 pub const SearchPane = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putSearchHistoryEnabled(self: *@This(), value: bool) core.HResult!void {
         const this: *ISearchPane = @ptrCast(self);
         return try this.putSearchHistoryEnabled(value);
@@ -929,9 +1115,6 @@ pub const SearchPane = extern struct {
         const this: *ISearchPane = @ptrCast(self);
         return try this.TrySetQueryText(query);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn HideThisApplication() core.HResult!void {
         const _f = try @This()._ISearchPaneStaticsWithHideThisApplicationCache.get();
         return try _f.HideThisApplication();
@@ -950,6 +1133,18 @@ pub const SearchPane = extern struct {
 };
 pub const SearchPaneQueryChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchPaneQueryChangedEventArgs = @ptrCast(self);
         return try this.getQueryText();
@@ -970,6 +1165,18 @@ pub const SearchPaneQueryChangedEventArgs = extern struct {
 };
 pub const SearchPaneQuerySubmittedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchPaneQuerySubmittedEventArgs = @ptrCast(self);
         return try this.getQueryText();
@@ -993,6 +1200,18 @@ pub const SearchPaneQuerySubmittedEventArgs = extern struct {
 };
 pub const SearchPaneResultSuggestionChosenEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTag(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchPaneResultSuggestionChosenEventArgs = @ptrCast(self);
         return try this.getTag();
@@ -1005,6 +1224,18 @@ pub const SearchPaneResultSuggestionChosenEventArgs = extern struct {
 };
 pub const SearchPaneSuggestionsRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCanceled(self: *@This()) core.HResult!bool {
         const this: *ISearchPaneSuggestionsRequest = @ptrCast(self);
         return try this.getIsCanceled();
@@ -1025,6 +1256,18 @@ pub const SearchPaneSuggestionsRequest = extern struct {
 };
 pub const SearchPaneSuggestionsRequestDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *ISearchPaneSuggestionsRequestDeferral = @ptrCast(self);
         return try this.Complete();
@@ -1037,6 +1280,18 @@ pub const SearchPaneSuggestionsRequestDeferral = extern struct {
 };
 pub const SearchPaneSuggestionsRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*SearchPaneSuggestionsRequest {
         const this: *ISearchPaneSuggestionsRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -1070,6 +1325,18 @@ pub const SearchPaneSuggestionsRequestedEventArgs = extern struct {
 };
 pub const SearchPaneVisibilityChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVisible(self: *@This()) core.HResult!bool {
         const this: *ISearchPaneVisibilityChangedEventArgs = @ptrCast(self);
         return try this.getVisible();

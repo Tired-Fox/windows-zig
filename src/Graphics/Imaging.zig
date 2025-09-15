@@ -12,6 +12,18 @@ pub const BitmapBounds = extern struct {
 };
 pub const BitmapBuffer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPlaneCount(self: *@This()) core.HResult!i32 {
         const this: *IBitmapBuffer = @ptrCast(self);
         return try this.GetPlaneCount();
@@ -47,6 +59,18 @@ pub const BitmapBufferAccessMode = enum(i32) {
 };
 pub const BitmapCodecInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCodecId(self: *@This()) core.HResult!*Guid {
         const this: *IBitmapCodecInformation = @ptrCast(self);
         return try this.getCodecId();
@@ -71,6 +95,18 @@ pub const BitmapCodecInformation = extern struct {
 };
 pub const BitmapDecoder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapContainerProperties(self: *@This()) core.HResult!*BitmapPropertiesView {
         const this: *IBitmapDecoder = @ptrCast(self);
         return try this.getBitmapContainerProperties();
@@ -196,9 +232,6 @@ pub const BitmapDecoder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSoftwareBitmapAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getBmpDecoderId() core.HResult!*Guid {
         const _f = try @This()._IBitmapDecoderStaticsCache.get();
         return try _f.getBmpDecoderId();
@@ -257,6 +290,18 @@ pub const BitmapDecoder = extern struct {
 };
 pub const BitmapEncoder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEncoderInformation(self: *@This()) core.HResult!*BitmapCodecInformation {
         const this: *IBitmapEncoder = @ptrCast(self);
         return try this.getEncoderInformation();
@@ -319,9 +364,6 @@ pub const BitmapEncoder = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapEncoderWithSoftwareBitmap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetSoftwareBitmap(bitmap);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getHeifEncoderId() core.HResult!*Guid {
         const _f = try @This()._IBitmapEncoderStatics2Cache.get();
@@ -386,6 +428,18 @@ pub const BitmapFlip = enum(i32) {
 };
 pub const BitmapFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetThumbnailAsync(self: *@This()) core.HResult!*IAsyncOperation(ImageStream) {
         const this: *IBitmapFrame = @ptrCast(self);
         return try this.GetThumbnailAsync();
@@ -486,6 +540,18 @@ pub const BitmapPlaneDescription = extern struct {
 };
 pub const BitmapProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetPropertiesAsync(self: *@This(), propertiesToSet: *IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
         const this: *IBitmapProperties = @ptrCast(self);
         return try this.SetPropertiesAsync(propertiesToSet);
@@ -505,6 +571,18 @@ pub const BitmapProperties = extern struct {
 };
 pub const BitmapPropertiesView = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(BitmapPropertySet) {
         const this: *IBitmapPropertiesView = @ptrCast(self);
         return try this.GetPropertiesAsync(propertiesToRetrieve);
@@ -517,6 +595,18 @@ pub const BitmapPropertiesView = extern struct {
 };
 pub const BitmapPropertySet = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IMap(?HSTRING,BitmapTypedValue) = @ptrCast(self);
         return try this.getSize();
@@ -535,9 +625,6 @@ pub const BitmapPropertySet = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue)).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -562,6 +649,18 @@ pub const BitmapSize = extern struct {
 };
 pub const BitmapTransform = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScaledWidth(self: *@This()) core.HResult!u32 {
         const this: *IBitmapTransform = @ptrCast(self);
         return try this.getScaledWidth();
@@ -610,9 +709,6 @@ pub const BitmapTransform = extern struct {
         const this: *IBitmapTransform = @ptrCast(self);
         return try this.putBounds(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBitmapTransform.IID)));
@@ -626,6 +722,18 @@ pub const BitmapTransform = extern struct {
 };
 pub const BitmapTypedValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!*IInspectable {
         const this: *IBitmapTypedValue = @ptrCast(self);
         return try this.getValue();
@@ -633,9 +741,6 @@ pub const BitmapTypedValue = extern struct {
     pub fn getType(self: *@This()) core.HResult!PropertyType {
         const this: *IBitmapTypedValue = @ptrCast(self);
         return try this.getType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(value: *IInspectable, ty: PropertyType) core.HResult!*BitmapTypedValue {
         const _f = try @This()._IBitmapTypedValueFactoryCache.get();
@@ -658,6 +763,12 @@ pub const ExifOrientationMode = enum(i32) {
 };
 pub const IBitmapBuffer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPlaneCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetPlaneCount(@ptrCast(self), &_r);
@@ -688,6 +799,12 @@ pub const IBitmapBuffer = extern struct {
 };
 pub const IBitmapCodecInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCodecId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_CodecId(@ptrCast(self), &_r);
@@ -732,6 +849,12 @@ pub const IBitmapCodecInformation = extern struct {
 };
 pub const IBitmapDecoder = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapContainerProperties(self: *@This()) core.HResult!*BitmapPropertiesView {
         var _r: *BitmapPropertiesView = undefined;
         const _c = self.vtable.get_BitmapContainerProperties(@ptrCast(self), &_r);
@@ -783,6 +906,12 @@ pub const IBitmapDecoder = extern struct {
 };
 pub const IBitmapDecoderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBmpDecoderId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_BmpDecoderId(@ptrCast(self), &_r);
@@ -869,6 +998,12 @@ pub const IBitmapDecoderStatics = extern struct {
 };
 pub const IBitmapDecoderStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeifDecoderId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_HeifDecoderId(@ptrCast(self), &_r);
@@ -899,6 +1034,12 @@ pub const IBitmapDecoderStatics2 = extern struct {
 };
 pub const IBitmapEncoder = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEncoderInformation(self: *@This()) core.HResult!*BitmapCodecInformation {
         var _r: *BitmapCodecInformation = undefined;
         const _c = self.vtable.get_EncoderInformation(@ptrCast(self), &_r);
@@ -1005,6 +1146,12 @@ pub const IBitmapEncoder = extern struct {
 };
 pub const IBitmapEncoderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBmpEncoderId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_BmpEncoderId(@ptrCast(self), &_r);
@@ -1098,6 +1245,12 @@ pub const IBitmapEncoderStatics = extern struct {
 };
 pub const IBitmapEncoderStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeifEncoderId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_HeifEncoderId(@ptrCast(self), &_r);
@@ -1121,6 +1274,12 @@ pub const IBitmapEncoderStatics2 = extern struct {
 };
 pub const IBitmapEncoderWithSoftwareBitmap = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetSoftwareBitmap(self: *@This(), bitmap: *SoftwareBitmap) core.HResult!void {
         const _c = self.vtable.SetSoftwareBitmap(@ptrCast(self), bitmap);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1142,6 +1301,12 @@ pub const IBitmapEncoderWithSoftwareBitmap = extern struct {
 };
 pub const IBitmapFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetThumbnailAsync(self: *@This()) core.HResult!*IAsyncOperation(ImageStream) {
         var _r: *IAsyncOperation(ImageStream) = undefined;
         const _c = self.vtable.GetThumbnailAsync(@ptrCast(self), &_r);
@@ -1242,6 +1407,12 @@ pub const IBitmapFrame = extern struct {
 };
 pub const IBitmapFrameWithSoftwareBitmap = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSoftwareBitmapAsync(self: *@This()) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var _r: *IAsyncOperation(SoftwareBitmap) = undefined;
         const _c = self.vtable.GetSoftwareBitmapAsync(@ptrCast(self), &_r);
@@ -1279,6 +1450,12 @@ pub const IBitmapFrameWithSoftwareBitmap = extern struct {
 };
 pub const IBitmapProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetPropertiesAsync(self: *@This(), propertiesToSet: *IIterable(IKeyValuePair(?HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetPropertiesAsync(@ptrCast(self), propertiesToSet, &_r);
@@ -1302,6 +1479,12 @@ pub const IBitmapProperties = extern struct {
 };
 pub const IBitmapPropertiesView = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(BitmapPropertySet) {
         var _r: *IAsyncOperation(BitmapPropertySet) = undefined;
         const _c = self.vtable.GetPropertiesAsync(@ptrCast(self), propertiesToRetrieve, &_r);
@@ -1325,6 +1508,12 @@ pub const IBitmapPropertiesView = extern struct {
 };
 pub const IBitmapTransform = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScaledWidth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ScaledWidth(@ptrCast(self), &_r);
@@ -1413,6 +1602,12 @@ pub const IBitmapTransform = extern struct {
 };
 pub const IBitmapTypedValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
@@ -1443,6 +1638,12 @@ pub const IBitmapTypedValue = extern struct {
 };
 pub const IBitmapTypedValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), value: *IInspectable, ty: PropertyType) core.HResult!*BitmapTypedValue {
         var _r: *BitmapTypedValue = undefined;
         const _c = self.vtable.Create(@ptrCast(self), value, ty, &_r);
@@ -1466,6 +1667,12 @@ pub const IBitmapTypedValueFactory = extern struct {
 };
 pub const IPixelDataProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DetachPixelData(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.DetachPixelData(@ptrCast(self), &_r);
@@ -1489,6 +1696,12 @@ pub const IPixelDataProvider = extern struct {
 };
 pub const ISoftwareBitmap = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapPixelFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         var _r: BitmapPixelFormat = undefined;
         const _c = self.vtable.get_BitmapPixelFormat(@ptrCast(self), &_r);
@@ -1593,6 +1806,12 @@ pub const ISoftwareBitmap = extern struct {
 };
 pub const ISoftwareBitmapFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), format: BitmapPixelFormat, width: i32, height: i32) core.HResult!*SoftwareBitmap {
         var _r: *SoftwareBitmap = undefined;
         const _c = self.vtable.Create(@ptrCast(self), format, width, height, &_r);
@@ -1623,6 +1842,12 @@ pub const ISoftwareBitmapFactory = extern struct {
 };
 pub const ISoftwareBitmapStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Copy(self: *@This(), source: *SoftwareBitmap) core.HResult!*SoftwareBitmap {
         var _r: *SoftwareBitmap = undefined;
         const _c = self.vtable.Copy(@ptrCast(self), source, &_r);
@@ -1688,6 +1913,18 @@ pub const ISoftwareBitmapStatics = extern struct {
 };
 pub const ImageStream = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1800,6 +2037,18 @@ pub const JpegSubsamplingMode = enum(i32) {
 };
 pub const PixelDataProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DetachPixelData(self: *@This()) core.HResult![*]u8 {
         const this: *IPixelDataProvider = @ptrCast(self);
         return try this.DetachPixelData();
@@ -1821,6 +2070,18 @@ pub const PngFilterMode = enum(i32) {
 };
 pub const SoftwareBitmap = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapPixelFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         const this: *ISoftwareBitmap = @ptrCast(self);
         return try this.getBitmapPixelFormat();
@@ -1883,9 +2144,6 @@ pub const SoftwareBitmap = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(format: BitmapPixelFormat, width: i32, height: i32) core.HResult!*SoftwareBitmap {
         const _f = try @This()._ISoftwareBitmapFactoryCache.get();

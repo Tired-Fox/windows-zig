@@ -5,6 +5,12 @@ pub const ForegroundText = enum(i32) {
 };
 pub const IJumpList = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItems(self: *@This()) core.HResult!*IVector(JumpListItem) {
         var _r: *IVector(JumpListItem) = undefined;
         const _c = self.vtable.get_Items(@ptrCast(self), &_r);
@@ -47,6 +53,12 @@ pub const IJumpList = extern struct {
 };
 pub const IJumpListItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!JumpListItemKind {
         var _r: JumpListItemKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -132,6 +144,12 @@ pub const IJumpListItem = extern struct {
 };
 pub const IJumpListItemStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithArguments(self: *@This(), arguments: ?HSTRING, displayName: ?HSTRING) core.HResult!*JumpListItem {
         var _r: *JumpListItem = undefined;
         const _c = self.vtable.CreateWithArguments(@ptrCast(self), arguments, displayName, &_r);
@@ -162,6 +180,12 @@ pub const IJumpListItemStatics = extern struct {
 };
 pub const IJumpListStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadCurrentAsync(self: *@This()) core.HResult!*IAsyncOperation(JumpList) {
         var _r: *IAsyncOperation(JumpList) = undefined;
         const _c = self.vtable.LoadCurrentAsync(@ptrCast(self), &_r);
@@ -192,6 +216,12 @@ pub const IJumpListStatics = extern struct {
 };
 pub const ISecondaryTile = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putTileId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_TileId(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -415,6 +445,12 @@ pub const ISecondaryTile = extern struct {
 };
 pub const ISecondaryTile2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putPhoneticName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_PhoneticName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -474,6 +510,12 @@ pub const ISecondaryTile2 = extern struct {
 };
 pub const ISecondaryTileFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateTile(self: *@This(), tileId: ?HSTRING, shortName: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, tileOptions: TileOptions, logoReference: *Uri) core.HResult!*SecondaryTile {
         var _r: *SecondaryTile = undefined;
         const _c = self.vtable.CreateTile(@ptrCast(self), tileId, shortName, displayName, arguments, tileOptions, logoReference, &_r);
@@ -511,6 +553,12 @@ pub const ISecondaryTileFactory = extern struct {
 };
 pub const ISecondaryTileFactory2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMinimalTile(self: *@This(), tileId: ?HSTRING, displayName: ?HSTRING, arguments: ?HSTRING, square150x150Logo: *Uri, desiredSize: TileSize) core.HResult!*SecondaryTile {
         var _r: *SecondaryTile = undefined;
         const _c = self.vtable.CreateMinimalTile(@ptrCast(self), tileId, displayName, arguments, square150x150Logo, desiredSize, &_r);
@@ -534,6 +582,12 @@ pub const ISecondaryTileFactory2 = extern struct {
 };
 pub const ISecondaryTileStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Exists(self: *@This(), tileId: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.Exists(@ptrCast(self), tileId, &_r);
@@ -578,6 +632,12 @@ pub const ISecondaryTileStatics = extern struct {
 };
 pub const ISecondaryTileVisualElements = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putSquare30x30Logo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Square30x30Logo(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -714,6 +774,12 @@ pub const ISecondaryTileVisualElements = extern struct {
 };
 pub const ISecondaryTileVisualElements2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putSquare71x71Logo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Square71x71Logo(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -742,6 +808,12 @@ pub const ISecondaryTileVisualElements2 = extern struct {
 };
 pub const ISecondaryTileVisualElements3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putSquare44x44Logo(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Square44x44Logo(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -770,6 +842,12 @@ pub const ISecondaryTileVisualElements3 = extern struct {
 };
 pub const ISecondaryTileVisualElements4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMixedRealityModel(self: *@This()) core.HResult!*TileMixedRealityModel {
         var _r: *TileMixedRealityModel = undefined;
         const _c = self.vtable.get_MixedRealityModel(@ptrCast(self), &_r);
@@ -793,6 +871,12 @@ pub const ISecondaryTileVisualElements4 = extern struct {
 };
 pub const IStartScreenManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -837,6 +921,12 @@ pub const IStartScreenManager = extern struct {
 };
 pub const IStartScreenManager2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ContainsSecondaryTileAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ContainsSecondaryTileAsync(@ptrCast(self), tileId, &_r);
@@ -867,6 +957,12 @@ pub const IStartScreenManager2 = extern struct {
 };
 pub const IStartScreenManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*StartScreenManager {
         var _r: *StartScreenManager = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -897,6 +993,12 @@ pub const IStartScreenManagerStatics = extern struct {
 };
 pub const ITileMixedRealityModel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         const _c = self.vtable.put_Uri(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -937,6 +1039,12 @@ pub const ITileMixedRealityModel = extern struct {
 };
 pub const ITileMixedRealityModel2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putActivationBehavior(self: *@This(), value: TileMixedRealityModelActivationBehavior) core.HResult!void {
         const _c = self.vtable.put_ActivationBehavior(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -965,6 +1073,12 @@ pub const ITileMixedRealityModel2 = extern struct {
 };
 pub const IVisualElementsRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVisualElements(self: *@This()) core.HResult!*SecondaryTileVisualElements {
         var _r: *SecondaryTileVisualElements = undefined;
         const _c = self.vtable.get_VisualElements(@ptrCast(self), &_r);
@@ -1009,6 +1123,12 @@ pub const IVisualElementsRequest = extern struct {
 };
 pub const IVisualElementsRequestDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1030,6 +1150,12 @@ pub const IVisualElementsRequestDeferral = extern struct {
 };
 pub const IVisualElementsRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*VisualElementsRequest {
         var _r: *VisualElementsRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -1053,6 +1179,18 @@ pub const IVisualElementsRequestedEventArgs = extern struct {
 };
 pub const JumpList = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItems(self: *@This()) core.HResult!*IVector(JumpListItem) {
         const this: *IJumpList = @ptrCast(self);
         return try this.getItems();
@@ -1068,9 +1206,6 @@ pub const JumpList = extern struct {
     pub fn SaveAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IJumpList = @ptrCast(self);
         return try this.SaveAsync();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn LoadCurrentAsync() core.HResult!*IAsyncOperation(JumpList) {
         const _f = try @This()._IJumpListStaticsCache.get();
@@ -1089,6 +1224,18 @@ pub const JumpList = extern struct {
 };
 pub const JumpListItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!JumpListItemKind {
         const this: *IJumpListItem = @ptrCast(self);
         return try this.getKind();
@@ -1133,9 +1280,6 @@ pub const JumpListItem = extern struct {
         const this: *IJumpListItem = @ptrCast(self);
         return try this.putLogo(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWithArguments(arguments: ?HSTRING, displayName: ?HSTRING) core.HResult!*JumpListItem {
         const _f = try @This()._IJumpListItemStaticsCache.get();
         return try _f.CreateWithArguments(arguments, displayName);
@@ -1162,6 +1306,18 @@ pub const JumpListSystemGroupKind = enum(i32) {
 };
 pub const SecondaryTile = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putTileId(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.putTileId(value);
@@ -1343,9 +1499,6 @@ pub const SecondaryTile = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeVisualElementsRequested(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISecondaryTile.IID)));
@@ -1394,6 +1547,18 @@ pub const SecondaryTile = extern struct {
 };
 pub const SecondaryTileVisualElements = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putSquare30x30Logo(self: *@This(), value: *Uri) core.HResult!void {
         const this: *ISecondaryTileVisualElements = @ptrCast(self);
         return try this.putSquare30x30Logo(value);
@@ -1517,6 +1682,18 @@ pub const SecondaryTileVisualElements = extern struct {
 };
 pub const StartScreenManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         const this: *IStartScreenManager = @ptrCast(self);
         return try this.getUser();
@@ -1547,9 +1724,6 @@ pub const StartScreenManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryRemoveSecondaryTileAsync(tileId);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*StartScreenManager {
         const _f = try @This()._IStartScreenManagerStaticsCache.get();
         return try _f.GetDefault();
@@ -1567,6 +1741,18 @@ pub const StartScreenManager = extern struct {
 };
 pub const TileMixedRealityModel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putUri(self: *@This(), value: *Uri) core.HResult!void {
         const this: *ITileMixedRealityModel = @ptrCast(self);
         return try this.putUri(value);
@@ -1625,6 +1811,18 @@ pub const TileSize = enum(i32) {
 };
 pub const VisualElementsRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVisualElements(self: *@This()) core.HResult!*SecondaryTileVisualElements {
         const this: *IVisualElementsRequest = @ptrCast(self);
         return try this.getVisualElements();
@@ -1649,6 +1847,18 @@ pub const VisualElementsRequest = extern struct {
 };
 pub const VisualElementsRequestDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IVisualElementsRequestDeferral = @ptrCast(self);
         return try this.Complete();
@@ -1661,6 +1871,18 @@ pub const VisualElementsRequestDeferral = extern struct {
 };
 pub const VisualElementsRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*VisualElementsRequest {
         const this: *IVisualElementsRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();

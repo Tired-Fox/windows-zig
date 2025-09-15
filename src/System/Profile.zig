@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IKnownRetailInfoPropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRetailAccessCode(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RetailAccessCode(@ptrCast(self), &_r);
@@ -171,6 +177,12 @@ pub const IKnownRetailInfoPropertiesStatics = extern struct {
 };
 pub const IRetailInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsDemoModeEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDemoModeEnabled(@ptrCast(self), &_r);
@@ -201,6 +213,15 @@ pub const IRetailInfoStatics = extern struct {
 };
 pub const KnownRetailInfoProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -298,6 +319,15 @@ pub const KnownRetailInfoProperties = extern struct {
 };
 pub const RetailInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -315,6 +345,15 @@ pub const RetailInfo = extern struct {
 };
 pub const HardwareIdentification = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -328,6 +367,18 @@ pub const HardwareIdentification = extern struct {
 };
 pub const HardwareToken = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*IBuffer {
         const this: *IHardwareToken = @ptrCast(self);
         return try this.getId();
@@ -348,6 +399,12 @@ pub const HardwareToken = extern struct {
 };
 pub const IHardwareIdentificationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPackageSpecificToken(self: *@This(), nonce: *IBuffer) core.HResult!*HardwareToken {
         var _r: *HardwareToken = undefined;
         const _c = self.vtable.GetPackageSpecificToken(@ptrCast(self), nonce, &_r);
@@ -371,6 +428,12 @@ pub const IHardwareIdentificationStatics = extern struct {
 };
 pub const IHardwareToken = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -408,6 +471,12 @@ pub const IHardwareToken = extern struct {
 };
 pub const ISharedModeSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -431,6 +500,12 @@ pub const ISharedModeSettingsStatics = extern struct {
 };
 pub const ISharedModeSettingsStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShouldAvoidLocalStorage(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldAvoidLocalStorage(@ptrCast(self), &_r);
@@ -454,6 +529,15 @@ pub const ISharedModeSettingsStatics2 = extern struct {
 };
 pub const SharedModeSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -472,6 +556,12 @@ pub const SharedModeSettings = extern struct {
 };
 pub const IPlatformAutomaticAppSignInManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPolicy(self: *@This()) core.HResult!PlatformAutomaticAppSignInPolicy {
         var _r: PlatformAutomaticAppSignInPolicy = undefined;
         const _c = self.vtable.get_Policy(@ptrCast(self), &_r);
@@ -495,6 +585,15 @@ pub const IPlatformAutomaticAppSignInManagerStatics = extern struct {
 };
 pub const PlatformAutomaticAppSignInManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -513,6 +612,15 @@ pub const PlatformAutomaticAppSignInPolicy = enum(i32) {
 };
 pub const AnalyticsInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -535,6 +643,18 @@ pub const AnalyticsInfo = extern struct {
 };
 pub const AnalyticsVersionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceFamily(self: *@This()) core.HResult!?HSTRING {
         const this: *IAnalyticsVersionInfo = @ptrCast(self);
         return try this.getDeviceFamily();
@@ -558,6 +678,15 @@ pub const AnalyticsVersionInfo = extern struct {
 };
 pub const AppApplicability = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -571,6 +700,15 @@ pub const AppApplicability = extern struct {
 };
 pub const EducationSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -584,6 +722,12 @@ pub const EducationSettings = extern struct {
 };
 pub const IAnalyticsInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVersionInfo(self: *@This()) core.HResult!*AnalyticsVersionInfo {
         var _r: *AnalyticsVersionInfo = undefined;
         const _c = self.vtable.get_VersionInfo(@ptrCast(self), &_r);
@@ -614,6 +758,12 @@ pub const IAnalyticsInfoStatics = extern struct {
 };
 pub const IAnalyticsInfoStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSystemPropertiesAsync(self: *@This(), attributeNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMapView(?HSTRING,?HSTRING)) {
         var _r: *IAsyncOperation(IMapView(?HSTRING,?HSTRING)) = undefined;
         const _c = self.vtable.GetSystemPropertiesAsync(@ptrCast(self), attributeNames, &_r);
@@ -637,6 +787,12 @@ pub const IAnalyticsInfoStatics2 = extern struct {
 };
 pub const IAnalyticsVersionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceFamily(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceFamily(@ptrCast(self), &_r);
@@ -667,6 +823,12 @@ pub const IAnalyticsVersionInfo = extern struct {
 };
 pub const IAnalyticsVersionInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductName(@ptrCast(self), &_r);
@@ -690,6 +852,12 @@ pub const IAnalyticsVersionInfo2 = extern struct {
 };
 pub const IAppApplicabilityStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetUnsupportedAppRequirements(self: *@This(), capabilities: *IIterable(?HSTRING)) core.HResult!*IVectorView(UnsupportedAppRequirement) {
         var _r: *IVectorView(UnsupportedAppRequirement) = undefined;
         const _c = self.vtable.GetUnsupportedAppRequirements(@ptrCast(self), capabilities, &_r);
@@ -713,6 +881,12 @@ pub const IAppApplicabilityStatics = extern struct {
 };
 pub const IEducationSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEducationEnvironment(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEducationEnvironment(@ptrCast(self), &_r);
@@ -736,6 +910,12 @@ pub const IEducationSettingsStatics = extern struct {
 };
 pub const IPlatformDiagnosticsAndUsageDataSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCollectionLevel(self: *@This()) core.HResult!PlatformDataCollectionLevel {
         var _r: PlatformDataCollectionLevel = undefined;
         const _c = self.vtable.get_CollectionLevel(@ptrCast(self), &_r);
@@ -778,6 +958,12 @@ pub const IPlatformDiagnosticsAndUsageDataSettingsStatics = extern struct {
 };
 pub const ISmartAppControlPolicyStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -813,6 +999,12 @@ pub const ISmartAppControlPolicyStatics = extern struct {
 };
 pub const ISystemIdentificationInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -843,6 +1035,12 @@ pub const ISystemIdentificationInfo = extern struct {
 };
 pub const ISystemIdentificationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSystemIdForPublisher(self: *@This()) core.HResult!*SystemIdentificationInfo {
         var _r: *SystemIdentificationInfo = undefined;
         const _c = self.vtable.GetSystemIdForPublisher(@ptrCast(self), &_r);
@@ -873,6 +1071,12 @@ pub const ISystemIdentificationStatics = extern struct {
 };
 pub const ISystemSetupInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOutOfBoxExperienceState(self: *@This()) core.HResult!SystemOutOfBoxExperienceState {
         var _r: SystemOutOfBoxExperienceState = undefined;
         const _c = self.vtable.get_OutOfBoxExperienceState(@ptrCast(self), &_r);
@@ -908,6 +1112,12 @@ pub const ISystemSetupInfoStatics = extern struct {
 };
 pub const IUnsupportedAppRequirement = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequirement(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Requirement(@ptrCast(self), &_r);
@@ -938,6 +1148,12 @@ pub const IUnsupportedAppRequirement = extern struct {
 };
 pub const IWindowsIntegrityPolicyStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -1000,6 +1216,15 @@ pub const PlatformDataCollectionLevel = enum(i32) {
 };
 pub const PlatformDiagnosticsAndUsageDataSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1025,6 +1250,15 @@ pub const PlatformDiagnosticsAndUsageDataSettings = extern struct {
 };
 pub const SmartAppControlPolicy = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1046,6 +1280,15 @@ pub const SmartAppControlPolicy = extern struct {
 };
 pub const SystemIdentification = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1063,6 +1306,18 @@ pub const SystemIdentification = extern struct {
 };
 pub const SystemIdentificationInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*IBuffer {
         const this: *ISystemIdentificationInfo = @ptrCast(self);
         return try this.getId();
@@ -1090,6 +1345,15 @@ pub const SystemOutOfBoxExperienceState = enum(i32) {
 };
 pub const SystemSetupInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1111,6 +1375,18 @@ pub const SystemSetupInfo = extern struct {
 };
 pub const UnsupportedAppRequirement = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequirement(self: *@This()) core.HResult!?HSTRING {
         const this: *IUnsupportedAppRequirement = @ptrCast(self);
         return try this.getRequirement();
@@ -1131,6 +1407,15 @@ pub const UnsupportedAppRequirementReasons = enum(i32) {
 };
 pub const WindowsIntegrityPolicy = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

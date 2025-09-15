@@ -4,6 +4,18 @@ pub const SuspendingDeferral = @import("../ApplicationModel.zig").SuspendingDefe
 // ----- This code is automatically generated -----
 pub const WebUILockScreenCallActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCallUI(self: *@This()) core.HResult!*LockScreenCallUI {
         const this: *ILockScreenCallActivatedEventArgs = @ptrCast(self);
         return try this.getCallUI();
@@ -65,6 +77,18 @@ pub const WebUILockScreenCallActivatedEventArgs = extern struct {
 };
 pub const WebUIPrint3DWorkflowActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWorkflow(self: *@This()) core.HResult!*Print3DWorkflow {
         const this: *IPrint3DWorkflowActivatedEventArgs = @ptrCast(self);
         return try this.getWorkflow();
@@ -105,6 +129,18 @@ pub const WebUIPrint3DWorkflowActivatedEventArgs = extern struct {
 };
 pub const WebUIPrintTaskSettingsActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintTaskConfiguration {
         const this: *IPrintTaskSettingsActivatedEventArgs = @ptrCast(self);
         return try this.getConfiguration();
@@ -145,6 +181,18 @@ pub const WebUIPrintTaskSettingsActivatedEventArgs = extern struct {
 };
 pub const WebUISearchActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchActivatedEventArgs = @ptrCast(self);
         return try this.getQueryText();
@@ -203,6 +251,18 @@ pub const WebUISearchActivatedEventArgs = extern struct {
 };
 pub const WebUICameraSettingsActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoDeviceController(self: *@This()) core.HResult!*IInspectable {
         const this: *ICameraSettingsActivatedEventArgs = @ptrCast(self);
         return try this.getVideoDeviceController();
@@ -247,6 +307,18 @@ pub const WebUICameraSettingsActivatedEventArgs = extern struct {
 };
 pub const WebUIWalletActionActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItemId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletActionActivatedEventArgs = @ptrCast(self);
         return try this.getItemId();
@@ -295,6 +367,18 @@ pub const WebUIWalletActionActivatedEventArgs = extern struct {
 };
 pub const ActivatedDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IActivatedDeferral = @ptrCast(self);
         return try this.Complete();
@@ -396,6 +480,18 @@ pub const ActivatedEventHandler = extern struct {
 };
 pub const ActivatedOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*ActivatedDeferral {
         const this: *IActivatedOperation = @ptrCast(self);
         return try this.GetDeferral();
@@ -408,6 +504,18 @@ pub const ActivatedOperation = extern struct {
 };
 pub const BackgroundActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskInstance(self: *@This()) core.HResult!*IBackgroundTaskInstance {
         const this: *IBackgroundActivatedEventArgs = @ptrCast(self);
         return try this.getTaskInstance();
@@ -509,6 +617,18 @@ pub const BackgroundActivatedEventHandler = extern struct {
 };
 pub const EnteredBackgroundEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *IEnteredBackgroundEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -610,6 +730,18 @@ pub const EnteredBackgroundEventHandler = extern struct {
 };
 pub const HtmlPrintDocumentSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContent(self: *@This()) core.HResult!PrintContent {
         const this: *IHtmlPrintDocumentSource = @ptrCast(self);
         return try this.getContent();
@@ -697,6 +829,12 @@ pub const HtmlPrintDocumentSource = extern struct {
 };
 pub const IActivatedDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -718,6 +856,12 @@ pub const IActivatedDeferral = extern struct {
 };
 pub const IActivatedEventArgsDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivatedOperation(self: *@This()) core.HResult!*ActivatedOperation {
         var _r: *ActivatedOperation = undefined;
         const _c = self.vtable.get_ActivatedOperation(@ptrCast(self), &_r);
@@ -741,6 +885,12 @@ pub const IActivatedEventArgsDeferral = extern struct {
 };
 pub const IActivatedOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*ActivatedDeferral {
         var _r: *ActivatedDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -764,6 +914,12 @@ pub const IActivatedOperation = extern struct {
 };
 pub const IHtmlPrintDocumentSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContent(self: *@This()) core.HResult!PrintContent {
         var _r: PrintContent = undefined;
         const _c = self.vtable.get_Content(@ptrCast(self), &_r);
@@ -890,6 +1046,12 @@ pub const IHtmlPrintDocumentSource = extern struct {
 };
 pub const INewWebUIViewCreatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebUIView(self: *@This()) core.HResult!*WebUIView {
         var _r: *WebUIView = undefined;
         const _c = self.vtable.get_WebUIView(@ptrCast(self), &_r);
@@ -934,6 +1096,12 @@ pub const INewWebUIViewCreatedEventArgs = extern struct {
 };
 pub const IWebUIActivationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addActivated(self: *@This(), handler: *ActivatedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Activated(@ptrCast(self), handler, &_r);
@@ -998,6 +1166,12 @@ pub const IWebUIActivationStatics = extern struct {
 };
 pub const IWebUIActivationStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addLeavingBackground(self: *@This(), handler: *LeavingBackgroundEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LeavingBackground(@ptrCast(self), handler, &_r);
@@ -1043,6 +1217,12 @@ pub const IWebUIActivationStatics2 = extern struct {
 };
 pub const IWebUIActivationStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestRestartAsync(self: *@This(), launchArguments: ?HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
         var _r: *IAsyncOperation(AppRestartFailureReason) = undefined;
         const _c = self.vtable.RequestRestartAsync(@ptrCast(self), launchArguments, &_r);
@@ -1073,6 +1253,12 @@ pub const IWebUIActivationStatics3 = extern struct {
 };
 pub const IWebUIActivationStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addNewWebUIViewCreated(self: *@This(), handler: *EventHandler(NewWebUIViewCreatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_NewWebUIViewCreated(@ptrCast(self), handler, &_r);
@@ -1113,6 +1299,12 @@ pub const IWebUIActivationStatics4 = extern struct {
 };
 pub const IWebUIBackgroundTaskInstance = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Succeeded(@ptrCast(self), &_r);
@@ -1141,6 +1333,12 @@ pub const IWebUIBackgroundTaskInstance = extern struct {
 };
 pub const IWebUIBackgroundTaskInstanceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrent(self: *@This()) core.HResult!*IWebUIBackgroundTaskInstance {
         var _r: *IWebUIBackgroundTaskInstance = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
@@ -1164,6 +1362,12 @@ pub const IWebUIBackgroundTaskInstanceStatics = extern struct {
 };
 pub const IWebUINavigatedDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1185,6 +1389,12 @@ pub const IWebUINavigatedDeferral = extern struct {
 };
 pub const IWebUINavigatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNavigatedOperation(self: *@This()) core.HResult!*WebUINavigatedOperation {
         var _r: *WebUINavigatedOperation = undefined;
         const _c = self.vtable.get_NavigatedOperation(@ptrCast(self), &_r);
@@ -1208,6 +1418,12 @@ pub const IWebUINavigatedEventArgs = extern struct {
 };
 pub const IWebUINavigatedOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*WebUINavigatedDeferral {
         var _r: *WebUINavigatedDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -1231,6 +1447,12 @@ pub const IWebUINavigatedOperation = extern struct {
 };
 pub const IWebUIView = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getApplicationViewId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ApplicationViewId(@ptrCast(self), &_r);
@@ -1290,6 +1512,12 @@ pub const IWebUIView = extern struct {
 };
 pub const IWebUIViewStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAsync(self: *@This()) core.HResult!*IAsyncOperation(WebUIView) {
         var _r: *IAsyncOperation(WebUIView) = undefined;
         const _c = self.vtable.CreateAsync(@ptrCast(self), &_r);
@@ -1320,6 +1548,18 @@ pub const IWebUIViewStatics = extern struct {
 };
 pub const LeavingBackgroundEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *ILeavingBackgroundEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -1510,6 +1750,18 @@ pub const NavigatedEventHandler = extern struct {
 };
 pub const NewWebUIViewCreatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebUIView(self: *@This()) core.HResult!*WebUIView {
         const this: *INewWebUIViewCreatedEventArgs = @ptrCast(self);
         return try this.getWebUIView();
@@ -1629,6 +1881,18 @@ pub const ResumingEventHandler = extern struct {
 };
 pub const SuspendingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSuspendingOperation(self: *@This()) core.HResult!*SuspendingOperation {
         const this: *ISuspendingEventArgs = @ptrCast(self);
         return try this.getSuspendingOperation();
@@ -1730,6 +1994,15 @@ pub const SuspendingEventHandler = extern struct {
 };
 pub const WebUIApplication = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1818,6 +2091,18 @@ pub const WebUIApplication = extern struct {
 };
 pub const WebUIAppointmentsProviderAddAppointmentActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAddAppointmentOperation(self: *@This()) core.HResult!*AddAppointmentOperation {
         const this: *IAppointmentsProviderAddAppointmentActivatedEventArgs = @ptrCast(self);
         return try this.getAddAppointmentOperation();
@@ -1872,6 +2157,18 @@ pub const WebUIAppointmentsProviderAddAppointmentActivatedEventArgs = extern str
 };
 pub const WebUIAppointmentsProviderRemoveAppointmentActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoveAppointmentOperation(self: *@This()) core.HResult!*RemoveAppointmentOperation {
         const this: *IAppointmentsProviderRemoveAppointmentActivatedEventArgs = @ptrCast(self);
         return try this.getRemoveAppointmentOperation();
@@ -1926,6 +2223,18 @@ pub const WebUIAppointmentsProviderRemoveAppointmentActivatedEventArgs = extern 
 };
 pub const WebUIAppointmentsProviderReplaceAppointmentActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReplaceAppointmentOperation(self: *@This()) core.HResult!*ReplaceAppointmentOperation {
         const this: *IAppointmentsProviderReplaceAppointmentActivatedEventArgs = @ptrCast(self);
         return try this.getReplaceAppointmentOperation();
@@ -1980,6 +2289,18 @@ pub const WebUIAppointmentsProviderReplaceAppointmentActivatedEventArgs = extern
 };
 pub const WebUIAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInstanceStartDate(self: *@This()) core.HResult!*IReference(DateTime) {
         const this: *IAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = @ptrCast(self);
         return try this.getInstanceStartDate();
@@ -2042,6 +2363,18 @@ pub const WebUIAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = ex
 };
 pub const WebUIAppointmentsProviderShowTimeFrameActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimeToShow(self: *@This()) core.HResult!DateTime {
         const this: *IAppointmentsProviderShowTimeFrameActivatedEventArgs = @ptrCast(self);
         return try this.getTimeToShow();
@@ -2100,6 +2433,15 @@ pub const WebUIAppointmentsProviderShowTimeFrameActivatedEventArgs = extern stru
 };
 pub const WebUIBackgroundTaskInstance = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2113,6 +2455,18 @@ pub const WebUIBackgroundTaskInstance = extern struct {
 };
 pub const WebUIBackgroundTaskInstanceRuntimeClass = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         const this: *IWebUIBackgroundTaskInstance = @ptrCast(self);
         return try this.getSucceeded();
@@ -2192,6 +2546,18 @@ pub const WebUIBackgroundTaskInstanceRuntimeClass = extern struct {
 };
 pub const WebUIBarcodeScannerPreviewActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnectionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBarcodeScannerPreviewActivatedEventArgs = @ptrCast(self);
         return try this.getConnectionId();
@@ -2239,6 +2605,18 @@ pub const WebUIBarcodeScannerPreviewActivatedEventArgs = extern struct {
 };
 pub const WebUICachedFileUpdaterActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCachedFileUpdaterUI(self: *@This()) core.HResult!*CachedFileUpdaterUI {
         const this: *ICachedFileUpdaterActivatedEventArgs = @ptrCast(self);
         return try this.getCachedFileUpdaterUI();
@@ -2286,6 +2664,18 @@ pub const WebUICachedFileUpdaterActivatedEventArgs = extern struct {
 };
 pub const WebUICommandLineActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperation(self: *@This()) core.HResult!*CommandLineActivationOperation {
         const this: *ICommandLineActivatedEventArgs = @ptrCast(self);
         return try this.getOperation();
@@ -2333,6 +2723,18 @@ pub const WebUICommandLineActivatedEventArgs = extern struct {
 };
 pub const WebUIContactPanelActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactPanel(self: *@This()) core.HResult!*ContactPanel {
         const this: *IContactPanelActivatedEventArgs = @ptrCast(self);
         return try this.getContactPanel();
@@ -2384,6 +2786,18 @@ pub const WebUIContactPanelActivatedEventArgs = extern struct {
 };
 pub const WebUIDeviceActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceInformationId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceActivatedEventArgs = @ptrCast(self);
         return try this.getDeviceInformationId();
@@ -2442,6 +2856,18 @@ pub const WebUIDeviceActivatedEventArgs = extern struct {
 };
 pub const WebUIDevicePairingActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         const this: *IDevicePairingActivatedEventArgs = @ptrCast(self);
         return try this.getDeviceInformation();
@@ -2489,6 +2915,18 @@ pub const WebUIDevicePairingActivatedEventArgs = extern struct {
 };
 pub const WebUIDialReceiverActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDialReceiverActivatedEventArgs = @ptrCast(self);
         return try this.getAppName();
@@ -2557,6 +2995,18 @@ pub const WebUIDialReceiverActivatedEventArgs = extern struct {
 };
 pub const WebUIFileActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFiles(self: *@This()) core.HResult!*IVectorView(IStorageItem) {
         const this: *IFileActivatedEventArgs = @ptrCast(self);
         return try this.getFiles();
@@ -2622,6 +3072,18 @@ pub const WebUIFileActivatedEventArgs = extern struct {
 };
 pub const WebUIFileOpenPickerActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFileOpenPickerUI(self: *@This()) core.HResult!*FileOpenPickerUI {
         const this: *IFileOpenPickerActivatedEventArgs = @ptrCast(self);
         return try this.getFileOpenPickerUI();
@@ -2676,6 +3138,18 @@ pub const WebUIFileOpenPickerActivatedEventArgs = extern struct {
 };
 pub const WebUIFileOpenPickerContinuationEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFiles(self: *@This()) core.HResult!*IVectorView(StorageFile) {
         const this: *IFileOpenPickerContinuationEventArgs = @ptrCast(self);
         return try this.getFiles();
@@ -2730,6 +3204,18 @@ pub const WebUIFileOpenPickerContinuationEventArgs = extern struct {
 };
 pub const WebUIFileSavePickerActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFileSavePickerUI(self: *@This()) core.HResult!*FileSavePickerUI {
         const this: *IFileSavePickerActivatedEventArgs = @ptrCast(self);
         return try this.getFileSavePickerUI();
@@ -2791,6 +3277,18 @@ pub const WebUIFileSavePickerActivatedEventArgs = extern struct {
 };
 pub const WebUIFileSavePickerContinuationEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFile(self: *@This()) core.HResult!*StorageFile {
         const this: *IFileSavePickerContinuationEventArgs = @ptrCast(self);
         return try this.getFile();
@@ -2845,6 +3343,18 @@ pub const WebUIFileSavePickerContinuationEventArgs = extern struct {
 };
 pub const WebUIFolderPickerContinuationEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFolder(self: *@This()) core.HResult!*StorageFolder {
         const this: *IFolderPickerContinuationEventArgs = @ptrCast(self);
         return try this.getFolder();
@@ -2899,6 +3409,18 @@ pub const WebUIFolderPickerContinuationEventArgs = extern struct {
 };
 pub const WebUILaunchActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getArguments(self: *@This()) core.HResult!?HSTRING {
         const this: *ILaunchActivatedEventArgs = @ptrCast(self);
         return try this.getArguments();
@@ -2971,6 +3493,18 @@ pub const WebUILaunchActivatedEventArgs = extern struct {
 };
 pub const WebUILockScreenActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInfo(self: *@This()) core.HResult!*IInspectable {
         const this: *ILockScreenActivatedEventArgs = @ptrCast(self);
         return try this.getInfo();
@@ -3025,6 +3559,18 @@ pub const WebUILockScreenActivatedEventArgs = extern struct {
 };
 pub const WebUILockScreenComponentActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!ActivationKind {
         const this: *IActivatedEventArgs = @ptrCast(self);
         return try this.getKind();
@@ -3052,6 +3598,18 @@ pub const WebUILockScreenComponentActivatedEventArgs = extern struct {
 };
 pub const WebUINavigatedDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IWebUINavigatedDeferral = @ptrCast(self);
         return try this.Complete();
@@ -3064,6 +3622,18 @@ pub const WebUINavigatedDeferral = extern struct {
 };
 pub const WebUINavigatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNavigatedOperation(self: *@This()) core.HResult!*WebUINavigatedOperation {
         const this: *IWebUINavigatedEventArgs = @ptrCast(self);
         return try this.getNavigatedOperation();
@@ -3076,6 +3646,18 @@ pub const WebUINavigatedEventArgs = extern struct {
 };
 pub const WebUINavigatedOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*WebUINavigatedDeferral {
         const this: *IWebUINavigatedOperation = @ptrCast(self);
         return try this.GetDeferral();
@@ -3088,6 +3670,18 @@ pub const WebUINavigatedOperation = extern struct {
 };
 pub const WebUIPhoneCallActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLineId(self: *@This()) core.HResult!*Guid {
         const this: *IPhoneCallActivatedEventArgs = @ptrCast(self);
         return try this.getLineId();
@@ -3135,6 +3729,18 @@ pub const WebUIPhoneCallActivatedEventArgs = extern struct {
 };
 pub const WebUIPrintWorkflowForegroundTaskActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!ActivationKind {
         const this: *IActivatedEventArgs = @ptrCast(self);
         return try this.getKind();
@@ -3162,6 +3768,18 @@ pub const WebUIPrintWorkflowForegroundTaskActivatedEventArgs = extern struct {
 };
 pub const WebUIProtocolActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         const this: *IProtocolActivatedEventArgs = @ptrCast(self);
         return try this.getUri();
@@ -3230,6 +3848,18 @@ pub const WebUIProtocolActivatedEventArgs = extern struct {
 };
 pub const WebUIProtocolForResultsActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProtocolForResultsOperation(self: *@This()) core.HResult!*ProtocolForResultsOperation {
         const this: *IProtocolForResultsActivatedEventArgs = @ptrCast(self);
         return try this.getProtocolForResultsOperation();
@@ -3305,6 +3935,18 @@ pub const WebUIProtocolForResultsActivatedEventArgs = extern struct {
 };
 pub const WebUIRestrictedLaunchActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSharedContext(self: *@This()) core.HResult!*IInspectable {
         const this: *IRestrictedLaunchActivatedEventArgs = @ptrCast(self);
         return try this.getSharedContext();
@@ -3352,6 +3994,18 @@ pub const WebUIRestrictedLaunchActivatedEventArgs = extern struct {
 };
 pub const WebUIShareTargetActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShareOperation(self: *@This()) core.HResult!*ShareOperation {
         const this: *IShareTargetActivatedEventArgs = @ptrCast(self);
         return try this.getShareOperation();
@@ -3399,6 +4053,18 @@ pub const WebUIShareTargetActivatedEventArgs = extern struct {
 };
 pub const WebUIStartupTaskActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStartupTaskActivatedEventArgs = @ptrCast(self);
         return try this.getTaskId();
@@ -3446,6 +4112,18 @@ pub const WebUIStartupTaskActivatedEventArgs = extern struct {
 };
 pub const WebUIToastNotificationActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getArgument(self: *@This()) core.HResult!?HSTRING {
         const this: *IToastNotificationActivatedEventArgs = @ptrCast(self);
         return try this.getArgument();
@@ -3497,6 +4175,18 @@ pub const WebUIToastNotificationActivatedEventArgs = extern struct {
 };
 pub const WebUIUserDataAccountProviderActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperation(self: *@This()) core.HResult!*IUserDataAccountProviderOperation {
         const this: *IUserDataAccountProviderActivatedEventArgs = @ptrCast(self);
         return try this.getOperation();
@@ -3537,6 +4227,18 @@ pub const WebUIUserDataAccountProviderActivatedEventArgs = extern struct {
 };
 pub const WebUIView = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getApplicationViewId(self: *@This()) core.HResult!i32 {
         const this: *IWebUIView = @ptrCast(self);
         return try this.getApplicationViewId();
@@ -3971,9 +4673,6 @@ pub const WebUIView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddInitializeScript(script);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateAsync() core.HResult!*IAsyncOperation(WebUIView) {
         const _f = try @This()._IWebUIViewStaticsCache.get();
         return try _f.CreateAsync();
@@ -3991,6 +4690,18 @@ pub const WebUIView = extern struct {
 };
 pub const WebUIVoiceCommandActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResult(self: *@This()) core.HResult!*SpeechRecognitionResult {
         const this: *IVoiceCommandActivatedEventArgs = @ptrCast(self);
         return try this.getResult();
@@ -4038,6 +4749,18 @@ pub const WebUIVoiceCommandActivatedEventArgs = extern struct {
 };
 pub const WebUIWebAccountProviderActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperation(self: *@This()) core.HResult!*IWebAccountProviderOperation {
         const this: *IWebAccountProviderActivatedEventArgs = @ptrCast(self);
         return try this.getOperation();
@@ -4085,6 +4808,18 @@ pub const WebUIWebAccountProviderActivatedEventArgs = extern struct {
 };
 pub const WebUIWebAuthenticationBrokerContinuationEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAuthenticationResult(self: *@This()) core.HResult!*WebAuthenticationResult {
         const this: *IWebAuthenticationBrokerContinuationEventArgs = @ptrCast(self);
         return try this.getWebAuthenticationResult();
@@ -4132,6 +4867,18 @@ pub const WebUIWebAuthenticationBrokerContinuationEventArgs = extern struct {
 };
 pub const WebUIContactCallActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactCallActivatedEventArgs = @ptrCast(self);
         return try this.getServiceId();
@@ -4187,6 +4934,18 @@ pub const WebUIContactCallActivatedEventArgs = extern struct {
 };
 pub const WebUIContactMapActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAddress(self: *@This()) core.HResult!*ContactAddress {
         const this: *IContactMapActivatedEventArgs = @ptrCast(self);
         return try this.getAddress();
@@ -4238,6 +4997,18 @@ pub const WebUIContactMapActivatedEventArgs = extern struct {
 };
 pub const WebUIContactMessageActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactMessageActivatedEventArgs = @ptrCast(self);
         return try this.getServiceId();
@@ -4293,6 +5064,18 @@ pub const WebUIContactMessageActivatedEventArgs = extern struct {
 };
 pub const WebUIContactPickerActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactPickerUI(self: *@This()) core.HResult!*ContactPickerUI {
         const this: *IContactPickerActivatedEventArgs = @ptrCast(self);
         return try this.getContactPickerUI();
@@ -4333,6 +5116,18 @@ pub const WebUIContactPickerActivatedEventArgs = extern struct {
 };
 pub const WebUIContactPostActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactPostActivatedEventArgs = @ptrCast(self);
         return try this.getServiceId();
@@ -4388,6 +5183,18 @@ pub const WebUIContactPostActivatedEventArgs = extern struct {
 };
 pub const WebUIContactVideoCallActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServiceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactVideoCallActivatedEventArgs = @ptrCast(self);
         return try this.getServiceId();

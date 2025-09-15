@@ -609,6 +609,18 @@ pub const DateTime = extern struct {
 };
 pub const Deferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IDeferral = @ptrCast(self);
         return try this.Complete();
@@ -619,9 +631,6 @@ pub const Deferral = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(handler: *DeferralCompletedHandler) core.HResult!*Deferral {
         const _f = try @This()._IDeferralFactoryCache.get();
@@ -822,6 +831,12 @@ pub const HResult = extern struct {
 };
 pub const IAsyncAction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCompleted(self: *@This(), handler: *AsyncActionCompletedHandler) core.HResult!void {
         const _c = self.vtable.put_Completed(@ptrCast(self), handler);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -856,6 +871,12 @@ pub const IAsyncAction = extern struct {
 pub fn IAsyncActionWithProgress(TProgress: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn putProgress(self: *@This(), handler: *AsyncActionProgressHandler(TProgress)) core.HResult!void {
             const _c = self.vtable.put_Progress(@ptrCast(self), handler);
             if (_c != 0) return core.hresultToError(_c).err;
@@ -902,6 +923,12 @@ pub fn IAsyncActionWithProgress(TProgress: type) type {
 }
 pub const IAsyncInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -950,6 +977,12 @@ pub const IAsyncInfo = extern struct {
 pub fn IAsyncOperationWithProgress(TResult: type, TProgress: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn putProgress(self: *@This(), handler: *AsyncOperationProgressHandler(TResult,TProgress)) core.HResult!void {
             const _c = self.vtable.put_Progress(@ptrCast(self), handler);
             if (_c != 0) return core.hresultToError(_c).err;
@@ -999,6 +1032,12 @@ pub fn IAsyncOperationWithProgress(TResult: type, TProgress: type) type {
 pub fn IAsyncOperation(TResult: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(TResult)) core.HResult!void {
             const _c = self.vtable.put_Completed(@ptrCast(self), handler);
             if (_c != 0) return core.hresultToError(_c).err;
@@ -1053,6 +1092,12 @@ pub fn IAsyncOperation(TResult: type) type {
 }
 pub const IClosable = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Close(self: *@This()) core.HResult!void {
         const _c = self.vtable.Close(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1074,6 +1119,12 @@ pub const IClosable = extern struct {
 };
 pub const IDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1095,6 +1146,12 @@ pub const IDeferral = extern struct {
 };
 pub const IDeferralFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), handler: *DeferralCompletedHandler) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.Create(@ptrCast(self), handler, &_r);
@@ -1118,6 +1175,12 @@ pub const IDeferralFactory = extern struct {
 };
 pub const IPropertyValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!PropertyType {
         var _r: PropertyType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -1369,6 +1432,12 @@ pub const IPropertyValue = extern struct {
 };
 pub const IPropertyValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateEmpty(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.CreateEmpty(@ptrCast(self), &_r);
@@ -1659,6 +1728,12 @@ pub const IPropertyValueStatics = extern struct {
 pub fn IReferenceArray(T: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn getValue(self: *@This()) core.HResult![*]core.generic(T) {
             var _r: [*]core.generic(T) = undefined;
             const _c = self.vtable.get_Value(@ptrCast(self), &_r);
@@ -1684,6 +1759,12 @@ pub fn IReferenceArray(T: type) type {
 pub fn IReference(T: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn getValue(self: *@This()) core.HResult!core.generic(T) {
             var _r: core.generic(T) = undefined;
             const _c = self.vtable.get_Value(@ptrCast(self), &_r);
@@ -1708,6 +1789,12 @@ pub fn IReference(T: type) type {
 }
 pub const IStringable = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ToString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.ToString(@ptrCast(self), &_r);
@@ -1778,6 +1865,15 @@ pub const PropertyType = enum(i32) {
 };
 pub const PropertyValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2047,6 +2143,15 @@ pub fn TypedEventHandler(TSender: type, TResult: type) type {
 }
 pub const GuidHelper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2068,6 +2173,12 @@ pub const GuidHelper = extern struct {
 };
 pub const IGetActivationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetActivationFactory(self: *@This(), activatableClassId: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetActivationFactory(@ptrCast(self), activatableClassId, &_r);
@@ -2091,6 +2202,12 @@ pub const IGetActivationFactory = extern struct {
 };
 pub const IGuidHelperStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateNewGuid(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.CreateNewGuid(@ptrCast(self), &_r);
@@ -2128,6 +2245,12 @@ pub const IGuidHelperStatics = extern struct {
 };
 pub const IMemoryBuffer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         var _r: *IMemoryBufferReference = undefined;
         const _c = self.vtable.CreateReference(@ptrCast(self), &_r);
@@ -2151,6 +2274,12 @@ pub const IMemoryBuffer = extern struct {
 };
 pub const IMemoryBufferFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), capacity: u32) core.HResult!*MemoryBuffer {
         var _r: *MemoryBuffer = undefined;
         const _c = self.vtable.Create(@ptrCast(self), capacity, &_r);
@@ -2174,6 +2303,12 @@ pub const IMemoryBufferFactory = extern struct {
 };
 pub const IMemoryBufferReference = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapacity(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Capacity(@ptrCast(self), &_r);
@@ -2209,6 +2344,12 @@ pub const IMemoryBufferReference = extern struct {
 };
 pub const IUriEscapeStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn UnescapeComponent(self: *@This(), toUnescape: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.UnescapeComponent(@ptrCast(self), toUnescape, &_r);
@@ -2239,6 +2380,12 @@ pub const IUriEscapeStatics = extern struct {
 };
 pub const IUriRuntimeClass = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAbsoluteUri(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AbsoluteUri(@ptrCast(self), &_r);
@@ -2374,6 +2521,12 @@ pub const IUriRuntimeClass = extern struct {
 };
 pub const IUriRuntimeClassFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateUri(self: *@This(), uri: ?HSTRING) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.CreateUri(@ptrCast(self), uri, &_r);
@@ -2404,6 +2557,12 @@ pub const IUriRuntimeClassFactory = extern struct {
 };
 pub const IUriRuntimeClassWithAbsoluteCanonicalUri = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAbsoluteCanonicalUri(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AbsoluteCanonicalUri(@ptrCast(self), &_r);
@@ -2434,6 +2593,12 @@ pub const IUriRuntimeClassWithAbsoluteCanonicalUri = extern struct {
 };
 pub const IWwwFormUrlDecoderEntry = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -2464,6 +2629,12 @@ pub const IWwwFormUrlDecoderEntry = extern struct {
 };
 pub const IWwwFormUrlDecoderRuntimeClass = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetFirstValueByName(self: *@This(), name: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetFirstValueByName(@ptrCast(self), name, &_r);
@@ -2487,6 +2658,12 @@ pub const IWwwFormUrlDecoderRuntimeClass = extern struct {
 };
 pub const IWwwFormUrlDecoderRuntimeClassFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWwwFormUrlDecoder(self: *@This(), query: ?HSTRING) core.HResult!*WwwFormUrlDecoder {
         var _r: *WwwFormUrlDecoder = undefined;
         const _c = self.vtable.CreateWwwFormUrlDecoder(@ptrCast(self), query, &_r);
@@ -2510,6 +2687,18 @@ pub const IWwwFormUrlDecoderRuntimeClassFactory = extern struct {
 };
 pub const MemoryBuffer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateReference(self: *@This()) core.HResult!*IMemoryBufferReference {
         const this: *IMemoryBuffer = @ptrCast(self);
         return try this.CreateReference();
@@ -2520,9 +2709,6 @@ pub const MemoryBuffer = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(capacity: u32) core.HResult!*MemoryBuffer {
         const _f = try @This()._IMemoryBufferFactoryCache.get();
@@ -2537,6 +2723,18 @@ pub const MemoryBuffer = extern struct {
 };
 pub const Uri = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAbsoluteUri(self: *@This()) core.HResult!?HSTRING {
         const this: *IUriRuntimeClass = @ptrCast(self);
         return try this.getAbsoluteUri();
@@ -2626,9 +2824,6 @@ pub const Uri = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateUri(uri: ?HSTRING) core.HResult!*Uri {
         const _f = try @This()._IUriRuntimeClassFactoryCache.get();
         return try _f.CreateUri(uri);
@@ -2655,6 +2850,18 @@ pub const Uri = extern struct {
 };
 pub const WwwFormUrlDecoder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetFirstValueByName(self: *@This(), name: ?HSTRING) core.HResult!?HSTRING {
         const this: *IWwwFormUrlDecoderRuntimeClass = @ptrCast(self);
         return try this.GetFirstValueByName(name);
@@ -2673,9 +2880,6 @@ pub const WwwFormUrlDecoder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWwwFormUrlDecoder(query: ?HSTRING) core.HResult!*WwwFormUrlDecoder {
         const _f = try @This()._IWwwFormUrlDecoderRuntimeClassFactoryCache.get();
         return try _f.CreateWwwFormUrlDecoder(query);
@@ -2689,6 +2893,18 @@ pub const WwwFormUrlDecoder = extern struct {
 };
 pub const WwwFormUrlDecoderEntry = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWwwFormUrlDecoderEntry = @ptrCast(self);
         return try this.getName();

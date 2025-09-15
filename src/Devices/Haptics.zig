@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IKnownSimpleHapticsControllerWaveformsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClick(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Click(@ptrCast(self), &_r);
@@ -52,6 +58,12 @@ pub const IKnownSimpleHapticsControllerWaveformsStatics = extern struct {
 };
 pub const IKnownSimpleHapticsControllerWaveformsStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBrushContinuous(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_BrushContinuous(@ptrCast(self), &_r);
@@ -138,6 +150,12 @@ pub const IKnownSimpleHapticsControllerWaveformsStatics2 = extern struct {
 };
 pub const ISimpleHapticsController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -221,6 +239,12 @@ pub const ISimpleHapticsController = extern struct {
 };
 pub const ISimpleHapticsControllerFeedback = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWaveform(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Waveform(@ptrCast(self), &_r);
@@ -251,6 +275,12 @@ pub const ISimpleHapticsControllerFeedback = extern struct {
 };
 pub const IVibrationDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -281,6 +311,12 @@ pub const IVibrationDevice = extern struct {
 };
 pub const IVibrationDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(VibrationAccessStatus) {
         var _r: *IAsyncOperation(VibrationAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
@@ -332,6 +368,15 @@ pub const IVibrationDeviceStatics = extern struct {
 };
 pub const KnownSimpleHapticsControllerWaveforms = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -402,6 +447,18 @@ pub const KnownSimpleHapticsControllerWaveforms = extern struct {
 };
 pub const SimpleHapticsController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISimpleHapticsController = @ptrCast(self);
         return try this.getId();
@@ -454,6 +511,18 @@ pub const SimpleHapticsController = extern struct {
 };
 pub const SimpleHapticsControllerFeedback = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWaveform(self: *@This()) core.HResult!u16 {
         const this: *ISimpleHapticsControllerFeedback = @ptrCast(self);
         return try this.getWaveform();
@@ -476,6 +545,18 @@ pub const VibrationAccessStatus = enum(i32) {
 };
 pub const VibrationDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVibrationDevice = @ptrCast(self);
         return try this.getId();
@@ -483,9 +564,6 @@ pub const VibrationDevice = extern struct {
     pub fn getSimpleHapticsController(self: *@This()) core.HResult!*SimpleHapticsController {
         const this: *IVibrationDevice = @ptrCast(self);
         return try this.getSimpleHapticsController();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(VibrationAccessStatus) {
         const _f = try @This()._IVibrationDeviceStaticsCache.get();

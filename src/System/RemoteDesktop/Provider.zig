@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPerformLocalActionRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!RemoteDesktopLocalAction {
         var _r: RemoteDesktopLocalAction = undefined;
         const _c = self.vtable.get_Action(@ptrCast(self), &_r);
@@ -24,6 +30,12 @@ pub const IPerformLocalActionRequestedEventArgs = extern struct {
 };
 pub const IRemoteDesktopConnectionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetConnectionStatus(self: *@This(), value: RemoteDesktopConnectionStatus) core.HResult!void {
         const _c = self.vtable.SetConnectionStatus(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -50,6 +62,12 @@ pub const IRemoteDesktopConnectionInfo = extern struct {
 };
 pub const IRemoteDesktopConnectionInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn PerformLocalActionFromRemote(self: *@This(), action: RemoteDesktopLocalAction) core.HResult!void {
         const _c = self.vtable.PerformLocalActionFromRemote(@ptrCast(self), action);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -71,6 +89,12 @@ pub const IRemoteDesktopConnectionInfo2 = extern struct {
 };
 pub const IRemoteDesktopConnectionInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForLaunchUri(self: *@This(), launchUri: *Uri, windowId: WindowId) core.HResult!*RemoteDesktopConnectionInfo {
         var _r: *RemoteDesktopConnectionInfo = undefined;
         const _c = self.vtable.GetForLaunchUri(@ptrCast(self), launchUri, windowId, &_r);
@@ -94,6 +118,12 @@ pub const IRemoteDesktopConnectionInfoStatics = extern struct {
 };
 pub const IRemoteDesktopConnectionRemoteInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportSwitched(self: *@This()) core.HResult!void {
         const _c = self.vtable.ReportSwitched(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -139,6 +169,12 @@ pub const IRemoteDesktopConnectionRemoteInfo = extern struct {
 };
 pub const IRemoteDesktopConnectionRemoteInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSwitchSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSwitchSupported(@ptrCast(self), &_r);
@@ -169,6 +205,12 @@ pub const IRemoteDesktopConnectionRemoteInfoStatics = extern struct {
 };
 pub const IRemoteDesktopInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -199,6 +241,12 @@ pub const IRemoteDesktopInfo = extern struct {
 };
 pub const IRemoteDesktopInfoFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), id: ?HSTRING, displayName: ?HSTRING) core.HResult!*RemoteDesktopInfo {
         var _r: *RemoteDesktopInfo = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), id, displayName, &_r);
@@ -222,6 +270,12 @@ pub const IRemoteDesktopInfoFactory = extern struct {
 };
 pub const IRemoteDesktopRegistrarStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesktopInfos(self: *@This()) core.HResult!*IVector(RemoteDesktopInfo) {
         var _r: *IVector(RemoteDesktopInfo) = undefined;
         const _c = self.vtable.get_DesktopInfos(@ptrCast(self), &_r);
@@ -252,6 +306,18 @@ pub const IRemoteDesktopRegistrarStatics = extern struct {
 };
 pub const PerformLocalActionRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!RemoteDesktopLocalAction {
         const this: *IPerformLocalActionRequestedEventArgs = @ptrCast(self);
         return try this.getAction();
@@ -264,6 +330,18 @@ pub const PerformLocalActionRequestedEventArgs = extern struct {
 };
 pub const RemoteDesktopConnectionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetConnectionStatus(self: *@This(), value: RemoteDesktopConnectionStatus) core.HResult!void {
         const this: *IRemoteDesktopConnectionInfo = @ptrCast(self);
         return try this.SetConnectionStatus(value);
@@ -279,9 +357,6 @@ pub const RemoteDesktopConnectionInfo = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PerformLocalActionFromRemote(action);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForLaunchUri(launchUri: *Uri, windowId: WindowId) core.HResult!*RemoteDesktopConnectionInfo {
         const _f = try @This()._IRemoteDesktopConnectionInfoStaticsCache.get();
         return try _f.GetForLaunchUri(launchUri, windowId);
@@ -295,6 +370,18 @@ pub const RemoteDesktopConnectionInfo = extern struct {
 };
 pub const RemoteDesktopConnectionRemoteInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportSwitched(self: *@This()) core.HResult!void {
         const this: *IRemoteDesktopConnectionRemoteInfo = @ptrCast(self);
         return try this.ReportSwitched();
@@ -322,9 +409,6 @@ pub const RemoteDesktopConnectionRemoteInfo = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn IsSwitchSupported() core.HResult!bool {
         const _f = try @This()._IRemoteDesktopConnectionRemoteInfoStaticsCache.get();
         return try _f.IsSwitchSupported();
@@ -348,6 +432,18 @@ pub const RemoteDesktopConnectionStatus = enum(i32) {
 };
 pub const RemoteDesktopInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteDesktopInfo = @ptrCast(self);
         return try this.getDisplayName();
@@ -355,9 +451,6 @@ pub const RemoteDesktopInfo = extern struct {
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteDesktopInfo = @ptrCast(self);
         return try this.getId();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(id: ?HSTRING, displayName: ?HSTRING) core.HResult!*RemoteDesktopInfo {
         const _f = try @This()._IRemoteDesktopInfoFactoryCache.get();
@@ -379,6 +472,15 @@ pub const RemoteDesktopLocalAction = enum(i32) {
 };
 pub const RemoteDesktopRegistrar = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

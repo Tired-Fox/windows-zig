@@ -9,6 +9,18 @@ pub const CompressAlgorithm = enum(i32) {
 };
 pub const Compressor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FinishAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         const this: *ICompressor = @ptrCast(self);
         return try this.FinishAsync();
@@ -38,9 +50,6 @@ pub const Compressor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateCompressor(underlyingStream: *IOutputStream) core.HResult!*Compressor {
         const _f = try @This()._ICompressorFactoryCache.get();
         return try _f.CreateCompressor(underlyingStream);
@@ -58,6 +67,18 @@ pub const Compressor = extern struct {
 };
 pub const Decompressor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DetachStream(self: *@This()) core.HResult!*IInputStream {
         const this: *IDecompressor = @ptrCast(self);
         return try this.DetachStream();
@@ -76,9 +97,6 @@ pub const Decompressor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateDecompressor(underlyingStream: *IInputStream) core.HResult!*Decompressor {
         const _f = try @This()._IDecompressorFactoryCache.get();
         return try _f.CreateDecompressor(underlyingStream);
@@ -92,6 +110,12 @@ pub const Decompressor = extern struct {
 };
 pub const ICompressor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FinishAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.FinishAsync(@ptrCast(self), &_r);
@@ -122,6 +146,12 @@ pub const ICompressor = extern struct {
 };
 pub const ICompressorFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateCompressor(self: *@This(), underlyingStream: *IOutputStream) core.HResult!*Compressor {
         var _r: *Compressor = undefined;
         const _c = self.vtable.CreateCompressor(@ptrCast(self), underlyingStream, &_r);
@@ -152,6 +182,12 @@ pub const ICompressorFactory = extern struct {
 };
 pub const IDecompressor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DetachStream(self: *@This()) core.HResult!*IInputStream {
         var _r: *IInputStream = undefined;
         const _c = self.vtable.DetachStream(@ptrCast(self), &_r);
@@ -175,6 +211,12 @@ pub const IDecompressor = extern struct {
 };
 pub const IDecompressorFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateDecompressor(self: *@This(), underlyingStream: *IInputStream) core.HResult!*Decompressor {
         var _r: *Decompressor = undefined;
         const _c = self.vtable.CreateDecompressor(@ptrCast(self), underlyingStream, &_r);

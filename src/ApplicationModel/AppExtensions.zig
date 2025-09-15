@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AppExtension = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppExtension = @ptrCast(self);
         return try this.getId();
@@ -65,6 +77,18 @@ pub const AppExtension = extern struct {
 };
 pub const AppExtensionCatalog = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAllAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(AppExtension)) {
         const this: *IAppExtensionCatalog = @ptrCast(self);
         return try this.FindAllAsync();
@@ -120,9 +144,6 @@ pub const AppExtensionCatalog = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindAll();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Open(appExtensionName: ?HSTRING) core.HResult!*AppExtensionCatalog {
         const _f = try @This()._IAppExtensionCatalogStaticsCache.get();
         return try _f.Open(appExtensionName);
@@ -136,6 +157,18 @@ pub const AppExtensionCatalog = extern struct {
 };
 pub const AppExtensionPackageInstalledEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppExtensionName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppExtensionPackageInstalledEventArgs = @ptrCast(self);
         return try this.getAppExtensionName();
@@ -156,6 +189,18 @@ pub const AppExtensionPackageInstalledEventArgs = extern struct {
 };
 pub const AppExtensionPackageStatusChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppExtensionName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppExtensionPackageStatusChangedEventArgs = @ptrCast(self);
         return try this.getAppExtensionName();
@@ -172,6 +217,18 @@ pub const AppExtensionPackageStatusChangedEventArgs = extern struct {
 };
 pub const AppExtensionPackageUninstallingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppExtensionName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppExtensionPackageUninstallingEventArgs = @ptrCast(self);
         return try this.getAppExtensionName();
@@ -188,6 +245,18 @@ pub const AppExtensionPackageUninstallingEventArgs = extern struct {
 };
 pub const AppExtensionPackageUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppExtensionName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppExtensionPackageUpdatedEventArgs = @ptrCast(self);
         return try this.getAppExtensionName();
@@ -208,6 +277,18 @@ pub const AppExtensionPackageUpdatedEventArgs = extern struct {
 };
 pub const AppExtensionPackageUpdatingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppExtensionName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppExtensionPackageUpdatingEventArgs = @ptrCast(self);
         return try this.getAppExtensionName();
@@ -224,6 +305,12 @@ pub const AppExtensionPackageUpdatingEventArgs = extern struct {
 };
 pub const IAppExtension = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -289,6 +376,12 @@ pub const IAppExtension = extern struct {
 };
 pub const IAppExtension2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppUserModelId(@ptrCast(self), &_r);
@@ -312,6 +405,12 @@ pub const IAppExtension2 = extern struct {
 };
 pub const IAppExtension3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetExtensionProperties(self: *@This()) core.HResult!*IPropertySet {
         var _r: *IPropertySet = undefined;
         const _c = self.vtable.GetExtensionProperties(@ptrCast(self), &_r);
@@ -349,6 +448,12 @@ pub const IAppExtension3 = extern struct {
 };
 pub const IAppExtensionCatalog = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAllAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(AppExtension)) {
         var _r: *IAsyncOperation(IVectorView(AppExtension)) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), &_r);
@@ -439,6 +544,12 @@ pub const IAppExtensionCatalog = extern struct {
 };
 pub const IAppExtensionCatalog2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAll(self: *@This()) core.HResult!*IVectorView(AppExtension) {
         var _r: *IVectorView(AppExtension) = undefined;
         const _c = self.vtable.FindAll(@ptrCast(self), &_r);
@@ -462,6 +573,12 @@ pub const IAppExtensionCatalog2 = extern struct {
 };
 pub const IAppExtensionCatalogStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Open(self: *@This(), appExtensionName: ?HSTRING) core.HResult!*AppExtensionCatalog {
         var _r: *AppExtensionCatalog = undefined;
         const _c = self.vtable.Open(@ptrCast(self), appExtensionName, &_r);
@@ -485,6 +602,12 @@ pub const IAppExtensionCatalogStatics = extern struct {
 };
 pub const IAppExtensionPackageInstalledEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppExtensionName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppExtensionName(@ptrCast(self), &_r);
@@ -522,6 +645,12 @@ pub const IAppExtensionPackageInstalledEventArgs = extern struct {
 };
 pub const IAppExtensionPackageStatusChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppExtensionName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppExtensionName(@ptrCast(self), &_r);
@@ -552,6 +681,12 @@ pub const IAppExtensionPackageStatusChangedEventArgs = extern struct {
 };
 pub const IAppExtensionPackageUninstallingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppExtensionName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppExtensionName(@ptrCast(self), &_r);
@@ -582,6 +717,12 @@ pub const IAppExtensionPackageUninstallingEventArgs = extern struct {
 };
 pub const IAppExtensionPackageUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppExtensionName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppExtensionName(@ptrCast(self), &_r);
@@ -619,6 +760,12 @@ pub const IAppExtensionPackageUpdatedEventArgs = extern struct {
 };
 pub const IAppExtensionPackageUpdatingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppExtensionName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppExtensionName(@ptrCast(self), &_r);

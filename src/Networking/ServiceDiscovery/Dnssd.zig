@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const DnssdRegistrationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!DnssdRegistrationStatus {
         const this: *IDnssdRegistrationResult = @ptrCast(self);
         return try this.getStatus();
@@ -19,9 +31,6 @@ pub const DnssdRegistrationResult = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -42,6 +51,18 @@ pub const DnssdRegistrationStatus = enum(i32) {
 };
 pub const DnssdServiceInstance = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDnssdServiceInstanceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDnssdServiceInstance = @ptrCast(self);
         return try this.getDnssdServiceInstanceName();
@@ -109,9 +130,6 @@ pub const DnssdServiceInstance = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(dnssdServiceInstanceName: ?HSTRING, hostName: *HostName, port: u16) core.HResult!*DnssdServiceInstance {
         const _f = try @This()._IDnssdServiceInstanceFactoryCache.get();
         return try _f.Create(dnssdServiceInstanceName, hostName, port);
@@ -125,6 +143,18 @@ pub const DnssdServiceInstance = extern struct {
 };
 pub const DnssdServiceInstanceCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVectorView(DnssdServiceInstance) = @ptrCast(self);
         return try this.getSize();
@@ -144,6 +174,18 @@ pub const DnssdServiceInstanceCollection = extern struct {
 };
 pub const DnssdServiceWatcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAdded(self: *@This(), handler: *TypedEventHandler(DnssdServiceWatcher,DnssdServiceInstance)) core.HResult!EventRegistrationToken {
         const this: *IDnssdServiceWatcher = @ptrCast(self);
         return try this.addAdded(handler);
@@ -196,6 +238,12 @@ pub const DnssdServiceWatcherStatus = enum(i32) {
 };
 pub const IDnssdRegistrationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!DnssdRegistrationStatus {
         var _r: DnssdRegistrationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -233,6 +281,12 @@ pub const IDnssdRegistrationResult = extern struct {
 };
 pub const IDnssdServiceInstance = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDnssdServiceInstanceName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DnssdServiceInstanceName(@ptrCast(self), &_r);
@@ -344,6 +398,12 @@ pub const IDnssdServiceInstance = extern struct {
 };
 pub const IDnssdServiceInstanceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), dnssdServiceInstanceName: ?HSTRING, hostName: *HostName, port: u16) core.HResult!*DnssdServiceInstance {
         var _r: *DnssdServiceInstance = undefined;
         const _c = self.vtable.Create(@ptrCast(self), dnssdServiceInstanceName, hostName, port, &_r);
@@ -367,6 +427,12 @@ pub const IDnssdServiceInstanceFactory = extern struct {
 };
 pub const IDnssdServiceWatcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAdded(self: *@This(), handler: *TypedEventHandler(DnssdServiceWatcher,DnssdServiceInstance)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Added(@ptrCast(self), handler, &_r);

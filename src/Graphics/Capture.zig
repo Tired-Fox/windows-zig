@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const Direct3D11CaptureFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSurface(self: *@This()) core.HResult!*IDirect3DSurface {
         const this: *IDirect3D11CaptureFrame = @ptrCast(self);
         return try this.getSurface();
@@ -42,6 +54,18 @@ pub const Direct3D11CaptureFrame = extern struct {
 };
 pub const Direct3D11CaptureFramePool = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Recreate(self: *@This(), device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!void {
         const this: *IDirect3D11CaptureFramePool = @ptrCast(self);
         return try this.Recreate(device, pixelFormat, numberOfBuffers, size);
@@ -73,9 +97,6 @@ pub const Direct3D11CaptureFramePool = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!*Direct3D11CaptureFramePool {
         const _f = try @This()._IDirect3D11CaptureFramePoolStaticsCache.get();
         return try _f.Create(device, pixelFormat, numberOfBuffers, size);
@@ -94,6 +115,15 @@ pub const Direct3D11CaptureFramePool = extern struct {
 };
 pub const GraphicsCaptureAccess = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -115,6 +145,18 @@ pub const GraphicsCaptureDirtyRegionMode = enum(i32) {
 };
 pub const GraphicsCaptureItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGraphicsCaptureItem = @ptrCast(self);
         return try this.getDisplayName();
@@ -130,9 +172,6 @@ pub const GraphicsCaptureItem = extern struct {
     pub fn removeClosed(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *IGraphicsCaptureItem = @ptrCast(self);
         return try this.removeClosed(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryCreateFromWindowId(windowId: WindowId) core.HResult!*GraphicsCaptureItem {
         const _f = try @This()._IGraphicsCaptureItemStatics2Cache.get();
@@ -156,12 +195,21 @@ pub const GraphicsCaptureItem = extern struct {
 };
 pub const GraphicsCapturePicker = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn PickSingleItemAsync(self: *@This()) core.HResult!*IAsyncOperation(GraphicsCaptureItem) {
-        const this: *IGraphicsCapturePicker = @ptrCast(self);
-        return try this.PickSingleItemAsync();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn PickSingleItemAsync(self: *@This()) core.HResult!*IAsyncOperation(GraphicsCaptureItem) {
+        const this: *IGraphicsCapturePicker = @ptrCast(self);
+        return try this.PickSingleItemAsync();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -176,6 +224,18 @@ pub const GraphicsCapturePicker = extern struct {
 };
 pub const GraphicsCaptureSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartCapture(self: *@This()) core.HResult!void {
         const this: *IGraphicsCaptureSession = @ptrCast(self);
         return try this.StartCapture();
@@ -257,9 +317,6 @@ pub const GraphicsCaptureSession = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn IsSupported() core.HResult!bool {
         const _f = try @This()._IGraphicsCaptureSessionStaticsCache.get();
         return try _f.IsSupported();
@@ -273,6 +330,12 @@ pub const GraphicsCaptureSession = extern struct {
 };
 pub const IDirect3D11CaptureFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSurface(self: *@This()) core.HResult!*IDirect3DSurface {
         var _r: *IDirect3DSurface = undefined;
         const _c = self.vtable.get_Surface(@ptrCast(self), &_r);
@@ -310,6 +373,12 @@ pub const IDirect3D11CaptureFrame = extern struct {
 };
 pub const IDirect3D11CaptureFrame2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDirtyRegions(self: *@This()) core.HResult!*IVectorView(RectInt32) {
         var _r: *IVectorView(RectInt32) = undefined;
         const _c = self.vtable.get_DirtyRegions(@ptrCast(self), &_r);
@@ -340,6 +409,12 @@ pub const IDirect3D11CaptureFrame2 = extern struct {
 };
 pub const IDirect3D11CaptureFramePool = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Recreate(self: *@This(), device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!void {
         const _c = self.vtable.Recreate(@ptrCast(self), device, pixelFormat, numberOfBuffers, size);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -394,6 +469,12 @@ pub const IDirect3D11CaptureFramePool = extern struct {
 };
 pub const IDirect3D11CaptureFramePoolStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!*Direct3D11CaptureFramePool {
         var _r: *Direct3D11CaptureFramePool = undefined;
         const _c = self.vtable.Create(@ptrCast(self), device, pixelFormat, numberOfBuffers, size, &_r);
@@ -417,6 +498,12 @@ pub const IDirect3D11CaptureFramePoolStatics = extern struct {
 };
 pub const IDirect3D11CaptureFramePoolStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFreeThreaded(self: *@This(), device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!*Direct3D11CaptureFramePool {
         var _r: *Direct3D11CaptureFramePool = undefined;
         const _c = self.vtable.CreateFreeThreaded(@ptrCast(self), device, pixelFormat, numberOfBuffers, size, &_r);
@@ -440,6 +527,12 @@ pub const IDirect3D11CaptureFramePoolStatics2 = extern struct {
 };
 pub const IGraphicsCaptureAccessStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAccessAsync(self: *@This(), request: GraphicsCaptureAccessKind) core.HResult!*IAsyncOperation(AppCapabilityAccessStatus) {
         var _r: *IAsyncOperation(AppCapabilityAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), request, &_r);
@@ -463,6 +556,12 @@ pub const IGraphicsCaptureAccessStatics = extern struct {
 };
 pub const IGraphicsCaptureItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -505,6 +604,12 @@ pub const IGraphicsCaptureItem = extern struct {
 };
 pub const IGraphicsCaptureItemStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromVisual(self: *@This(), visual: *Visual) core.HResult!*GraphicsCaptureItem {
         var _r: *GraphicsCaptureItem = undefined;
         const _c = self.vtable.CreateFromVisual(@ptrCast(self), visual, &_r);
@@ -528,6 +633,12 @@ pub const IGraphicsCaptureItemStatics = extern struct {
 };
 pub const IGraphicsCaptureItemStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryCreateFromWindowId(self: *@This(), windowId: WindowId) core.HResult!*GraphicsCaptureItem {
         var _r: *GraphicsCaptureItem = undefined;
         const _c = self.vtable.TryCreateFromWindowId(@ptrCast(self), windowId, &_r);
@@ -558,6 +669,12 @@ pub const IGraphicsCaptureItemStatics2 = extern struct {
 };
 pub const IGraphicsCapturePicker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn PickSingleItemAsync(self: *@This()) core.HResult!*IAsyncOperation(GraphicsCaptureItem) {
         var _r: *IAsyncOperation(GraphicsCaptureItem) = undefined;
         const _c = self.vtable.PickSingleItemAsync(@ptrCast(self), &_r);
@@ -581,6 +698,12 @@ pub const IGraphicsCapturePicker = extern struct {
 };
 pub const IGraphicsCaptureSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartCapture(self: *@This()) core.HResult!void {
         const _c = self.vtable.StartCapture(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -602,6 +725,12 @@ pub const IGraphicsCaptureSession = extern struct {
 };
 pub const IGraphicsCaptureSession2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCursorCaptureEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCursorCaptureEnabled(@ptrCast(self), &_r);
@@ -630,6 +759,12 @@ pub const IGraphicsCaptureSession2 = extern struct {
 };
 pub const IGraphicsCaptureSession3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsBorderRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBorderRequired(@ptrCast(self), &_r);
@@ -658,6 +793,12 @@ pub const IGraphicsCaptureSession3 = extern struct {
 };
 pub const IGraphicsCaptureSession4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDirtyRegionMode(self: *@This()) core.HResult!GraphicsCaptureDirtyRegionMode {
         var _r: GraphicsCaptureDirtyRegionMode = undefined;
         const _c = self.vtable.get_DirtyRegionMode(@ptrCast(self), &_r);
@@ -686,6 +827,12 @@ pub const IGraphicsCaptureSession4 = extern struct {
 };
 pub const IGraphicsCaptureSession5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinUpdateInterval(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_MinUpdateInterval(@ptrCast(self), &_r);
@@ -714,6 +861,12 @@ pub const IGraphicsCaptureSession5 = extern struct {
 };
 pub const IGraphicsCaptureSession6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIncludeSecondaryWindows(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IncludeSecondaryWindows(@ptrCast(self), &_r);
@@ -742,6 +895,12 @@ pub const IGraphicsCaptureSession6 = extern struct {
 };
 pub const IGraphicsCaptureSessionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);

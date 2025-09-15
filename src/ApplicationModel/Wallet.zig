@@ -8,6 +8,12 @@ pub const WalletActionKind = enum(i32) {
 };
 pub const IWalletBarcode = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSymbology(self: *@This()) core.HResult!WalletBarcodeSymbology {
         var _r: WalletBarcodeSymbology = undefined;
         const _c = self.vtable.get_Symbology(@ptrCast(self), &_r);
@@ -45,6 +51,12 @@ pub const IWalletBarcode = extern struct {
 };
 pub const IWalletBarcodeFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWalletBarcode(self: *@This(), symbology: WalletBarcodeSymbology, value: ?HSTRING) core.HResult!*WalletBarcode {
         var _r: *WalletBarcode = undefined;
         const _c = self.vtable.CreateWalletBarcode(@ptrCast(self), symbology, value, &_r);
@@ -75,6 +87,12 @@ pub const IWalletBarcodeFactory = extern struct {
 };
 pub const IWalletItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -409,6 +427,12 @@ pub const IWalletItem = extern struct {
 };
 pub const IWalletItemCustomProperty = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -485,6 +509,12 @@ pub const IWalletItemCustomProperty = extern struct {
 };
 pub const IWalletItemCustomPropertyFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWalletItemCustomProperty(self: *@This(), name: ?HSTRING, value: ?HSTRING) core.HResult!*WalletItemCustomProperty {
         var _r: *WalletItemCustomProperty = undefined;
         const _c = self.vtable.CreateWalletItemCustomProperty(@ptrCast(self), name, value, &_r);
@@ -508,6 +538,12 @@ pub const IWalletItemCustomPropertyFactory = extern struct {
 };
 pub const IWalletItemFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWalletItem(self: *@This(), kind: WalletItemKind, displayName: ?HSTRING) core.HResult!*WalletItem {
         var _r: *WalletItem = undefined;
         const _c = self.vtable.CreateWalletItem(@ptrCast(self), kind, displayName, &_r);
@@ -531,6 +567,12 @@ pub const IWalletItemFactory = extern struct {
 };
 pub const IWalletItemStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddAsync(self: *@This(), id: ?HSTRING, item: *WalletItem) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.AddAsync(@ptrCast(self), id, item, &_r);
@@ -617,6 +659,12 @@ pub const IWalletItemStore = extern struct {
 };
 pub const IWalletItemStore2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addItemsChanged(self: *@This(), handler: *TypedEventHandler(WalletItemStore,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ItemsChanged(@ptrCast(self), handler, &_r);
@@ -645,6 +693,12 @@ pub const IWalletItemStore2 = extern struct {
 };
 pub const IWalletManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestStoreAsync(self: *@This()) core.HResult!*IAsyncOperation(WalletItemStore) {
         var _r: *IAsyncOperation(WalletItemStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), &_r);
@@ -668,6 +722,12 @@ pub const IWalletManagerStatics = extern struct {
 };
 pub const IWalletRelevantLocation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!BasicGeoposition {
         var _r: BasicGeoposition = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -708,6 +768,12 @@ pub const IWalletRelevantLocation = extern struct {
 };
 pub const IWalletTransaction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
@@ -796,6 +862,12 @@ pub const IWalletTransaction = extern struct {
 };
 pub const IWalletVerb = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -824,6 +896,12 @@ pub const IWalletVerb = extern struct {
 };
 pub const IWalletVerbFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWalletVerb(self: *@This(), name: ?HSTRING) core.HResult!*WalletVerb {
         var _r: *WalletVerb = undefined;
         const _c = self.vtable.CreateWalletVerb(@ptrCast(self), name, &_r);
@@ -847,6 +925,18 @@ pub const IWalletVerbFactory = extern struct {
 };
 pub const WalletBarcode = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSymbology(self: *@This()) core.HResult!WalletBarcodeSymbology {
         const this: *IWalletBarcode = @ptrCast(self);
         return try this.getSymbology();
@@ -858,9 +948,6 @@ pub const WalletBarcode = extern struct {
     pub fn GetImageAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamReference) {
         const this: *IWalletBarcode = @ptrCast(self);
         return try this.GetImageAsync();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWalletBarcode(symbology: WalletBarcodeSymbology, value: ?HSTRING) core.HResult!*WalletBarcode {
         const _f = try @This()._IWalletBarcodeFactoryCache.get();
@@ -910,6 +997,18 @@ pub const WalletDetailViewPosition = enum(i32) {
 };
 pub const WalletItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletItem = @ptrCast(self);
         return try this.getDisplayName();
@@ -1118,9 +1217,6 @@ pub const WalletItem = extern struct {
         const this: *IWalletItem = @ptrCast(self);
         return try this.getVerbs();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWalletItem(kind: WalletItemKind, displayName: ?HSTRING) core.HResult!*WalletItem {
         const _f = try @This()._IWalletItemFactoryCache.get();
         return try _f.CreateWalletItem(kind, displayName);
@@ -1134,6 +1230,18 @@ pub const WalletItem = extern struct {
 };
 pub const WalletItemCustomProperty = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletItemCustomProperty = @ptrCast(self);
         return try this.getName();
@@ -1174,9 +1282,6 @@ pub const WalletItemCustomProperty = extern struct {
         const this: *IWalletItemCustomProperty = @ptrCast(self);
         return try this.putSummaryViewPosition(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWalletItemCustomProperty(name: ?HSTRING, value: ?HSTRING) core.HResult!*WalletItemCustomProperty {
         const _f = try @This()._IWalletItemCustomPropertyFactoryCache.get();
         return try _f.CreateWalletItemCustomProperty(name, value);
@@ -1199,6 +1304,18 @@ pub const WalletItemKind = enum(i32) {
 };
 pub const WalletItemStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddAsync(self: *@This(), id: ?HSTRING, item: *WalletItem) core.HResult!*IAsyncAction {
         const this: *IWalletItemStore = @ptrCast(self);
         return try this.AddAsync(id, item);
@@ -1247,6 +1364,15 @@ pub const WalletItemStore = extern struct {
 };
 pub const WalletManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1260,6 +1386,18 @@ pub const WalletManager = extern struct {
 };
 pub const WalletRelevantLocation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!BasicGeoposition {
         const this: *IWalletRelevantLocation = @ptrCast(self);
         return try this.getPosition();
@@ -1275,9 +1413,6 @@ pub const WalletRelevantLocation = extern struct {
     pub fn putDisplayMessage(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletRelevantLocation = @ptrCast(self);
         return try this.putDisplayMessage(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1297,6 +1432,18 @@ pub const WalletSummaryViewPosition = enum(i32) {
 };
 pub const WalletTransaction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletTransaction = @ptrCast(self);
         return try this.getDescription();
@@ -1345,9 +1492,6 @@ pub const WalletTransaction = extern struct {
         const this: *IWalletTransaction = @ptrCast(self);
         return try this.putIsLaunchable(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWalletTransaction.IID)));
@@ -1361,6 +1505,18 @@ pub const WalletTransaction = extern struct {
 };
 pub const WalletVerb = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWalletVerb = @ptrCast(self);
         return try this.getName();
@@ -1368,9 +1524,6 @@ pub const WalletVerb = extern struct {
     pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IWalletVerb = @ptrCast(self);
         return try this.putName(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWalletVerb(name: ?HSTRING) core.HResult!*WalletVerb {
         const _f = try @This()._IWalletVerbFactoryCache.get();
@@ -1383,7 +1536,6 @@ pub const WalletVerb = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IWalletVerb.SIGNATURE);
     var _IWalletVerbFactoryCache: FactoryCache(IWalletVerbFactory, RUNTIME_NAME) = .{};
 };
-const HSTRING = @import("../root.zig").HSTRING;
 const IUnknown = @import("../root.zig").IUnknown;
 const Guid = @import("../root.zig").Guid;
 const Color = @import("../UI.zig").Color;
@@ -1403,4 +1555,5 @@ const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationTok
 const TrustLevel = @import("../root.zig").TrustLevel;
 const IAsyncAction = @import("../Foundation.zig").IAsyncAction;
 const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
+const HSTRING = @import("../root.zig").HSTRING;
 pub const System = @import("./Wallet/System.zig");

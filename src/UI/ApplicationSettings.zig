@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AccountsSettingsPane = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAccountCommandsRequested(self: *@This(), handler: *TypedEventHandler(AccountsSettingsPane,AccountsSettingsPaneCommandsRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IAccountsSettingsPane = @ptrCast(self);
         return try this.addAccountCommandsRequested(handler);
@@ -8,9 +20,6 @@ pub const AccountsSettingsPane = extern struct {
     pub fn removeAccountCommandsRequested(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const this: *IAccountsSettingsPane = @ptrCast(self);
         return try this.removeAccountCommandsRequested(cookie);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*AccountsSettingsPane {
         const _f = try @This()._IAccountsSettingsPaneStaticsCache.get();
@@ -47,6 +56,18 @@ pub const AccountsSettingsPane = extern struct {
 };
 pub const AccountsSettingsPaneCommandsRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccountProviderCommands(self: *@This()) core.HResult!*IVector(WebAccountProviderCommand) {
         const this: *IAccountsSettingsPaneCommandsRequestedEventArgs = @ptrCast(self);
         return try this.getWebAccountProviderCommands();
@@ -90,6 +111,18 @@ pub const AccountsSettingsPaneCommandsRequestedEventArgs = extern struct {
 };
 pub const AccountsSettingsPaneEventDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IAccountsSettingsPaneEventDeferral = @ptrCast(self);
         return try this.Complete();
@@ -102,6 +135,18 @@ pub const AccountsSettingsPaneEventDeferral = extern struct {
 };
 pub const CredentialCommand = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPasswordCredential(self: *@This()) core.HResult!*PasswordCredential {
         const this: *ICredentialCommand = @ptrCast(self);
         return try this.getPasswordCredential();
@@ -109,9 +154,6 @@ pub const CredentialCommand = extern struct {
     pub fn getCredentialDeleted(self: *@This()) core.HResult!*CredentialCommandCredentialDeletedHandler {
         const this: *ICredentialCommand = @ptrCast(self);
         return try this.getCredentialDeleted();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCredentialCommand(passwordCredential: *PasswordCredential) core.HResult!*CredentialCommand {
         const _f = try @This()._ICredentialCommandFactoryCache.get();
@@ -219,6 +261,12 @@ pub const CredentialCommandCredentialDeletedHandler = extern struct {
 };
 pub const IAccountsSettingsPane = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAccountCommandsRequested(self: *@This(), handler: *TypedEventHandler(AccountsSettingsPane,AccountsSettingsPaneCommandsRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AccountCommandsRequested(@ptrCast(self), handler, &_r);
@@ -247,6 +295,12 @@ pub const IAccountsSettingsPane = extern struct {
 };
 pub const IAccountsSettingsPaneCommandsRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccountProviderCommands(self: *@This()) core.HResult!*IVector(WebAccountProviderCommand) {
         var _r: *IVector(WebAccountProviderCommand) = undefined;
         const _c = self.vtable.get_WebAccountProviderCommands(@ptrCast(self), &_r);
@@ -310,6 +364,12 @@ pub const IAccountsSettingsPaneCommandsRequestedEventArgs = extern struct {
 };
 pub const IAccountsSettingsPaneCommandsRequestedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -333,6 +393,12 @@ pub const IAccountsSettingsPaneCommandsRequestedEventArgs2 = extern struct {
 };
 pub const IAccountsSettingsPaneEventDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -354,6 +420,12 @@ pub const IAccountsSettingsPaneEventDeferral = extern struct {
 };
 pub const IAccountsSettingsPaneStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*AccountsSettingsPane {
         var _r: *AccountsSettingsPane = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -382,6 +454,12 @@ pub const IAccountsSettingsPaneStatics = extern struct {
 };
 pub const IAccountsSettingsPaneStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowManageAccountsAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowManageAccountsAsync(@ptrCast(self), &_r);
@@ -412,6 +490,12 @@ pub const IAccountsSettingsPaneStatics2 = extern struct {
 };
 pub const IAccountsSettingsPaneStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowManageAccountsForUserAsync(self: *@This(), user: *User) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowManageAccountsForUserAsync(@ptrCast(self), user, &_r);
@@ -442,6 +526,12 @@ pub const IAccountsSettingsPaneStatics3 = extern struct {
 };
 pub const ICredentialCommand = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPasswordCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_PasswordCredential(@ptrCast(self), &_r);
@@ -472,6 +562,12 @@ pub const ICredentialCommand = extern struct {
 };
 pub const ICredentialCommandFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateCredentialCommand(self: *@This(), passwordCredential: *PasswordCredential) core.HResult!*CredentialCommand {
         var _r: *CredentialCommand = undefined;
         const _c = self.vtable.CreateCredentialCommand(@ptrCast(self), passwordCredential, &_r);
@@ -502,6 +598,12 @@ pub const ICredentialCommandFactory = extern struct {
 };
 pub const ISettingsCommandFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSettingsCommand(self: *@This(), settingsCommandId: *IInspectable, label: ?HSTRING, handler: *UICommandInvokedHandler) core.HResult!*SettingsCommand {
         var _r: *SettingsCommand = undefined;
         const _c = self.vtable.CreateSettingsCommand(@ptrCast(self), settingsCommandId, label, handler, &_r);
@@ -525,6 +627,12 @@ pub const ISettingsCommandFactory = extern struct {
 };
 pub const ISettingsCommandStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccountsCommand(self: *@This()) core.HResult!*SettingsCommand {
         var _r: *SettingsCommand = undefined;
         const _c = self.vtable.get_AccountsCommand(@ptrCast(self), &_r);
@@ -548,6 +656,12 @@ pub const ISettingsCommandStatics = extern struct {
 };
 pub const IWebAccountCommand = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccount(self: *@This()) core.HResult!*WebAccount {
         var _r: *WebAccount = undefined;
         const _c = self.vtable.get_WebAccount(@ptrCast(self), &_r);
@@ -585,6 +699,12 @@ pub const IWebAccountCommand = extern struct {
 };
 pub const IWebAccountCommandFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWebAccountCommand(self: *@This(), webAccount: *WebAccount, invoked: *WebAccountCommandInvokedHandler, actions: SupportedWebAccountActions) core.HResult!*WebAccountCommand {
         var _r: *WebAccountCommand = undefined;
         const _c = self.vtable.CreateWebAccountCommand(@ptrCast(self), webAccount, invoked, actions, &_r);
@@ -608,6 +728,12 @@ pub const IWebAccountCommandFactory = extern struct {
 };
 pub const IWebAccountInvokedArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!WebAccountAction {
         var _r: WebAccountAction = undefined;
         const _c = self.vtable.get_Action(@ptrCast(self), &_r);
@@ -631,6 +757,12 @@ pub const IWebAccountInvokedArgs = extern struct {
 };
 pub const IWebAccountProviderCommand = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccountProvider(self: *@This()) core.HResult!*WebAccountProvider {
         var _r: *WebAccountProvider = undefined;
         const _c = self.vtable.get_WebAccountProvider(@ptrCast(self), &_r);
@@ -661,6 +793,12 @@ pub const IWebAccountProviderCommand = extern struct {
 };
 pub const IWebAccountProviderCommandFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWebAccountProviderCommand(self: *@This(), webAccountProvider: *WebAccountProvider, invoked: *WebAccountProviderCommandInvokedHandler) core.HResult!*WebAccountProviderCommand {
         var _r: *WebAccountProviderCommand = undefined;
         const _c = self.vtable.CreateWebAccountProviderCommand(@ptrCast(self), webAccountProvider, invoked, &_r);
@@ -684,6 +822,18 @@ pub const IWebAccountProviderCommandFactory = extern struct {
 };
 pub const SettingsCommand = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IUICommand = @ptrCast(self);
         return try this.getLabel();
@@ -707,9 +857,6 @@ pub const SettingsCommand = extern struct {
     pub fn putId(self: *@This(), value: *IInspectable) core.HResult!void {
         const this: *IUICommand = @ptrCast(self);
         return try this.putId(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateSettingsCommand(settingsCommandId: *IInspectable, label: ?HSTRING, handler: *UICommandInvokedHandler) core.HResult!*SettingsCommand {
         const _f = try @This()._ISettingsCommandFactoryCache.get();
@@ -744,6 +891,18 @@ pub const WebAccountAction = enum(i32) {
 };
 pub const WebAccountCommand = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccount(self: *@This()) core.HResult!*WebAccount {
         const this: *IWebAccountCommand = @ptrCast(self);
         return try this.getWebAccount();
@@ -755,9 +914,6 @@ pub const WebAccountCommand = extern struct {
     pub fn getActions(self: *@This()) core.HResult!SupportedWebAccountActions {
         const this: *IWebAccountCommand = @ptrCast(self);
         return try this.getActions();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWebAccountCommand(webAccount: *WebAccount, invoked: *WebAccountCommandInvokedHandler, actions: SupportedWebAccountActions) core.HResult!*WebAccountCommand {
         const _f = try @This()._IWebAccountCommandFactoryCache.get();
@@ -861,6 +1017,18 @@ pub const WebAccountCommandInvokedHandler = extern struct {
 };
 pub const WebAccountInvokedArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!WebAccountAction {
         const this: *IWebAccountInvokedArgs = @ptrCast(self);
         return try this.getAction();
@@ -873,6 +1041,18 @@ pub const WebAccountInvokedArgs = extern struct {
 };
 pub const WebAccountProviderCommand = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccountProvider(self: *@This()) core.HResult!*WebAccountProvider {
         const this: *IWebAccountProviderCommand = @ptrCast(self);
         return try this.getWebAccountProvider();
@@ -880,9 +1060,6 @@ pub const WebAccountProviderCommand = extern struct {
     pub fn getInvoked(self: *@This()) core.HResult!*WebAccountProviderCommandInvokedHandler {
         const this: *IWebAccountProviderCommand = @ptrCast(self);
         return try this.getInvoked();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWebAccountProviderCommand(webAccountProvider: *WebAccountProvider, invoked: *WebAccountProviderCommandInvokedHandler) core.HResult!*WebAccountProviderCommand {
         const _f = try @This()._IWebAccountProviderCommandFactoryCache.get();
@@ -986,6 +1163,12 @@ pub const WebAccountProviderCommandInvokedHandler = extern struct {
 };
 pub const ISettingsPane = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addCommandsRequested(self: *@This(), handler: *TypedEventHandler(SettingsPane,SettingsPaneCommandsRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CommandsRequested(@ptrCast(self), handler, &_r);
@@ -1014,6 +1197,12 @@ pub const ISettingsPane = extern struct {
 };
 pub const ISettingsPaneCommandsRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getApplicationCommands(self: *@This()) core.HResult!*IVector(SettingsCommand) {
         var _r: *IVector(SettingsCommand) = undefined;
         const _c = self.vtable.get_ApplicationCommands(@ptrCast(self), &_r);
@@ -1037,6 +1226,12 @@ pub const ISettingsPaneCommandsRequest = extern struct {
 };
 pub const ISettingsPaneCommandsRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*SettingsPaneCommandsRequest {
         var _r: *SettingsPaneCommandsRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -1060,6 +1255,12 @@ pub const ISettingsPaneCommandsRequestedEventArgs = extern struct {
 };
 pub const ISettingsPaneStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*SettingsPane {
         var _r: *SettingsPane = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -1099,6 +1300,18 @@ pub const SettingsEdgeLocation = enum(i32) {
 };
 pub const SettingsPane = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addCommandsRequested(self: *@This(), handler: *TypedEventHandler(SettingsPane,SettingsPaneCommandsRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *ISettingsPane = @ptrCast(self);
         return try this.addCommandsRequested(handler);
@@ -1106,9 +1319,6 @@ pub const SettingsPane = extern struct {
     pub fn removeCommandsRequested(self: *@This(), cookie: EventRegistrationToken) core.HResult!void {
         const this: *ISettingsPane = @ptrCast(self);
         return try this.removeCommandsRequested(cookie);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*SettingsPane {
         const _f = try @This()._ISettingsPaneStaticsCache.get();
@@ -1131,6 +1341,18 @@ pub const SettingsPane = extern struct {
 };
 pub const SettingsPaneCommandsRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getApplicationCommands(self: *@This()) core.HResult!*IVector(SettingsCommand) {
         const this: *ISettingsPaneCommandsRequest = @ptrCast(self);
         return try this.getApplicationCommands();
@@ -1143,6 +1365,18 @@ pub const SettingsPaneCommandsRequest = extern struct {
 };
 pub const SettingsPaneCommandsRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*SettingsPaneCommandsRequest {
         const this: *ISettingsPaneCommandsRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();

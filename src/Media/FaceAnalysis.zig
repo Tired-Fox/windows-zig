@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const DetectedFace = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFaceBox(self: *@This()) core.HResult!BitmapBounds {
         const this: *IDetectedFace = @ptrCast(self);
         return try this.getFaceBox();
@@ -13,6 +25,18 @@ pub const DetectedFace = extern struct {
 };
 pub const FaceDetector = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DetectFacesAsync(self: *@This(), image: *SoftwareBitmap) core.HResult!*IAsyncOperation(IVector(DetectedFace)) {
         const this: *IFaceDetector = @ptrCast(self);
         return try this.DetectFacesAsync(image);
@@ -36,9 +60,6 @@ pub const FaceDetector = extern struct {
     pub fn putMaxDetectableFaceSize(self: *@This(), value: BitmapSize) core.HResult!void {
         const this: *IFaceDetector = @ptrCast(self);
         return try this.putMaxDetectableFaceSize(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync() core.HResult!*IAsyncOperation(FaceDetector) {
         const _f = try @This()._IFaceDetectorStaticsCache.get();
@@ -65,6 +86,18 @@ pub const FaceDetector = extern struct {
 };
 pub const FaceTracker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ProcessNextFrameAsync(self: *@This(), videoFrame: *VideoFrame) core.HResult!*IAsyncOperation(IVector(DetectedFace)) {
         const this: *IFaceTracker = @ptrCast(self);
         return try this.ProcessNextFrameAsync(videoFrame);
@@ -84,9 +117,6 @@ pub const FaceTracker = extern struct {
     pub fn putMaxDetectableFaceSize(self: *@This(), value: BitmapSize) core.HResult!void {
         const this: *IFaceTracker = @ptrCast(self);
         return try this.putMaxDetectableFaceSize(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync() core.HResult!*IAsyncOperation(FaceTracker) {
         const _f = try @This()._IFaceTrackerStaticsCache.get();
@@ -113,6 +143,12 @@ pub const FaceTracker = extern struct {
 };
 pub const IDetectedFace = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFaceBox(self: *@This()) core.HResult!BitmapBounds {
         var _r: BitmapBounds = undefined;
         const _c = self.vtable.get_FaceBox(@ptrCast(self), &_r);
@@ -136,6 +172,12 @@ pub const IDetectedFace = extern struct {
 };
 pub const IFaceDetector = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DetectFacesAsync(self: *@This(), image: *SoftwareBitmap) core.HResult!*IAsyncOperation(IVector(DetectedFace)) {
         var _r: *IAsyncOperation(IVector(DetectedFace)) = undefined;
         const _c = self.vtable.DetectFacesAsync(@ptrCast(self), image, &_r);
@@ -190,6 +232,12 @@ pub const IFaceDetector = extern struct {
 };
 pub const IFaceDetectorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAsync(self: *@This()) core.HResult!*IAsyncOperation(FaceDetector) {
         var _r: *IAsyncOperation(FaceDetector) = undefined;
         const _c = self.vtable.CreateAsync(@ptrCast(self), &_r);
@@ -234,6 +282,12 @@ pub const IFaceDetectorStatics = extern struct {
 };
 pub const IFaceTracker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ProcessNextFrameAsync(self: *@This(), videoFrame: *VideoFrame) core.HResult!*IAsyncOperation(IVector(DetectedFace)) {
         var _r: *IAsyncOperation(IVector(DetectedFace)) = undefined;
         const _c = self.vtable.ProcessNextFrameAsync(@ptrCast(self), videoFrame, &_r);
@@ -281,6 +335,12 @@ pub const IFaceTracker = extern struct {
 };
 pub const IFaceTrackerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAsync(self: *@This()) core.HResult!*IAsyncOperation(FaceTracker) {
         var _r: *IAsyncOperation(FaceTracker) = undefined;
         const _c = self.vtable.CreateAsync(@ptrCast(self), &_r);
@@ -323,8 +383,8 @@ pub const IFaceTrackerStatics = extern struct {
         get_IsSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
-const HSTRING = @import("../root.zig").HSTRING;
 const IUnknown = @import("../root.zig").IUnknown;
+const HSTRING = @import("../root.zig").HSTRING;
 const Guid = @import("../root.zig").Guid;
 const HRESULT = @import("../root.zig").HRESULT;
 const core = @import("../root.zig").core;

@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AdvancedColorInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentAdvancedColorKind(self: *@This()) core.HResult!AdvancedColorKind {
         const this: *IAdvancedColorInfo = @ptrCast(self);
         return try this.getCurrentAdvancedColorKind();
@@ -58,6 +70,18 @@ pub const AdvancedColorKind = enum(i32) {
 };
 pub const BrightnessOverride = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         const this: *IBrightnessOverride = @ptrCast(self);
         return try this.getIsSupported();
@@ -114,9 +138,6 @@ pub const BrightnessOverride = extern struct {
         const this: *IBrightnessOverride = @ptrCast(self);
         return try this.removeBrightnessLevelChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefaultForSystem() core.HResult!*BrightnessOverride {
         const _f = try @This()._IBrightnessOverrideStaticsCache.get();
         return try _f.GetDefaultForSystem();
@@ -138,6 +159,18 @@ pub const BrightnessOverride = extern struct {
 };
 pub const BrightnessOverrideSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesiredLevel(self: *@This()) core.HResult!f64 {
         const this: *IBrightnessOverrideSettings = @ptrCast(self);
         return try this.getDesiredLevel();
@@ -145,9 +178,6 @@ pub const BrightnessOverrideSettings = extern struct {
     pub fn getDesiredNits(self: *@This()) core.HResult!f32 {
         const this: *IBrightnessOverrideSettings = @ptrCast(self);
         return try this.getDesiredNits();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromLevel(level: f64) core.HResult!*BrightnessOverrideSettings {
         const _f = try @This()._IBrightnessOverrideSettingsStaticsCache.get();
@@ -170,12 +200,21 @@ pub const BrightnessOverrideSettings = extern struct {
 };
 pub const ColorOverrideSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getDesiredDisplayColorOverrideScenario(self: *@This()) core.HResult!DisplayColorOverrideScenario {
-        const this: *IColorOverrideSettings = @ptrCast(self);
-        return try this.getDesiredDisplayColorOverrideScenario();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getDesiredDisplayColorOverrideScenario(self: *@This()) core.HResult!DisplayColorOverrideScenario {
+        const this: *IColorOverrideSettings = @ptrCast(self);
+        return try this.getDesiredDisplayColorOverrideScenario();
     }
     pub fn CreateFromDisplayColorOverrideScenario(overrideScenario: DisplayColorOverrideScenario) core.HResult!*ColorOverrideSettings {
         const _f = try @This()._IColorOverrideSettingsStaticsCache.get();
@@ -208,6 +247,18 @@ pub const DisplayColorOverrideScenario = enum(i32) {
 };
 pub const DisplayEnhancementOverride = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColorOverrideSettings(self: *@This()) core.HResult!*ColorOverrideSettings {
         const this: *IDisplayEnhancementOverride = @ptrCast(self);
         return try this.getColorOverrideSettings();
@@ -268,9 +319,6 @@ pub const DisplayEnhancementOverride = extern struct {
         const this: *IDisplayEnhancementOverride = @ptrCast(self);
         return try this.removeDisplayEnhancementOverrideCapabilitiesChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*DisplayEnhancementOverride {
         const _f = try @This()._IDisplayEnhancementOverrideStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -284,6 +332,18 @@ pub const DisplayEnhancementOverride = extern struct {
 };
 pub const DisplayEnhancementOverrideCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsBrightnessControlSupported(self: *@This()) core.HResult!bool {
         const this: *IDisplayEnhancementOverrideCapabilities = @ptrCast(self);
         return try this.getIsBrightnessControlSupported();
@@ -304,6 +364,18 @@ pub const DisplayEnhancementOverrideCapabilities = extern struct {
 };
 pub const DisplayEnhancementOverrideCapabilitiesChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapabilities(self: *@This()) core.HResult!*DisplayEnhancementOverrideCapabilities {
         const this: *IDisplayEnhancementOverrideCapabilitiesChangedEventArgs = @ptrCast(self);
         return try this.getCapabilities();
@@ -316,6 +388,18 @@ pub const DisplayEnhancementOverrideCapabilitiesChangedEventArgs = extern struct
 };
 pub const DisplayInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentOrientation(self: *@This()) core.HResult!DisplayOrientations {
         const this: *IDisplayInformation = @ptrCast(self);
         return try this.getCurrentOrientation();
@@ -429,9 +513,6 @@ pub const DisplayInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAdvancedColorInfoChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*DisplayInformation {
         const _f = try @This()._IDisplayInformationStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -468,6 +549,15 @@ pub const DisplayOrientations = enum(i32) {
 };
 pub const DisplayProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -638,6 +728,15 @@ pub const DisplayPropertiesEventHandler = extern struct {
 };
 pub const DisplayServices = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -658,6 +757,12 @@ pub const HdrMetadataFormat = enum(i32) {
 };
 pub const IAdvancedColorInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentAdvancedColorKind(self: *@This()) core.HResult!AdvancedColorKind {
         var _r: AdvancedColorKind = undefined;
         const _c = self.vtable.get_CurrentAdvancedColorKind(@ptrCast(self), &_r);
@@ -751,6 +856,12 @@ pub const IAdvancedColorInfo = extern struct {
 };
 pub const IBrightnessOverride = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
@@ -851,6 +962,12 @@ pub const IBrightnessOverride = extern struct {
 };
 pub const IBrightnessOverrideSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesiredLevel(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DesiredLevel(@ptrCast(self), &_r);
@@ -881,6 +998,12 @@ pub const IBrightnessOverrideSettings = extern struct {
 };
 pub const IBrightnessOverrideSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromLevel(self: *@This(), level: f64) core.HResult!*BrightnessOverrideSettings {
         var _r: *BrightnessOverrideSettings = undefined;
         const _c = self.vtable.CreateFromLevel(@ptrCast(self), level, &_r);
@@ -918,6 +1041,12 @@ pub const IBrightnessOverrideSettingsStatics = extern struct {
 };
 pub const IBrightnessOverrideStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultForSystem(self: *@This()) core.HResult!*BrightnessOverride {
         var _r: *BrightnessOverride = undefined;
         const _c = self.vtable.GetDefaultForSystem(@ptrCast(self), &_r);
@@ -955,6 +1084,12 @@ pub const IBrightnessOverrideStatics = extern struct {
 };
 pub const IColorOverrideSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesiredDisplayColorOverrideScenario(self: *@This()) core.HResult!DisplayColorOverrideScenario {
         var _r: DisplayColorOverrideScenario = undefined;
         const _c = self.vtable.get_DesiredDisplayColorOverrideScenario(@ptrCast(self), &_r);
@@ -978,6 +1113,12 @@ pub const IColorOverrideSettings = extern struct {
 };
 pub const IColorOverrideSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromDisplayColorOverrideScenario(self: *@This(), overrideScenario: DisplayColorOverrideScenario) core.HResult!*ColorOverrideSettings {
         var _r: *ColorOverrideSettings = undefined;
         const _c = self.vtable.CreateFromDisplayColorOverrideScenario(@ptrCast(self), overrideScenario, &_r);
@@ -1001,6 +1142,12 @@ pub const IColorOverrideSettingsStatics = extern struct {
 };
 pub const IDisplayEnhancementOverride = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColorOverrideSettings(self: *@This()) core.HResult!*ColorOverrideSettings {
         var _r: *ColorOverrideSettings = undefined;
         const _c = self.vtable.get_ColorOverrideSettings(@ptrCast(self), &_r);
@@ -1108,6 +1255,12 @@ pub const IDisplayEnhancementOverride = extern struct {
 };
 pub const IDisplayEnhancementOverrideCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsBrightnessControlSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBrightnessControlSupported(@ptrCast(self), &_r);
@@ -1145,6 +1298,12 @@ pub const IDisplayEnhancementOverrideCapabilities = extern struct {
 };
 pub const IDisplayEnhancementOverrideCapabilitiesChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapabilities(self: *@This()) core.HResult!*DisplayEnhancementOverrideCapabilities {
         var _r: *DisplayEnhancementOverrideCapabilities = undefined;
         const _c = self.vtable.get_Capabilities(@ptrCast(self), &_r);
@@ -1168,6 +1327,12 @@ pub const IDisplayEnhancementOverrideCapabilitiesChangedEventArgs = extern struc
 };
 pub const IDisplayEnhancementOverrideStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*DisplayEnhancementOverride {
         var _r: *DisplayEnhancementOverride = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -1191,6 +1356,12 @@ pub const IDisplayEnhancementOverrideStatics = extern struct {
 };
 pub const IDisplayInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentOrientation(self: *@This()) core.HResult!DisplayOrientations {
         var _r: DisplayOrientations = undefined;
         const _c = self.vtable.get_CurrentOrientation(@ptrCast(self), &_r);
@@ -1311,6 +1482,12 @@ pub const IDisplayInformation = extern struct {
 };
 pub const IDisplayInformation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRawPixelsPerViewPixel(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_RawPixelsPerViewPixel(@ptrCast(self), &_r);
@@ -1334,6 +1511,12 @@ pub const IDisplayInformation2 = extern struct {
 };
 pub const IDisplayInformation3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDiagonalSizeInInches(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_DiagonalSizeInInches(@ptrCast(self), &_r);
@@ -1357,6 +1540,12 @@ pub const IDisplayInformation3 = extern struct {
 };
 pub const IDisplayInformation4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScreenWidthInRawPixels(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ScreenWidthInRawPixels(@ptrCast(self), &_r);
@@ -1387,6 +1576,12 @@ pub const IDisplayInformation4 = extern struct {
 };
 pub const IDisplayInformation5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAdvancedColorInfo(self: *@This()) core.HResult!*AdvancedColorInfo {
         var _r: *AdvancedColorInfo = undefined;
         const _c = self.vtable.GetAdvancedColorInfo(@ptrCast(self), &_r);
@@ -1422,6 +1617,12 @@ pub const IDisplayInformation5 = extern struct {
 };
 pub const IDisplayInformationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*DisplayInformation {
         var _r: *DisplayInformation = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -1469,6 +1670,12 @@ pub const IDisplayInformationStatics = extern struct {
 };
 pub const IDisplayPropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentOrientation(self: *@This()) core.HResult!DisplayOrientations {
         var _r: DisplayOrientations = undefined;
         const _c = self.vtable.get_CurrentOrientation(@ptrCast(self), &_r);
@@ -1599,6 +1806,12 @@ pub const IDisplayPropertiesStatics = extern struct {
 };
 pub const IDisplayServices = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Graphics.Display.IDisplayServices";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1b54f32b-890d-5747-bd26-fdbdeb0c8a71";
@@ -1615,6 +1828,12 @@ pub const IDisplayServices = extern struct {
 };
 pub const IDisplayServicesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAll(self: *@This()) core.HResult![*]DisplayId {
         var _r: [*]DisplayId = undefined;
         const _c = self.vtable.FindAll(@ptrCast(self), &_r);

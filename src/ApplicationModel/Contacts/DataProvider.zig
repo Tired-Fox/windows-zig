@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const ContactDataProviderConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSyncRequested(self: *@This(), handler: *TypedEventHandler(ContactDataProviderConnection,ContactListSyncManagerSyncRequestEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IContactDataProviderConnection = @ptrCast(self);
         return try this.addSyncRequested(handler);
@@ -57,6 +69,18 @@ pub const ContactDataProviderConnection = extern struct {
 };
 pub const ContactDataProviderTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*ContactDataProviderConnection {
         const this: *IContactDataProviderTriggerDetails = @ptrCast(self);
         return try this.getConnection();
@@ -69,6 +93,18 @@ pub const ContactDataProviderTriggerDetails = extern struct {
 };
 pub const ContactListCreateOrUpdateContactRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactListCreateOrUpdateContactRequest = @ptrCast(self);
         return try this.getContactListId();
@@ -93,6 +129,18 @@ pub const ContactListCreateOrUpdateContactRequest = extern struct {
 };
 pub const ContactListCreateOrUpdateContactRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*ContactListCreateOrUpdateContactRequest {
         const this: *IContactListCreateOrUpdateContactRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -109,6 +157,18 @@ pub const ContactListCreateOrUpdateContactRequestEventArgs = extern struct {
 };
 pub const ContactListDeleteContactRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactListDeleteContactRequest = @ptrCast(self);
         return try this.getContactListId();
@@ -133,6 +193,18 @@ pub const ContactListDeleteContactRequest = extern struct {
 };
 pub const ContactListDeleteContactRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*ContactListDeleteContactRequest {
         const this: *IContactListDeleteContactRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -149,6 +221,18 @@ pub const ContactListDeleteContactRequestEventArgs = extern struct {
 };
 pub const ContactListServerSearchReadBatchRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactListServerSearchReadBatchRequest = @ptrCast(self);
         return try this.getSessionId();
@@ -185,6 +269,18 @@ pub const ContactListServerSearchReadBatchRequest = extern struct {
 };
 pub const ContactListServerSearchReadBatchRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*ContactListServerSearchReadBatchRequest {
         const this: *IContactListServerSearchReadBatchRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -201,6 +297,18 @@ pub const ContactListServerSearchReadBatchRequestEventArgs = extern struct {
 };
 pub const ContactListSyncManagerSyncRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactListSyncManagerSyncRequest = @ptrCast(self);
         return try this.getContactListId();
@@ -221,6 +329,18 @@ pub const ContactListSyncManagerSyncRequest = extern struct {
 };
 pub const ContactListSyncManagerSyncRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*ContactListSyncManagerSyncRequest {
         const this: *IContactListSyncManagerSyncRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -237,6 +357,12 @@ pub const ContactListSyncManagerSyncRequestEventArgs = extern struct {
 };
 pub const IContactDataProviderConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSyncRequested(self: *@This(), handler: *TypedEventHandler(ContactDataProviderConnection,ContactListSyncManagerSyncRequestEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SyncRequested(@ptrCast(self), handler, &_r);
@@ -282,6 +408,12 @@ pub const IContactDataProviderConnection = extern struct {
 };
 pub const IContactDataProviderConnection2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addCreateOrUpdateContactRequested(self: *@This(), handler: *TypedEventHandler(ContactDataProviderConnection,ContactListCreateOrUpdateContactRequestEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CreateOrUpdateContactRequested(@ptrCast(self), handler, &_r);
@@ -322,6 +454,12 @@ pub const IContactDataProviderConnection2 = extern struct {
 };
 pub const IContactDataProviderTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*ContactDataProviderConnection {
         var _r: *ContactDataProviderConnection = undefined;
         const _c = self.vtable.get_Connection(@ptrCast(self), &_r);
@@ -345,6 +483,12 @@ pub const IContactDataProviderTriggerDetails = extern struct {
 };
 pub const IContactListCreateOrUpdateContactRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactListId(@ptrCast(self), &_r);
@@ -389,6 +533,12 @@ pub const IContactListCreateOrUpdateContactRequest = extern struct {
 };
 pub const IContactListCreateOrUpdateContactRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*ContactListCreateOrUpdateContactRequest {
         var _r: *ContactListCreateOrUpdateContactRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -419,6 +569,12 @@ pub const IContactListCreateOrUpdateContactRequestEventArgs = extern struct {
 };
 pub const IContactListDeleteContactRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactListId(@ptrCast(self), &_r);
@@ -463,6 +619,12 @@ pub const IContactListDeleteContactRequest = extern struct {
 };
 pub const IContactListDeleteContactRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*ContactListDeleteContactRequest {
         var _r: *ContactListDeleteContactRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -493,6 +655,12 @@ pub const IContactListDeleteContactRequestEventArgs = extern struct {
 };
 pub const IContactListServerSearchReadBatchRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
@@ -558,6 +726,12 @@ pub const IContactListServerSearchReadBatchRequest = extern struct {
 };
 pub const IContactListServerSearchReadBatchRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*ContactListServerSearchReadBatchRequest {
         var _r: *ContactListServerSearchReadBatchRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -588,6 +762,12 @@ pub const IContactListServerSearchReadBatchRequestEventArgs = extern struct {
 };
 pub const IContactListSyncManagerSyncRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactListId(@ptrCast(self), &_r);
@@ -625,6 +805,12 @@ pub const IContactListSyncManagerSyncRequest = extern struct {
 };
 pub const IContactListSyncManagerSyncRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*ContactListSyncManagerSyncRequest {
         var _r: *ContactListSyncManagerSyncRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);

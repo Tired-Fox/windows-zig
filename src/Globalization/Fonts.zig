@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ILanguageFont = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFontFamily(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FontFamily(@ptrCast(self), &_r);
@@ -52,6 +58,12 @@ pub const ILanguageFont = extern struct {
 };
 pub const ILanguageFontGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUITextFont(self: *@This()) core.HResult!*LanguageFont {
         var _r: *LanguageFont = undefined;
         const _c = self.vtable.get_UITextFont(@ptrCast(self), &_r);
@@ -145,6 +157,12 @@ pub const ILanguageFontGroup = extern struct {
 };
 pub const ILanguageFontGroupFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateLanguageFontGroup(self: *@This(), languageTag: ?HSTRING) core.HResult!*LanguageFontGroup {
         var _r: *LanguageFontGroup = undefined;
         const _c = self.vtable.CreateLanguageFontGroup(@ptrCast(self), languageTag, &_r);
@@ -168,6 +186,18 @@ pub const ILanguageFontGroupFactory = extern struct {
 };
 pub const LanguageFont = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFontFamily(self: *@This()) core.HResult!?HSTRING {
         const this: *ILanguageFont = @ptrCast(self);
         return try this.getFontFamily();
@@ -196,6 +226,18 @@ pub const LanguageFont = extern struct {
 };
 pub const LanguageFontGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUITextFont(self: *@This()) core.HResult!*LanguageFont {
         const this: *ILanguageFontGroup = @ptrCast(self);
         return try this.getUITextFont();
@@ -239,9 +281,6 @@ pub const LanguageFontGroup = extern struct {
     pub fn getDocumentAlternate2Font(self: *@This()) core.HResult!*LanguageFont {
         const this: *ILanguageFontGroup = @ptrCast(self);
         return try this.getDocumentAlternate2Font();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateLanguageFontGroup(languageTag: ?HSTRING) core.HResult!*LanguageFontGroup {
         const _f = try @This()._ILanguageFontGroupFactoryCache.get();

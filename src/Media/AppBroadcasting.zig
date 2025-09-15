@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AppBroadcastingMonitor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCurrentAppBroadcasting(self: *@This()) core.HResult!bool {
         const this: *IAppBroadcastingMonitor = @ptrCast(self);
         return try this.getIsCurrentAppBroadcasting();
@@ -12,9 +24,6 @@ pub const AppBroadcastingMonitor = extern struct {
     pub fn removeIsCurrentAppBroadcastingChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *IAppBroadcastingMonitor = @ptrCast(self);
         return try this.removeIsCurrentAppBroadcastingChanged(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -29,6 +38,18 @@ pub const AppBroadcastingMonitor = extern struct {
 };
 pub const AppBroadcastingStatus = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanStartBroadcast(self: *@This()) core.HResult!bool {
         const this: *IAppBroadcastingStatus = @ptrCast(self);
         return try this.getCanStartBroadcast();
@@ -45,6 +66,18 @@ pub const AppBroadcastingStatus = extern struct {
 };
 pub const AppBroadcastingStatusDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAnyAppBroadcasting(self: *@This()) core.HResult!bool {
         const this: *IAppBroadcastingStatusDetails = @ptrCast(self);
         return try this.getIsAnyAppBroadcasting();
@@ -85,6 +118,18 @@ pub const AppBroadcastingStatusDetails = extern struct {
 };
 pub const AppBroadcastingUI = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetStatus(self: *@This()) core.HResult!*AppBroadcastingStatus {
         const this: *IAppBroadcastingUI = @ptrCast(self);
         return try this.GetStatus();
@@ -92,9 +137,6 @@ pub const AppBroadcastingUI = extern struct {
     pub fn ShowBroadcastUI(self: *@This()) core.HResult!void {
         const this: *IAppBroadcastingUI = @ptrCast(self);
         return try this.ShowBroadcastUI();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*AppBroadcastingUI {
         const _f = try @This()._IAppBroadcastingUIStaticsCache.get();
@@ -113,6 +155,12 @@ pub const AppBroadcastingUI = extern struct {
 };
 pub const IAppBroadcastingMonitor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCurrentAppBroadcasting(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCurrentAppBroadcasting(@ptrCast(self), &_r);
@@ -148,6 +196,12 @@ pub const IAppBroadcastingMonitor = extern struct {
 };
 pub const IAppBroadcastingStatus = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanStartBroadcast(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanStartBroadcast(@ptrCast(self), &_r);
@@ -178,6 +232,12 @@ pub const IAppBroadcastingStatus = extern struct {
 };
 pub const IAppBroadcastingStatusDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAnyAppBroadcasting(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAnyAppBroadcasting(@ptrCast(self), &_r);
@@ -250,6 +310,12 @@ pub const IAppBroadcastingStatusDetails = extern struct {
 };
 pub const IAppBroadcastingUI = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetStatus(self: *@This()) core.HResult!*AppBroadcastingStatus {
         var _r: *AppBroadcastingStatus = undefined;
         const _c = self.vtable.GetStatus(@ptrCast(self), &_r);
@@ -278,6 +344,12 @@ pub const IAppBroadcastingUI = extern struct {
 };
 pub const IAppBroadcastingUIStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*AppBroadcastingUI {
         var _r: *AppBroadcastingUI = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);

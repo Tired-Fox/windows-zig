@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AnimationDescription = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnimations(self: *@This()) core.HResult!*IVectorView(IPropertyAnimation) {
         const this: *IAnimationDescription = @ptrCast(self);
         return try this.getAnimations();
@@ -20,9 +32,6 @@ pub const AnimationDescription = extern struct {
     pub fn getZOrder(self: *@This()) core.HResult!i32 {
         const this: *IAnimationDescription = @ptrCast(self);
         return try this.getZOrder();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(effect: AnimationEffect, target: AnimationEffectTarget) core.HResult!*AnimationDescription {
         const _f = try @This()._IAnimationDescriptionFactoryCache.get();
@@ -97,6 +106,12 @@ pub const AnimationEffectTarget = enum(i32) {
 };
 pub const IAnimationDescription = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnimations(self: *@This()) core.HResult!*IVectorView(IPropertyAnimation) {
         var _r: *IVectorView(IPropertyAnimation) = undefined;
         const _c = self.vtable.get_Animations(@ptrCast(self), &_r);
@@ -148,6 +163,12 @@ pub const IAnimationDescription = extern struct {
 };
 pub const IAnimationDescriptionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), effect: AnimationEffect, target: AnimationEffectTarget) core.HResult!*AnimationDescription {
         var _r: *AnimationDescription = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), effect, target, &_r);
@@ -171,6 +192,12 @@ pub const IAnimationDescriptionFactory = extern struct {
 };
 pub const IOpacityAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInitialOpacity(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_InitialOpacity(@ptrCast(self), &_r);
@@ -201,6 +228,12 @@ pub const IOpacityAnimation = extern struct {
 };
 pub const IPropertyAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!PropertyAnimationType {
         var _r: PropertyAnimationType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -252,6 +285,12 @@ pub const IPropertyAnimation = extern struct {
 };
 pub const IScaleAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInitialScaleX(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_InitialScaleX(@ptrCast(self), &_r);
@@ -303,6 +342,18 @@ pub const IScaleAnimation = extern struct {
 };
 pub const OpacityAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInitialOpacity(self: *@This()) core.HResult!*IReference(f32) {
         const this: *IOpacityAnimation = @ptrCast(self);
         return try this.getInitialOpacity();
@@ -354,6 +405,18 @@ pub const OpacityAnimation = extern struct {
 };
 pub const PropertyAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!PropertyAnimationType {
         const this: *IPropertyAnimation = @ptrCast(self);
         return try this.getType();
@@ -387,6 +450,18 @@ pub const PropertyAnimationType = enum(i32) {
 };
 pub const ScaleAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInitialScaleX(self: *@This()) core.HResult!*IReference(f32) {
         const this: *IScaleAnimation = @ptrCast(self);
         return try this.getInitialScaleX();
@@ -450,6 +525,18 @@ pub const ScaleAnimation = extern struct {
 };
 pub const TranslationAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!PropertyAnimationType {
         const this: *IPropertyAnimation = @ptrCast(self);
         return try this.getType();

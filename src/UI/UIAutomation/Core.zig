@@ -7,6 +7,18 @@ pub const AutomationRemoteOperationOperandId = extern struct {
 };
 pub const AutomationRemoteOperationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!AutomationRemoteOperationStatus {
         const this: *IAutomationRemoteOperationResult = @ptrCast(self);
         return try this.getStatus();
@@ -42,6 +54,15 @@ pub const AutomationRemoteOperationStatus = enum(i32) {
 };
 pub const CoreAutomationRegistrar = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -59,6 +80,18 @@ pub const CoreAutomationRegistrar = extern struct {
 };
 pub const CoreAutomationRemoteOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsOpcodeSupported(self: *@This(), opcode: u32) core.HResult!bool {
         const this: *ICoreAutomationRemoteOperation = @ptrCast(self);
         return try this.IsOpcodeSupported(opcode);
@@ -86,9 +119,6 @@ pub const CoreAutomationRemoteOperation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ImportConnectionBoundObject(operandId, connectionBoundObject);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICoreAutomationRemoteOperation.IID)));
@@ -102,6 +132,18 @@ pub const CoreAutomationRemoteOperation = extern struct {
 };
 pub const CoreAutomationRemoteOperationContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetOperand(self: *@This(), id: AutomationRemoteOperationOperandId) core.HResult!*IInspectable {
         const this: *ICoreAutomationRemoteOperationContext = @ptrCast(self);
         return try this.GetOperand(id);
@@ -122,6 +164,12 @@ pub const CoreAutomationRemoteOperationContext = extern struct {
 };
 pub const IAutomationRemoteOperationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!AutomationRemoteOperationStatus {
         var _r: AutomationRemoteOperationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -173,6 +221,12 @@ pub const IAutomationRemoteOperationResult = extern struct {
 };
 pub const ICoreAutomationConnectionBoundObjectProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsComThreadingRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsComThreadingRequired(@ptrCast(self), &_r);
@@ -196,6 +250,12 @@ pub const ICoreAutomationConnectionBoundObjectProvider = extern struct {
 };
 pub const ICoreAutomationRegistrarStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RegisterAnnotationType(self: *@This(), guid: *Guid) core.HResult!AutomationAnnotationTypeRegistration {
         var _r: AutomationAnnotationTypeRegistration = undefined;
         const _c = self.vtable.RegisterAnnotationType(@ptrCast(self), guid, &_r);
@@ -224,6 +284,12 @@ pub const ICoreAutomationRegistrarStatics = extern struct {
 };
 pub const ICoreAutomationRemoteOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsOpcodeSupported(self: *@This(), opcode: u32) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsOpcodeSupported(@ptrCast(self), opcode, &_r);
@@ -269,6 +335,12 @@ pub const ICoreAutomationRemoteOperation = extern struct {
 };
 pub const ICoreAutomationRemoteOperation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ImportConnectionBoundObject(self: *@This(), operandId: AutomationRemoteOperationOperandId, connectionBoundObject: *AutomationConnectionBoundObject) core.HResult!void {
         const _c = self.vtable.ImportConnectionBoundObject(@ptrCast(self), operandId, connectionBoundObject);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -290,6 +362,12 @@ pub const ICoreAutomationRemoteOperation2 = extern struct {
 };
 pub const ICoreAutomationRemoteOperationContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetOperand(self: *@This(), id: AutomationRemoteOperationOperandId) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetOperand(@ptrCast(self), id, &_r);
@@ -323,6 +401,12 @@ pub const ICoreAutomationRemoteOperationContext = extern struct {
 };
 pub const ICoreAutomationRemoteOperationExtensionProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CallExtension(self: *@This(), extensionId: *Guid, context: *CoreAutomationRemoteOperationContext, operandIds: [*]AutomationRemoteOperationOperandId) core.HResult!void {
         const _c = self.vtable.CallExtension(@ptrCast(self), extensionId, context, operandIds);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -351,6 +435,12 @@ pub const ICoreAutomationRemoteOperationExtensionProvider = extern struct {
 };
 pub const IRemoteAutomationClientSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -415,6 +505,12 @@ pub const IRemoteAutomationClientSession = extern struct {
 };
 pub const IRemoteAutomationClientSessionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), name: ?HSTRING) core.HResult!*RemoteAutomationClientSession {
         var _r: *RemoteAutomationClientSession = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), name, &_r);
@@ -445,6 +541,12 @@ pub const IRemoteAutomationClientSessionFactory = extern struct {
 };
 pub const IRemoteAutomationConnectionRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalPipeName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalPipeName(@ptrCast(self), &_r);
@@ -475,6 +577,12 @@ pub const IRemoteAutomationConnectionRequestedEventArgs = extern struct {
 };
 pub const IRemoteAutomationDisconnectedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalPipeName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalPipeName(@ptrCast(self), &_r);
@@ -498,6 +606,12 @@ pub const IRemoteAutomationDisconnectedEventArgs = extern struct {
 };
 pub const IRemoteAutomationServerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportSession(self: *@This(), sessionId: *Guid) core.HResult!void {
         const _c = self.vtable.ReportSession(@ptrCast(self), sessionId);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -519,6 +633,12 @@ pub const IRemoteAutomationServerStatics = extern struct {
 };
 pub const IRemoteAutomationWindow = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAutomationProvider(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_AutomationProvider(@ptrCast(self), &_r);
@@ -549,6 +669,18 @@ pub const IRemoteAutomationWindow = extern struct {
 };
 pub const RemoteAutomationClientSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const this: *IRemoteAutomationClientSession = @ptrCast(self);
         return try this.Start();
@@ -581,9 +713,6 @@ pub const RemoteAutomationClientSession = extern struct {
         const this: *IRemoteAutomationClientSession = @ptrCast(self);
         return try this.removeDisconnected(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(name: ?HSTRING) core.HResult!*RemoteAutomationClientSession {
         const _f = try @This()._IRemoteAutomationClientSessionFactoryCache.get();
         return try _f.CreateInstance(name);
@@ -601,6 +730,18 @@ pub const RemoteAutomationClientSession = extern struct {
 };
 pub const RemoteAutomationConnectionRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalPipeName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteAutomationConnectionRequestedEventArgs = @ptrCast(self);
         return try this.getLocalPipeName();
@@ -617,6 +758,18 @@ pub const RemoteAutomationConnectionRequestedEventArgs = extern struct {
 };
 pub const RemoteAutomationDisconnectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalPipeName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteAutomationDisconnectedEventArgs = @ptrCast(self);
         return try this.getLocalPipeName();
@@ -629,6 +782,15 @@ pub const RemoteAutomationDisconnectedEventArgs = extern struct {
 };
 pub const RemoteAutomationServer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -642,6 +804,18 @@ pub const RemoteAutomationServer = extern struct {
 };
 pub const RemoteAutomationWindow = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAutomationProvider(self: *@This()) core.HResult!*IInspectable {
         const this: *IRemoteAutomationWindow = @ptrCast(self);
         return try this.getAutomationProvider();

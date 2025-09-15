@@ -27,6 +27,18 @@ pub const HdmiDisplayHdrOption = enum(i32) {
 };
 pub const HdmiDisplayInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSupportedDisplayModes(self: *@This()) core.HResult!*IVectorView(HdmiDisplayMode) {
         const this: *IHdmiDisplayInformation = @ptrCast(self);
         return try this.GetSupportedDisplayModes();
@@ -59,9 +71,6 @@ pub const HdmiDisplayInformation = extern struct {
         const this: *IHdmiDisplayInformation = @ptrCast(self);
         return try this.removeDisplayModesChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*HdmiDisplayInformation {
         const _f = try @This()._IHdmiDisplayInformationStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -75,6 +84,18 @@ pub const HdmiDisplayInformation = extern struct {
 };
 pub const HdmiDisplayMode = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResolutionWidthInRawPixels(self: *@This()) core.HResult!u32 {
         const this: *IHdmiDisplayMode = @ptrCast(self);
         return try this.getResolutionWidthInRawPixels();
@@ -140,6 +161,12 @@ pub const HdmiDisplayPixelEncoding = enum(i32) {
 };
 pub const IHdmiDisplayInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSupportedDisplayModes(self: *@This()) core.HResult!*IVectorView(HdmiDisplayMode) {
         var _r: *IVectorView(HdmiDisplayMode) = undefined;
         const _c = self.vtable.GetSupportedDisplayModes(@ptrCast(self), &_r);
@@ -210,6 +237,12 @@ pub const IHdmiDisplayInformation = extern struct {
 };
 pub const IHdmiDisplayInformationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*HdmiDisplayInformation {
         var _r: *HdmiDisplayInformation = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -233,6 +266,12 @@ pub const IHdmiDisplayInformationStatics = extern struct {
 };
 pub const IHdmiDisplayMode = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResolutionWidthInRawPixels(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ResolutionWidthInRawPixels(@ptrCast(self), &_r);
@@ -326,6 +365,12 @@ pub const IHdmiDisplayMode = extern struct {
 };
 pub const IHdmiDisplayMode2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsDolbyVisionLowLatencySupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDolbyVisionLowLatencySupported(@ptrCast(self), &_r);

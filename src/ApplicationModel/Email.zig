@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const EmailAttachment = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFileName(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailAttachment = @ptrCast(self);
         return try this.getFileName();
@@ -115,9 +127,6 @@ pub const EmailAttachment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMimeType(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailAttachment.IID)));
@@ -165,6 +174,18 @@ pub const EmailCertificateValidationStatus = enum(i32) {
 };
 pub const EmailConversation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailConversation = @ptrCast(self);
         return try this.getId();
@@ -233,6 +254,18 @@ pub const EmailConversation = extern struct {
 };
 pub const EmailConversationBatch = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConversations(self: *@This()) core.HResult!*IVectorView(EmailConversation) {
         const this: *IEmailConversationBatch = @ptrCast(self);
         return try this.getConversations();
@@ -249,6 +282,18 @@ pub const EmailConversationBatch = extern struct {
 };
 pub const EmailConversationReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(EmailConversationBatch) {
         const this: *IEmailConversationReader = @ptrCast(self);
         return try this.ReadBatchAsync();
@@ -267,6 +312,18 @@ pub const EmailFlagState = enum(i32) {
 };
 pub const EmailFolder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.getId();
@@ -380,6 +437,18 @@ pub const EmailImportance = enum(i32) {
 };
 pub const EmailIrmInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanEdit(self: *@This()) core.HResult!bool {
         const this: *IEmailIrmInfo = @ptrCast(self);
         return try this.getCanEdit();
@@ -476,9 +545,6 @@ pub const EmailIrmInfo = extern struct {
         const this: *IEmailIrmInfo = @ptrCast(self);
         return try this.putTemplate(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailIrmInfo.IID)));
@@ -497,6 +563,18 @@ pub const EmailIrmInfo = extern struct {
 };
 pub const EmailIrmTemplate = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailIrmTemplate = @ptrCast(self);
         return try this.getId();
@@ -521,9 +599,6 @@ pub const EmailIrmTemplate = extern struct {
         const this: *IEmailIrmTemplate = @ptrCast(self);
         return try this.putName(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailIrmTemplate.IID)));
@@ -542,6 +617,18 @@ pub const EmailIrmTemplate = extern struct {
 };
 pub const EmailItemCounts = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFlagged(self: *@This()) core.HResult!u32 {
         const this: *IEmailItemCounts = @ptrCast(self);
         return try this.getFlagged();
@@ -566,6 +653,18 @@ pub const EmailItemCounts = extern struct {
 };
 pub const EmailMailbox = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapabilities(self: *@This()) core.HResult!*EmailMailboxCapabilities {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.getCapabilities();
@@ -844,6 +943,18 @@ pub const EmailMailbox = extern struct {
 };
 pub const EmailMailboxAction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!EmailMailboxActionKind {
         const this: *IEmailMailboxAction = @ptrCast(self);
         return try this.getKind();
@@ -878,6 +989,18 @@ pub const EmailMailboxAllowedSmimeEncryptionAlgorithmNegotiation = enum(i32) {
 };
 pub const EmailMailboxAutoReply = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         const this: *IEmailMailboxAutoReply = @ptrCast(self);
         return try this.getIsEnabled();
@@ -906,6 +1029,18 @@ pub const EmailMailboxAutoReplyMessageResponseKind = enum(i32) {
 };
 pub const EmailMailboxAutoReplySettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         const this: *IEmailMailboxAutoReplySettings = @ptrCast(self);
         return try this.getIsEnabled();
@@ -950,9 +1085,6 @@ pub const EmailMailboxAutoReplySettings = extern struct {
         const this: *IEmailMailboxAutoReplySettings = @ptrCast(self);
         return try this.getUnknownExternalReply();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailMailboxAutoReplySettings.IID)));
@@ -966,6 +1098,18 @@ pub const EmailMailboxAutoReplySettings = extern struct {
 };
 pub const EmailMailboxCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanForwardMeetings(self: *@This()) core.HResult!bool {
         const this: *IEmailMailboxCapabilities = @ptrCast(self);
         return try this.getCanForwardMeetings();
@@ -1146,6 +1290,18 @@ pub const EmailMailboxCapabilities = extern struct {
 };
 pub const EmailMailboxChange = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeType(self: *@This()) core.HResult!EmailMailboxChangeType {
         const this: *IEmailMailboxChange = @ptrCast(self);
         return try this.getChangeType();
@@ -1170,6 +1326,18 @@ pub const EmailMailboxChange = extern struct {
 };
 pub const EmailMailboxChangeReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AcceptChanges(self: *@This()) core.HResult!void {
         const this: *IEmailMailboxChangeReader = @ptrCast(self);
         return try this.AcceptChanges();
@@ -1190,6 +1358,18 @@ pub const EmailMailboxChangeReader = extern struct {
 };
 pub const EmailMailboxChangeTracker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsTracking(self: *@This()) core.HResult!bool {
         const this: *IEmailMailboxChangeTracker = @ptrCast(self);
         return try this.getIsTracking();
@@ -1223,6 +1403,18 @@ pub const EmailMailboxChangeType = enum(i32) {
 };
 pub const EmailMailboxChangedDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IEmailMailboxChangedDeferral = @ptrCast(self);
         return try this.Complete();
@@ -1235,6 +1427,18 @@ pub const EmailMailboxChangedDeferral = extern struct {
 };
 pub const EmailMailboxChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*EmailMailboxChangedDeferral {
         const this: *IEmailMailboxChangedEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -1247,6 +1451,18 @@ pub const EmailMailboxChangedEventArgs = extern struct {
 };
 pub const EmailMailboxCreateFolderResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!EmailMailboxCreateFolderStatus {
         const this: *IEmailMailboxCreateFolderResult = @ptrCast(self);
         return try this.getStatus();
@@ -1297,6 +1513,18 @@ pub const EmailMailboxOtherAppWriteAccess = enum(i32) {
 };
 pub const EmailMailboxPolicies = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowedSmimeEncryptionAlgorithmNegotiation(self: *@This()) core.HResult!EmailMailboxAllowedSmimeEncryptionAlgorithmNegotiation {
         const this: *IEmailMailboxPolicies = @ptrCast(self);
         return try this.getAllowedSmimeEncryptionAlgorithmNegotiation();
@@ -1390,6 +1618,18 @@ pub const EmailMailboxSmimeSigningAlgorithm = enum(i32) {
 };
 pub const EmailMailboxSyncManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!EmailMailboxSyncStatus {
         const this: *IEmailMailboxSyncManager = @ptrCast(self);
         return try this.getStatus();
@@ -1452,6 +1692,15 @@ pub const EmailMailboxSyncStatus = enum(i32) {
 };
 pub const EmailManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1475,6 +1724,18 @@ pub const EmailManager = extern struct {
 };
 pub const EmailManagerForUser = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowComposeNewEmailAsync(self: *@This(), message: *EmailMessage) core.HResult!*IAsyncAction {
         const this: *IEmailManagerForUser = @ptrCast(self);
         return try this.ShowComposeNewEmailAsync(message);
@@ -1495,6 +1756,18 @@ pub const EmailManagerForUser = extern struct {
 };
 pub const EmailMeetingInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowNewTimeProposal(self: *@This()) core.HResult!bool {
         const this: *IEmailMeetingInfo = @ptrCast(self);
         return try this.getAllowNewTimeProposal();
@@ -1606,9 +1879,6 @@ pub const EmailMeetingInfo = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsReportedOutOfDateByServer();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailMeetingInfo.IID)));
@@ -1627,6 +1897,18 @@ pub const EmailMeetingResponseType = enum(i32) {
 };
 pub const EmailMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailMessage = @ptrCast(self);
         return try this.getSubject();
@@ -2023,9 +2305,6 @@ pub const EmailMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSentRepresenting(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailMessage.IID)));
@@ -2039,6 +2318,18 @@ pub const EmailMessage = extern struct {
 };
 pub const EmailMessageBatch = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessages(self: *@This()) core.HResult!*IVectorView(EmailMessage) {
         const this: *IEmailMessageBatch = @ptrCast(self);
         return try this.getMessages();
@@ -2065,6 +2356,18 @@ pub const EmailMessageDownloadState = enum(i32) {
 };
 pub const EmailMessageReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(EmailMessageBatch) {
         const this: *IEmailMessageReader = @ptrCast(self);
         return try this.ReadBatchAsync();
@@ -2097,6 +2400,18 @@ pub const EmailQueryKind = enum(i32) {
 };
 pub const EmailQueryOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextSearch(self: *@This()) core.HResult!*EmailQueryTextSearch {
         const this: *IEmailQueryOptions = @ptrCast(self);
         return try this.getTextSearch();
@@ -2128,9 +2443,6 @@ pub const EmailQueryOptions = extern struct {
     pub fn getFolderIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IEmailQueryOptions = @ptrCast(self);
         return try this.getFolderIds();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2173,6 +2485,18 @@ pub const EmailQuerySortProperty = enum(i32) {
 };
 pub const EmailQueryTextSearch = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFields(self: *@This()) core.HResult!EmailQuerySearchFields {
         const this: *IEmailQueryTextSearch = @ptrCast(self);
         return try this.getFields();
@@ -2205,6 +2529,18 @@ pub const EmailQueryTextSearch = extern struct {
 };
 pub const EmailRecipient = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IEmailRecipient = @ptrCast(self);
         return try this.getName();
@@ -2220,9 +2556,6 @@ pub const EmailRecipient = extern struct {
     pub fn putAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IEmailRecipient = @ptrCast(self);
         return try this.putAddress(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2246,6 +2579,18 @@ pub const EmailRecipient = extern struct {
 };
 pub const EmailRecipientResolutionResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!EmailRecipientResolutionStatus {
         const this: *IEmailRecipientResolutionResult = @ptrCast(self);
         return try this.getStatus();
@@ -2267,9 +2612,6 @@ pub const EmailRecipientResolutionResult = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailRecipientResolutionResult2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetPublicKeys(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2303,6 +2645,18 @@ pub const EmailSpecialFolderKind = enum(i32) {
 };
 pub const EmailStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindMailboxesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(EmailMailbox)) {
         const this: *IEmailStore = @ptrCast(self);
         return try this.FindMailboxesAsync();
@@ -2359,6 +2713,18 @@ pub const EmailStoreAccessType = enum(i32) {
 };
 pub const EmailStoreNotificationTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailStoreNotificationTriggerDetails";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IEmailStoreNotificationTriggerDetails.GUID;
@@ -2367,6 +2733,12 @@ pub const EmailStoreNotificationTriggerDetails = extern struct {
 };
 pub const IEmailAttachment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFileName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FileName(@ptrCast(self), &_r);
@@ -2407,6 +2779,12 @@ pub const IEmailAttachment = extern struct {
 };
 pub const IEmailAttachment2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -2509,6 +2887,12 @@ pub const IEmailAttachment2 = extern struct {
 };
 pub const IEmailAttachmentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), fileName: ?HSTRING, data: *IRandomAccessStreamReference) core.HResult!*EmailAttachment {
         var _r: *EmailAttachment = undefined;
         const _c = self.vtable.Create(@ptrCast(self), fileName, data, &_r);
@@ -2532,6 +2916,12 @@ pub const IEmailAttachmentFactory = extern struct {
 };
 pub const IEmailAttachmentFactory2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), fileName: ?HSTRING, data: *IRandomAccessStreamReference, mimeType: ?HSTRING) core.HResult!*EmailAttachment {
         var _r: *EmailAttachment = undefined;
         const _c = self.vtable.Create(@ptrCast(self), fileName, data, mimeType, &_r);
@@ -2555,6 +2945,12 @@ pub const IEmailAttachmentFactory2 = extern struct {
 };
 pub const IEmailConversation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -2676,6 +3072,12 @@ pub const IEmailConversation = extern struct {
 };
 pub const IEmailConversationBatch = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConversations(self: *@This()) core.HResult!*IVectorView(EmailConversation) {
         var _r: *IVectorView(EmailConversation) = undefined;
         const _c = self.vtable.get_Conversations(@ptrCast(self), &_r);
@@ -2706,6 +3108,12 @@ pub const IEmailConversationBatch = extern struct {
 };
 pub const IEmailConversationReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(EmailConversationBatch) {
         var _r: *IAsyncOperation(EmailConversationBatch) = undefined;
         const _c = self.vtable.ReadBatchAsync(@ptrCast(self), &_r);
@@ -2729,6 +3137,12 @@ pub const IEmailConversationReader = extern struct {
 };
 pub const IEmailFolder = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -2912,6 +3326,12 @@ pub const IEmailFolder = extern struct {
 };
 pub const IEmailIrmInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanEdit(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanEdit(@ptrCast(self), &_r);
@@ -3072,6 +3492,12 @@ pub const IEmailIrmInfo = extern struct {
 };
 pub const IEmailIrmInfoFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), expiration: DateTime, irmTemplate: *EmailIrmTemplate) core.HResult!*EmailIrmInfo {
         var _r: *EmailIrmInfo = undefined;
         const _c = self.vtable.Create(@ptrCast(self), expiration, irmTemplate, &_r);
@@ -3095,6 +3521,12 @@ pub const IEmailIrmInfoFactory = extern struct {
 };
 pub const IEmailIrmTemplate = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -3147,6 +3579,12 @@ pub const IEmailIrmTemplate = extern struct {
 };
 pub const IEmailIrmTemplateFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), id: ?HSTRING, name: ?HSTRING, description: ?HSTRING) core.HResult!*EmailIrmTemplate {
         var _r: *EmailIrmTemplate = undefined;
         const _c = self.vtable.Create(@ptrCast(self), id, name, description, &_r);
@@ -3170,6 +3608,12 @@ pub const IEmailIrmTemplateFactory = extern struct {
 };
 pub const IEmailItemCounts = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFlagged(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Flagged(@ptrCast(self), &_r);
@@ -3214,6 +3658,12 @@ pub const IEmailItemCounts = extern struct {
 };
 pub const IEmailMailbox = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapabilities(self: *@This()) core.HResult!*EmailMailboxCapabilities {
         var _r: *EmailMailboxCapabilities = undefined;
         const _c = self.vtable.get_Capabilities(@ptrCast(self), &_r);
@@ -3570,6 +4020,12 @@ pub const IEmailMailbox = extern struct {
 };
 pub const IEmailMailbox2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLinkedMailboxId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LinkedMailboxId(@ptrCast(self), &_r);
@@ -3607,6 +4063,12 @@ pub const IEmailMailbox2 = extern struct {
 };
 pub const IEmailMailbox3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ResolveRecipientsAsync(self: *@This(), recipients: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(EmailRecipientResolutionResult)) {
         var _r: *IAsyncOperation(IVectorView(EmailRecipientResolutionResult)) = undefined;
         const _c = self.vtable.ResolveRecipientsAsync(@ptrCast(self), recipients, &_r);
@@ -3658,6 +4120,12 @@ pub const IEmailMailbox3 = extern struct {
 };
 pub const IEmailMailbox4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RegisterSyncManagerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RegisterSyncManagerAsync(@ptrCast(self), &_r);
@@ -3681,6 +4149,12 @@ pub const IEmailMailbox4 = extern struct {
 };
 pub const IEmailMailbox5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*EmailMailboxChangeTracker {
         var _r: *EmailMailboxChangeTracker = undefined;
         const _c = self.vtable.GetChangeTracker(@ptrCast(self), identity, &_r);
@@ -3704,6 +4178,12 @@ pub const IEmailMailbox5 = extern struct {
 };
 pub const IEmailMailboxAction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!EmailMailboxActionKind {
         var _r: EmailMailboxActionKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -3734,6 +4214,12 @@ pub const IEmailMailboxAction = extern struct {
 };
 pub const IEmailMailboxAutoReply = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -3774,6 +4260,12 @@ pub const IEmailMailboxAutoReply = extern struct {
 };
 pub const IEmailMailboxAutoReplySettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -3859,6 +4351,12 @@ pub const IEmailMailboxAutoReplySettings = extern struct {
 };
 pub const IEmailMailboxCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanForwardMeetings(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanForwardMeetings(@ptrCast(self), &_r);
@@ -3931,6 +4429,12 @@ pub const IEmailMailboxCapabilities = extern struct {
 };
 pub const IEmailMailboxCapabilities2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanResolveRecipients(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanResolveRecipients(@ptrCast(self), &_r);
@@ -3989,6 +4493,12 @@ pub const IEmailMailboxCapabilities2 = extern struct {
 };
 pub const IEmailMailboxCapabilities3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCanForwardMeetings(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_CanForwardMeetings(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4075,6 +4585,12 @@ pub const IEmailMailboxCapabilities3 = extern struct {
 };
 pub const IEmailMailboxChange = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeType(self: *@This()) core.HResult!EmailMailboxChangeType {
         var _r: EmailMailboxChangeType = undefined;
         const _c = self.vtable.get_ChangeType(@ptrCast(self), &_r);
@@ -4119,6 +4635,12 @@ pub const IEmailMailboxChange = extern struct {
 };
 pub const IEmailMailboxChangeReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AcceptChanges(self: *@This()) core.HResult!void {
         const _c = self.vtable.AcceptChanges(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4152,6 +4674,12 @@ pub const IEmailMailboxChangeReader = extern struct {
 };
 pub const IEmailMailboxChangeTracker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsTracking(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTracking(@ptrCast(self), &_r);
@@ -4192,6 +4720,12 @@ pub const IEmailMailboxChangeTracker = extern struct {
 };
 pub const IEmailMailboxChangedDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4213,6 +4747,12 @@ pub const IEmailMailboxChangedDeferral = extern struct {
 };
 pub const IEmailMailboxChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*EmailMailboxChangedDeferral {
         var _r: *EmailMailboxChangedDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -4236,6 +4776,12 @@ pub const IEmailMailboxChangedEventArgs = extern struct {
 };
 pub const IEmailMailboxCreateFolderResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!EmailMailboxCreateFolderStatus {
         var _r: EmailMailboxCreateFolderStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -4266,6 +4812,12 @@ pub const IEmailMailboxCreateFolderResult = extern struct {
 };
 pub const IEmailMailboxPolicies = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowedSmimeEncryptionAlgorithmNegotiation(self: *@This()) core.HResult!EmailMailboxAllowedSmimeEncryptionAlgorithmNegotiation {
         var _r: EmailMailboxAllowedSmimeEncryptionAlgorithmNegotiation = undefined;
         const _c = self.vtable.get_AllowedSmimeEncryptionAlgorithmNegotiation(@ptrCast(self), &_r);
@@ -4310,6 +4862,12 @@ pub const IEmailMailboxPolicies = extern struct {
 };
 pub const IEmailMailboxPolicies2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMustEncryptSmimeMessages(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_MustEncryptSmimeMessages(@ptrCast(self), &_r);
@@ -4340,6 +4898,12 @@ pub const IEmailMailboxPolicies2 = extern struct {
 };
 pub const IEmailMailboxPolicies3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAllowedSmimeEncryptionAlgorithmNegotiation(self: *@This(), value: EmailMailboxAllowedSmimeEncryptionAlgorithmNegotiation) core.HResult!void {
         const _c = self.vtable.put_AllowedSmimeEncryptionAlgorithmNegotiation(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4386,6 +4950,12 @@ pub const IEmailMailboxPolicies3 = extern struct {
 };
 pub const IEmailMailboxSyncManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!EmailMailboxSyncStatus {
         var _r: EmailMailboxSyncStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -4442,6 +5012,12 @@ pub const IEmailMailboxSyncManager = extern struct {
 };
 pub const IEmailMailboxSyncManager2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putStatus(self: *@This(), value: EmailMailboxSyncStatus) core.HResult!void {
         const _c = self.vtable.put_Status(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4473,6 +5049,12 @@ pub const IEmailMailboxSyncManager2 = extern struct {
 };
 pub const IEmailManagerForUser = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowComposeNewEmailAsync(self: *@This(), message: *EmailMessage) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowComposeNewEmailAsync(@ptrCast(self), message, &_r);
@@ -4510,6 +5092,12 @@ pub const IEmailManagerForUser = extern struct {
 };
 pub const IEmailManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowComposeNewEmailAsync(self: *@This(), message: *EmailMessage) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowComposeNewEmailAsync(@ptrCast(self), message, &_r);
@@ -4533,6 +5121,12 @@ pub const IEmailManagerStatics = extern struct {
 };
 pub const IEmailManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestStoreAsync(self: *@This(), accessType: EmailStoreAccessType) core.HResult!*IAsyncOperation(EmailStore) {
         var _r: *IAsyncOperation(EmailStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), accessType, &_r);
@@ -4556,6 +5150,12 @@ pub const IEmailManagerStatics2 = extern struct {
 };
 pub const IEmailManagerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForUser(self: *@This(), user: *User) core.HResult!*EmailManagerForUser {
         var _r: *EmailManagerForUser = undefined;
         const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
@@ -4579,6 +5179,12 @@ pub const IEmailManagerStatics3 = extern struct {
 };
 pub const IEmailMeetingInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowNewTimeProposal(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowNewTimeProposal(@ptrCast(self), &_r);
@@ -4751,6 +5357,12 @@ pub const IEmailMeetingInfo = extern struct {
 };
 pub const IEmailMeetingInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsReportedOutOfDateByServer(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReportedOutOfDateByServer(@ptrCast(self), &_r);
@@ -4774,6 +5386,12 @@ pub const IEmailMeetingInfo2 = extern struct {
 };
 pub const IEmailMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
@@ -4842,6 +5460,12 @@ pub const IEmailMessage = extern struct {
 };
 pub const IEmailMessage2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -5139,6 +5763,12 @@ pub const IEmailMessage2 = extern struct {
 };
 pub const IEmailMessage3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSmimeData(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.get_SmimeData(@ptrCast(self), &_r);
@@ -5179,6 +5809,12 @@ pub const IEmailMessage3 = extern struct {
 };
 pub const IEmailMessage4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReplyTo(self: *@This()) core.HResult!*IVector(EmailRecipient) {
         var _r: *IVector(EmailRecipient) = undefined;
         const _c = self.vtable.get_ReplyTo(@ptrCast(self), &_r);
@@ -5214,6 +5850,12 @@ pub const IEmailMessage4 = extern struct {
 };
 pub const IEmailMessageBatch = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessages(self: *@This()) core.HResult!*IVectorView(EmailMessage) {
         var _r: *IVectorView(EmailMessage) = undefined;
         const _c = self.vtable.get_Messages(@ptrCast(self), &_r);
@@ -5244,6 +5886,12 @@ pub const IEmailMessageBatch = extern struct {
 };
 pub const IEmailMessageReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(EmailMessageBatch) {
         var _r: *IAsyncOperation(EmailMessageBatch) = undefined;
         const _c = self.vtable.ReadBatchAsync(@ptrCast(self), &_r);
@@ -5267,6 +5915,12 @@ pub const IEmailMessageReader = extern struct {
 };
 pub const IEmailQueryOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextSearch(self: *@This()) core.HResult!*EmailQueryTextSearch {
         var _r: *EmailQueryTextSearch = undefined;
         const _c = self.vtable.get_TextSearch(@ptrCast(self), &_r);
@@ -5333,6 +5987,12 @@ pub const IEmailQueryOptions = extern struct {
 };
 pub const IEmailQueryOptionsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithText(self: *@This(), text: ?HSTRING) core.HResult!*EmailQueryOptions {
         var _r: *EmailQueryOptions = undefined;
         const _c = self.vtable.CreateWithText(@ptrCast(self), text, &_r);
@@ -5363,6 +6023,12 @@ pub const IEmailQueryOptionsFactory = extern struct {
 };
 pub const IEmailQueryTextSearch = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFields(self: *@This()) core.HResult!EmailQuerySearchFields {
         var _r: EmailQuerySearchFields = undefined;
         const _c = self.vtable.get_Fields(@ptrCast(self), &_r);
@@ -5415,6 +6081,12 @@ pub const IEmailQueryTextSearch = extern struct {
 };
 pub const IEmailRecipient = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -5455,6 +6127,12 @@ pub const IEmailRecipient = extern struct {
 };
 pub const IEmailRecipientFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), address: ?HSTRING) core.HResult!*EmailRecipient {
         var _r: *EmailRecipient = undefined;
         const _c = self.vtable.Create(@ptrCast(self), address, &_r);
@@ -5485,6 +6163,12 @@ pub const IEmailRecipientFactory = extern struct {
 };
 pub const IEmailRecipientResolutionResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!EmailRecipientResolutionStatus {
         var _r: EmailRecipientResolutionStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -5515,6 +6199,12 @@ pub const IEmailRecipientResolutionResult = extern struct {
 };
 pub const IEmailRecipientResolutionResult2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putStatus(self: *@This(), value: EmailRecipientResolutionStatus) core.HResult!void {
         const _c = self.vtable.put_Status(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5541,6 +6231,12 @@ pub const IEmailRecipientResolutionResult2 = extern struct {
 };
 pub const IEmailStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindMailboxesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(EmailMailbox)) {
         var _r: *IAsyncOperation(IVectorView(EmailMailbox)) = undefined;
         const _c = self.vtable.FindMailboxesAsync(@ptrCast(self), &_r);
@@ -5634,6 +6330,12 @@ pub const IEmailStore = extern struct {
 };
 pub const IEmailStoreNotificationTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.IEmailStoreNotificationTriggerDetails";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ce17563c-46e6-43c9-96f7-facf7dd710cb";

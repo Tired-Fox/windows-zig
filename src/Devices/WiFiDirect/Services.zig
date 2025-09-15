@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IWiFiDirectService = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteServiceInfo(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_RemoteServiceInfo(@ptrCast(self), &_r);
@@ -95,6 +101,12 @@ pub const IWiFiDirectService = extern struct {
 };
 pub const IWiFiDirectServiceAdvertiser = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
@@ -278,6 +290,12 @@ pub const IWiFiDirectServiceAdvertiser = extern struct {
 };
 pub const IWiFiDirectServiceAdvertiserFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWiFiDirectServiceAdvertiser(self: *@This(), serviceName: ?HSTRING) core.HResult!*WiFiDirectServiceAdvertiser {
         var _r: *WiFiDirectServiceAdvertiser = undefined;
         const _c = self.vtable.CreateWiFiDirectServiceAdvertiser(@ptrCast(self), serviceName, &_r);
@@ -301,6 +319,12 @@ pub const IWiFiDirectServiceAdvertiserFactory = extern struct {
 };
 pub const IWiFiDirectServiceAutoAcceptSessionConnectedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*WiFiDirectServiceSession {
         var _r: *WiFiDirectServiceSession = undefined;
         const _c = self.vtable.get_Session(@ptrCast(self), &_r);
@@ -331,6 +355,12 @@ pub const IWiFiDirectServiceAutoAcceptSessionConnectedEventArgs = extern struct 
 };
 pub const IWiFiDirectServiceProvisioningInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedConfigurationMethod(self: *@This()) core.HResult!WiFiDirectServiceConfigurationMethod {
         var _r: WiFiDirectServiceConfigurationMethod = undefined;
         const _c = self.vtable.get_SelectedConfigurationMethod(@ptrCast(self), &_r);
@@ -361,6 +391,12 @@ pub const IWiFiDirectServiceProvisioningInfo = extern struct {
 };
 pub const IWiFiDirectServiceRemotePortAddedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndpointPairs(self: *@This()) core.HResult!*IVectorView(EndpointPair) {
         var _r: *IVectorView(EndpointPair) = undefined;
         const _c = self.vtable.get_EndpointPairs(@ptrCast(self), &_r);
@@ -391,6 +427,12 @@ pub const IWiFiDirectServiceRemotePortAddedEventArgs = extern struct {
 };
 pub const IWiFiDirectServiceSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ServiceName(@ptrCast(self), &_r);
@@ -501,6 +543,12 @@ pub const IWiFiDirectServiceSession = extern struct {
 };
 pub const IWiFiDirectServiceSessionDeferredEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeferredSessionInfo(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_DeferredSessionInfo(@ptrCast(self), &_r);
@@ -524,6 +572,12 @@ pub const IWiFiDirectServiceSessionDeferredEventArgs = extern struct {
 };
 pub const IWiFiDirectServiceSessionRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_DeviceInformation(@ptrCast(self), &_r);
@@ -561,6 +615,12 @@ pub const IWiFiDirectServiceSessionRequest = extern struct {
 };
 pub const IWiFiDirectServiceSessionRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSessionRequest(self: *@This()) core.HResult!*WiFiDirectServiceSessionRequest {
         var _r: *WiFiDirectServiceSessionRequest = undefined;
         const _c = self.vtable.GetSessionRequest(@ptrCast(self), &_r);
@@ -584,6 +644,12 @@ pub const IWiFiDirectServiceSessionRequestedEventArgs = extern struct {
 };
 pub const IWiFiDirectServiceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSelector(self: *@This(), serviceName: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetSelector(@ptrCast(self), serviceName, &_r);
@@ -621,6 +687,18 @@ pub const IWiFiDirectServiceStatics = extern struct {
 };
 pub const WiFiDirectService = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteServiceInfo(self: *@This()) core.HResult!*IBuffer {
         const this: *IWiFiDirectService = @ptrCast(self);
         return try this.getRemoteServiceInfo();
@@ -669,9 +747,6 @@ pub const WiFiDirectService = extern struct {
         const this: *IWiFiDirectService = @ptrCast(self);
         return try this.ConnectAsyncWithPin(pin);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetSelector(serviceName: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IWiFiDirectServiceStaticsCache.get();
         return try _f.GetSelector(serviceName);
@@ -699,6 +774,18 @@ pub const WiFiDirectServiceAdvertisementStatus = enum(i32) {
 };
 pub const WiFiDirectServiceAdvertiser = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWiFiDirectServiceAdvertiser = @ptrCast(self);
         return try this.getServiceName();
@@ -807,9 +894,6 @@ pub const WiFiDirectServiceAdvertiser = extern struct {
         const this: *IWiFiDirectServiceAdvertiser = @ptrCast(self);
         return try this.Stop();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWiFiDirectServiceAdvertiser(serviceName: ?HSTRING) core.HResult!*WiFiDirectServiceAdvertiser {
         const _f = try @This()._IWiFiDirectServiceAdvertiserFactoryCache.get();
         return try _f.CreateWiFiDirectServiceAdvertiser(serviceName);
@@ -823,6 +907,18 @@ pub const WiFiDirectServiceAdvertiser = extern struct {
 };
 pub const WiFiDirectServiceAutoAcceptSessionConnectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*WiFiDirectServiceSession {
         const this: *IWiFiDirectServiceAutoAcceptSessionConnectedEventArgs = @ptrCast(self);
         return try this.getSession();
@@ -855,6 +951,18 @@ pub const WiFiDirectServiceIPProtocol = enum(i32) {
 };
 pub const WiFiDirectServiceProvisioningInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedConfigurationMethod(self: *@This()) core.HResult!WiFiDirectServiceConfigurationMethod {
         const this: *IWiFiDirectServiceProvisioningInfo = @ptrCast(self);
         return try this.getSelectedConfigurationMethod();
@@ -871,6 +979,18 @@ pub const WiFiDirectServiceProvisioningInfo = extern struct {
 };
 pub const WiFiDirectServiceRemotePortAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndpointPairs(self: *@This()) core.HResult!*IVectorView(EndpointPair) {
         const this: *IWiFiDirectServiceRemotePortAddedEventArgs = @ptrCast(self);
         return try this.getEndpointPairs();
@@ -887,6 +1007,18 @@ pub const WiFiDirectServiceRemotePortAddedEventArgs = extern struct {
 };
 pub const WiFiDirectServiceSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServiceName(self: *@This()) core.HResult!?HSTRING {
         const this: *IWiFiDirectServiceSession = @ptrCast(self);
         return try this.getServiceName();
@@ -958,6 +1090,18 @@ pub const WiFiDirectServiceSession = extern struct {
 };
 pub const WiFiDirectServiceSessionDeferredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeferredSessionInfo(self: *@This()) core.HResult!*IBuffer {
         const this: *IWiFiDirectServiceSessionDeferredEventArgs = @ptrCast(self);
         return try this.getDeferredSessionInfo();
@@ -978,6 +1122,18 @@ pub const WiFiDirectServiceSessionErrorStatus = enum(i32) {
 };
 pub const WiFiDirectServiceSessionRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         const this: *IWiFiDirectServiceSessionRequest = @ptrCast(self);
         return try this.getDeviceInformation();
@@ -1005,6 +1161,18 @@ pub const WiFiDirectServiceSessionRequest = extern struct {
 };
 pub const WiFiDirectServiceSessionRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSessionRequest(self: *@This()) core.HResult!*WiFiDirectServiceSessionRequest {
         const this: *IWiFiDirectServiceSessionRequestedEventArgs = @ptrCast(self);
         return try this.GetSessionRequest();

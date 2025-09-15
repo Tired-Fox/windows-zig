@@ -14,6 +14,18 @@ pub const GuidanceAudioNotificationKind = enum(i32) {
 };
 pub const GuidanceAudioNotificationRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAudioNotification(self: *@This()) core.HResult!GuidanceAudioNotificationKind {
         const this: *IGuidanceAudioNotificationRequestedEventArgs = @ptrCast(self);
         return try this.getAudioNotification();
@@ -43,6 +55,18 @@ pub const GuidanceAudioNotifications = enum(i32) {
 };
 pub const GuidanceLaneInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLaneMarkers(self: *@This()) core.HResult!GuidanceLaneMarkers {
         const this: *IGuidanceLaneInfo = @ptrCast(self);
         return try this.getLaneMarkers();
@@ -72,6 +96,18 @@ pub const GuidanceLaneMarkers = enum(i32) {
 };
 pub const GuidanceManeuver = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartLocation(self: *@This()) core.HResult!*Geopoint {
         const this: *IGuidanceManeuver = @ptrCast(self);
         return try this.getStartLocation();
@@ -178,6 +214,18 @@ pub const GuidanceManeuverKind = enum(i32) {
 };
 pub const GuidanceMapMatchedCoordinate = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         const this: *IGuidanceMapMatchedCoordinate = @ptrCast(self);
         return try this.getLocation();
@@ -212,6 +260,18 @@ pub const GuidanceMode = enum(i32) {
 };
 pub const GuidanceNavigator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartNavigating(self: *@This(), route: *GuidanceRoute) core.HResult!void {
         const this: *IGuidanceNavigator = @ptrCast(self);
         return try this.StartNavigating(route);
@@ -352,9 +412,6 @@ pub const GuidanceNavigator = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsGuidanceAudioMuted(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetCurrent() core.HResult!*GuidanceNavigator {
         const _f = try @This()._IGuidanceNavigatorStaticsCache.get();
         return try _f.GetCurrent();
@@ -373,6 +430,18 @@ pub const GuidanceNavigator = extern struct {
 };
 pub const GuidanceReroutedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRoute(self: *@This()) core.HResult!*GuidanceRoute {
         const this: *IGuidanceReroutedEventArgs = @ptrCast(self);
         return try this.getRoute();
@@ -385,6 +454,18 @@ pub const GuidanceReroutedEventArgs = extern struct {
 };
 pub const GuidanceRoadSegment = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRoadName(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceRoadSegment = @ptrCast(self);
         return try this.getRoadName();
@@ -436,6 +517,18 @@ pub const GuidanceRoadSegment = extern struct {
 };
 pub const GuidanceRoadSignpost = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExitNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IGuidanceRoadSignpost = @ptrCast(self);
         return try this.getExitNumber();
@@ -464,6 +557,18 @@ pub const GuidanceRoadSignpost = extern struct {
 };
 pub const GuidanceRoute = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         const this: *IGuidanceRoute = @ptrCast(self);
         return try this.getDuration();
@@ -492,9 +597,6 @@ pub const GuidanceRoute = extern struct {
         const this: *IGuidanceRoute = @ptrCast(self);
         return try this.ConvertToMapRoute();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CanCreateFromMapRoute(mapRoute: *MapRoute) core.HResult!bool {
         const _f = try @This()._IGuidanceRouteStaticsCache.get();
         return try _f.CanCreateFromMapRoute(mapRoute);
@@ -512,6 +614,18 @@ pub const GuidanceRoute = extern struct {
 };
 pub const GuidanceTelemetryCollector = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnabled(self: *@This()) core.HResult!bool {
         const this: *IGuidanceTelemetryCollector = @ptrCast(self);
         return try this.getEnabled();
@@ -540,9 +654,6 @@ pub const GuidanceTelemetryCollector = extern struct {
         const this: *IGuidanceTelemetryCollector = @ptrCast(self);
         return try this.putUploadFrequency(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetCurrent() core.HResult!*GuidanceTelemetryCollector {
         const _f = try @This()._IGuidanceTelemetryCollectorStaticsCache.get();
         return try _f.GetCurrent();
@@ -556,6 +667,18 @@ pub const GuidanceTelemetryCollector = extern struct {
 };
 pub const GuidanceUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!GuidanceMode {
         const this: *IGuidanceUpdatedEventArgs = @ptrCast(self);
         return try this.getMode();
@@ -620,6 +743,12 @@ pub const GuidanceUpdatedEventArgs = extern struct {
 };
 pub const IGuidanceAudioNotificationRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAudioNotification(self: *@This()) core.HResult!GuidanceAudioNotificationKind {
         var _r: GuidanceAudioNotificationKind = undefined;
         const _c = self.vtable.get_AudioNotification(@ptrCast(self), &_r);
@@ -657,6 +786,12 @@ pub const IGuidanceAudioNotificationRequestedEventArgs = extern struct {
 };
 pub const IGuidanceLaneInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLaneMarkers(self: *@This()) core.HResult!GuidanceLaneMarkers {
         var _r: GuidanceLaneMarkers = undefined;
         const _c = self.vtable.get_LaneMarkers(@ptrCast(self), &_r);
@@ -687,6 +822,12 @@ pub const IGuidanceLaneInfo = extern struct {
 };
 pub const IGuidanceManeuver = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_StartLocation(@ptrCast(self), &_r);
@@ -787,6 +928,12 @@ pub const IGuidanceManeuver = extern struct {
 };
 pub const IGuidanceMapMatchedCoordinate = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
@@ -838,6 +985,12 @@ pub const IGuidanceMapMatchedCoordinate = extern struct {
 };
 pub const IGuidanceNavigator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartNavigating(self: *@This(), route: *GuidanceRoute) core.HResult!void {
         const _c = self.vtable.StartNavigating(@ptrCast(self), route);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1012,6 +1165,12 @@ pub const IGuidanceNavigator = extern struct {
 };
 pub const IGuidanceNavigator2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAudioNotificationRequested(self: *@This(), value: *TypedEventHandler(GuidanceNavigator,GuidanceAudioNotificationRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AudioNotificationRequested(@ptrCast(self), value, &_r);
@@ -1052,6 +1211,12 @@ pub const IGuidanceNavigator2 = extern struct {
 };
 pub const IGuidanceNavigatorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrent(self: *@This()) core.HResult!*GuidanceNavigator {
         var _r: *GuidanceNavigator = undefined;
         const _c = self.vtable.GetCurrent(@ptrCast(self), &_r);
@@ -1075,6 +1240,12 @@ pub const IGuidanceNavigatorStatics = extern struct {
 };
 pub const IGuidanceNavigatorStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUseAppProvidedVoice(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_UseAppProvidedVoice(@ptrCast(self), &_r);
@@ -1098,6 +1269,12 @@ pub const IGuidanceNavigatorStatics2 = extern struct {
 };
 pub const IGuidanceReroutedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRoute(self: *@This()) core.HResult!*GuidanceRoute {
         var _r: *GuidanceRoute = undefined;
         const _c = self.vtable.get_Route(@ptrCast(self), &_r);
@@ -1121,6 +1298,12 @@ pub const IGuidanceReroutedEventArgs = extern struct {
 };
 pub const IGuidanceRoadSegment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRoadName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RoadName(@ptrCast(self), &_r);
@@ -1200,6 +1383,12 @@ pub const IGuidanceRoadSegment = extern struct {
 };
 pub const IGuidanceRoadSegment2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsScenic(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsScenic(@ptrCast(self), &_r);
@@ -1223,6 +1412,12 @@ pub const IGuidanceRoadSegment2 = extern struct {
 };
 pub const IGuidanceRoadSignpost = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExitNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExitNumber(@ptrCast(self), &_r);
@@ -1274,6 +1469,12 @@ pub const IGuidanceRoadSignpost = extern struct {
 };
 pub const IGuidanceRoute = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
@@ -1339,6 +1540,12 @@ pub const IGuidanceRoute = extern struct {
 };
 pub const IGuidanceRouteStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CanCreateFromMapRoute(self: *@This(), mapRoute: *MapRoute) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.CanCreateFromMapRoute(@ptrCast(self), mapRoute, &_r);
@@ -1369,6 +1576,12 @@ pub const IGuidanceRouteStatics = extern struct {
 };
 pub const IGuidanceTelemetryCollector = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Enabled(@ptrCast(self), &_r);
@@ -1426,6 +1639,12 @@ pub const IGuidanceTelemetryCollector = extern struct {
 };
 pub const IGuidanceTelemetryCollectorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrent(self: *@This()) core.HResult!*GuidanceTelemetryCollector {
         var _r: *GuidanceTelemetryCollector = undefined;
         const _c = self.vtable.GetCurrent(@ptrCast(self), &_r);
@@ -1449,6 +1668,12 @@ pub const IGuidanceTelemetryCollectorStatics = extern struct {
 };
 pub const IGuidanceUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!GuidanceMode {
         var _r: GuidanceMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);

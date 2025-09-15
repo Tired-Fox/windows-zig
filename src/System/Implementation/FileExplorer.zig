@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ISysStorageProviderEventReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getJson(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Json(@ptrCast(self), &_r);
@@ -24,6 +30,12 @@ pub const ISysStorageProviderEventReceivedEventArgs = extern struct {
 };
 pub const ISysStorageProviderEventReceivedEventArgsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), json: ?HSTRING) core.HResult!*SysStorageProviderEventReceivedEventArgs {
         var _r: *SysStorageProviderEventReceivedEventArgs = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), json, &_r);
@@ -47,6 +59,12 @@ pub const ISysStorageProviderEventReceivedEventArgsFactory = extern struct {
 };
 pub const ISysStorageProviderEventSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addEventReceived(self: *@This(), handler: *TypedEventHandler(ISysStorageProviderEventSource,SysStorageProviderEventReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_EventReceived(@ptrCast(self), handler, &_r);
@@ -75,6 +93,12 @@ pub const ISysStorageProviderEventSource = extern struct {
 };
 pub const ISysStorageProviderHandlerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetHttpRequestProvider(self: *@This(), syncRootId: ?HSTRING) core.HResult!*ISysStorageProviderHttpRequestProvider {
         var _r: *ISysStorageProviderHttpRequestProvider = undefined;
         const _c = self.vtable.GetHttpRequestProvider(@ptrCast(self), syncRootId, &_r);
@@ -105,6 +129,12 @@ pub const ISysStorageProviderHandlerFactory = extern struct {
 };
 pub const ISysStorageProviderHttpRequestProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendRequestAsync(self: *@This(), request: *HttpRequestMessage) core.HResult!*IAsyncOperation(HttpResponseMessage) {
         var _r: *IAsyncOperation(HttpResponseMessage) = undefined;
         const _c = self.vtable.SendRequestAsync(@ptrCast(self), request, &_r);
@@ -128,12 +158,21 @@ pub const ISysStorageProviderHttpRequestProvider = extern struct {
 };
 pub const SysStorageProviderEventReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getJson(self: *@This()) core.HResult!?HSTRING {
-        const this: *ISysStorageProviderEventReceivedEventArgs = @ptrCast(self);
-        return try this.getJson();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getJson(self: *@This()) core.HResult!?HSTRING {
+        const this: *ISysStorageProviderEventReceivedEventArgs = @ptrCast(self);
+        return try this.getJson();
     }
     pub fn CreateInstance(json: ?HSTRING) core.HResult!*SysStorageProviderEventReceivedEventArgs {
         const _f = try @This()._ISysStorageProviderEventReceivedEventArgsFactoryCache.get();

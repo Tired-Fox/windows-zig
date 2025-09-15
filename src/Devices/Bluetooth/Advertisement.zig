@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const BluetoothLEAdvertisement = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFlags(self: *@This()) core.HResult!*IReference(BluetoothLEAdvertisementFlags) {
         const this: *IBluetoothLEAdvertisement = @ptrCast(self);
         return try this.getFlags();
@@ -37,9 +49,6 @@ pub const BluetoothLEAdvertisement = extern struct {
         const this: *IBluetoothLEAdvertisement = @ptrCast(self);
         return try this.GetSectionsByType(ty);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBluetoothLEAdvertisement.IID)));
@@ -53,6 +62,18 @@ pub const BluetoothLEAdvertisement = extern struct {
 };
 pub const BluetoothLEAdvertisementBytePattern = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataType(self: *@This()) core.HResult!u8 {
         const this: *IBluetoothLEAdvertisementBytePattern = @ptrCast(self);
         return try this.getDataType();
@@ -77,9 +98,6 @@ pub const BluetoothLEAdvertisementBytePattern = extern struct {
         const this: *IBluetoothLEAdvertisementBytePattern = @ptrCast(self);
         return try this.putData(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBluetoothLEAdvertisementBytePattern.IID)));
@@ -98,6 +116,18 @@ pub const BluetoothLEAdvertisementBytePattern = extern struct {
 };
 pub const BluetoothLEAdvertisementDataSection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataType(self: *@This()) core.HResult!u8 {
         const this: *IBluetoothLEAdvertisementDataSection = @ptrCast(self);
         return try this.getDataType();
@@ -113,9 +143,6 @@ pub const BluetoothLEAdvertisementDataSection = extern struct {
     pub fn putData(self: *@This(), value: *IBuffer) core.HResult!void {
         const this: *IBluetoothLEAdvertisementDataSection = @ptrCast(self);
         return try this.putData(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -135,6 +162,15 @@ pub const BluetoothLEAdvertisementDataSection = extern struct {
 };
 pub const BluetoothLEAdvertisementDataTypes = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -232,6 +268,18 @@ pub const BluetoothLEAdvertisementDataTypes = extern struct {
 };
 pub const BluetoothLEAdvertisementFilter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdvertisement(self: *@This()) core.HResult!*BluetoothLEAdvertisement {
         const this: *IBluetoothLEAdvertisementFilter = @ptrCast(self);
         return try this.getAdvertisement();
@@ -243,9 +291,6 @@ pub const BluetoothLEAdvertisementFilter = extern struct {
     pub fn getBytePatterns(self: *@This()) core.HResult!*IVector(BluetoothLEAdvertisementBytePattern) {
         const this: *IBluetoothLEAdvertisementFilter = @ptrCast(self);
         return try this.getBytePatterns();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -274,6 +319,18 @@ pub const BluetoothLEAdvertisementPhyType = enum(i32) {
 };
 pub const BluetoothLEAdvertisementPublisher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!BluetoothLEAdvertisementPublisherStatus {
         const this: *IBluetoothLEAdvertisementPublisher = @ptrCast(self);
         return try this.getStatus();
@@ -382,9 +439,6 @@ pub const BluetoothLEAdvertisementPublisher = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSecondaryPhy(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBluetoothLEAdvertisementPublisher.IID)));
@@ -411,6 +465,18 @@ pub const BluetoothLEAdvertisementPublisherStatus = enum(i32) {
 };
 pub const BluetoothLEAdvertisementPublisherStatusChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!BluetoothLEAdvertisementPublisherStatus {
         const this: *IBluetoothLEAdvertisementPublisherStatusChangedEventArgs = @ptrCast(self);
         return try this.getStatus();
@@ -434,6 +500,18 @@ pub const BluetoothLEAdvertisementPublisherStatusChangedEventArgs = extern struc
 };
 pub const BluetoothLEAdvertisementReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRawSignalStrengthInDBm(self: *@This()) core.HResult!i16 {
         const this: *IBluetoothLEAdvertisementReceivedEventArgs = @ptrCast(self);
         return try this.getRawSignalStrengthInDBm();
@@ -525,6 +603,18 @@ pub const BluetoothLEAdvertisementReceivedEventArgs = extern struct {
 };
 pub const BluetoothLEAdvertisementScanParameters = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScanWindow(self: *@This()) core.HResult!u16 {
         const this: *IBluetoothLEAdvertisementScanParameters = @ptrCast(self);
         return try this.getScanWindow();
@@ -532,9 +622,6 @@ pub const BluetoothLEAdvertisementScanParameters = extern struct {
     pub fn getScanInterval(self: *@This()) core.HResult!u16 {
         const this: *IBluetoothLEAdvertisementScanParameters = @ptrCast(self);
         return try this.getScanInterval();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CoexistenceOptimized() core.HResult!*BluetoothLEAdvertisementScanParameters {
         const _f = try @This()._IBluetoothLEAdvertisementScanParametersStaticsCache.get();
@@ -561,6 +648,18 @@ pub const BluetoothLEAdvertisementType = enum(i32) {
 };
 pub const BluetoothLEAdvertisementWatcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinSamplingInterval(self: *@This()) core.HResult!TimeSpan {
         const this: *IBluetoothLEAdvertisementWatcher = @ptrCast(self);
         return try this.getMinSamplingInterval();
@@ -699,9 +798,6 @@ pub const BluetoothLEAdvertisementWatcher = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseHardwareFilter(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBluetoothLEAdvertisementWatcher.IID)));
@@ -727,6 +823,18 @@ pub const BluetoothLEAdvertisementWatcherStatus = enum(i32) {
 };
 pub const BluetoothLEAdvertisementWatcherStoppedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         const this: *IBluetoothLEAdvertisementWatcherStoppedEventArgs = @ptrCast(self);
         return try this.getError();
@@ -739,6 +847,18 @@ pub const BluetoothLEAdvertisementWatcherStoppedEventArgs = extern struct {
 };
 pub const BluetoothLEManufacturerData = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompanyId(self: *@This()) core.HResult!u16 {
         const this: *IBluetoothLEManufacturerData = @ptrCast(self);
         return try this.getCompanyId();
@@ -754,9 +874,6 @@ pub const BluetoothLEManufacturerData = extern struct {
     pub fn putData(self: *@This(), value: *IBuffer) core.HResult!void {
         const this: *IBluetoothLEManufacturerData = @ptrCast(self);
         return try this.putData(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -781,6 +898,12 @@ pub const BluetoothLEScanningMode = enum(i32) {
 };
 pub const IBluetoothLEAdvertisement = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFlags(self: *@This()) core.HResult!*IReference(BluetoothLEAdvertisementFlags) {
         var _r: *IReference(BluetoothLEAdvertisementFlags) = undefined;
         const _c = self.vtable.get_Flags(@ptrCast(self), &_r);
@@ -856,6 +979,12 @@ pub const IBluetoothLEAdvertisement = extern struct {
 };
 pub const IBluetoothLEAdvertisementBytePattern = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataType(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_DataType(@ptrCast(self), &_r);
@@ -908,6 +1037,12 @@ pub const IBluetoothLEAdvertisementBytePattern = extern struct {
 };
 pub const IBluetoothLEAdvertisementBytePatternFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), dataType: u8, offset: i16, data: *IBuffer) core.HResult!*BluetoothLEAdvertisementBytePattern {
         var _r: *BluetoothLEAdvertisementBytePattern = undefined;
         const _c = self.vtable.Create(@ptrCast(self), dataType, offset, data, &_r);
@@ -931,6 +1066,12 @@ pub const IBluetoothLEAdvertisementBytePatternFactory = extern struct {
 };
 pub const IBluetoothLEAdvertisementDataSection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataType(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_DataType(@ptrCast(self), &_r);
@@ -971,6 +1112,12 @@ pub const IBluetoothLEAdvertisementDataSection = extern struct {
 };
 pub const IBluetoothLEAdvertisementDataSectionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), dataType: u8, data: *IBuffer) core.HResult!*BluetoothLEAdvertisementDataSection {
         var _r: *BluetoothLEAdvertisementDataSection = undefined;
         const _c = self.vtable.Create(@ptrCast(self), dataType, data, &_r);
@@ -994,6 +1141,12 @@ pub const IBluetoothLEAdvertisementDataSectionFactory = extern struct {
 };
 pub const IBluetoothLEAdvertisementDataTypesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFlags(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_Flags(@ptrCast(self), &_r);
@@ -1164,6 +1317,12 @@ pub const IBluetoothLEAdvertisementDataTypesStatics = extern struct {
 };
 pub const IBluetoothLEAdvertisementFilter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdvertisement(self: *@This()) core.HResult!*BluetoothLEAdvertisement {
         var _r: *BluetoothLEAdvertisement = undefined;
         const _c = self.vtable.get_Advertisement(@ptrCast(self), &_r);
@@ -1199,6 +1358,12 @@ pub const IBluetoothLEAdvertisementFilter = extern struct {
 };
 pub const IBluetoothLEAdvertisementPublisher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!BluetoothLEAdvertisementPublisherStatus {
         var _r: BluetoothLEAdvertisementPublisherStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1251,6 +1416,12 @@ pub const IBluetoothLEAdvertisementPublisher = extern struct {
 };
 pub const IBluetoothLEAdvertisementPublisher2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreferredTransmitPowerLevelInDBm(self: *@This()) core.HResult!*IReference(i16) {
         var _r: *IReference(i16) = undefined;
         const _c = self.vtable.get_PreferredTransmitPowerLevelInDBm(@ptrCast(self), &_r);
@@ -1315,6 +1486,12 @@ pub const IBluetoothLEAdvertisementPublisher2 = extern struct {
 };
 pub const IBluetoothLEAdvertisementPublisher3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrimaryPhy(self: *@This()) core.HResult!BluetoothLEAdvertisementPhyType {
         var _r: BluetoothLEAdvertisementPhyType = undefined;
         const _c = self.vtable.get_PrimaryPhy(@ptrCast(self), &_r);
@@ -1355,6 +1532,12 @@ pub const IBluetoothLEAdvertisementPublisher3 = extern struct {
 };
 pub const IBluetoothLEAdvertisementPublisherFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), advertisement: *BluetoothLEAdvertisement) core.HResult!*BluetoothLEAdvertisementPublisher {
         var _r: *BluetoothLEAdvertisementPublisher = undefined;
         const _c = self.vtable.Create(@ptrCast(self), advertisement, &_r);
@@ -1378,6 +1561,12 @@ pub const IBluetoothLEAdvertisementPublisherFactory = extern struct {
 };
 pub const IBluetoothLEAdvertisementPublisherStatusChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!BluetoothLEAdvertisementPublisherStatus {
         var _r: BluetoothLEAdvertisementPublisherStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1408,6 +1597,12 @@ pub const IBluetoothLEAdvertisementPublisherStatusChangedEventArgs = extern stru
 };
 pub const IBluetoothLEAdvertisementPublisherStatusChangedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedTransmitPowerLevelInDBm(self: *@This()) core.HResult!*IReference(i16) {
         var _r: *IReference(i16) = undefined;
         const _c = self.vtable.get_SelectedTransmitPowerLevelInDBm(@ptrCast(self), &_r);
@@ -1431,6 +1626,12 @@ pub const IBluetoothLEAdvertisementPublisherStatusChangedEventArgs2 = extern str
 };
 pub const IBluetoothLEAdvertisementReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRawSignalStrengthInDBm(self: *@This()) core.HResult!i16 {
         var _r: i16 = undefined;
         const _c = self.vtable.get_RawSignalStrengthInDBm(@ptrCast(self), &_r);
@@ -1482,6 +1683,12 @@ pub const IBluetoothLEAdvertisementReceivedEventArgs = extern struct {
 };
 pub const IBluetoothLEAdvertisementReceivedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBluetoothAddressType(self: *@This()) core.HResult!BluetoothAddressType {
         var _r: BluetoothAddressType = undefined;
         const _c = self.vtable.get_BluetoothAddressType(@ptrCast(self), &_r);
@@ -1547,6 +1754,12 @@ pub const IBluetoothLEAdvertisementReceivedEventArgs2 = extern struct {
 };
 pub const IBluetoothLEAdvertisementReceivedEventArgs3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrimaryPhy(self: *@This()) core.HResult!BluetoothLEAdvertisementPhyType {
         var _r: BluetoothLEAdvertisementPhyType = undefined;
         const _c = self.vtable.get_PrimaryPhy(@ptrCast(self), &_r);
@@ -1577,6 +1790,12 @@ pub const IBluetoothLEAdvertisementReceivedEventArgs3 = extern struct {
 };
 pub const IBluetoothLEAdvertisementScanParameters = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScanWindow(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_ScanWindow(@ptrCast(self), &_r);
@@ -1607,6 +1826,12 @@ pub const IBluetoothLEAdvertisementScanParameters = extern struct {
 };
 pub const IBluetoothLEAdvertisementScanParametersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CoexistenceOptimized(self: *@This()) core.HResult!*BluetoothLEAdvertisementScanParameters {
         var _r: *BluetoothLEAdvertisementScanParameters = undefined;
         const _c = self.vtable.CoexistenceOptimized(@ptrCast(self), &_r);
@@ -1637,6 +1862,12 @@ pub const IBluetoothLEAdvertisementScanParametersStatics = extern struct {
 };
 pub const IBluetoothLEAdvertisementWatcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinSamplingInterval(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_MinSamplingInterval(@ptrCast(self), &_r);
@@ -1758,6 +1989,12 @@ pub const IBluetoothLEAdvertisementWatcher = extern struct {
 };
 pub const IBluetoothLEAdvertisementWatcher2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowExtendedAdvertisements(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowExtendedAdvertisements(@ptrCast(self), &_r);
@@ -1786,6 +2023,12 @@ pub const IBluetoothLEAdvertisementWatcher2 = extern struct {
 };
 pub const IBluetoothLEAdvertisementWatcher3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUseUncoded1MPhy(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_UseUncoded1MPhy(@ptrCast(self), &_r);
@@ -1850,6 +2093,12 @@ pub const IBluetoothLEAdvertisementWatcher3 = extern struct {
 };
 pub const IBluetoothLEAdvertisementWatcherFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), advertisementFilter: *BluetoothLEAdvertisementFilter) core.HResult!*BluetoothLEAdvertisementWatcher {
         var _r: *BluetoothLEAdvertisementWatcher = undefined;
         const _c = self.vtable.Create(@ptrCast(self), advertisementFilter, &_r);
@@ -1873,6 +2122,12 @@ pub const IBluetoothLEAdvertisementWatcherFactory = extern struct {
 };
 pub const IBluetoothLEAdvertisementWatcherStoppedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         var _r: BluetoothError = undefined;
         const _c = self.vtable.get_Error(@ptrCast(self), &_r);
@@ -1896,6 +2151,12 @@ pub const IBluetoothLEAdvertisementWatcherStoppedEventArgs = extern struct {
 };
 pub const IBluetoothLEManufacturerData = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompanyId(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_CompanyId(@ptrCast(self), &_r);
@@ -1936,6 +2197,12 @@ pub const IBluetoothLEManufacturerData = extern struct {
 };
 pub const IBluetoothLEManufacturerDataFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), companyId: u16, data: *IBuffer) core.HResult!*BluetoothLEManufacturerData {
         var _r: *BluetoothLEManufacturerData = undefined;
         const _c = self.vtable.Create(@ptrCast(self), companyId, data, &_r);

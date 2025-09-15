@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IJsonArray = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetObjectAt(self: *@This(), index: u32) core.HResult!*JsonObject {
         var _r: *JsonObject = undefined;
         const _c = self.vtable.GetObjectAt(@ptrCast(self), index, &_r);
@@ -52,6 +58,12 @@ pub const IJsonArray = extern struct {
 };
 pub const IJsonArrayStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*JsonArray {
         var _r: *JsonArray = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -82,6 +94,12 @@ pub const IJsonArrayStatics = extern struct {
 };
 pub const IJsonErrorStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetJsonStatus(self: *@This(), hresult: i32) core.HResult!JsonErrorStatus {
         var _r: JsonErrorStatus = undefined;
         const _c = self.vtable.GetJsonStatus(@ptrCast(self), hresult, &_r);
@@ -105,6 +123,12 @@ pub const IJsonErrorStatics2 = extern struct {
 };
 pub const IJsonObject = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetNamedValue(self: *@This(), name: ?HSTRING) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.GetNamedValue(@ptrCast(self), name, &_r);
@@ -168,6 +192,12 @@ pub const IJsonObject = extern struct {
 };
 pub const IJsonObjectStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*JsonObject {
         var _r: *JsonObject = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -198,6 +228,12 @@ pub const IJsonObjectStatics = extern struct {
 };
 pub const IJsonObjectWithDefaultValues = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetNamedValue(self: *@This(), name: ?HSTRING, defaultValue: *JsonValue) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.GetNamedValue(@ptrCast(self), name, defaultValue, &_r);
@@ -256,6 +292,12 @@ pub const IJsonObjectWithDefaultValues = extern struct {
 };
 pub const IJsonValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValueType(self: *@This()) core.HResult!JsonValueType {
         var _r: JsonValueType = undefined;
         const _c = self.vtable.get_ValueType(@ptrCast(self), &_r);
@@ -321,6 +363,12 @@ pub const IJsonValue = extern struct {
 };
 pub const IJsonValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -372,6 +420,12 @@ pub const IJsonValueStatics = extern struct {
 };
 pub const IJsonValueStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateNullValue(self: *@This()) core.HResult!*JsonValue {
         var _r: *JsonValue = undefined;
         const _c = self.vtable.CreateNullValue(@ptrCast(self), &_r);
@@ -395,6 +449,18 @@ pub const IJsonValueStatics2 = extern struct {
 };
 pub const JsonArray = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetObjectAt(self: *@This(), index: u32) core.HResult!*JsonObject {
         const this: *IJsonArray = @ptrCast(self);
         return try this.GetObjectAt(index);
@@ -513,9 +579,6 @@ pub const JsonArray = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJsonArray.IID)));
@@ -538,6 +601,15 @@ pub const JsonArray = extern struct {
 };
 pub const JsonError = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -558,6 +630,18 @@ pub const JsonErrorStatus = enum(i32) {
 };
 pub const JsonObject = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetNamedValue(self: *@This(), name: ?HSTRING) core.HResult!*JsonValue {
         const this: *IJsonObject = @ptrCast(self);
         return try this.GetNamedValue(name);
@@ -712,9 +796,6 @@ pub const JsonObject = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJsonObject.IID)));
@@ -737,6 +818,18 @@ pub const JsonObject = extern struct {
 };
 pub const JsonValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValueType(self: *@This()) core.HResult!JsonValueType {
         const this: *IJsonValue = @ptrCast(self);
         return try this.getValueType();
@@ -771,9 +864,6 @@ pub const JsonValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Parse(input: ?HSTRING) core.HResult!*JsonValue {
         const _f = try @This()._IJsonValueStaticsCache.get();

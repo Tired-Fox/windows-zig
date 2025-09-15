@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ISceneBoundingBox = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCenter(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Center(@ptrCast(self), &_r);
@@ -52,6 +58,12 @@ pub const ISceneBoundingBox = extern struct {
 };
 pub const ISceneComponent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getComponentType(self: *@This()) core.HResult!SceneComponentType {
         var _r: SceneComponentType = undefined;
         const _c = self.vtable.get_ComponentType(@ptrCast(self), &_r);
@@ -75,6 +87,12 @@ pub const ISceneComponent = extern struct {
 };
 pub const ISceneComponentCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneComponentCollection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c483791c-5f46-45e4-b666-a3d2259f9b2e";
@@ -91,6 +109,12 @@ pub const ISceneComponentCollection = extern struct {
 };
 pub const ISceneComponentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneComponentFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "5fbc5574-ddd8-5889-ab5b-d8fa716e7c9e";
@@ -107,6 +131,12 @@ pub const ISceneComponentFactory = extern struct {
 };
 pub const ISceneMaterial = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneMaterial";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "8ca74b7c-30df-4e07-9490-37875af1a123";
@@ -123,6 +153,12 @@ pub const ISceneMaterial = extern struct {
 };
 pub const ISceneMaterialFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneMaterialFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "67536c19-a707-5254-a495-7fdc799893b9";
@@ -139,6 +175,12 @@ pub const ISceneMaterialFactory = extern struct {
 };
 pub const ISceneMaterialInput = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneMaterialInput";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "422a1642-1ef1-485c-97e9-ae6f95ad812f";
@@ -155,6 +197,12 @@ pub const ISceneMaterialInput = extern struct {
 };
 pub const ISceneMaterialInputFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneMaterialInputFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a88feb74-7d0a-5e4c-a748-1015af9ca74f";
@@ -171,6 +219,12 @@ pub const ISceneMaterialInputFactory = extern struct {
 };
 pub const ISceneMesh = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBounds(self: *@This()) core.HResult!*SceneBoundingBox {
         var _r: *SceneBoundingBox = undefined;
         const _c = self.vtable.get_Bounds(@ptrCast(self), &_r);
@@ -211,6 +265,12 @@ pub const ISceneMesh = extern struct {
 };
 pub const ISceneMeshMaterialAttributeMap = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneMeshMaterialAttributeMap";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ce843171-3d43-4855-aa69-31ff988d049d";
@@ -227,6 +287,12 @@ pub const ISceneMeshMaterialAttributeMap = extern struct {
 };
 pub const ISceneMeshRendererComponent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaterial(self: *@This()) core.HResult!*SceneMaterial {
         var _r: *SceneMaterial = undefined;
         const _c = self.vtable.get_Material(@ptrCast(self), &_r);
@@ -274,6 +340,12 @@ pub const ISceneMeshRendererComponent = extern struct {
 };
 pub const ISceneMeshRendererComponentStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*SceneMeshRendererComponent {
         var _r: *SceneMeshRendererComponent = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
@@ -297,6 +369,12 @@ pub const ISceneMeshRendererComponentStatics = extern struct {
 };
 pub const ISceneMeshStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*SceneMesh {
         var _r: *SceneMesh = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
@@ -320,6 +398,12 @@ pub const ISceneMeshStatics = extern struct {
 };
 pub const ISceneMetallicRoughnessMaterial = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBaseColorInput(self: *@This()) core.HResult!*SceneMaterialInput {
         var _r: *SceneMaterialInput = undefined;
         const _c = self.vtable.get_BaseColorInput(@ptrCast(self), &_r);
@@ -396,6 +480,12 @@ pub const ISceneMetallicRoughnessMaterial = extern struct {
 };
 pub const ISceneMetallicRoughnessMaterialStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*SceneMetallicRoughnessMaterial {
         var _r: *SceneMetallicRoughnessMaterial = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
@@ -419,6 +509,12 @@ pub const ISceneMetallicRoughnessMaterialStatics = extern struct {
 };
 pub const ISceneModelTransform = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOrientation(self: *@This()) core.HResult!Quaternion {
         var _r: Quaternion = undefined;
         const _c = self.vtable.get_Orientation(@ptrCast(self), &_r);
@@ -507,6 +603,12 @@ pub const ISceneModelTransform = extern struct {
 };
 pub const ISceneNode = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChildren(self: *@This()) core.HResult!*SceneNodeCollection {
         var _r: *SceneNodeCollection = undefined;
         const _c = self.vtable.get_Children(@ptrCast(self), &_r);
@@ -558,6 +660,12 @@ pub const ISceneNode = extern struct {
 };
 pub const ISceneNodeCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneNodeCollection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "29ada101-2dd9-4332-be63-60d2cf4269f2";
@@ -574,6 +682,12 @@ pub const ISceneNodeCollection = extern struct {
 };
 pub const ISceneNodeStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*SceneNode {
         var _r: *SceneNode = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
@@ -597,6 +711,12 @@ pub const ISceneNodeStatics = extern struct {
 };
 pub const ISceneObject = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneObject";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1e94249b-0f1b-49eb-a819-877d8450005b";
@@ -613,6 +733,12 @@ pub const ISceneObject = extern struct {
 };
 pub const ISceneObjectFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneObjectFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "14fe799a-33e4-52ef-956c-44229d21f2c1";
@@ -629,6 +755,12 @@ pub const ISceneObjectFactory = extern struct {
 };
 pub const IScenePbrMaterial = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlphaCutoff(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_AlphaCutoff(@ptrCast(self), &_r);
@@ -753,6 +885,12 @@ pub const IScenePbrMaterial = extern struct {
 };
 pub const IScenePbrMaterialFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.IScenePbrMaterialFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "2e3f3dfe-0b85-5727-b5be-b7d3cbac37fa";
@@ -769,6 +907,12 @@ pub const IScenePbrMaterialFactory = extern struct {
 };
 pub const ISceneRendererComponent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneRendererComponent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "f1acb857-cf4f-4025-9b25-a2d1944cf507";
@@ -785,6 +929,12 @@ pub const ISceneRendererComponent = extern struct {
 };
 pub const ISceneRendererComponentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ISceneRendererComponentFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1db6ed6c-aa2c-5967-9035-56352dc69658";
@@ -801,6 +951,12 @@ pub const ISceneRendererComponentFactory = extern struct {
 };
 pub const ISceneSurfaceMaterialInput = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapInterpolationMode(self: *@This()) core.HResult!CompositionBitmapInterpolationMode {
         var _r: CompositionBitmapInterpolationMode = undefined;
         const _c = self.vtable.get_BitmapInterpolationMode(@ptrCast(self), &_r);
@@ -865,6 +1021,12 @@ pub const ISceneSurfaceMaterialInput = extern struct {
 };
 pub const ISceneSurfaceMaterialInputStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*SceneSurfaceMaterialInput {
         var _r: *SceneSurfaceMaterialInput = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
@@ -888,6 +1050,12 @@ pub const ISceneSurfaceMaterialInputStatics = extern struct {
 };
 pub const ISceneVisual = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRoot(self: *@This()) core.HResult!*SceneNode {
         var _r: *SceneNode = undefined;
         const _c = self.vtable.get_Root(@ptrCast(self), &_r);
@@ -916,6 +1084,12 @@ pub const ISceneVisual = extern struct {
 };
 pub const ISceneVisualStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*SceneVisual {
         var _r: *SceneVisual = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
@@ -953,6 +1127,15 @@ pub const SceneAttributeSemantic = enum(i32) {
 };
 pub const SceneObject = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -965,6 +1148,18 @@ pub const SceneObject = extern struct {
 };
 pub const SceneBoundingBox = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCenter(self: *@This()) core.HResult!Vector3 {
         const this: *ISceneBoundingBox = @ptrCast(self);
         return try this.getCenter();
@@ -993,12 +1188,21 @@ pub const SceneBoundingBox = extern struct {
 };
 pub const SceneComponent = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getComponentType(self: *@This()) core.HResult!SceneComponentType {
-        const this: *ISceneComponent = @ptrCast(self);
-        return try this.getComponentType();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getComponentType(self: *@This()) core.HResult!SceneComponentType {
+        const this: *ISceneComponent = @ptrCast(self);
+        return try this.getComponentType();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneComponent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1009,6 +1213,18 @@ pub const SceneComponent = extern struct {
 };
 pub const SceneComponentCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVector(SceneComponent) = @ptrCast(self);
         return try this.getSize();
@@ -1047,6 +1263,15 @@ pub const SceneComponentType = enum(i32) {
 };
 pub const SceneMaterial = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1059,6 +1284,15 @@ pub const SceneMaterial = extern struct {
 };
 pub const SceneMaterialInput = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1071,6 +1305,18 @@ pub const SceneMaterialInput = extern struct {
 };
 pub const SceneMesh = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBounds(self: *@This()) core.HResult!*SceneBoundingBox {
         const this: *ISceneMesh = @ptrCast(self);
         return try this.getBounds();
@@ -1087,9 +1333,6 @@ pub const SceneMesh = extern struct {
         const this: *ISceneMesh = @ptrCast(self);
         return try this.FillMeshAttribute(semantic, format, memory);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneMesh {
         const _f = try @This()._ISceneMeshStaticsCache.get();
         return try _f.Create(compositor);
@@ -1103,6 +1346,18 @@ pub const SceneMesh = extern struct {
 };
 pub const SceneMeshMaterialAttributeMap = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(?HSTRING,SceneAttributeSemantic) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1139,6 +1394,15 @@ pub const SceneMeshMaterialAttributeMap = extern struct {
 };
 pub const SceneRendererComponent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1151,6 +1415,18 @@ pub const SceneRendererComponent = extern struct {
 };
 pub const SceneMeshRendererComponent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaterial(self: *@This()) core.HResult!*SceneMaterial {
         const this: *ISceneMeshRendererComponent = @ptrCast(self);
         return try this.getMaterial();
@@ -1171,9 +1447,6 @@ pub const SceneMeshRendererComponent = extern struct {
         const this: *ISceneMeshRendererComponent = @ptrCast(self);
         return try this.getUVMappings();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneMeshRendererComponent {
         const _f = try @This()._ISceneMeshRendererComponentStaticsCache.get();
         return try _f.Create(compositor);
@@ -1187,6 +1460,18 @@ pub const SceneMeshRendererComponent = extern struct {
 };
 pub const ScenePbrMaterial = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlphaCutoff(self: *@This()) core.HResult!f32 {
         const this: *IScenePbrMaterial = @ptrCast(self);
         return try this.getAlphaCutoff();
@@ -1259,9 +1544,6 @@ pub const ScenePbrMaterial = extern struct {
         const this: *IScenePbrMaterial = @ptrCast(self);
         return try this.putOcclusionStrength(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.ScenePbrMaterial";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IScenePbrMaterial.GUID;
@@ -1271,6 +1553,18 @@ pub const ScenePbrMaterial = extern struct {
 };
 pub const SceneMetallicRoughnessMaterial = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBaseColorInput(self: *@This()) core.HResult!*SceneMaterialInput {
         const this: *ISceneMetallicRoughnessMaterial = @ptrCast(self);
         return try this.getBaseColorInput();
@@ -1311,9 +1605,6 @@ pub const SceneMetallicRoughnessMaterial = extern struct {
         const this: *ISceneMetallicRoughnessMaterial = @ptrCast(self);
         return try this.putRoughnessFactor(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneMetallicRoughnessMaterial {
         const _f = try @This()._ISceneMetallicRoughnessMaterialStaticsCache.get();
         return try _f.Create(compositor);
@@ -1327,6 +1618,18 @@ pub const SceneMetallicRoughnessMaterial = extern struct {
 };
 pub const SceneModelTransform = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOrientation(self: *@This()) core.HResult!Quaternion {
         const this: *ISceneModelTransform = @ptrCast(self);
         return try this.getOrientation();
@@ -1383,6 +1686,18 @@ pub const SceneModelTransform = extern struct {
 };
 pub const SceneNode = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChildren(self: *@This()) core.HResult!*SceneNodeCollection {
         const this: *ISceneNode = @ptrCast(self);
         return try this.getChildren();
@@ -1403,9 +1718,6 @@ pub const SceneNode = extern struct {
         const this: *ISceneNode = @ptrCast(self);
         return try this.FindFirstComponentOfType(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneNode {
         const _f = try @This()._ISceneNodeStaticsCache.get();
         return try _f.Create(compositor);
@@ -1419,6 +1731,18 @@ pub const SceneNode = extern struct {
 };
 pub const SceneNodeCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVector(SceneNode) = @ptrCast(self);
         return try this.getSize();
@@ -1454,6 +1778,18 @@ pub const SceneNodeCollection = extern struct {
 };
 pub const SceneSurfaceMaterialInput = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapInterpolationMode(self: *@This()) core.HResult!CompositionBitmapInterpolationMode {
         const this: *ISceneSurfaceMaterialInput = @ptrCast(self);
         return try this.getBitmapInterpolationMode();
@@ -1486,9 +1822,6 @@ pub const SceneSurfaceMaterialInput = extern struct {
         const this: *ISceneSurfaceMaterialInput = @ptrCast(self);
         return try this.putWrappingVMode(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneSurfaceMaterialInput {
         const _f = try @This()._ISceneSurfaceMaterialInputStaticsCache.get();
         return try _f.Create(compositor);
@@ -1502,6 +1835,18 @@ pub const SceneSurfaceMaterialInput = extern struct {
 };
 pub const SceneVisual = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRoot(self: *@This()) core.HResult!*SceneNode {
         const this: *ISceneVisual = @ptrCast(self);
         return try this.getRoot();
@@ -1509,9 +1854,6 @@ pub const SceneVisual = extern struct {
     pub fn putRoot(self: *@This(), value: *SceneNode) core.HResult!void {
         const this: *ISceneVisual = @ptrCast(self);
         return try this.putRoot(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneVisual {
         const _f = try @This()._ISceneVisualStaticsCache.get();

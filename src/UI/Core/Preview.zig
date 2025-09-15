@@ -1,6 +1,15 @@
 // ----- This code is automatically generated -----
 pub const CoreAppWindowPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -17,6 +26,12 @@ pub const CoreAppWindowPreview = extern struct {
 };
 pub const ICoreAppWindowPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Core.Preview.ICoreAppWindowPreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a4f6e665-365e-5fde-87a5-9543c3a15aa8";
@@ -33,6 +48,12 @@ pub const ICoreAppWindowPreview = extern struct {
 };
 pub const ICoreAppWindowPreviewStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetIdFromWindow(self: *@This(), window: *AppWindow) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetIdFromWindow(@ptrCast(self), window, &_r);
@@ -56,6 +77,12 @@ pub const ICoreAppWindowPreviewStatics = extern struct {
 };
 pub const ISystemNavigationCloseRequestedPreviewEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
@@ -91,6 +118,12 @@ pub const ISystemNavigationCloseRequestedPreviewEventArgs = extern struct {
 };
 pub const ISystemNavigationManagerPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addCloseRequested(self: *@This(), handler: *EventHandler(SystemNavigationCloseRequestedPreviewEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CloseRequested(@ptrCast(self), handler, &_r);
@@ -119,6 +152,12 @@ pub const ISystemNavigationManagerPreview = extern struct {
 };
 pub const ISystemNavigationManagerPreviewStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*SystemNavigationManagerPreview {
         var _r: *SystemNavigationManagerPreview = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -142,6 +181,18 @@ pub const ISystemNavigationManagerPreviewStatics = extern struct {
 };
 pub const SystemNavigationCloseRequestedPreviewEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         const this: *ISystemNavigationCloseRequestedPreviewEventArgs = @ptrCast(self);
         return try this.getHandled();
@@ -162,6 +213,18 @@ pub const SystemNavigationCloseRequestedPreviewEventArgs = extern struct {
 };
 pub const SystemNavigationManagerPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addCloseRequested(self: *@This(), handler: *EventHandler(SystemNavigationCloseRequestedPreviewEventArgs)) core.HResult!EventRegistrationToken {
         const this: *ISystemNavigationManagerPreview = @ptrCast(self);
         return try this.addCloseRequested(handler);
@@ -169,9 +232,6 @@ pub const SystemNavigationManagerPreview = extern struct {
     pub fn removeCloseRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *ISystemNavigationManagerPreview = @ptrCast(self);
         return try this.removeCloseRequested(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*SystemNavigationManagerPreview {
         const _f = try @This()._ISystemNavigationManagerPreviewStaticsCache.get();

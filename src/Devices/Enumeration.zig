@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const DeviceAccessChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!DeviceAccessStatus {
         const this: *IDeviceAccessChangedEventArgs = @ptrCast(self);
         return try this.getStatus();
@@ -27,6 +39,18 @@ pub const DeviceAccessChangedEventArgs = extern struct {
 };
 pub const DeviceAccessInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAccessChanged(self: *@This(), handler: *TypedEventHandler(DeviceAccessInformation,DeviceAccessChangedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IDeviceAccessInformation = @ptrCast(self);
         return try this.addAccessChanged(handler);
@@ -45,9 +69,6 @@ pub const DeviceAccessInformation = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceAccessInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUserPromptRequired();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromId(deviceId: ?HSTRING) core.HResult!*DeviceAccessInformation {
         const _f = try @This()._IDeviceAccessInformationStaticsCache.get();
@@ -85,6 +106,18 @@ pub const DeviceClass = enum(i32) {
 };
 pub const DeviceConnectionChangeTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceConnectionChangeTriggerDetails = @ptrCast(self);
         return try this.getDeviceId();
@@ -97,6 +130,18 @@ pub const DeviceConnectionChangeTriggerDetails = extern struct {
 };
 pub const DeviceDisconnectButtonClickedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDevice(self: *@This()) core.HResult!*DeviceInformation {
         const this: *IDeviceDisconnectButtonClickedEventArgs = @ptrCast(self);
         return try this.getDevice();
@@ -109,6 +154,18 @@ pub const DeviceDisconnectButtonClickedEventArgs = extern struct {
 };
 pub const DeviceInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceInformation = @ptrCast(self);
         return try this.getId();
@@ -158,9 +215,6 @@ pub const DeviceInformation = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPairing();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceInformation) {
         const _f = try @This()._IDeviceInformationStaticsCache.get();
@@ -241,6 +295,18 @@ pub const DeviceInformation = extern struct {
 };
 pub const DeviceInformationCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVectorView(DeviceInformation) = @ptrCast(self);
         return try this.getSize();
@@ -260,6 +326,18 @@ pub const DeviceInformationCollection = extern struct {
 };
 pub const DeviceInformationCustomPairing = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn PairAsync(self: *@This(), pairingKindsSupported: DevicePairingKinds) core.HResult!*IAsyncOperation(DevicePairingResult) {
         const this: *IDeviceInformationCustomPairing = @ptrCast(self);
         return try this.PairAsync(pairingKindsSupported);
@@ -321,6 +399,18 @@ pub const DeviceInformationKind = enum(i32) {
 };
 pub const DeviceInformationPairing = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPaired(self: *@This()) core.HResult!bool {
         const this: *IDeviceInformationPairing = @ptrCast(self);
         return try this.getIsPaired();
@@ -365,9 +455,6 @@ pub const DeviceInformationPairing = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UnpairAsync();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn TryRegisterForAllInboundPairingRequests(pairingKindsSupported: DevicePairingKinds) core.HResult!bool {
         const _f = try @This()._IDeviceInformationPairingStaticsCache.get();
         return try _f.TryRegisterForAllInboundPairingRequests(pairingKindsSupported);
@@ -386,6 +473,18 @@ pub const DeviceInformationPairing = extern struct {
 };
 pub const DeviceInformationUpdate = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceInformationUpdate = @ptrCast(self);
         return try this.getId();
@@ -432,6 +531,18 @@ pub const DevicePairingProtectionLevel = enum(i32) {
 };
 pub const DevicePairingRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         const this: *IDevicePairingRequestedEventArgs = @ptrCast(self);
         return try this.getDeviceInformation();
@@ -478,6 +589,18 @@ pub const DevicePairingRequestedEventArgs = extern struct {
 };
 pub const DevicePairingResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!DevicePairingResultStatus {
         const this: *IDevicePairingResult = @ptrCast(self);
         return try this.getStatus();
@@ -516,6 +639,18 @@ pub const DevicePairingResultStatus = enum(i32) {
 };
 pub const DevicePairingSetMembersRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!DevicePairingAddPairingSetMemberStatus {
         const this: *IDevicePairingSetMembersRequestedEventArgs = @ptrCast(self);
         return try this.getStatus();
@@ -536,6 +671,18 @@ pub const DevicePairingSetMembersRequestedEventArgs = extern struct {
 };
 pub const DevicePicker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFilter(self: *@This()) core.HResult!*DevicePickerFilter {
         const this: *IDevicePicker = @ptrCast(self);
         return try this.getFilter();
@@ -596,9 +743,6 @@ pub const DevicePicker = extern struct {
         const this: *IDevicePicker = @ptrCast(self);
         return try this.SetDisplayStatus(device, status, options);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDevicePicker.IID)));
@@ -612,6 +756,18 @@ pub const DevicePicker = extern struct {
 };
 pub const DevicePickerAppearance = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IDevicePickerAppearance = @ptrCast(self);
         return try this.getTitle();
@@ -682,6 +838,18 @@ pub const DevicePickerDisplayStatusOptions = enum(i32) {
 };
 pub const DevicePickerFilter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedDeviceClasses(self: *@This()) core.HResult!*IVector(DeviceClass) {
         const this: *IDevicePickerFilter = @ptrCast(self);
         return try this.getSupportedDeviceClasses();
@@ -698,6 +866,18 @@ pub const DevicePickerFilter = extern struct {
 };
 pub const DeviceSelectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedDevice(self: *@This()) core.HResult!*DeviceInformation {
         const this: *IDeviceSelectedEventArgs = @ptrCast(self);
         return try this.getSelectedDevice();
@@ -710,6 +890,18 @@ pub const DeviceSelectedEventArgs = extern struct {
 };
 pub const DeviceThumbnail = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -816,6 +1008,18 @@ pub const DeviceThumbnail = extern struct {
 };
 pub const DeviceUnpairingResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!DeviceUnpairingResultStatus {
         const this: *IDeviceUnpairingResult = @ptrCast(self);
         return try this.getStatus();
@@ -835,6 +1039,18 @@ pub const DeviceUnpairingResultStatus = enum(i32) {
 };
 pub const DeviceWatcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAdded(self: *@This(), handler: *TypedEventHandler(DeviceWatcher,DeviceInformation)) core.HResult!EventRegistrationToken {
         const this: *IDeviceWatcher = @ptrCast(self);
         return try this.addAdded(handler);
@@ -902,6 +1118,18 @@ pub const DeviceWatcher = extern struct {
 };
 pub const DeviceWatcherEvent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!DeviceWatcherEventKind {
         const this: *IDeviceWatcherEvent = @ptrCast(self);
         return try this.getKind();
@@ -935,6 +1163,18 @@ pub const DeviceWatcherStatus = enum(i32) {
 };
 pub const DeviceWatcherTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceWatcherEvents(self: *@This()) core.HResult!*IVectorView(DeviceWatcherEvent) {
         const this: *IDeviceWatcherTriggerDetails = @ptrCast(self);
         return try this.getDeviceWatcherEvents();
@@ -947,6 +1187,18 @@ pub const DeviceWatcherTriggerDetails = extern struct {
 };
 pub const EnclosureLocation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInDock(self: *@This()) core.HResult!bool {
         const this: *IEnclosureLocation = @ptrCast(self);
         return try this.getInDock();
@@ -974,6 +1226,12 @@ pub const EnclosureLocation = extern struct {
 };
 pub const IDeviceAccessChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!DeviceAccessStatus {
         var _r: DeviceAccessStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -997,6 +1255,12 @@ pub const IDeviceAccessChangedEventArgs = extern struct {
 };
 pub const IDeviceAccessChangedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -1020,6 +1284,12 @@ pub const IDeviceAccessChangedEventArgs2 = extern struct {
 };
 pub const IDeviceAccessChangedEventArgs3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserPromptRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_UserPromptRequired(@ptrCast(self), &_r);
@@ -1043,6 +1313,12 @@ pub const IDeviceAccessChangedEventArgs3 = extern struct {
 };
 pub const IDeviceAccessInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAccessChanged(self: *@This(), handler: *TypedEventHandler(DeviceAccessInformation,DeviceAccessChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AccessChanged(@ptrCast(self), handler, &_r);
@@ -1078,6 +1354,12 @@ pub const IDeviceAccessInformation = extern struct {
 };
 pub const IDeviceAccessInformation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserPromptRequired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_UserPromptRequired(@ptrCast(self), &_r);
@@ -1101,6 +1383,12 @@ pub const IDeviceAccessInformation2 = extern struct {
 };
 pub const IDeviceAccessInformationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromId(self: *@This(), deviceId: ?HSTRING) core.HResult!*DeviceAccessInformation {
         var _r: *DeviceAccessInformation = undefined;
         const _c = self.vtable.CreateFromId(@ptrCast(self), deviceId, &_r);
@@ -1138,6 +1426,12 @@ pub const IDeviceAccessInformationStatics = extern struct {
 };
 pub const IDeviceConnectionChangeTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -1161,6 +1455,12 @@ pub const IDeviceConnectionChangeTriggerDetails = extern struct {
 };
 pub const IDeviceDisconnectButtonClickedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDevice(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_Device(@ptrCast(self), &_r);
@@ -1184,6 +1484,12 @@ pub const IDeviceDisconnectButtonClickedEventArgs = extern struct {
 };
 pub const IDeviceEnumerationSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDeviceEnumerationSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "f7710f66-9ff3-41c8-85eb-87f81148a30f";
@@ -1200,6 +1506,12 @@ pub const IDeviceEnumerationSettings = extern struct {
 };
 pub const IDeviceInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -1277,6 +1589,12 @@ pub const IDeviceInformation = extern struct {
 };
 pub const IDeviceInformation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!DeviceInformationKind {
         var _r: DeviceInformationKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -1307,6 +1625,12 @@ pub const IDeviceInformation2 = extern struct {
 };
 pub const IDeviceInformationCustomPairing = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn PairAsync(self: *@This(), pairingKindsSupported: DevicePairingKinds) core.HResult!*IAsyncOperation(DevicePairingResult) {
         var _r: *IAsyncOperation(DevicePairingResult) = undefined;
         const _c = self.vtable.PairAsync(@ptrCast(self), pairingKindsSupported, &_r);
@@ -1356,6 +1680,12 @@ pub const IDeviceInformationCustomPairing = extern struct {
 };
 pub const IDeviceInformationCustomPairing2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddPairingSetMember(self: *@This(), device: *DeviceInformation) core.HResult!void {
         const _c = self.vtable.AddPairingSetMember(@ptrCast(self), device);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1389,6 +1719,12 @@ pub const IDeviceInformationCustomPairing2 = extern struct {
 };
 pub const IDeviceInformationPairing = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPaired(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPaired(@ptrCast(self), &_r);
@@ -1433,6 +1769,12 @@ pub const IDeviceInformationPairing = extern struct {
 };
 pub const IDeviceInformationPairing2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProtectionLevel(self: *@This()) core.HResult!DevicePairingProtectionLevel {
         var _r: DevicePairingProtectionLevel = undefined;
         const _c = self.vtable.get_ProtectionLevel(@ptrCast(self), &_r);
@@ -1477,6 +1819,12 @@ pub const IDeviceInformationPairing2 = extern struct {
 };
 pub const IDeviceInformationPairingStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryRegisterForAllInboundPairingRequests(self: *@This(), pairingKindsSupported: DevicePairingKinds) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryRegisterForAllInboundPairingRequests(@ptrCast(self), pairingKindsSupported, &_r);
@@ -1500,6 +1848,12 @@ pub const IDeviceInformationPairingStatics = extern struct {
 };
 pub const IDeviceInformationPairingStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryRegisterForAllInboundPairingRequestsWithProtectionLevel(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryRegisterForAllInboundPairingRequestsWithProtectionLevel(@ptrCast(self), pairingKindsSupported, minProtectionLevel, &_r);
@@ -1523,6 +1877,12 @@ pub const IDeviceInformationPairingStatics2 = extern struct {
 };
 pub const IDeviceInformationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
         const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), deviceId, &_r);
@@ -1609,6 +1969,12 @@ pub const IDeviceInformationStatics = extern struct {
 };
 pub const IDeviceInformationStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAqsFilterFromDeviceClass(self: *@This(), deviceClass: DeviceClass) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAqsFilterFromDeviceClass(@ptrCast(self), deviceClass, &_r);
@@ -1653,6 +2019,12 @@ pub const IDeviceInformationStatics2 = extern struct {
 };
 pub const IDeviceInformationStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromIdAsync(self: *@This(), deviceId: ?HSTRING, additionalProperties: *IIterable(?HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
         const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), deviceId, additionalProperties, kind, settings, &_r);
@@ -1690,6 +2062,12 @@ pub const IDeviceInformationStatics3 = extern struct {
 };
 pub const IDeviceInformationUpdate = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -1720,6 +2098,12 @@ pub const IDeviceInformationUpdate = extern struct {
 };
 pub const IDeviceInformationUpdate2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!DeviceInformationKind {
         var _r: DeviceInformationKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -1743,6 +2127,12 @@ pub const IDeviceInformationUpdate2 = extern struct {
 };
 pub const IDevicePairingRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceInformation(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_DeviceInformation(@ptrCast(self), &_r);
@@ -1797,6 +2187,12 @@ pub const IDevicePairingRequestedEventArgs = extern struct {
 };
 pub const IDevicePairingRequestedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AcceptWithPasswordCredential(self: *@This(), passwordCredential: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.AcceptWithPasswordCredential(@ptrCast(self), passwordCredential);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1818,6 +2214,12 @@ pub const IDevicePairingRequestedEventArgs2 = extern struct {
 };
 pub const IDevicePairingRequestedEventArgs3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AcceptWithAddress(self: *@This(), address: ?HSTRING) core.HResult!void {
         const _c = self.vtable.AcceptWithAddress(@ptrCast(self), address);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1839,6 +2241,12 @@ pub const IDevicePairingRequestedEventArgs3 = extern struct {
 };
 pub const IDevicePairingResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!DevicePairingResultStatus {
         var _r: DevicePairingResultStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1869,6 +2277,12 @@ pub const IDevicePairingResult = extern struct {
 };
 pub const IDevicePairingSetMembersRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!DevicePairingAddPairingSetMemberStatus {
         var _r: DevicePairingAddPairingSetMemberStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1906,6 +2320,12 @@ pub const IDevicePairingSetMembersRequestedEventArgs = extern struct {
 };
 pub const IDevicePairingSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.IDevicePairingSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "482cb27c-83bb-420e-be51-6602b222de54";
@@ -1922,6 +2342,12 @@ pub const IDevicePairingSettings = extern struct {
 };
 pub const IDevicePicker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFilter(self: *@This()) core.HResult!*DevicePickerFilter {
         var _r: *DevicePickerFilter = undefined;
         const _c = self.vtable.get_Filter(@ptrCast(self), &_r);
@@ -2029,6 +2455,12 @@ pub const IDevicePicker = extern struct {
 };
 pub const IDevicePickerAppearance = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -2129,6 +2561,12 @@ pub const IDevicePickerAppearance = extern struct {
 };
 pub const IDevicePickerFilter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedDeviceClasses(self: *@This()) core.HResult!*IVector(DeviceClass) {
         var _r: *IVector(DeviceClass) = undefined;
         const _c = self.vtable.get_SupportedDeviceClasses(@ptrCast(self), &_r);
@@ -2159,6 +2597,12 @@ pub const IDevicePickerFilter = extern struct {
 };
 pub const IDeviceSelectedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedDevice(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_SelectedDevice(@ptrCast(self), &_r);
@@ -2182,6 +2626,12 @@ pub const IDeviceSelectedEventArgs = extern struct {
 };
 pub const IDeviceUnpairingResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!DeviceUnpairingResultStatus {
         var _r: DeviceUnpairingResultStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -2205,6 +2655,12 @@ pub const IDeviceUnpairingResult = extern struct {
 };
 pub const IDeviceWatcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAdded(self: *@This(), handler: *TypedEventHandler(DeviceWatcher,DeviceInformation)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Added(@ptrCast(self), handler, &_r);
@@ -2298,6 +2754,12 @@ pub const IDeviceWatcher = extern struct {
 };
 pub const IDeviceWatcher2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetBackgroundTrigger(self: *@This(), requestedEventKinds: *IIterable(DeviceWatcherEventKind)) core.HResult!*DeviceWatcherTrigger {
         var _r: *DeviceWatcherTrigger = undefined;
         const _c = self.vtable.GetBackgroundTrigger(@ptrCast(self), requestedEventKinds, &_r);
@@ -2321,6 +2783,12 @@ pub const IDeviceWatcher2 = extern struct {
 };
 pub const IDeviceWatcherEvent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!DeviceWatcherEventKind {
         var _r: DeviceWatcherEventKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -2358,6 +2826,12 @@ pub const IDeviceWatcherEvent = extern struct {
 };
 pub const IDeviceWatcherTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceWatcherEvents(self: *@This()) core.HResult!*IVectorView(DeviceWatcherEvent) {
         var _r: *IVectorView(DeviceWatcherEvent) = undefined;
         const _c = self.vtable.get_DeviceWatcherEvents(@ptrCast(self), &_r);
@@ -2381,6 +2855,12 @@ pub const IDeviceWatcherTriggerDetails = extern struct {
 };
 pub const IEnclosureLocation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInDock(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_InDock(@ptrCast(self), &_r);
@@ -2418,6 +2898,12 @@ pub const IEnclosureLocation = extern struct {
 };
 pub const IEnclosureLocation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRotationAngleInDegreesClockwise(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_RotationAngleInDegreesClockwise(@ptrCast(self), &_r);

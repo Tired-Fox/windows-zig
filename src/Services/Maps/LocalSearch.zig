@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ILocalCategoriesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBankAndCreditUnions(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BankAndCreditUnions(@ptrCast(self), &_r);
@@ -73,6 +79,12 @@ pub const ILocalCategoriesStatics = extern struct {
 };
 pub const ILocalLocation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAddress(self: *@This()) core.HResult!*MapAddress {
         var _r: *MapAddress = undefined;
         const _c = self.vtable.get_Address(@ptrCast(self), &_r);
@@ -138,6 +150,12 @@ pub const ILocalLocation = extern struct {
 };
 pub const ILocalLocation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCategory(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Category(@ptrCast(self), &_r);
@@ -175,6 +193,12 @@ pub const ILocalLocation2 = extern struct {
 };
 pub const ILocalLocationFinderResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
         var _r: *IVectorView(LocalLocation) = undefined;
         const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
@@ -205,6 +229,12 @@ pub const ILocalLocationFinderResult = extern struct {
 };
 pub const ILocalLocationFinderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindLocalLocationsAsync(self: *@This(), searchTerm: ?HSTRING, searchArea: *Geocircle, localCategory: ?HSTRING, maxResults: u32) core.HResult!*IAsyncOperation(LocalLocationFinderResult) {
         var _r: *IAsyncOperation(LocalLocationFinderResult) = undefined;
         const _c = self.vtable.FindLocalLocationsAsync(@ptrCast(self), searchTerm, searchArea, localCategory, maxResults, &_r);
@@ -228,6 +258,12 @@ pub const ILocalLocationFinderStatics = extern struct {
 };
 pub const ILocalLocationHoursOfOperationItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDay(self: *@This()) core.HResult!DayOfWeek {
         var _r: DayOfWeek = undefined;
         const _c = self.vtable.get_Day(@ptrCast(self), &_r);
@@ -265,6 +301,12 @@ pub const ILocalLocationHoursOfOperationItem = extern struct {
 };
 pub const ILocalLocationRatingInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAggregateRating(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_AggregateRating(@ptrCast(self), &_r);
@@ -302,6 +344,12 @@ pub const ILocalLocationRatingInfo = extern struct {
 };
 pub const IPlaceInfoHelperStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromLocalLocation(self: *@This(), location: *LocalLocation) core.HResult!*PlaceInfo {
         var _r: *PlaceInfo = undefined;
         const _c = self.vtable.CreateFromLocalLocation(@ptrCast(self), location, &_r);
@@ -325,6 +373,15 @@ pub const IPlaceInfoHelperStatics = extern struct {
 };
 pub const LocalCategories = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -366,6 +423,18 @@ pub const LocalCategories = extern struct {
 };
 pub const LocalLocation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAddress(self: *@This()) core.HResult!*MapAddress {
         const this: *ILocalLocation = @ptrCast(self);
         return try this.getAddress();
@@ -423,6 +492,15 @@ pub const LocalLocation = extern struct {
 };
 pub const LocalLocationFinder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -436,6 +514,18 @@ pub const LocalLocationFinder = extern struct {
 };
 pub const LocalLocationFinderResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
         const this: *ILocalLocationFinderResult = @ptrCast(self);
         return try this.getLocalLocations();
@@ -462,6 +552,18 @@ pub const LocalLocationFinderStatus = enum(i32) {
 };
 pub const LocalLocationHoursOfOperationItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDay(self: *@This()) core.HResult!DayOfWeek {
         const this: *ILocalLocationHoursOfOperationItem = @ptrCast(self);
         return try this.getDay();
@@ -482,6 +584,18 @@ pub const LocalLocationHoursOfOperationItem = extern struct {
 };
 pub const LocalLocationRatingInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAggregateRating(self: *@This()) core.HResult!*IReference(f64) {
         const this: *ILocalLocationRatingInfo = @ptrCast(self);
         return try this.getAggregateRating();
@@ -502,6 +616,15 @@ pub const LocalLocationRatingInfo = extern struct {
 };
 pub const PlaceInfoHelper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

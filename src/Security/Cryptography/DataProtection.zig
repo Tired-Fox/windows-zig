@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const DataProtectionProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ProtectAsync(self: *@This(), data: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
         const this: *IDataProtectionProvider = @ptrCast(self);
         return try this.ProtectAsync(data);
@@ -16,9 +28,6 @@ pub const DataProtectionProvider = extern struct {
     pub fn UnprotectStreamAsync(self: *@This(), src: *IInputStream, dest: *IOutputStream) core.HResult!*IAsyncAction {
         const this: *IDataProtectionProvider = @ptrCast(self);
         return try this.UnprotectStreamAsync(src, dest);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -38,6 +47,12 @@ pub const DataProtectionProvider = extern struct {
 };
 pub const IDataProtectionProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ProtectAsync(self: *@This(), data: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
         var _r: *IAsyncOperation(IBuffer) = undefined;
         const _c = self.vtable.ProtectAsync(@ptrCast(self), data, &_r);
@@ -82,6 +97,12 @@ pub const IDataProtectionProvider = extern struct {
 };
 pub const IDataProtectionProviderFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateOverloadExplicit(self: *@This(), protectionDescriptor: ?HSTRING) core.HResult!*DataProtectionProvider {
         var _r: *DataProtectionProvider = undefined;
         const _c = self.vtable.CreateOverloadExplicit(@ptrCast(self), protectionDescriptor, &_r);

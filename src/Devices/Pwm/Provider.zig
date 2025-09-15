@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPwmControllerProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPinCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_PinCount(@ptrCast(self), &_r);
@@ -77,6 +83,12 @@ pub const IPwmControllerProvider = extern struct {
 };
 pub const IPwmProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetControllers(self: *@This()) core.HResult!*IVectorView(IPwmControllerProvider) {
         var _r: *IVectorView(IPwmControllerProvider) = undefined;
         const _c = self.vtable.GetControllers(@ptrCast(self), &_r);
@@ -98,6 +110,7 @@ pub const IPwmProvider = extern struct {
         GetControllers: *const fn(self: *anyopaque, _r: **IVectorView(IPwmControllerProvider)) callconv(.winapi) HRESULT,
     };
 };
+const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;
 const HRESULT = @import("../../root.zig").HRESULT;
 const core = @import("../../root.zig").core;

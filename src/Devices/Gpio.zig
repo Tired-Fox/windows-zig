@@ -5,6 +5,18 @@ pub const GpioChangeCount = extern struct {
 };
 pub const GpioChangeCounter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putPolarity(self: *@This(), value: GpioChangePolarity) core.HResult!void {
         const this: *IGpioChangeCounter = @ptrCast(self);
         return try this.putPolarity(value);
@@ -40,9 +52,6 @@ pub const GpioChangeCounter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(pin: *GpioPin) core.HResult!*GpioChangeCounter {
         const _f = try @This()._IGpioChangeCounterFactoryCache.get();
         return try _f.Create(pin);
@@ -61,6 +70,18 @@ pub const GpioChangePolarity = enum(i32) {
 };
 pub const GpioChangeReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapacity(self: *@This()) core.HResult!i32 {
         const this: *IGpioChangeReader = @ptrCast(self);
         return try this.getCapacity();
@@ -124,9 +145,6 @@ pub const GpioChangeReader = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(pin: *GpioPin) core.HResult!*GpioChangeReader {
         const _f = try @This()._IGpioChangeReaderFactoryCache.get();
         return try _f.Create(pin);
@@ -148,6 +166,18 @@ pub const GpioChangeRecord = extern struct {
 };
 pub const GpioController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPinCount(self: *@This()) core.HResult!i32 {
         const this: *IGpioController = @ptrCast(self);
         return try this.getPinCount();
@@ -163,9 +193,6 @@ pub const GpioController = extern struct {
     pub fn TryOpenPin(self: *@This(), pinNumber: i32, sharingMode: GpioSharingMode, pin: *GpioPin, openStatus: GpioOpenStatus) core.HResult!bool {
         const this: *IGpioController = @ptrCast(self);
         return try this.TryOpenPin(pinNumber, sharingMode, pin, openStatus);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetControllersAsync(provider: *IGpioProvider) core.HResult!*IAsyncOperation(IVectorView(GpioController)) {
         const _f = try @This()._IGpioControllerStatics2Cache.get();
@@ -196,6 +223,18 @@ pub const GpioOpenStatus = enum(i32) {
 };
 pub const GpioPin = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addValueChanged(self: *@This(), handler: *TypedEventHandler(GpioPin,GpioPinValueChangedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IGpioPin = @ptrCast(self);
         return try this.addValueChanged(handler);
@@ -273,6 +312,18 @@ pub const GpioPinValue = enum(i32) {
 };
 pub const GpioPinValueChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEdge(self: *@This()) core.HResult!GpioPinEdge {
         const this: *IGpioPinValueChangedEventArgs = @ptrCast(self);
         return try this.getEdge();
@@ -289,6 +340,12 @@ pub const GpioSharingMode = enum(i32) {
 };
 pub const IGpioChangeCounter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putPolarity(self: *@This(), value: GpioChangePolarity) core.HResult!void {
         const _c = self.vtable.put_Polarity(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -348,6 +405,12 @@ pub const IGpioChangeCounter = extern struct {
 };
 pub const IGpioChangeCounterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), pin: *GpioPin) core.HResult!*GpioChangeCounter {
         var _r: *GpioChangeCounter = undefined;
         const _c = self.vtable.Create(@ptrCast(self), pin, &_r);
@@ -371,6 +434,12 @@ pub const IGpioChangeCounterFactory = extern struct {
 };
 pub const IGpioChangeReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapacity(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Capacity(@ptrCast(self), &_r);
@@ -477,6 +546,12 @@ pub const IGpioChangeReader = extern struct {
 };
 pub const IGpioChangeReaderFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), pin: *GpioPin) core.HResult!*GpioChangeReader {
         var _r: *GpioChangeReader = undefined;
         const _c = self.vtable.Create(@ptrCast(self), pin, &_r);
@@ -507,6 +582,12 @@ pub const IGpioChangeReaderFactory = extern struct {
 };
 pub const IGpioController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPinCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_PinCount(@ptrCast(self), &_r);
@@ -551,6 +632,12 @@ pub const IGpioController = extern struct {
 };
 pub const IGpioControllerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*GpioController {
         var _r: *GpioController = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -574,6 +661,12 @@ pub const IGpioControllerStatics = extern struct {
 };
 pub const IGpioControllerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetControllersAsync(self: *@This(), provider: *IGpioProvider) core.HResult!*IAsyncOperation(IVectorView(GpioController)) {
         var _r: *IAsyncOperation(IVectorView(GpioController)) = undefined;
         const _c = self.vtable.GetControllersAsync(@ptrCast(self), provider, &_r);
@@ -604,6 +697,12 @@ pub const IGpioControllerStatics2 = extern struct {
 };
 pub const IGpioPin = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addValueChanged(self: *@This(), handler: *TypedEventHandler(GpioPin,GpioPinValueChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ValueChanged(@ptrCast(self), handler, &_r);
@@ -689,6 +788,12 @@ pub const IGpioPin = extern struct {
 };
 pub const IGpioPinValueChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEdge(self: *@This()) core.HResult!GpioPinEdge {
         var _r: GpioPinEdge = undefined;
         const _c = self.vtable.get_Edge(@ptrCast(self), &_r);

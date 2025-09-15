@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const BasicProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         const this: *IBasicProperties = @ptrCast(self);
         return try this.getSize();
@@ -42,6 +54,18 @@ pub const BasicProperties = extern struct {
 };
 pub const DocumentProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthor(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IDocumentProperties = @ptrCast(self);
         return try this.getAuthor();
@@ -95,6 +119,15 @@ pub const DocumentProperties = extern struct {
 };
 pub const GeotagHelper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -116,6 +149,12 @@ pub const GeotagHelper = extern struct {
 };
 pub const IBasicProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_Size(@ptrCast(self), &_r);
@@ -153,6 +192,12 @@ pub const IBasicProperties = extern struct {
 };
 pub const IDocumentProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthor(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Author(@ptrCast(self), &_r);
@@ -207,6 +252,12 @@ pub const IDocumentProperties = extern struct {
 };
 pub const IGeotagHelperStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetGeotagAsync(self: *@This(), file: *IStorageFile) core.HResult!*IAsyncOperation(Geopoint) {
         var _r: *IAsyncOperation(Geopoint) = undefined;
         const _c = self.vtable.GetGeotagAsync(@ptrCast(self), file, &_r);
@@ -244,6 +295,12 @@ pub const IGeotagHelperStatics = extern struct {
 };
 pub const IImageProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRating(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Rating(@ptrCast(self), &_r);
@@ -369,6 +426,12 @@ pub const IImageProperties = extern struct {
 };
 pub const IMusicProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlbum(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Album(@ptrCast(self), &_r);
@@ -542,6 +605,12 @@ pub const IMusicProperties = extern struct {
 };
 pub const IStorageItemContentProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetMusicPropertiesAsync(self: *@This()) core.HResult!*IAsyncOperation(MusicProperties) {
         var _r: *IAsyncOperation(MusicProperties) = undefined;
         const _c = self.vtable.GetMusicPropertiesAsync(@ptrCast(self), &_r);
@@ -586,6 +655,12 @@ pub const IStorageItemContentProperties = extern struct {
 };
 pub const IStorageItemExtraProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RetrievePropertiesAsync(self: *@This(), propertiesToRetrieve: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IMap(?HSTRING,IInspectable)) {
         var _r: *IAsyncOperation(IMap(?HSTRING,IInspectable)) = undefined;
         const _c = self.vtable.RetrievePropertiesAsync(@ptrCast(self), propertiesToRetrieve, &_r);
@@ -623,6 +698,12 @@ pub const IStorageItemExtraProperties = extern struct {
 };
 pub const IThumbnailProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOriginalWidth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_OriginalWidth(@ptrCast(self), &_r);
@@ -667,6 +748,12 @@ pub const IThumbnailProperties = extern struct {
 };
 pub const IVideoProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRating(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Rating(@ptrCast(self), &_r);
@@ -820,6 +907,18 @@ pub const IVideoProperties = extern struct {
 };
 pub const ImageProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRating(self: *@This()) core.HResult!u32 {
         const this: *IImageProperties = @ptrCast(self);
         return try this.getRating();
@@ -917,6 +1016,18 @@ pub const ImageProperties = extern struct {
 };
 pub const MusicProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlbum(self: *@This()) core.HResult!?HSTRING {
         const this: *IMusicProperties = @ptrCast(self);
         return try this.getAlbum();
@@ -1065,6 +1176,18 @@ pub const PropertyPrefetchOptions = enum(i32) {
 };
 pub const StorageItemContentProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetMusicPropertiesAsync(self: *@This()) core.HResult!*IAsyncOperation(MusicProperties) {
         const this: *IStorageItemContentProperties = @ptrCast(self);
         return try this.GetMusicPropertiesAsync();
@@ -1110,6 +1233,18 @@ pub const StorageItemContentProperties = extern struct {
 };
 pub const StorageItemThumbnail = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1268,6 +1403,18 @@ pub const VideoOrientation = enum(i32) {
 };
 pub const VideoProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRating(self: *@This()) core.HResult!u32 {
         const this: *IVideoProperties = @ptrCast(self);
         return try this.getRating();

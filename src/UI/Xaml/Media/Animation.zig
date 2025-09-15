@@ -1,6 +1,15 @@
 // ----- This code is automatically generated -----
 pub const Transition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -13,6 +22,15 @@ pub const Transition = extern struct {
 };
 pub const AddDeleteThemeTransition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -29,6 +47,18 @@ pub const AddDeleteThemeTransition = extern struct {
 };
 pub const EasingFunctionBase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEasingMode(self: *@This()) core.HResult!EasingMode {
         const this: *IEasingFunctionBase = @ptrCast(self);
         return try this.getEasingMode();
@@ -40,9 +70,6 @@ pub const EasingFunctionBase = extern struct {
     pub fn Ease(self: *@This(), normalizedTime: f64) core.HResult!f64 {
         const this: *IEasingFunctionBase = @ptrCast(self);
         return try this.Ease(normalizedTime);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getEasingModeProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IEasingFunctionBaseStaticsCache.get();
@@ -58,6 +85,18 @@ pub const EasingFunctionBase = extern struct {
 };
 pub const BackEase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAmplitude(self: *@This()) core.HResult!f64 {
         const this: *IBackEase = @ptrCast(self);
         return try this.getAmplitude();
@@ -65,9 +104,6 @@ pub const BackEase = extern struct {
     pub fn putAmplitude(self: *@This(), value: f64) core.HResult!void {
         const this: *IBackEase = @ptrCast(self);
         return try this.putAmplitude(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -87,6 +123,15 @@ pub const BackEase = extern struct {
 };
 pub const ConnectedAnimationConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -99,6 +144,15 @@ pub const ConnectedAnimationConfiguration = extern struct {
 };
 pub const BasicConnectedAnimationConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -115,6 +169,18 @@ pub const BasicConnectedAnimationConfiguration = extern struct {
 };
 pub const BeginStoryboard = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStoryboard(self: *@This()) core.HResult!*Storyboard {
         const this: *IBeginStoryboard = @ptrCast(self);
         return try this.getStoryboard();
@@ -122,9 +188,6 @@ pub const BeginStoryboard = extern struct {
     pub fn putStoryboard(self: *@This(), value: *Storyboard) core.HResult!void {
         const this: *IBeginStoryboard = @ptrCast(self);
         return try this.putStoryboard(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -144,6 +207,18 @@ pub const BeginStoryboard = extern struct {
 };
 pub const BounceEase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBounces(self: *@This()) core.HResult!i32 {
         const this: *IBounceEase = @ptrCast(self);
         return try this.getBounces();
@@ -159,9 +234,6 @@ pub const BounceEase = extern struct {
     pub fn putBounciness(self: *@This(), value: f64) core.HResult!void {
         const this: *IBounceEase = @ptrCast(self);
         return try this.putBounciness(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -185,6 +257,15 @@ pub const BounceEase = extern struct {
 };
 pub const CircleEase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -206,6 +287,18 @@ pub const ClockState = enum(i32) {
 };
 pub const Timeline = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAutoReverse(self: *@This()) core.HResult!bool {
         const this: *ITimeline = @ptrCast(self);
         return try this.getAutoReverse();
@@ -262,9 +355,6 @@ pub const Timeline = extern struct {
         const this: *ITimeline = @ptrCast(self);
         return try this.removeCompleted(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getAllowDependentAnimations() core.HResult!bool {
         const _f = try @This()._ITimelineStaticsCache.get();
         return try _f.getAllowDependentAnimations();
@@ -311,6 +401,18 @@ pub const Timeline = extern struct {
 };
 pub const ColorAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrom(self: *@This()) core.HResult!*IReference(Color) {
         const this: *IColorAnimation = @ptrCast(self);
         return try this.getFrom();
@@ -351,9 +453,6 @@ pub const ColorAnimation = extern struct {
         const this: *IColorAnimation = @ptrCast(self);
         return try this.putEnableDependentAnimation(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IColorAnimation.IID)));
@@ -388,6 +487,18 @@ pub const ColorAnimation = extern struct {
 };
 pub const ColorAnimationUsingKeyFrames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyFrames(self: *@This()) core.HResult!*ColorKeyFrameCollection {
         const this: *IColorAnimationUsingKeyFrames = @ptrCast(self);
         return try this.getKeyFrames();
@@ -399,9 +510,6 @@ pub const ColorAnimationUsingKeyFrames = extern struct {
     pub fn putEnableDependentAnimation(self: *@This(), value: bool) core.HResult!void {
         const this: *IColorAnimationUsingKeyFrames = @ptrCast(self);
         return try this.putEnableDependentAnimation(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -421,6 +529,18 @@ pub const ColorAnimationUsingKeyFrames = extern struct {
 };
 pub const ColorKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!Color {
         const this: *IColorKeyFrame = @ptrCast(self);
         return try this.getValue();
@@ -436,9 +556,6 @@ pub const ColorKeyFrame = extern struct {
     pub fn putKeyTime(self: *@This(), value: KeyTime) core.HResult!void {
         const this: *IColorKeyFrame = @ptrCast(self);
         return try this.putKeyTime(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getValueProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IColorKeyFrameStaticsCache.get();
@@ -462,6 +579,18 @@ pub const ColorKeyFrame = extern struct {
 };
 pub const ColorKeyFrameCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVector(ColorKeyFrame) = @ptrCast(self);
         return try this.getSize();
@@ -489,9 +618,6 @@ pub const ColorKeyFrameCollection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVector.IID)));
@@ -505,6 +631,18 @@ pub const ColorKeyFrameCollection = extern struct {
 };
 pub const NavigationTransitionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetNavigationStateCore(self: *@This()) core.HResult!?HSTRING {
         var this: ?*INavigationTransitionInfoOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -519,9 +657,6 @@ pub const NavigationTransitionInfo = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetNavigationStateCore(navigationState);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationTransitionInfo {
         const _f = try @This()._INavigationTransitionInfoFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
@@ -535,6 +670,18 @@ pub const NavigationTransitionInfo = extern struct {
 };
 pub const CommonNavigationTransitionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsStaggeringEnabled(self: *@This()) core.HResult!bool {
         const this: *ICommonNavigationTransitionInfo = @ptrCast(self);
         return try this.getIsStaggeringEnabled();
@@ -542,9 +689,6 @@ pub const CommonNavigationTransitionInfo = extern struct {
     pub fn putIsStaggeringEnabled(self: *@This(), value: bool) core.HResult!void {
         const this: *ICommonNavigationTransitionInfo = @ptrCast(self);
         return try this.putIsStaggeringEnabled(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -576,11 +720,35 @@ pub const CommonNavigationTransitionInfo = extern struct {
 };
 pub const ConditionallyIndependentlyAnimatableAttribute = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ConditionallyIndependentlyAnimatableAttribute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
 };
 pub const ConnectedAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addCompleted(self: *@This(), handler: *TypedEventHandler(ConnectedAnimation,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IConnectedAnimation = @ptrCast(self);
         return try this.addCompleted(handler);
@@ -653,6 +821,18 @@ pub const ConnectedAnimationComponent = enum(i32) {
 };
 pub const ConnectedAnimationService = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDefaultDuration(self: *@This()) core.HResult!TimeSpan {
         const this: *IConnectedAnimationService = @ptrCast(self);
         return try this.getDefaultDuration();
@@ -677,9 +857,6 @@ pub const ConnectedAnimationService = extern struct {
         const this: *IConnectedAnimationService = @ptrCast(self);
         return try this.GetAnimation(key);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*ConnectedAnimationService {
         const _f = try @This()._IConnectedAnimationServiceStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -693,6 +870,18 @@ pub const ConnectedAnimationService = extern struct {
 };
 pub const ContentThemeTransition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontalOffset(self: *@This()) core.HResult!f64 {
         const this: *IContentThemeTransition = @ptrCast(self);
         return try this.getHorizontalOffset();
@@ -708,9 +897,6 @@ pub const ContentThemeTransition = extern struct {
     pub fn putVerticalOffset(self: *@This(), value: f64) core.HResult!void {
         const this: *IContentThemeTransition = @ptrCast(self);
         return try this.putVerticalOffset(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -734,6 +920,18 @@ pub const ContentThemeTransition = extern struct {
 };
 pub const ContinuumNavigationTransitionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExitElement(self: *@This()) core.HResult!*UIElement {
         const this: *IContinuumNavigationTransitionInfo = @ptrCast(self);
         return try this.getExitElement();
@@ -741,9 +939,6 @@ pub const ContinuumNavigationTransitionInfo = extern struct {
     pub fn putExitElement(self: *@This(), value: *UIElement) core.HResult!void {
         const this: *IContinuumNavigationTransitionInfo = @ptrCast(self);
         return try this.putExitElement(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -799,6 +994,15 @@ pub const ContinuumNavigationTransitionInfo = extern struct {
 };
 pub const CubicEase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -815,6 +1019,15 @@ pub const CubicEase = extern struct {
 };
 pub const DirectConnectedAnimationConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -831,6 +1044,15 @@ pub const DirectConnectedAnimationConfiguration = extern struct {
 };
 pub const DiscreteColorKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -847,6 +1069,18 @@ pub const DiscreteColorKeyFrame = extern struct {
 };
 pub const DoubleKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!f64 {
         const this: *IDoubleKeyFrame = @ptrCast(self);
         return try this.getValue();
@@ -862,9 +1096,6 @@ pub const DoubleKeyFrame = extern struct {
     pub fn putKeyTime(self: *@This(), value: KeyTime) core.HResult!void {
         const this: *IDoubleKeyFrame = @ptrCast(self);
         return try this.putKeyTime(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getValueProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IDoubleKeyFrameStaticsCache.get();
@@ -888,6 +1119,15 @@ pub const DoubleKeyFrame = extern struct {
 };
 pub const DiscreteDoubleKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -904,6 +1144,18 @@ pub const DiscreteDoubleKeyFrame = extern struct {
 };
 pub const ObjectKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!*IInspectable {
         const this: *IObjectKeyFrame = @ptrCast(self);
         return try this.getValue();
@@ -919,9 +1171,6 @@ pub const ObjectKeyFrame = extern struct {
     pub fn putKeyTime(self: *@This(), value: KeyTime) core.HResult!void {
         const this: *IObjectKeyFrame = @ptrCast(self);
         return try this.putKeyTime(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getValueProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IObjectKeyFrameStaticsCache.get();
@@ -945,6 +1194,15 @@ pub const ObjectKeyFrame = extern struct {
 };
 pub const DiscreteObjectKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -961,6 +1219,18 @@ pub const DiscreteObjectKeyFrame = extern struct {
 };
 pub const PointKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!Point {
         const this: *IPointKeyFrame = @ptrCast(self);
         return try this.getValue();
@@ -976,9 +1246,6 @@ pub const PointKeyFrame = extern struct {
     pub fn putKeyTime(self: *@This(), value: KeyTime) core.HResult!void {
         const this: *IPointKeyFrame = @ptrCast(self);
         return try this.putKeyTime(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getValueProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IPointKeyFrameStaticsCache.get();
@@ -1002,6 +1269,15 @@ pub const PointKeyFrame = extern struct {
 };
 pub const DiscretePointKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1018,6 +1294,18 @@ pub const DiscretePointKeyFrame = extern struct {
 };
 pub const DoubleAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrom(self: *@This()) core.HResult!*IReference(f64) {
         const this: *IDoubleAnimation = @ptrCast(self);
         return try this.getFrom();
@@ -1058,9 +1346,6 @@ pub const DoubleAnimation = extern struct {
         const this: *IDoubleAnimation = @ptrCast(self);
         return try this.putEnableDependentAnimation(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDoubleAnimation.IID)));
@@ -1095,6 +1380,18 @@ pub const DoubleAnimation = extern struct {
 };
 pub const DoubleAnimationUsingKeyFrames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyFrames(self: *@This()) core.HResult!*DoubleKeyFrameCollection {
         const this: *IDoubleAnimationUsingKeyFrames = @ptrCast(self);
         return try this.getKeyFrames();
@@ -1106,9 +1403,6 @@ pub const DoubleAnimationUsingKeyFrames = extern struct {
     pub fn putEnableDependentAnimation(self: *@This(), value: bool) core.HResult!void {
         const this: *IDoubleAnimationUsingKeyFrames = @ptrCast(self);
         return try this.putEnableDependentAnimation(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1128,6 +1422,18 @@ pub const DoubleAnimationUsingKeyFrames = extern struct {
 };
 pub const DoubleKeyFrameCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVector(DoubleKeyFrame) = @ptrCast(self);
         return try this.getSize();
@@ -1155,9 +1461,6 @@ pub const DoubleKeyFrameCollection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVector.IID)));
@@ -1171,6 +1474,18 @@ pub const DoubleKeyFrameCollection = extern struct {
 };
 pub const DragItemThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDragItemThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
@@ -1178,9 +1493,6 @@ pub const DragItemThemeAnimation = extern struct {
     pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDragItemThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1200,6 +1512,18 @@ pub const DragItemThemeAnimation = extern struct {
 };
 pub const DragOverThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDragOverThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
@@ -1223,9 +1547,6 @@ pub const DragOverThemeAnimation = extern struct {
     pub fn putDirection(self: *@This(), value: AnimationDirection) core.HResult!void {
         const this: *IDragOverThemeAnimation = @ptrCast(self);
         return try this.putDirection(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1253,6 +1574,15 @@ pub const DragOverThemeAnimation = extern struct {
 };
 pub const DrillInNavigationTransitionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1269,6 +1599,18 @@ pub const DrillInNavigationTransitionInfo = extern struct {
 };
 pub const DrillInThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntranceTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDrillInThemeAnimation = @ptrCast(self);
         return try this.getEntranceTargetName();
@@ -1300,9 +1642,6 @@ pub const DrillInThemeAnimation = extern struct {
     pub fn putExitTarget(self: *@This(), value: *DependencyObject) core.HResult!void {
         const this: *IDrillInThemeAnimation = @ptrCast(self);
         return try this.putExitTarget(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1334,6 +1673,18 @@ pub const DrillInThemeAnimation = extern struct {
 };
 pub const DrillOutThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntranceTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDrillOutThemeAnimation = @ptrCast(self);
         return try this.getEntranceTargetName();
@@ -1366,9 +1717,6 @@ pub const DrillOutThemeAnimation = extern struct {
         const this: *IDrillOutThemeAnimation = @ptrCast(self);
         return try this.putExitTarget(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDrillOutThemeAnimation.IID)));
@@ -1399,6 +1747,18 @@ pub const DrillOutThemeAnimation = extern struct {
 };
 pub const DropTargetItemThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDropTargetItemThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
@@ -1406,9 +1766,6 @@ pub const DropTargetItemThemeAnimation = extern struct {
     pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IDropTargetItemThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1428,6 +1785,18 @@ pub const DropTargetItemThemeAnimation = extern struct {
 };
 pub const EasingColorKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEasingFunction(self: *@This()) core.HResult!*EasingFunctionBase {
         const this: *IEasingColorKeyFrame = @ptrCast(self);
         return try this.getEasingFunction();
@@ -1435,9 +1804,6 @@ pub const EasingColorKeyFrame = extern struct {
     pub fn putEasingFunction(self: *@This(), value: *EasingFunctionBase) core.HResult!void {
         const this: *IEasingColorKeyFrame = @ptrCast(self);
         return try this.putEasingFunction(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1457,6 +1823,18 @@ pub const EasingColorKeyFrame = extern struct {
 };
 pub const EasingDoubleKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEasingFunction(self: *@This()) core.HResult!*EasingFunctionBase {
         const this: *IEasingDoubleKeyFrame = @ptrCast(self);
         return try this.getEasingFunction();
@@ -1464,9 +1842,6 @@ pub const EasingDoubleKeyFrame = extern struct {
     pub fn putEasingFunction(self: *@This(), value: *EasingFunctionBase) core.HResult!void {
         const this: *IEasingDoubleKeyFrame = @ptrCast(self);
         return try this.putEasingFunction(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1491,6 +1866,18 @@ pub const EasingMode = enum(i32) {
 };
 pub const EasingPointKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEasingFunction(self: *@This()) core.HResult!*EasingFunctionBase {
         const this: *IEasingPointKeyFrame = @ptrCast(self);
         return try this.getEasingFunction();
@@ -1498,9 +1885,6 @@ pub const EasingPointKeyFrame = extern struct {
     pub fn putEasingFunction(self: *@This(), value: *EasingFunctionBase) core.HResult!void {
         const this: *IEasingPointKeyFrame = @ptrCast(self);
         return try this.putEasingFunction(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1520,6 +1904,18 @@ pub const EasingPointKeyFrame = extern struct {
 };
 pub const EdgeUIThemeTransition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEdge(self: *@This()) core.HResult!EdgeTransitionLocation {
         const this: *IEdgeUIThemeTransition = @ptrCast(self);
         return try this.getEdge();
@@ -1527,9 +1923,6 @@ pub const EdgeUIThemeTransition = extern struct {
     pub fn putEdge(self: *@This(), value: EdgeTransitionLocation) core.HResult!void {
         const this: *IEdgeUIThemeTransition = @ptrCast(self);
         return try this.putEdge(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1549,6 +1942,18 @@ pub const EdgeUIThemeTransition = extern struct {
 };
 pub const ElasticEase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOscillations(self: *@This()) core.HResult!i32 {
         const this: *IElasticEase = @ptrCast(self);
         return try this.getOscillations();
@@ -1564,9 +1969,6 @@ pub const ElasticEase = extern struct {
     pub fn putSpringiness(self: *@This(), value: f64) core.HResult!void {
         const this: *IElasticEase = @ptrCast(self);
         return try this.putSpringiness(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1590,6 +1992,15 @@ pub const ElasticEase = extern struct {
 };
 pub const EntranceNavigationTransitionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1619,6 +2030,18 @@ pub const EntranceNavigationTransitionInfo = extern struct {
 };
 pub const EntranceThemeTransition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFromHorizontalOffset(self: *@This()) core.HResult!f64 {
         const this: *IEntranceThemeTransition = @ptrCast(self);
         return try this.getFromHorizontalOffset();
@@ -1642,9 +2065,6 @@ pub const EntranceThemeTransition = extern struct {
     pub fn putIsStaggeringEnabled(self: *@This(), value: bool) core.HResult!void {
         const this: *IEntranceThemeTransition = @ptrCast(self);
         return try this.putIsStaggeringEnabled(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1672,6 +2092,18 @@ pub const EntranceThemeTransition = extern struct {
 };
 pub const ExponentialEase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExponent(self: *@This()) core.HResult!f64 {
         const this: *IExponentialEase = @ptrCast(self);
         return try this.getExponent();
@@ -1679,9 +2111,6 @@ pub const ExponentialEase = extern struct {
     pub fn putExponent(self: *@This(), value: f64) core.HResult!void {
         const this: *IExponentialEase = @ptrCast(self);
         return try this.putExponent(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1701,6 +2130,18 @@ pub const ExponentialEase = extern struct {
 };
 pub const FadeInThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IFadeInThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
@@ -1708,9 +2149,6 @@ pub const FadeInThemeAnimation = extern struct {
     pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFadeInThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1730,6 +2168,18 @@ pub const FadeInThemeAnimation = extern struct {
 };
 pub const FadeOutThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IFadeOutThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
@@ -1737,9 +2187,6 @@ pub const FadeOutThemeAnimation = extern struct {
     pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IFadeOutThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1763,6 +2210,18 @@ pub const FillBehavior = enum(i32) {
 };
 pub const GravityConnectedAnimationConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsShadowEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IGravityConnectedAnimationConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1777,9 +2236,6 @@ pub const GravityConnectedAnimationConfiguration = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsShadowEnabled(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GravityConnectedAnimationConfiguration {
         const _f = try @This()._IGravityConnectedAnimationConfigurationFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
@@ -1793,6 +2249,12 @@ pub const GravityConnectedAnimationConfiguration = extern struct {
 };
 pub const IAddDeleteThemeTransition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IAddDeleteThemeTransition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "adec852e-4424-4dab-99c1-3a04e36a3c48";
@@ -1809,6 +2271,12 @@ pub const IAddDeleteThemeTransition = extern struct {
 };
 pub const IBackEase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAmplitude(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Amplitude(@ptrCast(self), &_r);
@@ -1837,6 +2305,12 @@ pub const IBackEase = extern struct {
 };
 pub const IBackEaseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAmplitudeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AmplitudeProperty(@ptrCast(self), &_r);
@@ -1860,6 +2334,12 @@ pub const IBackEaseStatics = extern struct {
 };
 pub const IBasicConnectedAnimationConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IBasicConnectedAnimationConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e675f9b5-a4d6-5353-83e6-c89e7cf8d456";
@@ -1876,6 +2356,12 @@ pub const IBasicConnectedAnimationConfiguration = extern struct {
 };
 pub const IBasicConnectedAnimationConfigurationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*BasicConnectedAnimationConfiguration {
         var _r: *BasicConnectedAnimationConfiguration = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -1899,6 +2385,12 @@ pub const IBasicConnectedAnimationConfigurationFactory = extern struct {
 };
 pub const IBeginStoryboard = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStoryboard(self: *@This()) core.HResult!*Storyboard {
         var _r: *Storyboard = undefined;
         const _c = self.vtable.get_Storyboard(@ptrCast(self), &_r);
@@ -1927,6 +2419,12 @@ pub const IBeginStoryboard = extern struct {
 };
 pub const IBeginStoryboardStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStoryboardProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_StoryboardProperty(@ptrCast(self), &_r);
@@ -1950,6 +2448,12 @@ pub const IBeginStoryboardStatics = extern struct {
 };
 pub const IBounceEase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBounces(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Bounces(@ptrCast(self), &_r);
@@ -1990,6 +2494,12 @@ pub const IBounceEase = extern struct {
 };
 pub const IBounceEaseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBouncesProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_BouncesProperty(@ptrCast(self), &_r);
@@ -2020,6 +2530,12 @@ pub const IBounceEaseStatics = extern struct {
 };
 pub const ICircleEase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ICircleEase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "53a3bdb2-9177-4e6e-a043-5082d889ab1f";
@@ -2036,6 +2552,12 @@ pub const ICircleEase = extern struct {
 };
 pub const IColorAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrom(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
@@ -2112,6 +2634,12 @@ pub const IColorAnimation = extern struct {
 };
 pub const IColorAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFromProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FromProperty(@ptrCast(self), &_r);
@@ -2163,6 +2691,12 @@ pub const IColorAnimationStatics = extern struct {
 };
 pub const IColorAnimationUsingKeyFrames = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyFrames(self: *@This()) core.HResult!*ColorKeyFrameCollection {
         var _r: *ColorKeyFrameCollection = undefined;
         const _c = self.vtable.get_KeyFrames(@ptrCast(self), &_r);
@@ -2198,6 +2732,12 @@ pub const IColorAnimationUsingKeyFrames = extern struct {
 };
 pub const IColorAnimationUsingKeyFramesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnableDependentAnimationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EnableDependentAnimationProperty(@ptrCast(self), &_r);
@@ -2221,6 +2761,12 @@ pub const IColorAnimationUsingKeyFramesStatics = extern struct {
 };
 pub const IColorKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
@@ -2261,6 +2807,12 @@ pub const IColorKeyFrame = extern struct {
 };
 pub const IColorKeyFrameFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorKeyFrame {
         var _r: *ColorKeyFrame = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -2284,6 +2836,12 @@ pub const IColorKeyFrameFactory = extern struct {
 };
 pub const IColorKeyFrameStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValueProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ValueProperty(@ptrCast(self), &_r);
@@ -2314,6 +2872,12 @@ pub const IColorKeyFrameStatics = extern struct {
 };
 pub const ICommonNavigationTransitionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsStaggeringEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStaggeringEnabled(@ptrCast(self), &_r);
@@ -2342,6 +2906,12 @@ pub const ICommonNavigationTransitionInfo = extern struct {
 };
 pub const ICommonNavigationTransitionInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsStaggeringEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsStaggeringEnabledProperty(@ptrCast(self), &_r);
@@ -2384,6 +2954,12 @@ pub const ICommonNavigationTransitionInfoStatics = extern struct {
 };
 pub const IConnectedAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addCompleted(self: *@This(), handler: *TypedEventHandler(ConnectedAnimation,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Completed(@ptrCast(self), handler, &_r);
@@ -2424,6 +3000,12 @@ pub const IConnectedAnimation = extern struct {
 };
 pub const IConnectedAnimation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsScaleAnimationEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsScaleAnimationEnabled(@ptrCast(self), &_r);
@@ -2464,6 +3046,12 @@ pub const IConnectedAnimation2 = extern struct {
 };
 pub const IConnectedAnimation3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*ConnectedAnimationConfiguration {
         var _r: *ConnectedAnimationConfiguration = undefined;
         const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
@@ -2492,6 +3080,12 @@ pub const IConnectedAnimation3 = extern struct {
 };
 pub const IConnectedAnimationConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IConnectedAnimationConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "00218aae-cd8c-5651-92a0-c1db95c03998";
@@ -2508,6 +3102,12 @@ pub const IConnectedAnimationConfiguration = extern struct {
 };
 pub const IConnectedAnimationConfigurationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IConnectedAnimationConfigurationFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "30f9b84b-dd7e-593e-bf75-e959dc0ec52a";
@@ -2524,6 +3124,12 @@ pub const IConnectedAnimationConfigurationFactory = extern struct {
 };
 pub const IConnectedAnimationService = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDefaultDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_DefaultDuration(@ptrCast(self), &_r);
@@ -2578,6 +3184,12 @@ pub const IConnectedAnimationService = extern struct {
 };
 pub const IConnectedAnimationServiceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*ConnectedAnimationService {
         var _r: *ConnectedAnimationService = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -2601,6 +3213,12 @@ pub const IConnectedAnimationServiceStatics = extern struct {
 };
 pub const IContentThemeTransition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_HorizontalOffset(@ptrCast(self), &_r);
@@ -2641,6 +3259,12 @@ pub const IContentThemeTransition = extern struct {
 };
 pub const IContentThemeTransitionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontalOffsetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_HorizontalOffsetProperty(@ptrCast(self), &_r);
@@ -2671,6 +3295,12 @@ pub const IContentThemeTransitionStatics = extern struct {
 };
 pub const IContinuumNavigationTransitionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExitElement(self: *@This()) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.get_ExitElement(@ptrCast(self), &_r);
@@ -2699,6 +3329,12 @@ pub const IContinuumNavigationTransitionInfo = extern struct {
 };
 pub const IContinuumNavigationTransitionInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExitElementProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ExitElementProperty(@ptrCast(self), &_r);
@@ -2779,6 +3415,12 @@ pub const IContinuumNavigationTransitionInfoStatics = extern struct {
 };
 pub const ICubicEase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ICubicEase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1b94fc76-dad7-4354-b1a2-7969fbf6a70d";
@@ -2795,6 +3437,12 @@ pub const ICubicEase = extern struct {
 };
 pub const IDirectConnectedAnimationConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IDirectConnectedAnimationConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ee5d736f-5738-5d86-b770-151948cf365e";
@@ -2811,6 +3459,12 @@ pub const IDirectConnectedAnimationConfiguration = extern struct {
 };
 pub const IDirectConnectedAnimationConfigurationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DirectConnectedAnimationConfiguration {
         var _r: *DirectConnectedAnimationConfiguration = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -2834,6 +3488,12 @@ pub const IDirectConnectedAnimationConfigurationFactory = extern struct {
 };
 pub const IDiscreteColorKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IDiscreteColorKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "230c08f4-e062-4cb1-8e2a-14093d73ed8c";
@@ -2850,6 +3510,12 @@ pub const IDiscreteColorKeyFrame = extern struct {
 };
 pub const IDiscreteDoubleKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IDiscreteDoubleKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "f5f51f3a-ad11-49ce-8e1c-08fdf1447446";
@@ -2866,6 +3532,12 @@ pub const IDiscreteDoubleKeyFrame = extern struct {
 };
 pub const IDiscreteObjectKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IDiscreteObjectKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c7dcde89-f12d-4a9c-8199-e7a9ece3a473";
@@ -2882,6 +3554,12 @@ pub const IDiscreteObjectKeyFrame = extern struct {
 };
 pub const IDiscretePointKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IDiscretePointKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e0a9070d-4c42-4a90-983a-75f5a83a2fbe";
@@ -2898,6 +3576,12 @@ pub const IDiscretePointKeyFrame = extern struct {
 };
 pub const IDoubleAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrom(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
@@ -2974,6 +3658,12 @@ pub const IDoubleAnimation = extern struct {
 };
 pub const IDoubleAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFromProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FromProperty(@ptrCast(self), &_r);
@@ -3025,6 +3715,12 @@ pub const IDoubleAnimationStatics = extern struct {
 };
 pub const IDoubleAnimationUsingKeyFrames = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyFrames(self: *@This()) core.HResult!*DoubleKeyFrameCollection {
         var _r: *DoubleKeyFrameCollection = undefined;
         const _c = self.vtable.get_KeyFrames(@ptrCast(self), &_r);
@@ -3060,6 +3756,12 @@ pub const IDoubleAnimationUsingKeyFrames = extern struct {
 };
 pub const IDoubleAnimationUsingKeyFramesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnableDependentAnimationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EnableDependentAnimationProperty(@ptrCast(self), &_r);
@@ -3083,6 +3785,12 @@ pub const IDoubleAnimationUsingKeyFramesStatics = extern struct {
 };
 pub const IDoubleKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
@@ -3123,6 +3831,12 @@ pub const IDoubleKeyFrame = extern struct {
 };
 pub const IDoubleKeyFrameFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DoubleKeyFrame {
         var _r: *DoubleKeyFrame = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -3146,6 +3860,12 @@ pub const IDoubleKeyFrameFactory = extern struct {
 };
 pub const IDoubleKeyFrameStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValueProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ValueProperty(@ptrCast(self), &_r);
@@ -3176,6 +3896,12 @@ pub const IDoubleKeyFrameStatics = extern struct {
 };
 pub const IDragItemThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
@@ -3204,6 +3930,12 @@ pub const IDragItemThemeAnimation = extern struct {
 };
 pub const IDragItemThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetNameProperty(@ptrCast(self), &_r);
@@ -3227,6 +3959,12 @@ pub const IDragItemThemeAnimationStatics = extern struct {
 };
 pub const IDragOverThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
@@ -3279,6 +4017,12 @@ pub const IDragOverThemeAnimation = extern struct {
 };
 pub const IDragOverThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetNameProperty(@ptrCast(self), &_r);
@@ -3316,6 +4060,12 @@ pub const IDragOverThemeAnimationStatics = extern struct {
 };
 pub const IDrillInNavigationTransitionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IDrillInNavigationTransitionInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "3b86201a-45d3-463b-939e-c8595f439bcc";
@@ -3332,6 +4082,12 @@ pub const IDrillInNavigationTransitionInfo = extern struct {
 };
 pub const IDrillInThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntranceTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EntranceTargetName(@ptrCast(self), &_r);
@@ -3396,6 +4152,12 @@ pub const IDrillInThemeAnimation = extern struct {
 };
 pub const IDrillInThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntranceTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EntranceTargetNameProperty(@ptrCast(self), &_r);
@@ -3440,6 +4202,12 @@ pub const IDrillInThemeAnimationStatics = extern struct {
 };
 pub const IDrillOutThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntranceTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EntranceTargetName(@ptrCast(self), &_r);
@@ -3504,6 +4272,12 @@ pub const IDrillOutThemeAnimation = extern struct {
 };
 pub const IDrillOutThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntranceTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EntranceTargetNameProperty(@ptrCast(self), &_r);
@@ -3548,6 +4322,12 @@ pub const IDrillOutThemeAnimationStatics = extern struct {
 };
 pub const IDropTargetItemThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
@@ -3576,6 +4356,12 @@ pub const IDropTargetItemThemeAnimation = extern struct {
 };
 pub const IDropTargetItemThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetNameProperty(@ptrCast(self), &_r);
@@ -3599,6 +4385,12 @@ pub const IDropTargetItemThemeAnimationStatics = extern struct {
 };
 pub const IEasingColorKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEasingFunction(self: *@This()) core.HResult!*EasingFunctionBase {
         var _r: *EasingFunctionBase = undefined;
         const _c = self.vtable.get_EasingFunction(@ptrCast(self), &_r);
@@ -3627,6 +4419,12 @@ pub const IEasingColorKeyFrame = extern struct {
 };
 pub const IEasingColorKeyFrameStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEasingFunctionProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EasingFunctionProperty(@ptrCast(self), &_r);
@@ -3650,6 +4448,12 @@ pub const IEasingColorKeyFrameStatics = extern struct {
 };
 pub const IEasingDoubleKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEasingFunction(self: *@This()) core.HResult!*EasingFunctionBase {
         var _r: *EasingFunctionBase = undefined;
         const _c = self.vtable.get_EasingFunction(@ptrCast(self), &_r);
@@ -3678,6 +4482,12 @@ pub const IEasingDoubleKeyFrame = extern struct {
 };
 pub const IEasingDoubleKeyFrameStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEasingFunctionProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EasingFunctionProperty(@ptrCast(self), &_r);
@@ -3701,6 +4511,12 @@ pub const IEasingDoubleKeyFrameStatics = extern struct {
 };
 pub const IEasingFunctionBase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEasingMode(self: *@This()) core.HResult!EasingMode {
         var _r: EasingMode = undefined;
         const _c = self.vtable.get_EasingMode(@ptrCast(self), &_r);
@@ -3736,6 +4552,12 @@ pub const IEasingFunctionBase = extern struct {
 };
 pub const IEasingFunctionBaseFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IEasingFunctionBaseFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1830fe6a-f01b-43e0-b61f-b452a1c66fd2";
@@ -3752,6 +4574,12 @@ pub const IEasingFunctionBaseFactory = extern struct {
 };
 pub const IEasingFunctionBaseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEasingModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EasingModeProperty(@ptrCast(self), &_r);
@@ -3775,6 +4603,12 @@ pub const IEasingFunctionBaseStatics = extern struct {
 };
 pub const IEasingPointKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEasingFunction(self: *@This()) core.HResult!*EasingFunctionBase {
         var _r: *EasingFunctionBase = undefined;
         const _c = self.vtable.get_EasingFunction(@ptrCast(self), &_r);
@@ -3803,6 +4637,12 @@ pub const IEasingPointKeyFrame = extern struct {
 };
 pub const IEasingPointKeyFrameStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEasingFunctionProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EasingFunctionProperty(@ptrCast(self), &_r);
@@ -3826,6 +4666,12 @@ pub const IEasingPointKeyFrameStatics = extern struct {
 };
 pub const IEdgeUIThemeTransition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEdge(self: *@This()) core.HResult!EdgeTransitionLocation {
         var _r: EdgeTransitionLocation = undefined;
         const _c = self.vtable.get_Edge(@ptrCast(self), &_r);
@@ -3854,6 +4700,12 @@ pub const IEdgeUIThemeTransition = extern struct {
 };
 pub const IEdgeUIThemeTransitionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEdgeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EdgeProperty(@ptrCast(self), &_r);
@@ -3877,6 +4729,12 @@ pub const IEdgeUIThemeTransitionStatics = extern struct {
 };
 pub const IElasticEase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOscillations(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Oscillations(@ptrCast(self), &_r);
@@ -3917,6 +4775,12 @@ pub const IElasticEase = extern struct {
 };
 pub const IElasticEaseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOscillationsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_OscillationsProperty(@ptrCast(self), &_r);
@@ -3947,6 +4811,12 @@ pub const IElasticEaseStatics = extern struct {
 };
 pub const IEntranceNavigationTransitionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IEntranceNavigationTransitionInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "720a256b-1c8a-41ee-82ec-8a87c0cf47da";
@@ -3963,6 +4833,12 @@ pub const IEntranceNavigationTransitionInfo = extern struct {
 };
 pub const IEntranceNavigationTransitionInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsTargetElementProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsTargetElementProperty(@ptrCast(self), &_r);
@@ -3998,6 +4874,12 @@ pub const IEntranceNavigationTransitionInfoStatics = extern struct {
 };
 pub const IEntranceThemeTransition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFromHorizontalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_FromHorizontalOffset(@ptrCast(self), &_r);
@@ -4050,6 +4932,12 @@ pub const IEntranceThemeTransition = extern struct {
 };
 pub const IEntranceThemeTransitionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFromHorizontalOffsetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FromHorizontalOffsetProperty(@ptrCast(self), &_r);
@@ -4087,6 +4975,12 @@ pub const IEntranceThemeTransitionStatics = extern struct {
 };
 pub const IExponentialEase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExponent(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Exponent(@ptrCast(self), &_r);
@@ -4115,6 +5009,12 @@ pub const IExponentialEase = extern struct {
 };
 pub const IExponentialEaseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExponentProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ExponentProperty(@ptrCast(self), &_r);
@@ -4138,6 +5038,12 @@ pub const IExponentialEaseStatics = extern struct {
 };
 pub const IFadeInThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
@@ -4166,6 +5072,12 @@ pub const IFadeInThemeAnimation = extern struct {
 };
 pub const IFadeInThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetNameProperty(@ptrCast(self), &_r);
@@ -4189,6 +5101,12 @@ pub const IFadeInThemeAnimationStatics = extern struct {
 };
 pub const IFadeOutThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
@@ -4217,6 +5135,12 @@ pub const IFadeOutThemeAnimation = extern struct {
 };
 pub const IFadeOutThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetNameProperty(@ptrCast(self), &_r);
@@ -4240,6 +5164,12 @@ pub const IFadeOutThemeAnimationStatics = extern struct {
 };
 pub const IGravityConnectedAnimationConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IGravityConnectedAnimationConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c751a4b7-0459-5142-b891-aeaac1d41822";
@@ -4256,6 +5186,12 @@ pub const IGravityConnectedAnimationConfiguration = extern struct {
 };
 pub const IGravityConnectedAnimationConfiguration2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsShadowEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsShadowEnabled(@ptrCast(self), &_r);
@@ -4284,6 +5220,12 @@ pub const IGravityConnectedAnimationConfiguration2 = extern struct {
 };
 pub const IGravityConnectedAnimationConfigurationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GravityConnectedAnimationConfiguration {
         var _r: *GravityConnectedAnimationConfiguration = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -4307,6 +5249,12 @@ pub const IGravityConnectedAnimationConfigurationFactory = extern struct {
 };
 pub const IKeySpline = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControlPoint1(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_ControlPoint1(@ptrCast(self), &_r);
@@ -4347,6 +5295,12 @@ pub const IKeySpline = extern struct {
 };
 pub const IKeyTimeHelper = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IKeyTimeHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "3643e480-4823-466a-abe5-5e79c8ed77ed";
@@ -4363,6 +5317,12 @@ pub const IKeyTimeHelper = extern struct {
 };
 pub const IKeyTimeHelperStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromTimeSpan(self: *@This(), timeSpan: TimeSpan) core.HResult!KeyTime {
         var _r: KeyTime = undefined;
         const _c = self.vtable.FromTimeSpan(@ptrCast(self), timeSpan, &_r);
@@ -4386,6 +5346,12 @@ pub const IKeyTimeHelperStatics = extern struct {
 };
 pub const ILinearColorKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ILinearColorKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "66fdb6ef-ac81-4611-b1d2-61f545983f03";
@@ -4402,6 +5368,12 @@ pub const ILinearColorKeyFrame = extern struct {
 };
 pub const ILinearDoubleKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ILinearDoubleKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "8efdf265-9a7b-431d-8f0c-14c56b5ea4d9";
@@ -4418,6 +5390,12 @@ pub const ILinearDoubleKeyFrame = extern struct {
 };
 pub const ILinearPointKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ILinearPointKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e7c9b8ef-af24-49ee-84f1-a86600a4e319";
@@ -4434,6 +5412,12 @@ pub const ILinearPointKeyFrame = extern struct {
 };
 pub const INavigationThemeTransition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDefaultNavigationTransitionInfo(self: *@This()) core.HResult!*NavigationTransitionInfo {
         var _r: *NavigationTransitionInfo = undefined;
         const _c = self.vtable.get_DefaultNavigationTransitionInfo(@ptrCast(self), &_r);
@@ -4462,6 +5446,12 @@ pub const INavigationThemeTransition = extern struct {
 };
 pub const INavigationThemeTransitionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDefaultNavigationTransitionInfoProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DefaultNavigationTransitionInfoProperty(@ptrCast(self), &_r);
@@ -4485,6 +5475,12 @@ pub const INavigationThemeTransitionStatics = extern struct {
 };
 pub const INavigationTransitionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.INavigationTransitionInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a9b05091-ae4a-4372-8625-21b7a8b98ca4";
@@ -4501,6 +5497,12 @@ pub const INavigationTransitionInfo = extern struct {
 };
 pub const INavigationTransitionInfoFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationTransitionInfo {
         var _r: *NavigationTransitionInfo = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -4524,6 +5526,12 @@ pub const INavigationTransitionInfoFactory = extern struct {
 };
 pub const INavigationTransitionInfoOverrides = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetNavigationStateCore(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetNavigationStateCore(@ptrCast(self), &_r);
@@ -4552,6 +5560,12 @@ pub const INavigationTransitionInfoOverrides = extern struct {
 };
 pub const IObjectAnimationUsingKeyFrames = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyFrames(self: *@This()) core.HResult!*ObjectKeyFrameCollection {
         var _r: *ObjectKeyFrameCollection = undefined;
         const _c = self.vtable.get_KeyFrames(@ptrCast(self), &_r);
@@ -4587,6 +5601,12 @@ pub const IObjectAnimationUsingKeyFrames = extern struct {
 };
 pub const IObjectAnimationUsingKeyFramesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnableDependentAnimationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EnableDependentAnimationProperty(@ptrCast(self), &_r);
@@ -4610,6 +5630,12 @@ pub const IObjectAnimationUsingKeyFramesStatics = extern struct {
 };
 pub const IObjectKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
@@ -4650,6 +5676,12 @@ pub const IObjectKeyFrame = extern struct {
 };
 pub const IObjectKeyFrameFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ObjectKeyFrame {
         var _r: *ObjectKeyFrame = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -4673,6 +5705,12 @@ pub const IObjectKeyFrameFactory = extern struct {
 };
 pub const IObjectKeyFrameStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValueProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ValueProperty(@ptrCast(self), &_r);
@@ -4703,6 +5741,12 @@ pub const IObjectKeyFrameStatics = extern struct {
 };
 pub const IPaneThemeTransition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEdge(self: *@This()) core.HResult!EdgeTransitionLocation {
         var _r: EdgeTransitionLocation = undefined;
         const _c = self.vtable.get_Edge(@ptrCast(self), &_r);
@@ -4731,6 +5775,12 @@ pub const IPaneThemeTransition = extern struct {
 };
 pub const IPaneThemeTransitionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEdgeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EdgeProperty(@ptrCast(self), &_r);
@@ -4754,6 +5804,12 @@ pub const IPaneThemeTransitionStatics = extern struct {
 };
 pub const IPointAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrom(self: *@This()) core.HResult!*IReference(Point) {
         var _r: *IReference(Point) = undefined;
         const _c = self.vtable.get_From(@ptrCast(self), &_r);
@@ -4830,6 +5886,12 @@ pub const IPointAnimation = extern struct {
 };
 pub const IPointAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFromProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FromProperty(@ptrCast(self), &_r);
@@ -4881,6 +5943,12 @@ pub const IPointAnimationStatics = extern struct {
 };
 pub const IPointAnimationUsingKeyFrames = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyFrames(self: *@This()) core.HResult!*PointKeyFrameCollection {
         var _r: *PointKeyFrameCollection = undefined;
         const _c = self.vtable.get_KeyFrames(@ptrCast(self), &_r);
@@ -4916,6 +5984,12 @@ pub const IPointAnimationUsingKeyFrames = extern struct {
 };
 pub const IPointAnimationUsingKeyFramesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnableDependentAnimationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EnableDependentAnimationProperty(@ptrCast(self), &_r);
@@ -4939,6 +6013,12 @@ pub const IPointAnimationUsingKeyFramesStatics = extern struct {
 };
 pub const IPointKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
@@ -4979,6 +6059,12 @@ pub const IPointKeyFrame = extern struct {
 };
 pub const IPointKeyFrameFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PointKeyFrame {
         var _r: *PointKeyFrame = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -5002,6 +6088,12 @@ pub const IPointKeyFrameFactory = extern struct {
 };
 pub const IPointKeyFrameStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValueProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ValueProperty(@ptrCast(self), &_r);
@@ -5032,6 +6124,12 @@ pub const IPointKeyFrameStatics = extern struct {
 };
 pub const IPointerDownThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
@@ -5060,6 +6158,12 @@ pub const IPointerDownThemeAnimation = extern struct {
 };
 pub const IPointerDownThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetNameProperty(@ptrCast(self), &_r);
@@ -5083,6 +6187,12 @@ pub const IPointerDownThemeAnimationStatics = extern struct {
 };
 pub const IPointerUpThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
@@ -5111,6 +6221,12 @@ pub const IPointerUpThemeAnimation = extern struct {
 };
 pub const IPointerUpThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetNameProperty(@ptrCast(self), &_r);
@@ -5134,6 +6250,12 @@ pub const IPointerUpThemeAnimationStatics = extern struct {
 };
 pub const IPopInThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
@@ -5186,6 +6308,12 @@ pub const IPopInThemeAnimation = extern struct {
 };
 pub const IPopInThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetNameProperty(@ptrCast(self), &_r);
@@ -5223,6 +6351,12 @@ pub const IPopInThemeAnimationStatics = extern struct {
 };
 pub const IPopOutThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
@@ -5251,6 +6385,12 @@ pub const IPopOutThemeAnimation = extern struct {
 };
 pub const IPopOutThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetNameProperty(@ptrCast(self), &_r);
@@ -5274,6 +6414,12 @@ pub const IPopOutThemeAnimationStatics = extern struct {
 };
 pub const IPopupThemeTransition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFromHorizontalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_FromHorizontalOffset(@ptrCast(self), &_r);
@@ -5314,6 +6460,12 @@ pub const IPopupThemeTransition = extern struct {
 };
 pub const IPopupThemeTransitionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFromHorizontalOffsetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FromHorizontalOffsetProperty(@ptrCast(self), &_r);
@@ -5344,6 +6496,12 @@ pub const IPopupThemeTransitionStatics = extern struct {
 };
 pub const IPowerEase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPower(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Power(@ptrCast(self), &_r);
@@ -5372,6 +6530,12 @@ pub const IPowerEase = extern struct {
 };
 pub const IPowerEaseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPowerProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PowerProperty(@ptrCast(self), &_r);
@@ -5395,6 +6559,12 @@ pub const IPowerEaseStatics = extern struct {
 };
 pub const IQuadraticEase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IQuadraticEase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e1510e91-ef6d-44f0-803d-68d16de0ddfc";
@@ -5411,6 +6581,12 @@ pub const IQuadraticEase = extern struct {
 };
 pub const IQuarticEase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IQuarticEase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e8698814-fe42-4a05-b5b8-081f41157815";
@@ -5427,6 +6603,12 @@ pub const IQuarticEase = extern struct {
 };
 pub const IQuinticEase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IQuinticEase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "92ee793b-3c49-4108-aa11-ab786603da21";
@@ -5443,6 +6625,12 @@ pub const IQuinticEase = extern struct {
 };
 pub const IReorderThemeTransition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IReorderThemeTransition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "f2065c6c-d052-4ad1-8362-b71b36df7497";
@@ -5459,6 +6647,12 @@ pub const IReorderThemeTransition = extern struct {
 };
 pub const IRepeatBehaviorHelper = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IRepeatBehaviorHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "6863ab72-4997-47f9-87ad-37efb75993ea";
@@ -5475,6 +6669,12 @@ pub const IRepeatBehaviorHelper = extern struct {
 };
 pub const IRepeatBehaviorHelperStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getForever(self: *@This()) core.HResult!RepeatBehavior {
         var _r: RepeatBehavior = undefined;
         const _c = self.vtable.get_Forever(@ptrCast(self), &_r);
@@ -5533,6 +6733,12 @@ pub const IRepeatBehaviorHelperStatics = extern struct {
 };
 pub const IRepositionThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
@@ -5585,6 +6791,12 @@ pub const IRepositionThemeAnimation = extern struct {
 };
 pub const IRepositionThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetNameProperty(@ptrCast(self), &_r);
@@ -5622,6 +6834,12 @@ pub const IRepositionThemeAnimationStatics = extern struct {
 };
 pub const IRepositionThemeTransition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IRepositionThemeTransition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "88329b82-98f3-455a-ac53-2e7083b6e22c";
@@ -5638,6 +6856,12 @@ pub const IRepositionThemeTransition = extern struct {
 };
 pub const IRepositionThemeTransition2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsStaggeringEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStaggeringEnabled(@ptrCast(self), &_r);
@@ -5666,6 +6890,12 @@ pub const IRepositionThemeTransition2 = extern struct {
 };
 pub const IRepositionThemeTransitionStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsStaggeringEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsStaggeringEnabledProperty(@ptrCast(self), &_r);
@@ -5689,6 +6919,12 @@ pub const IRepositionThemeTransitionStatics2 = extern struct {
 };
 pub const ISineEase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ISineEase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a9382962-230b-49da-9e0d-664987892343";
@@ -5705,6 +6941,12 @@ pub const ISineEase = extern struct {
 };
 pub const ISlideNavigationTransitionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ISlideNavigationTransitionInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "d6ac9d77-2e03-405f-80ed-e62beef3668f";
@@ -5721,6 +6963,12 @@ pub const ISlideNavigationTransitionInfo = extern struct {
 };
 pub const ISlideNavigationTransitionInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEffect(self: *@This()) core.HResult!SlideNavigationTransitionEffect {
         var _r: SlideNavigationTransitionEffect = undefined;
         const _c = self.vtable.get_Effect(@ptrCast(self), &_r);
@@ -5749,6 +6997,12 @@ pub const ISlideNavigationTransitionInfo2 = extern struct {
 };
 pub const ISlideNavigationTransitionInfoStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEffectProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EffectProperty(@ptrCast(self), &_r);
@@ -5772,6 +7026,12 @@ pub const ISlideNavigationTransitionInfoStatics2 = extern struct {
 };
 pub const ISplineColorKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeySpline(self: *@This()) core.HResult!*KeySpline {
         var _r: *KeySpline = undefined;
         const _c = self.vtable.get_KeySpline(@ptrCast(self), &_r);
@@ -5800,6 +7060,12 @@ pub const ISplineColorKeyFrame = extern struct {
 };
 pub const ISplineColorKeyFrameStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeySplineProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_KeySplineProperty(@ptrCast(self), &_r);
@@ -5823,6 +7089,12 @@ pub const ISplineColorKeyFrameStatics = extern struct {
 };
 pub const ISplineDoubleKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeySpline(self: *@This()) core.HResult!*KeySpline {
         var _r: *KeySpline = undefined;
         const _c = self.vtable.get_KeySpline(@ptrCast(self), &_r);
@@ -5851,6 +7123,12 @@ pub const ISplineDoubleKeyFrame = extern struct {
 };
 pub const ISplineDoubleKeyFrameStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeySplineProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_KeySplineProperty(@ptrCast(self), &_r);
@@ -5874,6 +7152,12 @@ pub const ISplineDoubleKeyFrameStatics = extern struct {
 };
 pub const ISplinePointKeyFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeySpline(self: *@This()) core.HResult!*KeySpline {
         var _r: *KeySpline = undefined;
         const _c = self.vtable.get_KeySpline(@ptrCast(self), &_r);
@@ -5902,6 +7186,12 @@ pub const ISplinePointKeyFrame = extern struct {
 };
 pub const ISplinePointKeyFrameStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeySplineProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_KeySplineProperty(@ptrCast(self), &_r);
@@ -5925,6 +7215,12 @@ pub const ISplinePointKeyFrameStatics = extern struct {
 };
 pub const ISplitCloseThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOpenedTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OpenedTargetName(@ptrCast(self), &_r);
@@ -6073,6 +7369,12 @@ pub const ISplitCloseThemeAnimation = extern struct {
 };
 pub const ISplitCloseThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOpenedTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_OpenedTargetNameProperty(@ptrCast(self), &_r);
@@ -6166,6 +7468,12 @@ pub const ISplitCloseThemeAnimationStatics = extern struct {
 };
 pub const ISplitOpenThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOpenedTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OpenedTargetName(@ptrCast(self), &_r);
@@ -6314,6 +7622,12 @@ pub const ISplitOpenThemeAnimation = extern struct {
 };
 pub const ISplitOpenThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOpenedTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_OpenedTargetNameProperty(@ptrCast(self), &_r);
@@ -6407,6 +7721,12 @@ pub const ISplitOpenThemeAnimationStatics = extern struct {
 };
 pub const IStoryboard = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChildren(self: *@This()) core.HResult!*TimelineCollection {
         var _r: *TimelineCollection = undefined;
         const _c = self.vtable.get_Children(@ptrCast(self), &_r);
@@ -6479,6 +7799,12 @@ pub const IStoryboard = extern struct {
 };
 pub const IStoryboardStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetPropertyProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetPropertyProperty(@ptrCast(self), &_r);
@@ -6538,6 +7864,12 @@ pub const IStoryboardStatics = extern struct {
 };
 pub const ISuppressNavigationTransitionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ISuppressNavigationTransitionInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "244d7b0c-b1b7-4871-9d3e-d56203a3a5b4";
@@ -6554,6 +7886,12 @@ pub const ISuppressNavigationTransitionInfo = extern struct {
 };
 pub const ISwipeBackThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
@@ -6606,6 +7944,12 @@ pub const ISwipeBackThemeAnimation = extern struct {
 };
 pub const ISwipeBackThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetNameProperty(@ptrCast(self), &_r);
@@ -6643,6 +7987,12 @@ pub const ISwipeBackThemeAnimationStatics = extern struct {
 };
 pub const ISwipeHintThemeAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetName(@ptrCast(self), &_r);
@@ -6695,6 +8045,12 @@ pub const ISwipeHintThemeAnimation = extern struct {
 };
 pub const ISwipeHintThemeAnimationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetNameProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetNameProperty(@ptrCast(self), &_r);
@@ -6732,6 +8088,12 @@ pub const ISwipeHintThemeAnimationStatics = extern struct {
 };
 pub const ITimeline = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAutoReverse(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AutoReverse(@ptrCast(self), &_r);
@@ -6832,6 +8194,12 @@ pub const ITimeline = extern struct {
 };
 pub const ITimelineFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Timeline {
         var _r: *Timeline = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -6855,6 +8223,12 @@ pub const ITimelineFactory = extern struct {
 };
 pub const ITimelineStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowDependentAnimations(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowDependentAnimations(@ptrCast(self), &_r);
@@ -6925,6 +8299,12 @@ pub const ITimelineStatics = extern struct {
 };
 pub const ITransition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ITransition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "3c677c7c-01d0-4dce-b333-976f93312b08";
@@ -6941,6 +8321,12 @@ pub const ITransition = extern struct {
 };
 pub const ITransitionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ITransitionFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "dc9ab2cf-3bc9-44aa-b3fc-883a83233a2c";
@@ -6957,11 +8343,35 @@ pub const ITransitionFactory = extern struct {
 };
 pub const IndependentlyAnimatableAttribute = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.IndependentlyAnimatableAttribute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
 };
 pub const KeySpline = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControlPoint1(self: *@This()) core.HResult!Point {
         const this: *IKeySpline = @ptrCast(self);
         return try this.getControlPoint1();
@@ -6977,9 +8387,6 @@ pub const KeySpline = extern struct {
     pub fn putControlPoint2(self: *@This(), value: Point) core.HResult!void {
         const this: *IKeySpline = @ptrCast(self);
         return try this.putControlPoint2(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -6997,6 +8404,15 @@ pub const KeyTime = extern struct {
 };
 pub const KeyTimeHelper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7013,6 +8429,15 @@ pub const KeyTimeHelper = extern struct {
 };
 pub const LinearColorKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7029,6 +8454,15 @@ pub const LinearColorKeyFrame = extern struct {
 };
 pub const LinearDoubleKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7045,6 +8479,15 @@ pub const LinearDoubleKeyFrame = extern struct {
 };
 pub const LinearPointKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7061,6 +8504,18 @@ pub const LinearPointKeyFrame = extern struct {
 };
 pub const NavigationThemeTransition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDefaultNavigationTransitionInfo(self: *@This()) core.HResult!*NavigationTransitionInfo {
         const this: *INavigationThemeTransition = @ptrCast(self);
         return try this.getDefaultNavigationTransitionInfo();
@@ -7068,9 +8523,6 @@ pub const NavigationThemeTransition = extern struct {
     pub fn putDefaultNavigationTransitionInfo(self: *@This(), value: *NavigationTransitionInfo) core.HResult!void {
         const this: *INavigationThemeTransition = @ptrCast(self);
         return try this.putDefaultNavigationTransitionInfo(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7090,6 +8542,18 @@ pub const NavigationThemeTransition = extern struct {
 };
 pub const ObjectAnimationUsingKeyFrames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyFrames(self: *@This()) core.HResult!*ObjectKeyFrameCollection {
         const this: *IObjectAnimationUsingKeyFrames = @ptrCast(self);
         return try this.getKeyFrames();
@@ -7101,9 +8565,6 @@ pub const ObjectAnimationUsingKeyFrames = extern struct {
     pub fn putEnableDependentAnimation(self: *@This(), value: bool) core.HResult!void {
         const this: *IObjectAnimationUsingKeyFrames = @ptrCast(self);
         return try this.putEnableDependentAnimation(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7123,6 +8584,18 @@ pub const ObjectAnimationUsingKeyFrames = extern struct {
 };
 pub const ObjectKeyFrameCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVector(ObjectKeyFrame) = @ptrCast(self);
         return try this.getSize();
@@ -7150,9 +8623,6 @@ pub const ObjectKeyFrameCollection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVector.IID)));
@@ -7166,6 +8636,18 @@ pub const ObjectKeyFrameCollection = extern struct {
 };
 pub const PaneThemeTransition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEdge(self: *@This()) core.HResult!EdgeTransitionLocation {
         const this: *IPaneThemeTransition = @ptrCast(self);
         return try this.getEdge();
@@ -7173,9 +8655,6 @@ pub const PaneThemeTransition = extern struct {
     pub fn putEdge(self: *@This(), value: EdgeTransitionLocation) core.HResult!void {
         const this: *IPaneThemeTransition = @ptrCast(self);
         return try this.putEdge(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7195,6 +8674,18 @@ pub const PaneThemeTransition = extern struct {
 };
 pub const PointAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrom(self: *@This()) core.HResult!*IReference(Point) {
         const this: *IPointAnimation = @ptrCast(self);
         return try this.getFrom();
@@ -7235,9 +8726,6 @@ pub const PointAnimation = extern struct {
         const this: *IPointAnimation = @ptrCast(self);
         return try this.putEnableDependentAnimation(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPointAnimation.IID)));
@@ -7272,6 +8760,18 @@ pub const PointAnimation = extern struct {
 };
 pub const PointAnimationUsingKeyFrames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyFrames(self: *@This()) core.HResult!*PointKeyFrameCollection {
         const this: *IPointAnimationUsingKeyFrames = @ptrCast(self);
         return try this.getKeyFrames();
@@ -7283,9 +8783,6 @@ pub const PointAnimationUsingKeyFrames = extern struct {
     pub fn putEnableDependentAnimation(self: *@This(), value: bool) core.HResult!void {
         const this: *IPointAnimationUsingKeyFrames = @ptrCast(self);
         return try this.putEnableDependentAnimation(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7305,6 +8802,18 @@ pub const PointAnimationUsingKeyFrames = extern struct {
 };
 pub const PointKeyFrameCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVector(PointKeyFrame) = @ptrCast(self);
         return try this.getSize();
@@ -7332,9 +8841,6 @@ pub const PointKeyFrameCollection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVector.IID)));
@@ -7348,6 +8854,18 @@ pub const PointKeyFrameCollection = extern struct {
 };
 pub const PointerDownThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPointerDownThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
@@ -7355,9 +8873,6 @@ pub const PointerDownThemeAnimation = extern struct {
     pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPointerDownThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7377,6 +8892,18 @@ pub const PointerDownThemeAnimation = extern struct {
 };
 pub const PointerUpThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPointerUpThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
@@ -7384,9 +8911,6 @@ pub const PointerUpThemeAnimation = extern struct {
     pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPointerUpThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7406,6 +8930,18 @@ pub const PointerUpThemeAnimation = extern struct {
 };
 pub const PopInThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPopInThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
@@ -7429,9 +8965,6 @@ pub const PopInThemeAnimation = extern struct {
     pub fn putFromVerticalOffset(self: *@This(), value: f64) core.HResult!void {
         const this: *IPopInThemeAnimation = @ptrCast(self);
         return try this.putFromVerticalOffset(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7459,6 +8992,18 @@ pub const PopInThemeAnimation = extern struct {
 };
 pub const PopOutThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPopOutThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
@@ -7466,9 +9011,6 @@ pub const PopOutThemeAnimation = extern struct {
     pub fn putTargetName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPopOutThemeAnimation = @ptrCast(self);
         return try this.putTargetName(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7488,6 +9030,18 @@ pub const PopOutThemeAnimation = extern struct {
 };
 pub const PopupThemeTransition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFromHorizontalOffset(self: *@This()) core.HResult!f64 {
         const this: *IPopupThemeTransition = @ptrCast(self);
         return try this.getFromHorizontalOffset();
@@ -7503,9 +9057,6 @@ pub const PopupThemeTransition = extern struct {
     pub fn putFromVerticalOffset(self: *@This(), value: f64) core.HResult!void {
         const this: *IPopupThemeTransition = @ptrCast(self);
         return try this.putFromVerticalOffset(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7529,6 +9080,18 @@ pub const PopupThemeTransition = extern struct {
 };
 pub const PowerEase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPower(self: *@This()) core.HResult!f64 {
         const this: *IPowerEase = @ptrCast(self);
         return try this.getPower();
@@ -7536,9 +9099,6 @@ pub const PowerEase = extern struct {
     pub fn putPower(self: *@This(), value: f64) core.HResult!void {
         const this: *IPowerEase = @ptrCast(self);
         return try this.putPower(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7558,6 +9118,15 @@ pub const PowerEase = extern struct {
 };
 pub const QuadraticEase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7574,6 +9143,15 @@ pub const QuadraticEase = extern struct {
 };
 pub const QuarticEase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7590,6 +9168,15 @@ pub const QuarticEase = extern struct {
 };
 pub const QuinticEase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7606,6 +9193,15 @@ pub const QuinticEase = extern struct {
 };
 pub const ReorderThemeTransition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7627,6 +9223,15 @@ pub const RepeatBehavior = extern struct {
 };
 pub const RepeatBehaviorHelper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7668,6 +9273,18 @@ pub const RepeatBehaviorType = enum(i32) {
 };
 pub const RepositionThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRepositionThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
@@ -7691,9 +9308,6 @@ pub const RepositionThemeAnimation = extern struct {
     pub fn putFromVerticalOffset(self: *@This(), value: f64) core.HResult!void {
         const this: *IRepositionThemeAnimation = @ptrCast(self);
         return try this.putFromVerticalOffset(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7721,6 +9335,18 @@ pub const RepositionThemeAnimation = extern struct {
 };
 pub const RepositionThemeTransition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsStaggeringEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IRepositionThemeTransition2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -7734,9 +9360,6 @@ pub const RepositionThemeTransition = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRepositionThemeTransition2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsStaggeringEnabled(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7756,6 +9379,15 @@ pub const RepositionThemeTransition = extern struct {
 };
 pub const SineEase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7777,6 +9409,18 @@ pub const SlideNavigationTransitionEffect = enum(i32) {
 };
 pub const SlideNavigationTransitionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEffect(self: *@This()) core.HResult!SlideNavigationTransitionEffect {
         var this: ?*ISlideNavigationTransitionInfo2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -7790,9 +9434,6 @@ pub const SlideNavigationTransitionInfo = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlideNavigationTransitionInfo2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putEffect(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7812,6 +9453,18 @@ pub const SlideNavigationTransitionInfo = extern struct {
 };
 pub const SplineColorKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeySpline(self: *@This()) core.HResult!*KeySpline {
         const this: *ISplineColorKeyFrame = @ptrCast(self);
         return try this.getKeySpline();
@@ -7819,9 +9472,6 @@ pub const SplineColorKeyFrame = extern struct {
     pub fn putKeySpline(self: *@This(), value: *KeySpline) core.HResult!void {
         const this: *ISplineColorKeyFrame = @ptrCast(self);
         return try this.putKeySpline(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7841,6 +9491,18 @@ pub const SplineColorKeyFrame = extern struct {
 };
 pub const SplineDoubleKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeySpline(self: *@This()) core.HResult!*KeySpline {
         const this: *ISplineDoubleKeyFrame = @ptrCast(self);
         return try this.getKeySpline();
@@ -7848,9 +9510,6 @@ pub const SplineDoubleKeyFrame = extern struct {
     pub fn putKeySpline(self: *@This(), value: *KeySpline) core.HResult!void {
         const this: *ISplineDoubleKeyFrame = @ptrCast(self);
         return try this.putKeySpline(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7870,6 +9529,18 @@ pub const SplineDoubleKeyFrame = extern struct {
 };
 pub const SplinePointKeyFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeySpline(self: *@This()) core.HResult!*KeySpline {
         const this: *ISplinePointKeyFrame = @ptrCast(self);
         return try this.getKeySpline();
@@ -7877,9 +9548,6 @@ pub const SplinePointKeyFrame = extern struct {
     pub fn putKeySpline(self: *@This(), value: *KeySpline) core.HResult!void {
         const this: *ISplinePointKeyFrame = @ptrCast(self);
         return try this.putKeySpline(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7899,6 +9567,18 @@ pub const SplinePointKeyFrame = extern struct {
 };
 pub const SplitCloseThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOpenedTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISplitCloseThemeAnimation = @ptrCast(self);
         return try this.getOpenedTargetName();
@@ -7986,9 +9666,6 @@ pub const SplitCloseThemeAnimation = extern struct {
     pub fn putContentTranslationOffset(self: *@This(), value: f64) core.HResult!void {
         const this: *ISplitCloseThemeAnimation = @ptrCast(self);
         return try this.putContentTranslationOffset(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -8048,6 +9725,18 @@ pub const SplitCloseThemeAnimation = extern struct {
 };
 pub const SplitOpenThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOpenedTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISplitOpenThemeAnimation = @ptrCast(self);
         return try this.getOpenedTargetName();
@@ -8136,9 +9825,6 @@ pub const SplitOpenThemeAnimation = extern struct {
         const this: *ISplitOpenThemeAnimation = @ptrCast(self);
         return try this.putContentTranslationOffset(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISplitOpenThemeAnimation.IID)));
@@ -8197,6 +9883,18 @@ pub const SplitOpenThemeAnimation = extern struct {
 };
 pub const Storyboard = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChildren(self: *@This()) core.HResult!*TimelineCollection {
         const this: *IStoryboard = @ptrCast(self);
         return try this.getChildren();
@@ -8236,9 +9934,6 @@ pub const Storyboard = extern struct {
     pub fn SkipToFill(self: *@This()) core.HResult!void {
         const this: *IStoryboard = @ptrCast(self);
         return try this.SkipToFill();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -8282,6 +9977,15 @@ pub const Storyboard = extern struct {
 };
 pub const SuppressNavigationTransitionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -8298,6 +10002,18 @@ pub const SuppressNavigationTransitionInfo = extern struct {
 };
 pub const SwipeBackThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISwipeBackThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
@@ -8321,9 +10037,6 @@ pub const SwipeBackThemeAnimation = extern struct {
     pub fn putFromVerticalOffset(self: *@This(), value: f64) core.HResult!void {
         const this: *ISwipeBackThemeAnimation = @ptrCast(self);
         return try this.putFromVerticalOffset(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -8351,6 +10064,18 @@ pub const SwipeBackThemeAnimation = extern struct {
 };
 pub const SwipeHintThemeAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISwipeHintThemeAnimation = @ptrCast(self);
         return try this.getTargetName();
@@ -8374,9 +10099,6 @@ pub const SwipeHintThemeAnimation = extern struct {
     pub fn putToVerticalOffset(self: *@This(), value: f64) core.HResult!void {
         const this: *ISwipeHintThemeAnimation = @ptrCast(self);
         return try this.putToVerticalOffset(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -8404,6 +10126,18 @@ pub const SwipeHintThemeAnimation = extern struct {
 };
 pub const TimelineCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVector(Timeline) = @ptrCast(self);
         return try this.getSize();
@@ -8431,9 +10165,6 @@ pub const TimelineCollection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVector.IID)));
@@ -8447,6 +10178,18 @@ pub const TimelineCollection = extern struct {
 };
 pub const TransitionCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVector(Transition) = @ptrCast(self);
         return try this.getSize();
@@ -8473,9 +10216,6 @@ pub const TransitionCollection = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(Transition).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

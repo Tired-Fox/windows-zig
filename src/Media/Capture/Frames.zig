@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AudioMediaFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameReference(self: *@This()) core.HResult!*MediaFrameReference {
         const this: *IAudioMediaFrame = @ptrCast(self);
         return try this.getFrameReference();
@@ -21,6 +33,18 @@ pub const AudioMediaFrame = extern struct {
 };
 pub const BufferMediaFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameReference(self: *@This()) core.HResult!*MediaFrameReference {
         const this: *IBufferMediaFrame = @ptrCast(self);
         return try this.getFrameReference();
@@ -37,6 +61,18 @@ pub const BufferMediaFrame = extern struct {
 };
 pub const DepthMediaFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameReference(self: *@This()) core.HResult!*MediaFrameReference {
         const this: *IDepthMediaFrame = @ptrCast(self);
         return try this.getFrameReference();
@@ -75,6 +111,18 @@ pub const DepthMediaFrame = extern struct {
 };
 pub const DepthMediaFrameFormat = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoFormat(self: *@This()) core.HResult!*VideoMediaFrameFormat {
         const this: *IDepthMediaFrameFormat = @ptrCast(self);
         return try this.getVideoFormat();
@@ -91,6 +139,12 @@ pub const DepthMediaFrameFormat = extern struct {
 };
 pub const IAudioMediaFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameReference(self: *@This()) core.HResult!*MediaFrameReference {
         var _r: *MediaFrameReference = undefined;
         const _c = self.vtable.get_FrameReference(@ptrCast(self), &_r);
@@ -128,6 +182,12 @@ pub const IAudioMediaFrame = extern struct {
 };
 pub const IBufferMediaFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameReference(self: *@This()) core.HResult!*MediaFrameReference {
         var _r: *MediaFrameReference = undefined;
         const _c = self.vtable.get_FrameReference(@ptrCast(self), &_r);
@@ -158,6 +218,12 @@ pub const IBufferMediaFrame = extern struct {
 };
 pub const IDepthMediaFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameReference(self: *@This()) core.HResult!*MediaFrameReference {
         var _r: *MediaFrameReference = undefined;
         const _c = self.vtable.get_FrameReference(@ptrCast(self), &_r);
@@ -202,6 +268,12 @@ pub const IDepthMediaFrame = extern struct {
 };
 pub const IDepthMediaFrame2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxReliableDepth(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxReliableDepth(@ptrCast(self), &_r);
@@ -232,6 +304,12 @@ pub const IDepthMediaFrame2 = extern struct {
 };
 pub const IDepthMediaFrameFormat = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoFormat(self: *@This()) core.HResult!*VideoMediaFrameFormat {
         var _r: *VideoMediaFrameFormat = undefined;
         const _c = self.vtable.get_VideoFormat(@ptrCast(self), &_r);
@@ -262,6 +340,12 @@ pub const IDepthMediaFrameFormat = extern struct {
 };
 pub const IInfraredMediaFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameReference(self: *@This()) core.HResult!*MediaFrameReference {
         var _r: *MediaFrameReference = undefined;
         const _c = self.vtable.get_FrameReference(@ptrCast(self), &_r);
@@ -299,6 +383,12 @@ pub const IInfraredMediaFrame = extern struct {
 };
 pub const IMediaFrameArrivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Capture.Frames.IMediaFrameArrivedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "0b430add-a490-4435-ada1-9affd55239f7";
@@ -315,6 +405,12 @@ pub const IMediaFrameArrivedEventArgs = extern struct {
 };
 pub const IMediaFrameFormat = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMajorType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MajorType(@ptrCast(self), &_r);
@@ -366,6 +462,12 @@ pub const IMediaFrameFormat = extern struct {
 };
 pub const IMediaFrameFormat2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAudioEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var _r: *AudioEncodingProperties = undefined;
         const _c = self.vtable.get_AudioEncodingProperties(@ptrCast(self), &_r);
@@ -389,6 +491,12 @@ pub const IMediaFrameFormat2 = extern struct {
 };
 pub const IMediaFrameReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(MediaFrameReader,MediaFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FrameArrived(@ptrCast(self), handler, &_r);
@@ -438,6 +546,12 @@ pub const IMediaFrameReader = extern struct {
 };
 pub const IMediaFrameReader2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAcquisitionMode(self: *@This(), value: MediaFrameReaderAcquisitionMode) core.HResult!void {
         const _c = self.vtable.put_AcquisitionMode(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -466,6 +580,12 @@ pub const IMediaFrameReader2 = extern struct {
 };
 pub const IMediaFrameReference = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceKind(self: *@This()) core.HResult!MediaFrameSourceKind {
         var _r: MediaFrameSourceKind = undefined;
         const _c = self.vtable.get_SourceKind(@ptrCast(self), &_r);
@@ -538,6 +658,12 @@ pub const IMediaFrameReference = extern struct {
 };
 pub const IMediaFrameReference2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAudioMediaFrame(self: *@This()) core.HResult!*AudioMediaFrame {
         var _r: *AudioMediaFrame = undefined;
         const _c = self.vtable.get_AudioMediaFrame(@ptrCast(self), &_r);
@@ -561,6 +687,12 @@ pub const IMediaFrameReference2 = extern struct {
 };
 pub const IMediaFrameSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInfo(self: *@This()) core.HResult!*MediaFrameSourceInfo {
         var _r: *MediaFrameSourceInfo = undefined;
         const _c = self.vtable.get_Info(@ptrCast(self), &_r);
@@ -631,6 +763,12 @@ pub const IMediaFrameSource = extern struct {
 };
 pub const IMediaFrameSourceController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPropertyAsync(self: *@This(), propertyId: ?HSTRING) core.HResult!*IAsyncOperation(MediaFrameSourceGetPropertyResult) {
         var _r: *IAsyncOperation(MediaFrameSourceGetPropertyResult) = undefined;
         const _c = self.vtable.GetPropertyAsync(@ptrCast(self), propertyId, &_r);
@@ -668,6 +806,12 @@ pub const IMediaFrameSourceController = extern struct {
 };
 pub const IMediaFrameSourceController2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPropertyByExtendedIdAsync(self: *@This(), extendedPropertyId: [*]u8, maxPropertyValueSize: *IReference(u32)) core.HResult!*IAsyncOperation(MediaFrameSourceGetPropertyResult) {
         var _r: *IAsyncOperation(MediaFrameSourceGetPropertyResult) = undefined;
         const _c = self.vtable.GetPropertyByExtendedIdAsync(@ptrCast(self), extendedPropertyId, maxPropertyValueSize, &_r);
@@ -698,6 +842,12 @@ pub const IMediaFrameSourceController2 = extern struct {
 };
 pub const IMediaFrameSourceController3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAudioDeviceController(self: *@This()) core.HResult!*AudioDeviceController {
         var _r: *AudioDeviceController = undefined;
         const _c = self.vtable.get_AudioDeviceController(@ptrCast(self), &_r);
@@ -721,6 +871,12 @@ pub const IMediaFrameSourceController3 = extern struct {
 };
 pub const IMediaFrameSourceGetPropertyResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!MediaFrameSourceGetPropertyStatus {
         var _r: MediaFrameSourceGetPropertyStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -751,6 +907,12 @@ pub const IMediaFrameSourceGetPropertyResult = extern struct {
 };
 pub const IMediaFrameSourceGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -788,6 +950,12 @@ pub const IMediaFrameSourceGroup = extern struct {
 };
 pub const IMediaFrameSourceGroupStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAllAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(MediaFrameSourceGroup)) {
         var _r: *IAsyncOperation(IVectorView(MediaFrameSourceGroup)) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), &_r);
@@ -825,6 +993,12 @@ pub const IMediaFrameSourceGroupStatics = extern struct {
 };
 pub const IMediaFrameSourceInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -890,6 +1064,12 @@ pub const IMediaFrameSourceInfo = extern struct {
 };
 pub const IMediaFrameSourceInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProfileId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProfileId(@ptrCast(self), &_r);
@@ -920,6 +1100,12 @@ pub const IMediaFrameSourceInfo2 = extern struct {
 };
 pub const IMediaFrameSourceInfo3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetRelativePanel(self: *@This(), displayRegion: *DisplayRegion) core.HResult!Panel {
         var _r: Panel = undefined;
         const _c = self.vtable.GetRelativePanel(@ptrCast(self), displayRegion, &_r);
@@ -943,6 +1129,12 @@ pub const IMediaFrameSourceInfo3 = extern struct {
 };
 pub const IMediaFrameSourceInfo4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsShareable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsShareable(@ptrCast(self), &_r);
@@ -966,6 +1158,12 @@ pub const IMediaFrameSourceInfo4 = extern struct {
 };
 pub const IMultiSourceMediaFrameArrivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Capture.Frames.IMultiSourceMediaFrameArrivedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "63115e01-cf51-48fd-aab0-6d693eb48127";
@@ -982,6 +1180,12 @@ pub const IMultiSourceMediaFrameArrivedEventArgs = extern struct {
 };
 pub const IMultiSourceMediaFrameReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(MultiSourceMediaFrameReader,MultiSourceMediaFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FrameArrived(@ptrCast(self), handler, &_r);
@@ -1031,6 +1235,12 @@ pub const IMultiSourceMediaFrameReader = extern struct {
 };
 pub const IMultiSourceMediaFrameReader2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAcquisitionMode(self: *@This(), value: MediaFrameReaderAcquisitionMode) core.HResult!void {
         const _c = self.vtable.put_AcquisitionMode(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1059,6 +1269,12 @@ pub const IMultiSourceMediaFrameReader2 = extern struct {
 };
 pub const IMultiSourceMediaFrameReference = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetFrameReferenceBySourceId(self: *@This(), sourceId: ?HSTRING) core.HResult!*MediaFrameReference {
         var _r: *MediaFrameReference = undefined;
         const _c = self.vtable.TryGetFrameReferenceBySourceId(@ptrCast(self), sourceId, &_r);
@@ -1082,6 +1298,12 @@ pub const IMultiSourceMediaFrameReference = extern struct {
 };
 pub const IVideoMediaFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameReference(self: *@This()) core.HResult!*MediaFrameReference {
         var _r: *MediaFrameReference = undefined;
         const _c = self.vtable.get_FrameReference(@ptrCast(self), &_r);
@@ -1154,6 +1376,12 @@ pub const IVideoMediaFrame = extern struct {
 };
 pub const IVideoMediaFrameFormat = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMediaFrameFormat(self: *@This()) core.HResult!*MediaFrameFormat {
         var _r: *MediaFrameFormat = undefined;
         const _c = self.vtable.get_MediaFrameFormat(@ptrCast(self), &_r);
@@ -1198,6 +1426,18 @@ pub const IVideoMediaFrameFormat = extern struct {
 };
 pub const InfraredMediaFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameReference(self: *@This()) core.HResult!*MediaFrameReference {
         const this: *IInfraredMediaFrame = @ptrCast(self);
         return try this.getFrameReference();
@@ -1218,6 +1458,18 @@ pub const InfraredMediaFrame = extern struct {
 };
 pub const MediaFrameArrivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Capture.Frames.MediaFrameArrivedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IMediaFrameArrivedEventArgs.GUID;
@@ -1226,6 +1478,18 @@ pub const MediaFrameArrivedEventArgs = extern struct {
 };
 pub const MediaFrameFormat = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMajorType(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaFrameFormat = @ptrCast(self);
         return try this.getMajorType();
@@ -1261,6 +1525,18 @@ pub const MediaFrameFormat = extern struct {
 };
 pub const MediaFrameReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(MediaFrameReader,MediaFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IMediaFrameReader = @ptrCast(self);
         return try this.addFrameArrived(handler);
@@ -1321,6 +1597,18 @@ pub const MediaFrameReaderStartStatus = enum(i32) {
 };
 pub const MediaFrameReference = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceKind(self: *@This()) core.HResult!MediaFrameSourceKind {
         const this: *IMediaFrameReference = @ptrCast(self);
         return try this.getSourceKind();
@@ -1375,6 +1663,18 @@ pub const MediaFrameReference = extern struct {
 };
 pub const MediaFrameSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInfo(self: *@This()) core.HResult!*MediaFrameSourceInfo {
         const this: *IMediaFrameSource = @ptrCast(self);
         return try this.getInfo();
@@ -1415,6 +1715,18 @@ pub const MediaFrameSource = extern struct {
 };
 pub const MediaFrameSourceController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPropertyAsync(self: *@This(), propertyId: ?HSTRING) core.HResult!*IAsyncOperation(MediaFrameSourceGetPropertyResult) {
         const this: *IMediaFrameSourceController = @ptrCast(self);
         return try this.GetPropertyAsync(propertyId);
@@ -1456,6 +1768,18 @@ pub const MediaFrameSourceController = extern struct {
 };
 pub const MediaFrameSourceGetPropertyResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!MediaFrameSourceGetPropertyStatus {
         const this: *IMediaFrameSourceGetPropertyResult = @ptrCast(self);
         return try this.getStatus();
@@ -1480,6 +1804,18 @@ pub const MediaFrameSourceGetPropertyStatus = enum(i32) {
 };
 pub const MediaFrameSourceGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaFrameSourceGroup = @ptrCast(self);
         return try this.getId();
@@ -1491,9 +1827,6 @@ pub const MediaFrameSourceGroup = extern struct {
     pub fn getSourceInfos(self: *@This()) core.HResult!*IVectorView(MediaFrameSourceInfo) {
         const this: *IMediaFrameSourceGroup = @ptrCast(self);
         return try this.getSourceInfos();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(MediaFrameSourceGroup)) {
         const _f = try @This()._IMediaFrameSourceGroupStaticsCache.get();
@@ -1516,6 +1849,18 @@ pub const MediaFrameSourceGroup = extern struct {
 };
 pub const MediaFrameSourceInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMediaFrameSourceInfo = @ptrCast(self);
         return try this.getId();
@@ -1597,6 +1942,18 @@ pub const MediaFrameSourceSetPropertyStatus = enum(i32) {
 };
 pub const MultiSourceMediaFrameArrivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Capture.Frames.MultiSourceMediaFrameArrivedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IMultiSourceMediaFrameArrivedEventArgs.GUID;
@@ -1605,6 +1962,18 @@ pub const MultiSourceMediaFrameArrivedEventArgs = extern struct {
 };
 pub const MultiSourceMediaFrameReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(MultiSourceMediaFrameReader,MultiSourceMediaFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IMultiSourceMediaFrameReader = @ptrCast(self);
         return try this.addFrameArrived(handler);
@@ -1661,6 +2030,18 @@ pub const MultiSourceMediaFrameReaderStartStatus = enum(i32) {
 };
 pub const MultiSourceMediaFrameReference = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetFrameReferenceBySourceId(self: *@This(), sourceId: ?HSTRING) core.HResult!*MediaFrameReference {
         const this: *IMultiSourceMediaFrameReference = @ptrCast(self);
         return try this.TryGetFrameReferenceBySourceId(sourceId);
@@ -1680,6 +2061,18 @@ pub const MultiSourceMediaFrameReference = extern struct {
 };
 pub const VideoMediaFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameReference(self: *@This()) core.HResult!*MediaFrameReference {
         const this: *IVideoMediaFrame = @ptrCast(self);
         return try this.getFrameReference();
@@ -1720,6 +2113,18 @@ pub const VideoMediaFrame = extern struct {
 };
 pub const VideoMediaFrameFormat = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMediaFrameFormat(self: *@This()) core.HResult!*MediaFrameFormat {
         const this: *IVideoMediaFrameFormat = @ptrCast(self);
         return try this.getMediaFrameFormat();

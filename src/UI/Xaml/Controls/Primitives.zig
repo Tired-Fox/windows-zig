@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const ButtonBase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClickMode(self: *@This()) core.HResult!ClickMode {
         const this: *IButtonBase = @ptrCast(self);
         return try this.getClickMode();
@@ -41,9 +53,6 @@ pub const ButtonBase = extern struct {
         const this: *IButtonBase = @ptrCast(self);
         return try this.removeClick(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getClickModeProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IButtonBaseStaticsCache.get();
         return try _f.getClickModeProperty();
@@ -78,6 +87,18 @@ pub const ButtonBase = extern struct {
 };
 pub const ToggleButton = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsChecked(self: *@This()) core.HResult!*IReference(bool) {
         const this: *IToggleButton = @ptrCast(self);
         return try this.getIsChecked();
@@ -125,9 +146,6 @@ pub const ToggleButton = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnToggle();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getIsCheckedProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IToggleButtonStaticsCache.get();
         return try _f.getIsCheckedProperty();
@@ -150,6 +168,18 @@ pub const ToggleButton = extern struct {
 };
 pub const Selector = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedIndex(self: *@This()) core.HResult!i32 {
         const this: *ISelector = @ptrCast(self);
         return try this.getSelectedIndex();
@@ -198,9 +228,6 @@ pub const Selector = extern struct {
         const this: *ISelector = @ptrCast(self);
         return try this.removeSelectionChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getSelectedIndexProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._ISelectorStaticsCache.get();
         return try _f.getSelectedIndexProperty();
@@ -235,6 +262,18 @@ pub const Selector = extern struct {
 };
 pub const SelectorItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         const this: *ISelectorItem = @ptrCast(self);
         return try this.getIsSelected();
@@ -242,9 +281,6 @@ pub const SelectorItem = extern struct {
     pub fn putIsSelected(self: *@This(), value: bool) core.HResult!void {
         const this: *ISelectorItem = @ptrCast(self);
         return try this.putIsSelected(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIsSelectedProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._ISelectorItemStaticsCache.get();
@@ -264,6 +300,18 @@ pub const SelectorItem = extern struct {
 };
 pub const FlyoutBase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPlacement(self: *@This()) core.HResult!FlyoutPlacementMode {
         const this: *IFlyoutBase = @ptrCast(self);
         return try this.getPlacement();
@@ -500,9 +548,6 @@ pub const FlyoutBase = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnProcessKeyboardAccelerators(args);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getOverlayInputPassThroughElementProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IFlyoutBaseStatics3Cache.get();
         return try _f.getOverlayInputPassThroughElementProperty();
@@ -585,6 +630,18 @@ pub const FlyoutBase = extern struct {
 };
 pub const PickerFlyoutBase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnConfirmed(self: *@This()) core.HResult!void {
         var this: ?*IPickerFlyoutBaseOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -598,9 +655,6 @@ pub const PickerFlyoutBase = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPickerFlyoutBaseOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShouldShowConfirmationButtons();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getTitleProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IPickerFlyoutBaseStaticsCache.get();
@@ -634,6 +688,18 @@ pub const AnimationDirection = enum(i32) {
 };
 pub const AppBarButtonTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyboardAcceleratorTextMinWidth(self: *@This()) core.HResult!f64 {
         const this: *IAppBarButtonTemplateSettings = @ptrCast(self);
         return try this.getKeyboardAcceleratorTextMinWidth();
@@ -646,6 +712,18 @@ pub const AppBarButtonTemplateSettings = extern struct {
 };
 pub const AppBarTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClipRect(self: *@This()) core.HResult!Rect {
         const this: *IAppBarTemplateSettings = @ptrCast(self);
         return try this.getClipRect();
@@ -703,6 +781,18 @@ pub const AppBarTemplateSettings = extern struct {
 };
 pub const AppBarToggleButtonTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyboardAcceleratorTextMinWidth(self: *@This()) core.HResult!f64 {
         const this: *IAppBarToggleButtonTemplateSettings = @ptrCast(self);
         return try this.getKeyboardAcceleratorTextMinWidth();
@@ -715,6 +805,15 @@ pub const AppBarToggleButtonTemplateSettings = extern struct {
 };
 pub const CalendarPanel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -731,6 +830,18 @@ pub const CalendarPanel = extern struct {
 };
 pub const CalendarViewTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinViewWidth(self: *@This()) core.HResult!f64 {
         const this: *ICalendarViewTemplateSettings = @ptrCast(self);
         return try this.getMinViewWidth();
@@ -799,6 +910,18 @@ pub const CalendarViewTemplateSettings = extern struct {
 };
 pub const CarouselPanel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanVerticallyScroll(self: *@This()) core.HResult!bool {
         const this: *ICarouselPanel = @ptrCast(self);
         return try this.getCanVerticallyScroll();
@@ -963,9 +1086,6 @@ pub const CarouselPanel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRegularSnapPoints(orientation, alignment, offset);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CarouselPanel {
         const _f = try @This()._ICarouselPanelFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
@@ -979,6 +1099,18 @@ pub const CarouselPanel = extern struct {
 };
 pub const RangeBase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinimum(self: *@This()) core.HResult!f64 {
         const this: *IRangeBase = @ptrCast(self);
         return try this.getMinimum();
@@ -1048,9 +1180,6 @@ pub const RangeBase = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnValueChanged(oldValue, newValue);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getMinimumProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IRangeBaseStaticsCache.get();
         return try _f.getMinimumProperty();
@@ -1085,6 +1214,18 @@ pub const RangeBase = extern struct {
 };
 pub const ColorPickerSlider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColorChannel(self: *@This()) core.HResult!ColorPickerHsvChannel {
         const this: *IColorPickerSlider = @ptrCast(self);
         return try this.getColorChannel();
@@ -1092,9 +1233,6 @@ pub const ColorPickerSlider = extern struct {
     pub fn putColorChannel(self: *@This(), value: ColorPickerHsvChannel) core.HResult!void {
         const this: *IColorPickerSlider = @ptrCast(self);
         return try this.putColorChannel(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getColorChannelProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IColorPickerSliderStaticsCache.get();
@@ -1114,6 +1252,18 @@ pub const ColorPickerSlider = extern struct {
 };
 pub const ColorSpectrum = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         const this: *IColorSpectrum = @ptrCast(self);
         return try this.getColor();
@@ -1202,9 +1352,6 @@ pub const ColorSpectrum = extern struct {
         const this: *IColorSpectrum = @ptrCast(self);
         return try this.removeColorChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getColorProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IColorSpectrumStaticsCache.get();
         return try _f.getColorProperty();
@@ -1259,6 +1406,18 @@ pub const ColorSpectrum = extern struct {
 };
 pub const ComboBoxTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDropDownOpenedHeight(self: *@This()) core.HResult!f64 {
         const this: *IComboBoxTemplateSettings = @ptrCast(self);
         return try this.getDropDownOpenedHeight();
@@ -1290,12 +1449,21 @@ pub const ComboBoxTemplateSettings = extern struct {
 };
 pub const CommandBarFlyoutCommandBar = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFlyoutTemplateSettings(self: *@This()) core.HResult!*CommandBarFlyoutCommandBarTemplateSettings {
-        const this: *ICommandBarFlyoutCommandBar = @ptrCast(self);
-        return try this.getFlyoutTemplateSettings();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getFlyoutTemplateSettings(self: *@This()) core.HResult!*CommandBarFlyoutCommandBarTemplateSettings {
+        const this: *ICommandBarFlyoutCommandBar = @ptrCast(self);
+        return try this.getFlyoutTemplateSettings();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CommandBarFlyoutCommandBar {
         const _f = try @This()._ICommandBarFlyoutCommandBarFactoryCache.get();
@@ -1310,6 +1478,18 @@ pub const CommandBarFlyoutCommandBar = extern struct {
 };
 pub const CommandBarFlyoutCommandBarTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOpenAnimationStartPosition(self: *@This()) core.HResult!f64 {
         const this: *ICommandBarFlyoutCommandBarTemplateSettings = @ptrCast(self);
         return try this.getOpenAnimationStartPosition();
@@ -1398,6 +1578,18 @@ pub const CommandBarFlyoutCommandBarTemplateSettings = extern struct {
 };
 pub const CommandBarTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentHeight(self: *@This()) core.HResult!f64 {
         const this: *ICommandBarTemplateSettings = @ptrCast(self);
         return try this.getContentHeight();
@@ -1473,6 +1665,18 @@ pub const ComponentResourceLocation = enum(i32) {
 };
 pub const DragCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontalChange(self: *@This()) core.HResult!f64 {
         const this: *IDragCompletedEventArgs = @ptrCast(self);
         return try this.getHorizontalChange();
@@ -1484,9 +1688,6 @@ pub const DragCompletedEventArgs = extern struct {
     pub fn getCanceled(self: *@This()) core.HResult!bool {
         const this: *IDragCompletedEventArgs = @ptrCast(self);
         return try this.getCanceled();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithHorizontalChangeVerticalChangeAndCanceled(horizontalChange: f64, verticalChange: f64, canceled: bool, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DragCompletedEventArgs {
         const _f = try @This()._IDragCompletedEventArgsFactoryCache.get();
@@ -1590,6 +1791,18 @@ pub const DragCompletedEventHandler = extern struct {
 };
 pub const DragDeltaEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontalChange(self: *@This()) core.HResult!f64 {
         const this: *IDragDeltaEventArgs = @ptrCast(self);
         return try this.getHorizontalChange();
@@ -1597,9 +1810,6 @@ pub const DragDeltaEventArgs = extern struct {
     pub fn getVerticalChange(self: *@This()) core.HResult!f64 {
         const this: *IDragDeltaEventArgs = @ptrCast(self);
         return try this.getVerticalChange();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithHorizontalChangeAndVerticalChange(horizontalChange: f64, verticalChange: f64, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DragDeltaEventArgs {
         const _f = try @This()._IDragDeltaEventArgsFactoryCache.get();
@@ -1703,6 +1913,18 @@ pub const DragDeltaEventHandler = extern struct {
 };
 pub const DragStartedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontalOffset(self: *@This()) core.HResult!f64 {
         const this: *IDragStartedEventArgs = @ptrCast(self);
         return try this.getHorizontalOffset();
@@ -1710,9 +1932,6 @@ pub const DragStartedEventArgs = extern struct {
     pub fn getVerticalOffset(self: *@This()) core.HResult!f64 {
         const this: *IDragStartedEventArgs = @ptrCast(self);
         return try this.getVerticalOffset();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithHorizontalOffsetAndVerticalOffset(horizontalOffset: f64, verticalOffset: f64, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DragStartedEventArgs {
         const _f = try @This()._IDragStartedEventArgsFactoryCache.get();
@@ -1822,6 +2041,18 @@ pub const EdgeTransitionLocation = enum(i32) {
 };
 pub const FlyoutBaseClosingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCancel(self: *@This()) core.HResult!bool {
         const this: *IFlyoutBaseClosingEventArgs = @ptrCast(self);
         return try this.getCancel();
@@ -1860,6 +2091,18 @@ pub const FlyoutShowMode = enum(i32) {
 };
 pub const FlyoutShowOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!*IReference(Point) {
         const this: *IFlyoutShowOptions = @ptrCast(self);
         return try this.getPosition();
@@ -1892,9 +2135,6 @@ pub const FlyoutShowOptions = extern struct {
         const this: *IFlyoutShowOptions = @ptrCast(self);
         return try this.putPlacement(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlyoutShowOptions {
         const _f = try @This()._IFlyoutShowOptionsFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
@@ -1916,6 +2156,15 @@ pub const GeneratorPosition = extern struct {
 };
 pub const GeneratorPositionHelper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1932,6 +2181,18 @@ pub const GeneratorPositionHelper = extern struct {
 };
 pub const GridViewItemPresenter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectionCheckMarkVisualEnabled(self: *@This()) core.HResult!bool {
         const this: *IGridViewItemPresenter = @ptrCast(self);
         return try this.getSelectionCheckMarkVisualEnabled();
@@ -2108,9 +2369,6 @@ pub const GridViewItemPresenter = extern struct {
         const this: *IGridViewItemPresenter = @ptrCast(self);
         return try this.putContentMargin(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getSelectionCheckMarkVisualEnabledProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IGridViewItemPresenterStaticsCache.get();
         return try _f.getSelectionCheckMarkVisualEnabledProperty();
@@ -2213,6 +2471,18 @@ pub const GridViewItemPresenter = extern struct {
 };
 pub const GridViewItemTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDragItemsCount(self: *@This()) core.HResult!i32 {
         const this: *IGridViewItemTemplateSettings = @ptrCast(self);
         return try this.getDragItemsCount();
@@ -2229,6 +2499,12 @@ pub const GroupHeaderPlacement = enum(i32) {
 };
 pub const IAppBarButtonTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyboardAcceleratorTextMinWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_KeyboardAcceleratorTextMinWidth(@ptrCast(self), &_r);
@@ -2252,6 +2528,12 @@ pub const IAppBarButtonTemplateSettings = extern struct {
 };
 pub const IAppBarTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClipRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_ClipRect(@ptrCast(self), &_r);
@@ -2317,6 +2599,12 @@ pub const IAppBarTemplateSettings = extern struct {
 };
 pub const IAppBarTemplateSettings2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNegativeCompactVerticalDelta(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NegativeCompactVerticalDelta(@ptrCast(self), &_r);
@@ -2354,6 +2642,12 @@ pub const IAppBarTemplateSettings2 = extern struct {
 };
 pub const IAppBarToggleButtonTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyboardAcceleratorTextMinWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_KeyboardAcceleratorTextMinWidth(@ptrCast(self), &_r);
@@ -2377,6 +2671,12 @@ pub const IAppBarToggleButtonTemplateSettings = extern struct {
 };
 pub const IButtonBase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClickMode(self: *@This()) core.HResult!ClickMode {
         var _r: ClickMode = undefined;
         const _c = self.vtable.get_ClickMode(@ptrCast(self), &_r);
@@ -2455,6 +2755,12 @@ pub const IButtonBase = extern struct {
 };
 pub const IButtonBaseFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ButtonBase {
         var _r: *ButtonBase = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -2478,6 +2784,12 @@ pub const IButtonBaseFactory = extern struct {
 };
 pub const IButtonBaseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClickModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ClickModeProperty(@ptrCast(self), &_r);
@@ -2529,6 +2841,12 @@ pub const IButtonBaseStatics = extern struct {
 };
 pub const ICalendarPanel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ICalendarPanel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "fcd55a2d-02d3-4ee6-9a90-9df3ead00994";
@@ -2545,6 +2863,12 @@ pub const ICalendarPanel = extern struct {
 };
 pub const ICalendarViewTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinViewWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MinViewWidth(@ptrCast(self), &_r);
@@ -2666,6 +2990,12 @@ pub const ICalendarViewTemplateSettings = extern struct {
 };
 pub const ICarouselPanel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanVerticallyScroll(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanVerticallyScroll(@ptrCast(self), &_r);
@@ -2837,6 +3167,12 @@ pub const ICarouselPanel = extern struct {
 };
 pub const ICarouselPanelFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CarouselPanel {
         var _r: *CarouselPanel = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -2860,6 +3196,12 @@ pub const ICarouselPanelFactory = extern struct {
 };
 pub const IColorPickerSlider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColorChannel(self: *@This()) core.HResult!ColorPickerHsvChannel {
         var _r: ColorPickerHsvChannel = undefined;
         const _c = self.vtable.get_ColorChannel(@ptrCast(self), &_r);
@@ -2888,6 +3230,12 @@ pub const IColorPickerSlider = extern struct {
 };
 pub const IColorPickerSliderFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorPickerSlider {
         var _r: *ColorPickerSlider = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -2911,6 +3259,12 @@ pub const IColorPickerSliderFactory = extern struct {
 };
 pub const IColorPickerSliderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColorChannelProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ColorChannelProperty(@ptrCast(self), &_r);
@@ -2934,6 +3288,12 @@ pub const IColorPickerSliderStatics = extern struct {
 };
 pub const IColorSpectrum = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
@@ -3082,6 +3442,12 @@ pub const IColorSpectrum = extern struct {
 };
 pub const IColorSpectrumFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorSpectrum {
         var _r: *ColorSpectrum = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -3105,6 +3471,12 @@ pub const IColorSpectrumFactory = extern struct {
 };
 pub const IColorSpectrumStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColorProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ColorProperty(@ptrCast(self), &_r);
@@ -3191,6 +3563,12 @@ pub const IColorSpectrumStatics = extern struct {
 };
 pub const IComboBoxTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDropDownOpenedHeight(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DropDownOpenedHeight(@ptrCast(self), &_r);
@@ -3235,6 +3613,12 @@ pub const IComboBoxTemplateSettings = extern struct {
 };
 pub const IComboBoxTemplateSettings2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDropDownContentMinWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_DropDownContentMinWidth(@ptrCast(self), &_r);
@@ -3258,6 +3642,12 @@ pub const IComboBoxTemplateSettings2 = extern struct {
 };
 pub const ICommandBarFlyoutCommandBar = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFlyoutTemplateSettings(self: *@This()) core.HResult!*CommandBarFlyoutCommandBarTemplateSettings {
         var _r: *CommandBarFlyoutCommandBarTemplateSettings = undefined;
         const _c = self.vtable.get_FlyoutTemplateSettings(@ptrCast(self), &_r);
@@ -3281,6 +3671,12 @@ pub const ICommandBarFlyoutCommandBar = extern struct {
 };
 pub const ICommandBarFlyoutCommandBarFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CommandBarFlyoutCommandBar {
         var _r: *CommandBarFlyoutCommandBar = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -3304,6 +3700,12 @@ pub const ICommandBarFlyoutCommandBarFactory = extern struct {
 };
 pub const ICommandBarFlyoutCommandBarTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOpenAnimationStartPosition(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OpenAnimationStartPosition(@ptrCast(self), &_r);
@@ -3460,6 +3862,12 @@ pub const ICommandBarFlyoutCommandBarTemplateSettings = extern struct {
 };
 pub const ICommandBarTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentHeight(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_ContentHeight(@ptrCast(self), &_r);
@@ -3525,6 +3933,12 @@ pub const ICommandBarTemplateSettings = extern struct {
 };
 pub const ICommandBarTemplateSettings2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOverflowContentMaxWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OverflowContentMaxWidth(@ptrCast(self), &_r);
@@ -3548,6 +3962,12 @@ pub const ICommandBarTemplateSettings2 = extern struct {
 };
 pub const ICommandBarTemplateSettings3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEffectiveOverflowButtonVisibility(self: *@This()) core.HResult!Visibility {
         var _r: Visibility = undefined;
         const _c = self.vtable.get_EffectiveOverflowButtonVisibility(@ptrCast(self), &_r);
@@ -3571,6 +3991,12 @@ pub const ICommandBarTemplateSettings3 = extern struct {
 };
 pub const ICommandBarTemplateSettings4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOverflowContentCompactYTranslation(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OverflowContentCompactYTranslation(@ptrCast(self), &_r);
@@ -3608,6 +4034,12 @@ pub const ICommandBarTemplateSettings4 = extern struct {
 };
 pub const IDragCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontalChange(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_HorizontalChange(@ptrCast(self), &_r);
@@ -3645,6 +4077,12 @@ pub const IDragCompletedEventArgs = extern struct {
 };
 pub const IDragCompletedEventArgsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithHorizontalChangeVerticalChangeAndCanceled(self: *@This(), horizontalChange: f64, verticalChange: f64, canceled: bool, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DragCompletedEventArgs {
         var _r: *DragCompletedEventArgs = undefined;
         const _c = self.vtable.CreateInstanceWithHorizontalChangeVerticalChangeAndCanceled(@ptrCast(self), horizontalChange, verticalChange, canceled, baseInterface, innerInterface, &_r);
@@ -3668,6 +4106,12 @@ pub const IDragCompletedEventArgsFactory = extern struct {
 };
 pub const IDragDeltaEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontalChange(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_HorizontalChange(@ptrCast(self), &_r);
@@ -3698,6 +4142,12 @@ pub const IDragDeltaEventArgs = extern struct {
 };
 pub const IDragDeltaEventArgsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithHorizontalChangeAndVerticalChange(self: *@This(), horizontalChange: f64, verticalChange: f64, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DragDeltaEventArgs {
         var _r: *DragDeltaEventArgs = undefined;
         const _c = self.vtable.CreateInstanceWithHorizontalChangeAndVerticalChange(@ptrCast(self), horizontalChange, verticalChange, baseInterface, innerInterface, &_r);
@@ -3721,6 +4171,12 @@ pub const IDragDeltaEventArgsFactory = extern struct {
 };
 pub const IDragStartedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_HorizontalOffset(@ptrCast(self), &_r);
@@ -3751,6 +4207,12 @@ pub const IDragStartedEventArgs = extern struct {
 };
 pub const IDragStartedEventArgsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithHorizontalOffsetAndVerticalOffset(self: *@This(), horizontalOffset: f64, verticalOffset: f64, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DragStartedEventArgs {
         var _r: *DragStartedEventArgs = undefined;
         const _c = self.vtable.CreateInstanceWithHorizontalOffsetAndVerticalOffset(@ptrCast(self), horizontalOffset, verticalOffset, baseInterface, innerInterface, &_r);
@@ -3774,6 +4236,12 @@ pub const IDragStartedEventArgsFactory = extern struct {
 };
 pub const IFlyoutBase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPlacement(self: *@This()) core.HResult!FlyoutPlacementMode {
         var _r: FlyoutPlacementMode = undefined;
         const _c = self.vtable.get_Placement(@ptrCast(self), &_r);
@@ -3848,6 +4316,12 @@ pub const IFlyoutBase = extern struct {
 };
 pub const IFlyoutBase2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTarget(self: *@This()) core.HResult!*FrameworkElement {
         var _r: *FrameworkElement = undefined;
         const _c = self.vtable.get_Target(@ptrCast(self), &_r);
@@ -3931,6 +4405,12 @@ pub const IFlyoutBase2 = extern struct {
 };
 pub const IFlyoutBase3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOverlayInputPassThroughElement(self: *@This()) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
         const _c = self.vtable.get_OverlayInputPassThroughElement(@ptrCast(self), &_r);
@@ -3959,6 +4439,12 @@ pub const IFlyoutBase3 = extern struct {
 };
 pub const IFlyoutBase4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryInvokeKeyboardAccelerator(self: *@This(), args: *ProcessKeyboardAcceleratorEventArgs) core.HResult!void {
         const _c = self.vtable.TryInvokeKeyboardAccelerator(@ptrCast(self), args);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3980,6 +4466,12 @@ pub const IFlyoutBase4 = extern struct {
 };
 pub const IFlyoutBase5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShowMode(self: *@This()) core.HResult!FlyoutShowMode {
         var _r: FlyoutShowMode = undefined;
         const _c = self.vtable.get_ShowMode(@ptrCast(self), &_r);
@@ -4039,6 +4531,12 @@ pub const IFlyoutBase5 = extern struct {
 };
 pub const IFlyoutBase6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShouldConstrainToRootBounds(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldConstrainToRootBounds(@ptrCast(self), &_r);
@@ -4086,6 +4584,12 @@ pub const IFlyoutBase6 = extern struct {
 };
 pub const IFlyoutBaseClosingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCancel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Cancel(@ptrCast(self), &_r);
@@ -4114,6 +4618,12 @@ pub const IFlyoutBaseClosingEventArgs = extern struct {
 };
 pub const IFlyoutBaseFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlyoutBase {
         var _r: *FlyoutBase = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -4137,6 +4647,12 @@ pub const IFlyoutBaseFactory = extern struct {
 };
 pub const IFlyoutBaseOverrides = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreatePresenter(self: *@This()) core.HResult!*Control {
         var _r: *Control = undefined;
         const _c = self.vtable.CreatePresenter(@ptrCast(self), &_r);
@@ -4160,6 +4676,12 @@ pub const IFlyoutBaseOverrides = extern struct {
 };
 pub const IFlyoutBaseOverrides4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnProcessKeyboardAccelerators(self: *@This(), args: *ProcessKeyboardAcceleratorEventArgs) core.HResult!void {
         const _c = self.vtable.OnProcessKeyboardAccelerators(@ptrCast(self), args);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4181,6 +4703,12 @@ pub const IFlyoutBaseOverrides4 = extern struct {
 };
 pub const IFlyoutBaseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPlacementProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PlacementProperty(@ptrCast(self), &_r);
@@ -4228,6 +4756,12 @@ pub const IFlyoutBaseStatics = extern struct {
 };
 pub const IFlyoutBaseStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowFocusOnInteractionProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AllowFocusOnInteractionProperty(@ptrCast(self), &_r);
@@ -4272,6 +4806,12 @@ pub const IFlyoutBaseStatics2 = extern struct {
 };
 pub const IFlyoutBaseStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOverlayInputPassThroughElementProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_OverlayInputPassThroughElementProperty(@ptrCast(self), &_r);
@@ -4295,6 +4835,12 @@ pub const IFlyoutBaseStatics3 = extern struct {
 };
 pub const IFlyoutBaseStatics5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TargetProperty(@ptrCast(self), &_r);
@@ -4346,6 +4892,12 @@ pub const IFlyoutBaseStatics5 = extern struct {
 };
 pub const IFlyoutBaseStatics6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShouldConstrainToRootBoundsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ShouldConstrainToRootBoundsProperty(@ptrCast(self), &_r);
@@ -4369,6 +4921,12 @@ pub const IFlyoutBaseStatics6 = extern struct {
 };
 pub const IFlyoutShowOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!*IReference(Point) {
         var _r: *IReference(Point) = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -4433,6 +4991,12 @@ pub const IFlyoutShowOptions = extern struct {
 };
 pub const IFlyoutShowOptionsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlyoutShowOptions {
         var _r: *FlyoutShowOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -4456,6 +5020,12 @@ pub const IFlyoutShowOptionsFactory = extern struct {
 };
 pub const IGeneratorPositionHelper = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IGeneratorPositionHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "cd40318d-7745-40d9-ab9d-abbda4a7ffea";
@@ -4472,6 +5042,12 @@ pub const IGeneratorPositionHelper = extern struct {
 };
 pub const IGeneratorPositionHelperStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIndexAndOffset(self: *@This(), index: i32, offset: i32) core.HResult!GeneratorPosition {
         var _r: GeneratorPosition = undefined;
         const _c = self.vtable.FromIndexAndOffset(@ptrCast(self), index, offset, &_r);
@@ -4495,6 +5071,12 @@ pub const IGeneratorPositionHelperStatics = extern struct {
 };
 pub const IGridViewItemPresenter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectionCheckMarkVisualEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SelectionCheckMarkVisualEnabled(@ptrCast(self), &_r);
@@ -4775,6 +5357,12 @@ pub const IGridViewItemPresenter = extern struct {
 };
 pub const IGridViewItemPresenterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewItemPresenter {
         var _r: *GridViewItemPresenter = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -4798,6 +5386,12 @@ pub const IGridViewItemPresenterFactory = extern struct {
 };
 pub const IGridViewItemPresenterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectionCheckMarkVisualEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectionCheckMarkVisualEnabledProperty(@ptrCast(self), &_r);
@@ -4968,6 +5562,12 @@ pub const IGridViewItemPresenterStatics = extern struct {
 };
 pub const IGridViewItemTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDragItemsCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_DragItemsCount(@ptrCast(self), &_r);
@@ -4991,6 +5591,12 @@ pub const IGridViewItemTemplateSettings = extern struct {
 };
 pub const IItemsChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Action(@ptrCast(self), &_r);
@@ -5042,6 +5648,12 @@ pub const IItemsChangedEventArgs = extern struct {
 };
 pub const IJumpListItemBackgroundConverter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnabled(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_Enabled(@ptrCast(self), &_r);
@@ -5082,6 +5694,12 @@ pub const IJumpListItemBackgroundConverter = extern struct {
 };
 pub const IJumpListItemBackgroundConverterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EnabledProperty(@ptrCast(self), &_r);
@@ -5112,6 +5730,12 @@ pub const IJumpListItemBackgroundConverterStatics = extern struct {
 };
 pub const IJumpListItemForegroundConverter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnabled(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_Enabled(@ptrCast(self), &_r);
@@ -5152,6 +5776,12 @@ pub const IJumpListItemForegroundConverter = extern struct {
 };
 pub const IJumpListItemForegroundConverterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_EnabledProperty(@ptrCast(self), &_r);
@@ -5182,6 +5812,12 @@ pub const IJumpListItemForegroundConverterStatics = extern struct {
 };
 pub const ILayoutInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ILayoutInformation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "b5384c9b-c8cf-41b3-bf16-18c8420e72c9";
@@ -5198,6 +5834,12 @@ pub const ILayoutInformation = extern struct {
 };
 pub const ILayoutInformationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetLayoutExceptionElement(self: *@This(), dispatcher: *IInspectable) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.GetLayoutExceptionElement(@ptrCast(self), dispatcher, &_r);
@@ -5228,6 +5870,12 @@ pub const ILayoutInformationStatics = extern struct {
 };
 pub const ILayoutInformationStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAvailableSize(self: *@This(), element: *UIElement) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.GetAvailableSize(@ptrCast(self), element, &_r);
@@ -5251,6 +5899,12 @@ pub const ILayoutInformationStatics2 = extern struct {
 };
 pub const IListViewItemPresenter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectionCheckMarkVisualEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SelectionCheckMarkVisualEnabled(@ptrCast(self), &_r);
@@ -5531,6 +6185,12 @@ pub const IListViewItemPresenter = extern struct {
 };
 pub const IListViewItemPresenter2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedPressedBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedPressedBackground(@ptrCast(self), &_r);
@@ -5619,6 +6279,12 @@ pub const IListViewItemPresenter2 = extern struct {
 };
 pub const IListViewItemPresenter3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRevealBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_RevealBackground(@ptrCast(self), &_r);
@@ -5683,6 +6349,12 @@ pub const IListViewItemPresenter3 = extern struct {
 };
 pub const IListViewItemPresenter4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedDisabledBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_SelectedDisabledBackground(@ptrCast(self), &_r);
@@ -6023,6 +6695,12 @@ pub const IListViewItemPresenter4 = extern struct {
 };
 pub const IListViewItemPresenterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewItemPresenter {
         var _r: *ListViewItemPresenter = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -6046,6 +6724,12 @@ pub const IListViewItemPresenterFactory = extern struct {
 };
 pub const IListViewItemPresenterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectionCheckMarkVisualEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectionCheckMarkVisualEnabledProperty(@ptrCast(self), &_r);
@@ -6216,6 +6900,12 @@ pub const IListViewItemPresenterStatics = extern struct {
 };
 pub const IListViewItemPresenterStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedPressedBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedPressedBackgroundProperty(@ptrCast(self), &_r);
@@ -6274,6 +6964,12 @@ pub const IListViewItemPresenterStatics2 = extern struct {
 };
 pub const IListViewItemPresenterStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRevealBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_RevealBackgroundProperty(@ptrCast(self), &_r);
@@ -6318,6 +7014,12 @@ pub const IListViewItemPresenterStatics3 = extern struct {
 };
 pub const IListViewItemPresenterStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedDisabledBackgroundProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedDisabledBackgroundProperty(@ptrCast(self), &_r);
@@ -6523,6 +7225,12 @@ pub const IListViewItemPresenterStatics4 = extern struct {
 };
 pub const IListViewItemTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDragItemsCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_DragItemsCount(@ptrCast(self), &_r);
@@ -6546,6 +7254,12 @@ pub const IListViewItemTemplateSettings = extern struct {
 };
 pub const ILoopingSelector = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShouldLoop(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldLoop(@ptrCast(self), &_r);
@@ -6658,6 +7372,12 @@ pub const ILoopingSelector = extern struct {
 };
 pub const ILoopingSelectorItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ILoopingSelectorItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c69714b9-27c6-4433-9d7c-0dbfb2f4344f";
@@ -6674,6 +7394,12 @@ pub const ILoopingSelectorItem = extern struct {
 };
 pub const ILoopingSelectorPanel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ILoopingSelectorPanel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "40a9ba70-1011-4778-87f7-6bfd20d6377d";
@@ -6690,6 +7416,12 @@ pub const ILoopingSelectorPanel = extern struct {
 };
 pub const ILoopingSelectorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShouldLoopProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ShouldLoopProperty(@ptrCast(self), &_r);
@@ -6755,6 +7487,12 @@ pub const ILoopingSelectorStatics = extern struct {
 };
 pub const IMenuFlyoutItemTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyboardAcceleratorTextMinWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_KeyboardAcceleratorTextMinWidth(@ptrCast(self), &_r);
@@ -6778,6 +7516,12 @@ pub const IMenuFlyoutItemTemplateSettings = extern struct {
 };
 pub const IMenuFlyoutPresenterTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFlyoutContentMinWidth(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_FlyoutContentMinWidth(@ptrCast(self), &_r);
@@ -6801,6 +7545,12 @@ pub const IMenuFlyoutPresenterTemplateSettings = extern struct {
 };
 pub const INavigationViewItemPresenter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIcon(self: *@This()) core.HResult!*IconElement {
         var _r: *IconElement = undefined;
         const _c = self.vtable.get_Icon(@ptrCast(self), &_r);
@@ -6829,6 +7579,12 @@ pub const INavigationViewItemPresenter = extern struct {
 };
 pub const INavigationViewItemPresenterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationViewItemPresenter {
         var _r: *NavigationViewItemPresenter = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -6852,6 +7608,12 @@ pub const INavigationViewItemPresenterFactory = extern struct {
 };
 pub const INavigationViewItemPresenterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIconProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IconProperty(@ptrCast(self), &_r);
@@ -6875,6 +7637,12 @@ pub const INavigationViewItemPresenterStatics = extern struct {
 };
 pub const IOrientedVirtualizingPanel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanVerticallyScroll(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanVerticallyScroll(@ptrCast(self), &_r);
@@ -7046,6 +7814,12 @@ pub const IOrientedVirtualizingPanel = extern struct {
 };
 pub const IOrientedVirtualizingPanelFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IOrientedVirtualizingPanelFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "7b8eaeaf-f92f-439d-9ebf-e9919f56c94d";
@@ -7062,6 +7836,12 @@ pub const IOrientedVirtualizingPanelFactory = extern struct {
 };
 pub const IPickerFlyoutBase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPickerFlyoutBase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e33574ea-1076-44d1-9383-dc24ac5cff2a";
@@ -7078,6 +7858,12 @@ pub const IPickerFlyoutBase = extern struct {
 };
 pub const IPickerFlyoutBaseFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PickerFlyoutBase {
         var _r: *PickerFlyoutBase = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -7101,6 +7887,12 @@ pub const IPickerFlyoutBaseFactory = extern struct {
 };
 pub const IPickerFlyoutBaseOverrides = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnConfirmed(self: *@This()) core.HResult!void {
         const _c = self.vtable.OnConfirmed(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -7129,6 +7921,12 @@ pub const IPickerFlyoutBaseOverrides = extern struct {
 };
 pub const IPickerFlyoutBaseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TitleProperty(@ptrCast(self), &_r);
@@ -7164,6 +7962,12 @@ pub const IPickerFlyoutBaseStatics = extern struct {
 };
 pub const IPivotHeaderItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPivotHeaderItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "594572c2-82aa-410b-9e55-fd8e2c98862d";
@@ -7180,6 +7984,12 @@ pub const IPivotHeaderItem = extern struct {
 };
 pub const IPivotHeaderItemFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PivotHeaderItem {
         var _r: *PivotHeaderItem = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -7203,6 +8013,12 @@ pub const IPivotHeaderItemFactory = extern struct {
 };
 pub const IPivotHeaderPanel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPivotHeaderPanel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "21484ebc-9241-4203-bd37-6c08fb096612";
@@ -7219,6 +8035,12 @@ pub const IPivotHeaderPanel = extern struct {
 };
 pub const IPivotPanel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.IPivotPanel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ad4ebe80-22a9-4ca3-9212-2773b6359ff3";
@@ -7235,6 +8057,12 @@ pub const IPivotPanel = extern struct {
 };
 pub const IPopup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChild(self: *@This()) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.get_Child(@ptrCast(self), &_r);
@@ -7347,6 +8175,12 @@ pub const IPopup = extern struct {
 };
 pub const IPopup2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLightDismissOverlayMode(self: *@This()) core.HResult!LightDismissOverlayMode {
         var _r: LightDismissOverlayMode = undefined;
         const _c = self.vtable.get_LightDismissOverlayMode(@ptrCast(self), &_r);
@@ -7375,6 +8209,12 @@ pub const IPopup2 = extern struct {
 };
 pub const IPopup3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShouldConstrainToRootBounds(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldConstrainToRootBounds(@ptrCast(self), &_r);
@@ -7410,6 +8250,12 @@ pub const IPopup3 = extern struct {
 };
 pub const IPopup4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPlacementTarget(self: *@This()) core.HResult!*FrameworkElement {
         var _r: *FrameworkElement = undefined;
         const _c = self.vtable.get_PlacementTarget(@ptrCast(self), &_r);
@@ -7469,6 +8315,12 @@ pub const IPopup4 = extern struct {
 };
 pub const IPopupStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChildProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ChildProperty(@ptrCast(self), &_r);
@@ -7527,6 +8379,12 @@ pub const IPopupStatics = extern struct {
 };
 pub const IPopupStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLightDismissOverlayModeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LightDismissOverlayModeProperty(@ptrCast(self), &_r);
@@ -7550,6 +8408,12 @@ pub const IPopupStatics2 = extern struct {
 };
 pub const IPopupStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShouldConstrainToRootBoundsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ShouldConstrainToRootBoundsProperty(@ptrCast(self), &_r);
@@ -7573,6 +8437,12 @@ pub const IPopupStatics3 = extern struct {
 };
 pub const IPopupStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPlacementTargetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PlacementTargetProperty(@ptrCast(self), &_r);
@@ -7603,6 +8473,12 @@ pub const IPopupStatics4 = extern struct {
 };
 pub const IProgressBarTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEllipseDiameter(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_EllipseDiameter(@ptrCast(self), &_r);
@@ -7668,6 +8544,12 @@ pub const IProgressBarTemplateSettings = extern struct {
 };
 pub const IProgressRingTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEllipseDiameter(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_EllipseDiameter(@ptrCast(self), &_r);
@@ -7705,6 +8587,12 @@ pub const IProgressRingTemplateSettings = extern struct {
 };
 pub const IRangeBase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinimum(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Minimum(@ptrCast(self), &_r);
@@ -7793,6 +8681,12 @@ pub const IRangeBase = extern struct {
 };
 pub const IRangeBaseFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RangeBase {
         var _r: *RangeBase = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -7816,6 +8710,12 @@ pub const IRangeBaseFactory = extern struct {
 };
 pub const IRangeBaseOverrides = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnMinimumChanged(self: *@This(), oldMinimum: f64, newMinimum: f64) core.HResult!void {
         const _c = self.vtable.OnMinimumChanged(@ptrCast(self), oldMinimum, newMinimum);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -7847,6 +8747,12 @@ pub const IRangeBaseOverrides = extern struct {
 };
 pub const IRangeBaseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinimumProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MinimumProperty(@ptrCast(self), &_r);
@@ -7898,6 +8804,12 @@ pub const IRangeBaseStatics = extern struct {
 };
 pub const IRangeBaseValueChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOldValue(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OldValue(@ptrCast(self), &_r);
@@ -7928,6 +8840,12 @@ pub const IRangeBaseValueChangedEventArgs = extern struct {
 };
 pub const IRepeatButton = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDelay(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Delay(@ptrCast(self), &_r);
@@ -7968,6 +8886,12 @@ pub const IRepeatButton = extern struct {
 };
 pub const IRepeatButtonStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDelayProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DelayProperty(@ptrCast(self), &_r);
@@ -7998,6 +8922,12 @@ pub const IRepeatButtonStatics = extern struct {
 };
 pub const IScrollBar = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOrientation(self: *@This()) core.HResult!Orientation {
         var _r: Orientation = undefined;
         const _c = self.vtable.get_Orientation(@ptrCast(self), &_r);
@@ -8062,6 +8992,12 @@ pub const IScrollBar = extern struct {
 };
 pub const IScrollBarStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOrientationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_OrientationProperty(@ptrCast(self), &_r);
@@ -8099,6 +9035,12 @@ pub const IScrollBarStatics = extern struct {
 };
 pub const IScrollEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNewValue(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NewValue(@ptrCast(self), &_r);
@@ -8129,6 +9071,12 @@ pub const IScrollEventArgs = extern struct {
 };
 pub const IScrollSnapPointsInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AreHorizontalSnapPointsRegular(@ptrCast(self), &_r);
@@ -8197,6 +9145,12 @@ pub const IScrollSnapPointsInfo = extern struct {
 };
 pub const ISelector = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_SelectedIndex(@ptrCast(self), &_r);
@@ -8285,6 +9239,12 @@ pub const ISelector = extern struct {
 };
 pub const ISelectorFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.ISelectorFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c9be2995-d136-4600-b187-8ad56079b48a";
@@ -8301,6 +9261,12 @@ pub const ISelectorFactory = extern struct {
 };
 pub const ISelectorItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSelected(@ptrCast(self), &_r);
@@ -8329,6 +9295,12 @@ pub const ISelectorItem = extern struct {
 };
 pub const ISelectorItemFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorItem {
         var _r: *SelectorItem = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -8352,6 +9324,12 @@ pub const ISelectorItemFactory = extern struct {
 };
 pub const ISelectorItemStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSelectedProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsSelectedProperty(@ptrCast(self), &_r);
@@ -8375,6 +9353,12 @@ pub const ISelectorItemStatics = extern struct {
 };
 pub const ISelectorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedIndexProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SelectedIndexProperty(@ptrCast(self), &_r);
@@ -8433,6 +9417,12 @@ pub const ISelectorStatics = extern struct {
 };
 pub const ISettingsFlyoutTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeaderBackground(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_HeaderBackground(@ptrCast(self), &_r);
@@ -8491,6 +9481,12 @@ pub const ISettingsFlyoutTemplateSettings = extern struct {
 };
 pub const ISplitViewTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOpenPaneLength(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_OpenPaneLength(@ptrCast(self), &_r);
@@ -8549,6 +9545,12 @@ pub const ISplitViewTemplateSettings = extern struct {
 };
 pub const IThumb = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsDragging(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDragging(@ptrCast(self), &_r);
@@ -8613,6 +9615,12 @@ pub const IThumb = extern struct {
 };
 pub const IThumbStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsDraggingProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsDraggingProperty(@ptrCast(self), &_r);
@@ -8636,6 +9644,12 @@ pub const IThumbStatics = extern struct {
 };
 pub const ITickBar = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFill(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_Fill(@ptrCast(self), &_r);
@@ -8664,6 +9678,12 @@ pub const ITickBar = extern struct {
 };
 pub const ITickBarStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFillProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FillProperty(@ptrCast(self), &_r);
@@ -8687,6 +9707,12 @@ pub const ITickBarStatics = extern struct {
 };
 pub const IToggleButton = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsChecked(self: *@This()) core.HResult!*IReference(bool) {
         var _r: *IReference(bool) = undefined;
         const _c = self.vtable.get_IsChecked(@ptrCast(self), &_r);
@@ -8763,6 +9789,12 @@ pub const IToggleButton = extern struct {
 };
 pub const IToggleButtonFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleButton {
         var _r: *ToggleButton = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -8786,6 +9818,12 @@ pub const IToggleButtonFactory = extern struct {
 };
 pub const IToggleButtonOverrides = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnToggle(self: *@This()) core.HResult!void {
         const _c = self.vtable.OnToggle(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -8807,6 +9845,12 @@ pub const IToggleButtonOverrides = extern struct {
 };
 pub const IToggleButtonStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCheckedProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsCheckedProperty(@ptrCast(self), &_r);
@@ -8837,6 +9881,12 @@ pub const IToggleButtonStatics = extern struct {
 };
 pub const IToggleSwitchTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKnobCurrentToOnOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_KnobCurrentToOnOffset(@ptrCast(self), &_r);
@@ -8909,6 +9959,12 @@ pub const IToggleSwitchTemplateSettings = extern struct {
 };
 pub const IToolTipTemplateSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFromHorizontalOffset(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_FromHorizontalOffset(@ptrCast(self), &_r);
@@ -8939,6 +9995,18 @@ pub const IToolTipTemplateSettings = extern struct {
 };
 pub const ItemsChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!i32 {
         const this: *IItemsChangedEventArgs = @ptrCast(self);
         return try this.getAction();
@@ -9056,6 +10124,18 @@ pub const ItemsChangedEventHandler = extern struct {
 };
 pub const JumpListItemBackgroundConverter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnabled(self: *@This()) core.HResult!*Brush {
         const this: *IJumpListItemBackgroundConverter = @ptrCast(self);
         return try this.getEnabled();
@@ -9085,9 +10165,6 @@ pub const JumpListItemBackgroundConverter = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IValueConverter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConvertBack(value, targetType, parameter, language);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -9111,6 +10188,18 @@ pub const JumpListItemBackgroundConverter = extern struct {
 };
 pub const JumpListItemForegroundConverter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnabled(self: *@This()) core.HResult!*Brush {
         const this: *IJumpListItemForegroundConverter = @ptrCast(self);
         return try this.getEnabled();
@@ -9141,9 +10230,6 @@ pub const JumpListItemForegroundConverter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConvertBack(value, targetType, parameter, language);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJumpListItemForegroundConverter.IID)));
@@ -9166,6 +10252,15 @@ pub const JumpListItemForegroundConverter = extern struct {
 };
 pub const LayoutInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -9191,6 +10286,18 @@ pub const LayoutInformation = extern struct {
 };
 pub const ListViewItemPresenter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectionCheckMarkVisualEnabled(self: *@This()) core.HResult!bool {
         const this: *IListViewItemPresenter = @ptrCast(self);
         return try this.getSelectionCheckMarkVisualEnabled();
@@ -9885,9 +10992,6 @@ pub const ListViewItemPresenter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPointerOverBorderBrush(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getSelectionCheckMarkVisualEnabledProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IListViewItemPresenterStaticsCache.get();
         return try _f.getSelectionCheckMarkVisualEnabledProperty();
@@ -10149,6 +11253,18 @@ pub const ListViewItemPresenterSelectionIndicatorMode = enum(i32) {
 };
 pub const ListViewItemTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDragItemsCount(self: *@This()) core.HResult!i32 {
         const this: *IListViewItemTemplateSettings = @ptrCast(self);
         return try this.getDragItemsCount();
@@ -10161,6 +11277,18 @@ pub const ListViewItemTemplateSettings = extern struct {
 };
 pub const LoopingSelector = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShouldLoop(self: *@This()) core.HResult!bool {
         const this: *ILoopingSelector = @ptrCast(self);
         return try this.getShouldLoop();
@@ -10225,9 +11353,6 @@ pub const LoopingSelector = extern struct {
         const this: *ILoopingSelector = @ptrCast(self);
         return try this.removeSelectionChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getShouldLoopProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._ILoopingSelectorStaticsCache.get();
         return try _f.getShouldLoopProperty();
@@ -10265,6 +11390,18 @@ pub const LoopingSelector = extern struct {
 };
 pub const LoopingSelectorItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.LoopingSelectorItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ILoopingSelectorItem.GUID;
@@ -10273,6 +11410,18 @@ pub const LoopingSelectorItem = extern struct {
 };
 pub const LoopingSelectorPanel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -10337,6 +11486,18 @@ pub const LoopingSelectorPanel = extern struct {
 };
 pub const MenuFlyoutItemTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyboardAcceleratorTextMinWidth(self: *@This()) core.HResult!f64 {
         const this: *IMenuFlyoutItemTemplateSettings = @ptrCast(self);
         return try this.getKeyboardAcceleratorTextMinWidth();
@@ -10349,6 +11510,18 @@ pub const MenuFlyoutItemTemplateSettings = extern struct {
 };
 pub const MenuFlyoutPresenterTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFlyoutContentMinWidth(self: *@This()) core.HResult!f64 {
         const this: *IMenuFlyoutPresenterTemplateSettings = @ptrCast(self);
         return try this.getFlyoutContentMinWidth();
@@ -10361,6 +11534,18 @@ pub const MenuFlyoutPresenterTemplateSettings = extern struct {
 };
 pub const NavigationViewItemPresenter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIcon(self: *@This()) core.HResult!*IconElement {
         const this: *INavigationViewItemPresenter = @ptrCast(self);
         return try this.getIcon();
@@ -10368,9 +11553,6 @@ pub const NavigationViewItemPresenter = extern struct {
     pub fn putIcon(self: *@This(), value: *IconElement) core.HResult!void {
         const this: *INavigationViewItemPresenter = @ptrCast(self);
         return try this.putIcon(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getIconProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._INavigationViewItemPresenterStaticsCache.get();
@@ -10390,6 +11572,18 @@ pub const NavigationViewItemPresenter = extern struct {
 };
 pub const OrientedVirtualizingPanel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanVerticallyScroll(self: *@This()) core.HResult!bool {
         const this: *IOrientedVirtualizingPanel = @ptrCast(self);
         return try this.getCanVerticallyScroll();
@@ -10561,9 +11755,6 @@ pub const OrientedVirtualizingPanel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetInsertionIndexes(position, first, second);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Primitives.OrientedVirtualizingPanel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IOrientedVirtualizingPanel.GUID;
@@ -10573,6 +11764,15 @@ pub const OrientedVirtualizingPanel = extern struct {
 };
 pub const PivotHeaderItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -10589,6 +11789,15 @@ pub const PivotHeaderItem = extern struct {
 };
 pub const PivotHeaderPanel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -10605,6 +11814,18 @@ pub const PivotHeaderPanel = extern struct {
 };
 pub const PivotPanel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAreHorizontalSnapPointsRegular(self: *@This()) core.HResult!bool {
         var this: ?*IScrollSnapPointsInfo = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -10661,9 +11882,6 @@ pub const PivotPanel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRegularSnapPoints(orientation, alignment, offset);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPivotPanel.IID)));
@@ -10684,6 +11902,18 @@ pub const PlacementMode = enum(i32) {
 };
 pub const Popup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChild(self: *@This()) core.HResult!*UIElement {
         const this: *IPopup = @ptrCast(self);
         return try this.getChild();
@@ -10832,9 +12062,6 @@ pub const Popup = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeActualPlacementChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPopup.IID)));
@@ -10907,6 +12134,18 @@ pub const PopupPlacementMode = enum(i32) {
 };
 pub const ProgressBarTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEllipseDiameter(self: *@This()) core.HResult!f64 {
         const this: *IProgressBarTemplateSettings = @ptrCast(self);
         return try this.getEllipseDiameter();
@@ -10943,6 +12182,18 @@ pub const ProgressBarTemplateSettings = extern struct {
 };
 pub const ProgressRingTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEllipseDiameter(self: *@This()) core.HResult!f64 {
         const this: *IProgressRingTemplateSettings = @ptrCast(self);
         return try this.getEllipseDiameter();
@@ -10963,6 +12214,18 @@ pub const ProgressRingTemplateSettings = extern struct {
 };
 pub const RangeBaseValueChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOldValue(self: *@This()) core.HResult!f64 {
         const this: *IRangeBaseValueChangedEventArgs = @ptrCast(self);
         return try this.getOldValue();
@@ -11068,6 +12331,18 @@ pub const RangeBaseValueChangedEventHandler = extern struct {
 };
 pub const RepeatButton = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDelay(self: *@This()) core.HResult!i32 {
         const this: *IRepeatButton = @ptrCast(self);
         return try this.getDelay();
@@ -11083,9 +12358,6 @@ pub const RepeatButton = extern struct {
     pub fn putInterval(self: *@This(), value: i32) core.HResult!void {
         const this: *IRepeatButton = @ptrCast(self);
         return try this.putInterval(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -11109,6 +12381,18 @@ pub const RepeatButton = extern struct {
 };
 pub const ScrollBar = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOrientation(self: *@This()) core.HResult!Orientation {
         const this: *IScrollBar = @ptrCast(self);
         return try this.getOrientation();
@@ -11141,9 +12425,6 @@ pub const ScrollBar = extern struct {
         const this: *IScrollBar = @ptrCast(self);
         return try this.removeScroll(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IScrollBar.IID)));
@@ -11170,6 +12451,18 @@ pub const ScrollBar = extern struct {
 };
 pub const ScrollEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNewValue(self: *@This()) core.HResult!f64 {
         const this: *IScrollEventArgs = @ptrCast(self);
         return try this.getNewValue();
@@ -11177,9 +12470,6 @@ pub const ScrollEventArgs = extern struct {
     pub fn getScrollEventType(self: *@This()) core.HResult!ScrollEventType {
         const this: *IScrollEventArgs = @ptrCast(self);
         return try this.getScrollEventType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -11299,6 +12589,18 @@ pub const ScrollingIndicatorMode = enum(i32) {
 };
 pub const SettingsFlyoutTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeaderBackground(self: *@This()) core.HResult!*Brush {
         const this: *ISettingsFlyoutTemplateSettings = @ptrCast(self);
         return try this.getHeaderBackground();
@@ -11340,6 +12642,18 @@ pub const SnapPointsAlignment = enum(i32) {
 };
 pub const SplitViewTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOpenPaneLength(self: *@This()) core.HResult!f64 {
         const this: *ISplitViewTemplateSettings = @ptrCast(self);
         return try this.getOpenPaneLength();
@@ -11372,6 +12686,18 @@ pub const SplitViewTemplateSettings = extern struct {
 };
 pub const Thumb = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsDragging(self: *@This()) core.HResult!bool {
         const this: *IThumb = @ptrCast(self);
         return try this.getIsDragging();
@@ -11404,9 +12730,6 @@ pub const Thumb = extern struct {
         const this: *IThumb = @ptrCast(self);
         return try this.CancelDrag();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IThumb.IID)));
@@ -11425,6 +12748,18 @@ pub const Thumb = extern struct {
 };
 pub const TickBar = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFill(self: *@This()) core.HResult!*Brush {
         const this: *ITickBar = @ptrCast(self);
         return try this.getFill();
@@ -11432,9 +12767,6 @@ pub const TickBar = extern struct {
     pub fn putFill(self: *@This(), value: *Brush) core.HResult!void {
         const this: *ITickBar = @ptrCast(self);
         return try this.putFill(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -11461,6 +12793,18 @@ pub const TickPlacement = enum(i32) {
 };
 pub const ToggleSwitchTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKnobCurrentToOnOffset(self: *@This()) core.HResult!f64 {
         const this: *IToggleSwitchTemplateSettings = @ptrCast(self);
         return try this.getKnobCurrentToOnOffset();
@@ -11501,6 +12845,18 @@ pub const ToggleSwitchTemplateSettings = extern struct {
 };
 pub const ToolTipTemplateSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFromHorizontalOffset(self: *@This()) core.HResult!f64 {
         const this: *IToolTipTemplateSettings = @ptrCast(self);
         return try this.getFromHorizontalOffset();

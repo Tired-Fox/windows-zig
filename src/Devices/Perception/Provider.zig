@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IKnownPerceptionFrameKindStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
@@ -38,6 +44,12 @@ pub const IKnownPerceptionFrameKindStatics = extern struct {
 };
 pub const IPerceptionControlGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_FrameProviderIds(@ptrCast(self), &_r);
@@ -61,6 +73,12 @@ pub const IPerceptionControlGroup = extern struct {
 };
 pub const IPerceptionControlGroupFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), ids: *IIterable(?HSTRING)) core.HResult!*PerceptionControlGroup {
         var _r: *PerceptionControlGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), ids, &_r);
@@ -84,6 +102,12 @@ pub const IPerceptionControlGroupFactory = extern struct {
 };
 pub const IPerceptionCorrelation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TargetId(@ptrCast(self), &_r);
@@ -121,6 +145,12 @@ pub const IPerceptionCorrelation = extern struct {
 };
 pub const IPerceptionCorrelationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), targetId: ?HSTRING, position: Vector3, orientation: Quaternion) core.HResult!*PerceptionCorrelation {
         var _r: *PerceptionCorrelation = undefined;
         const _c = self.vtable.Create(@ptrCast(self), targetId, position, orientation, &_r);
@@ -144,6 +174,12 @@ pub const IPerceptionCorrelationFactory = extern struct {
 };
 pub const IPerceptionCorrelationGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelativeLocations(self: *@This()) core.HResult!*IVectorView(PerceptionCorrelation) {
         var _r: *IVectorView(PerceptionCorrelation) = undefined;
         const _c = self.vtable.get_RelativeLocations(@ptrCast(self), &_r);
@@ -167,6 +203,12 @@ pub const IPerceptionCorrelationGroup = extern struct {
 };
 pub const IPerceptionCorrelationGroupFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), relativeLocations: *IIterable(PerceptionCorrelation)) core.HResult!*PerceptionCorrelationGroup {
         var _r: *PerceptionCorrelationGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), relativeLocations, &_r);
@@ -190,6 +232,12 @@ pub const IPerceptionCorrelationGroupFactory = extern struct {
 };
 pub const IPerceptionFaceAuthenticationGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_FrameProviderIds(@ptrCast(self), &_r);
@@ -213,6 +261,12 @@ pub const IPerceptionFaceAuthenticationGroup = extern struct {
 };
 pub const IPerceptionFaceAuthenticationGroupFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), ids: *IIterable(?HSTRING), startHandler: *PerceptionStartFaceAuthenticationHandler, stopHandler: *PerceptionStopFaceAuthenticationHandler) core.HResult!*PerceptionFaceAuthenticationGroup {
         var _r: *PerceptionFaceAuthenticationGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), ids, startHandler, stopHandler, &_r);
@@ -236,6 +290,12 @@ pub const IPerceptionFaceAuthenticationGroupFactory = extern struct {
 };
 pub const IPerceptionFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelativeTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RelativeTime(@ptrCast(self), &_r);
@@ -278,6 +338,12 @@ pub const IPerceptionFrame = extern struct {
 };
 pub const IPerceptionFrameProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameProviderInfo(self: *@This()) core.HResult!*PerceptionFrameProviderInfo {
         var _r: *PerceptionFrameProviderInfo = undefined;
         const _c = self.vtable.get_FrameProviderInfo(@ptrCast(self), &_r);
@@ -330,6 +396,12 @@ pub const IPerceptionFrameProvider = extern struct {
 };
 pub const IPerceptionFrameProviderInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -406,6 +478,12 @@ pub const IPerceptionFrameProviderInfo = extern struct {
 };
 pub const IPerceptionFrameProviderManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetFrameProvider(self: *@This(), frameProviderInfo: *PerceptionFrameProviderInfo) core.HResult!*IPerceptionFrameProvider {
         var _r: *IPerceptionFrameProvider = undefined;
         const _c = self.vtable.GetFrameProvider(@ptrCast(self), frameProviderInfo, &_r);
@@ -429,6 +507,12 @@ pub const IPerceptionFrameProviderManager = extern struct {
 };
 pub const IPerceptionFrameProviderManagerServiceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RegisterFrameProviderInfo(self: *@This(), manager: *IPerceptionFrameProviderManager, frameProviderInfo: *PerceptionFrameProviderInfo) core.HResult!void {
         const _c = self.vtable.RegisterFrameProviderInfo(@ptrCast(self), manager, frameProviderInfo);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -495,6 +579,12 @@ pub const IPerceptionFrameProviderManagerServiceStatics = extern struct {
 };
 pub const IPerceptionPropertyChangeRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -544,6 +634,12 @@ pub const IPerceptionPropertyChangeRequest = extern struct {
 };
 pub const IPerceptionVideoFrameAllocator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AllocateFrame(self: *@This()) core.HResult!*PerceptionFrame {
         var _r: *PerceptionFrame = undefined;
         const _c = self.vtable.AllocateFrame(@ptrCast(self), &_r);
@@ -574,6 +670,12 @@ pub const IPerceptionVideoFrameAllocator = extern struct {
 };
 pub const IPerceptionVideoFrameAllocatorFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), maxOutstandingFrameCountForWrite: u32, format: BitmapPixelFormat, resolution: Size, alpha: BitmapAlphaMode) core.HResult!*PerceptionVideoFrameAllocator {
         var _r: *PerceptionVideoFrameAllocator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), maxOutstandingFrameCountForWrite, format, resolution, alpha, &_r);
@@ -597,6 +699,15 @@ pub const IPerceptionVideoFrameAllocatorFactory = extern struct {
 };
 pub const KnownPerceptionFrameKind = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -618,12 +729,21 @@ pub const KnownPerceptionFrameKind = extern struct {
 };
 pub const PerceptionControlGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
-        const this: *IPerceptionControlGroup = @ptrCast(self);
-        return try this.getFrameProviderIds();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        const this: *IPerceptionControlGroup = @ptrCast(self);
+        return try this.getFrameProviderIds();
     }
     pub fn Create(ids: *IIterable(?HSTRING)) core.HResult!*PerceptionControlGroup {
         const _f = try @This()._IPerceptionControlGroupFactoryCache.get();
@@ -638,6 +758,18 @@ pub const PerceptionControlGroup = extern struct {
 };
 pub const PerceptionCorrelation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionCorrelation = @ptrCast(self);
         return try this.getTargetId();
@@ -649,9 +781,6 @@ pub const PerceptionCorrelation = extern struct {
     pub fn getOrientation(self: *@This()) core.HResult!Quaternion {
         const this: *IPerceptionCorrelation = @ptrCast(self);
         return try this.getOrientation();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(targetId: ?HSTRING, position: Vector3, orientation: Quaternion) core.HResult!*PerceptionCorrelation {
         const _f = try @This()._IPerceptionCorrelationFactoryCache.get();
@@ -666,12 +795,21 @@ pub const PerceptionCorrelation = extern struct {
 };
 pub const PerceptionCorrelationGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRelativeLocations(self: *@This()) core.HResult!*IVectorView(PerceptionCorrelation) {
-        const this: *IPerceptionCorrelationGroup = @ptrCast(self);
-        return try this.getRelativeLocations();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getRelativeLocations(self: *@This()) core.HResult!*IVectorView(PerceptionCorrelation) {
+        const this: *IPerceptionCorrelationGroup = @ptrCast(self);
+        return try this.getRelativeLocations();
     }
     pub fn Create(relativeLocations: *IIterable(PerceptionCorrelation)) core.HResult!*PerceptionCorrelationGroup {
         const _f = try @This()._IPerceptionCorrelationGroupFactoryCache.get();
@@ -686,12 +824,21 @@ pub const PerceptionCorrelationGroup = extern struct {
 };
 pub const PerceptionFaceAuthenticationGroup = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
-        const this: *IPerceptionFaceAuthenticationGroup = @ptrCast(self);
-        return try this.getFrameProviderIds();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getFrameProviderIds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        const this: *IPerceptionFaceAuthenticationGroup = @ptrCast(self);
+        return try this.getFrameProviderIds();
     }
     pub fn Create(ids: *IIterable(?HSTRING), startHandler: *PerceptionStartFaceAuthenticationHandler, stopHandler: *PerceptionStopFaceAuthenticationHandler) core.HResult!*PerceptionFaceAuthenticationGroup {
         const _f = try @This()._IPerceptionFaceAuthenticationGroupFactoryCache.get();
@@ -706,6 +853,18 @@ pub const PerceptionFaceAuthenticationGroup = extern struct {
 };
 pub const PerceptionFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelativeTime(self: *@This()) core.HResult!TimeSpan {
         const this: *IPerceptionFrame = @ptrCast(self);
         return try this.getRelativeTime();
@@ -730,6 +889,18 @@ pub const PerceptionFrame = extern struct {
 };
 pub const PerceptionFrameProviderInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionFrameProviderInfo = @ptrCast(self);
         return try this.getId();
@@ -770,9 +941,6 @@ pub const PerceptionFrameProviderInfo = extern struct {
         const this: *IPerceptionFrameProviderInfo = @ptrCast(self);
         return try this.putHidden(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPerceptionFrameProviderInfo.IID)));
@@ -786,6 +954,15 @@ pub const PerceptionFrameProviderInfo = extern struct {
 };
 pub const PerceptionFrameProviderManagerService = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -835,6 +1012,18 @@ pub const PerceptionFrameProviderManagerService = extern struct {
 };
 pub const PerceptionPropertyChangeRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPerceptionPropertyChangeRequest = @ptrCast(self);
         return try this.getName();
@@ -1041,6 +1230,18 @@ pub const PerceptionStopFaceAuthenticationHandler = extern struct {
 };
 pub const PerceptionVideoFrameAllocator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AllocateFrame(self: *@This()) core.HResult!*PerceptionFrame {
         const this: *IPerceptionVideoFrameAllocator = @ptrCast(self);
         return try this.AllocateFrame();
@@ -1055,9 +1256,6 @@ pub const PerceptionVideoFrameAllocator = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(maxOutstandingFrameCountForWrite: u32, format: BitmapPixelFormat, resolution: Size, alpha: BitmapAlphaMode) core.HResult!*PerceptionVideoFrameAllocator {
         const _f = try @This()._IPerceptionVideoFrameAllocatorFactoryCache.get();

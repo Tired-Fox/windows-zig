@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const Geofence = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         const this: *IGeofence = @ptrCast(self);
         return try this.getStartTime();
@@ -29,9 +41,6 @@ pub const Geofence = extern struct {
         const this: *IGeofence = @ptrCast(self);
         return try this.getSingleUse();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(id: ?HSTRING, geoshape: *IGeoshape) core.HResult!*Geofence {
         const _f = try @This()._IGeofenceFactoryCache.get();
         return try _f.Create(id, geoshape);
@@ -57,6 +66,18 @@ pub const Geofence = extern struct {
 };
 pub const GeofenceMonitor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GeofenceMonitorStatus {
         const this: *IGeofenceMonitor = @ptrCast(self);
         return try this.getStatus();
@@ -89,9 +110,6 @@ pub const GeofenceMonitor = extern struct {
         const this: *IGeofenceMonitor = @ptrCast(self);
         return try this.removeStatusChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getCurrent() core.HResult!*GeofenceMonitor {
         const _f = try @This()._IGeofenceMonitorStaticsCache.get();
         return try _f.getCurrent();
@@ -123,6 +141,18 @@ pub const GeofenceState = enum(i32) {
 };
 pub const GeofenceStateChangeReport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNewState(self: *@This()) core.HResult!GeofenceState {
         const this: *IGeofenceStateChangeReport = @ptrCast(self);
         return try this.getNewState();
@@ -147,6 +177,12 @@ pub const GeofenceStateChangeReport = extern struct {
 };
 pub const IGeofence = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
@@ -212,6 +248,12 @@ pub const IGeofence = extern struct {
 };
 pub const IGeofenceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), id: ?HSTRING, geoshape: *IGeoshape) core.HResult!*Geofence {
         var _r: *Geofence = undefined;
         const _c = self.vtable.Create(@ptrCast(self), id, geoshape, &_r);
@@ -256,6 +298,12 @@ pub const IGeofenceFactory = extern struct {
 };
 pub const IGeofenceMonitor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GeofenceMonitorStatus {
         var _r: GeofenceMonitorStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -324,6 +372,12 @@ pub const IGeofenceMonitor = extern struct {
 };
 pub const IGeofenceMonitorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrent(self: *@This()) core.HResult!*GeofenceMonitor {
         var _r: *GeofenceMonitor = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
@@ -347,6 +401,12 @@ pub const IGeofenceMonitorStatics = extern struct {
 };
 pub const IGeofenceStateChangeReport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNewState(self: *@This()) core.HResult!GeofenceState {
         var _r: GeofenceState = undefined;
         const _c = self.vtable.get_NewState(@ptrCast(self), &_r);

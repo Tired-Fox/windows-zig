@@ -5,6 +5,18 @@ pub const DomainNameType = enum(i32) {
 };
 pub const EndpointPair = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalHostName(self: *@This()) core.HResult!*HostName {
         const this: *IEndpointPair = @ptrCast(self);
         return try this.getLocalHostName();
@@ -37,9 +49,6 @@ pub const EndpointPair = extern struct {
         const this: *IEndpointPair = @ptrCast(self);
         return try this.putRemoteServiceName(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateEndpointPair(localHostName: *HostName, localServiceName: ?HSTRING, remoteHostName: *HostName, remoteServiceName: ?HSTRING) core.HResult!*EndpointPair {
         const _f = try @This()._IEndpointPairFactoryCache.get();
         return try _f.CreateEndpointPair(localHostName, localServiceName, remoteHostName, remoteServiceName);
@@ -53,6 +62,18 @@ pub const EndpointPair = extern struct {
 };
 pub const HostName = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIPInformation(self: *@This()) core.HResult!*IPInformation {
         const this: *IHostName = @ptrCast(self);
         return try this.getIPInformation();
@@ -84,9 +105,6 @@ pub const HostName = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateHostName(hostName: ?HSTRING) core.HResult!*HostName {
         const _f = try @This()._IHostNameFactoryCache.get();
         return try _f.CreateHostName(hostName);
@@ -115,6 +133,12 @@ pub const HostNameType = enum(i32) {
 };
 pub const IEndpointPair = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalHostName(self: *@This()) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.get_LocalHostName(@ptrCast(self), &_r);
@@ -179,6 +203,12 @@ pub const IEndpointPair = extern struct {
 };
 pub const IEndpointPairFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateEndpointPair(self: *@This(), localHostName: *HostName, localServiceName: ?HSTRING, remoteHostName: *HostName, remoteServiceName: ?HSTRING) core.HResult!*EndpointPair {
         var _r: *EndpointPair = undefined;
         const _c = self.vtable.CreateEndpointPair(@ptrCast(self), localHostName, localServiceName, remoteHostName, remoteServiceName, &_r);
@@ -202,6 +232,12 @@ pub const IEndpointPairFactory = extern struct {
 };
 pub const IHostName = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIPInformation(self: *@This()) core.HResult!*IPInformation {
         var _r: *IPInformation = undefined;
         const _c = self.vtable.get_IPInformation(@ptrCast(self), &_r);
@@ -260,6 +296,12 @@ pub const IHostName = extern struct {
 };
 pub const IHostNameFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateHostName(self: *@This(), hostName: ?HSTRING) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.CreateHostName(@ptrCast(self), hostName, &_r);
@@ -283,6 +325,12 @@ pub const IHostNameFactory = extern struct {
 };
 pub const IHostNameStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Compare(self: *@This(), value1: ?HSTRING, value2: ?HSTRING) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.Compare(@ptrCast(self), value1, value2, &_r);

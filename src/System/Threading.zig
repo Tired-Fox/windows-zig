@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IThreadPoolStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RunAsync(self: *@This(), handler: *WorkItemHandler) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RunAsync(@ptrCast(self), handler, &_r);
@@ -38,6 +44,12 @@ pub const IThreadPoolStatics = extern struct {
 };
 pub const IThreadPoolTimer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPeriod(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Period(@ptrCast(self), &_r);
@@ -73,6 +85,12 @@ pub const IThreadPoolTimer = extern struct {
 };
 pub const IThreadPoolTimerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreatePeriodicTimer(self: *@This(), handler: *TimerElapsedHandler, period: TimeSpan) core.HResult!*ThreadPoolTimer {
         var _r: *ThreadPoolTimer = undefined;
         const _c = self.vtable.CreatePeriodicTimer(@ptrCast(self), handler, period, &_r);
@@ -117,6 +135,15 @@ pub const IThreadPoolTimerStatics = extern struct {
 };
 pub const ThreadPool = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -138,6 +165,18 @@ pub const ThreadPool = extern struct {
 };
 pub const ThreadPoolTimer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPeriod(self: *@This()) core.HResult!TimeSpan {
         const this: *IThreadPoolTimer = @ptrCast(self);
         return try this.getPeriod();
@@ -149,9 +188,6 @@ pub const ThreadPoolTimer = extern struct {
     pub fn Cancel(self: *@This()) core.HResult!void {
         const this: *IThreadPoolTimer = @ptrCast(self);
         return try this.Cancel();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreatePeriodicTimer(handler: *TimerElapsedHandler, period: TimeSpan) core.HResult!*ThreadPoolTimer {
         const _f = try @This()._IThreadPoolTimerStaticsCache.get();

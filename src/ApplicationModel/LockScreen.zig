@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ILockApplicationHost = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestUnlock(self: *@This()) core.HResult!void {
         const _c = self.vtable.RequestUnlock(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -34,6 +40,12 @@ pub const ILockApplicationHost = extern struct {
 };
 pub const ILockApplicationHostStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*LockApplicationHost {
         var _r: *LockApplicationHost = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -57,6 +69,12 @@ pub const ILockApplicationHostStatics = extern struct {
 };
 pub const ILockScreenBadge = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLogo(self: *@This()) core.HResult!*IRandomAccessStream {
         var _r: *IRandomAccessStream = undefined;
         const _c = self.vtable.get_Logo(@ptrCast(self), &_r);
@@ -106,6 +124,12 @@ pub const ILockScreenBadge = extern struct {
 };
 pub const ILockScreenInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addLockScreenImageChanged(self: *@This(), handler: *TypedEventHandler(LockScreenInfo,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LockScreenImageChanged(@ptrCast(self), handler, &_r);
@@ -198,6 +222,12 @@ pub const ILockScreenInfo = extern struct {
 };
 pub const ILockScreenUnlockingDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -219,6 +249,12 @@ pub const ILockScreenUnlockingDeferral = extern struct {
 };
 pub const ILockScreenUnlockingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*LockScreenUnlockingDeferral {
         var _r: *LockScreenUnlockingDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -249,6 +285,18 @@ pub const ILockScreenUnlockingEventArgs = extern struct {
 };
 pub const LockApplicationHost = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestUnlock(self: *@This()) core.HResult!void {
         const this: *ILockApplicationHost = @ptrCast(self);
         return try this.RequestUnlock();
@@ -260,9 +308,6 @@ pub const LockApplicationHost = extern struct {
     pub fn removeUnlocking(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *ILockApplicationHost = @ptrCast(self);
         return try this.removeUnlocking(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*LockApplicationHost {
         const _f = try @This()._ILockApplicationHostStaticsCache.get();
@@ -277,6 +322,18 @@ pub const LockApplicationHost = extern struct {
 };
 pub const LockScreenBadge = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLogo(self: *@This()) core.HResult!*IRandomAccessStream {
         const this: *ILockScreenBadge = @ptrCast(self);
         return try this.getLogo();
@@ -305,6 +362,18 @@ pub const LockScreenBadge = extern struct {
 };
 pub const LockScreenInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addLockScreenImageChanged(self: *@This(), handler: *TypedEventHandler(LockScreenInfo,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *ILockScreenInfo = @ptrCast(self);
         return try this.addLockScreenImageChanged(handler);
@@ -361,6 +430,18 @@ pub const LockScreenInfo = extern struct {
 };
 pub const LockScreenUnlockingDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *ILockScreenUnlockingDeferral = @ptrCast(self);
         return try this.Complete();
@@ -373,6 +454,18 @@ pub const LockScreenUnlockingDeferral = extern struct {
 };
 pub const LockScreenUnlockingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*LockScreenUnlockingDeferral {
         const this: *ILockScreenUnlockingEventArgs = @ptrCast(self);
         return try this.GetDeferral();

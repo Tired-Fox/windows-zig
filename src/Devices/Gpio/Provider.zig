@@ -1,12 +1,21 @@
 // ----- This code is automatically generated -----
 pub const GpioPinProviderValueChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getEdge(self: *@This()) core.HResult!ProviderGpioPinEdge {
-        const this: *IGpioPinProviderValueChangedEventArgs = @ptrCast(self);
-        return try this.getEdge();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getEdge(self: *@This()) core.HResult!ProviderGpioPinEdge {
+        const this: *IGpioPinProviderValueChangedEventArgs = @ptrCast(self);
+        return try this.getEdge();
     }
     pub fn Create(edge: ProviderGpioPinEdge) core.HResult!*GpioPinProviderValueChangedEventArgs {
         const _f = try @This()._IGpioPinProviderValueChangedEventArgsFactoryCache.get();
@@ -21,6 +30,12 @@ pub const GpioPinProviderValueChangedEventArgs = extern struct {
 };
 pub const IGpioControllerProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPinCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_PinCount(@ptrCast(self), &_r);
@@ -51,6 +66,12 @@ pub const IGpioControllerProvider = extern struct {
 };
 pub const IGpioPinProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addValueChanged(self: *@This(), handler: *TypedEventHandler(IGpioPinProvider,GpioPinProviderValueChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ValueChanged(@ptrCast(self), handler, &_r);
@@ -136,6 +157,12 @@ pub const IGpioPinProvider = extern struct {
 };
 pub const IGpioPinProviderValueChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEdge(self: *@This()) core.HResult!ProviderGpioPinEdge {
         var _r: ProviderGpioPinEdge = undefined;
         const _c = self.vtable.get_Edge(@ptrCast(self), &_r);
@@ -159,6 +186,12 @@ pub const IGpioPinProviderValueChangedEventArgs = extern struct {
 };
 pub const IGpioPinProviderValueChangedEventArgsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), edge: ProviderGpioPinEdge) core.HResult!*GpioPinProviderValueChangedEventArgs {
         var _r: *GpioPinProviderValueChangedEventArgs = undefined;
         const _c = self.vtable.Create(@ptrCast(self), edge, &_r);
@@ -182,6 +215,12 @@ pub const IGpioPinProviderValueChangedEventArgsFactory = extern struct {
 };
 pub const IGpioProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetControllers(self: *@This()) core.HResult!*IVectorView(IGpioControllerProvider) {
         var _r: *IVectorView(IGpioControllerProvider) = undefined;
         const _c = self.vtable.GetControllers(@ptrCast(self), &_r);

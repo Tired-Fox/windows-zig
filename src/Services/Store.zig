@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IStoreAcquireLicenseResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStorePackageLicense(self: *@This()) core.HResult!*StorePackageLicense {
         var _r: *StorePackageLicense = undefined;
         const _c = self.vtable.get_StorePackageLicense(@ptrCast(self), &_r);
@@ -31,6 +37,12 @@ pub const IStoreAcquireLicenseResult = extern struct {
 };
 pub const IStoreAppLicense = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSkuStoreId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SkuStoreId(@ptrCast(self), &_r);
@@ -110,6 +122,12 @@ pub const IStoreAppLicense = extern struct {
 };
 pub const IStoreAppLicense2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsDiscLicense(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsDiscLicense(@ptrCast(self), &_r);
@@ -133,6 +151,12 @@ pub const IStoreAppLicense2 = extern struct {
 };
 pub const IStoreAvailability = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStoreId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StoreId(@ptrCast(self), &_r);
@@ -191,6 +215,12 @@ pub const IStoreAvailability = extern struct {
 };
 pub const IStoreCanAcquireLicenseResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
@@ -228,6 +258,12 @@ pub const IStoreCanAcquireLicenseResult = extern struct {
 };
 pub const IStoreCollectionData = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsTrial(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTrial(@ptrCast(self), &_r);
@@ -300,6 +336,12 @@ pub const IStoreCollectionData = extern struct {
 };
 pub const IStoreConsumableResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!StoreConsumableStatus {
         var _r: StoreConsumableStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -344,6 +386,12 @@ pub const IStoreConsumableResult = extern struct {
 };
 pub const IStoreContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -505,6 +553,12 @@ pub const IStoreContext = extern struct {
 };
 pub const IStoreContext2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindStoreProductForPackageAsync(self: *@This(), productKinds: *IIterable(?HSTRING), package: *Package) core.HResult!*IAsyncOperation(StoreProductResult) {
         var _r: *IAsyncOperation(StoreProductResult) = undefined;
         const _c = self.vtable.FindStoreProductForPackageAsync(@ptrCast(self), productKinds, package, &_r);
@@ -528,6 +582,12 @@ pub const IStoreContext2 = extern struct {
 };
 pub const IStoreContext3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanSilentlyDownloadStorePackageUpdates(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanSilentlyDownloadStorePackageUpdates(@ptrCast(self), &_r);
@@ -642,6 +702,12 @@ pub const IStoreContext3 = extern struct {
 };
 pub const IStoreContext4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestRateAndReviewAppAsync(self: *@This()) core.HResult!*IAsyncOperation(StoreRateAndReviewResult) {
         var _r: *IAsyncOperation(StoreRateAndReviewResult) = undefined;
         const _c = self.vtable.RequestRateAndReviewAppAsync(@ptrCast(self), &_r);
@@ -672,6 +738,12 @@ pub const IStoreContext4 = extern struct {
 };
 pub const IStoreContext5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetUserPurchaseHistoryAsync(self: *@This(), productKinds: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var _r: *IAsyncOperation(StoreProductQueryResult) = undefined;
         const _c = self.vtable.GetUserPurchaseHistoryAsync(@ptrCast(self), productKinds, &_r);
@@ -709,6 +781,12 @@ pub const IStoreContext5 = extern struct {
 };
 pub const IStoreContextStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*StoreContext {
         var _r: *StoreContext = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -739,6 +817,12 @@ pub const IStoreContextStatics = extern struct {
 };
 pub const IStoreImage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
@@ -790,6 +874,12 @@ pub const IStoreImage = extern struct {
 };
 pub const IStoreLicense = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSkuStoreId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SkuStoreId(@ptrCast(self), &_r);
@@ -841,6 +931,12 @@ pub const IStoreLicense = extern struct {
 };
 pub const IStorePackageInstallOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowForcedAppRestart(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowForcedAppRestart(@ptrCast(self), &_r);
@@ -869,6 +965,12 @@ pub const IStorePackageInstallOptions = extern struct {
 };
 pub const IStorePackageLicense = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addLicenseLost(self: *@This(), handler: *TypedEventHandler(StorePackageLicense,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_LicenseLost(@ptrCast(self), handler, &_r);
@@ -916,6 +1018,12 @@ pub const IStorePackageLicense = extern struct {
 };
 pub const IStorePackageUpdate = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackage(self: *@This()) core.HResult!*Package {
         var _r: *Package = undefined;
         const _c = self.vtable.get_Package(@ptrCast(self), &_r);
@@ -946,6 +1054,12 @@ pub const IStorePackageUpdate = extern struct {
 };
 pub const IStorePackageUpdateResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOverallState(self: *@This()) core.HResult!StorePackageUpdateState {
         var _r: StorePackageUpdateState = undefined;
         const _c = self.vtable.get_OverallState(@ptrCast(self), &_r);
@@ -976,6 +1090,12 @@ pub const IStorePackageUpdateResult = extern struct {
 };
 pub const IStorePackageUpdateResult2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStoreQueueItems(self: *@This()) core.HResult!*IVectorView(StoreQueueItem) {
         var _r: *IVectorView(StoreQueueItem) = undefined;
         const _c = self.vtable.get_StoreQueueItems(@ptrCast(self), &_r);
@@ -999,6 +1119,12 @@ pub const IStorePackageUpdateResult2 = extern struct {
 };
 pub const IStorePrice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormattedBasePrice(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FormattedBasePrice(@ptrCast(self), &_r);
@@ -1057,6 +1183,12 @@ pub const IStorePrice = extern struct {
 };
 pub const IStorePrice2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnformattedBasePrice(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnformattedBasePrice(@ptrCast(self), &_r);
@@ -1094,6 +1226,12 @@ pub const IStorePrice2 = extern struct {
 };
 pub const IStoreProduct = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStoreId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StoreId(@ptrCast(self), &_r);
@@ -1236,6 +1374,12 @@ pub const IStoreProduct = extern struct {
 };
 pub const IStoreProductOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActionFilters(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ActionFilters(@ptrCast(self), &_r);
@@ -1259,6 +1403,12 @@ pub const IStoreProductOptions = extern struct {
 };
 pub const IStoreProductPagedQueryResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProducts(self: *@This()) core.HResult!*IMapView(?HSTRING,StoreProduct) {
         var _r: *IMapView(?HSTRING,StoreProduct) = undefined;
         const _c = self.vtable.get_Products(@ptrCast(self), &_r);
@@ -1303,6 +1453,12 @@ pub const IStoreProductPagedQueryResult = extern struct {
 };
 pub const IStoreProductQueryResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProducts(self: *@This()) core.HResult!*IMapView(?HSTRING,StoreProduct) {
         var _r: *IMapView(?HSTRING,StoreProduct) = undefined;
         const _c = self.vtable.get_Products(@ptrCast(self), &_r);
@@ -1333,6 +1489,12 @@ pub const IStoreProductQueryResult = extern struct {
 };
 pub const IStoreProductResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProduct(self: *@This()) core.HResult!*StoreProduct {
         var _r: *StoreProduct = undefined;
         const _c = self.vtable.get_Product(@ptrCast(self), &_r);
@@ -1363,6 +1525,12 @@ pub const IStoreProductResult = extern struct {
 };
 pub const IStorePurchaseProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -1403,6 +1571,12 @@ pub const IStorePurchaseProperties = extern struct {
 };
 pub const IStorePurchasePropertiesFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), name: ?HSTRING) core.HResult!*StorePurchaseProperties {
         var _r: *StorePurchaseProperties = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, &_r);
@@ -1426,6 +1600,12 @@ pub const IStorePurchasePropertiesFactory = extern struct {
 };
 pub const IStorePurchaseResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!StorePurchaseStatus {
         var _r: StorePurchaseStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1456,6 +1636,12 @@ pub const IStorePurchaseResult = extern struct {
 };
 pub const IStoreQueueItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductId(@ptrCast(self), &_r);
@@ -1524,6 +1710,12 @@ pub const IStoreQueueItem = extern struct {
 };
 pub const IStoreQueueItem2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CancelInstallAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.CancelInstallAsync(@ptrCast(self), &_r);
@@ -1561,6 +1753,12 @@ pub const IStoreQueueItem2 = extern struct {
 };
 pub const IStoreQueueItemCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!*StoreQueueItemStatus {
         var _r: *StoreQueueItemStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1584,6 +1782,12 @@ pub const IStoreQueueItemCompletedEventArgs = extern struct {
 };
 pub const IStoreQueueItemStatus = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackageInstallState(self: *@This()) core.HResult!StoreQueueItemState {
         var _r: StoreQueueItemState = undefined;
         const _c = self.vtable.get_PackageInstallState(@ptrCast(self), &_r);
@@ -1628,6 +1832,12 @@ pub const IStoreQueueItemStatus = extern struct {
 };
 pub const IStoreRateAndReviewResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
@@ -1672,6 +1882,12 @@ pub const IStoreRateAndReviewResult = extern struct {
 };
 pub const IStoreRequestHelperStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendRequestAsync(self: *@This(), context: *StoreContext, requestKind: u32, parametersAsJson: ?HSTRING) core.HResult!*IAsyncOperation(StoreSendRequestResult) {
         var _r: *IAsyncOperation(StoreSendRequestResult) = undefined;
         const _c = self.vtable.SendRequestAsync(@ptrCast(self), context, requestKind, parametersAsJson, &_r);
@@ -1695,6 +1911,12 @@ pub const IStoreRequestHelperStatics = extern struct {
 };
 pub const IStoreSendRequestResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResponse(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Response(@ptrCast(self), &_r);
@@ -1725,6 +1947,12 @@ pub const IStoreSendRequestResult = extern struct {
 };
 pub const IStoreSendRequestResult2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHttpStatusCode(self: *@This()) core.HResult!HttpStatusCode {
         var _r: HttpStatusCode = undefined;
         const _c = self.vtable.get_HttpStatusCode(@ptrCast(self), &_r);
@@ -1748,6 +1976,12 @@ pub const IStoreSendRequestResult2 = extern struct {
 };
 pub const IStoreSku = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStoreId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StoreId(@ptrCast(self), &_r);
@@ -1897,6 +2131,12 @@ pub const IStoreSku = extern struct {
 };
 pub const IStoreSubscriptionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBillingPeriod(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_BillingPeriod(@ptrCast(self), &_r);
@@ -1948,6 +2188,12 @@ pub const IStoreSubscriptionInfo = extern struct {
 };
 pub const IStoreUninstallStorePackageResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
@@ -1978,6 +2224,12 @@ pub const IStoreUninstallStorePackageResult = extern struct {
 };
 pub const IStoreVideo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
@@ -2036,6 +2288,18 @@ pub const IStoreVideo = extern struct {
 };
 pub const StoreAcquireLicenseResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStorePackageLicense(self: *@This()) core.HResult!*StorePackageLicense {
         const this: *IStoreAcquireLicenseResult = @ptrCast(self);
         return try this.getStorePackageLicense();
@@ -2052,6 +2316,18 @@ pub const StoreAcquireLicenseResult = extern struct {
 };
 pub const StoreAppLicense = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSkuStoreId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreAppLicense = @ptrCast(self);
         return try this.getSkuStoreId();
@@ -2103,6 +2379,18 @@ pub const StoreAppLicense = extern struct {
 };
 pub const StoreAvailability = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStoreId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreAvailability = @ptrCast(self);
         return try this.getStoreId();
@@ -2135,6 +2423,18 @@ pub const StoreAvailability = extern struct {
 };
 pub const StoreCanAcquireLicenseResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         const this: *IStoreCanAcquireLicenseResult = @ptrCast(self);
         return try this.getExtendedError();
@@ -2162,6 +2462,18 @@ pub const StoreCanLicenseStatus = enum(i32) {
 };
 pub const StoreCollectionData = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsTrial(self: *@This()) core.HResult!bool {
         const this: *IStoreCollectionData = @ptrCast(self);
         return try this.getIsTrial();
@@ -2202,6 +2514,18 @@ pub const StoreCollectionData = extern struct {
 };
 pub const StoreConsumableResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!StoreConsumableStatus {
         const this: *IStoreConsumableResult = @ptrCast(self);
         return try this.getStatus();
@@ -2232,6 +2556,18 @@ pub const StoreConsumableStatus = enum(i32) {
 };
 pub const StoreContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         const this: *IStoreContext = @ptrCast(self);
         return try this.getUser();
@@ -2456,9 +2792,6 @@ pub const StoreContext = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestPurchaseByInAppOfferTokenAsync(inAppOfferToken);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*StoreContext {
         const _f = try @This()._IStoreContextStaticsCache.get();
         return try _f.GetDefault();
@@ -2484,6 +2817,18 @@ pub const StoreDurationUnit = enum(i32) {
 };
 pub const StoreImage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         const this: *IStoreImage = @ptrCast(self);
         return try this.getUri();
@@ -2512,6 +2857,18 @@ pub const StoreImage = extern struct {
 };
 pub const StoreLicense = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSkuStoreId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreLicense = @ptrCast(self);
         return try this.getSkuStoreId();
@@ -2540,6 +2897,18 @@ pub const StoreLicense = extern struct {
 };
 pub const StorePackageInstallOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowForcedAppRestart(self: *@This()) core.HResult!bool {
         const this: *IStorePackageInstallOptions = @ptrCast(self);
         return try this.getAllowForcedAppRestart();
@@ -2547,9 +2916,6 @@ pub const StorePackageInstallOptions = extern struct {
     pub fn putAllowForcedAppRestart(self: *@This(), value: bool) core.HResult!void {
         const this: *IStorePackageInstallOptions = @ptrCast(self);
         return try this.putAllowForcedAppRestart(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2564,6 +2930,18 @@ pub const StorePackageInstallOptions = extern struct {
 };
 pub const StorePackageLicense = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addLicenseLost(self: *@This(), handler: *TypedEventHandler(StorePackageLicense,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IStorePackageLicense = @ptrCast(self);
         return try this.addLicenseLost(handler);
@@ -2599,6 +2977,18 @@ pub const StorePackageLicense = extern struct {
 };
 pub const StorePackageUpdate = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackage(self: *@This()) core.HResult!*Package {
         const this: *IStorePackageUpdate = @ptrCast(self);
         return try this.getPackage();
@@ -2615,6 +3005,18 @@ pub const StorePackageUpdate = extern struct {
 };
 pub const StorePackageUpdateResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOverallState(self: *@This()) core.HResult!StorePackageUpdateState {
         const this: *IStorePackageUpdateResult = @ptrCast(self);
         return try this.getOverallState();
@@ -2657,6 +3059,18 @@ pub const StorePackageUpdateStatus = extern struct {
 };
 pub const StorePrice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormattedBasePrice(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePrice = @ptrCast(self);
         return try this.getFormattedBasePrice();
@@ -2710,6 +3124,18 @@ pub const StorePrice = extern struct {
 };
 pub const StoreProduct = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStoreId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.getStoreId();
@@ -2790,12 +3216,21 @@ pub const StoreProduct = extern struct {
 };
 pub const StoreProductOptions = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getActionFilters(self: *@This()) core.HResult!*IVector(?HSTRING) {
-        const this: *IStoreProductOptions = @ptrCast(self);
-        return try this.getActionFilters();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getActionFilters(self: *@This()) core.HResult!*IVector(?HSTRING) {
+        const this: *IStoreProductOptions = @ptrCast(self);
+        return try this.getActionFilters();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2810,6 +3245,18 @@ pub const StoreProductOptions = extern struct {
 };
 pub const StoreProductPagedQueryResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProducts(self: *@This()) core.HResult!*IMapView(?HSTRING,StoreProduct) {
         const this: *IStoreProductPagedQueryResult = @ptrCast(self);
         return try this.getProducts();
@@ -2834,6 +3281,18 @@ pub const StoreProductPagedQueryResult = extern struct {
 };
 pub const StoreProductQueryResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProducts(self: *@This()) core.HResult!*IMapView(?HSTRING,StoreProduct) {
         const this: *IStoreProductQueryResult = @ptrCast(self);
         return try this.getProducts();
@@ -2850,6 +3309,18 @@ pub const StoreProductQueryResult = extern struct {
 };
 pub const StoreProductResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProduct(self: *@This()) core.HResult!*StoreProduct {
         const this: *IStoreProductResult = @ptrCast(self);
         return try this.getProduct();
@@ -2866,6 +3337,18 @@ pub const StoreProductResult = extern struct {
 };
 pub const StorePurchaseProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorePurchaseProperties = @ptrCast(self);
         return try this.getName();
@@ -2881,9 +3364,6 @@ pub const StorePurchaseProperties = extern struct {
     pub fn putExtendedJsonData(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorePurchaseProperties = @ptrCast(self);
         return try this.putExtendedJsonData(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2903,6 +3383,18 @@ pub const StorePurchaseProperties = extern struct {
 };
 pub const StorePurchaseResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!StorePurchaseStatus {
         const this: *IStorePurchaseResult = @ptrCast(self);
         return try this.getStatus();
@@ -2926,6 +3418,18 @@ pub const StorePurchaseStatus = enum(i32) {
 };
 pub const StoreQueueItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreQueueItem = @ptrCast(self);
         return try this.getProductId();
@@ -2987,6 +3491,18 @@ pub const StoreQueueItem = extern struct {
 };
 pub const StoreQueueItemCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!*StoreQueueItemStatus {
         const this: *IStoreQueueItemCompletedEventArgs = @ptrCast(self);
         return try this.getStatus();
@@ -3028,6 +3544,18 @@ pub const StoreQueueItemState = enum(i32) {
 };
 pub const StoreQueueItemStatus = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackageInstallState(self: *@This()) core.HResult!StoreQueueItemState {
         const this: *IStoreQueueItemStatus = @ptrCast(self);
         return try this.getPackageInstallState();
@@ -3052,6 +3580,18 @@ pub const StoreQueueItemStatus = extern struct {
 };
 pub const StoreRateAndReviewResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         const this: *IStoreRateAndReviewResult = @ptrCast(self);
         return try this.getExtendedError();
@@ -3082,6 +3622,15 @@ pub const StoreRateAndReviewStatus = enum(i32) {
 };
 pub const StoreRequestHelper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3095,6 +3644,18 @@ pub const StoreRequestHelper = extern struct {
 };
 pub const StoreSendRequestResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResponse(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreSendRequestResult = @ptrCast(self);
         return try this.getResponse();
@@ -3118,6 +3679,18 @@ pub const StoreSendRequestResult = extern struct {
 };
 pub const StoreSku = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStoreId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStoreSku = @ptrCast(self);
         return try this.getStoreId();
@@ -3202,6 +3775,18 @@ pub const StoreSku = extern struct {
 };
 pub const StoreSubscriptionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBillingPeriod(self: *@This()) core.HResult!u32 {
         const this: *IStoreSubscriptionInfo = @ptrCast(self);
         return try this.getBillingPeriod();
@@ -3230,6 +3815,18 @@ pub const StoreSubscriptionInfo = extern struct {
 };
 pub const StoreUninstallStorePackageResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         const this: *IStoreUninstallStorePackageResult = @ptrCast(self);
         return try this.getExtendedError();
@@ -3253,6 +3850,18 @@ pub const StoreUninstallStorePackageStatus = enum(i32) {
 };
 pub const StoreVideo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         const this: *IStoreVideo = @ptrCast(self);
         return try this.getUri();

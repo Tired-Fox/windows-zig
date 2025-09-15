@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const EnterpriseKeyCredentialRegistrationInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTenantId(self: *@This()) core.HResult!?HSTRING {
         const this: *IEnterpriseKeyCredentialRegistrationInfo = @ptrCast(self);
         return try this.getTenantId();
@@ -29,12 +41,21 @@ pub const EnterpriseKeyCredentialRegistrationInfo = extern struct {
 };
 pub const EnterpriseKeyCredentialRegistrationManager = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetRegistrationsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(EnterpriseKeyCredentialRegistrationInfo)) {
-        const this: *IEnterpriseKeyCredentialRegistrationManager = @ptrCast(self);
-        return try this.GetRegistrationsAsync();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetRegistrationsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(EnterpriseKeyCredentialRegistrationInfo)) {
+        const this: *IEnterpriseKeyCredentialRegistrationManager = @ptrCast(self);
+        return try this.GetRegistrationsAsync();
     }
     pub fn getCurrent() core.HResult!*EnterpriseKeyCredentialRegistrationManager {
         const _f = try @This()._IEnterpriseKeyCredentialRegistrationManagerStaticsCache.get();
@@ -49,6 +70,12 @@ pub const EnterpriseKeyCredentialRegistrationManager = extern struct {
 };
 pub const IEnterpriseKeyCredentialRegistrationInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTenantId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TenantId(@ptrCast(self), &_r);
@@ -100,6 +127,12 @@ pub const IEnterpriseKeyCredentialRegistrationInfo = extern struct {
 };
 pub const IEnterpriseKeyCredentialRegistrationManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetRegistrationsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(EnterpriseKeyCredentialRegistrationInfo)) {
         var _r: *IAsyncOperation(IVectorView(EnterpriseKeyCredentialRegistrationInfo)) = undefined;
         const _c = self.vtable.GetRegistrationsAsync(@ptrCast(self), &_r);
@@ -123,6 +156,12 @@ pub const IEnterpriseKeyCredentialRegistrationManager = extern struct {
 };
 pub const IEnterpriseKeyCredentialRegistrationManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrent(self: *@This()) core.HResult!*EnterpriseKeyCredentialRegistrationManager {
         var _r: *EnterpriseKeyCredentialRegistrationManager = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);

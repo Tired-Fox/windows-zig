@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const HttpDiagnosticProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const this: *IHttpDiagnosticProvider = @ptrCast(self);
         return try this.Start();
@@ -33,9 +45,6 @@ pub const HttpDiagnosticProvider = extern struct {
         const this: *IHttpDiagnosticProvider = @ptrCast(self);
         return try this.removeRequestResponseCompleted(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateFromProcessDiagnosticInfo(processDiagnosticInfo: *ProcessDiagnosticInfo) core.HResult!*HttpDiagnosticProvider {
         const _f = try @This()._IHttpDiagnosticProviderStaticsCache.get();
         return try _f.CreateFromProcessDiagnosticInfo(processDiagnosticInfo);
@@ -49,6 +58,18 @@ pub const HttpDiagnosticProvider = extern struct {
 };
 pub const HttpDiagnosticProviderRequestResponseCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         const this: *IHttpDiagnosticProviderRequestResponseCompletedEventArgs = @ptrCast(self);
         return try this.getActivityId();
@@ -85,6 +106,18 @@ pub const HttpDiagnosticProviderRequestResponseCompletedEventArgs = extern struc
 };
 pub const HttpDiagnosticProviderRequestResponseTimestamps = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCacheCheckedTimestamp(self: *@This()) core.HResult!*IReference(DateTime) {
         const this: *IHttpDiagnosticProviderRequestResponseTimestamps = @ptrCast(self);
         return try this.getCacheCheckedTimestamp();
@@ -129,6 +162,18 @@ pub const HttpDiagnosticProviderRequestResponseTimestamps = extern struct {
 };
 pub const HttpDiagnosticProviderRequestSentEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IHttpDiagnosticProviderRequestSentEventArgs = @ptrCast(self);
         return try this.getTimestamp();
@@ -165,6 +210,18 @@ pub const HttpDiagnosticProviderRequestSentEventArgs = extern struct {
 };
 pub const HttpDiagnosticProviderResponseReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IHttpDiagnosticProviderResponseReceivedEventArgs = @ptrCast(self);
         return try this.getTimestamp();
@@ -200,6 +257,18 @@ pub const HttpDiagnosticRequestInitiator = enum(i32) {
 };
 pub const HttpDiagnosticSourceLocation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceUri(self: *@This()) core.HResult!*Uri {
         const this: *IHttpDiagnosticSourceLocation = @ptrCast(self);
         return try this.getSourceUri();
@@ -220,6 +289,12 @@ pub const HttpDiagnosticSourceLocation = extern struct {
 };
 pub const IHttpDiagnosticProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -282,6 +357,12 @@ pub const IHttpDiagnosticProvider = extern struct {
 };
 pub const IHttpDiagnosticProviderRequestResponseCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ActivityId(@ptrCast(self), &_r);
@@ -347,6 +428,12 @@ pub const IHttpDiagnosticProviderRequestResponseCompletedEventArgs = extern stru
 };
 pub const IHttpDiagnosticProviderRequestResponseTimestamps = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCacheCheckedTimestamp(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_CacheCheckedTimestamp(@ptrCast(self), &_r);
@@ -426,6 +513,12 @@ pub const IHttpDiagnosticProviderRequestResponseTimestamps = extern struct {
 };
 pub const IHttpDiagnosticProviderRequestSentEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -491,6 +584,12 @@ pub const IHttpDiagnosticProviderRequestSentEventArgs = extern struct {
 };
 pub const IHttpDiagnosticProviderResponseReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -528,6 +627,12 @@ pub const IHttpDiagnosticProviderResponseReceivedEventArgs = extern struct {
 };
 pub const IHttpDiagnosticProviderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromProcessDiagnosticInfo(self: *@This(), processDiagnosticInfo: *ProcessDiagnosticInfo) core.HResult!*HttpDiagnosticProvider {
         var _r: *HttpDiagnosticProvider = undefined;
         const _c = self.vtable.CreateFromProcessDiagnosticInfo(@ptrCast(self), processDiagnosticInfo, &_r);
@@ -551,6 +656,12 @@ pub const IHttpDiagnosticProviderStatics = extern struct {
 };
 pub const IHttpDiagnosticSourceLocation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_SourceUri(@ptrCast(self), &_r);

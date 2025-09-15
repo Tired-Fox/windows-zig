@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ICredentialFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreatePasswordCredential(self: *@This(), resource: ?HSTRING, userName: ?HSTRING, password: ?HSTRING) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.CreatePasswordCredential(@ptrCast(self), resource, userName, password, &_r);
@@ -24,6 +30,12 @@ pub const ICredentialFactory = extern struct {
 };
 pub const IKeyCredential = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -75,6 +87,12 @@ pub const IKeyCredential = extern struct {
 };
 pub const IKeyCredentialAttestationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCertificateChainBuffer(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_CertificateChainBuffer(@ptrCast(self), &_r);
@@ -112,6 +130,12 @@ pub const IKeyCredentialAttestationResult = extern struct {
 };
 pub const IKeyCredentialManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupportedAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsSupportedAsync(@ptrCast(self), &_r);
@@ -163,6 +187,12 @@ pub const IKeyCredentialManagerStatics = extern struct {
 };
 pub const IKeyCredentialOperationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResult(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Result(@ptrCast(self), &_r);
@@ -193,6 +223,12 @@ pub const IKeyCredentialOperationResult = extern struct {
 };
 pub const IKeyCredentialRetrievalResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCredential(self: *@This()) core.HResult!*KeyCredential {
         var _r: *KeyCredential = undefined;
         const _c = self.vtable.get_Credential(@ptrCast(self), &_r);
@@ -223,6 +259,12 @@ pub const IKeyCredentialRetrievalResult = extern struct {
 };
 pub const IPasswordCredential = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResource(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Resource(@ptrCast(self), &_r);
@@ -287,6 +329,12 @@ pub const IPasswordCredential = extern struct {
 };
 pub const IPasswordVault = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), credential: *PasswordCredential) core.HResult!void {
         const _c = self.vtable.Add(@ptrCast(self), credential);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -341,6 +389,12 @@ pub const IPasswordVault = extern struct {
 };
 pub const IWebAccount = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccountProvider(self: *@This()) core.HResult!*WebAccountProvider {
         var _r: *WebAccountProvider = undefined;
         const _c = self.vtable.get_WebAccountProvider(@ptrCast(self), &_r);
@@ -378,6 +432,12 @@ pub const IWebAccount = extern struct {
 };
 pub const IWebAccount2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -429,6 +489,12 @@ pub const IWebAccount2 = extern struct {
 };
 pub const IWebAccountFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWebAccount(self: *@This(), webAccountProvider: *WebAccountProvider, userName: ?HSTRING, state: WebAccountState) core.HResult!*WebAccount {
         var _r: *WebAccount = undefined;
         const _c = self.vtable.CreateWebAccount(@ptrCast(self), webAccountProvider, userName, state, &_r);
@@ -452,6 +518,12 @@ pub const IWebAccountFactory = extern struct {
 };
 pub const IWebAccountProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -489,6 +561,12 @@ pub const IWebAccountProvider = extern struct {
 };
 pub const IWebAccountProvider2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayPurpose(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayPurpose(@ptrCast(self), &_r);
@@ -519,6 +597,12 @@ pub const IWebAccountProvider2 = extern struct {
 };
 pub const IWebAccountProvider3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -542,6 +626,12 @@ pub const IWebAccountProvider3 = extern struct {
 };
 pub const IWebAccountProvider4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSystemProvider(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSystemProvider(@ptrCast(self), &_r);
@@ -565,6 +655,12 @@ pub const IWebAccountProvider4 = extern struct {
 };
 pub const IWebAccountProviderFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWebAccountProvider(self: *@This(), id: ?HSTRING, displayName: ?HSTRING, iconUri: *Uri) core.HResult!*WebAccountProvider {
         var _r: *WebAccountProvider = undefined;
         const _c = self.vtable.CreateWebAccountProvider(@ptrCast(self), id, displayName, iconUri, &_r);
@@ -588,6 +684,18 @@ pub const IWebAccountProviderFactory = extern struct {
 };
 pub const KeyCredential = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IKeyCredential = @ptrCast(self);
         return try this.getName();
@@ -616,6 +724,18 @@ pub const KeyCredential = extern struct {
 };
 pub const KeyCredentialAttestationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCertificateChainBuffer(self: *@This()) core.HResult!*IBuffer {
         const this: *IKeyCredentialAttestationResult = @ptrCast(self);
         return try this.getCertificateChainBuffer();
@@ -646,6 +766,15 @@ pub const KeyCredentialCreationOption = enum(i32) {
 };
 pub const KeyCredentialManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -675,6 +804,18 @@ pub const KeyCredentialManager = extern struct {
 };
 pub const KeyCredentialOperationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResult(self: *@This()) core.HResult!*IBuffer {
         const this: *IKeyCredentialOperationResult = @ptrCast(self);
         return try this.getResult();
@@ -691,6 +832,18 @@ pub const KeyCredentialOperationResult = extern struct {
 };
 pub const KeyCredentialRetrievalResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCredential(self: *@This()) core.HResult!*KeyCredential {
         const this: *IKeyCredentialRetrievalResult = @ptrCast(self);
         return try this.getCredential();
@@ -716,6 +869,18 @@ pub const KeyCredentialStatus = enum(i32) {
 };
 pub const PasswordCredential = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResource(self: *@This()) core.HResult!?HSTRING {
         const this: *IPasswordCredential = @ptrCast(self);
         return try this.getResource();
@@ -748,9 +913,6 @@ pub const PasswordCredential = extern struct {
         const this: *IPasswordCredential = @ptrCast(self);
         return try this.getProperties();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPasswordCredential.IID)));
@@ -769,6 +931,18 @@ pub const PasswordCredential = extern struct {
 };
 pub const PasswordCredentialPropertyStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(?HSTRING,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IObservableMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -811,9 +985,6 @@ pub const PasswordCredentialPropertyStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPropertySet.IID)));
@@ -827,6 +998,18 @@ pub const PasswordCredentialPropertyStore = extern struct {
 };
 pub const PasswordVault = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), credential: *PasswordCredential) core.HResult!void {
         const this: *IPasswordVault = @ptrCast(self);
         return try this.Add(credential);
@@ -851,9 +1034,6 @@ pub const PasswordVault = extern struct {
         const this: *IPasswordVault = @ptrCast(self);
         return try this.RetrieveAll();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPasswordVault.IID)));
@@ -867,6 +1047,18 @@ pub const PasswordVault = extern struct {
 };
 pub const WebAccount = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccountProvider(self: *@This()) core.HResult!*WebAccountProvider {
         const this: *IWebAccount = @ptrCast(self);
         return try this.getWebAccountProvider();
@@ -914,9 +1106,6 @@ pub const WebAccount = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SignOutAsyncWithClientId(clientId);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWebAccount(webAccountProvider: *WebAccountProvider, userName: ?HSTRING, state: WebAccountState) core.HResult!*WebAccount {
         const _f = try @This()._IWebAccountFactoryCache.get();
         return try _f.CreateWebAccount(webAccountProvider, userName, state);
@@ -936,6 +1125,18 @@ pub const WebAccountPictureSize = enum(i32) {
 };
 pub const WebAccountProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebAccountProvider = @ptrCast(self);
         return try this.getId();
@@ -975,9 +1176,6 @@ pub const WebAccountProvider = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProvider4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsSystemProvider();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWebAccountProvider(id: ?HSTRING, displayName: ?HSTRING, iconUri: *Uri) core.HResult!*WebAccountProvider {
         const _f = try @This()._IWebAccountProviderFactoryCache.get();

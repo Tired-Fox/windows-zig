@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AppointmentCalendarCancelMeetingRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarCancelMeetingRequest = @ptrCast(self);
         return try this.getAppointmentCalendarLocalId();
@@ -41,6 +53,18 @@ pub const AppointmentCalendarCancelMeetingRequest = extern struct {
 };
 pub const AppointmentCalendarCancelMeetingRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppointmentCalendarCancelMeetingRequest {
         const this: *IAppointmentCalendarCancelMeetingRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -57,6 +81,18 @@ pub const AppointmentCalendarCancelMeetingRequestEventArgs = extern struct {
 };
 pub const AppointmentCalendarCreateOrUpdateAppointmentRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarCreateOrUpdateAppointmentRequest = @ptrCast(self);
         return try this.getAppointmentCalendarLocalId();
@@ -89,6 +125,18 @@ pub const AppointmentCalendarCreateOrUpdateAppointmentRequest = extern struct {
 };
 pub const AppointmentCalendarCreateOrUpdateAppointmentRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppointmentCalendarCreateOrUpdateAppointmentRequest {
         const this: *IAppointmentCalendarCreateOrUpdateAppointmentRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -105,6 +153,18 @@ pub const AppointmentCalendarCreateOrUpdateAppointmentRequestEventArgs = extern 
 };
 pub const AppointmentCalendarForwardMeetingRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarForwardMeetingRequest = @ptrCast(self);
         return try this.getAppointmentCalendarLocalId();
@@ -149,6 +209,18 @@ pub const AppointmentCalendarForwardMeetingRequest = extern struct {
 };
 pub const AppointmentCalendarForwardMeetingRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppointmentCalendarForwardMeetingRequest {
         const this: *IAppointmentCalendarForwardMeetingRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -165,6 +237,18 @@ pub const AppointmentCalendarForwardMeetingRequestEventArgs = extern struct {
 };
 pub const AppointmentCalendarProposeNewTimeForMeetingRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarProposeNewTimeForMeetingRequest = @ptrCast(self);
         return try this.getAppointmentCalendarLocalId();
@@ -209,6 +293,18 @@ pub const AppointmentCalendarProposeNewTimeForMeetingRequest = extern struct {
 };
 pub const AppointmentCalendarProposeNewTimeForMeetingRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppointmentCalendarProposeNewTimeForMeetingRequest {
         const this: *IAppointmentCalendarProposeNewTimeForMeetingRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -225,6 +321,18 @@ pub const AppointmentCalendarProposeNewTimeForMeetingRequestEventArgs = extern s
 };
 pub const AppointmentCalendarSyncManagerSyncRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarSyncManagerSyncRequest = @ptrCast(self);
         return try this.getAppointmentCalendarLocalId();
@@ -245,6 +353,18 @@ pub const AppointmentCalendarSyncManagerSyncRequest = extern struct {
 };
 pub const AppointmentCalendarSyncManagerSyncRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppointmentCalendarSyncManagerSyncRequest {
         const this: *IAppointmentCalendarSyncManagerSyncRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -261,6 +381,18 @@ pub const AppointmentCalendarSyncManagerSyncRequestEventArgs = extern struct {
 };
 pub const AppointmentCalendarUpdateMeetingResponseRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentCalendarUpdateMeetingResponseRequest = @ptrCast(self);
         return try this.getAppointmentCalendarLocalId();
@@ -305,6 +437,18 @@ pub const AppointmentCalendarUpdateMeetingResponseRequest = extern struct {
 };
 pub const AppointmentCalendarUpdateMeetingResponseRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppointmentCalendarUpdateMeetingResponseRequest {
         const this: *IAppointmentCalendarUpdateMeetingResponseRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -321,6 +465,18 @@ pub const AppointmentCalendarUpdateMeetingResponseRequestEventArgs = extern stru
 };
 pub const AppointmentDataProviderConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSyncRequested(self: *@This(), handler: *TypedEventHandler(AppointmentDataProviderConnection,AppointmentCalendarSyncManagerSyncRequestEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IAppointmentDataProviderConnection = @ptrCast(self);
         return try this.addSyncRequested(handler);
@@ -381,6 +537,18 @@ pub const AppointmentDataProviderConnection = extern struct {
 };
 pub const AppointmentDataProviderTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*AppointmentDataProviderConnection {
         const this: *IAppointmentDataProviderTriggerDetails = @ptrCast(self);
         return try this.getConnection();
@@ -393,6 +561,12 @@ pub const AppointmentDataProviderTriggerDetails = extern struct {
 };
 pub const IAppointmentCalendarCancelMeetingRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentCalendarLocalId(@ptrCast(self), &_r);
@@ -465,6 +639,12 @@ pub const IAppointmentCalendarCancelMeetingRequest = extern struct {
 };
 pub const IAppointmentCalendarCancelMeetingRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppointmentCalendarCancelMeetingRequest {
         var _r: *AppointmentCalendarCancelMeetingRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -495,6 +675,12 @@ pub const IAppointmentCalendarCancelMeetingRequestEventArgs = extern struct {
 };
 pub const IAppointmentCalendarCreateOrUpdateAppointmentRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentCalendarLocalId(@ptrCast(self), &_r);
@@ -553,6 +739,12 @@ pub const IAppointmentCalendarCreateOrUpdateAppointmentRequest = extern struct {
 };
 pub const IAppointmentCalendarCreateOrUpdateAppointmentRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppointmentCalendarCreateOrUpdateAppointmentRequest {
         var _r: *AppointmentCalendarCreateOrUpdateAppointmentRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -583,6 +775,12 @@ pub const IAppointmentCalendarCreateOrUpdateAppointmentRequestEventArgs = extern
 };
 pub const IAppointmentCalendarForwardMeetingRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentCalendarLocalId(@ptrCast(self), &_r);
@@ -662,6 +860,12 @@ pub const IAppointmentCalendarForwardMeetingRequest = extern struct {
 };
 pub const IAppointmentCalendarForwardMeetingRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppointmentCalendarForwardMeetingRequest {
         var _r: *AppointmentCalendarForwardMeetingRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -692,6 +896,12 @@ pub const IAppointmentCalendarForwardMeetingRequestEventArgs = extern struct {
 };
 pub const IAppointmentCalendarProposeNewTimeForMeetingRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentCalendarLocalId(@ptrCast(self), &_r);
@@ -771,6 +981,12 @@ pub const IAppointmentCalendarProposeNewTimeForMeetingRequest = extern struct {
 };
 pub const IAppointmentCalendarProposeNewTimeForMeetingRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppointmentCalendarProposeNewTimeForMeetingRequest {
         var _r: *AppointmentCalendarProposeNewTimeForMeetingRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -801,6 +1017,12 @@ pub const IAppointmentCalendarProposeNewTimeForMeetingRequestEventArgs = extern 
 };
 pub const IAppointmentCalendarSyncManagerSyncRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentCalendarLocalId(@ptrCast(self), &_r);
@@ -838,6 +1060,12 @@ pub const IAppointmentCalendarSyncManagerSyncRequest = extern struct {
 };
 pub const IAppointmentCalendarSyncManagerSyncRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppointmentCalendarSyncManagerSyncRequest {
         var _r: *AppointmentCalendarSyncManagerSyncRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -868,6 +1096,12 @@ pub const IAppointmentCalendarSyncManagerSyncRequestEventArgs = extern struct {
 };
 pub const IAppointmentCalendarUpdateMeetingResponseRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendarLocalId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppointmentCalendarLocalId(@ptrCast(self), &_r);
@@ -947,6 +1181,12 @@ pub const IAppointmentCalendarUpdateMeetingResponseRequest = extern struct {
 };
 pub const IAppointmentCalendarUpdateMeetingResponseRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*AppointmentCalendarUpdateMeetingResponseRequest {
         var _r: *AppointmentCalendarUpdateMeetingResponseRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -977,6 +1217,12 @@ pub const IAppointmentCalendarUpdateMeetingResponseRequestEventArgs = extern str
 };
 pub const IAppointmentDataProviderConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSyncRequested(self: *@This(), handler: *TypedEventHandler(AppointmentDataProviderConnection,AppointmentCalendarSyncManagerSyncRequestEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SyncRequested(@ptrCast(self), handler, &_r);
@@ -1070,6 +1316,12 @@ pub const IAppointmentDataProviderConnection = extern struct {
 };
 pub const IAppointmentDataProviderTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*AppointmentDataProviderConnection {
         var _r: *AppointmentDataProviderConnection = undefined;
         const _c = self.vtable.get_Connection(@ptrCast(self), &_r);
@@ -1091,6 +1343,7 @@ pub const IAppointmentDataProviderTriggerDetails = extern struct {
         get_Connection: *const fn(self: *anyopaque, _r: **AppointmentDataProviderConnection) callconv(.winapi) HRESULT,
     };
 };
+const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;
 const Deferral = @import("../../Foundation.zig").Deferral;
 const Appointment = @import("../Appointments.zig").Appointment;

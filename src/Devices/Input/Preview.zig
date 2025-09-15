@@ -8,6 +8,18 @@ pub const GazeDeviceConfigurationStatePreview = enum(i32) {
 };
 pub const GazeDevicePreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!u32 {
         const this: *IGazeDevicePreview = @ptrCast(self);
         return try this.getId();
@@ -44,6 +56,18 @@ pub const GazeDevicePreview = extern struct {
 };
 pub const GazeDeviceWatcherAddedPreviewEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDevice(self: *@This()) core.HResult!*GazeDevicePreview {
         const this: *IGazeDeviceWatcherAddedPreviewEventArgs = @ptrCast(self);
         return try this.getDevice();
@@ -56,6 +80,18 @@ pub const GazeDeviceWatcherAddedPreviewEventArgs = extern struct {
 };
 pub const GazeDeviceWatcherPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAdded(self: *@This(), handler: *TypedEventHandler(GazeDeviceWatcherPreview,GazeDeviceWatcherAddedPreviewEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IGazeDeviceWatcherPreview = @ptrCast(self);
         return try this.addAdded(handler);
@@ -104,6 +140,18 @@ pub const GazeDeviceWatcherPreview = extern struct {
 };
 pub const GazeDeviceWatcherRemovedPreviewEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDevice(self: *@This()) core.HResult!*GazeDevicePreview {
         const this: *IGazeDeviceWatcherRemovedPreviewEventArgs = @ptrCast(self);
         return try this.getDevice();
@@ -116,6 +164,18 @@ pub const GazeDeviceWatcherRemovedPreviewEventArgs = extern struct {
 };
 pub const GazeDeviceWatcherUpdatedPreviewEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDevice(self: *@This()) core.HResult!*GazeDevicePreview {
         const this: *IGazeDeviceWatcherUpdatedPreviewEventArgs = @ptrCast(self);
         return try this.getDevice();
@@ -128,6 +188,18 @@ pub const GazeDeviceWatcherUpdatedPreviewEventArgs = extern struct {
 };
 pub const GazeEnteredPreviewEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         const this: *IGazeEnteredPreviewEventArgs = @ptrCast(self);
         return try this.getHandled();
@@ -148,6 +220,18 @@ pub const GazeEnteredPreviewEventArgs = extern struct {
 };
 pub const GazeExitedPreviewEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         const this: *IGazeExitedPreviewEventArgs = @ptrCast(self);
         return try this.getHandled();
@@ -168,6 +252,18 @@ pub const GazeExitedPreviewEventArgs = extern struct {
 };
 pub const GazeInputSourcePreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addGazeMoved(self: *@This(), handler: *TypedEventHandler(GazeInputSourcePreview,GazeMovedPreviewEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IGazeInputSourcePreview = @ptrCast(self);
         return try this.addGazeMoved(handler);
@@ -192,9 +288,6 @@ pub const GazeInputSourcePreview = extern struct {
         const this: *IGazeInputSourcePreview = @ptrCast(self);
         return try this.removeGazeExited(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*GazeInputSourcePreview {
         const _f = try @This()._IGazeInputSourcePreviewStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -212,6 +305,18 @@ pub const GazeInputSourcePreview = extern struct {
 };
 pub const GazeMovedPreviewEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         const this: *IGazeMovedPreviewEventArgs = @ptrCast(self);
         return try this.getHandled();
@@ -236,6 +341,18 @@ pub const GazeMovedPreviewEventArgs = extern struct {
 };
 pub const GazePointPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceDevice(self: *@This()) core.HResult!*GazeDevicePreview {
         const this: *IGazePointPreview = @ptrCast(self);
         return try this.getSourceDevice();
@@ -264,6 +381,12 @@ pub const GazePointPreview = extern struct {
 };
 pub const IGazeDevicePreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -329,6 +452,12 @@ pub const IGazeDevicePreview = extern struct {
 };
 pub const IGazeDeviceWatcherAddedPreviewEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDevice(self: *@This()) core.HResult!*GazeDevicePreview {
         var _r: *GazeDevicePreview = undefined;
         const _c = self.vtable.get_Device(@ptrCast(self), &_r);
@@ -352,6 +481,12 @@ pub const IGazeDeviceWatcherAddedPreviewEventArgs = extern struct {
 };
 pub const IGazeDeviceWatcherPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAdded(self: *@This(), handler: *TypedEventHandler(GazeDeviceWatcherPreview,GazeDeviceWatcherAddedPreviewEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Added(@ptrCast(self), handler, &_r);
@@ -426,6 +561,12 @@ pub const IGazeDeviceWatcherPreview = extern struct {
 };
 pub const IGazeDeviceWatcherRemovedPreviewEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDevice(self: *@This()) core.HResult!*GazeDevicePreview {
         var _r: *GazeDevicePreview = undefined;
         const _c = self.vtable.get_Device(@ptrCast(self), &_r);
@@ -449,6 +590,12 @@ pub const IGazeDeviceWatcherRemovedPreviewEventArgs = extern struct {
 };
 pub const IGazeDeviceWatcherUpdatedPreviewEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDevice(self: *@This()) core.HResult!*GazeDevicePreview {
         var _r: *GazeDevicePreview = undefined;
         const _c = self.vtable.get_Device(@ptrCast(self), &_r);
@@ -472,6 +619,12 @@ pub const IGazeDeviceWatcherUpdatedPreviewEventArgs = extern struct {
 };
 pub const IGazeEnteredPreviewEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
@@ -507,6 +660,12 @@ pub const IGazeEnteredPreviewEventArgs = extern struct {
 };
 pub const IGazeExitedPreviewEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
@@ -542,6 +701,12 @@ pub const IGazeExitedPreviewEventArgs = extern struct {
 };
 pub const IGazeInputSourcePreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addGazeMoved(self: *@This(), handler: *TypedEventHandler(GazeInputSourcePreview,GazeMovedPreviewEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_GazeMoved(@ptrCast(self), handler, &_r);
@@ -594,6 +759,12 @@ pub const IGazeInputSourcePreview = extern struct {
 };
 pub const IGazeInputSourcePreviewStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*GazeInputSourcePreview {
         var _r: *GazeInputSourcePreview = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -624,6 +795,12 @@ pub const IGazeInputSourcePreviewStatics = extern struct {
 };
 pub const IGazeMovedPreviewEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
@@ -666,6 +843,12 @@ pub const IGazeMovedPreviewEventArgs = extern struct {
 };
 pub const IGazePointPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceDevice(self: *@This()) core.HResult!*GazeDevicePreview {
         var _r: *GazeDevicePreview = undefined;
         const _c = self.vtable.get_SourceDevice(@ptrCast(self), &_r);
@@ -715,10 +898,10 @@ pub const IGazePointPreview = extern struct {
         get_HidInputReport: *const fn(self: *anyopaque, _r: **HidInputReport) callconv(.winapi) HRESULT,
     };
 };
+const IUnknown = @import("../../root.zig").IUnknown;
 const HSTRING = @import("../../root.zig").HSTRING;
 const Guid = @import("../../root.zig").Guid;
 const IVectorView = @import("../../Foundation/Collections.zig").IVectorView;
-const IUnknown = @import("../../root.zig").IUnknown;
 const IInspectable = @import("../../Foundation.zig").IInspectable;
 const IVector = @import("../../Foundation/Collections.zig").IVector;
 const IReference = @import("../../Foundation.zig").IReference;

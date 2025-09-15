@@ -7,6 +7,18 @@ pub const AddFileResult = enum(i32) {
 };
 pub const FileOpenPickerUI = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddFile(self: *@This(), id: ?HSTRING, file: *IStorageFile) core.HResult!AddFileResult {
         const this: *IFileOpenPickerUI = @ptrCast(self);
         return try this.AddFile(id, file);
@@ -67,6 +79,18 @@ pub const FileOpenPickerUI = extern struct {
 };
 pub const FileRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileRemovedEventArgs = @ptrCast(self);
         return try this.getId();
@@ -79,6 +103,18 @@ pub const FileRemovedEventArgs = extern struct {
 };
 pub const FileSavePickerUI = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileSavePickerUI = @ptrCast(self);
         return try this.getTitle();
@@ -131,6 +167,12 @@ pub const FileSelectionMode = enum(i32) {
 };
 pub const IFileOpenPickerUI = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddFile(self: *@This(), id: ?HSTRING, file: *IStorageFile) core.HResult!AddFileResult {
         var _r: AddFileResult = undefined;
         const _c = self.vtable.AddFile(@ptrCast(self), id, file, &_r);
@@ -230,6 +272,12 @@ pub const IFileOpenPickerUI = extern struct {
 };
 pub const IFileRemovedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -253,6 +301,12 @@ pub const IFileRemovedEventArgs = extern struct {
 };
 pub const IFileSavePickerUI = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -333,6 +387,12 @@ pub const IFileSavePickerUI = extern struct {
 };
 pub const IPickerClosingDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -354,6 +414,12 @@ pub const IPickerClosingDeferral = extern struct {
 };
 pub const IPickerClosingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClosingOperation(self: *@This()) core.HResult!*PickerClosingOperation {
         var _r: *PickerClosingOperation = undefined;
         const _c = self.vtable.get_ClosingOperation(@ptrCast(self), &_r);
@@ -384,6 +450,12 @@ pub const IPickerClosingEventArgs = extern struct {
 };
 pub const IPickerClosingOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*PickerClosingDeferral {
         var _r: *PickerClosingDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -414,6 +486,12 @@ pub const IPickerClosingOperation = extern struct {
 };
 pub const ITargetFileRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetFile(self: *@This()) core.HResult!*IStorageFile {
         var _r: *IStorageFile = undefined;
         const _c = self.vtable.get_TargetFile(@ptrCast(self), &_r);
@@ -449,6 +527,12 @@ pub const ITargetFileRequest = extern struct {
 };
 pub const ITargetFileRequestDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -470,6 +554,12 @@ pub const ITargetFileRequestDeferral = extern struct {
 };
 pub const ITargetFileRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*TargetFileRequest {
         var _r: *TargetFileRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -493,6 +583,18 @@ pub const ITargetFileRequestedEventArgs = extern struct {
 };
 pub const PickerClosingDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IPickerClosingDeferral = @ptrCast(self);
         return try this.Complete();
@@ -505,6 +607,18 @@ pub const PickerClosingDeferral = extern struct {
 };
 pub const PickerClosingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClosingOperation(self: *@This()) core.HResult!*PickerClosingOperation {
         const this: *IPickerClosingEventArgs = @ptrCast(self);
         return try this.getClosingOperation();
@@ -521,6 +635,18 @@ pub const PickerClosingEventArgs = extern struct {
 };
 pub const PickerClosingOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*PickerClosingDeferral {
         const this: *IPickerClosingOperation = @ptrCast(self);
         return try this.GetDeferral();
@@ -542,6 +668,18 @@ pub const SetFileNameResult = enum(i32) {
 };
 pub const TargetFileRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetFile(self: *@This()) core.HResult!*IStorageFile {
         const this: *ITargetFileRequest = @ptrCast(self);
         return try this.getTargetFile();
@@ -562,6 +700,18 @@ pub const TargetFileRequest = extern struct {
 };
 pub const TargetFileRequestDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *ITargetFileRequestDeferral = @ptrCast(self);
         return try this.Complete();
@@ -574,6 +724,18 @@ pub const TargetFileRequestDeferral = extern struct {
 };
 pub const TargetFileRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*TargetFileRequest {
         const this: *ITargetFileRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -584,6 +746,7 @@ pub const TargetFileRequestedEventArgs = extern struct {
     pub const IID: Guid = ITargetFileRequestedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ITargetFileRequestedEventArgs.SIGNATURE);
 };
+const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;
 const IVectorView = @import("../../Foundation/Collections.zig").IVectorView;
 const IInspectable = @import("../../Foundation.zig").IInspectable;

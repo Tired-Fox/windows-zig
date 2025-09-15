@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IInstalledVoicesStatic = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllVoices(self: *@This()) core.HResult!*IVectorView(VoiceInformation) {
         var _r: *IVectorView(VoiceInformation) = undefined;
         const _c = self.vtable.get_AllVoices(@ptrCast(self), &_r);
@@ -31,6 +37,12 @@ pub const IInstalledVoicesStatic = extern struct {
 };
 pub const IInstalledVoicesStatic2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TrySetDefaultVoiceAsync(self: *@This(), voice: *VoiceInformation) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TrySetDefaultVoiceAsync(@ptrCast(self), voice, &_r);
@@ -54,6 +66,12 @@ pub const IInstalledVoicesStatic2 = extern struct {
 };
 pub const ISpeechSynthesisStream = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMarkers(self: *@This()) core.HResult!*IVectorView(IMediaMarker) {
         var _r: *IVectorView(IMediaMarker) = undefined;
         const _c = self.vtable.get_Markers(@ptrCast(self), &_r);
@@ -77,6 +95,12 @@ pub const ISpeechSynthesisStream = extern struct {
 };
 pub const ISpeechSynthesizer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SynthesizeTextToStreamAsync(self: *@This(), text: ?HSTRING) core.HResult!*IAsyncOperation(SpeechSynthesisStream) {
         var _r: *IAsyncOperation(SpeechSynthesisStream) = undefined;
         const _c = self.vtable.SynthesizeTextToStreamAsync(@ptrCast(self), text, &_r);
@@ -119,6 +143,12 @@ pub const ISpeechSynthesizer = extern struct {
 };
 pub const ISpeechSynthesizer2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOptions(self: *@This()) core.HResult!*SpeechSynthesizerOptions {
         var _r: *SpeechSynthesizerOptions = undefined;
         const _c = self.vtable.get_Options(@ptrCast(self), &_r);
@@ -142,6 +172,12 @@ pub const ISpeechSynthesizer2 = extern struct {
 };
 pub const ISpeechSynthesizerOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIncludeWordBoundaryMetadata(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IncludeWordBoundaryMetadata(@ptrCast(self), &_r);
@@ -182,6 +218,12 @@ pub const ISpeechSynthesizerOptions = extern struct {
 };
 pub const ISpeechSynthesizerOptions2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAudioVolume(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_AudioVolume(@ptrCast(self), &_r);
@@ -234,6 +276,12 @@ pub const ISpeechSynthesizerOptions2 = extern struct {
 };
 pub const ISpeechSynthesizerOptions3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppendedSilence(self: *@This()) core.HResult!SpeechAppendedSilence {
         var _r: SpeechAppendedSilence = undefined;
         const _c = self.vtable.get_AppendedSilence(@ptrCast(self), &_r);
@@ -274,6 +322,12 @@ pub const ISpeechSynthesizerOptions3 = extern struct {
 };
 pub const IVoiceInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -333,6 +387,18 @@ pub const SpeechPunctuationSilence = enum(i32) {
 };
 pub const SpeechSynthesisStream = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMarkers(self: *@This()) core.HResult!*IVectorView(IMediaMarker) {
         const this: *ISpeechSynthesisStream = @ptrCast(self);
         return try this.getMarkers();
@@ -450,6 +516,18 @@ pub const SpeechSynthesisStream = extern struct {
 };
 pub const SpeechSynthesizer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SynthesizeTextToStreamAsync(self: *@This(), text: ?HSTRING) core.HResult!*IAsyncOperation(SpeechSynthesisStream) {
         const this: *ISpeechSynthesizer = @ptrCast(self);
         return try this.SynthesizeTextToStreamAsync(text);
@@ -480,9 +558,6 @@ pub const SpeechSynthesizer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOptions();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISpeechSynthesizer.IID)));
@@ -510,6 +585,18 @@ pub const SpeechSynthesizer = extern struct {
 };
 pub const SpeechSynthesizerOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIncludeWordBoundaryMetadata(self: *@This()) core.HResult!bool {
         const this: *ISpeechSynthesizerOptions = @ptrCast(self);
         return try this.getIncludeWordBoundaryMetadata();
@@ -608,6 +695,18 @@ pub const VoiceGender = enum(i32) {
 };
 pub const VoiceInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IVoiceInformation = @ptrCast(self);
         return try this.getDisplayName();

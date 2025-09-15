@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const BackgroundAudioTrack = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrimTimeFromStart(self: *@This()) core.HResult!TimeSpan {
         const this: *IBackgroundAudioTrack = @ptrCast(self);
         return try this.getTrimTimeFromStart();
@@ -57,9 +69,6 @@ pub const BackgroundAudioTrack = extern struct {
         const this: *IBackgroundAudioTrack = @ptrCast(self);
         return try this.getAudioEffectDefinitions();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateFromEmbeddedAudioTrack(embeddedAudioTrack: *EmbeddedAudioTrack) core.HResult!*BackgroundAudioTrack {
         const _f = try @This()._IBackgroundAudioTrackStaticsCache.get();
         return try _f.CreateFromEmbeddedAudioTrack(embeddedAudioTrack);
@@ -77,6 +86,18 @@ pub const BackgroundAudioTrack = extern struct {
 };
 pub const EmbeddedAudioTrack = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAudioEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         const this: *IEmbeddedAudioTrack = @ptrCast(self);
         return try this.GetAudioEncodingProperties();
@@ -89,6 +110,12 @@ pub const EmbeddedAudioTrack = extern struct {
 };
 pub const IBackgroundAudioTrack = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrimTimeFromStart(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_TrimTimeFromStart(@ptrCast(self), &_r);
@@ -195,6 +222,12 @@ pub const IBackgroundAudioTrack = extern struct {
 };
 pub const IBackgroundAudioTrackStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromEmbeddedAudioTrack(self: *@This(), embeddedAudioTrack: *EmbeddedAudioTrack) core.HResult!*BackgroundAudioTrack {
         var _r: *BackgroundAudioTrack = undefined;
         const _c = self.vtable.CreateFromEmbeddedAudioTrack(@ptrCast(self), embeddedAudioTrack, &_r);
@@ -225,6 +258,12 @@ pub const IBackgroundAudioTrackStatics = extern struct {
 };
 pub const IEmbeddedAudioTrack = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAudioEncodingProperties(self: *@This()) core.HResult!*AudioEncodingProperties {
         var _r: *AudioEncodingProperties = undefined;
         const _c = self.vtable.GetAudioEncodingProperties(@ptrCast(self), &_r);
@@ -248,6 +287,12 @@ pub const IEmbeddedAudioTrack = extern struct {
 };
 pub const IMediaClip = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrimTimeFromStart(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_TrimTimeFromStart(@ptrCast(self), &_r);
@@ -382,6 +427,12 @@ pub const IMediaClip = extern struct {
 };
 pub const IMediaClipStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromColor(self: *@This(), color: Color, originalDuration: TimeSpan) core.HResult!*MediaClip {
         var _r: *MediaClip = undefined;
         const _c = self.vtable.CreateFromColor(@ptrCast(self), color, originalDuration, &_r);
@@ -419,6 +470,12 @@ pub const IMediaClipStatics = extern struct {
 };
 pub const IMediaClipStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromSurface(self: *@This(), surface: *IDirect3DSurface, originalDuration: TimeSpan) core.HResult!*MediaClip {
         var _r: *MediaClip = undefined;
         const _c = self.vtable.CreateFromSurface(@ptrCast(self), surface, originalDuration, &_r);
@@ -442,6 +499,12 @@ pub const IMediaClipStatics2 = extern struct {
 };
 pub const IMediaComposition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
@@ -563,6 +626,12 @@ pub const IMediaComposition = extern struct {
 };
 pub const IMediaComposition2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOverlayLayers(self: *@This()) core.HResult!*IVector(MediaOverlayLayer) {
         var _r: *IVector(MediaOverlayLayer) = undefined;
         const _c = self.vtable.get_OverlayLayers(@ptrCast(self), &_r);
@@ -586,6 +655,12 @@ pub const IMediaComposition2 = extern struct {
 };
 pub const IMediaCompositionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadAsync(self: *@This(), file: *StorageFile) core.HResult!*IAsyncOperation(MediaComposition) {
         var _r: *IAsyncOperation(MediaComposition) = undefined;
         const _c = self.vtable.LoadAsync(@ptrCast(self), file, &_r);
@@ -609,6 +684,12 @@ pub const IMediaCompositionStatics = extern struct {
 };
 pub const IMediaOverlay = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -687,6 +768,12 @@ pub const IMediaOverlay = extern struct {
 };
 pub const IMediaOverlayFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), clip: *MediaClip) core.HResult!*MediaOverlay {
         var _r: *MediaOverlay = undefined;
         const _c = self.vtable.Create(@ptrCast(self), clip, &_r);
@@ -717,6 +804,12 @@ pub const IMediaOverlayFactory = extern struct {
 };
 pub const IMediaOverlayLayer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Clone(self: *@This()) core.HResult!*MediaOverlayLayer {
         var _r: *MediaOverlayLayer = undefined;
         const _c = self.vtable.Clone(@ptrCast(self), &_r);
@@ -754,6 +847,12 @@ pub const IMediaOverlayLayer = extern struct {
 };
 pub const IMediaOverlayLayerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithCompositorDefinition(self: *@This(), compositorDefinition: *IVideoCompositorDefinition) core.HResult!*MediaOverlayLayer {
         var _r: *MediaOverlayLayer = undefined;
         const _c = self.vtable.CreateWithCompositorDefinition(@ptrCast(self), compositorDefinition, &_r);
@@ -777,6 +876,18 @@ pub const IMediaOverlayLayerFactory = extern struct {
 };
 pub const MediaClip = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrimTimeFromStart(self: *@This()) core.HResult!TimeSpan {
         const this: *IMediaClip = @ptrCast(self);
         return try this.getTrimTimeFromStart();
@@ -849,9 +960,6 @@ pub const MediaClip = extern struct {
         const this: *IMediaClip = @ptrCast(self);
         return try this.getVideoEffectDefinitions();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateFromSurface(surface: *IDirect3DSurface, originalDuration: TimeSpan) core.HResult!*MediaClip {
         const _f = try @This()._IMediaClipStatics2Cache.get();
         return try _f.CreateFromSurface(surface, originalDuration);
@@ -878,6 +986,18 @@ pub const MediaClip = extern struct {
 };
 pub const MediaComposition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDuration(self: *@This()) core.HResult!TimeSpan {
         const this: *IMediaComposition = @ptrCast(self);
         return try this.getDuration();
@@ -945,9 +1065,6 @@ pub const MediaComposition = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOverlayLayers();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaComposition.IID)));
@@ -966,6 +1083,18 @@ pub const MediaComposition = extern struct {
 };
 pub const MediaOverlay = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Rect {
         const this: *IMediaOverlay = @ptrCast(self);
         return try this.getPosition();
@@ -1006,9 +1135,6 @@ pub const MediaOverlay = extern struct {
         const this: *IMediaOverlay = @ptrCast(self);
         return try this.putAudioEnabled(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(clip: *MediaClip) core.HResult!*MediaOverlay {
         const _f = try @This()._IMediaOverlayFactoryCache.get();
         return try _f.Create(clip);
@@ -1026,6 +1152,18 @@ pub const MediaOverlay = extern struct {
 };
 pub const MediaOverlayLayer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Clone(self: *@This()) core.HResult!*MediaOverlayLayer {
         const this: *IMediaOverlayLayer = @ptrCast(self);
         return try this.Clone();
@@ -1037,9 +1175,6 @@ pub const MediaOverlayLayer = extern struct {
     pub fn getCustomCompositorDefinition(self: *@This()) core.HResult!*IVideoCompositorDefinition {
         const this: *IMediaOverlayLayer = @ptrCast(self);
         return try this.getCustomCompositorDefinition();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

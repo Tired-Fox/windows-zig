@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IMapControlBusinessLandmarkClickEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
         var _r: *IVectorView(LocalLocation) = undefined;
         const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
@@ -24,6 +30,12 @@ pub const IMapControlBusinessLandmarkClickEventArgs = extern struct {
 };
 pub const IMapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
         var _r: *IVectorView(LocalLocation) = undefined;
         const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
@@ -47,6 +59,12 @@ pub const IMapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
 };
 pub const IMapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
         var _r: *IVectorView(LocalLocation) = undefined;
         const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
@@ -70,6 +88,12 @@ pub const IMapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
 };
 pub const IMapControlBusinessLandmarkRightTappedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
         var _r: *IVectorView(LocalLocation) = undefined;
         const _c = self.vtable.get_LocalLocations(@ptrCast(self), &_r);
@@ -93,6 +117,12 @@ pub const IMapControlBusinessLandmarkRightTappedEventArgs = extern struct {
 };
 pub const IMapControlDataHelper = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addBusinessLandmarkClick(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkClickEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BusinessLandmarkClick(@ptrCast(self), value, &_r);
@@ -157,6 +187,12 @@ pub const IMapControlDataHelper = extern struct {
 };
 pub const IMapControlDataHelper2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addBusinessLandmarkPointerEntered(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkPointerEnteredEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BusinessLandmarkPointerEntered(@ptrCast(self), value, &_r);
@@ -221,6 +257,12 @@ pub const IMapControlDataHelper2 = extern struct {
 };
 pub const IMapControlDataHelperFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), map: *MapControl) core.HResult!*MapControlDataHelper {
         var _r: *MapControlDataHelper = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), map, &_r);
@@ -244,6 +286,12 @@ pub const IMapControlDataHelperFactory = extern struct {
 };
 pub const IMapControlDataHelperStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMapControl(self: *@This(), rasterRenderMode: bool) core.HResult!*MapControl {
         var _r: *MapControl = undefined;
         const _c = self.vtable.CreateMapControl(@ptrCast(self), rasterRenderMode, &_r);
@@ -267,6 +315,12 @@ pub const IMapControlDataHelperStatics = extern struct {
 };
 pub const IMapControlTransitFeatureClickEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -304,6 +358,12 @@ pub const IMapControlTransitFeatureClickEventArgs = extern struct {
 };
 pub const IMapControlTransitFeaturePointerEnteredEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -341,6 +401,12 @@ pub const IMapControlTransitFeaturePointerEnteredEventArgs = extern struct {
 };
 pub const IMapControlTransitFeaturePointerExitedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -378,6 +444,12 @@ pub const IMapControlTransitFeaturePointerExitedEventArgs = extern struct {
 };
 pub const IMapControlTransitFeatureRightTappedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -415,12 +487,21 @@ pub const IMapControlTransitFeatureRightTappedEventArgs = extern struct {
 };
 pub const MapControlBusinessLandmarkClickEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
-        const this: *IMapControlBusinessLandmarkClickEventArgs = @ptrCast(self);
-        return try this.getLocalLocations();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
+        const this: *IMapControlBusinessLandmarkClickEventArgs = @ptrCast(self);
+        return try this.getLocalLocations();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -435,12 +516,21 @@ pub const MapControlBusinessLandmarkClickEventArgs = extern struct {
 };
 pub const MapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
-        const this: *IMapControlBusinessLandmarkPointerEnteredEventArgs = @ptrCast(self);
-        return try this.getLocalLocations();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
+        const this: *IMapControlBusinessLandmarkPointerEnteredEventArgs = @ptrCast(self);
+        return try this.getLocalLocations();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -455,12 +545,21 @@ pub const MapControlBusinessLandmarkPointerEnteredEventArgs = extern struct {
 };
 pub const MapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
-        const this: *IMapControlBusinessLandmarkPointerExitedEventArgs = @ptrCast(self);
-        return try this.getLocalLocations();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
+        const this: *IMapControlBusinessLandmarkPointerExitedEventArgs = @ptrCast(self);
+        return try this.getLocalLocations();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -475,12 +574,21 @@ pub const MapControlBusinessLandmarkPointerExitedEventArgs = extern struct {
 };
 pub const MapControlBusinessLandmarkRightTappedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
-        const this: *IMapControlBusinessLandmarkRightTappedEventArgs = @ptrCast(self);
-        return try this.getLocalLocations();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocalLocations(self: *@This()) core.HResult!*IVectorView(LocalLocation) {
+        const this: *IMapControlBusinessLandmarkRightTappedEventArgs = @ptrCast(self);
+        return try this.getLocalLocations();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -495,6 +603,18 @@ pub const MapControlBusinessLandmarkRightTappedEventArgs = extern struct {
 };
 pub const MapControlDataHelper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addBusinessLandmarkClick(self: *@This(), value: *TypedEventHandler(MapControl,MapControlBusinessLandmarkClickEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IMapControlDataHelper = @ptrCast(self);
         return try this.addBusinessLandmarkClick(value);
@@ -583,9 +703,6 @@ pub const MapControlDataHelper = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeTransitFeaturePointerExited(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(map: *MapControl) core.HResult!*MapControlDataHelper {
         const _f = try @This()._IMapControlDataHelperFactoryCache.get();
         return try _f.CreateInstance(map);
@@ -604,6 +721,18 @@ pub const MapControlDataHelper = extern struct {
 };
 pub const MapControlTransitFeatureClickEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMapControlTransitFeatureClickEventArgs = @ptrCast(self);
         return try this.getDisplayName();
@@ -615,9 +744,6 @@ pub const MapControlTransitFeatureClickEventArgs = extern struct {
     pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IMapControlTransitFeatureClickEventArgs = @ptrCast(self);
         return try this.getTransitProperties();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -632,6 +758,18 @@ pub const MapControlTransitFeatureClickEventArgs = extern struct {
 };
 pub const MapControlTransitFeaturePointerEnteredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMapControlTransitFeaturePointerEnteredEventArgs = @ptrCast(self);
         return try this.getDisplayName();
@@ -643,9 +781,6 @@ pub const MapControlTransitFeaturePointerEnteredEventArgs = extern struct {
     pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IMapControlTransitFeaturePointerEnteredEventArgs = @ptrCast(self);
         return try this.getTransitProperties();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -660,6 +795,18 @@ pub const MapControlTransitFeaturePointerEnteredEventArgs = extern struct {
 };
 pub const MapControlTransitFeaturePointerExitedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMapControlTransitFeaturePointerExitedEventArgs = @ptrCast(self);
         return try this.getDisplayName();
@@ -671,9 +818,6 @@ pub const MapControlTransitFeaturePointerExitedEventArgs = extern struct {
     pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IMapControlTransitFeaturePointerExitedEventArgs = @ptrCast(self);
         return try this.getTransitProperties();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -688,6 +832,18 @@ pub const MapControlTransitFeaturePointerExitedEventArgs = extern struct {
 };
 pub const MapControlTransitFeatureRightTappedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMapControlTransitFeatureRightTappedEventArgs = @ptrCast(self);
         return try this.getDisplayName();
@@ -699,9 +855,6 @@ pub const MapControlTransitFeatureRightTappedEventArgs = extern struct {
     pub fn getTransitProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IMapControlTransitFeatureRightTappedEventArgs = @ptrCast(self);
         return try this.getTransitProperties();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -716,6 +869,15 @@ pub const MapControlTransitFeatureRightTappedEventArgs = extern struct {
 };
 pub const MapTileDataSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -732,6 +894,18 @@ pub const MapTileDataSource = extern struct {
 };
 pub const CustomMapTileDataSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addBitmapRequested(self: *@This(), handler: *TypedEventHandler(CustomMapTileDataSource,MapTileBitmapRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *ICustomMapTileDataSource = @ptrCast(self);
         return try this.addBitmapRequested(handler);
@@ -739,9 +913,6 @@ pub const CustomMapTileDataSource = extern struct {
     pub fn removeBitmapRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *ICustomMapTileDataSource = @ptrCast(self);
         return try this.removeBitmapRequested(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CustomMapTileDataSource {
         const _f = try @This()._ICustomMapTileDataSourceFactoryCache.get();
@@ -756,6 +927,18 @@ pub const CustomMapTileDataSource = extern struct {
 };
 pub const HttpMapTileDataSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUriFormatString(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpMapTileDataSource = @ptrCast(self);
         return try this.getUriFormatString();
@@ -784,9 +967,6 @@ pub const HttpMapTileDataSource = extern struct {
         const this: *IHttpMapTileDataSource = @ptrCast(self);
         return try this.removeUriRequested(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HttpMapTileDataSource {
         const _f = try @This()._IHttpMapTileDataSourceFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
@@ -804,6 +984,12 @@ pub const HttpMapTileDataSource = extern struct {
 };
 pub const ICustomMapTileDataSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addBitmapRequested(self: *@This(), handler: *TypedEventHandler(CustomMapTileDataSource,MapTileBitmapRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BitmapRequested(@ptrCast(self), handler, &_r);
@@ -832,6 +1018,12 @@ pub const ICustomMapTileDataSource = extern struct {
 };
 pub const ICustomMapTileDataSourceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CustomMapTileDataSource {
         var _r: *CustomMapTileDataSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -855,6 +1047,12 @@ pub const ICustomMapTileDataSourceFactory = extern struct {
 };
 pub const IHttpMapTileDataSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUriFormatString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UriFormatString(@ptrCast(self), &_r);
@@ -914,6 +1112,12 @@ pub const IHttpMapTileDataSource = extern struct {
 };
 pub const IHttpMapTileDataSourceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HttpMapTileDataSource {
         var _r: *HttpMapTileDataSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -944,6 +1148,12 @@ pub const IHttpMapTileDataSourceFactory = extern struct {
 };
 pub const ILocalMapTileDataSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUriFormatString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UriFormatString(@ptrCast(self), &_r);
@@ -984,6 +1194,12 @@ pub const ILocalMapTileDataSource = extern struct {
 };
 pub const ILocalMapTileDataSourceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*LocalMapTileDataSource {
         var _r: *LocalMapTileDataSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -1014,6 +1230,12 @@ pub const ILocalMapTileDataSourceFactory = extern struct {
 };
 pub const IMapActualCameraChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCamera(self: *@This()) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.get_Camera(@ptrCast(self), &_r);
@@ -1037,6 +1259,12 @@ pub const IMapActualCameraChangedEventArgs = extern struct {
 };
 pub const IMapActualCameraChangedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeReason(self: *@This()) core.HResult!MapCameraChangeReason {
         var _r: MapCameraChangeReason = undefined;
         const _c = self.vtable.get_ChangeReason(@ptrCast(self), &_r);
@@ -1060,6 +1288,12 @@ pub const IMapActualCameraChangedEventArgs2 = extern struct {
 };
 pub const IMapActualCameraChangingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCamera(self: *@This()) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.get_Camera(@ptrCast(self), &_r);
@@ -1083,6 +1317,12 @@ pub const IMapActualCameraChangingEventArgs = extern struct {
 };
 pub const IMapActualCameraChangingEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeReason(self: *@This()) core.HResult!MapCameraChangeReason {
         var _r: MapCameraChangeReason = undefined;
         const _c = self.vtable.get_ChangeReason(@ptrCast(self), &_r);
@@ -1106,6 +1346,12 @@ pub const IMapActualCameraChangingEventArgs2 = extern struct {
 };
 pub const IMapBillboard = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
@@ -1177,6 +1423,12 @@ pub const IMapBillboard = extern struct {
 };
 pub const IMapBillboardFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceFromCamera(self: *@This(), camera: *MapCamera) core.HResult!*MapBillboard {
         var _r: *MapBillboard = undefined;
         const _c = self.vtable.CreateInstanceFromCamera(@ptrCast(self), camera, &_r);
@@ -1200,6 +1452,12 @@ pub const IMapBillboardFactory = extern struct {
 };
 pub const IMapBillboardStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LocationProperty(@ptrCast(self), &_r);
@@ -1237,6 +1495,12 @@ pub const IMapBillboardStatics = extern struct {
 };
 pub const IMapCamera = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
@@ -1313,6 +1577,12 @@ pub const IMapCamera = extern struct {
 };
 pub const IMapCameraFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithLocation(self: *@This(), location: *Geopoint) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.CreateInstanceWithLocation(@ptrCast(self), location, &_r);
@@ -1357,6 +1627,12 @@ pub const IMapCameraFactory = extern struct {
 };
 pub const IMapContextRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -1394,6 +1670,12 @@ pub const IMapContextRequestedEventArgs = extern struct {
 };
 pub const IMapControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCenter(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Center(@ptrCast(self), &_r);
@@ -1775,6 +2057,12 @@ pub const IMapControl = extern struct {
 };
 pub const IMapControl2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBusinessLandmarksVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_BusinessLandmarksVisible(@ptrCast(self), &_r);
@@ -2092,6 +2380,12 @@ pub const IMapControl2 = extern struct {
 };
 pub const IMapControl3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMapRightTapped(self: *@This(), handler: *TypedEventHandler(MapControl,MapRightTappedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MapRightTapped(@ptrCast(self), handler, &_r);
@@ -2120,6 +2414,12 @@ pub const IMapControl3 = extern struct {
 };
 pub const IMapControl4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBusinessLandmarksEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_BusinessLandmarksEnabled(@ptrCast(self), &_r);
@@ -2167,6 +2467,12 @@ pub const IMapControl4 = extern struct {
 };
 pub const IMapControl5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMapProjection(self: *@This()) core.HResult!MapProjection {
         var _r: MapProjection = undefined;
         const _c = self.vtable.get_MapProjection(@ptrCast(self), &_r);
@@ -2267,6 +2573,12 @@ pub const IMapControl5 = extern struct {
 };
 pub const IMapControl6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLayers(self: *@This()) core.HResult!*IVector(MapLayer) {
         var _r: *IVector(MapLayer) = undefined;
         const _c = self.vtable.get_Layers(@ptrCast(self), &_r);
@@ -2309,6 +2621,12 @@ pub const IMapControl6 = extern struct {
 };
 pub const IMapControl7 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRegion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Region(@ptrCast(self), &_r);
@@ -2337,6 +2655,12 @@ pub const IMapControl7 = extern struct {
 };
 pub const IMapControl8 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanTiltDown(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanTiltDown(@ptrCast(self), &_r);
@@ -2381,6 +2705,12 @@ pub const IMapControl8 = extern struct {
 };
 pub const IMapControlStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCenterProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CenterProperty(@ptrCast(self), &_r);
@@ -2561,6 +2891,12 @@ pub const IMapControlStatics = extern struct {
 };
 pub const IMapControlStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBusinessLandmarksVisibleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_BusinessLandmarksVisibleProperty(@ptrCast(self), &_r);
@@ -2640,6 +2976,12 @@ pub const IMapControlStatics2 = extern struct {
 };
 pub const IMapControlStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBusinessLandmarksEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_BusinessLandmarksEnabledProperty(@ptrCast(self), &_r);
@@ -2670,6 +3012,12 @@ pub const IMapControlStatics4 = extern struct {
 };
 pub const IMapControlStatics5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMapProjectionProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapProjectionProperty(@ptrCast(self), &_r);
@@ -2707,6 +3055,12 @@ pub const IMapControlStatics5 = extern struct {
 };
 pub const IMapControlStatics6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLayersProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LayersProperty(@ptrCast(self), &_r);
@@ -2730,6 +3084,12 @@ pub const IMapControlStatics6 = extern struct {
 };
 pub const IMapControlStatics7 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRegionProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_RegionProperty(@ptrCast(self), &_r);
@@ -2753,6 +3113,12 @@ pub const IMapControlStatics7 = extern struct {
 };
 pub const IMapControlStatics8 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanTiltDownProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CanTiltDownProperty(@ptrCast(self), &_r);
@@ -2797,6 +3163,12 @@ pub const IMapControlStatics8 = extern struct {
 };
 pub const IMapCustomExperience = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapCustomExperience";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "64592866-14a3-4e5f-8883-8e9c500eeede";
@@ -2813,6 +3185,12 @@ pub const IMapCustomExperience = extern struct {
 };
 pub const IMapCustomExperienceChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapCustomExperienceChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "b9e6fb9b-8fc1-4042-ac34-a61b38bb7514";
@@ -2829,6 +3207,12 @@ pub const IMapCustomExperienceChangedEventArgs = extern struct {
 };
 pub const IMapCustomExperienceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapCustomExperience {
         var _r: *MapCustomExperience = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -2852,6 +3236,12 @@ pub const IMapCustomExperienceFactory = extern struct {
 };
 pub const IMapElement = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getZIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ZIndex(@ptrCast(self), &_r);
@@ -2892,6 +3282,12 @@ pub const IMapElement = extern struct {
 };
 pub const IMapElement2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMapTabIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MapTabIndex(@ptrCast(self), &_r);
@@ -2920,6 +3316,12 @@ pub const IMapElement2 = extern struct {
 };
 pub const IMapElement3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMapStyleSheetEntry(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MapStyleSheetEntry(@ptrCast(self), &_r);
@@ -2972,6 +3374,12 @@ pub const IMapElement3 = extern struct {
 };
 pub const IMapElement3D = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
@@ -3060,6 +3468,12 @@ pub const IMapElement3D = extern struct {
 };
 pub const IMapElement3DStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LocationProperty(@ptrCast(self), &_r);
@@ -3111,6 +3525,12 @@ pub const IMapElement3DStatics = extern struct {
 };
 pub const IMapElement4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -3139,6 +3559,12 @@ pub const IMapElement4 = extern struct {
 };
 pub const IMapElementClickEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -3176,6 +3602,12 @@ pub const IMapElementClickEventArgs = extern struct {
 };
 pub const IMapElementFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapElement {
         var _r: *MapElement = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -3199,6 +3631,12 @@ pub const IMapElementFactory = extern struct {
 };
 pub const IMapElementPointerEnteredEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -3236,6 +3674,12 @@ pub const IMapElementPointerEnteredEventArgs = extern struct {
 };
 pub const IMapElementPointerExitedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -3273,6 +3717,12 @@ pub const IMapElementPointerExitedEventArgs = extern struct {
 };
 pub const IMapElementStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getZIndexProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ZIndexProperty(@ptrCast(self), &_r);
@@ -3303,6 +3753,12 @@ pub const IMapElementStatics = extern struct {
 };
 pub const IMapElementStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMapTabIndexProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapTabIndexProperty(@ptrCast(self), &_r);
@@ -3326,6 +3782,12 @@ pub const IMapElementStatics2 = extern struct {
 };
 pub const IMapElementStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMapStyleSheetEntryProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapStyleSheetEntryProperty(@ptrCast(self), &_r);
@@ -3363,6 +3825,12 @@ pub const IMapElementStatics3 = extern struct {
 };
 pub const IMapElementStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabledProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsEnabledProperty(@ptrCast(self), &_r);
@@ -3386,6 +3854,12 @@ pub const IMapElementStatics4 = extern struct {
 };
 pub const IMapElementsLayer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMapElements(self: *@This()) core.HResult!*IVector(MapElement) {
         var _r: *IVector(MapElement) = undefined;
         const _c = self.vtable.get_MapElements(@ptrCast(self), &_r);
@@ -3462,6 +3936,12 @@ pub const IMapElementsLayer = extern struct {
 };
 pub const IMapElementsLayerClickEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -3499,6 +3979,12 @@ pub const IMapElementsLayerClickEventArgs = extern struct {
 };
 pub const IMapElementsLayerContextRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -3536,6 +4022,12 @@ pub const IMapElementsLayerContextRequestedEventArgs = extern struct {
 };
 pub const IMapElementsLayerPointerEnteredEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -3573,6 +4065,12 @@ pub const IMapElementsLayerPointerEnteredEventArgs = extern struct {
 };
 pub const IMapElementsLayerPointerExitedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -3610,6 +4108,12 @@ pub const IMapElementsLayerPointerExitedEventArgs = extern struct {
 };
 pub const IMapElementsLayerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMapElementsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapElementsProperty(@ptrCast(self), &_r);
@@ -3633,6 +4137,12 @@ pub const IMapElementsLayerStatics = extern struct {
 };
 pub const IMapIcon = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
@@ -3697,6 +4207,12 @@ pub const IMapIcon = extern struct {
 };
 pub const IMapIcon2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCollisionBehaviorDesired(self: *@This()) core.HResult!MapElementCollisionBehavior {
         var _r: MapElementCollisionBehavior = undefined;
         const _c = self.vtable.get_CollisionBehaviorDesired(@ptrCast(self), &_r);
@@ -3725,6 +4241,12 @@ pub const IMapIcon2 = extern struct {
 };
 pub const IMapIconStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocationProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LocationProperty(@ptrCast(self), &_r);
@@ -3762,6 +4284,12 @@ pub const IMapIconStatics = extern struct {
 };
 pub const IMapIconStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCollisionBehaviorDesiredProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CollisionBehaviorDesiredProperty(@ptrCast(self), &_r);
@@ -3785,6 +4313,12 @@ pub const IMapIconStatics2 = extern struct {
 };
 pub const IMapInputEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -3815,6 +4349,12 @@ pub const IMapInputEventArgs = extern struct {
 };
 pub const IMapItemsControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItemsSource(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_ItemsSource(@ptrCast(self), &_r);
@@ -3862,6 +4402,12 @@ pub const IMapItemsControl = extern struct {
 };
 pub const IMapItemsControlStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItemsSourceProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_ItemsSourceProperty(@ptrCast(self), &_r);
@@ -3899,6 +4445,12 @@ pub const IMapItemsControlStatics = extern struct {
 };
 pub const IMapLayer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMapTabIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MapTabIndex(@ptrCast(self), &_r);
@@ -3951,6 +4503,12 @@ pub const IMapLayer = extern struct {
 };
 pub const IMapLayerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapLayer {
         var _r: *MapLayer = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -3974,6 +4532,12 @@ pub const IMapLayerFactory = extern struct {
 };
 pub const IMapLayerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMapTabIndexProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_MapTabIndexProperty(@ptrCast(self), &_r);
@@ -4011,6 +4575,12 @@ pub const IMapLayerStatics = extern struct {
 };
 pub const IMapModel3D = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapModel3D";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "f8c541a1-ca27-4968-a2bf-9c20f06a0468";
@@ -4027,6 +4597,12 @@ pub const IMapModel3D = extern struct {
 };
 pub const IMapModel3DFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapModel3D {
         var _r: *MapModel3D = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -4050,6 +4626,12 @@ pub const IMapModel3DFactory = extern struct {
 };
 pub const IMapModel3DStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFrom3MFAsync(self: *@This(), source: *IRandomAccessStreamReference) core.HResult!*IAsyncOperation(MapModel3D) {
         var _r: *IAsyncOperation(MapModel3D) = undefined;
         const _c = self.vtable.CreateFrom3MFAsync(@ptrCast(self), source, &_r);
@@ -4080,6 +4662,12 @@ pub const IMapModel3DStatics = extern struct {
 };
 pub const IMapPolygon = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPath(self: *@This()) core.HResult!*Geopath {
         var _r: *Geopath = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
@@ -4156,6 +4744,12 @@ pub const IMapPolygon = extern struct {
 };
 pub const IMapPolygon2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPaths(self: *@This()) core.HResult!*IVector(Geopath) {
         var _r: *IVector(Geopath) = undefined;
         const _c = self.vtable.get_Paths(@ptrCast(self), &_r);
@@ -4179,6 +4773,12 @@ pub const IMapPolygon2 = extern struct {
 };
 pub const IMapPolygonStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPathProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PathProperty(@ptrCast(self), &_r);
@@ -4216,6 +4816,12 @@ pub const IMapPolygonStatics = extern struct {
 };
 pub const IMapPolyline = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPath(self: *@This()) core.HResult!*Geopath {
         var _r: *Geopath = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
@@ -4280,6 +4886,12 @@ pub const IMapPolyline = extern struct {
 };
 pub const IMapPolylineStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPathProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PathProperty(@ptrCast(self), &_r);
@@ -4310,6 +4922,12 @@ pub const IMapPolylineStatics = extern struct {
 };
 pub const IMapRightTappedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -4340,6 +4958,12 @@ pub const IMapRightTappedEventArgs = extern struct {
 };
 pub const IMapRouteView = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRouteColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_RouteColor(@ptrCast(self), &_r);
@@ -4387,6 +5011,12 @@ pub const IMapRouteView = extern struct {
 };
 pub const IMapRouteViewFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithMapRoute(self: *@This(), route: *MapRoute, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapRouteView {
         var _r: *MapRouteView = undefined;
         const _c = self.vtable.CreateInstanceWithMapRoute(@ptrCast(self), route, baseInterface, innerInterface, &_r);
@@ -4410,6 +5040,12 @@ pub const IMapRouteViewFactory = extern struct {
 };
 pub const IMapScene = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetCamera(self: *@This()) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.get_TargetCamera(@ptrCast(self), &_r);
@@ -4445,6 +5081,12 @@ pub const IMapScene = extern struct {
 };
 pub const IMapSceneStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromBoundingBox(self: *@This(), bounds: *GeoboundingBox) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
         const _c = self.vtable.CreateFromBoundingBox(@ptrCast(self), bounds, &_r);
@@ -4524,6 +5166,12 @@ pub const IMapSceneStatics = extern struct {
 };
 pub const IMapStyleSheet = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapStyleSheet";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ae54b2bf-8991-42ed-8d58-20473deede1d";
@@ -4540,6 +5188,12 @@ pub const IMapStyleSheet = extern struct {
 };
 pub const IMapStyleSheetEntriesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getArea(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Area(@ptrCast(self), &_r);
@@ -5004,6 +5658,12 @@ pub const IMapStyleSheetEntriesStatics = extern struct {
 };
 pub const IMapStyleSheetEntryStatesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisabled(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Disabled(@ptrCast(self), &_r);
@@ -5041,6 +5701,12 @@ pub const IMapStyleSheetEntryStatesStatics = extern struct {
 };
 pub const IMapStyleSheetStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Aerial(self: *@This()) core.HResult!*MapStyleSheet {
         var _r: *MapStyleSheet = undefined;
         const _c = self.vtable.Aerial(@ptrCast(self), &_r);
@@ -5120,6 +5786,12 @@ pub const IMapStyleSheetStatics = extern struct {
 };
 pub const IMapTargetCameraChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCamera(self: *@This()) core.HResult!*MapCamera {
         var _r: *MapCamera = undefined;
         const _c = self.vtable.get_Camera(@ptrCast(self), &_r);
@@ -5143,6 +5815,12 @@ pub const IMapTargetCameraChangedEventArgs = extern struct {
 };
 pub const IMapTargetCameraChangedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeReason(self: *@This()) core.HResult!MapCameraChangeReason {
         var _r: MapCameraChangeReason = undefined;
         const _c = self.vtable.get_ChangeReason(@ptrCast(self), &_r);
@@ -5166,6 +5844,12 @@ pub const IMapTargetCameraChangedEventArgs2 = extern struct {
 };
 pub const IMapTileBitmapRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPixelData(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.get_PixelData(@ptrCast(self), &_r);
@@ -5201,6 +5885,12 @@ pub const IMapTileBitmapRequest = extern struct {
 };
 pub const IMapTileBitmapRequestDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5222,6 +5912,12 @@ pub const IMapTileBitmapRequestDeferral = extern struct {
 };
 pub const IMapTileBitmapRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getX(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_X(@ptrCast(self), &_r);
@@ -5266,6 +5962,12 @@ pub const IMapTileBitmapRequestedEventArgs = extern struct {
 };
 pub const IMapTileBitmapRequestedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_FrameIndex(@ptrCast(self), &_r);
@@ -5289,6 +5991,12 @@ pub const IMapTileBitmapRequestedEventArgs2 = extern struct {
 };
 pub const IMapTileDataSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.IMapTileDataSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c03d9f5e-be1f-4c69-9969-79467a513c38";
@@ -5305,6 +6013,12 @@ pub const IMapTileDataSource = extern struct {
 };
 pub const IMapTileDataSourceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileDataSource {
         var _r: *MapTileDataSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -5328,6 +6042,12 @@ pub const IMapTileDataSourceFactory = extern struct {
 };
 pub const IMapTileSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataSource(self: *@This()) core.HResult!*MapTileDataSource {
         var _r: *MapTileDataSource = undefined;
         const _c = self.vtable.get_DataSource(@ptrCast(self), &_r);
@@ -5476,6 +6196,12 @@ pub const IMapTileSource = extern struct {
 };
 pub const IMapTileSource2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnimationState(self: *@This()) core.HResult!MapTileAnimationState {
         var _r: MapTileAnimationState = undefined;
         const _c = self.vtable.get_AnimationState(@ptrCast(self), &_r);
@@ -5550,6 +6276,12 @@ pub const IMapTileSource2 = extern struct {
 };
 pub const IMapTileSourceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileSource {
         var _r: *MapTileSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -5601,6 +6333,12 @@ pub const IMapTileSourceFactory = extern struct {
 };
 pub const IMapTileSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataSourceProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DataSourceProperty(@ptrCast(self), &_r);
@@ -5694,6 +6432,12 @@ pub const IMapTileSourceStatics = extern struct {
 };
 pub const IMapTileSourceStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnimationStateProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AnimationStateProperty(@ptrCast(self), &_r);
@@ -5738,6 +6482,12 @@ pub const IMapTileSourceStatics2 = extern struct {
 };
 pub const IMapTileUriRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
@@ -5773,6 +6523,12 @@ pub const IMapTileUriRequest = extern struct {
 };
 pub const IMapTileUriRequestDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5794,6 +6550,12 @@ pub const IMapTileUriRequestDeferral = extern struct {
 };
 pub const IMapTileUriRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getX(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_X(@ptrCast(self), &_r);
@@ -5838,6 +6600,12 @@ pub const IMapTileUriRequestedEventArgs = extern struct {
 };
 pub const IMapTileUriRequestedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_FrameIndex(@ptrCast(self), &_r);
@@ -5861,6 +6629,12 @@ pub const IMapTileUriRequestedEventArgs2 = extern struct {
 };
 pub const IStreetsideExperience = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAddressTextVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AddressTextVisible(@ptrCast(self), &_r);
@@ -5949,6 +6723,12 @@ pub const IStreetsideExperience = extern struct {
 };
 pub const IStreetsideExperienceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithPanorama(self: *@This(), panorama: *StreetsidePanorama) core.HResult!*StreetsideExperience {
         var _r: *StreetsideExperience = undefined;
         const _c = self.vtable.CreateInstanceWithPanorama(@ptrCast(self), panorama, &_r);
@@ -5979,6 +6759,12 @@ pub const IStreetsideExperienceFactory = extern struct {
 };
 pub const IStreetsidePanorama = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Location(@ptrCast(self), &_r);
@@ -6002,6 +6788,12 @@ pub const IStreetsidePanorama = extern struct {
 };
 pub const IStreetsidePanoramaStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindNearbyAsync(self: *@This(), location: *Geopoint) core.HResult!*IAsyncOperation(StreetsidePanorama) {
         var _r: *IAsyncOperation(StreetsidePanorama) = undefined;
         const _c = self.vtable.FindNearbyAsync(@ptrCast(self), location, &_r);
@@ -6032,6 +6824,18 @@ pub const IStreetsidePanoramaStatics = extern struct {
 };
 pub const LocalMapTileDataSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUriFormatString(self: *@This()) core.HResult!?HSTRING {
         const this: *ILocalMapTileDataSource = @ptrCast(self);
         return try this.getUriFormatString();
@@ -6047,9 +6851,6 @@ pub const LocalMapTileDataSource = extern struct {
     pub fn removeUriRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *ILocalMapTileDataSource = @ptrCast(self);
         return try this.removeUriRequested(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*LocalMapTileDataSource {
         const _f = try @This()._ILocalMapTileDataSourceFactoryCache.get();
@@ -6068,6 +6869,18 @@ pub const LocalMapTileDataSource = extern struct {
 };
 pub const MapActualCameraChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCamera(self: *@This()) core.HResult!*MapCamera {
         const this: *IMapActualCameraChangedEventArgs = @ptrCast(self);
         return try this.getCamera();
@@ -6078,9 +6891,6 @@ pub const MapActualCameraChangedEventArgs = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapActualCameraChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChangeReason();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -6095,6 +6905,18 @@ pub const MapActualCameraChangedEventArgs = extern struct {
 };
 pub const MapActualCameraChangingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCamera(self: *@This()) core.HResult!*MapCamera {
         const this: *IMapActualCameraChangingEventArgs = @ptrCast(self);
         return try this.getCamera();
@@ -6105,9 +6927,6 @@ pub const MapActualCameraChangingEventArgs = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapActualCameraChangingEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChangeReason();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -6128,6 +6947,18 @@ pub const MapAnimationKind = enum(i32) {
 };
 pub const MapElement = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getZIndex(self: *@This()) core.HResult!i32 {
         const this: *IMapElement = @ptrCast(self);
         return try this.getZIndex();
@@ -6214,9 +7045,6 @@ pub const MapElement = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getMapStyleSheetEntryProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IMapElementStatics3Cache.get();
         return try _f.getMapStyleSheetEntryProperty();
@@ -6262,6 +7090,18 @@ pub const MapElement = extern struct {
 };
 pub const MapBillboard = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         const this: *IMapBillboard = @ptrCast(self);
         return try this.getLocation();
@@ -6298,9 +7138,6 @@ pub const MapBillboard = extern struct {
         const this: *IMapBillboard = @ptrCast(self);
         return try this.getReferenceCamera();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceFromCamera(camera: *MapCamera) core.HResult!*MapBillboard {
         const _f = try @This()._IMapBillboardFactoryCache.get();
         return try _f.CreateInstanceFromCamera(camera);
@@ -6327,6 +7164,18 @@ pub const MapBillboard = extern struct {
 };
 pub const MapCamera = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         const this: *IMapCamera = @ptrCast(self);
         return try this.getLocation();
@@ -6367,9 +7216,6 @@ pub const MapCamera = extern struct {
         const this: *IMapCamera = @ptrCast(self);
         return try this.putFieldOfView(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithLocation(location: *Geopoint) core.HResult!*MapCamera {
         const _f = try @This()._IMapCameraFactoryCache.get();
         return try _f.CreateInstanceWithLocation(location);
@@ -6404,6 +7250,18 @@ pub const MapColorScheme = enum(i32) {
 };
 pub const MapContextRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         const this: *IMapContextRequestedEventArgs = @ptrCast(self);
         return try this.getPosition();
@@ -6415,9 +7273,6 @@ pub const MapContextRequestedEventArgs = extern struct {
     pub fn getMapElements(self: *@This()) core.HResult!*IVectorView(MapElement) {
         const this: *IMapContextRequestedEventArgs = @ptrCast(self);
         return try this.getMapElements();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -6432,6 +7287,18 @@ pub const MapContextRequestedEventArgs = extern struct {
 };
 pub const MapControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCenter(self: *@This()) core.HResult!*Geopoint {
         const this: *IMapControl = @ptrCast(self);
         return try this.getCenter();
@@ -7228,9 +8095,6 @@ pub const MapControl = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanZoomOut();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControl.IID)));
@@ -7427,6 +8291,15 @@ pub const MapControl = extern struct {
 };
 pub const MapCustomExperience = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7443,6 +8316,15 @@ pub const MapCustomExperience = extern struct {
 };
 pub const MapCustomExperienceChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7459,6 +8341,18 @@ pub const MapCustomExperienceChangedEventArgs = extern struct {
 };
 pub const MapElement3D = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         const this: *IMapElement3D = @ptrCast(self);
         return try this.getLocation();
@@ -7507,9 +8401,6 @@ pub const MapElement3D = extern struct {
         const this: *IMapElement3D = @ptrCast(self);
         return try this.putScale(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapElement3D.IID)));
@@ -7544,6 +8435,18 @@ pub const MapElement3D = extern struct {
 };
 pub const MapElementClickEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         const this: *IMapElementClickEventArgs = @ptrCast(self);
         return try this.getPosition();
@@ -7555,9 +8458,6 @@ pub const MapElementClickEventArgs = extern struct {
     pub fn getMapElements(self: *@This()) core.HResult!*IVector(MapElement) {
         const this: *IMapElementClickEventArgs = @ptrCast(self);
         return try this.getMapElements();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7576,6 +8476,18 @@ pub const MapElementCollisionBehavior = enum(i32) {
 };
 pub const MapElementPointerEnteredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         const this: *IMapElementPointerEnteredEventArgs = @ptrCast(self);
         return try this.getPosition();
@@ -7587,9 +8499,6 @@ pub const MapElementPointerEnteredEventArgs = extern struct {
     pub fn getMapElement(self: *@This()) core.HResult!*MapElement {
         const this: *IMapElementPointerEnteredEventArgs = @ptrCast(self);
         return try this.getMapElement();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7604,6 +8513,18 @@ pub const MapElementPointerEnteredEventArgs = extern struct {
 };
 pub const MapElementPointerExitedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         const this: *IMapElementPointerExitedEventArgs = @ptrCast(self);
         return try this.getPosition();
@@ -7615,9 +8536,6 @@ pub const MapElementPointerExitedEventArgs = extern struct {
     pub fn getMapElement(self: *@This()) core.HResult!*MapElement {
         const this: *IMapElementPointerExitedEventArgs = @ptrCast(self);
         return try this.getMapElement();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7632,6 +8550,18 @@ pub const MapElementPointerExitedEventArgs = extern struct {
 };
 pub const MapLayer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMapTabIndex(self: *@This()) core.HResult!i32 {
         const this: *IMapLayer = @ptrCast(self);
         return try this.getMapTabIndex();
@@ -7655,9 +8585,6 @@ pub const MapLayer = extern struct {
     pub fn putZIndex(self: *@This(), value: i32) core.HResult!void {
         const this: *IMapLayer = @ptrCast(self);
         return try this.putZIndex(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getMapTabIndexProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IMapLayerStaticsCache.get();
@@ -7685,6 +8612,18 @@ pub const MapLayer = extern struct {
 };
 pub const MapElementsLayer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMapElements(self: *@This()) core.HResult!*IVector(MapElement) {
         const this: *IMapElementsLayer = @ptrCast(self);
         return try this.getMapElements();
@@ -7725,9 +8664,6 @@ pub const MapElementsLayer = extern struct {
         const this: *IMapElementsLayer = @ptrCast(self);
         return try this.removeMapContextRequested(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapElementsLayer.IID)));
@@ -7746,6 +8682,18 @@ pub const MapElementsLayer = extern struct {
 };
 pub const MapElementsLayerClickEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         const this: *IMapElementsLayerClickEventArgs = @ptrCast(self);
         return try this.getPosition();
@@ -7757,9 +8705,6 @@ pub const MapElementsLayerClickEventArgs = extern struct {
     pub fn getMapElements(self: *@This()) core.HResult!*IVector(MapElement) {
         const this: *IMapElementsLayerClickEventArgs = @ptrCast(self);
         return try this.getMapElements();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7774,6 +8719,18 @@ pub const MapElementsLayerClickEventArgs = extern struct {
 };
 pub const MapElementsLayerContextRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         const this: *IMapElementsLayerContextRequestedEventArgs = @ptrCast(self);
         return try this.getPosition();
@@ -7785,9 +8742,6 @@ pub const MapElementsLayerContextRequestedEventArgs = extern struct {
     pub fn getMapElements(self: *@This()) core.HResult!*IVectorView(MapElement) {
         const this: *IMapElementsLayerContextRequestedEventArgs = @ptrCast(self);
         return try this.getMapElements();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7802,6 +8756,18 @@ pub const MapElementsLayerContextRequestedEventArgs = extern struct {
 };
 pub const MapElementsLayerPointerEnteredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         const this: *IMapElementsLayerPointerEnteredEventArgs = @ptrCast(self);
         return try this.getPosition();
@@ -7813,9 +8779,6 @@ pub const MapElementsLayerPointerEnteredEventArgs = extern struct {
     pub fn getMapElement(self: *@This()) core.HResult!*MapElement {
         const this: *IMapElementsLayerPointerEnteredEventArgs = @ptrCast(self);
         return try this.getMapElement();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7830,6 +8793,18 @@ pub const MapElementsLayerPointerEnteredEventArgs = extern struct {
 };
 pub const MapElementsLayerPointerExitedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         const this: *IMapElementsLayerPointerExitedEventArgs = @ptrCast(self);
         return try this.getPosition();
@@ -7841,9 +8816,6 @@ pub const MapElementsLayerPointerExitedEventArgs = extern struct {
     pub fn getMapElement(self: *@This()) core.HResult!*MapElement {
         const this: *IMapElementsLayerPointerExitedEventArgs = @ptrCast(self);
         return try this.getMapElement();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7858,6 +8830,18 @@ pub const MapElementsLayerPointerExitedEventArgs = extern struct {
 };
 pub const MapIcon = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         const this: *IMapIcon = @ptrCast(self);
         return try this.getLocation();
@@ -7904,9 +8888,6 @@ pub const MapIcon = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCollisionBehaviorDesired(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapIcon.IID)));
@@ -7938,6 +8919,18 @@ pub const MapIcon = extern struct {
 };
 pub const MapInputEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         const this: *IMapInputEventArgs = @ptrCast(self);
         return try this.getPosition();
@@ -7945,9 +8938,6 @@ pub const MapInputEventArgs = extern struct {
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         const this: *IMapInputEventArgs = @ptrCast(self);
         return try this.getLocation();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -7972,6 +8962,18 @@ pub const MapInteractionMode = enum(i32) {
 };
 pub const MapItemsControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItemsSource(self: *@This()) core.HResult!*IInspectable {
         const this: *IMapItemsControl = @ptrCast(self);
         return try this.getItemsSource();
@@ -7991,9 +8993,6 @@ pub const MapItemsControl = extern struct {
     pub fn putItemTemplate(self: *@This(), value: *DataTemplate) core.HResult!void {
         const this: *IMapItemsControl = @ptrCast(self);
         return try this.putItemTemplate(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -8027,6 +9026,15 @@ pub const MapLoadingStatus = enum(i32) {
 };
 pub const MapModel3D = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -8061,6 +9069,18 @@ pub const MapPanInteractionMode = enum(i32) {
 };
 pub const MapPolygon = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPath(self: *@This()) core.HResult!*Geopath {
         const this: *IMapPolygon = @ptrCast(self);
         return try this.getPath();
@@ -8108,9 +9128,6 @@ pub const MapPolygon = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPaths();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapPolygon.IID)));
@@ -8137,6 +9154,18 @@ pub const MapPolygon = extern struct {
 };
 pub const MapPolyline = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPath(self: *@This()) core.HResult!*Geopath {
         const this: *IMapPolyline = @ptrCast(self);
         return try this.getPath();
@@ -8169,9 +9198,6 @@ pub const MapPolyline = extern struct {
         const this: *IMapPolyline = @ptrCast(self);
         return try this.putStrokeDashed(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapPolyline.IID)));
@@ -8198,6 +9224,18 @@ pub const MapProjection = enum(i32) {
 };
 pub const MapRightTappedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Point {
         const this: *IMapRightTappedEventArgs = @ptrCast(self);
         return try this.getPosition();
@@ -8205,9 +9243,6 @@ pub const MapRightTappedEventArgs = extern struct {
     pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
         const this: *IMapRightTappedEventArgs = @ptrCast(self);
         return try this.getLocation();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -8222,6 +9257,18 @@ pub const MapRightTappedEventArgs = extern struct {
 };
 pub const MapRouteView = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRouteColor(self: *@This()) core.HResult!Color {
         const this: *IMapRouteView = @ptrCast(self);
         return try this.getRouteColor();
@@ -8242,9 +9289,6 @@ pub const MapRouteView = extern struct {
         const this: *IMapRouteView = @ptrCast(self);
         return try this.getRoute();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithMapRoute(route: *MapRoute, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapRouteView {
         const _f = try @This()._IMapRouteViewFactoryCache.get();
         return try _f.CreateInstanceWithMapRoute(route, baseInterface, innerInterface);
@@ -8258,6 +9302,18 @@ pub const MapRouteView = extern struct {
 };
 pub const MapScene = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetCamera(self: *@This()) core.HResult!*MapCamera {
         const this: *IMapScene = @ptrCast(self);
         return try this.getTargetCamera();
@@ -8269,9 +9325,6 @@ pub const MapScene = extern struct {
     pub fn removeTargetCameraChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *IMapScene = @ptrCast(self);
         return try this.removeTargetCameraChanged(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromBoundingBox(bounds: *GeoboundingBox) core.HResult!*MapScene {
         const _f = try @This()._IMapSceneStaticsCache.get();
@@ -8328,6 +9381,15 @@ pub const MapStyle = enum(i32) {
 };
 pub const MapStyleSheet = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -8376,6 +9438,15 @@ pub const MapStyleSheet = extern struct {
 };
 pub const MapStyleSheetEntries = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -8641,6 +9712,15 @@ pub const MapStyleSheetEntries = extern struct {
 };
 pub const MapStyleSheetEntryStates = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -8662,6 +9742,18 @@ pub const MapStyleSheetEntryStates = extern struct {
 };
 pub const MapTargetCameraChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCamera(self: *@This()) core.HResult!*MapCamera {
         const this: *IMapTargetCameraChangedEventArgs = @ptrCast(self);
         return try this.getCamera();
@@ -8672,9 +9764,6 @@ pub const MapTargetCameraChangedEventArgs = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTargetCameraChangedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getChangeReason();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -8694,6 +9783,18 @@ pub const MapTileAnimationState = enum(i32) {
 };
 pub const MapTileBitmapRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPixelData(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         const this: *IMapTileBitmapRequest = @ptrCast(self);
         return try this.getPixelData();
@@ -8705,9 +9806,6 @@ pub const MapTileBitmapRequest = extern struct {
     pub fn GetDeferral(self: *@This()) core.HResult!*MapTileBitmapRequestDeferral {
         const this: *IMapTileBitmapRequest = @ptrCast(self);
         return try this.GetDeferral();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -8722,12 +9820,21 @@ pub const MapTileBitmapRequest = extern struct {
 };
 pub const MapTileBitmapRequestDeferral = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Complete(self: *@This()) core.HResult!void {
-        const this: *IMapTileBitmapRequestDeferral = @ptrCast(self);
-        return try this.Complete();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Complete(self: *@This()) core.HResult!void {
+        const this: *IMapTileBitmapRequestDeferral = @ptrCast(self);
+        return try this.Complete();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -8742,6 +9849,18 @@ pub const MapTileBitmapRequestDeferral = extern struct {
 };
 pub const MapTileBitmapRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getX(self: *@This()) core.HResult!i32 {
         const this: *IMapTileBitmapRequestedEventArgs = @ptrCast(self);
         return try this.getX();
@@ -8765,9 +9884,6 @@ pub const MapTileBitmapRequestedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFrameIndex();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapTileBitmapRequestedEventArgs.IID)));
@@ -8788,6 +9904,18 @@ pub const MapTileLayer = enum(i32) {
 };
 pub const MapTileSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataSource(self: *@This()) core.HResult!*MapTileDataSource {
         const this: *IMapTileSource = @ptrCast(self);
         return try this.getDataSource();
@@ -8946,9 +10074,6 @@ pub const MapTileSource = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getAnimationStateProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IMapTileSourceStatics2Cache.get();
         return try _f.getAnimationStateProperty();
@@ -9040,6 +10165,18 @@ pub const MapTileSource = extern struct {
 };
 pub const MapTileUriRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         const this: *IMapTileUriRequest = @ptrCast(self);
         return try this.getUri();
@@ -9051,9 +10188,6 @@ pub const MapTileUriRequest = extern struct {
     pub fn GetDeferral(self: *@This()) core.HResult!*MapTileUriRequestDeferral {
         const this: *IMapTileUriRequest = @ptrCast(self);
         return try this.GetDeferral();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -9068,12 +10202,21 @@ pub const MapTileUriRequest = extern struct {
 };
 pub const MapTileUriRequestDeferral = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Complete(self: *@This()) core.HResult!void {
-        const this: *IMapTileUriRequestDeferral = @ptrCast(self);
-        return try this.Complete();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Complete(self: *@This()) core.HResult!void {
+        const this: *IMapTileUriRequestDeferral = @ptrCast(self);
+        return try this.Complete();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -9088,6 +10231,18 @@ pub const MapTileUriRequestDeferral = extern struct {
 };
 pub const MapTileUriRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getX(self: *@This()) core.HResult!i32 {
         const this: *IMapTileUriRequestedEventArgs = @ptrCast(self);
         return try this.getX();
@@ -9110,9 +10265,6 @@ pub const MapTileUriRequestedEventArgs = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapTileUriRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFrameIndex();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -9139,6 +10291,18 @@ pub const MapZoomLevelRange = extern struct {
 };
 pub const StreetsideExperience = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAddressTextVisible(self: *@This()) core.HResult!bool {
         const this: *IStreetsideExperience = @ptrCast(self);
         return try this.getAddressTextVisible();
@@ -9187,9 +10351,6 @@ pub const StreetsideExperience = extern struct {
         const this: *IStreetsideExperience = @ptrCast(self);
         return try this.putZoomButtonsVisible(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithPanorama(panorama: *StreetsidePanorama) core.HResult!*StreetsideExperience {
         const _f = try @This()._IStreetsideExperienceFactoryCache.get();
         return try _f.CreateInstanceWithPanorama(panorama);
@@ -9207,12 +10368,21 @@ pub const StreetsideExperience = extern struct {
 };
 pub const StreetsidePanorama = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
-        const this: *IStreetsidePanorama = @ptrCast(self);
-        return try this.getLocation();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getLocation(self: *@This()) core.HResult!*Geopoint {
+        const this: *IStreetsidePanorama = @ptrCast(self);
+        return try this.getLocation();
     }
     pub fn FindNearbyAsync(location: *Geopoint) core.HResult!*IAsyncOperation(StreetsidePanorama) {
         const _f = try @This()._IStreetsidePanoramaStaticsCache.get();

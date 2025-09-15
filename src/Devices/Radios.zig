@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IRadio = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetStateAsync(self: *@This(), value: RadioState) core.HResult!*IAsyncOperation(RadioAccessStatus) {
         var _r: *IAsyncOperation(RadioAccessStatus) = undefined;
         const _c = self.vtable.SetStateAsync(@ptrCast(self), value, &_r);
@@ -57,6 +63,12 @@ pub const IRadio = extern struct {
 };
 pub const IRadioStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetRadiosAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(Radio)) {
         var _r: *IAsyncOperation(IVectorView(Radio)) = undefined;
         const _c = self.vtable.GetRadiosAsync(@ptrCast(self), &_r);
@@ -101,6 +113,18 @@ pub const IRadioStatics = extern struct {
 };
 pub const Radio = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetStateAsync(self: *@This(), value: RadioState) core.HResult!*IAsyncOperation(RadioAccessStatus) {
         const this: *IRadio = @ptrCast(self);
         return try this.SetStateAsync(value);
@@ -124,9 +148,6 @@ pub const Radio = extern struct {
     pub fn getKind(self: *@This()) core.HResult!RadioKind {
         const this: *IRadio = @ptrCast(self);
         return try this.getKind();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetRadiosAsync() core.HResult!*IAsyncOperation(IVectorView(Radio)) {
         const _f = try @This()._IRadioStaticsCache.get();

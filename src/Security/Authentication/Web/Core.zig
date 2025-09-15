@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const FindAllAccountsResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccounts(self: *@This()) core.HResult!*IVectorView(WebAccount) {
         const this: *IFindAllAccountsResult = @ptrCast(self);
         return try this.getAccounts();
@@ -27,6 +39,12 @@ pub const FindAllWebAccountsStatus = enum(i32) {
 };
 pub const IFindAllAccountsResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccounts(self: *@This()) core.HResult!*IVectorView(WebAccount) {
         var _r: *IVectorView(WebAccount) = undefined;
         const _c = self.vtable.get_Accounts(@ptrCast(self), &_r);
@@ -64,6 +82,12 @@ pub const IFindAllAccountsResult = extern struct {
 };
 pub const IWebAccountEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccount(self: *@This()) core.HResult!*WebAccount {
         var _r: *WebAccount = undefined;
         const _c = self.vtable.get_Account(@ptrCast(self), &_r);
@@ -87,6 +111,12 @@ pub const IWebAccountEventArgs = extern struct {
 };
 pub const IWebAccountMonitor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addUpdated(self: *@This(), handler: *TypedEventHandler(WebAccountMonitor,WebAccountEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Updated(@ptrCast(self), handler, &_r);
@@ -139,6 +169,12 @@ pub const IWebAccountMonitor = extern struct {
 };
 pub const IWebAccountMonitor2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAccountPictureUpdated(self: *@This(), handler: *TypedEventHandler(WebAccountMonitor,WebAccountEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AccountPictureUpdated(@ptrCast(self), handler, &_r);
@@ -167,6 +203,12 @@ pub const IWebAccountMonitor2 = extern struct {
 };
 pub const IWebAuthenticationAddAccountResponse = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccount(self: *@This()) core.HResult!*WebAccount {
         var _r: *WebAccount = undefined;
         const _c = self.vtable.get_WebAccount(@ptrCast(self), &_r);
@@ -197,6 +239,12 @@ pub const IWebAuthenticationAddAccountResponse = extern struct {
 };
 pub const IWebAuthenticationAddAccountResponseFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithAccount(self: *@This(), webAccount: *WebAccount) core.HResult!*WebAuthenticationAddAccountResponse {
         var _r: *WebAuthenticationAddAccountResponse = undefined;
         const _c = self.vtable.CreateWithAccount(@ptrCast(self), webAccount, &_r);
@@ -220,6 +268,12 @@ pub const IWebAuthenticationAddAccountResponseFactory = extern struct {
 };
 pub const IWebAuthenticationAddAccountResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResponseData(self: *@This()) core.HResult!*WebAuthenticationAddAccountResponse {
         var _r: *WebAuthenticationAddAccountResponse = undefined;
         const _c = self.vtable.get_ResponseData(@ptrCast(self), &_r);
@@ -257,6 +311,12 @@ pub const IWebAuthenticationAddAccountResult = extern struct {
 };
 pub const IWebAuthenticationCoreManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetTokenSilentlyAsync(self: *@This(), request: *WebTokenRequest) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
         var _r: *IAsyncOperation(WebTokenRequestResult) = undefined;
         const _c = self.vtable.GetTokenSilentlyAsync(@ptrCast(self), request, &_r);
@@ -322,6 +382,12 @@ pub const IWebAuthenticationCoreManagerStatics = extern struct {
 };
 pub const IWebAuthenticationCoreManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAccountProviderAsync(self: *@This(), webAccountProviderId: ?HSTRING, authority: ?HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
         var _r: *IAsyncOperation(WebAccountProvider) = undefined;
         const _c = self.vtable.FindAccountProviderAsync(@ptrCast(self), webAccountProviderId, authority, user, &_r);
@@ -345,6 +411,12 @@ pub const IWebAuthenticationCoreManagerStatics2 = extern struct {
 };
 pub const IWebAuthenticationCoreManagerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWebAccountMonitor(self: *@This(), webAccounts: *IIterable(WebAccount)) core.HResult!*WebAccountMonitor {
         var _r: *WebAccountMonitor = undefined;
         const _c = self.vtable.CreateWebAccountMonitor(@ptrCast(self), webAccounts, &_r);
@@ -368,6 +440,12 @@ pub const IWebAuthenticationCoreManagerStatics3 = extern struct {
 };
 pub const IWebAuthenticationCoreManagerStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAllAccountsAsync(self: *@This(), provider: *WebAccountProvider) core.HResult!*IAsyncOperation(FindAllAccountsResult) {
         var _r: *IAsyncOperation(FindAllAccountsResult) = undefined;
         const _c = self.vtable.FindAllAccountsAsync(@ptrCast(self), provider, &_r);
@@ -419,6 +497,12 @@ pub const IWebAuthenticationCoreManagerStatics4 = extern struct {
 };
 pub const IWebAuthenticationCoreManagerStatics5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddAccountWithTransferTokenAsync(self: *@This(), request: *WebAuthenticationTransferTokenRequest) core.HResult!*IAsyncOperation(WebAuthenticationAddAccountResult) {
         var _r: *IAsyncOperation(WebAuthenticationAddAccountResult) = undefined;
         const _c = self.vtable.AddAccountWithTransferTokenAsync(@ptrCast(self), request, &_r);
@@ -442,6 +526,12 @@ pub const IWebAuthenticationCoreManagerStatics5 = extern struct {
 };
 pub const IWebAuthenticationTransferTokenRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccountProvider(self: *@This()) core.HResult!*WebAccountProvider {
         var _r: *WebAccountProvider = undefined;
         const _c = self.vtable.get_WebAccountProvider(@ptrCast(self), &_r);
@@ -496,6 +586,12 @@ pub const IWebAuthenticationTransferTokenRequest = extern struct {
 };
 pub const IWebAuthenticationTransferTokenRequestFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), provider: *WebAccountProvider, transferToken: ?HSTRING) core.HResult!*WebAuthenticationTransferTokenRequest {
         var _r: *WebAuthenticationTransferTokenRequest = undefined;
         const _c = self.vtable.Create(@ptrCast(self), provider, transferToken, &_r);
@@ -526,6 +622,12 @@ pub const IWebAuthenticationTransferTokenRequestFactory = extern struct {
 };
 pub const IWebProviderError = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getErrorCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ErrorCode(@ptrCast(self), &_r);
@@ -563,6 +665,12 @@ pub const IWebProviderError = extern struct {
 };
 pub const IWebProviderErrorFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), errorCode: u32, errorMessage: ?HSTRING) core.HResult!*WebProviderError {
         var _r: *WebProviderError = undefined;
         const _c = self.vtable.Create(@ptrCast(self), errorCode, errorMessage, &_r);
@@ -586,6 +694,12 @@ pub const IWebProviderErrorFactory = extern struct {
 };
 pub const IWebTokenRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccountProvider(self: *@This()) core.HResult!*WebAccountProvider {
         var _r: *WebAccountProvider = undefined;
         const _c = self.vtable.get_WebAccountProvider(@ptrCast(self), &_r);
@@ -637,6 +751,12 @@ pub const IWebTokenRequest = extern struct {
 };
 pub const IWebTokenRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         var _r: *IMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_AppProperties(@ptrCast(self), &_r);
@@ -660,6 +780,12 @@ pub const IWebTokenRequest2 = extern struct {
 };
 pub const IWebTokenRequest3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
@@ -688,6 +814,12 @@ pub const IWebTokenRequest3 = extern struct {
 };
 pub const IWebTokenRequestFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), provider: *WebAccountProvider, scope: ?HSTRING, clientId: ?HSTRING) core.HResult!*WebTokenRequest {
         var _r: *WebTokenRequest = undefined;
         const _c = self.vtable.Create(@ptrCast(self), provider, scope, clientId, &_r);
@@ -732,6 +864,12 @@ pub const IWebTokenRequestFactory = extern struct {
 };
 pub const IWebTokenRequestResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResponseData(self: *@This()) core.HResult!*IVectorView(WebTokenResponse) {
         var _r: *IVectorView(WebTokenResponse) = undefined;
         const _c = self.vtable.get_ResponseData(@ptrCast(self), &_r);
@@ -776,6 +914,12 @@ pub const IWebTokenRequestResult = extern struct {
 };
 pub const IWebTokenResponse = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getToken(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Token(@ptrCast(self), &_r);
@@ -820,6 +964,12 @@ pub const IWebTokenResponse = extern struct {
 };
 pub const IWebTokenResponseFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithToken(self: *@This(), token: ?HSTRING) core.HResult!*WebTokenResponse {
         var _r: *WebTokenResponse = undefined;
         const _c = self.vtable.CreateWithToken(@ptrCast(self), token, &_r);
@@ -857,6 +1007,18 @@ pub const IWebTokenResponseFactory = extern struct {
 };
 pub const WebAccountEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccount(self: *@This()) core.HResult!*WebAccount {
         const this: *IWebAccountEventArgs = @ptrCast(self);
         return try this.getAccount();
@@ -869,6 +1031,18 @@ pub const WebAccountEventArgs = extern struct {
 };
 pub const WebAccountMonitor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addUpdated(self: *@This(), handler: *TypedEventHandler(WebAccountMonitor,WebAccountEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IWebAccountMonitor = @ptrCast(self);
         return try this.addUpdated(handler);
@@ -915,6 +1089,18 @@ pub const WebAccountMonitor = extern struct {
 };
 pub const WebAuthenticationAddAccountResponse = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccount(self: *@This()) core.HResult!*WebAccount {
         const this: *IWebAuthenticationAddAccountResponse = @ptrCast(self);
         return try this.getWebAccount();
@@ -922,9 +1108,6 @@ pub const WebAuthenticationAddAccountResponse = extern struct {
     pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IWebAuthenticationAddAccountResponse = @ptrCast(self);
         return try this.getProperties();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithAccount(webAccount: *WebAccount) core.HResult!*WebAuthenticationAddAccountResponse {
         const _f = try @This()._IWebAuthenticationAddAccountResponseFactoryCache.get();
@@ -939,6 +1122,18 @@ pub const WebAuthenticationAddAccountResponse = extern struct {
 };
 pub const WebAuthenticationAddAccountResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResponseData(self: *@This()) core.HResult!*WebAuthenticationAddAccountResponse {
         const this: *IWebAuthenticationAddAccountResult = @ptrCast(self);
         return try this.getResponseData();
@@ -966,6 +1161,15 @@ pub const WebAuthenticationAddAccountStatus = enum(i32) {
 };
 pub const WebAuthenticationCoreManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1039,6 +1243,18 @@ pub const WebAuthenticationCoreManager = extern struct {
 };
 pub const WebAuthenticationTransferTokenRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccountProvider(self: *@This()) core.HResult!*WebAccountProvider {
         const this: *IWebAuthenticationTransferTokenRequest = @ptrCast(self);
         return try this.getWebAccountProvider();
@@ -1063,9 +1279,6 @@ pub const WebAuthenticationTransferTokenRequest = extern struct {
         const this: *IWebAuthenticationTransferTokenRequest = @ptrCast(self);
         return try this.putCorrelationId(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(provider: *WebAccountProvider, transferToken: ?HSTRING) core.HResult!*WebAuthenticationTransferTokenRequest {
         const _f = try @This()._IWebAuthenticationTransferTokenRequestFactoryCache.get();
         return try _f.Create(provider, transferToken);
@@ -1083,6 +1296,18 @@ pub const WebAuthenticationTransferTokenRequest = extern struct {
 };
 pub const WebProviderError = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getErrorCode(self: *@This()) core.HResult!u32 {
         const this: *IWebProviderError = @ptrCast(self);
         return try this.getErrorCode();
@@ -1094,9 +1319,6 @@ pub const WebProviderError = extern struct {
     pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IWebProviderError = @ptrCast(self);
         return try this.getProperties();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(errorCode: u32, errorMessage: ?HSTRING) core.HResult!*WebProviderError {
         const _f = try @This()._IWebProviderErrorFactoryCache.get();
@@ -1111,6 +1333,18 @@ pub const WebProviderError = extern struct {
 };
 pub const WebTokenRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWebAccountProvider(self: *@This()) core.HResult!*WebAccountProvider {
         const this: *IWebTokenRequest = @ptrCast(self);
         return try this.getWebAccountProvider();
@@ -1152,9 +1386,6 @@ pub const WebTokenRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCorrelationId(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(provider: *WebAccountProvider, scope: ?HSTRING, clientId: ?HSTRING) core.HResult!*WebTokenRequest {
         const _f = try @This()._IWebTokenRequestFactoryCache.get();
         return try _f.Create(provider, scope, clientId);
@@ -1184,6 +1415,18 @@ pub const WebTokenRequestPromptType = enum(i32) {
 };
 pub const WebTokenRequestResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResponseData(self: *@This()) core.HResult!*IVectorView(WebTokenResponse) {
         const this: *IWebTokenRequestResult = @ptrCast(self);
         return try this.getResponseData();
@@ -1216,6 +1459,18 @@ pub const WebTokenRequestStatus = enum(i32) {
 };
 pub const WebTokenResponse = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getToken(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebTokenResponse = @ptrCast(self);
         return try this.getToken();
@@ -1231,9 +1486,6 @@ pub const WebTokenResponse = extern struct {
     pub fn getProperties(self: *@This()) core.HResult!*IMap(?HSTRING,?HSTRING) {
         const this: *IWebTokenResponse = @ptrCast(self);
         return try this.getProperties();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

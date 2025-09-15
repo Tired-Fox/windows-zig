@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const DisplayRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestActive(self: *@This()) core.HResult!void {
         const this: *IDisplayRequest = @ptrCast(self);
         return try this.RequestActive();
@@ -8,9 +20,6 @@ pub const DisplayRequest = extern struct {
     pub fn RequestRelease(self: *@This()) core.HResult!void {
         const this: *IDisplayRequest = @ptrCast(self);
         return try this.RequestRelease();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -25,6 +34,12 @@ pub const DisplayRequest = extern struct {
 };
 pub const IDisplayRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestActive(self: *@This()) core.HResult!void {
         const _c = self.vtable.RequestActive(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;

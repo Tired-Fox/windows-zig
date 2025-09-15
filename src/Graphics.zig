@@ -8,6 +8,12 @@ pub const DisplayId = extern struct {
 };
 pub const IGeometrySource2D = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Graphics.IGeometrySource2D";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "caff7902-670c-4181-a624-da977203b845";
@@ -36,11 +42,12 @@ pub const SizeInt32 = extern struct {
     Width: i32,
     Height: i32,
 };
-const IInspectable = @import("./Foundation.zig").IInspectable;
-const TrustLevel = @import("./root.zig").TrustLevel;
+const IUnknown = @import("./root.zig").IUnknown;
 const Guid = @import("./root.zig").Guid;
 const HRESULT = @import("./root.zig").HRESULT;
 const core = @import("./root.zig").core;
+const IInspectable = @import("./Foundation.zig").IInspectable;
+const TrustLevel = @import("./root.zig").TrustLevel;
 const HSTRING = @import("./root.zig").HSTRING;
 pub const Capture = @import("./Graphics/Capture.zig");
 pub const DirectX = @import("./Graphics/DirectX.zig");

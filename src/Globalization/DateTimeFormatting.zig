@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const DateTimeFormatter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IDateTimeFormatter = @ptrCast(self);
         return try this.getLanguages();
@@ -80,9 +92,6 @@ pub const DateTimeFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FormatWithTimeZoneId(datetime, timeZoneId);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateDateTimeFormatter(formatTemplate: ?HSTRING) core.HResult!*DateTimeFormatter {
         const _f = try @This()._IDateTimeFormatterFactoryCache.get();
         return try _f.CreateDateTimeFormatter(formatTemplate);
@@ -151,6 +160,12 @@ pub const HourFormat = enum(i32) {
 };
 pub const IDateTimeFormatter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Languages(@ptrCast(self), &_r);
@@ -291,6 +306,12 @@ pub const IDateTimeFormatter = extern struct {
 };
 pub const IDateTimeFormatter2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Format(self: *@This(), datetime: DateTime, timeZoneId: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.Format(@ptrCast(self), datetime, timeZoneId, &_r);
@@ -314,6 +335,12 @@ pub const IDateTimeFormatter2 = extern struct {
 };
 pub const IDateTimeFormatterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateDateTimeFormatter(self: *@This(), formatTemplate: ?HSTRING) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.CreateDateTimeFormatter(@ptrCast(self), formatTemplate, &_r);
@@ -379,6 +406,12 @@ pub const IDateTimeFormatterFactory = extern struct {
 };
 pub const IDateTimeFormatterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLongDate(self: *@This()) core.HResult!*DateTimeFormatter {
         var _r: *DateTimeFormatter = undefined;
         const _c = self.vtable.get_LongDate(@ptrCast(self), &_r);

@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AutomationConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsRemoteSystem(self: *@This()) core.HResult!bool {
         const this: *IAutomationConnection = @ptrCast(self);
         return try this.getIsRemoteSystem();
@@ -21,6 +33,18 @@ pub const AutomationConnection = extern struct {
 };
 pub const AutomationConnectionBoundObject = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*AutomationConnection {
         const this: *IAutomationConnectionBoundObject = @ptrCast(self);
         return try this.getConnection();
@@ -33,6 +57,18 @@ pub const AutomationConnectionBoundObject = extern struct {
 };
 pub const AutomationElement = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsRemoteSystem(self: *@This()) core.HResult!bool {
         const this: *IAutomationElement = @ptrCast(self);
         return try this.getIsRemoteSystem();
@@ -53,6 +89,18 @@ pub const AutomationElement = extern struct {
 };
 pub const AutomationTextRange = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.UIAutomation.AutomationTextRange";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IAutomationTextRange.GUID;
@@ -61,6 +109,12 @@ pub const AutomationTextRange = extern struct {
 };
 pub const IAutomationConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsRemoteSystem(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRemoteSystem(@ptrCast(self), &_r);
@@ -98,6 +152,12 @@ pub const IAutomationConnection = extern struct {
 };
 pub const IAutomationConnectionBoundObject = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*AutomationConnection {
         var _r: *AutomationConnection = undefined;
         const _c = self.vtable.get_Connection(@ptrCast(self), &_r);
@@ -121,6 +181,12 @@ pub const IAutomationConnectionBoundObject = extern struct {
 };
 pub const IAutomationElement = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsRemoteSystem(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRemoteSystem(@ptrCast(self), &_r);
@@ -158,6 +224,12 @@ pub const IAutomationElement = extern struct {
 };
 pub const IAutomationTextRange = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.UIAutomation.IAutomationTextRange";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "7e101b65-40d3-5994-85a9-0a0cb9a4ec98";
@@ -172,6 +244,7 @@ pub const IAutomationTextRange = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
+const IUnknown = @import("../root.zig").IUnknown;
 const Guid = @import("../root.zig").Guid;
 const HRESULT = @import("../root.zig").HRESULT;
 const core = @import("../root.zig").core;

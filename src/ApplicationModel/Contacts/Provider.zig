@@ -6,6 +6,18 @@ pub const AddContactResult = enum(i32) {
 };
 pub const ContactPickerUI = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddContactWithIdAndContact(self: *@This(), id: ?HSTRING, contact: *Contact) core.HResult!AddContactResult {
         const this: *IContactPickerUI = @ptrCast(self);
         return try this.AddContactWithIdAndContact(id, contact);
@@ -56,6 +68,18 @@ pub const ContactPickerUI = extern struct {
 };
 pub const ContactRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactRemovedEventArgs = @ptrCast(self);
         return try this.getId();
@@ -68,6 +92,12 @@ pub const ContactRemovedEventArgs = extern struct {
 };
 pub const IContactPickerUI = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddContact(self: *@This(), id: ?HSTRING, contact: *Contact) core.HResult!AddContactResult {
         var _r: AddContactResult = undefined;
         const _c = self.vtable.AddContact(@ptrCast(self), id, contact, &_r);
@@ -129,6 +159,12 @@ pub const IContactPickerUI = extern struct {
 };
 pub const IContactPickerUI2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddContact(self: *@This(), contact: *Contact) core.HResult!AddContactResult {
         var _r: AddContactResult = undefined;
         const _c = self.vtable.AddContact(@ptrCast(self), contact, &_r);
@@ -159,6 +195,12 @@ pub const IContactPickerUI2 = extern struct {
 };
 pub const IContactRemovedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);

@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const BarcodeScanner = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBarcodeScanner = @ptrCast(self);
         return try this.getDeviceId();
@@ -59,9 +71,6 @@ pub const BarcodeScanner = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(BarcodeScanner) {
         const _f = try @This()._IBarcodeScannerStaticsCache.get();
         return try _f.GetDefaultAsync();
@@ -88,6 +97,18 @@ pub const BarcodeScanner = extern struct {
 };
 pub const BarcodeScannerCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPowerReportingType(self: *@This()) core.HResult!UnifiedPosPowerReportingType {
         const this: *IBarcodeScannerCapabilities = @ptrCast(self);
         return try this.getPowerReportingType();
@@ -126,6 +147,18 @@ pub const BarcodeScannerCapabilities = extern struct {
 };
 pub const BarcodeScannerDataReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReport(self: *@This()) core.HResult!*BarcodeScannerReport {
         const this: *IBarcodeScannerDataReceivedEventArgs = @ptrCast(self);
         return try this.getReport();
@@ -138,6 +171,18 @@ pub const BarcodeScannerDataReceivedEventArgs = extern struct {
 };
 pub const BarcodeScannerErrorOccurredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPartialInputData(self: *@This()) core.HResult!*BarcodeScannerReport {
         const this: *IBarcodeScannerErrorOccurredEventArgs = @ptrCast(self);
         return try this.getPartialInputData();
@@ -158,6 +203,18 @@ pub const BarcodeScannerErrorOccurredEventArgs = extern struct {
 };
 pub const BarcodeScannerImagePreviewReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreview(self: *@This()) core.HResult!*IRandomAccessStreamWithContentType {
         const this: *IBarcodeScannerImagePreviewReceivedEventArgs = @ptrCast(self);
         return try this.getPreview();
@@ -170,6 +227,18 @@ pub const BarcodeScannerImagePreviewReceivedEventArgs = extern struct {
 };
 pub const BarcodeScannerReport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScanDataType(self: *@This()) core.HResult!u32 {
         const this: *IBarcodeScannerReport = @ptrCast(self);
         return try this.getScanDataType();
@@ -181,9 +250,6 @@ pub const BarcodeScannerReport = extern struct {
     pub fn getScanDataLabel(self: *@This()) core.HResult!*IBuffer {
         const this: *IBarcodeScannerReport = @ptrCast(self);
         return try this.getScanDataLabel();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(scanDataType: u32, scanData: *IBuffer, scanDataLabel: *IBuffer) core.HResult!*BarcodeScannerReport {
         const _f = try @This()._IBarcodeScannerReportFactoryCache.get();
@@ -205,6 +271,18 @@ pub const BarcodeScannerStatus = enum(i32) {
 };
 pub const BarcodeScannerStatusUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!BarcodeScannerStatus {
         const this: *IBarcodeScannerStatusUpdatedEventArgs = @ptrCast(self);
         return try this.getStatus();
@@ -221,6 +299,15 @@ pub const BarcodeScannerStatusUpdatedEventArgs = extern struct {
 };
 pub const BarcodeSymbologies = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -611,6 +698,18 @@ pub const BarcodeSymbologies = extern struct {
 };
 pub const BarcodeSymbologyAttributes = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCheckDigitValidationEnabled(self: *@This()) core.HResult!bool {
         const this: *IBarcodeSymbologyAttributes = @ptrCast(self);
         return try this.getIsCheckDigitValidationEnabled();
@@ -676,6 +775,18 @@ pub const BarcodeSymbologyDecodeLengthKind = enum(i32) {
 };
 pub const CashDrawer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ICashDrawer = @ptrCast(self);
         return try this.getDeviceId();
@@ -723,9 +834,6 @@ pub const CashDrawer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(CashDrawer) {
         const _f = try @This()._ICashDrawerStaticsCache.get();
         return try _f.GetDefaultAsync();
@@ -752,6 +860,18 @@ pub const CashDrawer = extern struct {
 };
 pub const CashDrawerCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPowerReportingType(self: *@This()) core.HResult!UnifiedPosPowerReportingType {
         const this: *ICashDrawerCapabilities = @ptrCast(self);
         return try this.getPowerReportingType();
@@ -784,6 +904,18 @@ pub const CashDrawerCapabilities = extern struct {
 };
 pub const CashDrawerCloseAlarm = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAlarmTimeout(self: *@This(), value: TimeSpan) core.HResult!void {
         const this: *ICashDrawerCloseAlarm = @ptrCast(self);
         return try this.putAlarmTimeout(value);
@@ -836,6 +968,18 @@ pub const CashDrawerCloseAlarm = extern struct {
 };
 pub const CashDrawerClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCashDrawer(self: *@This()) core.HResult!*CashDrawer {
         const this: *ICashDrawerEventSourceEventArgs = @ptrCast(self);
         return try this.getCashDrawer();
@@ -848,6 +992,18 @@ pub const CashDrawerClosedEventArgs = extern struct {
 };
 pub const CashDrawerEventSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addDrawerClosed(self: *@This(), handler: *TypedEventHandler(CashDrawerEventSource,CashDrawerClosedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *ICashDrawerEventSource = @ptrCast(self);
         return try this.addDrawerClosed(handler);
@@ -872,6 +1028,18 @@ pub const CashDrawerEventSource = extern struct {
 };
 pub const CashDrawerOpenedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCashDrawer(self: *@This()) core.HResult!*CashDrawer {
         const this: *ICashDrawerEventSourceEventArgs = @ptrCast(self);
         return try this.getCashDrawer();
@@ -884,6 +1052,18 @@ pub const CashDrawerOpenedEventArgs = extern struct {
 };
 pub const CashDrawerStatus = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatusKind(self: *@This()) core.HResult!CashDrawerStatusKind {
         const this: *ICashDrawerStatus = @ptrCast(self);
         return try this.getStatusKind();
@@ -907,6 +1087,18 @@ pub const CashDrawerStatusKind = enum(i32) {
 };
 pub const CashDrawerStatusUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!*CashDrawerStatus {
         const this: *ICashDrawerStatusUpdatedEventArgs = @ptrCast(self);
         return try this.getStatus();
@@ -919,6 +1111,18 @@ pub const CashDrawerStatusUpdatedEventArgs = extern struct {
 };
 pub const ClaimedBarcodeScanner = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedBarcodeScanner = @ptrCast(self);
         return try this.getDeviceId();
@@ -1104,6 +1308,18 @@ pub const ClaimedBarcodeScanner = extern struct {
 };
 pub const ClaimedBarcodeScannerClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedBarcodeScannerClosedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IClaimedBarcodeScannerClosedEventArgs.GUID;
@@ -1112,6 +1328,18 @@ pub const ClaimedBarcodeScannerClosedEventArgs = extern struct {
 };
 pub const ClaimedCashDrawer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedCashDrawer = @ptrCast(self);
         return try this.getDeviceId();
@@ -1189,6 +1417,18 @@ pub const ClaimedCashDrawer = extern struct {
 };
 pub const ClaimedCashDrawerClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedCashDrawerClosedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IClaimedCashDrawerClosedEventArgs.GUID;
@@ -1197,6 +1437,18 @@ pub const ClaimedCashDrawerClosedEventArgs = extern struct {
 };
 pub const ClaimedJournalPrinter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateJob(self: *@This()) core.HResult!*JournalPrintJob {
         const this: *IClaimedJournalPrinter = @ptrCast(self);
         return try this.CreateJob();
@@ -1342,6 +1594,18 @@ pub const ClaimedJournalPrinter = extern struct {
 };
 pub const ClaimedLineDisplay = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedLineDisplay = @ptrCast(self);
         return try this.getDeviceId();
@@ -1526,9 +1790,6 @@ pub const ClaimedLineDisplay = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(ClaimedLineDisplay) {
         const _f = try @This()._IClaimedLineDisplayStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
@@ -1550,6 +1811,18 @@ pub const ClaimedLineDisplay = extern struct {
 };
 pub const ClaimedLineDisplayClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedLineDisplayClosedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IClaimedLineDisplayClosedEventArgs.GUID;
@@ -1558,6 +1831,18 @@ pub const ClaimedLineDisplayClosedEventArgs = extern struct {
 };
 pub const ClaimedMagneticStripeReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedMagneticStripeReader = @ptrCast(self);
         return try this.getDeviceId();
@@ -1719,6 +2004,18 @@ pub const ClaimedMagneticStripeReader = extern struct {
 };
 pub const ClaimedMagneticStripeReaderClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedMagneticStripeReaderClosedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IClaimedMagneticStripeReaderClosedEventArgs.GUID;
@@ -1727,6 +2024,18 @@ pub const ClaimedMagneticStripeReaderClosedEventArgs = extern struct {
 };
 pub const ClaimedPosPrinter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IClaimedPosPrinter = @ptrCast(self);
         return try this.getDeviceId();
@@ -1832,6 +2141,18 @@ pub const ClaimedPosPrinter = extern struct {
 };
 pub const ClaimedPosPrinterClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedPosPrinterClosedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IClaimedPosPrinterClosedEventArgs.GUID;
@@ -1840,6 +2161,18 @@ pub const ClaimedPosPrinterClosedEventArgs = extern struct {
 };
 pub const ClaimedReceiptPrinter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSidewaysMaxLines(self: *@This()) core.HResult!u32 {
         const this: *IClaimedReceiptPrinter = @ptrCast(self);
         return try this.getSidewaysMaxLines();
@@ -2005,6 +2338,18 @@ pub const ClaimedReceiptPrinter = extern struct {
 };
 pub const ClaimedSlipPrinter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSidewaysMaxLines(self: *@This()) core.HResult!u32 {
         const this: *IClaimedSlipPrinter = @ptrCast(self);
         return try this.getSidewaysMaxLines();
@@ -2198,6 +2543,12 @@ pub const ClaimedSlipPrinter = extern struct {
 };
 pub const IBarcodeScanner = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -2289,6 +2640,12 @@ pub const IBarcodeScanner = extern struct {
 };
 pub const IBarcodeScanner2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoDeviceId(@ptrCast(self), &_r);
@@ -2312,6 +2669,12 @@ pub const IBarcodeScanner2 = extern struct {
 };
 pub const IBarcodeScannerCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPowerReportingType(self: *@This()) core.HResult!UnifiedPosPowerReportingType {
         var _r: UnifiedPosPowerReportingType = undefined;
         const _c = self.vtable.get_PowerReportingType(@ptrCast(self), &_r);
@@ -2356,6 +2719,12 @@ pub const IBarcodeScannerCapabilities = extern struct {
 };
 pub const IBarcodeScannerCapabilities1 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSoftwareTriggerSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSoftwareTriggerSupported(@ptrCast(self), &_r);
@@ -2379,6 +2748,12 @@ pub const IBarcodeScannerCapabilities1 = extern struct {
 };
 pub const IBarcodeScannerCapabilities2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsVideoPreviewSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsVideoPreviewSupported(@ptrCast(self), &_r);
@@ -2402,6 +2777,12 @@ pub const IBarcodeScannerCapabilities2 = extern struct {
 };
 pub const IBarcodeScannerDataReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReport(self: *@This()) core.HResult!*BarcodeScannerReport {
         var _r: *BarcodeScannerReport = undefined;
         const _c = self.vtable.get_Report(@ptrCast(self), &_r);
@@ -2425,6 +2806,12 @@ pub const IBarcodeScannerDataReceivedEventArgs = extern struct {
 };
 pub const IBarcodeScannerErrorOccurredEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPartialInputData(self: *@This()) core.HResult!*BarcodeScannerReport {
         var _r: *BarcodeScannerReport = undefined;
         const _c = self.vtable.get_PartialInputData(@ptrCast(self), &_r);
@@ -2462,6 +2849,12 @@ pub const IBarcodeScannerErrorOccurredEventArgs = extern struct {
 };
 pub const IBarcodeScannerImagePreviewReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreview(self: *@This()) core.HResult!*IRandomAccessStreamWithContentType {
         var _r: *IRandomAccessStreamWithContentType = undefined;
         const _c = self.vtable.get_Preview(@ptrCast(self), &_r);
@@ -2485,6 +2878,12 @@ pub const IBarcodeScannerImagePreviewReceivedEventArgs = extern struct {
 };
 pub const IBarcodeScannerReport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScanDataType(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ScanDataType(@ptrCast(self), &_r);
@@ -2522,6 +2921,12 @@ pub const IBarcodeScannerReport = extern struct {
 };
 pub const IBarcodeScannerReportFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), scanDataType: u32, scanData: *IBuffer, scanDataLabel: *IBuffer) core.HResult!*BarcodeScannerReport {
         var _r: *BarcodeScannerReport = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), scanDataType, scanData, scanDataLabel, &_r);
@@ -2545,6 +2950,12 @@ pub const IBarcodeScannerReportFactory = extern struct {
 };
 pub const IBarcodeScannerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(BarcodeScanner) {
         var _r: *IAsyncOperation(BarcodeScanner) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
@@ -2582,6 +2993,12 @@ pub const IBarcodeScannerStatics = extern struct {
 };
 pub const IBarcodeScannerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
@@ -2605,6 +3022,12 @@ pub const IBarcodeScannerStatics2 = extern struct {
 };
 pub const IBarcodeScannerStatusUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!BarcodeScannerStatus {
         var _r: BarcodeScannerStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -2635,6 +3058,12 @@ pub const IBarcodeScannerStatusUpdatedEventArgs = extern struct {
 };
 pub const IBarcodeSymbologiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnknown(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Unknown(@ptrCast(self), &_r);
@@ -3309,6 +3738,12 @@ pub const IBarcodeSymbologiesStatics = extern struct {
 };
 pub const IBarcodeSymbologiesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGs1DWCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Gs1DWCode(@ptrCast(self), &_r);
@@ -3332,6 +3767,12 @@ pub const IBarcodeSymbologiesStatics2 = extern struct {
 };
 pub const IBarcodeSymbologyAttributes = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCheckDigitValidationEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCheckDigitValidationEnabled(@ptrCast(self), &_r);
@@ -3429,6 +3870,12 @@ pub const IBarcodeSymbologyAttributes = extern struct {
 };
 pub const ICashDrawer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -3513,6 +3960,12 @@ pub const ICashDrawer = extern struct {
 };
 pub const ICashDrawerCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPowerReportingType(self: *@This()) core.HResult!UnifiedPosPowerReportingType {
         var _r: UnifiedPosPowerReportingType = undefined;
         const _c = self.vtable.get_PowerReportingType(@ptrCast(self), &_r);
@@ -3571,6 +4024,12 @@ pub const ICashDrawerCapabilities = extern struct {
 };
 pub const ICashDrawerCloseAlarm = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAlarmTimeout(self: *@This(), value: TimeSpan) core.HResult!void {
         const _c = self.vtable.put_AlarmTimeout(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3654,6 +4113,12 @@ pub const ICashDrawerCloseAlarm = extern struct {
 };
 pub const ICashDrawerEventSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addDrawerClosed(self: *@This(), handler: *TypedEventHandler(CashDrawerEventSource,CashDrawerClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DrawerClosed(@ptrCast(self), handler, &_r);
@@ -3694,6 +4159,12 @@ pub const ICashDrawerEventSource = extern struct {
 };
 pub const ICashDrawerEventSourceEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCashDrawer(self: *@This()) core.HResult!*CashDrawer {
         var _r: *CashDrawer = undefined;
         const _c = self.vtable.get_CashDrawer(@ptrCast(self), &_r);
@@ -3717,6 +4188,12 @@ pub const ICashDrawerEventSourceEventArgs = extern struct {
 };
 pub const ICashDrawerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(CashDrawer) {
         var _r: *IAsyncOperation(CashDrawer) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
@@ -3754,6 +4231,12 @@ pub const ICashDrawerStatics = extern struct {
 };
 pub const ICashDrawerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
@@ -3777,6 +4260,12 @@ pub const ICashDrawerStatics2 = extern struct {
 };
 pub const ICashDrawerStatus = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatusKind(self: *@This()) core.HResult!CashDrawerStatusKind {
         var _r: CashDrawerStatusKind = undefined;
         const _c = self.vtable.get_StatusKind(@ptrCast(self), &_r);
@@ -3807,6 +4296,12 @@ pub const ICashDrawerStatus = extern struct {
 };
 pub const ICashDrawerStatusUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!*CashDrawerStatus {
         var _r: *CashDrawerStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -3830,6 +4325,12 @@ pub const ICashDrawerStatusUpdatedEventArgs = extern struct {
 };
 pub const IClaimedBarcodeScanner = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -4003,6 +4504,12 @@ pub const IClaimedBarcodeScanner = extern struct {
 };
 pub const IClaimedBarcodeScanner1 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartSoftwareTriggerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartSoftwareTriggerAsync(@ptrCast(self), &_r);
@@ -4033,6 +4540,12 @@ pub const IClaimedBarcodeScanner1 = extern struct {
 };
 pub const IClaimedBarcodeScanner2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSymbologyAttributesAsync(self: *@This(), barcodeSymbology: u32) core.HResult!*IAsyncOperation(BarcodeSymbologyAttributes) {
         var _r: *IAsyncOperation(BarcodeSymbologyAttributes) = undefined;
         const _c = self.vtable.GetSymbologyAttributesAsync(@ptrCast(self), barcodeSymbology, &_r);
@@ -4063,6 +4576,12 @@ pub const IClaimedBarcodeScanner2 = extern struct {
 };
 pub const IClaimedBarcodeScanner3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowVideoPreviewAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.ShowVideoPreviewAsync(@ptrCast(self), &_r);
@@ -4103,6 +4622,12 @@ pub const IClaimedBarcodeScanner3 = extern struct {
 };
 pub const IClaimedBarcodeScanner4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedBarcodeScanner,ClaimedBarcodeScannerClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
@@ -4131,6 +4656,12 @@ pub const IClaimedBarcodeScanner4 = extern struct {
 };
 pub const IClaimedBarcodeScannerClosedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedBarcodeScannerClosedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "cf7d5489-a22c-4c65-a901-88d77d833954";
@@ -4147,6 +4678,12 @@ pub const IClaimedBarcodeScannerClosedEventArgs = extern struct {
 };
 pub const IClaimedCashDrawer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -4245,6 +4782,12 @@ pub const IClaimedCashDrawer = extern struct {
 };
 pub const IClaimedCashDrawer2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedCashDrawer,ClaimedCashDrawerClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
@@ -4273,6 +4816,12 @@ pub const IClaimedCashDrawer2 = extern struct {
 };
 pub const IClaimedCashDrawerClosedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedCashDrawerClosedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "cc573f33-3f34-4c5c-baae-deadf16cd7fa";
@@ -4289,6 +4838,12 @@ pub const IClaimedCashDrawerClosedEventArgs = extern struct {
 };
 pub const IClaimedJournalPrinter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateJob(self: *@This()) core.HResult!*JournalPrintJob {
         var _r: *JournalPrintJob = undefined;
         const _c = self.vtable.CreateJob(@ptrCast(self), &_r);
@@ -4312,6 +4867,12 @@ pub const IClaimedJournalPrinter = extern struct {
 };
 pub const IClaimedLineDisplay = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -4401,6 +4962,12 @@ pub const IClaimedLineDisplay = extern struct {
 };
 pub const IClaimedLineDisplay2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetStatisticsAsync(self: *@This(), statisticsCategories: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetStatisticsAsync(@ptrCast(self), statisticsCategories, &_r);
@@ -4534,6 +5101,12 @@ pub const IClaimedLineDisplay2 = extern struct {
 };
 pub const IClaimedLineDisplay3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedLineDisplay,ClaimedLineDisplayClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
@@ -4562,6 +5135,12 @@ pub const IClaimedLineDisplay3 = extern struct {
 };
 pub const IClaimedLineDisplayClosedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedLineDisplayClosedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "f915f364-d3d5-4f10-b511-90939edfacd8";
@@ -4578,6 +5157,12 @@ pub const IClaimedLineDisplayClosedEventArgs = extern struct {
 };
 pub const IClaimedLineDisplayStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(ClaimedLineDisplay) {
         var _r: *IAsyncOperation(ClaimedLineDisplay) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
@@ -4615,6 +5200,12 @@ pub const IClaimedLineDisplayStatics = extern struct {
 };
 pub const IClaimedMagneticStripeReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -4838,6 +5429,12 @@ pub const IClaimedMagneticStripeReader = extern struct {
 };
 pub const IClaimedMagneticStripeReader2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedMagneticStripeReader,ClaimedMagneticStripeReaderClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
@@ -4866,6 +5463,12 @@ pub const IClaimedMagneticStripeReader2 = extern struct {
 };
 pub const IClaimedMagneticStripeReaderClosedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedMagneticStripeReaderClosedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "14ada93a-adcd-4c80-acda-c3eaed2647e1";
@@ -4882,6 +5485,12 @@ pub const IClaimedMagneticStripeReaderClosedEventArgs = extern struct {
 };
 pub const IClaimedPosPrinter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -5023,6 +5632,12 @@ pub const IClaimedPosPrinter = extern struct {
 };
 pub const IClaimedPosPrinter2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedPosPrinter,ClaimedPosPrinterClosedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Closed(@ptrCast(self), handler, &_r);
@@ -5051,6 +5666,12 @@ pub const IClaimedPosPrinter2 = extern struct {
 };
 pub const IClaimedPosPrinterClosedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IClaimedPosPrinterClosedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e2b7a27b-4d40-471d-92ed-63375b18c788";
@@ -5067,6 +5688,12 @@ pub const IClaimedPosPrinterClosedEventArgs = extern struct {
 };
 pub const IClaimedReceiptPrinter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSidewaysMaxLines(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SidewaysMaxLines(@ptrCast(self), &_r);
@@ -5125,6 +5752,12 @@ pub const IClaimedReceiptPrinter = extern struct {
 };
 pub const IClaimedSlipPrinter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSidewaysMaxLines(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_SidewaysMaxLines(@ptrCast(self), &_r);
@@ -5226,6 +5859,12 @@ pub const IClaimedSlipPrinter = extern struct {
 };
 pub const ICommonClaimedPosPrinterStation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCharactersPerLine(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_CharactersPerLine(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5365,6 +6004,12 @@ pub const ICommonClaimedPosPrinterStation = extern struct {
 };
 pub const ICommonPosPrintStationCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPrinterPresent(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPrinterPresent(@ptrCast(self), &_r);
@@ -5472,6 +6117,12 @@ pub const ICommonPosPrintStationCapabilities = extern struct {
 };
 pub const ICommonReceiptSlipCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsBarcodeSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBarcodeSupported(@ptrCast(self), &_r);
@@ -5551,6 +6202,12 @@ pub const ICommonReceiptSlipCapabilities = extern struct {
 };
 pub const IJournalPrintJob = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Print(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         const _c = self.vtable.Print(@ptrCast(self), data, printOptions);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5582,6 +6239,12 @@ pub const IJournalPrintJob = extern struct {
 };
 pub const IJournalPrinterCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IJournalPrinterCapabilities";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "3b5ccc43-e047-4463-bb58-17b5ba1d8056";
@@ -5598,6 +6261,12 @@ pub const IJournalPrinterCapabilities = extern struct {
 };
 pub const IJournalPrinterCapabilities2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReverseVideoSupported(@ptrCast(self), &_r);
@@ -5656,6 +6325,12 @@ pub const IJournalPrinterCapabilities2 = extern struct {
 };
 pub const ILineDisplay = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -5728,6 +6403,12 @@ pub const ILineDisplay = extern struct {
 };
 pub const ILineDisplay2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CheckPowerStatusAsync(self: *@This()) core.HResult!*IAsyncOperation(LineDisplayPowerStatus) {
         var _r: *IAsyncOperation(LineDisplayPowerStatus) = undefined;
         const _c = self.vtable.CheckPowerStatusAsync(@ptrCast(self), &_r);
@@ -5751,6 +6432,12 @@ pub const ILineDisplay2 = extern struct {
 };
 pub const ILineDisplayAttributes = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPowerNotifyEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPowerNotifyEnabled(@ptrCast(self), &_r);
@@ -5851,6 +6538,12 @@ pub const ILineDisplayAttributes = extern struct {
 };
 pub const ILineDisplayCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsStatisticsReportingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsStatisticsReportingSupported(@ptrCast(self), &_r);
@@ -5993,6 +6686,12 @@ pub const ILineDisplayCapabilities = extern struct {
 };
 pub const ILineDisplayCursor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanCustomize(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanCustomize(@ptrCast(self), &_r);
@@ -6072,6 +6771,12 @@ pub const ILineDisplayCursor = extern struct {
 };
 pub const ILineDisplayCursorAttributes = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsBlinkEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsBlinkEnabled(@ptrCast(self), &_r);
@@ -6136,6 +6841,12 @@ pub const ILineDisplayCursorAttributes = extern struct {
 };
 pub const ILineDisplayCustomGlyphs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSizeInPixels(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_SizeInPixels(@ptrCast(self), &_r);
@@ -6173,6 +6884,12 @@ pub const ILineDisplayCustomGlyphs = extern struct {
 };
 pub const ILineDisplayMarquee = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormat(self: *@This()) core.HResult!LineDisplayMarqueeFormat {
         var _r: LineDisplayMarqueeFormat = undefined;
         const _c = self.vtable.get_Format(@ptrCast(self), &_r);
@@ -6239,6 +6956,12 @@ pub const ILineDisplayMarquee = extern struct {
 };
 pub const ILineDisplayStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(LineDisplay) {
         var _r: *IAsyncOperation(LineDisplay) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
@@ -6283,6 +7006,12 @@ pub const ILineDisplayStatics = extern struct {
 };
 pub const ILineDisplayStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatisticsCategorySelector(self: *@This()) core.HResult!*LineDisplayStatisticsCategorySelector {
         var _r: *LineDisplayStatisticsCategorySelector = undefined;
         const _c = self.vtable.get_StatisticsCategorySelector(@ptrCast(self), &_r);
@@ -6306,6 +7035,12 @@ pub const ILineDisplayStatics2 = extern struct {
 };
 pub const ILineDisplayStatisticsCategorySelector = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllStatistics(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AllStatistics(@ptrCast(self), &_r);
@@ -6343,6 +7078,12 @@ pub const ILineDisplayStatisticsCategorySelector = extern struct {
 };
 pub const ILineDisplayStatusUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!LineDisplayPowerStatus {
         var _r: LineDisplayPowerStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -6366,6 +7107,12 @@ pub const ILineDisplayStatusUpdatedEventArgs = extern struct {
 };
 pub const ILineDisplayStoredBitmap = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEscapeSequence(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EscapeSequence(@ptrCast(self), &_r);
@@ -6396,6 +7143,12 @@ pub const ILineDisplayStoredBitmap = extern struct {
 };
 pub const ILineDisplayWindow = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSizeInCharacters(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_SizeInCharacters(@ptrCast(self), &_r);
@@ -6473,6 +7226,12 @@ pub const ILineDisplayWindow = extern struct {
 };
 pub const ILineDisplayWindow2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCursor(self: *@This()) core.HResult!*LineDisplayCursor {
         var _r: *LineDisplayCursor = undefined;
         const _c = self.vtable.get_Cursor(@ptrCast(self), &_r);
@@ -6552,6 +7311,12 @@ pub const ILineDisplayWindow2 = extern struct {
 };
 pub const IMagneticStripeReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -6636,6 +7401,12 @@ pub const IMagneticStripeReader = extern struct {
 };
 pub const IMagneticStripeReaderAamvaCardDataReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReport(self: *@This()) core.HResult!*MagneticStripeReaderReport {
         var _r: *MagneticStripeReaderReport = undefined;
         const _c = self.vtable.get_Report(@ptrCast(self), &_r);
@@ -6785,6 +7556,12 @@ pub const IMagneticStripeReaderAamvaCardDataReceivedEventArgs = extern struct {
 };
 pub const IMagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReport(self: *@This()) core.HResult!*MagneticStripeReaderReport {
         var _r: *MagneticStripeReaderReport = undefined;
         const _c = self.vtable.get_Report(@ptrCast(self), &_r);
@@ -6864,6 +7641,12 @@ pub const IMagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
 };
 pub const IMagneticStripeReaderCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCardAuthentication(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CardAuthentication(@ptrCast(self), &_r);
@@ -6957,6 +7740,12 @@ pub const IMagneticStripeReaderCapabilities = extern struct {
 };
 pub const IMagneticStripeReaderCardTypesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnknown(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Unknown(@ptrCast(self), &_r);
@@ -7001,6 +7790,12 @@ pub const IMagneticStripeReaderCardTypesStatics = extern struct {
 };
 pub const IMagneticStripeReaderEncryptionAlgorithmsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNone(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_None(@ptrCast(self), &_r);
@@ -7038,6 +7833,12 @@ pub const IMagneticStripeReaderEncryptionAlgorithmsStatics = extern struct {
 };
 pub const IMagneticStripeReaderErrorOccurredEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrack1Status(self: *@This()) core.HResult!MagneticStripeReaderTrackErrorType {
         var _r: MagneticStripeReaderTrackErrorType = undefined;
         const _c = self.vtable.get_Track1Status(@ptrCast(self), &_r);
@@ -7096,6 +7897,12 @@ pub const IMagneticStripeReaderErrorOccurredEventArgs = extern struct {
 };
 pub const IMagneticStripeReaderReport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCardType(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_CardType(@ptrCast(self), &_r);
@@ -7175,6 +7982,12 @@ pub const IMagneticStripeReaderReport = extern struct {
 };
 pub const IMagneticStripeReaderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(MagneticStripeReader) {
         var _r: *IAsyncOperation(MagneticStripeReader) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
@@ -7212,6 +8025,12 @@ pub const IMagneticStripeReaderStatics = extern struct {
 };
 pub const IMagneticStripeReaderStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
@@ -7235,6 +8054,12 @@ pub const IMagneticStripeReaderStatics2 = extern struct {
 };
 pub const IMagneticStripeReaderStatusUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!MagneticStripeReaderStatus {
         var _r: MagneticStripeReaderStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -7265,6 +8090,12 @@ pub const IMagneticStripeReaderStatusUpdatedEventArgs = extern struct {
 };
 pub const IMagneticStripeReaderTrackData = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
@@ -7302,6 +8133,12 @@ pub const IMagneticStripeReaderTrackData = extern struct {
 };
 pub const IMagneticStripeReaderVendorSpecificCardDataReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReport(self: *@This()) core.HResult!*MagneticStripeReaderReport {
         var _r: *MagneticStripeReaderReport = undefined;
         const _c = self.vtable.get_Report(@ptrCast(self), &_r);
@@ -7325,6 +8162,12 @@ pub const IMagneticStripeReaderVendorSpecificCardDataReceivedEventArgs = extern 
 };
 pub const IPosPrinter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -7409,6 +8252,12 @@ pub const IPosPrinter = extern struct {
 };
 pub const IPosPrinter2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedBarcodeSymbologies(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.get_SupportedBarcodeSymbologies(@ptrCast(self), &_r);
@@ -7439,6 +8288,12 @@ pub const IPosPrinter2 = extern struct {
 };
 pub const IPosPrinterCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPowerReportingType(self: *@This()) core.HResult!UnifiedPosPowerReportingType {
         var _r: UnifiedPosPowerReportingType = undefined;
         const _c = self.vtable.get_PowerReportingType(@ptrCast(self), &_r);
@@ -7525,6 +8380,12 @@ pub const IPosPrinterCapabilities = extern struct {
 };
 pub const IPosPrinterCharacterSetIdsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUtf16LE(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Utf16LE(@ptrCast(self), &_r);
@@ -7562,6 +8423,12 @@ pub const IPosPrinterCharacterSetIdsStatics = extern struct {
 };
 pub const IPosPrinterFontProperty = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTypeFace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TypeFace(@ptrCast(self), &_r);
@@ -7599,6 +8466,12 @@ pub const IPosPrinterFontProperty = extern struct {
 };
 pub const IPosPrinterJob = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Print(self: *@This(), data: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Print(@ptrCast(self), data);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -7637,6 +8510,12 @@ pub const IPosPrinterJob = extern struct {
 };
 pub const IPosPrinterPrintOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTypeFace(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TypeFace(@ptrCast(self), &_r);
@@ -7809,6 +8688,12 @@ pub const IPosPrinterPrintOptions = extern struct {
 };
 pub const IPosPrinterReleaseDeviceRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IPosPrinterReleaseDeviceRequestedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "2bcba359-1cef-40b2-9ecb-f927f856ae3c";
@@ -7825,6 +8710,12 @@ pub const IPosPrinterReleaseDeviceRequestedEventArgs = extern struct {
 };
 pub const IPosPrinterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(PosPrinter) {
         var _r: *IAsyncOperation(PosPrinter) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
@@ -7862,6 +8753,12 @@ pub const IPosPrinterStatics = extern struct {
 };
 pub const IPosPrinterStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
@@ -7885,6 +8782,12 @@ pub const IPosPrinterStatics2 = extern struct {
 };
 pub const IPosPrinterStatus = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatusKind(self: *@This()) core.HResult!PosPrinterStatusKind {
         var _r: PosPrinterStatusKind = undefined;
         const _c = self.vtable.get_StatusKind(@ptrCast(self), &_r);
@@ -7915,6 +8818,12 @@ pub const IPosPrinterStatus = extern struct {
 };
 pub const IPosPrinterStatusUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!*PosPrinterStatus {
         var _r: *PosPrinterStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -7938,6 +8847,12 @@ pub const IPosPrinterStatusUpdatedEventArgs = extern struct {
 };
 pub const IReceiptOrSlipJob = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetBarcodeRotation(self: *@This(), value: PosPrinterRotation) core.HResult!void {
         const _c = self.vtable.SetBarcodeRotation(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -8029,6 +8944,12 @@ pub const IReceiptOrSlipJob = extern struct {
 };
 pub const IReceiptPrintJob = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn MarkFeed(self: *@This(), kind: PosPrinterMarkFeedKind) core.HResult!void {
         const _c = self.vtable.MarkFeed(@ptrCast(self), kind);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -8060,6 +8981,12 @@ pub const IReceiptPrintJob = extern struct {
 };
 pub const IReceiptPrintJob2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StampPaper(self: *@This()) core.HResult!void {
         const _c = self.vtable.StampPaper(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -8096,6 +9023,12 @@ pub const IReceiptPrintJob2 = extern struct {
 };
 pub const IReceiptPrinterCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanCutPaper(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanCutPaper(@ptrCast(self), &_r);
@@ -8133,6 +9066,12 @@ pub const IReceiptPrinterCapabilities = extern struct {
 };
 pub const IReceiptPrinterCapabilities2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReverseVideoSupported(@ptrCast(self), &_r);
@@ -8191,6 +9130,12 @@ pub const IReceiptPrinterCapabilities2 = extern struct {
 };
 pub const ISlipPrintJob = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Print(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         const _c = self.vtable.Print(@ptrCast(self), data, printOptions);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -8222,6 +9167,12 @@ pub const ISlipPrintJob = extern struct {
 };
 pub const ISlipPrinterCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsFullLengthSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsFullLengthSupported(@ptrCast(self), &_r);
@@ -8252,6 +9203,12 @@ pub const ISlipPrinterCapabilities = extern struct {
 };
 pub const ISlipPrinterCapabilities2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReverseVideoSupported(@ptrCast(self), &_r);
@@ -8310,6 +9267,12 @@ pub const ISlipPrinterCapabilities2 = extern struct {
 };
 pub const IUnifiedPosErrorData = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
@@ -8354,6 +9317,12 @@ pub const IUnifiedPosErrorData = extern struct {
 };
 pub const IUnifiedPosErrorDataFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), message: ?HSTRING, severity: UnifiedPosErrorSeverity, reason: UnifiedPosErrorReason, extendedReason: u32) core.HResult!*UnifiedPosErrorData {
         var _r: *UnifiedPosErrorData = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), message, severity, reason, extendedReason, &_r);
@@ -8377,6 +9346,18 @@ pub const IUnifiedPosErrorDataFactory = extern struct {
 };
 pub const JournalPrintJob = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn PrintWithPrintOptions(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         var this: ?*IJournalPrintJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -8422,6 +9403,18 @@ pub const JournalPrintJob = extern struct {
 };
 pub const JournalPrinterCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsReverseVideoSupported(self: *@This()) core.HResult!bool {
         var this: ?*IJournalPrinterCapabilities2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -8563,6 +9556,18 @@ pub const JournalPrinterCapabilities = extern struct {
 };
 pub const LineDisplay = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplay = @ptrCast(self);
         return try this.getDeviceId();
@@ -8609,9 +9614,6 @@ pub const LineDisplay = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getStatisticsCategorySelector() core.HResult!*LineDisplayStatisticsCategorySelector {
         const _f = try @This()._ILineDisplayStatics2Cache.get();
         return try _f.getStatisticsCategorySelector();
@@ -8642,6 +9644,18 @@ pub const LineDisplay = extern struct {
 };
 pub const LineDisplayAttributes = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPowerNotifyEnabled(self: *@This()) core.HResult!bool {
         const this: *ILineDisplayAttributes = @ptrCast(self);
         return try this.getIsPowerNotifyEnabled();
@@ -8706,6 +9720,18 @@ pub const LineDisplayAttributes = extern struct {
 };
 pub const LineDisplayCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsStatisticsReportingSupported(self: *@This()) core.HResult!bool {
         const this: *ILineDisplayCapabilities = @ptrCast(self);
         return try this.getIsStatisticsReportingSupported();
@@ -8786,6 +9812,18 @@ pub const LineDisplayCapabilities = extern struct {
 };
 pub const LineDisplayCursor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanCustomize(self: *@This()) core.HResult!bool {
         const this: *ILineDisplayCursor = @ptrCast(self);
         return try this.getCanCustomize();
@@ -8830,6 +9868,18 @@ pub const LineDisplayCursor = extern struct {
 };
 pub const LineDisplayCursorAttributes = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsBlinkEnabled(self: *@This()) core.HResult!bool {
         const this: *ILineDisplayCursorAttributes = @ptrCast(self);
         return try this.getIsBlinkEnabled();
@@ -8878,6 +9928,18 @@ pub const LineDisplayCursorType = enum(i32) {
 };
 pub const LineDisplayCustomGlyphs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSizeInPixels(self: *@This()) core.HResult!Size {
         const this: *ILineDisplayCustomGlyphs = @ptrCast(self);
         return try this.getSizeInPixels();
@@ -8908,6 +9970,18 @@ pub const LineDisplayHorizontalAlignment = enum(i32) {
 };
 pub const LineDisplayMarquee = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormat(self: *@This()) core.HResult!LineDisplayMarqueeFormat {
         const this: *ILineDisplayMarquee = @ptrCast(self);
         return try this.getFormat();
@@ -8966,6 +10040,18 @@ pub const LineDisplayScrollDirection = enum(i32) {
 };
 pub const LineDisplayStatisticsCategorySelector = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllStatistics(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplayStatisticsCategorySelector = @ptrCast(self);
         return try this.getAllStatistics();
@@ -8986,6 +10072,18 @@ pub const LineDisplayStatisticsCategorySelector = extern struct {
 };
 pub const LineDisplayStatusUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!LineDisplayPowerStatus {
         const this: *ILineDisplayStatusUpdatedEventArgs = @ptrCast(self);
         return try this.getStatus();
@@ -8998,6 +10096,18 @@ pub const LineDisplayStatusUpdatedEventArgs = extern struct {
 };
 pub const LineDisplayStoredBitmap = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEscapeSequence(self: *@This()) core.HResult!?HSTRING {
         const this: *ILineDisplayStoredBitmap = @ptrCast(self);
         return try this.getEscapeSequence();
@@ -9030,6 +10140,18 @@ pub const LineDisplayVerticalAlignment = enum(i32) {
 };
 pub const LineDisplayWindow = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSizeInCharacters(self: *@This()) core.HResult!Size {
         const this: *ILineDisplayWindow = @ptrCast(self);
         return try this.getSizeInCharacters();
@@ -9144,6 +10266,18 @@ pub const LineDisplayWindow = extern struct {
 };
 pub const MagneticStripeReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReader = @ptrCast(self);
         return try this.getDeviceId();
@@ -9191,9 +10325,6 @@ pub const MagneticStripeReader = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(MagneticStripeReader) {
         const _f = try @This()._IMagneticStripeReaderStaticsCache.get();
         return try _f.GetDefaultAsync();
@@ -9220,6 +10351,18 @@ pub const MagneticStripeReader = extern struct {
 };
 pub const MagneticStripeReaderAamvaCardDataReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReport(self: *@This()) core.HResult!*MagneticStripeReaderReport {
         const this: *IMagneticStripeReaderAamvaCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getReport();
@@ -9313,6 +10456,18 @@ pub const MagneticStripeReaderAuthenticationProtocol = enum(i32) {
 };
 pub const MagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReport(self: *@This()) core.HResult!*MagneticStripeReaderReport {
         const this: *IMagneticStripeReaderBankCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getReport();
@@ -9357,6 +10512,18 @@ pub const MagneticStripeReaderBankCardDataReceivedEventArgs = extern struct {
 };
 pub const MagneticStripeReaderCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCardAuthentication(self: *@This()) core.HResult!?HSTRING {
         const this: *IMagneticStripeReaderCapabilities = @ptrCast(self);
         return try this.getCardAuthentication();
@@ -9409,6 +10576,15 @@ pub const MagneticStripeReaderCapabilities = extern struct {
 };
 pub const MagneticStripeReaderCardTypes = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -9434,6 +10610,15 @@ pub const MagneticStripeReaderCardTypes = extern struct {
 };
 pub const MagneticStripeReaderEncryptionAlgorithms = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -9455,6 +10640,18 @@ pub const MagneticStripeReaderEncryptionAlgorithms = extern struct {
 };
 pub const MagneticStripeReaderErrorOccurredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrack1Status(self: *@This()) core.HResult!MagneticStripeReaderTrackErrorType {
         const this: *IMagneticStripeReaderErrorOccurredEventArgs = @ptrCast(self);
         return try this.getTrack1Status();
@@ -9491,6 +10688,18 @@ pub const MagneticStripeReaderErrorReportingType = enum(i32) {
 };
 pub const MagneticStripeReaderReport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCardType(self: *@This()) core.HResult!u32 {
         const this: *IMagneticStripeReaderReport = @ptrCast(self);
         return try this.getCardType();
@@ -9540,6 +10749,18 @@ pub const MagneticStripeReaderStatus = enum(i32) {
 };
 pub const MagneticStripeReaderStatusUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!MagneticStripeReaderStatus {
         const this: *IMagneticStripeReaderStatusUpdatedEventArgs = @ptrCast(self);
         return try this.getStatus();
@@ -9556,6 +10777,18 @@ pub const MagneticStripeReaderStatusUpdatedEventArgs = extern struct {
 };
 pub const MagneticStripeReaderTrackData = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!*IBuffer {
         const this: *IMagneticStripeReaderTrackData = @ptrCast(self);
         return try this.getData();
@@ -9591,6 +10824,18 @@ pub const MagneticStripeReaderTrackIds = enum(i32) {
 };
 pub const MagneticStripeReaderVendorSpecificCardDataReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReport(self: *@This()) core.HResult!*MagneticStripeReaderReport {
         const this: *IMagneticStripeReaderVendorSpecificCardDataReceivedEventArgs = @ptrCast(self);
         return try this.getReport();
@@ -9609,6 +10854,18 @@ pub const PosConnectionTypes = enum(i32) {
 };
 pub const PosPrinter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPosPrinter = @ptrCast(self);
         return try this.getDeviceId();
@@ -9670,9 +10927,6 @@ pub const PosPrinter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!?HSTRING {
         const _f = try @This()._IPosPrinterStatics2Cache.get();
         return try _f.GetDeviceSelector(connectionTypes);
@@ -9709,6 +10963,18 @@ pub const PosPrinterBarcodeTextPosition = enum(i32) {
 };
 pub const PosPrinterCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPowerReportingType(self: *@This()) core.HResult!UnifiedPosPowerReportingType {
         const this: *IPosPrinterCapabilities = @ptrCast(self);
         return try this.getPowerReportingType();
@@ -9764,6 +11030,15 @@ pub const PosPrinterCartridgeSensors = enum(i32) {
 };
 pub const PosPrinterCharacterSetIds = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -9812,6 +11087,18 @@ pub const PosPrinterColorCartridge = enum(i32) {
 };
 pub const PosPrinterFontProperty = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTypeFace(self: *@This()) core.HResult!?HSTRING {
         const this: *IPosPrinterFontProperty = @ptrCast(self);
         return try this.getTypeFace();
@@ -9861,6 +11148,18 @@ pub const PosPrinterMarkFeedKind = enum(i32) {
 };
 pub const PosPrinterPrintOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTypeFace(self: *@This()) core.HResult!?HSTRING {
         const this: *IPosPrinterPrintOptions = @ptrCast(self);
         return try this.getTypeFace();
@@ -9965,9 +11264,6 @@ pub const PosPrinterPrintOptions = extern struct {
         const this: *IPosPrinterPrintOptions = @ptrCast(self);
         return try this.putCharacterSet(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPosPrinterPrintOptions.IID)));
@@ -9986,6 +11282,18 @@ pub const PosPrinterPrintSide = enum(i32) {
 };
 pub const PosPrinterReleaseDeviceRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.PosPrinterReleaseDeviceRequestedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IPosPrinterReleaseDeviceRequestedEventArgs.GUID;
@@ -10005,6 +11313,18 @@ pub const PosPrinterRuledLineCapabilities = enum(i32) {
 };
 pub const PosPrinterStatus = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatusKind(self: *@This()) core.HResult!PosPrinterStatusKind {
         const this: *IPosPrinterStatus = @ptrCast(self);
         return try this.getStatusKind();
@@ -10028,6 +11348,18 @@ pub const PosPrinterStatusKind = enum(i32) {
 };
 pub const PosPrinterStatusUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!*PosPrinterStatus {
         const this: *IPosPrinterStatusUpdatedEventArgs = @ptrCast(self);
         return try this.getStatus();
@@ -10040,6 +11372,18 @@ pub const PosPrinterStatusUpdatedEventArgs = extern struct {
 };
 pub const ReceiptPrintJob = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn MarkFeed(self: *@This(), kind: PosPrinterMarkFeedKind) core.HResult!void {
         const this: *IReceiptPrintJob = @ptrCast(self);
         return try this.MarkFeed(kind);
@@ -10221,6 +11565,18 @@ pub const ReceiptPrintJob = extern struct {
 };
 pub const ReceiptPrinterCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanCutPaper(self: *@This()) core.HResult!bool {
         const this: *IReceiptPrinterCapabilities = @ptrCast(self);
         return try this.getCanCutPaper();
@@ -10441,6 +11797,18 @@ pub const SizeUInt32 = extern struct {
 };
 pub const SlipPrintJob = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn PrintWithPrintOptions(self: *@This(), data: ?HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
         var this: ?*ISlipPrintJob = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -10558,6 +11926,18 @@ pub const SlipPrintJob = extern struct {
 };
 pub const SlipPrinterCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsFullLengthSupported(self: *@This()) core.HResult!bool {
         const this: *ISlipPrinterCapabilities = @ptrCast(self);
         return try this.getIsFullLengthSupported();
@@ -10770,6 +12150,18 @@ pub const SlipPrinterCapabilities = extern struct {
 };
 pub const UnifiedPosErrorData = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IUnifiedPosErrorData = @ptrCast(self);
         return try this.getMessage();
@@ -10785,9 +12177,6 @@ pub const UnifiedPosErrorData = extern struct {
     pub fn getExtendedReason(self: *@This()) core.HResult!u32 {
         const this: *IUnifiedPosErrorData = @ptrCast(self);
         return try this.getExtendedReason();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(message: ?HSTRING, severity: UnifiedPosErrorSeverity, reason: UnifiedPosErrorReason, extendedReason: u32) core.HResult!*UnifiedPosErrorData {
         const _f = try @This()._IUnifiedPosErrorDataFactoryCache.get();

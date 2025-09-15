@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IOfflineMapPackage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!OfflineMapPackageStatus {
         var _r: OfflineMapPackageStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -64,6 +70,12 @@ pub const IOfflineMapPackage = extern struct {
 };
 pub const IOfflineMapPackageQueryResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!OfflineMapPackageQueryStatus {
         var _r: OfflineMapPackageQueryStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -94,6 +106,12 @@ pub const IOfflineMapPackageQueryResult = extern struct {
 };
 pub const IOfflineMapPackageStartDownloadResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!OfflineMapPackageStartDownloadStatus {
         var _r: OfflineMapPackageStartDownloadStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -117,6 +135,12 @@ pub const IOfflineMapPackageStartDownloadResult = extern struct {
 };
 pub const IOfflineMapPackageStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindPackagesAsync(self: *@This(), queryPoint: *Geopoint) core.HResult!*IAsyncOperation(OfflineMapPackageQueryResult) {
         var _r: *IAsyncOperation(OfflineMapPackageQueryResult) = undefined;
         const _c = self.vtable.FindPackagesAsync(@ptrCast(self), queryPoint, &_r);
@@ -154,6 +178,18 @@ pub const IOfflineMapPackageStatics = extern struct {
 };
 pub const OfflineMapPackage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!OfflineMapPackageStatus {
         const this: *IOfflineMapPackage = @ptrCast(self);
         return try this.getStatus();
@@ -182,9 +218,6 @@ pub const OfflineMapPackage = extern struct {
         const this: *IOfflineMapPackage = @ptrCast(self);
         return try this.RequestStartDownloadAsync();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FindPackagesAsync(queryPoint: *Geopoint) core.HResult!*IAsyncOperation(OfflineMapPackageQueryResult) {
         const _f = try @This()._IOfflineMapPackageStaticsCache.get();
         return try _f.FindPackagesAsync(queryPoint);
@@ -206,6 +239,18 @@ pub const OfflineMapPackage = extern struct {
 };
 pub const OfflineMapPackageQueryResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!OfflineMapPackageQueryStatus {
         const this: *IOfflineMapPackageQueryResult = @ptrCast(self);
         return try this.getStatus();
@@ -228,6 +273,18 @@ pub const OfflineMapPackageQueryStatus = enum(i32) {
 };
 pub const OfflineMapPackageStartDownloadResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!OfflineMapPackageStartDownloadStatus {
         const this: *IOfflineMapPackageStartDownloadResult = @ptrCast(self);
         return try this.getStatus();

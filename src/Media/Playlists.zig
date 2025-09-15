@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPlaylist = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFiles(self: *@This()) core.HResult!*IVector(StorageFile) {
         var _r: *IVector(StorageFile) = undefined;
         const _c = self.vtable.get_Files(@ptrCast(self), &_r);
@@ -45,6 +51,12 @@ pub const IPlaylist = extern struct {
 };
 pub const IPlaylistStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadAsync(self: *@This(), file: *IStorageFile) core.HResult!*IAsyncOperation(Playlist) {
         var _r: *IAsyncOperation(Playlist) = undefined;
         const _c = self.vtable.LoadAsync(@ptrCast(self), file, &_r);
@@ -68,6 +80,18 @@ pub const IPlaylistStatics = extern struct {
 };
 pub const Playlist = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFiles(self: *@This()) core.HResult!*IVector(StorageFile) {
         const this: *IPlaylist = @ptrCast(self);
         return try this.getFiles();
@@ -83,9 +107,6 @@ pub const Playlist = extern struct {
     pub fn SaveAsAsyncWithPlaylistFormat(self: *@This(), saveLocation: *IStorageFolder, desiredName: ?HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat) core.HResult!*IAsyncOperation(StorageFile) {
         const this: *IPlaylist = @ptrCast(self);
         return try this.SaveAsAsyncWithPlaylistFormat(saveLocation, desiredName, option, playlistFormat);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

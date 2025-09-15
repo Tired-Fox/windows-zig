@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const EnhancedWaypoint = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPoint(self: *@This()) core.HResult!*Geopoint {
         const this: *IEnhancedWaypoint = @ptrCast(self);
         return try this.getPoint();
@@ -8,9 +20,6 @@ pub const EnhancedWaypoint = extern struct {
     pub fn getKind(self: *@This()) core.HResult!WaypointKind {
         const this: *IEnhancedWaypoint = @ptrCast(self);
         return try this.getKind();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(point: *Geopoint, kind: WaypointKind) core.HResult!*EnhancedWaypoint {
         const _f = try @This()._IEnhancedWaypointFactoryCache.get();
@@ -25,6 +34,12 @@ pub const EnhancedWaypoint = extern struct {
 };
 pub const IEnhancedWaypoint = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPoint(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Point(@ptrCast(self), &_r);
@@ -55,6 +70,12 @@ pub const IEnhancedWaypoint = extern struct {
 };
 pub const IEnhancedWaypointFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), point: *Geopoint, kind: WaypointKind) core.HResult!*EnhancedWaypoint {
         var _r: *EnhancedWaypoint = undefined;
         const _c = self.vtable.Create(@ptrCast(self), point, kind, &_r);
@@ -78,6 +99,12 @@ pub const IEnhancedWaypointFactory = extern struct {
 };
 pub const IManeuverWarning = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!ManeuverWarningKind {
         var _r: ManeuverWarningKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -108,6 +135,12 @@ pub const IManeuverWarning = extern struct {
 };
 pub const IMapAddress = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBuildingName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BuildingName(@ptrCast(self), &_r);
@@ -229,6 +262,12 @@ pub const IMapAddress = extern struct {
 };
 pub const IMapAddress2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormattedAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FormattedAddress(@ptrCast(self), &_r);
@@ -252,6 +291,12 @@ pub const IMapAddress2 = extern struct {
 };
 pub const IMapLocation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPoint(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_Point(@ptrCast(self), &_r);
@@ -296,6 +341,12 @@ pub const IMapLocation = extern struct {
 };
 pub const IMapLocationFinderResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocations(self: *@This()) core.HResult!*IVectorView(MapLocation) {
         var _r: *IVectorView(MapLocation) = undefined;
         const _c = self.vtable.get_Locations(@ptrCast(self), &_r);
@@ -326,6 +377,12 @@ pub const IMapLocationFinderResult = extern struct {
 };
 pub const IMapLocationFinderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindLocationsAtAsync(self: *@This(), queryPoint: *Geopoint) core.HResult!*IAsyncOperation(MapLocationFinderResult) {
         var _r: *IAsyncOperation(MapLocationFinderResult) = undefined;
         const _c = self.vtable.FindLocationsAtAsync(@ptrCast(self), queryPoint, &_r);
@@ -363,6 +420,12 @@ pub const IMapLocationFinderStatics = extern struct {
 };
 pub const IMapLocationFinderStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindLocationsAtAsync(self: *@This(), queryPoint: *Geopoint, accuracy: MapLocationDesiredAccuracy) core.HResult!*IAsyncOperation(MapLocationFinderResult) {
         var _r: *IAsyncOperation(MapLocationFinderResult) = undefined;
         const _c = self.vtable.FindLocationsAtAsync(@ptrCast(self), queryPoint, accuracy, &_r);
@@ -386,6 +449,12 @@ pub const IMapLocationFinderStatics2 = extern struct {
 };
 pub const IMapManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowDownloadedMapsUI(self: *@This()) core.HResult!void {
         const _c = self.vtable.ShowDownloadedMapsUI(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -412,6 +481,12 @@ pub const IMapManagerStatics = extern struct {
 };
 pub const IMapRoute = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBoundingBox(self: *@This()) core.HResult!*GeoboundingBox {
         var _r: *GeoboundingBox = undefined;
         const _c = self.vtable.get_BoundingBox(@ptrCast(self), &_r);
@@ -470,6 +545,12 @@ pub const IMapRoute = extern struct {
 };
 pub const IMapRoute2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getViolatedRestrictions(self: *@This()) core.HResult!MapRouteRestrictions {
         var _r: MapRouteRestrictions = undefined;
         const _c = self.vtable.get_ViolatedRestrictions(@ptrCast(self), &_r);
@@ -500,6 +581,12 @@ pub const IMapRoute2 = extern struct {
 };
 pub const IMapRoute3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDurationWithoutTraffic(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_DurationWithoutTraffic(@ptrCast(self), &_r);
@@ -530,6 +617,12 @@ pub const IMapRoute3 = extern struct {
 };
 pub const IMapRoute4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsScenic(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsScenic(@ptrCast(self), &_r);
@@ -553,6 +646,12 @@ pub const IMapRoute4 = extern struct {
 };
 pub const IMapRouteDrivingOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxAlternateRouteCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxAlternateRouteCount(@ptrCast(self), &_r);
@@ -617,6 +716,12 @@ pub const IMapRouteDrivingOptions = extern struct {
 };
 pub const IMapRouteDrivingOptions2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDepartureTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_DepartureTime(@ptrCast(self), &_r);
@@ -645,6 +750,12 @@ pub const IMapRouteDrivingOptions2 = extern struct {
 };
 pub const IMapRouteFinderResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRoute(self: *@This()) core.HResult!*MapRoute {
         var _r: *MapRoute = undefined;
         const _c = self.vtable.get_Route(@ptrCast(self), &_r);
@@ -675,6 +786,12 @@ pub const IMapRouteFinderResult = extern struct {
 };
 pub const IMapRouteFinderResult2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlternateRoutes(self: *@This()) core.HResult!*IVectorView(MapRoute) {
         var _r: *IVectorView(MapRoute) = undefined;
         const _c = self.vtable.get_AlternateRoutes(@ptrCast(self), &_r);
@@ -698,6 +815,12 @@ pub const IMapRouteFinderResult2 = extern struct {
 };
 pub const IMapRouteFinderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDrivingRouteAsync(self: *@This(), startPoint: *Geopoint, endPoint: *Geopoint) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
         var _r: *IAsyncOperation(MapRouteFinderResult) = undefined;
         const _c = self.vtable.GetDrivingRouteAsync(@ptrCast(self), startPoint, endPoint, &_r);
@@ -784,6 +907,12 @@ pub const IMapRouteFinderStatics = extern struct {
 };
 pub const IMapRouteFinderStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDrivingRouteAsync(self: *@This(), startPoint: *Geopoint, endPoint: *Geopoint, options: *MapRouteDrivingOptions) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
         var _r: *IAsyncOperation(MapRouteFinderResult) = undefined;
         const _c = self.vtable.GetDrivingRouteAsync(@ptrCast(self), startPoint, endPoint, options, &_r);
@@ -807,6 +936,12 @@ pub const IMapRouteFinderStatics2 = extern struct {
 };
 pub const IMapRouteFinderStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDrivingRouteFromEnhancedWaypointsAsync(self: *@This(), waypoints: *IIterable(EnhancedWaypoint)) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
         var _r: *IAsyncOperation(MapRouteFinderResult) = undefined;
         const _c = self.vtable.GetDrivingRouteFromEnhancedWaypointsAsync(@ptrCast(self), waypoints, &_r);
@@ -837,6 +972,12 @@ pub const IMapRouteFinderStatics3 = extern struct {
 };
 pub const IMapRouteLeg = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBoundingBox(self: *@This()) core.HResult!*GeoboundingBox {
         var _r: *GeoboundingBox = undefined;
         const _c = self.vtable.get_BoundingBox(@ptrCast(self), &_r);
@@ -888,6 +1029,12 @@ pub const IMapRouteLeg = extern struct {
 };
 pub const IMapRouteLeg2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDurationWithoutTraffic(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_DurationWithoutTraffic(@ptrCast(self), &_r);
@@ -918,6 +1065,12 @@ pub const IMapRouteLeg2 = extern struct {
 };
 pub const IMapRouteManeuver = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartingPoint(self: *@This()) core.HResult!*Geopoint {
         var _r: *Geopoint = undefined;
         const _c = self.vtable.get_StartingPoint(@ptrCast(self), &_r);
@@ -976,6 +1129,12 @@ pub const IMapRouteManeuver = extern struct {
 };
 pub const IMapRouteManeuver2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartHeading(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_StartHeading(@ptrCast(self), &_r);
@@ -1013,6 +1172,12 @@ pub const IMapRouteManeuver2 = extern struct {
 };
 pub const IMapRouteManeuver3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWarnings(self: *@This()) core.HResult!*IVectorView(ManeuverWarning) {
         var _r: *IVectorView(ManeuverWarning) = undefined;
         const _c = self.vtable.get_Warnings(@ptrCast(self), &_r);
@@ -1036,6 +1201,12 @@ pub const IMapRouteManeuver3 = extern struct {
 };
 pub const IMapServiceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putServiceToken(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_ServiceToken(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1064,6 +1235,12 @@ pub const IMapServiceStatics = extern struct {
 };
 pub const IMapServiceStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWorldViewRegionCode(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_WorldViewRegionCode(@ptrCast(self), &_r);
@@ -1087,6 +1264,12 @@ pub const IMapServiceStatics2 = extern struct {
 };
 pub const IMapServiceStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataAttributions(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DataAttributions(@ptrCast(self), &_r);
@@ -1110,6 +1293,12 @@ pub const IMapServiceStatics3 = extern struct {
 };
 pub const IMapServiceStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putDataUsagePreference(self: *@This(), value: MapServiceDataUsagePreference) core.HResult!void {
         const _c = self.vtable.put_DataUsagePreference(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1138,6 +1327,12 @@ pub const IMapServiceStatics4 = extern struct {
 };
 pub const IPlaceInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Show(self: *@This(), selection: Rect) core.HResult!void {
         const _c = self.vtable.Show(@ptrCast(self), selection);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1192,6 +1387,12 @@ pub const IPlaceInfo = extern struct {
 };
 pub const IPlaceInfoCreateOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_DisplayName(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1232,6 +1433,12 @@ pub const IPlaceInfoCreateOptions = extern struct {
 };
 pub const IPlaceInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), referencePoint: *Geopoint) core.HResult!*PlaceInfo {
         var _r: *PlaceInfo = undefined;
         const _c = self.vtable.Create(@ptrCast(self), referencePoint, &_r);
@@ -1290,6 +1497,12 @@ pub const IPlaceInfoStatics = extern struct {
 };
 pub const IPlaceInfoStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromAddress(self: *@This(), displayAddress: ?HSTRING) core.HResult!*PlaceInfo {
         var _r: *PlaceInfo = undefined;
         const _c = self.vtable.CreateFromAddress(@ptrCast(self), displayAddress, &_r);
@@ -1320,6 +1533,18 @@ pub const IPlaceInfoStatics2 = extern struct {
 };
 pub const ManeuverWarning = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!ManeuverWarningKind {
         const this: *IManeuverWarning = @ptrCast(self);
         return try this.getKind();
@@ -1381,6 +1606,18 @@ pub const ManeuverWarningSeverity = enum(i32) {
 };
 pub const MapAddress = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBuildingName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMapAddress = @ptrCast(self);
         return try this.getBuildingName();
@@ -1456,6 +1693,18 @@ pub const MapAddress = extern struct {
 };
 pub const MapLocation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPoint(self: *@This()) core.HResult!*Geopoint {
         const this: *IMapLocation = @ptrCast(self);
         return try this.getPoint();
@@ -1484,6 +1733,15 @@ pub const MapLocationDesiredAccuracy = enum(i32) {
 };
 pub const MapLocationFinder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1510,6 +1768,18 @@ pub const MapLocationFinder = extern struct {
 };
 pub const MapLocationFinderResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocations(self: *@This()) core.HResult!*IVectorView(MapLocation) {
         const this: *IMapLocationFinderResult = @ptrCast(self);
         return try this.getLocations();
@@ -1535,6 +1805,15 @@ pub const MapLocationFinderStatus = enum(i32) {
 };
 pub const MapManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1557,6 +1836,18 @@ pub const MapManeuverNotices = enum(i32) {
 };
 pub const MapRoute = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBoundingBox(self: *@This()) core.HResult!*GeoboundingBox {
         const this: *IMapRoute = @ptrCast(self);
         return try this.getBoundingBox();
@@ -1624,6 +1915,18 @@ pub const MapRoute = extern struct {
 };
 pub const MapRouteDrivingOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxAlternateRouteCount(self: *@This()) core.HResult!u32 {
         const this: *IMapRouteDrivingOptions = @ptrCast(self);
         return try this.getMaxAlternateRouteCount();
@@ -1670,9 +1973,6 @@ pub const MapRouteDrivingOptions = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDepartureTime(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapRouteDrivingOptions.IID)));
@@ -1686,6 +1986,15 @@ pub const MapRouteDrivingOptions = extern struct {
 };
 pub const MapRouteFinder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1749,6 +2058,18 @@ pub const MapRouteFinder = extern struct {
 };
 pub const MapRouteFinderResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRoute(self: *@This()) core.HResult!*MapRoute {
         const this: *IMapRouteFinderResult = @ptrCast(self);
         return try this.getRoute();
@@ -1784,6 +2105,18 @@ pub const MapRouteFinderStatus = enum(i32) {
 };
 pub const MapRouteLeg = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBoundingBox(self: *@This()) core.HResult!*GeoboundingBox {
         const this: *IMapRouteLeg = @ptrCast(self);
         return try this.getBoundingBox();
@@ -1826,6 +2159,18 @@ pub const MapRouteLeg = extern struct {
 };
 pub const MapRouteManeuver = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartingPoint(self: *@This()) core.HResult!*Geopoint {
         const this: *IMapRouteManeuver = @ptrCast(self);
         return try this.getStartingPoint();
@@ -1928,6 +2273,15 @@ pub const MapRouteRestrictions = enum(i32) {
 };
 pub const MapService = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1968,6 +2322,18 @@ pub const MapServiceDataUsagePreference = enum(i32) {
 };
 pub const PlaceInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Show(self: *@This(), selection: Rect) core.HResult!void {
         const this: *IPlaceInfo = @ptrCast(self);
         return try this.Show(selection);
@@ -1991,9 +2357,6 @@ pub const PlaceInfo = extern struct {
     pub fn getGeoshape(self: *@This()) core.HResult!*IGeoshape {
         const this: *IPlaceInfo = @ptrCast(self);
         return try this.getGeoshape();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromAddress(displayAddress: ?HSTRING) core.HResult!*PlaceInfo {
         const _f = try @This()._IPlaceInfoStatics2Cache.get();
@@ -2037,6 +2400,18 @@ pub const PlaceInfo = extern struct {
 };
 pub const PlaceInfoCreateOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putDisplayName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPlaceInfoCreateOptions = @ptrCast(self);
         return try this.putDisplayName(value);
@@ -2052,9 +2427,6 @@ pub const PlaceInfoCreateOptions = extern struct {
     pub fn getDisplayAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IPlaceInfoCreateOptions = @ptrCast(self);
         return try this.getDisplayAddress();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IInjectedInputGamepadInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getButtons(self: *@This()) core.HResult!GamepadButtons {
         var _r: GamepadButtons = undefined;
         const _c = self.vtable.get_Buttons(@ptrCast(self), &_r);
@@ -101,6 +107,12 @@ pub const IInjectedInputGamepadInfo = extern struct {
 };
 pub const IInjectedInputGamepadInfoFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), reading: GamepadReading) core.HResult!*InjectedInputGamepadInfo {
         var _r: *InjectedInputGamepadInfo = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), reading, &_r);
@@ -124,6 +136,12 @@ pub const IInjectedInputGamepadInfoFactory = extern struct {
 };
 pub const IInjectedInputKeyboardInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyOptions(self: *@This()) core.HResult!InjectedInputKeyOptions {
         var _r: InjectedInputKeyOptions = undefined;
         const _c = self.vtable.get_KeyOptions(@ptrCast(self), &_r);
@@ -176,6 +194,12 @@ pub const IInjectedInputKeyboardInfo = extern struct {
 };
 pub const IInjectedInputMouseInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMouseOptions(self: *@This()) core.HResult!InjectedInputMouseOptions {
         var _r: InjectedInputMouseOptions = undefined;
         const _c = self.vtable.get_MouseOptions(@ptrCast(self), &_r);
@@ -252,6 +276,12 @@ pub const IInjectedInputMouseInfo = extern struct {
 };
 pub const IInjectedInputPenInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerInfo(self: *@This()) core.HResult!InjectedInputPointerInfo {
         var _r: InjectedInputPointerInfo = undefined;
         const _c = self.vtable.get_PointerInfo(@ptrCast(self), &_r);
@@ -352,6 +382,12 @@ pub const IInjectedInputPenInfo = extern struct {
 };
 pub const IInjectedInputTouchInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!InjectedInputRectangle {
         var _r: InjectedInputRectangle = undefined;
         const _c = self.vtable.get_Contact(@ptrCast(self), &_r);
@@ -428,6 +464,12 @@ pub const IInjectedInputTouchInfo = extern struct {
 };
 pub const IInputInjector = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InjectKeyboardInput(self: *@This(), input: *IIterable(InjectedInputKeyboardInfo)) core.HResult!void {
         const _c = self.vtable.InjectKeyboardInput(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -489,6 +531,12 @@ pub const IInputInjector = extern struct {
 };
 pub const IInputInjector2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InitializeGamepadInjection(self: *@This()) core.HResult!void {
         const _c = self.vtable.InitializeGamepadInjection(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -520,6 +568,12 @@ pub const IInputInjector2 = extern struct {
 };
 pub const IInputInjectorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryCreate(self: *@This()) core.HResult!*InputInjector {
         var _r: *InputInjector = undefined;
         const _c = self.vtable.TryCreate(@ptrCast(self), &_r);
@@ -543,6 +597,12 @@ pub const IInputInjectorStatics = extern struct {
 };
 pub const IInputInjectorStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryCreateForAppBroadcastOnly(self: *@This()) core.HResult!*InputInjector {
         var _r: *InputInjector = undefined;
         const _c = self.vtable.TryCreateForAppBroadcastOnly(@ptrCast(self), &_r);
@@ -579,6 +639,18 @@ pub const InjectedInputButtonChangeKind = enum(i32) {
 };
 pub const InjectedInputGamepadInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getButtons(self: *@This()) core.HResult!GamepadButtons {
         const this: *IInjectedInputGamepadInfo = @ptrCast(self);
         return try this.getButtons();
@@ -635,9 +707,6 @@ pub const InjectedInputGamepadInfo = extern struct {
         const this: *IInjectedInputGamepadInfo = @ptrCast(self);
         return try this.putRightTrigger(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IInjectedInputGamepadInfo.IID)));
@@ -663,6 +732,18 @@ pub const InjectedInputKeyOptions = enum(i32) {
 };
 pub const InjectedInputKeyboardInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyOptions(self: *@This()) core.HResult!InjectedInputKeyOptions {
         const this: *IInjectedInputKeyboardInfo = @ptrCast(self);
         return try this.getKeyOptions();
@@ -687,9 +768,6 @@ pub const InjectedInputKeyboardInfo = extern struct {
         const this: *IInjectedInputKeyboardInfo = @ptrCast(self);
         return try this.putVirtualKey(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IInjectedInputKeyboardInfo.IID)));
@@ -703,6 +781,18 @@ pub const InjectedInputKeyboardInfo = extern struct {
 };
 pub const InjectedInputMouseInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMouseOptions(self: *@This()) core.HResult!InjectedInputMouseOptions {
         const this: *IInjectedInputMouseInfo = @ptrCast(self);
         return try this.getMouseOptions();
@@ -743,9 +833,6 @@ pub const InjectedInputMouseInfo = extern struct {
         const this: *IInjectedInputMouseInfo = @ptrCast(self);
         return try this.putTimeOffsetInMilliseconds(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IInjectedInputMouseInfo.IID)));
@@ -782,6 +869,18 @@ pub const InjectedInputPenButtons = enum(i32) {
 };
 pub const InjectedInputPenInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerInfo(self: *@This()) core.HResult!InjectedInputPointerInfo {
         const this: *IInjectedInputPenInfo = @ptrCast(self);
         return try this.getPointerInfo();
@@ -837,9 +936,6 @@ pub const InjectedInputPenInfo = extern struct {
     pub fn putTiltY(self: *@This(), value: i32) core.HResult!void {
         const this: *IInjectedInputPenInfo = @ptrCast(self);
         return try this.putTiltY(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -898,6 +994,18 @@ pub const InjectedInputShortcut = enum(i32) {
 };
 pub const InjectedInputTouchInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!InjectedInputRectangle {
         const this: *IInjectedInputTouchInfo = @ptrCast(self);
         return try this.getContact();
@@ -938,9 +1046,6 @@ pub const InjectedInputTouchInfo = extern struct {
         const this: *IInjectedInputTouchInfo = @ptrCast(self);
         return try this.putTouchParameters(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IInjectedInputTouchInfo.IID)));
@@ -965,6 +1070,18 @@ pub const InjectedInputVisualizationMode = enum(i32) {
 };
 pub const InputInjector = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InjectKeyboardInput(self: *@This(), input: *IIterable(InjectedInputKeyboardInfo)) core.HResult!void {
         const this: *IInputInjector = @ptrCast(self);
         return try this.InjectKeyboardInput(input);
@@ -1022,9 +1139,6 @@ pub const InputInjector = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UninitializeGamepadInjection();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn TryCreate() core.HResult!*InputInjector {
         const _f = try @This()._IInputInjectorStaticsCache.get();
         return try _f.TryCreate();
@@ -1041,8 +1155,8 @@ pub const InputInjector = extern struct {
     var _IInputInjectorStaticsCache: FactoryCache(IInputInjectorStatics, RUNTIME_NAME) = .{};
     var _IInputInjectorStatics2Cache: FactoryCache(IInputInjectorStatics2, RUNTIME_NAME) = .{};
 };
-const HSTRING = @import("../../../root.zig").HSTRING;
 const IUnknown = @import("../../../root.zig").IUnknown;
+const HSTRING = @import("../../../root.zig").HSTRING;
 const IActivationFactory = @import("../../../Foundation.zig").IActivationFactory;
 const Guid = @import("../../../root.zig").Guid;
 const IIterable = @import("../../../Foundation/Collections.zig").IIterable;

@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IKnownRemoteSystemCapabilitiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppService(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppService(@ptrCast(self), &_r);
@@ -45,6 +51,12 @@ pub const IKnownRemoteSystemCapabilitiesStatics = extern struct {
 };
 pub const IRemoteSystem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -96,6 +108,12 @@ pub const IRemoteSystem = extern struct {
 };
 pub const IRemoteSystem2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAvailableBySpatialProximity(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAvailableBySpatialProximity(@ptrCast(self), &_r);
@@ -126,6 +144,12 @@ pub const IRemoteSystem2 = extern struct {
 };
 pub const IRemoteSystem3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getManufacturerDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ManufacturerDisplayName(@ptrCast(self), &_r);
@@ -156,6 +180,12 @@ pub const IRemoteSystem3 = extern struct {
 };
 pub const IRemoteSystem4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPlatform(self: *@This()) core.HResult!RemoteSystemPlatform {
         var _r: RemoteSystemPlatform = undefined;
         const _c = self.vtable.get_Platform(@ptrCast(self), &_r);
@@ -179,6 +209,12 @@ pub const IRemoteSystem4 = extern struct {
 };
 pub const IRemoteSystem5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getApps(self: *@This()) core.HResult!*IVectorView(RemoteSystemApp) {
         var _r: *IVectorView(RemoteSystemApp) = undefined;
         const _c = self.vtable.get_Apps(@ptrCast(self), &_r);
@@ -202,6 +238,12 @@ pub const IRemoteSystem5 = extern struct {
 };
 pub const IRemoteSystem6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -225,6 +267,12 @@ pub const IRemoteSystem6 = extern struct {
 };
 pub const IRemoteSystemAddedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystem(self: *@This()) core.HResult!*RemoteSystem {
         var _r: *RemoteSystem = undefined;
         const _c = self.vtable.get_RemoteSystem(@ptrCast(self), &_r);
@@ -248,6 +296,12 @@ pub const IRemoteSystemAddedEventArgs = extern struct {
 };
 pub const IRemoteSystemApp = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -299,6 +353,12 @@ pub const IRemoteSystemApp = extern struct {
 };
 pub const IRemoteSystemApp2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -329,6 +389,12 @@ pub const IRemoteSystemApp2 = extern struct {
 };
 pub const IRemoteSystemAppRegistration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -366,6 +432,12 @@ pub const IRemoteSystemAppRegistration = extern struct {
 };
 pub const IRemoteSystemAppRegistrationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*RemoteSystemAppRegistration {
         var _r: *RemoteSystemAppRegistration = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -396,6 +468,12 @@ pub const IRemoteSystemAppRegistrationStatics = extern struct {
 };
 pub const IRemoteSystemAuthorizationKindFilter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystemAuthorizationKind(self: *@This()) core.HResult!RemoteSystemAuthorizationKind {
         var _r: RemoteSystemAuthorizationKind = undefined;
         const _c = self.vtable.get_RemoteSystemAuthorizationKind(@ptrCast(self), &_r);
@@ -419,6 +497,12 @@ pub const IRemoteSystemAuthorizationKindFilter = extern struct {
 };
 pub const IRemoteSystemAuthorizationKindFilterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), remoteSystemAuthorizationKind: RemoteSystemAuthorizationKind) core.HResult!*RemoteSystemAuthorizationKindFilter {
         var _r: *RemoteSystemAuthorizationKindFilter = undefined;
         const _c = self.vtable.Create(@ptrCast(self), remoteSystemAuthorizationKind, &_r);
@@ -442,6 +526,12 @@ pub const IRemoteSystemAuthorizationKindFilterFactory = extern struct {
 };
 pub const IRemoteSystemConnectionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsProximal(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsProximal(@ptrCast(self), &_r);
@@ -465,6 +555,12 @@ pub const IRemoteSystemConnectionInfo = extern struct {
 };
 pub const IRemoteSystemConnectionInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryCreateFromAppServiceConnection(self: *@This(), connection: *AppServiceConnection) core.HResult!*RemoteSystemConnectionInfo {
         var _r: *RemoteSystemConnectionInfo = undefined;
         const _c = self.vtable.TryCreateFromAppServiceConnection(@ptrCast(self), connection, &_r);
@@ -488,6 +584,12 @@ pub const IRemoteSystemConnectionInfoStatics = extern struct {
 };
 pub const IRemoteSystemConnectionRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystem(self: *@This()) core.HResult!*RemoteSystem {
         var _r: *RemoteSystem = undefined;
         const _c = self.vtable.get_RemoteSystem(@ptrCast(self), &_r);
@@ -511,6 +613,12 @@ pub const IRemoteSystemConnectionRequest = extern struct {
 };
 pub const IRemoteSystemConnectionRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystemApp(self: *@This()) core.HResult!*RemoteSystemApp {
         var _r: *RemoteSystemApp = undefined;
         const _c = self.vtable.get_RemoteSystemApp(@ptrCast(self), &_r);
@@ -534,6 +642,12 @@ pub const IRemoteSystemConnectionRequest2 = extern struct {
 };
 pub const IRemoteSystemConnectionRequest3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnectionToken(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ConnectionToken(@ptrCast(self), &_r);
@@ -557,6 +671,12 @@ pub const IRemoteSystemConnectionRequest3 = extern struct {
 };
 pub const IRemoteSystemConnectionRequestFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), remoteSystem: *RemoteSystem) core.HResult!*RemoteSystemConnectionRequest {
         var _r: *RemoteSystemConnectionRequest = undefined;
         const _c = self.vtable.Create(@ptrCast(self), remoteSystem, &_r);
@@ -580,6 +700,12 @@ pub const IRemoteSystemConnectionRequestFactory = extern struct {
 };
 pub const IRemoteSystemConnectionRequestStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateForApp(self: *@This(), remoteSystemApp: *RemoteSystemApp) core.HResult!*RemoteSystemConnectionRequest {
         var _r: *RemoteSystemConnectionRequest = undefined;
         const _c = self.vtable.CreateForApp(@ptrCast(self), remoteSystemApp, &_r);
@@ -603,6 +729,12 @@ pub const IRemoteSystemConnectionRequestStatics = extern struct {
 };
 pub const IRemoteSystemConnectionRequestStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromConnectionToken(self: *@This(), connectionToken: ?HSTRING) core.HResult!*RemoteSystemConnectionRequest {
         var _r: *RemoteSystemConnectionRequest = undefined;
         const _c = self.vtable.CreateFromConnectionToken(@ptrCast(self), connectionToken, &_r);
@@ -633,6 +765,12 @@ pub const IRemoteSystemConnectionRequestStatics2 = extern struct {
 };
 pub const IRemoteSystemDiscoveryTypeFilter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystemDiscoveryType(self: *@This()) core.HResult!RemoteSystemDiscoveryType {
         var _r: RemoteSystemDiscoveryType = undefined;
         const _c = self.vtable.get_RemoteSystemDiscoveryType(@ptrCast(self), &_r);
@@ -656,6 +794,12 @@ pub const IRemoteSystemDiscoveryTypeFilter = extern struct {
 };
 pub const IRemoteSystemDiscoveryTypeFilterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), discoveryType: RemoteSystemDiscoveryType) core.HResult!*RemoteSystemDiscoveryTypeFilter {
         var _r: *RemoteSystemDiscoveryTypeFilter = undefined;
         const _c = self.vtable.Create(@ptrCast(self), discoveryType, &_r);
@@ -679,6 +823,12 @@ pub const IRemoteSystemDiscoveryTypeFilterFactory = extern struct {
 };
 pub const IRemoteSystemEnumerationCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.IRemoteSystemEnumerationCompletedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c6e83d5f-4030-4354-a060-14f1b22c545d";
@@ -695,6 +845,12 @@ pub const IRemoteSystemEnumerationCompletedEventArgs = extern struct {
 };
 pub const IRemoteSystemFilter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.IRemoteSystemFilter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "4a3ba9e4-99eb-45eb-ba16-0367728ff374";
@@ -711,6 +867,12 @@ pub const IRemoteSystemFilter = extern struct {
 };
 pub const IRemoteSystemKindFilter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystemKinds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_RemoteSystemKinds(@ptrCast(self), &_r);
@@ -734,6 +896,12 @@ pub const IRemoteSystemKindFilter = extern struct {
 };
 pub const IRemoteSystemKindFilterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), remoteSystemKinds: *IIterable(?HSTRING)) core.HResult!*RemoteSystemKindFilter {
         var _r: *RemoteSystemKindFilter = undefined;
         const _c = self.vtable.Create(@ptrCast(self), remoteSystemKinds, &_r);
@@ -757,6 +925,12 @@ pub const IRemoteSystemKindFilterFactory = extern struct {
 };
 pub const IRemoteSystemKindStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPhone(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Phone(@ptrCast(self), &_r);
@@ -808,6 +982,12 @@ pub const IRemoteSystemKindStatics = extern struct {
 };
 pub const IRemoteSystemKindStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIot(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Iot(@ptrCast(self), &_r);
@@ -845,6 +1025,12 @@ pub const IRemoteSystemKindStatics2 = extern struct {
 };
 pub const IRemoteSystemRemovedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystemId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteSystemId(@ptrCast(self), &_r);
@@ -868,6 +1054,12 @@ pub const IRemoteSystemRemovedEventArgs = extern struct {
 };
 pub const IRemoteSystemSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -931,6 +1123,12 @@ pub const IRemoteSystemSession = extern struct {
 };
 pub const IRemoteSystemSessionAddedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionInfo(self: *@This()) core.HResult!*RemoteSystemSessionInfo {
         var _r: *RemoteSystemSessionInfo = undefined;
         const _c = self.vtable.get_SessionInfo(@ptrCast(self), &_r);
@@ -954,6 +1152,12 @@ pub const IRemoteSystemSessionAddedEventArgs = extern struct {
 };
 pub const IRemoteSystemSessionController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addJoinRequested(self: *@This(), handler: *TypedEventHandler(RemoteSystemSessionController,RemoteSystemSessionJoinRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_JoinRequested(@ptrCast(self), handler, &_r);
@@ -996,6 +1200,12 @@ pub const IRemoteSystemSessionController = extern struct {
 };
 pub const IRemoteSystemSessionControllerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateController(self: *@This(), displayName: ?HSTRING) core.HResult!*RemoteSystemSessionController {
         var _r: *RemoteSystemSessionController = undefined;
         const _c = self.vtable.CreateController(@ptrCast(self), displayName, &_r);
@@ -1026,6 +1236,12 @@ pub const IRemoteSystemSessionControllerFactory = extern struct {
 };
 pub const IRemoteSystemSessionCreationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!RemoteSystemSessionCreationStatus {
         var _r: RemoteSystemSessionCreationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1056,6 +1272,12 @@ pub const IRemoteSystemSessionCreationResult = extern struct {
 };
 pub const IRemoteSystemSessionDisconnectedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!RemoteSystemSessionDisconnectedReason {
         var _r: RemoteSystemSessionDisconnectedReason = undefined;
         const _c = self.vtable.get_Reason(@ptrCast(self), &_r);
@@ -1079,6 +1301,12 @@ pub const IRemoteSystemSessionDisconnectedEventArgs = extern struct {
 };
 pub const IRemoteSystemSessionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -1116,6 +1344,12 @@ pub const IRemoteSystemSessionInfo = extern struct {
 };
 pub const IRemoteSystemSessionInvitation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSender(self: *@This()) core.HResult!*RemoteSystem {
         var _r: *RemoteSystem = undefined;
         const _c = self.vtable.get_Sender(@ptrCast(self), &_r);
@@ -1146,6 +1380,12 @@ pub const IRemoteSystemSessionInvitation = extern struct {
 };
 pub const IRemoteSystemSessionInvitationListener = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addInvitationReceived(self: *@This(), handler: *TypedEventHandler(RemoteSystemSessionInvitationListener,RemoteSystemSessionInvitationReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_InvitationReceived(@ptrCast(self), handler, &_r);
@@ -1174,6 +1414,12 @@ pub const IRemoteSystemSessionInvitationListener = extern struct {
 };
 pub const IRemoteSystemSessionInvitationReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInvitation(self: *@This()) core.HResult!*RemoteSystemSessionInvitation {
         var _r: *RemoteSystemSessionInvitation = undefined;
         const _c = self.vtable.get_Invitation(@ptrCast(self), &_r);
@@ -1197,6 +1443,12 @@ pub const IRemoteSystemSessionInvitationReceivedEventArgs = extern struct {
 };
 pub const IRemoteSystemSessionJoinRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParticipant(self: *@This()) core.HResult!*RemoteSystemSessionParticipant {
         var _r: *RemoteSystemSessionParticipant = undefined;
         const _c = self.vtable.get_Participant(@ptrCast(self), &_r);
@@ -1225,6 +1477,12 @@ pub const IRemoteSystemSessionJoinRequest = extern struct {
 };
 pub const IRemoteSystemSessionJoinRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getJoinRequest(self: *@This()) core.HResult!*RemoteSystemSessionJoinRequest {
         var _r: *RemoteSystemSessionJoinRequest = undefined;
         const _c = self.vtable.get_JoinRequest(@ptrCast(self), &_r);
@@ -1255,6 +1513,12 @@ pub const IRemoteSystemSessionJoinRequestedEventArgs = extern struct {
 };
 pub const IRemoteSystemSessionJoinResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!RemoteSystemSessionJoinStatus {
         var _r: RemoteSystemSessionJoinStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1285,6 +1549,12 @@ pub const IRemoteSystemSessionJoinResult = extern struct {
 };
 pub const IRemoteSystemSessionMessageChannel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*RemoteSystemSession {
         var _r: *RemoteSystemSession = undefined;
         const _c = self.vtable.get_Session(@ptrCast(self), &_r);
@@ -1341,6 +1611,12 @@ pub const IRemoteSystemSessionMessageChannel = extern struct {
 };
 pub const IRemoteSystemSessionMessageChannelFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), session: *RemoteSystemSession, channelName: ?HSTRING) core.HResult!*RemoteSystemSessionMessageChannel {
         var _r: *RemoteSystemSessionMessageChannel = undefined;
         const _c = self.vtable.Create(@ptrCast(self), session, channelName, &_r);
@@ -1371,6 +1647,12 @@ pub const IRemoteSystemSessionMessageChannelFactory = extern struct {
 };
 pub const IRemoteSystemSessionOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsInviteOnly(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInviteOnly(@ptrCast(self), &_r);
@@ -1399,6 +1681,12 @@ pub const IRemoteSystemSessionOptions = extern struct {
 };
 pub const IRemoteSystemSessionParticipant = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystem(self: *@This()) core.HResult!*RemoteSystem {
         var _r: *RemoteSystem = undefined;
         const _c = self.vtable.get_RemoteSystem(@ptrCast(self), &_r);
@@ -1429,6 +1717,12 @@ pub const IRemoteSystemSessionParticipant = extern struct {
 };
 pub const IRemoteSystemSessionParticipantAddedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParticipant(self: *@This()) core.HResult!*RemoteSystemSessionParticipant {
         var _r: *RemoteSystemSessionParticipant = undefined;
         const _c = self.vtable.get_Participant(@ptrCast(self), &_r);
@@ -1452,6 +1746,12 @@ pub const IRemoteSystemSessionParticipantAddedEventArgs = extern struct {
 };
 pub const IRemoteSystemSessionParticipantRemovedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParticipant(self: *@This()) core.HResult!*RemoteSystemSessionParticipant {
         var _r: *RemoteSystemSessionParticipant = undefined;
         const _c = self.vtable.get_Participant(@ptrCast(self), &_r);
@@ -1475,6 +1775,12 @@ pub const IRemoteSystemSessionParticipantRemovedEventArgs = extern struct {
 };
 pub const IRemoteSystemSessionParticipantWatcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1544,6 +1850,12 @@ pub const IRemoteSystemSessionParticipantWatcher = extern struct {
 };
 pub const IRemoteSystemSessionRemovedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionInfo(self: *@This()) core.HResult!*RemoteSystemSessionInfo {
         var _r: *RemoteSystemSessionInfo = undefined;
         const _c = self.vtable.get_SessionInfo(@ptrCast(self), &_r);
@@ -1567,6 +1879,12 @@ pub const IRemoteSystemSessionRemovedEventArgs = extern struct {
 };
 pub const IRemoteSystemSessionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWatcher(self: *@This()) core.HResult!*RemoteSystemSessionWatcher {
         var _r: *RemoteSystemSessionWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), &_r);
@@ -1590,6 +1908,12 @@ pub const IRemoteSystemSessionStatics = extern struct {
 };
 pub const IRemoteSystemSessionUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionInfo(self: *@This()) core.HResult!*RemoteSystemSessionInfo {
         var _r: *RemoteSystemSessionInfo = undefined;
         const _c = self.vtable.get_SessionInfo(@ptrCast(self), &_r);
@@ -1613,6 +1937,12 @@ pub const IRemoteSystemSessionUpdatedEventArgs = extern struct {
 };
 pub const IRemoteSystemSessionValueSetReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSender(self: *@This()) core.HResult!*RemoteSystemSessionParticipant {
         var _r: *RemoteSystemSessionParticipant = undefined;
         const _c = self.vtable.get_Sender(@ptrCast(self), &_r);
@@ -1643,6 +1973,12 @@ pub const IRemoteSystemSessionValueSetReceivedEventArgs = extern struct {
 };
 pub const IRemoteSystemSessionWatcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1712,6 +2048,12 @@ pub const IRemoteSystemSessionWatcher = extern struct {
 };
 pub const IRemoteSystemStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindByHostNameAsync(self: *@This(), hostName: *HostName) core.HResult!*IAsyncOperation(RemoteSystem) {
         var _r: *IAsyncOperation(RemoteSystem) = undefined;
         const _c = self.vtable.FindByHostNameAsync(@ptrCast(self), hostName, &_r);
@@ -1756,6 +2098,12 @@ pub const IRemoteSystemStatics = extern struct {
 };
 pub const IRemoteSystemStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsAuthorizationKindEnabled(self: *@This(), kind: RemoteSystemAuthorizationKind) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsAuthorizationKindEnabled(@ptrCast(self), kind, &_r);
@@ -1779,6 +2127,12 @@ pub const IRemoteSystemStatics2 = extern struct {
 };
 pub const IRemoteSystemStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWatcherForUser(self: *@This(), user: *User) core.HResult!*RemoteSystemWatcher {
         var _r: *RemoteSystemWatcher = undefined;
         const _c = self.vtable.CreateWatcherForUser(@ptrCast(self), user, &_r);
@@ -1809,6 +2163,12 @@ pub const IRemoteSystemStatics3 = extern struct {
 };
 pub const IRemoteSystemStatusTypeFilter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystemStatusType(self: *@This()) core.HResult!RemoteSystemStatusType {
         var _r: RemoteSystemStatusType = undefined;
         const _c = self.vtable.get_RemoteSystemStatusType(@ptrCast(self), &_r);
@@ -1832,6 +2192,12 @@ pub const IRemoteSystemStatusTypeFilter = extern struct {
 };
 pub const IRemoteSystemStatusTypeFilterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), remoteSystemStatusType: RemoteSystemStatusType) core.HResult!*RemoteSystemStatusTypeFilter {
         var _r: *RemoteSystemStatusTypeFilter = undefined;
         const _c = self.vtable.Create(@ptrCast(self), remoteSystemStatusType, &_r);
@@ -1855,6 +2221,12 @@ pub const IRemoteSystemStatusTypeFilterFactory = extern struct {
 };
 pub const IRemoteSystemUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystem(self: *@This()) core.HResult!*RemoteSystem {
         var _r: *RemoteSystem = undefined;
         const _c = self.vtable.get_RemoteSystem(@ptrCast(self), &_r);
@@ -1878,6 +2250,12 @@ pub const IRemoteSystemUpdatedEventArgs = extern struct {
 };
 pub const IRemoteSystemWatcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1940,6 +2318,12 @@ pub const IRemoteSystemWatcher = extern struct {
 };
 pub const IRemoteSystemWatcher2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addEnumerationCompleted(self: *@This(), handler: *TypedEventHandler(RemoteSystemWatcher,RemoteSystemEnumerationCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_EnumerationCompleted(@ptrCast(self), handler, &_r);
@@ -1980,6 +2364,12 @@ pub const IRemoteSystemWatcher2 = extern struct {
 };
 pub const IRemoteSystemWatcher3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -2003,6 +2393,12 @@ pub const IRemoteSystemWatcher3 = extern struct {
 };
 pub const IRemoteSystemWatcherErrorOccurredEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!RemoteSystemWatcherError {
         var _r: RemoteSystemWatcherError = undefined;
         const _c = self.vtable.get_Error(@ptrCast(self), &_r);
@@ -2026,6 +2422,12 @@ pub const IRemoteSystemWatcherErrorOccurredEventArgs = extern struct {
 };
 pub const IRemoteSystemWebAccountFilter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccount(self: *@This()) core.HResult!*WebAccount {
         var _r: *WebAccount = undefined;
         const _c = self.vtable.get_Account(@ptrCast(self), &_r);
@@ -2049,6 +2451,12 @@ pub const IRemoteSystemWebAccountFilter = extern struct {
 };
 pub const IRemoteSystemWebAccountFilterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), account: *WebAccount) core.HResult!*RemoteSystemWebAccountFilter {
         var _r: *RemoteSystemWebAccountFilter = undefined;
         const _c = self.vtable.Create(@ptrCast(self), account, &_r);
@@ -2072,6 +2480,15 @@ pub const IRemoteSystemWebAccountFilterFactory = extern struct {
 };
 pub const KnownRemoteSystemCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2097,6 +2514,18 @@ pub const KnownRemoteSystemCapabilities = extern struct {
 };
 pub const RemoteSystem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystem = @ptrCast(self);
         return try this.getDisplayName();
@@ -2166,9 +2595,6 @@ pub const RemoteSystem = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FindByHostNameAsync(hostName: *HostName) core.HResult!*IAsyncOperation(RemoteSystem) {
         const _f = try @This()._IRemoteSystemStaticsCache.get();
         return try _f.FindByHostNameAsync(hostName);
@@ -2214,6 +2640,18 @@ pub const RemoteSystemAccessStatus = enum(i32) {
 };
 pub const RemoteSystemAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystem(self: *@This()) core.HResult!*RemoteSystem {
         const this: *IRemoteSystemAddedEventArgs = @ptrCast(self);
         return try this.getRemoteSystem();
@@ -2226,6 +2664,18 @@ pub const RemoteSystemAddedEventArgs = extern struct {
 };
 pub const RemoteSystemApp = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystemApp = @ptrCast(self);
         return try this.getId();
@@ -2268,6 +2718,18 @@ pub const RemoteSystemApp = extern struct {
 };
 pub const RemoteSystemAppRegistration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         const this: *IRemoteSystemAppRegistration = @ptrCast(self);
         return try this.getUser();
@@ -2279,9 +2741,6 @@ pub const RemoteSystemAppRegistration = extern struct {
     pub fn SaveAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         const this: *IRemoteSystemAppRegistration = @ptrCast(self);
         return try this.SaveAsync();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*RemoteSystemAppRegistration {
         const _f = try @This()._IRemoteSystemAppRegistrationStaticsCache.get();
@@ -2304,12 +2763,21 @@ pub const RemoteSystemAuthorizationKind = enum(i32) {
 };
 pub const RemoteSystemAuthorizationKindFilter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRemoteSystemAuthorizationKind(self: *@This()) core.HResult!RemoteSystemAuthorizationKind {
-        const this: *IRemoteSystemAuthorizationKindFilter = @ptrCast(self);
-        return try this.getRemoteSystemAuthorizationKind();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getRemoteSystemAuthorizationKind(self: *@This()) core.HResult!RemoteSystemAuthorizationKind {
+        const this: *IRemoteSystemAuthorizationKindFilter = @ptrCast(self);
+        return try this.getRemoteSystemAuthorizationKind();
     }
     pub fn Create(remoteSystemAuthorizationKind: RemoteSystemAuthorizationKind) core.HResult!*RemoteSystemAuthorizationKindFilter {
         const _f = try @This()._IRemoteSystemAuthorizationKindFilterFactoryCache.get();
@@ -2324,12 +2792,21 @@ pub const RemoteSystemAuthorizationKindFilter = extern struct {
 };
 pub const RemoteSystemConnectionInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getIsProximal(self: *@This()) core.HResult!bool {
-        const this: *IRemoteSystemConnectionInfo = @ptrCast(self);
-        return try this.getIsProximal();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getIsProximal(self: *@This()) core.HResult!bool {
+        const this: *IRemoteSystemConnectionInfo = @ptrCast(self);
+        return try this.getIsProximal();
     }
     pub fn TryCreateFromAppServiceConnection(connection: *AppServiceConnection) core.HResult!*RemoteSystemConnectionInfo {
         const _f = try @This()._IRemoteSystemConnectionInfoStaticsCache.get();
@@ -2344,6 +2821,18 @@ pub const RemoteSystemConnectionInfo = extern struct {
 };
 pub const RemoteSystemConnectionRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystem(self: *@This()) core.HResult!*RemoteSystem {
         const this: *IRemoteSystemConnectionRequest = @ptrCast(self);
         return try this.getRemoteSystem();
@@ -2361,9 +2850,6 @@ pub const RemoteSystemConnectionRequest = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRemoteSystemConnectionRequest3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getConnectionToken();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(remoteSystem: *RemoteSystem) core.HResult!*RemoteSystemConnectionRequest {
         const _f = try @This()._IRemoteSystemConnectionRequestFactoryCache.get();
@@ -2398,12 +2884,21 @@ pub const RemoteSystemDiscoveryType = enum(i32) {
 };
 pub const RemoteSystemDiscoveryTypeFilter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRemoteSystemDiscoveryType(self: *@This()) core.HResult!RemoteSystemDiscoveryType {
-        const this: *IRemoteSystemDiscoveryTypeFilter = @ptrCast(self);
-        return try this.getRemoteSystemDiscoveryType();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getRemoteSystemDiscoveryType(self: *@This()) core.HResult!RemoteSystemDiscoveryType {
+        const this: *IRemoteSystemDiscoveryTypeFilter = @ptrCast(self);
+        return try this.getRemoteSystemDiscoveryType();
     }
     pub fn Create(discoveryType: RemoteSystemDiscoveryType) core.HResult!*RemoteSystemDiscoveryTypeFilter {
         const _f = try @This()._IRemoteSystemDiscoveryTypeFilterFactoryCache.get();
@@ -2418,6 +2913,18 @@ pub const RemoteSystemDiscoveryTypeFilter = extern struct {
 };
 pub const RemoteSystemEnumerationCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemEnumerationCompletedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IRemoteSystemEnumerationCompletedEventArgs.GUID;
@@ -2426,12 +2933,21 @@ pub const RemoteSystemEnumerationCompletedEventArgs = extern struct {
 };
 pub const RemoteSystemKindFilter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRemoteSystemKinds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
-        const this: *IRemoteSystemKindFilter = @ptrCast(self);
-        return try this.getRemoteSystemKinds();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getRemoteSystemKinds(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
+        const this: *IRemoteSystemKindFilter = @ptrCast(self);
+        return try this.getRemoteSystemKinds();
     }
     pub fn Create(remoteSystemKinds: *IIterable(?HSTRING)) core.HResult!*RemoteSystemKindFilter {
         const _f = try @This()._IRemoteSystemKindFilterFactoryCache.get();
@@ -2446,6 +2962,15 @@ pub const RemoteSystemKindFilter = extern struct {
 };
 pub const RemoteSystemKinds = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2495,6 +3020,18 @@ pub const RemoteSystemPlatform = enum(i32) {
 };
 pub const RemoteSystemRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystemId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystemRemovedEventArgs = @ptrCast(self);
         return try this.getRemoteSystemId();
@@ -2507,6 +3044,18 @@ pub const RemoteSystemRemovedEventArgs = extern struct {
 };
 pub const RemoteSystemSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystemSession = @ptrCast(self);
         return try this.getId();
@@ -2542,9 +3091,6 @@ pub const RemoteSystemSession = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWatcher() core.HResult!*RemoteSystemSessionWatcher {
         const _f = try @This()._IRemoteSystemSessionStaticsCache.get();
         return try _f.CreateWatcher();
@@ -2558,6 +3104,18 @@ pub const RemoteSystemSession = extern struct {
 };
 pub const RemoteSystemSessionAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionInfo(self: *@This()) core.HResult!*RemoteSystemSessionInfo {
         const this: *IRemoteSystemSessionAddedEventArgs = @ptrCast(self);
         return try this.getSessionInfo();
@@ -2570,6 +3128,18 @@ pub const RemoteSystemSessionAddedEventArgs = extern struct {
 };
 pub const RemoteSystemSessionController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addJoinRequested(self: *@This(), handler: *TypedEventHandler(RemoteSystemSessionController,RemoteSystemSessionJoinRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IRemoteSystemSessionController = @ptrCast(self);
         return try this.addJoinRequested(handler);
@@ -2585,9 +3155,6 @@ pub const RemoteSystemSessionController = extern struct {
     pub fn CreateSessionAsync(self: *@This()) core.HResult!*IAsyncOperation(RemoteSystemSessionCreationResult) {
         const this: *IRemoteSystemSessionController = @ptrCast(self);
         return try this.CreateSessionAsync();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateController(displayName: ?HSTRING) core.HResult!*RemoteSystemSessionController {
         const _f = try @This()._IRemoteSystemSessionControllerFactoryCache.get();
@@ -2606,6 +3173,18 @@ pub const RemoteSystemSessionController = extern struct {
 };
 pub const RemoteSystemSessionCreationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!RemoteSystemSessionCreationStatus {
         const this: *IRemoteSystemSessionCreationResult = @ptrCast(self);
         return try this.getStatus();
@@ -2627,6 +3206,18 @@ pub const RemoteSystemSessionCreationStatus = enum(i32) {
 };
 pub const RemoteSystemSessionDisconnectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!RemoteSystemSessionDisconnectedReason {
         const this: *IRemoteSystemSessionDisconnectedEventArgs = @ptrCast(self);
         return try this.getReason();
@@ -2644,6 +3235,18 @@ pub const RemoteSystemSessionDisconnectedReason = enum(i32) {
 };
 pub const RemoteSystemSessionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteSystemSessionInfo = @ptrCast(self);
         return try this.getDisplayName();
@@ -2664,6 +3267,18 @@ pub const RemoteSystemSessionInfo = extern struct {
 };
 pub const RemoteSystemSessionInvitation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSender(self: *@This()) core.HResult!*RemoteSystem {
         const this: *IRemoteSystemSessionInvitation = @ptrCast(self);
         return try this.getSender();
@@ -2680,6 +3295,18 @@ pub const RemoteSystemSessionInvitation = extern struct {
 };
 pub const RemoteSystemSessionInvitationListener = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addInvitationReceived(self: *@This(), handler: *TypedEventHandler(RemoteSystemSessionInvitationListener,RemoteSystemSessionInvitationReceivedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IRemoteSystemSessionInvitationListener = @ptrCast(self);
         return try this.addInvitationReceived(handler);
@@ -2687,9 +3314,6 @@ pub const RemoteSystemSessionInvitationListener = extern struct {
     pub fn removeInvitationReceived(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *IRemoteSystemSessionInvitationListener = @ptrCast(self);
         return try this.removeInvitationReceived(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2704,6 +3328,18 @@ pub const RemoteSystemSessionInvitationListener = extern struct {
 };
 pub const RemoteSystemSessionInvitationReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInvitation(self: *@This()) core.HResult!*RemoteSystemSessionInvitation {
         const this: *IRemoteSystemSessionInvitationReceivedEventArgs = @ptrCast(self);
         return try this.getInvitation();
@@ -2716,6 +3352,18 @@ pub const RemoteSystemSessionInvitationReceivedEventArgs = extern struct {
 };
 pub const RemoteSystemSessionJoinRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParticipant(self: *@This()) core.HResult!*RemoteSystemSessionParticipant {
         const this: *IRemoteSystemSessionJoinRequest = @ptrCast(self);
         return try this.getParticipant();
@@ -2732,6 +3380,18 @@ pub const RemoteSystemSessionJoinRequest = extern struct {
 };
 pub const RemoteSystemSessionJoinRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getJoinRequest(self: *@This()) core.HResult!*RemoteSystemSessionJoinRequest {
         const this: *IRemoteSystemSessionJoinRequestedEventArgs = @ptrCast(self);
         return try this.getJoinRequest();
@@ -2748,6 +3408,18 @@ pub const RemoteSystemSessionJoinRequestedEventArgs = extern struct {
 };
 pub const RemoteSystemSessionJoinResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!RemoteSystemSessionJoinStatus {
         const this: *IRemoteSystemSessionJoinResult = @ptrCast(self);
         return try this.getStatus();
@@ -2771,6 +3443,18 @@ pub const RemoteSystemSessionJoinStatus = enum(i32) {
 };
 pub const RemoteSystemSessionMessageChannel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*RemoteSystemSession {
         const this: *IRemoteSystemSessionMessageChannel = @ptrCast(self);
         return try this.getSession();
@@ -2795,9 +3479,6 @@ pub const RemoteSystemSessionMessageChannel = extern struct {
         const this: *IRemoteSystemSessionMessageChannel = @ptrCast(self);
         return try this.removeValueSetReceived(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(session: *RemoteSystemSession, channelName: ?HSTRING) core.HResult!*RemoteSystemSessionMessageChannel {
         const _f = try @This()._IRemoteSystemSessionMessageChannelFactoryCache.get();
         return try _f.Create(session, channelName);
@@ -2819,6 +3500,18 @@ pub const RemoteSystemSessionMessageChannelReliability = enum(i32) {
 };
 pub const RemoteSystemSessionOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsInviteOnly(self: *@This()) core.HResult!bool {
         const this: *IRemoteSystemSessionOptions = @ptrCast(self);
         return try this.getIsInviteOnly();
@@ -2826,9 +3519,6 @@ pub const RemoteSystemSessionOptions = extern struct {
     pub fn putIsInviteOnly(self: *@This(), value: bool) core.HResult!void {
         const this: *IRemoteSystemSessionOptions = @ptrCast(self);
         return try this.putIsInviteOnly(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2843,6 +3533,18 @@ pub const RemoteSystemSessionOptions = extern struct {
 };
 pub const RemoteSystemSessionParticipant = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystem(self: *@This()) core.HResult!*RemoteSystem {
         const this: *IRemoteSystemSessionParticipant = @ptrCast(self);
         return try this.getRemoteSystem();
@@ -2859,6 +3561,18 @@ pub const RemoteSystemSessionParticipant = extern struct {
 };
 pub const RemoteSystemSessionParticipantAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParticipant(self: *@This()) core.HResult!*RemoteSystemSessionParticipant {
         const this: *IRemoteSystemSessionParticipantAddedEventArgs = @ptrCast(self);
         return try this.getParticipant();
@@ -2871,6 +3585,18 @@ pub const RemoteSystemSessionParticipantAddedEventArgs = extern struct {
 };
 pub const RemoteSystemSessionParticipantRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParticipant(self: *@This()) core.HResult!*RemoteSystemSessionParticipant {
         const this: *IRemoteSystemSessionParticipantRemovedEventArgs = @ptrCast(self);
         return try this.getParticipant();
@@ -2883,6 +3609,18 @@ pub const RemoteSystemSessionParticipantRemovedEventArgs = extern struct {
 };
 pub const RemoteSystemSessionParticipantWatcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const this: *IRemoteSystemSessionParticipantWatcher = @ptrCast(self);
         return try this.Start();
@@ -2935,6 +3673,18 @@ pub const RemoteSystemSessionParticipantWatcherStatus = enum(i32) {
 };
 pub const RemoteSystemSessionRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionInfo(self: *@This()) core.HResult!*RemoteSystemSessionInfo {
         const this: *IRemoteSystemSessionRemovedEventArgs = @ptrCast(self);
         return try this.getSessionInfo();
@@ -2947,6 +3697,18 @@ pub const RemoteSystemSessionRemovedEventArgs = extern struct {
 };
 pub const RemoteSystemSessionUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionInfo(self: *@This()) core.HResult!*RemoteSystemSessionInfo {
         const this: *IRemoteSystemSessionUpdatedEventArgs = @ptrCast(self);
         return try this.getSessionInfo();
@@ -2959,6 +3721,18 @@ pub const RemoteSystemSessionUpdatedEventArgs = extern struct {
 };
 pub const RemoteSystemSessionValueSetReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSender(self: *@This()) core.HResult!*RemoteSystemSessionParticipant {
         const this: *IRemoteSystemSessionValueSetReceivedEventArgs = @ptrCast(self);
         return try this.getSender();
@@ -2975,6 +3749,18 @@ pub const RemoteSystemSessionValueSetReceivedEventArgs = extern struct {
 };
 pub const RemoteSystemSessionWatcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const this: *IRemoteSystemSessionWatcher = @ptrCast(self);
         return try this.Start();
@@ -3037,12 +3823,21 @@ pub const RemoteSystemStatusType = enum(i32) {
 };
 pub const RemoteSystemStatusTypeFilter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getRemoteSystemStatusType(self: *@This()) core.HResult!RemoteSystemStatusType {
-        const this: *IRemoteSystemStatusTypeFilter = @ptrCast(self);
-        return try this.getRemoteSystemStatusType();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getRemoteSystemStatusType(self: *@This()) core.HResult!RemoteSystemStatusType {
+        const this: *IRemoteSystemStatusTypeFilter = @ptrCast(self);
+        return try this.getRemoteSystemStatusType();
     }
     pub fn Create(remoteSystemStatusType: RemoteSystemStatusType) core.HResult!*RemoteSystemStatusTypeFilter {
         const _f = try @This()._IRemoteSystemStatusTypeFilterFactoryCache.get();
@@ -3057,6 +3852,18 @@ pub const RemoteSystemStatusTypeFilter = extern struct {
 };
 pub const RemoteSystemUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteSystem(self: *@This()) core.HResult!*RemoteSystem {
         const this: *IRemoteSystemUpdatedEventArgs = @ptrCast(self);
         return try this.getRemoteSystem();
@@ -3069,6 +3876,18 @@ pub const RemoteSystemUpdatedEventArgs = extern struct {
 };
 pub const RemoteSystemWatcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const this: *IRemoteSystemWatcher = @ptrCast(self);
         return try this.Start();
@@ -3149,6 +3968,18 @@ pub const RemoteSystemWatcherError = enum(i32) {
 };
 pub const RemoteSystemWatcherErrorOccurredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!RemoteSystemWatcherError {
         const this: *IRemoteSystemWatcherErrorOccurredEventArgs = @ptrCast(self);
         return try this.getError();
@@ -3161,12 +3992,21 @@ pub const RemoteSystemWatcherErrorOccurredEventArgs = extern struct {
 };
 pub const RemoteSystemWebAccountFilter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getAccount(self: *@This()) core.HResult!*WebAccount {
-        const this: *IRemoteSystemWebAccountFilter = @ptrCast(self);
-        return try this.getAccount();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getAccount(self: *@This()) core.HResult!*WebAccount {
+        const this: *IRemoteSystemWebAccountFilter = @ptrCast(self);
+        return try this.getAccount();
     }
     pub fn Create(account: *WebAccount) core.HResult!*RemoteSystemWebAccountFilter {
         const _f = try @This()._IRemoteSystemWebAccountFilterFactoryCache.get();

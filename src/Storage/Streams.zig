@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const Buffer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapacity(self: *@This()) core.HResult!u32 {
         const this: *IBuffer = @ptrCast(self);
         return try this.getCapacity();
@@ -12,9 +24,6 @@ pub const Buffer = extern struct {
     pub fn putLength(self: *@This(), value: u32) core.HResult!void {
         const this: *IBuffer = @ptrCast(self);
         return try this.putLength(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(capacity: u32) core.HResult!*Buffer {
         const _f = try @This()._IBufferFactoryCache.get();
@@ -42,6 +51,18 @@ pub const ByteOrder = enum(i32) {
 };
 pub const DataReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnconsumedBufferLength(self: *@This()) core.HResult!u32 {
         const this: *IDataReader = @ptrCast(self);
         return try this.getUnconsumedBufferLength();
@@ -153,9 +174,6 @@ pub const DataReader = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateDataReader(inputStream: *IInputStream) core.HResult!*DataReader {
         const _f = try @This()._IDataReaderFactoryCache.get();
         return try _f.CreateDataReader(inputStream);
@@ -174,6 +192,18 @@ pub const DataReader = extern struct {
 };
 pub const DataReaderLoadOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(u32)) core.HResult!void {
         const this: *IAsyncOperation(u32) = @ptrCast(self);
         return try this.putCompleted(handler);
@@ -225,6 +255,18 @@ pub const DataReaderLoadOperation = extern struct {
 };
 pub const DataWriter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnstoredBufferLength(self: *@This()) core.HResult!u32 {
         const this: *IDataWriter = @ptrCast(self);
         return try this.getUnstoredBufferLength();
@@ -340,9 +382,6 @@ pub const DataWriter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDataWriter.IID)));
@@ -361,6 +400,18 @@ pub const DataWriter = extern struct {
 };
 pub const DataWriterStoreOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(u32)) core.HResult!void {
         const this: *IAsyncOperation(u32) = @ptrCast(self);
         return try this.putCompleted(handler);
@@ -412,6 +463,18 @@ pub const DataWriterStoreOperation = extern struct {
 };
 pub const FileInputStream = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
         const this: *IInputStream = @ptrCast(self);
         return try this.ReadAsync(buffer, count, options);
@@ -438,6 +501,18 @@ pub const FileOpenDisposition = enum(i32) {
 };
 pub const FileOutputStream = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         const this: *IOutputStream = @ptrCast(self);
         return try this.WriteAsync(buffer);
@@ -461,6 +536,18 @@ pub const FileOutputStream = extern struct {
 };
 pub const FileRandomAccessStream = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         const this: *IRandomAccessStream = @ptrCast(self);
         return try this.getSize();
@@ -525,9 +612,6 @@ pub const FileRandomAccessStream = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn OpenAsync(filePath: ?HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         const _f = try @This()._IFileRandomAccessStreamStaticsCache.get();
         return try _f.OpenAsync(filePath, accessMode);
@@ -569,6 +653,12 @@ pub const FileRandomAccessStream = extern struct {
 };
 pub const IBuffer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapacity(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Capacity(@ptrCast(self), &_r);
@@ -604,6 +694,12 @@ pub const IBuffer = extern struct {
 };
 pub const IBufferFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), capacity: u32) core.HResult!*Buffer {
         var _r: *Buffer = undefined;
         const _c = self.vtable.Create(@ptrCast(self), capacity, &_r);
@@ -627,6 +723,12 @@ pub const IBufferFactory = extern struct {
 };
 pub const IBufferStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateCopyFromMemoryBuffer(self: *@This(), input: *IMemoryBuffer) core.HResult!*Buffer {
         var _r: *Buffer = undefined;
         const _c = self.vtable.CreateCopyFromMemoryBuffer(@ptrCast(self), input, &_r);
@@ -657,6 +759,12 @@ pub const IBufferStatics = extern struct {
 };
 pub const IContentTypeProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentType(@ptrCast(self), &_r);
@@ -680,6 +788,12 @@ pub const IContentTypeProvider = extern struct {
 };
 pub const IDataReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnconsumedBufferLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UnconsumedBufferLength(@ptrCast(self), &_r);
@@ -870,6 +984,12 @@ pub const IDataReader = extern struct {
 };
 pub const IDataReaderFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateDataReader(self: *@This(), inputStream: *IInputStream) core.HResult!*DataReader {
         var _r: *DataReader = undefined;
         const _c = self.vtable.CreateDataReader(@ptrCast(self), inputStream, &_r);
@@ -893,6 +1013,12 @@ pub const IDataReaderFactory = extern struct {
 };
 pub const IDataReaderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromBuffer(self: *@This(), buffer: *IBuffer) core.HResult!*DataReader {
         var _r: *DataReader = undefined;
         const _c = self.vtable.FromBuffer(@ptrCast(self), buffer, &_r);
@@ -916,6 +1042,12 @@ pub const IDataReaderStatics = extern struct {
 };
 pub const IDataWriter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnstoredBufferLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_UnstoredBufferLength(@ptrCast(self), &_r);
@@ -1085,6 +1217,12 @@ pub const IDataWriter = extern struct {
 };
 pub const IDataWriterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateDataWriter(self: *@This(), outputStream: *IOutputStream) core.HResult!*DataWriter {
         var _r: *DataWriter = undefined;
         const _c = self.vtable.CreateDataWriter(@ptrCast(self), outputStream, &_r);
@@ -1108,6 +1246,12 @@ pub const IDataWriterFactory = extern struct {
 };
 pub const IFileRandomAccessStreamStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenAsync(self: *@This(), filePath: ?HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         var _r: *IAsyncOperation(IRandomAccessStream) = undefined;
         const _c = self.vtable.OpenAsync(@ptrCast(self), filePath, accessMode, &_r);
@@ -1180,6 +1324,12 @@ pub const IFileRandomAccessStreamStatics = extern struct {
 };
 pub const IInputStream = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
         var _r: *IAsyncOperationWithProgress(IBuffer,u32) = undefined;
         const _c = self.vtable.ReadAsync(@ptrCast(self), buffer, count, options, &_r);
@@ -1203,6 +1353,12 @@ pub const IInputStream = extern struct {
 };
 pub const IInputStreamReference = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenSequentialReadAsync(self: *@This()) core.HResult!*IAsyncOperation(IInputStream) {
         var _r: *IAsyncOperation(IInputStream) = undefined;
         const _c = self.vtable.OpenSequentialReadAsync(@ptrCast(self), &_r);
@@ -1226,6 +1382,12 @@ pub const IInputStreamReference = extern struct {
 };
 pub const IOutputStream = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var _r: *IAsyncOperationWithProgress(u32,u32) = undefined;
         const _c = self.vtable.WriteAsync(@ptrCast(self), buffer, &_r);
@@ -1256,6 +1418,12 @@ pub const IOutputStream = extern struct {
 };
 pub const IPropertySetSerializer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Serialize(self: *@This(), propertySet: *IPropertySet) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.Serialize(@ptrCast(self), propertySet, &_r);
@@ -1284,6 +1452,12 @@ pub const IPropertySetSerializer = extern struct {
 };
 pub const IRandomAccessStream = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_Size(@ptrCast(self), &_r);
@@ -1359,6 +1533,12 @@ pub const IRandomAccessStream = extern struct {
 };
 pub const IRandomAccessStreamReference = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenReadAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
         var _r: *IAsyncOperation(IRandomAccessStreamWithContentType) = undefined;
         const _c = self.vtable.OpenReadAsync(@ptrCast(self), &_r);
@@ -1382,6 +1562,12 @@ pub const IRandomAccessStreamReference = extern struct {
 };
 pub const IRandomAccessStreamReferenceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromFile(self: *@This(), file: *IStorageFile) core.HResult!*RandomAccessStreamReference {
         var _r: *RandomAccessStreamReference = undefined;
         const _c = self.vtable.CreateFromFile(@ptrCast(self), file, &_r);
@@ -1419,6 +1605,12 @@ pub const IRandomAccessStreamReferenceStatics = extern struct {
 };
 pub const IRandomAccessStreamStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CopyAsync(self: *@This(), source: *IInputStream, destination: *IOutputStream) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
         var _r: *IAsyncOperationWithProgress(u64,u64) = undefined;
         const _c = self.vtable.CopyAsync(@ptrCast(self), source, destination, &_r);
@@ -1456,6 +1648,12 @@ pub const IRandomAccessStreamStatics = extern struct {
 };
 pub const IRandomAccessStreamWithContentType = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Storage.Streams.IRandomAccessStreamWithContentType";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "cc254827-4b3d-438f-9232-10c76bc7e038";
@@ -1472,6 +1670,18 @@ pub const IRandomAccessStreamWithContentType = extern struct {
 };
 pub const InMemoryRandomAccessStream = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         const this: *IRandomAccessStream = @ptrCast(self);
         return try this.getSize();
@@ -1536,9 +1746,6 @@ pub const InMemoryRandomAccessStream = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRandomAccessStream.IID)));
@@ -1557,6 +1764,18 @@ pub const InputStreamOptions = enum(i32) {
 };
 pub const InputStreamOverStream = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
         const this: *IInputStream = @ptrCast(self);
         return try this.ReadAsync(buffer, count, options);
@@ -1576,6 +1795,18 @@ pub const InputStreamOverStream = extern struct {
 };
 pub const OutputStreamOverStream = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         const this: *IOutputStream = @ptrCast(self);
         return try this.WriteAsync(buffer);
@@ -1599,6 +1830,15 @@ pub const OutputStreamOverStream = extern struct {
 };
 pub const RandomAccessStream = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1620,6 +1860,18 @@ pub const RandomAccessStream = extern struct {
 };
 pub const RandomAccessStreamOverStream = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         const this: *IRandomAccessStream = @ptrCast(self);
         return try this.getSize();
@@ -1692,12 +1944,21 @@ pub const RandomAccessStreamOverStream = extern struct {
 };
 pub const RandomAccessStreamReference = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn OpenReadAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
-        const this: *IRandomAccessStreamReference = @ptrCast(self);
-        return try this.OpenReadAsync();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn OpenReadAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
+        const this: *IRandomAccessStreamReference = @ptrCast(self);
+        return try this.OpenReadAsync();
     }
     pub fn CreateFromFile(file: *IStorageFile) core.HResult!*RandomAccessStreamReference {
         const _f = try @This()._IRandomAccessStreamReferenceStaticsCache.get();

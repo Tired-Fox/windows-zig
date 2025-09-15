@@ -1,6 +1,15 @@
 // ----- This code is automatically generated -----
 pub const HolographicApplicationPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -18,6 +27,18 @@ pub const HolographicApplicationPreview = extern struct {
 };
 pub const HolographicKeyboardPlacementOverridePreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetPlacementOverride(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, normal: Vector3) core.HResult!void {
         const this: *IHolographicKeyboardPlacementOverridePreview = @ptrCast(self);
         return try this.SetPlacementOverride(coordinateSystem, topCenterPosition, normal);
@@ -29,9 +50,6 @@ pub const HolographicKeyboardPlacementOverridePreview = extern struct {
     pub fn ResetPlacementOverride(self: *@This()) core.HResult!void {
         const this: *IHolographicKeyboardPlacementOverridePreview = @ptrCast(self);
         return try this.ResetPlacementOverride();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*HolographicKeyboardPlacementOverridePreview {
         const _f = try @This()._IHolographicKeyboardPlacementOverridePreviewStaticsCache.get();
@@ -46,6 +64,12 @@ pub const HolographicKeyboardPlacementOverridePreview = extern struct {
 };
 pub const IHolographicApplicationPreviewStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsCurrentViewPresentedOnHolographicDisplay(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsCurrentViewPresentedOnHolographicDisplay(@ptrCast(self), &_r);
@@ -76,6 +100,12 @@ pub const IHolographicApplicationPreviewStatics = extern struct {
 };
 pub const IHolographicKeyboardPlacementOverridePreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetPlacementOverride(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, normal: Vector3) core.HResult!void {
         const _c = self.vtable.SetPlacementOverride(@ptrCast(self), coordinateSystem, topCenterPosition, normal);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -107,6 +137,12 @@ pub const IHolographicKeyboardPlacementOverridePreview = extern struct {
 };
 pub const IHolographicKeyboardPlacementOverridePreviewStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*HolographicKeyboardPlacementOverridePreview {
         var _r: *HolographicKeyboardPlacementOverridePreview = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);

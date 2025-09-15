@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ILockScreenImageFeedStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestSetImageFeedAsync(self: *@This(), syndicationFeedUri: *Uri) core.HResult!*IAsyncOperation(SetImageFeedResult) {
         var _r: *IAsyncOperation(SetImageFeedResult) = undefined;
         const _c = self.vtable.RequestSetImageFeedAsync(@ptrCast(self), syndicationFeedUri, &_r);
@@ -31,6 +37,12 @@ pub const ILockScreenImageFeedStatics = extern struct {
 };
 pub const ILockScreenStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOriginalImageFile(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_OriginalImageFile(@ptrCast(self), &_r);
@@ -75,6 +87,15 @@ pub const ILockScreenStatics = extern struct {
 };
 pub const LockScreen = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -114,6 +135,12 @@ pub const AccountPictureKind = enum(i32) {
 };
 pub const IUserInformationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccountPictureChangeEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AccountPictureChangeEnabled(@ptrCast(self), &_r);
@@ -246,6 +273,15 @@ pub const SetImageFeedResult = enum(i32) {
 };
 pub const UserInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -315,6 +351,15 @@ pub const UserInformation = extern struct {
 };
 pub const AdvertisingManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -333,6 +378,18 @@ pub const AdvertisingManager = extern struct {
 };
 pub const AdvertisingManagerForUser = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdvertisingId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAdvertisingManagerForUser = @ptrCast(self);
         return try this.getAdvertisingId();
@@ -349,6 +406,18 @@ pub const AdvertisingManagerForUser = extern struct {
 };
 pub const AssignedAccessSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         const this: *IAssignedAccessSettings = @ptrCast(self);
         return try this.getIsEnabled();
@@ -360,9 +429,6 @@ pub const AssignedAccessSettings = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         const this: *IAssignedAccessSettings = @ptrCast(self);
         return try this.getUser();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*AssignedAccessSettings {
         const _f = try @This()._IAssignedAccessSettingsStaticsCache.get();
@@ -381,6 +447,18 @@ pub const AssignedAccessSettings = extern struct {
 };
 pub const DiagnosticsSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanUseDiagnosticsToTailorExperiences(self: *@This()) core.HResult!bool {
         const this: *IDiagnosticsSettings = @ptrCast(self);
         return try this.getCanUseDiagnosticsToTailorExperiences();
@@ -388,9 +466,6 @@ pub const DiagnosticsSettings = extern struct {
     pub fn getUser(self: *@This()) core.HResult!*User {
         const this: *IDiagnosticsSettings = @ptrCast(self);
         return try this.getUser();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*DiagnosticsSettings {
         const _f = try @This()._IDiagnosticsSettingsStaticsCache.get();
@@ -409,6 +484,18 @@ pub const DiagnosticsSettings = extern struct {
 };
 pub const FirstSignInSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMapView(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -430,9 +517,6 @@ pub const FirstSignInSettings = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*FirstSignInSettings {
         const _f = try @This()._IFirstSignInSettingsStaticsCache.get();
         return try _f.GetDefault();
@@ -446,6 +530,15 @@ pub const FirstSignInSettings = extern struct {
 };
 pub const GlobalizationPreferences = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -493,6 +586,18 @@ pub const GlobalizationPreferences = extern struct {
 };
 pub const GlobalizationPreferencesForUser = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         const this: *IGlobalizationPreferencesForUser = @ptrCast(self);
         return try this.getUser();
@@ -529,6 +634,12 @@ pub const GlobalizationPreferencesForUser = extern struct {
 };
 pub const IAdvertisingManagerForUser = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdvertisingId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdvertisingId(@ptrCast(self), &_r);
@@ -559,6 +670,12 @@ pub const IAdvertisingManagerForUser = extern struct {
 };
 pub const IAdvertisingManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdvertisingId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AdvertisingId(@ptrCast(self), &_r);
@@ -582,6 +699,12 @@ pub const IAdvertisingManagerStatics = extern struct {
 };
 pub const IAdvertisingManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForUser(self: *@This(), user: *User) core.HResult!*AdvertisingManagerForUser {
         var _r: *AdvertisingManagerForUser = undefined;
         const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
@@ -605,6 +728,12 @@ pub const IAdvertisingManagerStatics2 = extern struct {
 };
 pub const IAssignedAccessSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -642,6 +771,12 @@ pub const IAssignedAccessSettings = extern struct {
 };
 pub const IAssignedAccessSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*AssignedAccessSettings {
         var _r: *AssignedAccessSettings = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -672,6 +807,12 @@ pub const IAssignedAccessSettingsStatics = extern struct {
 };
 pub const IDiagnosticsSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanUseDiagnosticsToTailorExperiences(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanUseDiagnosticsToTailorExperiences(@ptrCast(self), &_r);
@@ -702,6 +843,12 @@ pub const IDiagnosticsSettings = extern struct {
 };
 pub const IDiagnosticsSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*DiagnosticsSettings {
         var _r: *DiagnosticsSettings = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -732,6 +879,12 @@ pub const IDiagnosticsSettingsStatics = extern struct {
 };
 pub const IFirstSignInSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.System.UserProfile.IFirstSignInSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "3e945153-3a5e-452e-a601-f5baad2a4870";
@@ -748,6 +901,12 @@ pub const IFirstSignInSettings = extern struct {
 };
 pub const IFirstSignInSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*FirstSignInSettings {
         var _r: *FirstSignInSettings = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -771,6 +930,12 @@ pub const IFirstSignInSettingsStatics = extern struct {
 };
 pub const IGlobalizationPreferencesForUser = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -836,6 +1001,12 @@ pub const IGlobalizationPreferencesForUser = extern struct {
 };
 pub const IGlobalizationPreferencesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCalendars(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Calendars(@ptrCast(self), &_r);
@@ -894,6 +1065,12 @@ pub const IGlobalizationPreferencesStatics = extern struct {
 };
 pub const IGlobalizationPreferencesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TrySetHomeGeographicRegion(self: *@This(), region: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TrySetHomeGeographicRegion(@ptrCast(self), region, &_r);
@@ -924,6 +1101,12 @@ pub const IGlobalizationPreferencesStatics2 = extern struct {
 };
 pub const IGlobalizationPreferencesStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForUser(self: *@This(), user: *User) core.HResult!*GlobalizationPreferencesForUser {
         var _r: *GlobalizationPreferencesForUser = undefined;
         const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
@@ -947,6 +1130,12 @@ pub const IGlobalizationPreferencesStatics3 = extern struct {
 };
 pub const IUserProfilePersonalizationSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TrySetLockScreenImageAsync(self: *@This(), imageFile: *StorageFile) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TrySetLockScreenImageAsync(@ptrCast(self), imageFile, &_r);
@@ -977,6 +1166,12 @@ pub const IUserProfilePersonalizationSettings = extern struct {
 };
 pub const IUserProfilePersonalizationSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrent(self: *@This()) core.HResult!*UserProfilePersonalizationSettings {
         var _r: *UserProfilePersonalizationSettings = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
@@ -1007,6 +1202,18 @@ pub const IUserProfilePersonalizationSettingsStatics = extern struct {
 };
 pub const UserProfilePersonalizationSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TrySetLockScreenImageAsync(self: *@This(), imageFile: *StorageFile) core.HResult!*IAsyncOperation(bool) {
         const this: *IUserProfilePersonalizationSettings = @ptrCast(self);
         return try this.TrySetLockScreenImageAsync(imageFile);
@@ -1014,9 +1221,6 @@ pub const UserProfilePersonalizationSettings = extern struct {
     pub fn TrySetWallpaperImageAsync(self: *@This(), imageFile: *StorageFile) core.HResult!*IAsyncOperation(bool) {
         const this: *IUserProfilePersonalizationSettings = @ptrCast(self);
         return try this.TrySetWallpaperImageAsync(imageFile);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getCurrent() core.HResult!*UserProfilePersonalizationSettings {
         const _f = try @This()._IUserProfilePersonalizationSettingsStaticsCache.get();

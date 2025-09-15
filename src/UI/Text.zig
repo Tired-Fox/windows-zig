@@ -5,6 +5,18 @@ pub const CaretType = enum(i32) {
 };
 pub const ContentLinkInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!u32 {
         const this: *IContentLinkInfo = @ptrCast(self);
         return try this.getId();
@@ -45,9 +57,6 @@ pub const ContentLinkInfo = extern struct {
         const this: *IContentLinkInfo = @ptrCast(self);
         return try this.putLinkContentKind(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContentLinkInfo.IID)));
@@ -86,6 +95,15 @@ pub const FontWeight = extern struct {
 };
 pub const FontWeights = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -153,6 +171,12 @@ pub const HorizontalCharacterAlignment = enum(i32) {
 };
 pub const IContentLinkInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -229,6 +253,12 @@ pub const IContentLinkInfo = extern struct {
 };
 pub const IFontWeights = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Text.IFontWeights";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "7880a444-01ab-4997-8517-df822a0c45f1";
@@ -245,6 +275,12 @@ pub const IFontWeights = extern struct {
 };
 pub const IFontWeightsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBlack(self: *@This()) core.HResult!FontWeight {
         var _r: FontWeight = undefined;
         const _c = self.vtable.get_Black(@ptrCast(self), &_r);
@@ -338,6 +374,12 @@ pub const IFontWeightsStatics = extern struct {
 };
 pub const IRichEditTextRange = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentLinkInfo(self: *@This()) core.HResult!*ContentLinkInfo {
         var _r: *ContentLinkInfo = undefined;
         const _c = self.vtable.get_ContentLinkInfo(@ptrCast(self), &_r);
@@ -366,6 +408,12 @@ pub const IRichEditTextRange = extern struct {
 };
 pub const ITextCharacterFormat = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllCaps(self: *@This()) core.HResult!FormatEffect {
         var _r: FormatEffect = undefined;
         const _c = self.vtable.get_AllCaps(@ptrCast(self), &_r);
@@ -684,6 +732,12 @@ pub const ITextCharacterFormat = extern struct {
 };
 pub const ITextConstantsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAutoColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_AutoColor(@ptrCast(self), &_r);
@@ -756,6 +810,12 @@ pub const ITextConstantsStatics = extern struct {
 };
 pub const ITextDocument = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCaretType(self: *@This()) core.HResult!CaretType {
         var _r: CaretType = undefined;
         const _c = self.vtable.get_CaretType(@ptrCast(self), &_r);
@@ -935,6 +995,12 @@ pub const ITextDocument = extern struct {
 };
 pub const ITextDocument2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlignmentIncludesTrailingWhitespace(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AlignmentIncludesTrailingWhitespace(@ptrCast(self), &_r);
@@ -975,6 +1041,12 @@ pub const ITextDocument2 = extern struct {
 };
 pub const ITextDocument3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ClearUndoRedoHistory(self: *@This()) core.HResult!void {
         const _c = self.vtable.ClearUndoRedoHistory(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -996,6 +1068,12 @@ pub const ITextDocument3 = extern struct {
 };
 pub const ITextDocument4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetMath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetMath(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1027,6 +1105,12 @@ pub const ITextDocument4 = extern struct {
 };
 pub const ITextParagraphFormat = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlignment(self: *@This()) core.HResult!ParagraphAlignment {
         var _r: ParagraphAlignment = undefined;
         const _c = self.vtable.get_Alignment(@ptrCast(self), &_r);
@@ -1331,6 +1415,12 @@ pub const ITextParagraphFormat = extern struct {
 };
 pub const ITextRange = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharacter(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Character(@ptrCast(self), &_r);
@@ -1657,6 +1747,12 @@ pub const ITextRange = extern struct {
 };
 pub const ITextSelection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOptions(self: *@This()) core.HResult!SelectionOptions {
         var _r: SelectionOptions = undefined;
         const _c = self.vtable.get_Options(@ptrCast(self), &_r);
@@ -1848,6 +1944,18 @@ pub const RichEditMathMode = enum(i32) {
 };
 pub const RichEditTextDocument = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlignmentIncludesTrailingWhitespace(self: *@This()) core.HResult!bool {
         var this: ?*ITextDocument2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -2020,6 +2128,18 @@ pub const RichEditTextDocument = extern struct {
 };
 pub const RichEditTextRange = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentLinkInfo(self: *@This()) core.HResult!*ContentLinkInfo {
         var this: ?*IRichEditTextRange = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -2279,6 +2399,15 @@ pub const TabLeader = enum(i32) {
 };
 pub const TextConstants = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

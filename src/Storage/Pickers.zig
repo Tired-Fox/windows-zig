@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const FileExtensionVector = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVector(?HSTRING) = @ptrCast(self);
         return try this.getSize();
@@ -36,6 +48,18 @@ pub const FileExtensionVector = extern struct {
 };
 pub const FileOpenPicker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContinuationData(self: *@This()) core.HResult!*ValueSet {
         var this: ?*IFileOpenPicker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -115,9 +139,6 @@ pub const FileOpenPicker = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFileOpenPicker.IID)));
@@ -141,6 +162,18 @@ pub const FileOpenPicker = extern struct {
 };
 pub const FilePickerFileTypesOrderedMap = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IMap(?HSTRING,IVector(?HSTRING)) = @ptrCast(self);
         return try this.getSize();
@@ -168,6 +201,18 @@ pub const FilePickerFileTypesOrderedMap = extern struct {
 };
 pub const FilePickerSelectedFilesArray = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVectorView(StorageFile) = @ptrCast(self);
         return try this.getSize();
@@ -187,6 +232,18 @@ pub const FilePickerSelectedFilesArray = extern struct {
 };
 pub const FileSavePicker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContinuationData(self: *@This()) core.HResult!*ValueSet {
         var this: ?*IFileSavePicker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -278,9 +335,6 @@ pub const FileSavePicker = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFileSavePicker.IID)));
@@ -299,6 +353,18 @@ pub const FileSavePicker = extern struct {
 };
 pub const FolderPicker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContinuationData(self: *@This()) core.HResult!*ValueSet {
         var this: ?*IFolderPicker2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -360,9 +426,6 @@ pub const FolderPicker = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFolderPicker.IID)));
@@ -381,6 +444,12 @@ pub const FolderPicker = extern struct {
 };
 pub const IFileOpenPicker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getViewMode(self: *@This()) core.HResult!PickerViewMode {
         var _r: PickerViewMode = undefined;
         const _c = self.vtable.get_ViewMode(@ptrCast(self), &_r);
@@ -466,6 +535,12 @@ pub const IFileOpenPicker = extern struct {
 };
 pub const IFileOpenPicker2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContinuationData(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_ContinuationData(@ptrCast(self), &_r);
@@ -499,6 +574,12 @@ pub const IFileOpenPicker2 = extern struct {
 };
 pub const IFileOpenPicker3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -522,6 +603,12 @@ pub const IFileOpenPicker3 = extern struct {
 };
 pub const IFileOpenPickerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ResumePickSingleFileAsync(self: *@This()) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.ResumePickSingleFileAsync(@ptrCast(self), &_r);
@@ -545,6 +632,12 @@ pub const IFileOpenPickerStatics = extern struct {
 };
 pub const IFileOpenPickerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateForUser(self: *@This(), user: *User) core.HResult!*FileOpenPicker {
         var _r: *FileOpenPicker = undefined;
         const _c = self.vtable.CreateForUser(@ptrCast(self), user, &_r);
@@ -568,6 +661,12 @@ pub const IFileOpenPickerStatics2 = extern struct {
 };
 pub const IFileOpenPickerWithOperationId = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn PickSingleFileAsync(self: *@This(), pickerOperationId: ?HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
         const _c = self.vtable.PickSingleFileAsync(@ptrCast(self), pickerOperationId, &_r);
@@ -591,6 +690,12 @@ pub const IFileOpenPickerWithOperationId = extern struct {
 };
 pub const IFileSavePicker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSettingsIdentifier(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SettingsIdentifier(@ptrCast(self), &_r);
@@ -693,6 +798,12 @@ pub const IFileSavePicker = extern struct {
 };
 pub const IFileSavePicker2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContinuationData(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_ContinuationData(@ptrCast(self), &_r);
@@ -721,6 +832,12 @@ pub const IFileSavePicker2 = extern struct {
 };
 pub const IFileSavePicker3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnterpriseId(@ptrCast(self), &_r);
@@ -749,6 +866,12 @@ pub const IFileSavePicker3 = extern struct {
 };
 pub const IFileSavePicker4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -772,6 +895,12 @@ pub const IFileSavePicker4 = extern struct {
 };
 pub const IFileSavePickerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateForUser(self: *@This(), user: *User) core.HResult!*FileSavePicker {
         var _r: *FileSavePicker = undefined;
         const _c = self.vtable.CreateForUser(@ptrCast(self), user, &_r);
@@ -795,6 +924,12 @@ pub const IFileSavePickerStatics = extern struct {
 };
 pub const IFolderPicker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getViewMode(self: *@This()) core.HResult!PickerViewMode {
         var _r: PickerViewMode = undefined;
         const _c = self.vtable.get_ViewMode(@ptrCast(self), &_r);
@@ -873,6 +1008,12 @@ pub const IFolderPicker = extern struct {
 };
 pub const IFolderPicker2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContinuationData(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_ContinuationData(@ptrCast(self), &_r);
@@ -901,6 +1042,12 @@ pub const IFolderPicker2 = extern struct {
 };
 pub const IFolderPicker3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -924,6 +1071,12 @@ pub const IFolderPicker3 = extern struct {
 };
 pub const IFolderPickerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateForUser(self: *@This(), user: *User) core.HResult!*FolderPicker {
         var _r: *FolderPicker = undefined;
         const _c = self.vtable.CreateForUser(@ptrCast(self), user, &_r);

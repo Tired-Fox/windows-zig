@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AppListEntry = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayInfo(self: *@This()) core.HResult!*AppDisplayInfo {
         const this: *IAppListEntry = @ptrCast(self);
         return try this.getDisplayInfo();
@@ -44,6 +56,15 @@ pub const AppRestartFailureReason = enum(i32) {
 };
 pub const CoreApplication = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -181,6 +202,18 @@ pub const CoreApplication = extern struct {
 };
 pub const CoreApplicationView = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCoreWindow(self: *@This()) core.HResult!*CoreWindow {
         const this: *ICoreApplicationView = @ptrCast(self);
         return try this.getCoreWindow();
@@ -258,6 +291,18 @@ pub const CoreApplicationView = extern struct {
 };
 pub const CoreApplicationViewTitleBar = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putExtendViewIntoTitleBar(self: *@This(), value: bool) core.HResult!void {
         const this: *ICoreApplicationViewTitleBar = @ptrCast(self);
         return try this.putExtendViewIntoTitleBar(value);
@@ -306,6 +351,18 @@ pub const CoreApplicationViewTitleBar = extern struct {
 };
 pub const HostedViewClosingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *IHostedViewClosingEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -318,6 +375,12 @@ pub const HostedViewClosingEventArgs = extern struct {
 };
 pub const IAppListEntry = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayInfo(self: *@This()) core.HResult!*AppDisplayInfo {
         var _r: *AppDisplayInfo = undefined;
         const _c = self.vtable.get_DisplayInfo(@ptrCast(self), &_r);
@@ -348,6 +411,12 @@ pub const IAppListEntry = extern struct {
 };
 pub const IAppListEntry2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppUserModelId(@ptrCast(self), &_r);
@@ -371,6 +440,12 @@ pub const IAppListEntry2 = extern struct {
 };
 pub const IAppListEntry3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LaunchForUserAsync(self: *@This(), user: *User) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.LaunchForUserAsync(@ptrCast(self), user, &_r);
@@ -394,6 +469,12 @@ pub const IAppListEntry3 = extern struct {
 };
 pub const IAppListEntry4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppInfo(self: *@This()) core.HResult!*AppInfo {
         var _r: *AppInfo = undefined;
         const _c = self.vtable.get_AppInfo(@ptrCast(self), &_r);
@@ -417,6 +498,12 @@ pub const IAppListEntry4 = extern struct {
 };
 pub const ICoreApplication = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -488,6 +575,12 @@ pub const ICoreApplication = extern struct {
 };
 pub const ICoreApplication2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addBackgroundActivated(self: *@This(), handler: *EventHandler(BackgroundActivatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_BackgroundActivated(@ptrCast(self), handler, &_r);
@@ -545,6 +638,12 @@ pub const ICoreApplication2 = extern struct {
 };
 pub const ICoreApplication3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestRestartAsync(self: *@This(), launchArguments: ?HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
         var _r: *IAsyncOperation(AppRestartFailureReason) = undefined;
         const _c = self.vtable.RequestRestartAsync(@ptrCast(self), launchArguments, &_r);
@@ -575,6 +674,12 @@ pub const ICoreApplication3 = extern struct {
 };
 pub const ICoreApplicationExit = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Exit(self: *@This()) core.HResult!void {
         const _c = self.vtable.Exit(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -608,6 +713,12 @@ pub const ICoreApplicationExit = extern struct {
 };
 pub const ICoreApplicationUnhandledError = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addUnhandledErrorDetected(self: *@This(), handler: *EventHandler(UnhandledErrorDetectedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_UnhandledErrorDetected(@ptrCast(self), handler, &_r);
@@ -636,6 +747,12 @@ pub const ICoreApplicationUnhandledError = extern struct {
 };
 pub const ICoreApplicationUseCount = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IncrementApplicationUseCount(self: *@This()) core.HResult!void {
         const _c = self.vtable.IncrementApplicationUseCount(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -662,6 +779,12 @@ pub const ICoreApplicationUseCount = extern struct {
 };
 pub const ICoreApplicationView = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCoreWindow(self: *@This()) core.HResult!*CoreWindow {
         var _r: *CoreWindow = undefined;
         const _c = self.vtable.get_CoreWindow(@ptrCast(self), &_r);
@@ -711,6 +834,12 @@ pub const ICoreApplicationView = extern struct {
 };
 pub const ICoreApplicationView2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDispatcher(self: *@This()) core.HResult!*CoreDispatcher {
         var _r: *CoreDispatcher = undefined;
         const _c = self.vtable.get_Dispatcher(@ptrCast(self), &_r);
@@ -734,6 +863,12 @@ pub const ICoreApplicationView2 = extern struct {
 };
 pub const ICoreApplicationView3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsComponent(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsComponent(@ptrCast(self), &_r);
@@ -776,6 +911,12 @@ pub const ICoreApplicationView3 = extern struct {
 };
 pub const ICoreApplicationView5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         var _r: *IPropertySet = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
@@ -799,6 +940,12 @@ pub const ICoreApplicationView5 = extern struct {
 };
 pub const ICoreApplicationView6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDispatcherQueue(self: *@This()) core.HResult!*DispatcherQueue {
         var _r: *DispatcherQueue = undefined;
         const _c = self.vtable.get_DispatcherQueue(@ptrCast(self), &_r);
@@ -822,6 +969,12 @@ pub const ICoreApplicationView6 = extern struct {
 };
 pub const ICoreApplicationViewTitleBar = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putExtendViewIntoTitleBar(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ExtendViewIntoTitleBar(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -902,6 +1055,12 @@ pub const ICoreApplicationViewTitleBar = extern struct {
 };
 pub const ICoreImmersiveApplication = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getViews(self: *@This()) core.HResult!*IVectorView(CoreApplicationView) {
         var _r: *IVectorView(CoreApplicationView) = undefined;
         const _c = self.vtable.get_Views(@ptrCast(self), &_r);
@@ -939,6 +1098,12 @@ pub const ICoreImmersiveApplication = extern struct {
 };
 pub const ICoreImmersiveApplication2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateNewView(self: *@This()) core.HResult!*CoreApplicationView {
         var _r: *CoreApplicationView = undefined;
         const _c = self.vtable.CreateNewView(@ptrCast(self), &_r);
@@ -962,6 +1127,12 @@ pub const ICoreImmersiveApplication2 = extern struct {
 };
 pub const ICoreImmersiveApplication3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateNewView(self: *@This(), viewSource: *IFrameworkViewSource) core.HResult!*CoreApplicationView {
         var _r: *CoreApplicationView = undefined;
         const _c = self.vtable.CreateNewView(@ptrCast(self), viewSource, &_r);
@@ -985,6 +1156,12 @@ pub const ICoreImmersiveApplication3 = extern struct {
 };
 pub const IFrameworkView = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Initialize(self: *@This(), applicationView: *CoreApplicationView) core.HResult!void {
         const _c = self.vtable.Initialize(@ptrCast(self), applicationView);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1026,6 +1203,12 @@ pub const IFrameworkView = extern struct {
 };
 pub const IFrameworkViewSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateView(self: *@This()) core.HResult!*IFrameworkView {
         var _r: *IFrameworkView = undefined;
         const _c = self.vtable.CreateView(@ptrCast(self), &_r);
@@ -1049,6 +1232,12 @@ pub const IFrameworkViewSource = extern struct {
 };
 pub const IHostedViewClosingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -1072,6 +1261,12 @@ pub const IHostedViewClosingEventArgs = extern struct {
 };
 pub const IUnhandledError = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
@@ -1100,6 +1295,12 @@ pub const IUnhandledError = extern struct {
 };
 pub const IUnhandledErrorDetectedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnhandledError(self: *@This()) core.HResult!*UnhandledError {
         var _r: *UnhandledError = undefined;
         const _c = self.vtable.get_UnhandledError(@ptrCast(self), &_r);
@@ -1123,6 +1324,18 @@ pub const IUnhandledErrorDetectedEventArgs = extern struct {
 };
 pub const UnhandledError = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         const this: *IUnhandledError = @ptrCast(self);
         return try this.getHandled();
@@ -1139,6 +1352,18 @@ pub const UnhandledError = extern struct {
 };
 pub const UnhandledErrorDetectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnhandledError(self: *@This()) core.HResult!*UnhandledError {
         const this: *IUnhandledErrorDetectedEventArgs = @ptrCast(self);
         return try this.getUnhandledError();

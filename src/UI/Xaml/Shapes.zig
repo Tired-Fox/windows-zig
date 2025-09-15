@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const Shape = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFill(self: *@This()) core.HResult!*Brush {
         const this: *IShape = @ptrCast(self);
         return try this.getFill();
@@ -100,9 +112,6 @@ pub const Shape = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAlphaMask();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getFillProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IShapeStaticsCache.get();
         return try _f.getFillProperty();
@@ -161,6 +170,15 @@ pub const Shape = extern struct {
 };
 pub const Ellipse = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -177,6 +195,12 @@ pub const Ellipse = extern struct {
 };
 pub const IEllipse = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Shapes.IEllipse";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "70e05ac4-d38d-4bab-831f-4a22ef52ac86";
@@ -193,6 +217,12 @@ pub const IEllipse = extern struct {
 };
 pub const ILine = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getX1(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_X1(@ptrCast(self), &_r);
@@ -257,6 +287,12 @@ pub const ILine = extern struct {
 };
 pub const ILineStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getX1Property(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_X1Property(@ptrCast(self), &_r);
@@ -301,6 +337,12 @@ pub const ILineStatics = extern struct {
 };
 pub const IPath = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!*Geometry {
         var _r: *Geometry = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
@@ -329,6 +371,12 @@ pub const IPath = extern struct {
 };
 pub const IPathFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Path {
         var _r: *Path = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -352,6 +400,12 @@ pub const IPathFactory = extern struct {
 };
 pub const IPathStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DataProperty(@ptrCast(self), &_r);
@@ -375,6 +429,12 @@ pub const IPathStatics = extern struct {
 };
 pub const IPolygon = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFillRule(self: *@This()) core.HResult!FillRule {
         var _r: FillRule = undefined;
         const _c = self.vtable.get_FillRule(@ptrCast(self), &_r);
@@ -415,6 +475,12 @@ pub const IPolygon = extern struct {
 };
 pub const IPolygonStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFillRuleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FillRuleProperty(@ptrCast(self), &_r);
@@ -445,6 +511,12 @@ pub const IPolygonStatics = extern struct {
 };
 pub const IPolyline = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFillRule(self: *@This()) core.HResult!FillRule {
         var _r: FillRule = undefined;
         const _c = self.vtable.get_FillRule(@ptrCast(self), &_r);
@@ -485,6 +557,12 @@ pub const IPolyline = extern struct {
 };
 pub const IPolylineStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFillRuleProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FillRuleProperty(@ptrCast(self), &_r);
@@ -515,6 +593,12 @@ pub const IPolylineStatics = extern struct {
 };
 pub const IRectangle = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRadiusX(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_RadiusX(@ptrCast(self), &_r);
@@ -555,6 +639,12 @@ pub const IRectangle = extern struct {
 };
 pub const IRectangleStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRadiusXProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_RadiusXProperty(@ptrCast(self), &_r);
@@ -585,6 +675,12 @@ pub const IRectangleStatics = extern struct {
 };
 pub const IShape = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFill(self: *@This()) core.HResult!*Brush {
         var _r: *Brush = undefined;
         const _c = self.vtable.get_Fill(@ptrCast(self), &_r);
@@ -740,6 +836,12 @@ pub const IShape = extern struct {
 };
 pub const IShape2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAlphaMask(self: *@This()) core.HResult!*CompositionBrush {
         var _r: *CompositionBrush = undefined;
         const _c = self.vtable.GetAlphaMask(@ptrCast(self), &_r);
@@ -763,6 +865,12 @@ pub const IShape2 = extern struct {
 };
 pub const IShapeFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Shape {
         var _r: *Shape = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -786,6 +894,12 @@ pub const IShapeFactory = extern struct {
 };
 pub const IShapeStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFillProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_FillProperty(@ptrCast(self), &_r);
@@ -879,6 +993,18 @@ pub const IShapeStatics = extern struct {
 };
 pub const Line = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getX1(self: *@This()) core.HResult!f64 {
         const this: *ILine = @ptrCast(self);
         return try this.getX1();
@@ -911,9 +1037,6 @@ pub const Line = extern struct {
         const this: *ILine = @ptrCast(self);
         return try this.putY2(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILine.IID)));
@@ -944,6 +1067,18 @@ pub const Line = extern struct {
 };
 pub const Path = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!*Geometry {
         const this: *IPath = @ptrCast(self);
         return try this.getData();
@@ -951,9 +1086,6 @@ pub const Path = extern struct {
     pub fn putData(self: *@This(), value: *Geometry) core.HResult!void {
         const this: *IPath = @ptrCast(self);
         return try this.putData(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDataProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IPathStaticsCache.get();
@@ -973,6 +1105,18 @@ pub const Path = extern struct {
 };
 pub const Polygon = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFillRule(self: *@This()) core.HResult!FillRule {
         const this: *IPolygon = @ptrCast(self);
         return try this.getFillRule();
@@ -988,9 +1132,6 @@ pub const Polygon = extern struct {
     pub fn putPoints(self: *@This(), value: *PointCollection) core.HResult!void {
         const this: *IPolygon = @ptrCast(self);
         return try this.putPoints(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1014,6 +1155,18 @@ pub const Polygon = extern struct {
 };
 pub const Polyline = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFillRule(self: *@This()) core.HResult!FillRule {
         const this: *IPolyline = @ptrCast(self);
         return try this.getFillRule();
@@ -1029,9 +1182,6 @@ pub const Polyline = extern struct {
     pub fn putPoints(self: *@This(), value: *PointCollection) core.HResult!void {
         const this: *IPolyline = @ptrCast(self);
         return try this.putPoints(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1055,6 +1205,18 @@ pub const Polyline = extern struct {
 };
 pub const Rectangle = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRadiusX(self: *@This()) core.HResult!f64 {
         const this: *IRectangle = @ptrCast(self);
         return try this.getRadiusX();
@@ -1070,9 +1232,6 @@ pub const Rectangle = extern struct {
     pub fn putRadiusY(self: *@This(), value: f64) core.HResult!void {
         const this: *IRectangle = @ptrCast(self);
         return try this.putRadiusY(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

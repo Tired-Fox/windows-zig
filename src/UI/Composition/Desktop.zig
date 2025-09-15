@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const DesktopWindowTarget = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsTopmost(self: *@This()) core.HResult!bool {
         const this: *IDesktopWindowTarget = @ptrCast(self);
         return try this.getIsTopmost();
@@ -13,6 +25,12 @@ pub const DesktopWindowTarget = extern struct {
 };
 pub const IDesktopWindowTarget = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsTopmost(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTopmost(@ptrCast(self), &_r);
@@ -34,6 +52,7 @@ pub const IDesktopWindowTarget = extern struct {
         get_IsTopmost: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
+const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;
 const HRESULT = @import("../../root.zig").HRESULT;
 const core = @import("../../root.zig").core;

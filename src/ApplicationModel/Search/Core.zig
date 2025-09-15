@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IRequestingFocusOnKeyboardInputEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Search.Core.IRequestingFocusOnKeyboardInputEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a1195f27-b1a7-41a2-879d-6a68687e5985";
@@ -17,6 +23,12 @@ pub const IRequestingFocusOnKeyboardInputEventArgs = extern struct {
 };
 pub const ISearchSuggestion = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!SearchSuggestionKind {
         var _r: SearchSuggestionKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -75,6 +87,12 @@ pub const ISearchSuggestion = extern struct {
 };
 pub const ISearchSuggestionManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSearchHistoryEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SearchHistoryEnabled(@ptrCast(self), &_r);
@@ -181,6 +199,12 @@ pub const ISearchSuggestionManager = extern struct {
 };
 pub const ISearchSuggestionsRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QueryText(@ptrCast(self), &_r);
@@ -225,6 +249,18 @@ pub const ISearchSuggestionsRequestedEventArgs = extern struct {
 };
 pub const RequestingFocusOnKeyboardInputEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Search.Core.RequestingFocusOnKeyboardInputEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IRequestingFocusOnKeyboardInputEventArgs.GUID;
@@ -233,6 +269,18 @@ pub const RequestingFocusOnKeyboardInputEventArgs = extern struct {
 };
 pub const SearchSuggestion = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!SearchSuggestionKind {
         const this: *ISearchSuggestion = @ptrCast(self);
         return try this.getKind();
@@ -270,6 +318,18 @@ pub const SearchSuggestionKind = enum(i32) {
 };
 pub const SearchSuggestionManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSearchHistoryEnabled(self: *@This()) core.HResult!bool {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.getSearchHistoryEnabled();
@@ -334,9 +394,6 @@ pub const SearchSuggestionManager = extern struct {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.removeRequestingFocusOnKeyboardInput(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISearchSuggestionManager.IID)));
@@ -350,6 +407,18 @@ pub const SearchSuggestionManager = extern struct {
 };
 pub const SearchSuggestionsRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQueryText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISearchSuggestionsRequestedEventArgs = @ptrCast(self);
         return try this.getQueryText();
@@ -372,8 +441,8 @@ pub const SearchSuggestionsRequestedEventArgs = extern struct {
     pub const IID: Guid = ISearchSuggestionsRequestedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISearchSuggestionsRequestedEventArgs.SIGNATURE);
 };
-const IRandomAccessStreamReference = @import("../../Storage/Streams.zig").IRandomAccessStreamReference;
 const IUnknown = @import("../../root.zig").IUnknown;
+const IRandomAccessStreamReference = @import("../../Storage/Streams.zig").IRandomAccessStreamReference;
 const SearchSuggestionsRequest = @import("../Search.zig").SearchSuggestionsRequest;
 const Guid = @import("../../root.zig").Guid;
 const HRESULT = @import("../../root.zig").HRESULT;

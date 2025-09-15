@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IRadialControllerIndependentInputSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getController(self: *@This()) core.HResult!*RadialController {
         var _r: *RadialController = undefined;
         const _c = self.vtable.get_Controller(@ptrCast(self), &_r);
@@ -31,6 +37,12 @@ pub const IRadialControllerIndependentInputSource = extern struct {
 };
 pub const IRadialControllerIndependentInputSource2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDispatcherQueue(self: *@This()) core.HResult!*DispatcherQueue {
         var _r: *DispatcherQueue = undefined;
         const _c = self.vtable.get_DispatcherQueue(@ptrCast(self), &_r);
@@ -54,6 +66,12 @@ pub const IRadialControllerIndependentInputSource2 = extern struct {
 };
 pub const IRadialControllerIndependentInputSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateForView(self: *@This(), view: *CoreApplicationView) core.HResult!*RadialControllerIndependentInputSource {
         var _r: *RadialControllerIndependentInputSource = undefined;
         const _c = self.vtable.CreateForView(@ptrCast(self), view, &_r);
@@ -77,6 +95,18 @@ pub const IRadialControllerIndependentInputSourceStatics = extern struct {
 };
 pub const RadialControllerIndependentInputSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getController(self: *@This()) core.HResult!*RadialController {
         const this: *IRadialControllerIndependentInputSource = @ptrCast(self);
         return try this.getController();
@@ -92,9 +122,6 @@ pub const RadialControllerIndependentInputSource = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDispatcherQueue();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateForView(view: *CoreApplicationView) core.HResult!*RadialControllerIndependentInputSource {
         const _f = try @This()._IRadialControllerIndependentInputSourceStaticsCache.get();
         return try _f.CreateForView(view);
@@ -106,9 +133,9 @@ pub const RadialControllerIndependentInputSource = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IRadialControllerIndependentInputSource.SIGNATURE);
     var _IRadialControllerIndependentInputSourceStaticsCache: FactoryCache(IRadialControllerIndependentInputSourceStatics, RUNTIME_NAME) = .{};
 };
+const IUnknown = @import("../../root.zig").IUnknown;
 const RadialController = @import("../Input.zig").RadialController;
 const DispatcherQueue = @import("../../System.zig").DispatcherQueue;
-const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;
 const HRESULT = @import("../../root.zig").HRESULT;
 const core = @import("../../root.zig").core;

@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const INamedResource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
@@ -59,6 +65,12 @@ pub const INamedResource = extern struct {
 };
 pub const IResourceCandidate = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQualifiers(self: *@This()) core.HResult!*IVectorView(ResourceQualifier) {
         var _r: *IVectorView(ResourceQualifier) = undefined;
         const _c = self.vtable.get_Qualifiers(@ptrCast(self), &_r);
@@ -124,6 +136,12 @@ pub const IResourceCandidate = extern struct {
 };
 pub const IResourceCandidate2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetValueAsStreamAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         var _r: *IAsyncOperation(IRandomAccessStream) = undefined;
         const _c = self.vtable.GetValueAsStreamAsync(@ptrCast(self), &_r);
@@ -147,6 +165,12 @@ pub const IResourceCandidate2 = extern struct {
 };
 pub const IResourceCandidate3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!ResourceCandidateKind {
         var _r: ResourceCandidateKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -170,6 +194,12 @@ pub const IResourceCandidate3 = extern struct {
 };
 pub const IResourceContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQualifierValues(self: *@This()) core.HResult!*IObservableMap(?HSTRING,?HSTRING) {
         var _r: *IObservableMap(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_QualifierValues(@ptrCast(self), &_r);
@@ -227,6 +257,12 @@ pub const IResourceContext = extern struct {
 };
 pub const IResourceContextStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMatchingContext(self: *@This(), result: *IIterable(ResourceQualifier)) core.HResult!*ResourceContext {
         var _r: *ResourceContext = undefined;
         const _c = self.vtable.CreateMatchingContext(@ptrCast(self), result, &_r);
@@ -250,6 +286,12 @@ pub const IResourceContextStatics = extern struct {
 };
 pub const IResourceContextStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*ResourceContext {
         var _r: *ResourceContext = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -295,6 +337,12 @@ pub const IResourceContextStatics2 = extern struct {
 };
 pub const IResourceContextStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetGlobalQualifierValue(self: *@This(), key: ?HSTRING, value: ?HSTRING, persistence: ResourceQualifierPersistence) core.HResult!void {
         const _c = self.vtable.SetGlobalQualifierValue(@ptrCast(self), key, value, persistence);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -316,6 +364,12 @@ pub const IResourceContextStatics3 = extern struct {
 };
 pub const IResourceContextStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForUIContext(self: *@This(), context: *UIContext) core.HResult!*ResourceContext {
         var _r: *ResourceContext = undefined;
         const _c = self.vtable.GetForUIContext(@ptrCast(self), context, &_r);
@@ -339,6 +393,12 @@ pub const IResourceContextStatics4 = extern struct {
 };
 pub const IResourceManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMainResourceMap(self: *@This()) core.HResult!*ResourceMap {
         var _r: *ResourceMap = undefined;
         const _c = self.vtable.get_MainResourceMap(@ptrCast(self), &_r);
@@ -386,6 +446,12 @@ pub const IResourceManager = extern struct {
 };
 pub const IResourceManager2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAllNamedResourcesForPackage(self: *@This(), packageName: ?HSTRING, resourceLayoutInfo: ResourceLayoutInfo) core.HResult!*IVectorView(NamedResource) {
         var _r: *IVectorView(NamedResource) = undefined;
         const _c = self.vtable.GetAllNamedResourcesForPackage(@ptrCast(self), packageName, resourceLayoutInfo, &_r);
@@ -416,6 +482,12 @@ pub const IResourceManager2 = extern struct {
 };
 pub const IResourceManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrent(self: *@This()) core.HResult!*ResourceManager {
         var _r: *ResourceManager = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
@@ -446,6 +518,12 @@ pub const IResourceManagerStatics = extern struct {
 };
 pub const IResourceMap = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
@@ -490,6 +568,12 @@ pub const IResourceMap = extern struct {
 };
 pub const IResourceQualifier = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQualifierName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QualifierName(@ptrCast(self), &_r);
@@ -541,6 +625,18 @@ pub const IResourceQualifier = extern struct {
 };
 pub const NamedResource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         const this: *INamedResource = @ptrCast(self);
         return try this.getUri();
@@ -573,6 +669,18 @@ pub const NamedResource = extern struct {
 };
 pub const ResourceCandidate = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQualifiers(self: *@This()) core.HResult!*IVectorView(ResourceQualifier) {
         const this: *IResourceCandidate = @ptrCast(self);
         return try this.getQualifiers();
@@ -628,6 +736,18 @@ pub const ResourceCandidateKind = enum(i32) {
 };
 pub const ResourceCandidateVectorView = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVectorView(ResourceCandidate) = @ptrCast(self);
         return try this.getSize();
@@ -647,6 +767,18 @@ pub const ResourceCandidateVectorView = extern struct {
 };
 pub const ResourceContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQualifierValues(self: *@This()) core.HResult!*IObservableMap(?HSTRING,?HSTRING) {
         const this: *IResourceContext = @ptrCast(self);
         return try this.getQualifierValues();
@@ -674,9 +806,6 @@ pub const ResourceContext = extern struct {
     pub fn putLanguages(self: *@This(), languages: *IVectorView(?HSTRING)) core.HResult!void {
         const this: *IResourceContext = @ptrCast(self);
         return try this.putLanguages(languages);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -727,6 +856,18 @@ pub const ResourceContext = extern struct {
 };
 pub const ResourceContextLanguagesVectorView = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVectorView(?HSTRING) = @ptrCast(self);
         return try this.getSize();
@@ -753,6 +894,18 @@ pub const ResourceLayoutInfo = extern struct {
 };
 pub const ResourceManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMainResourceMap(self: *@This()) core.HResult!*ResourceMap {
         const this: *IResourceManager = @ptrCast(self);
         return try this.getMainResourceMap();
@@ -787,9 +940,6 @@ pub const ResourceManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllSubtreesForPackage(packageName, resourceLayoutInfo);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getCurrent() core.HResult!*ResourceManager {
         const _f = try @This()._IResourceManagerStaticsCache.get();
         return try _f.getCurrent();
@@ -807,6 +957,18 @@ pub const ResourceManager = extern struct {
 };
 pub const ResourceMap = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         const this: *IResourceMap = @ptrCast(self);
         return try this.getUri();
@@ -852,6 +1014,18 @@ pub const ResourceMap = extern struct {
 };
 pub const ResourceMapIterator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHasCurrent(self: *@This()) core.HResult!bool {
         const this: *IIterator(IKeyValuePair(?HSTRING,NamedResource)) = @ptrCast(self);
         return try this.getHasCurrent();
@@ -868,6 +1042,18 @@ pub const ResourceMapIterator = extern struct {
 };
 pub const ResourceMapMapView = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IMapView(?HSTRING,ResourceMap) = @ptrCast(self);
         return try this.getSize();
@@ -891,6 +1077,18 @@ pub const ResourceMapMapView = extern struct {
 };
 pub const ResourceMapMapViewIterator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHasCurrent(self: *@This()) core.HResult!bool {
         const this: *IIterator(IKeyValuePair(?HSTRING,ResourceMap)) = @ptrCast(self);
         return try this.getHasCurrent();
@@ -907,6 +1105,18 @@ pub const ResourceMapMapViewIterator = extern struct {
 };
 pub const ResourceQualifier = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQualifierName(self: *@This()) core.HResult!?HSTRING {
         const this: *IResourceQualifier = @ptrCast(self);
         return try this.getQualifierName();
@@ -935,6 +1145,18 @@ pub const ResourceQualifier = extern struct {
 };
 pub const ResourceQualifierMapView = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IMapView(?HSTRING,?HSTRING) = @ptrCast(self);
         return try this.getSize();
@@ -958,6 +1180,18 @@ pub const ResourceQualifierMapView = extern struct {
 };
 pub const ResourceQualifierObservableMap = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(?HSTRING,?HSTRING)) core.HResult!EventRegistrationToken {
         const this: *IObservableMap(?HSTRING,?HSTRING) = @ptrCast(self);
         return try this.addMapChanged(vhnd);
@@ -1006,6 +1240,18 @@ pub const ResourceQualifierPersistence = enum(i32) {
 };
 pub const ResourceQualifierVectorView = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVectorView(ResourceQualifier) = @ptrCast(self);
         return try this.getSize();
@@ -1023,8 +1269,8 @@ pub const ResourceQualifierVectorView = extern struct {
     pub const IID: Guid = IVectorView.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IVectorView.SIGNATURE);
 };
-const HSTRING = @import("../../root.zig").HSTRING;
 const IUnknown = @import("../../root.zig").IUnknown;
+const HSTRING = @import("../../root.zig").HSTRING;
 const Guid = @import("../../root.zig").Guid;
 const IVectorView = @import("../../Foundation/Collections.zig").IVectorView;
 const IActivationFactory = @import("../../Foundation.zig").IActivationFactory;

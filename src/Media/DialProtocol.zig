@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const DialApp = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDialApp = @ptrCast(self);
         return try this.getAppName();
@@ -37,6 +49,18 @@ pub const DialAppState = enum(i32) {
 };
 pub const DialAppStateDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!DialAppState {
         const this: *IDialAppStateDetails = @ptrCast(self);
         return try this.getState();
@@ -59,6 +83,18 @@ pub const DialAppStopResult = enum(i32) {
 };
 pub const DialDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDialDevice = @ptrCast(self);
         return try this.getId();
@@ -80,9 +116,6 @@ pub const DialDevice = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDialDevice2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getThumbnail();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(appName: ?HSTRING) core.HResult!?HSTRING {
         const _f = try @This()._IDialDeviceStaticsCache.get();
@@ -113,6 +146,18 @@ pub const DialDeviceDisplayStatus = enum(i32) {
 };
 pub const DialDevicePicker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFilter(self: *@This()) core.HResult!*DialDevicePickerFilter {
         const this: *IDialDevicePicker = @ptrCast(self);
         return try this.getFilter();
@@ -169,9 +214,6 @@ pub const DialDevicePicker = extern struct {
         const this: *IDialDevicePicker = @ptrCast(self);
         return try this.SetDisplayStatus(device, status);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDialDevicePicker.IID)));
@@ -185,6 +227,18 @@ pub const DialDevicePicker = extern struct {
 };
 pub const DialDevicePickerFilter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedAppNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IDialDevicePickerFilter = @ptrCast(self);
         return try this.getSupportedAppNames();
@@ -197,6 +251,18 @@ pub const DialDevicePickerFilter = extern struct {
 };
 pub const DialDeviceSelectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedDialDevice(self: *@This()) core.HResult!*DialDevice {
         const this: *IDialDeviceSelectedEventArgs = @ptrCast(self);
         return try this.getSelectedDialDevice();
@@ -209,6 +275,18 @@ pub const DialDeviceSelectedEventArgs = extern struct {
 };
 pub const DialDisconnectButtonClickedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDevice(self: *@This()) core.HResult!*DialDevice {
         const this: *IDialDisconnectButtonClickedEventArgs = @ptrCast(self);
         return try this.getDevice();
@@ -221,6 +299,18 @@ pub const DialDisconnectButtonClickedEventArgs = extern struct {
 };
 pub const DialReceiverApp = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAdditionalDataAsync(self: *@This()) core.HResult!*IAsyncOperation(IMap(?HSTRING,?HSTRING)) {
         const this: *IDialReceiverApp = @ptrCast(self);
         return try this.GetAdditionalDataAsync();
@@ -236,9 +326,6 @@ pub const DialReceiverApp = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetUniqueDeviceNameAsync();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getCurrent() core.HResult!*DialReceiverApp {
         const _f = try @This()._IDialReceiverAppStaticsCache.get();
         return try _f.getCurrent();
@@ -252,6 +339,12 @@ pub const DialReceiverApp = extern struct {
 };
 pub const IDialApp = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppName(@ptrCast(self), &_r);
@@ -296,6 +389,12 @@ pub const IDialApp = extern struct {
 };
 pub const IDialAppStateDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!DialAppState {
         var _r: DialAppState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -326,6 +425,12 @@ pub const IDialAppStateDetails = extern struct {
 };
 pub const IDialDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -356,6 +461,12 @@ pub const IDialDevice = extern struct {
 };
 pub const IDialDevice2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
@@ -386,6 +497,12 @@ pub const IDialDevice2 = extern struct {
 };
 pub const IDialDevicePicker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFilter(self: *@This()) core.HResult!*DialDevicePickerFilter {
         var _r: *DialDevicePickerFilter = undefined;
         const _c = self.vtable.get_Filter(@ptrCast(self), &_r);
@@ -486,6 +603,12 @@ pub const IDialDevicePicker = extern struct {
 };
 pub const IDialDevicePickerFilter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedAppNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_SupportedAppNames(@ptrCast(self), &_r);
@@ -509,6 +632,12 @@ pub const IDialDevicePickerFilter = extern struct {
 };
 pub const IDialDeviceSelectedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedDialDevice(self: *@This()) core.HResult!*DialDevice {
         var _r: *DialDevice = undefined;
         const _c = self.vtable.get_SelectedDialDevice(@ptrCast(self), &_r);
@@ -532,6 +661,12 @@ pub const IDialDeviceSelectedEventArgs = extern struct {
 };
 pub const IDialDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This(), appName: ?HSTRING) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), appName, &_r);
@@ -569,6 +704,12 @@ pub const IDialDeviceStatics = extern struct {
 };
 pub const IDialDisconnectButtonClickedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDevice(self: *@This()) core.HResult!*DialDevice {
         var _r: *DialDevice = undefined;
         const _c = self.vtable.get_Device(@ptrCast(self), &_r);
@@ -592,6 +733,12 @@ pub const IDialDisconnectButtonClickedEventArgs = extern struct {
 };
 pub const IDialReceiverApp = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAdditionalDataAsync(self: *@This()) core.HResult!*IAsyncOperation(IMap(?HSTRING,?HSTRING)) {
         var _r: *IAsyncOperation(IMap(?HSTRING,?HSTRING)) = undefined;
         const _c = self.vtable.GetAdditionalDataAsync(@ptrCast(self), &_r);
@@ -622,6 +769,12 @@ pub const IDialReceiverApp = extern struct {
 };
 pub const IDialReceiverApp2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetUniqueDeviceNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetUniqueDeviceNameAsync(@ptrCast(self), &_r);
@@ -645,6 +798,12 @@ pub const IDialReceiverApp2 = extern struct {
 };
 pub const IDialReceiverAppStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrent(self: *@This()) core.HResult!*DialReceiverApp {
         var _r: *DialReceiverApp = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);

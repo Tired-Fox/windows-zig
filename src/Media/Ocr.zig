@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IOcrEngine = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RecognizeAsync(self: *@This(), bitmap: *SoftwareBitmap) core.HResult!*IAsyncOperation(OcrResult) {
         var _r: *IAsyncOperation(OcrResult) = undefined;
         const _c = self.vtable.RecognizeAsync(@ptrCast(self), bitmap, &_r);
@@ -31,6 +37,12 @@ pub const IOcrEngine = extern struct {
 };
 pub const IOcrEngineStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxImageDimension(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxImageDimension(@ptrCast(self), &_r);
@@ -82,6 +94,12 @@ pub const IOcrEngineStatics = extern struct {
 };
 pub const IOcrLine = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWords(self: *@This()) core.HResult!*IVectorView(OcrWord) {
         var _r: *IVectorView(OcrWord) = undefined;
         const _c = self.vtable.get_Words(@ptrCast(self), &_r);
@@ -112,6 +130,12 @@ pub const IOcrLine = extern struct {
 };
 pub const IOcrResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLines(self: *@This()) core.HResult!*IVectorView(OcrLine) {
         var _r: *IVectorView(OcrLine) = undefined;
         const _c = self.vtable.get_Lines(@ptrCast(self), &_r);
@@ -149,6 +173,12 @@ pub const IOcrResult = extern struct {
 };
 pub const IOcrWord = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_BoundingRect(@ptrCast(self), &_r);
@@ -179,6 +209,18 @@ pub const IOcrWord = extern struct {
 };
 pub const OcrEngine = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RecognizeAsync(self: *@This(), bitmap: *SoftwareBitmap) core.HResult!*IAsyncOperation(OcrResult) {
         const this: *IOcrEngine = @ptrCast(self);
         return try this.RecognizeAsync(bitmap);
@@ -186,9 +228,6 @@ pub const OcrEngine = extern struct {
     pub fn getRecognizerLanguage(self: *@This()) core.HResult!*Language {
         const this: *IOcrEngine = @ptrCast(self);
         return try this.getRecognizerLanguage();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getMaxImageDimension() core.HResult!u32 {
         const _f = try @This()._IOcrEngineStaticsCache.get();
@@ -219,6 +258,18 @@ pub const OcrEngine = extern struct {
 };
 pub const OcrLine = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWords(self: *@This()) core.HResult!*IVectorView(OcrWord) {
         const this: *IOcrLine = @ptrCast(self);
         return try this.getWords();
@@ -235,6 +286,18 @@ pub const OcrLine = extern struct {
 };
 pub const OcrResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLines(self: *@This()) core.HResult!*IVectorView(OcrLine) {
         const this: *IOcrResult = @ptrCast(self);
         return try this.getLines();
@@ -255,6 +318,18 @@ pub const OcrResult = extern struct {
 };
 pub const OcrWord = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         const this: *IOcrWord = @ptrCast(self);
         return try this.getBoundingRect();

@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AudioEncodingProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putBitrate(self: *@This(), value: u32) core.HResult!void {
         const this: *IAudioEncodingProperties = @ptrCast(self);
         return try this.putBitrate(value);
@@ -89,9 +101,6 @@ pub const AudioEncodingProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAudioEncodingProperties.IID)));
@@ -141,6 +150,15 @@ pub const AudioEncodingQuality = enum(i32) {
 };
 pub const Av1ProfileIds = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -198,6 +216,18 @@ pub const Av1ProfileIds = extern struct {
 };
 pub const ContainerEncodingProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProperties(self: *@This()) core.HResult!*MediaPropertySet {
         var this: ?*IMediaEncodingProperties = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -233,9 +263,6 @@ pub const ContainerEncodingProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContainerEncodingProperties.IID)));
@@ -249,6 +276,15 @@ pub const ContainerEncodingProperties = extern struct {
 };
 pub const H264ProfileIds = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -298,6 +334,15 @@ pub const H264ProfileIds = extern struct {
 };
 pub const HevcProfileIds = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -395,6 +440,12 @@ pub const HevcProfileIds = extern struct {
 };
 pub const IAudioEncodingProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putBitrate(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_Bitrate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -459,6 +510,12 @@ pub const IAudioEncodingProperties = extern struct {
 };
 pub const IAudioEncodingProperties2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSpatial(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSpatial(@ptrCast(self), &_r);
@@ -482,6 +539,12 @@ pub const IAudioEncodingProperties2 = extern struct {
 };
 pub const IAudioEncodingProperties3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Copy(self: *@This()) core.HResult!*AudioEncodingProperties {
         var _r: *AudioEncodingProperties = undefined;
         const _c = self.vtable.Copy(@ptrCast(self), &_r);
@@ -505,6 +568,12 @@ pub const IAudioEncodingProperties3 = extern struct {
 };
 pub const IAudioEncodingPropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAac(self: *@This(), sampleRate: u32, channelCount: u32, bitrate: u32) core.HResult!*AudioEncodingProperties {
         var _r: *AudioEncodingProperties = undefined;
         const _c = self.vtable.CreateAac(@ptrCast(self), sampleRate, channelCount, bitrate, &_r);
@@ -556,6 +625,12 @@ pub const IAudioEncodingPropertiesStatics = extern struct {
 };
 pub const IAudioEncodingPropertiesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAlac(self: *@This(), sampleRate: u32, channelCount: u32, bitsPerSample: u32) core.HResult!*AudioEncodingProperties {
         var _r: *AudioEncodingProperties = undefined;
         const _c = self.vtable.CreateAlac(@ptrCast(self), sampleRate, channelCount, bitsPerSample, &_r);
@@ -586,6 +661,12 @@ pub const IAudioEncodingPropertiesStatics2 = extern struct {
 };
 pub const IAudioEncodingPropertiesWithFormatUserData = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetFormatUserData(self: *@This(), value: [*]u8) core.HResult!void {
         const _c = self.vtable.SetFormatUserData(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -612,6 +693,12 @@ pub const IAudioEncodingPropertiesWithFormatUserData = extern struct {
 };
 pub const IAv1ProfileIdsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMainChromaSubsampling420BitDepth8(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MainChromaSubsampling420BitDepth8(@ptrCast(self), &_r);
@@ -712,6 +799,12 @@ pub const IAv1ProfileIdsStatics = extern struct {
 };
 pub const IContainerEncodingProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.MediaProperties.IContainerEncodingProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "59ac2a57-b32a-479e-8a61-4b7f2e9e7ea0";
@@ -728,6 +821,12 @@ pub const IContainerEncodingProperties = extern struct {
 };
 pub const IContainerEncodingProperties2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Copy(self: *@This()) core.HResult!*ContainerEncodingProperties {
         var _r: *ContainerEncodingProperties = undefined;
         const _c = self.vtable.Copy(@ptrCast(self), &_r);
@@ -751,6 +850,12 @@ pub const IContainerEncodingProperties2 = extern struct {
 };
 pub const IH264ProfileIdsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConstrainedBaseline(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ConstrainedBaseline(@ptrCast(self), &_r);
@@ -837,6 +942,12 @@ pub const IH264ProfileIdsStatics = extern struct {
 };
 pub const IHevcProfileIdsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMainChromaSubsampling420BitDepth8(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MainChromaSubsampling420BitDepth8(@ptrCast(self), &_r);
@@ -1007,6 +1118,12 @@ pub const IHevcProfileIdsStatics = extern struct {
 };
 pub const IImageEncodingProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putWidth(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_Width(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1047,6 +1164,12 @@ pub const IImageEncodingProperties = extern struct {
 };
 pub const IImageEncodingProperties2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Copy(self: *@This()) core.HResult!*ImageEncodingProperties {
         var _r: *ImageEncodingProperties = undefined;
         const _c = self.vtable.Copy(@ptrCast(self), &_r);
@@ -1070,6 +1193,12 @@ pub const IImageEncodingProperties2 = extern struct {
 };
 pub const IImageEncodingPropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateJpeg(self: *@This()) core.HResult!*ImageEncodingProperties {
         var _r: *ImageEncodingProperties = undefined;
         const _c = self.vtable.CreateJpeg(@ptrCast(self), &_r);
@@ -1107,6 +1236,12 @@ pub const IImageEncodingPropertiesStatics = extern struct {
 };
 pub const IImageEncodingPropertiesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateUncompressed(self: *@This(), format: MediaPixelFormat) core.HResult!*ImageEncodingProperties {
         var _r: *ImageEncodingProperties = undefined;
         const _c = self.vtable.CreateUncompressed(@ptrCast(self), format, &_r);
@@ -1137,6 +1272,12 @@ pub const IImageEncodingPropertiesStatics2 = extern struct {
 };
 pub const IImageEncodingPropertiesStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateHeif(self: *@This()) core.HResult!*ImageEncodingProperties {
         var _r: *ImageEncodingProperties = undefined;
         const _c = self.vtable.CreateHeif(@ptrCast(self), &_r);
@@ -1160,6 +1301,12 @@ pub const IImageEncodingPropertiesStatics3 = extern struct {
 };
 pub const IMediaEncodingProfile = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAudio(self: *@This(), value: *AudioEncodingProperties) core.HResult!void {
         const _c = self.vtable.put_Audio(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1212,6 +1359,12 @@ pub const IMediaEncodingProfile = extern struct {
 };
 pub const IMediaEncodingProfile2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetAudioTracks(self: *@This(), value: *IIterable(AudioStreamDescriptor)) core.HResult!void {
         const _c = self.vtable.SetAudioTracks(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1252,6 +1405,12 @@ pub const IMediaEncodingProfile2 = extern struct {
 };
 pub const IMediaEncodingProfile3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetTimedMetadataTracks(self: *@This(), value: *IIterable(TimedMetadataStreamDescriptor)) core.HResult!void {
         const _c = self.vtable.SetTimedMetadataTracks(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1280,6 +1439,12 @@ pub const IMediaEncodingProfile3 = extern struct {
 };
 pub const IMediaEncodingProfileStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateM4a(self: *@This(), quality: AudioEncodingQuality) core.HResult!*MediaEncodingProfile {
         var _r: *MediaEncodingProfile = undefined;
         const _c = self.vtable.CreateM4a(@ptrCast(self), quality, &_r);
@@ -1345,6 +1510,12 @@ pub const IMediaEncodingProfileStatics = extern struct {
 };
 pub const IMediaEncodingProfileStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWav(self: *@This(), quality: AudioEncodingQuality) core.HResult!*MediaEncodingProfile {
         var _r: *MediaEncodingProfile = undefined;
         const _c = self.vtable.CreateWav(@ptrCast(self), quality, &_r);
@@ -1375,6 +1546,12 @@ pub const IMediaEncodingProfileStatics2 = extern struct {
 };
 pub const IMediaEncodingProfileStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAlac(self: *@This(), quality: AudioEncodingQuality) core.HResult!*MediaEncodingProfile {
         var _r: *MediaEncodingProfile = undefined;
         const _c = self.vtable.CreateAlac(@ptrCast(self), quality, &_r);
@@ -1412,6 +1589,12 @@ pub const IMediaEncodingProfileStatics3 = extern struct {
 };
 pub const IMediaEncodingProfileStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateVp9(self: *@This(), quality: VideoEncodingQuality) core.HResult!*MediaEncodingProfile {
         var _r: *MediaEncodingProfile = undefined;
         const _c = self.vtable.CreateVp9(@ptrCast(self), quality, &_r);
@@ -1442,6 +1625,12 @@ pub const IMediaEncodingProfileStatics4 = extern struct {
 };
 pub const IMediaEncodingProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProperties(self: *@This()) core.HResult!*MediaPropertySet {
         var _r: *MediaPropertySet = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
@@ -1484,6 +1673,12 @@ pub const IMediaEncodingProperties = extern struct {
 };
 pub const IMediaEncodingSubtypesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAac(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Aac(@ptrCast(self), &_r);
@@ -1780,6 +1975,12 @@ pub const IMediaEncodingSubtypesStatics = extern struct {
 };
 pub const IMediaEncodingSubtypesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVp9(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Vp9(@ptrCast(self), &_r);
@@ -1824,6 +2025,12 @@ pub const IMediaEncodingSubtypesStatics2 = extern struct {
 };
 pub const IMediaEncodingSubtypesStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlac(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Alac(@ptrCast(self), &_r);
@@ -1854,6 +2061,12 @@ pub const IMediaEncodingSubtypesStatics3 = extern struct {
 };
 pub const IMediaEncodingSubtypesStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getP010(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_P010(@ptrCast(self), &_r);
@@ -1877,6 +2090,12 @@ pub const IMediaEncodingSubtypesStatics4 = extern struct {
 };
 pub const IMediaEncodingSubtypesStatics5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeif(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Heif(@ptrCast(self), &_r);
@@ -1900,6 +2119,12 @@ pub const IMediaEncodingSubtypesStatics5 = extern struct {
 };
 pub const IMediaEncodingSubtypesStatics6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPgs(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pgs(@ptrCast(self), &_r);
@@ -1944,6 +2169,12 @@ pub const IMediaEncodingSubtypesStatics6 = extern struct {
 };
 pub const IMediaEncodingSubtypesStatics7 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAv1(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Av1(@ptrCast(self), &_r);
@@ -1967,6 +2198,12 @@ pub const IMediaEncodingSubtypesStatics7 = extern struct {
 };
 pub const IMediaRatio = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putNumerator(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_Numerator(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2007,6 +2244,12 @@ pub const IMediaRatio = extern struct {
 };
 pub const IMpeg2ProfileIdsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSimple(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Simple(@ptrCast(self), &_r);
@@ -2058,6 +2301,12 @@ pub const IMpeg2ProfileIdsStatics = extern struct {
 };
 pub const ITimedMetadataEncodingProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetFormatUserData(self: *@This(), value: [*]u8) core.HResult!void {
         const _c = self.vtable.SetFormatUserData(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2091,6 +2340,12 @@ pub const ITimedMetadataEncodingProperties = extern struct {
 };
 pub const ITimedMetadataEncodingPropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreatePgs(self: *@This()) core.HResult!*TimedMetadataEncodingProperties {
         var _r: *TimedMetadataEncodingProperties = undefined;
         const _c = self.vtable.CreatePgs(@ptrCast(self), &_r);
@@ -2135,6 +2390,12 @@ pub const ITimedMetadataEncodingPropertiesStatics = extern struct {
 };
 pub const IVideoEncodingProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putBitrate(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_Bitrate(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2201,6 +2462,12 @@ pub const IVideoEncodingProperties = extern struct {
 };
 pub const IVideoEncodingProperties2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetFormatUserData(self: *@This(), value: [*]u8) core.HResult!void {
         const _c = self.vtable.SetFormatUserData(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2239,6 +2506,12 @@ pub const IVideoEncodingProperties2 = extern struct {
 };
 pub const IVideoEncodingProperties3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStereoscopicVideoPackingMode(self: *@This()) core.HResult!StereoscopicVideoPackingMode {
         var _r: StereoscopicVideoPackingMode = undefined;
         const _c = self.vtable.get_StereoscopicVideoPackingMode(@ptrCast(self), &_r);
@@ -2262,6 +2535,12 @@ pub const IVideoEncodingProperties3 = extern struct {
 };
 pub const IVideoEncodingProperties4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSphericalVideoFrameFormat(self: *@This()) core.HResult!SphericalVideoFrameFormat {
         var _r: SphericalVideoFrameFormat = undefined;
         const _c = self.vtable.get_SphericalVideoFrameFormat(@ptrCast(self), &_r);
@@ -2285,6 +2564,12 @@ pub const IVideoEncodingProperties4 = extern struct {
 };
 pub const IVideoEncodingProperties5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Copy(self: *@This()) core.HResult!*VideoEncodingProperties {
         var _r: *VideoEncodingProperties = undefined;
         const _c = self.vtable.Copy(@ptrCast(self), &_r);
@@ -2308,6 +2593,12 @@ pub const IVideoEncodingProperties5 = extern struct {
 };
 pub const IVideoEncodingPropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateH264(self: *@This()) core.HResult!*VideoEncodingProperties {
         var _r: *VideoEncodingProperties = undefined;
         const _c = self.vtable.CreateH264(@ptrCast(self), &_r);
@@ -2345,6 +2636,12 @@ pub const IVideoEncodingPropertiesStatics = extern struct {
 };
 pub const IVideoEncodingPropertiesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateHevc(self: *@This()) core.HResult!*VideoEncodingProperties {
         var _r: *VideoEncodingProperties = undefined;
         const _c = self.vtable.CreateHevc(@ptrCast(self), &_r);
@@ -2368,6 +2665,12 @@ pub const IVideoEncodingPropertiesStatics2 = extern struct {
 };
 pub const IVideoEncodingPropertiesStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateVp9(self: *@This()) core.HResult!*VideoEncodingProperties {
         var _r: *VideoEncodingProperties = undefined;
         const _c = self.vtable.CreateVp9(@ptrCast(self), &_r);
@@ -2398,6 +2701,12 @@ pub const IVideoEncodingPropertiesStatics3 = extern struct {
 };
 pub const IVp9ProfileIdsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProfile0ChromaSubsampling420BitDepth8(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Profile0ChromaSubsampling420BitDepth8(@ptrCast(self), &_r);
@@ -2435,6 +2744,18 @@ pub const IVp9ProfileIdsStatics = extern struct {
 };
 pub const ImageEncodingProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putWidth(self: *@This(), value: u32) core.HResult!void {
         const this: *IImageEncodingProperties = @ptrCast(self);
         return try this.putWidth(value);
@@ -2486,9 +2807,6 @@ pub const ImageEncodingProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IImageEncodingProperties.IID)));
@@ -2529,6 +2847,18 @@ pub const ImageEncodingProperties = extern struct {
 };
 pub const MediaEncodingProfile = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAudio(self: *@This(), value: *AudioEncodingProperties) core.HResult!void {
         const this: *IMediaEncodingProfile = @ptrCast(self);
         return try this.putAudio(value);
@@ -2594,9 +2924,6 @@ pub const MediaEncodingProfile = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaEncodingProfile3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetTimedMetadataTracks();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2671,6 +2998,15 @@ pub const MediaEncodingProfile = extern struct {
 };
 pub const MediaEncodingSubtypes = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2908,6 +3244,18 @@ pub const MediaPixelFormat = enum(i32) {
 };
 pub const MediaPropertySet = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IMap(Guid,IInspectable) = @ptrCast(self);
         return try this.getSize();
@@ -2927,9 +3275,6 @@ pub const MediaPropertySet = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMap.IID)));
@@ -2943,6 +3288,18 @@ pub const MediaPropertySet = extern struct {
 };
 pub const MediaRatio = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putNumerator(self: *@This(), value: u32) core.HResult!void {
         const this: *IMediaRatio = @ptrCast(self);
         return try this.putNumerator(value);
@@ -2977,6 +3334,15 @@ pub const MediaThumbnailFormat = enum(i32) {
 };
 pub const Mpeg2ProfileIds = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3016,6 +3382,18 @@ pub const StereoscopicVideoPackingMode = enum(i32) {
 };
 pub const TimedMetadataEncodingProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetFormatUserData(self: *@This(), value: [*]u8) core.HResult!void {
         var this: ?*ITimedMetadataEncodingProperties = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -3053,9 +3431,6 @@ pub const TimedMetadataEncodingProperties = extern struct {
         const this: *IMediaEncodingProperties = @ptrCast(self);
         return try this.getSubtype();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaEncodingProperties.IID)));
@@ -3086,6 +3461,18 @@ pub const TimedMetadataEncodingProperties = extern struct {
 };
 pub const VideoEncodingProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putBitrate(self: *@This(), value: u32) core.HResult!void {
         const this: *IVideoEncodingProperties = @ptrCast(self);
         return try this.putBitrate(value);
@@ -3195,9 +3582,6 @@ pub const VideoEncodingProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Copy();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVideoEncodingProperties.IID)));
@@ -3250,6 +3634,15 @@ pub const VideoEncodingQuality = enum(i32) {
 };
 pub const Vp9ProfileIds = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

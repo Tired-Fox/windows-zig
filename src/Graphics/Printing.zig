@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPrintDocumentSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.IPrintDocumentSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "dedc0c30-f1eb-47df-aae6-ed5427511f01";
@@ -17,6 +23,12 @@ pub const IPrintDocumentSource = extern struct {
 };
 pub const IPrintManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addPrintTaskRequested(self: *@This(), eventHandler: *TypedEventHandler(PrintManager,PrintTaskRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PrintTaskRequested(@ptrCast(self), eventHandler, &_r);
@@ -45,6 +57,12 @@ pub const IPrintManager = extern struct {
 };
 pub const IPrintManagerStatic = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*PrintManager {
         var _r: *PrintManager = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -75,6 +93,12 @@ pub const IPrintManagerStatic = extern struct {
 };
 pub const IPrintManagerStatic2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
@@ -98,6 +122,12 @@ pub const IPrintManagerStatic2 = extern struct {
 };
 pub const IPrintPageInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putMediaSize(self: *@This(), value: PrintMediaSize) core.HResult!void {
         const _c = self.vtable.put_MediaSize(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -174,6 +204,12 @@ pub const IPrintPageInfo = extern struct {
 };
 pub const IPrintPageRange = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFirstPageNumber(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_FirstPageNumber(@ptrCast(self), &_r);
@@ -204,6 +240,12 @@ pub const IPrintPageRange = extern struct {
 };
 pub const IPrintPageRangeFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), firstPage: i32, lastPage: i32) core.HResult!*PrintPageRange {
         var _r: *PrintPageRange = undefined;
         const _c = self.vtable.Create(@ptrCast(self), firstPage, lastPage, &_r);
@@ -234,6 +276,12 @@ pub const IPrintPageRangeFactory = extern struct {
 };
 pub const IPrintPageRangeOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAllowAllPages(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_AllowAllPages(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -286,6 +334,12 @@ pub const IPrintPageRangeOptions = extern struct {
 };
 pub const IPrintTask = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProperties(self: *@This()) core.HResult!*DataPackagePropertySet {
         var _r: *DataPackagePropertySet = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
@@ -371,6 +425,12 @@ pub const IPrintTask = extern struct {
 };
 pub const IPrintTask2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putIsPreviewEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsPreviewEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -399,6 +459,12 @@ pub const IPrintTask2 = extern struct {
 };
 pub const IPrintTaskCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompletion(self: *@This()) core.HResult!PrintTaskCompletion {
         var _r: PrintTaskCompletion = undefined;
         const _c = self.vtable.get_Completion(@ptrCast(self), &_r);
@@ -422,6 +488,12 @@ pub const IPrintTaskCompletedEventArgs = extern struct {
 };
 pub const IPrintTaskOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putBordering(self: *@This(), value: PrintBordering) core.HResult!void {
         const _c = self.vtable.put_Bordering(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -457,6 +529,12 @@ pub const IPrintTaskOptions = extern struct {
 };
 pub const IPrintTaskOptions2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPageRangeOptions(self: *@This()) core.HResult!*PrintPageRangeOptions {
         var _r: *PrintPageRangeOptions = undefined;
         const _c = self.vtable.get_PageRangeOptions(@ptrCast(self), &_r);
@@ -487,6 +565,12 @@ pub const IPrintTaskOptions2 = extern struct {
 };
 pub const IPrintTaskOptionsCore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPageDescription(self: *@This(), jobPageNumber: u32) core.HResult!PrintPageDescription {
         var _r: PrintPageDescription = undefined;
         const _c = self.vtable.GetPageDescription(@ptrCast(self), jobPageNumber, &_r);
@@ -510,6 +594,12 @@ pub const IPrintTaskOptionsCore = extern struct {
 };
 pub const IPrintTaskOptionsCoreProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putMediaSize(self: *@This(), value: PrintMediaSize) core.HResult!void {
         const _c = self.vtable.put_MediaSize(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -672,6 +762,12 @@ pub const IPrintTaskOptionsCoreProperties = extern struct {
 };
 pub const IPrintTaskOptionsCoreUIConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayedOptions(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_DisplayedOptions(@ptrCast(self), &_r);
@@ -695,6 +791,12 @@ pub const IPrintTaskOptionsCoreUIConfiguration = extern struct {
 };
 pub const IPrintTaskProgressingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDocumentPageCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_DocumentPageCount(@ptrCast(self), &_r);
@@ -718,6 +820,12 @@ pub const IPrintTaskProgressingEventArgs = extern struct {
 };
 pub const IPrintTaskRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeadline(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Deadline(@ptrCast(self), &_r);
@@ -755,6 +863,12 @@ pub const IPrintTaskRequest = extern struct {
 };
 pub const IPrintTaskRequestedDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -776,6 +890,12 @@ pub const IPrintTaskRequestedDeferral = extern struct {
 };
 pub const IPrintTaskRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*PrintTaskRequest {
         var _r: *PrintTaskRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -799,6 +919,12 @@ pub const IPrintTaskRequestedEventArgs = extern struct {
 };
 pub const IPrintTaskSourceRequestedArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeadline(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Deadline(@ptrCast(self), &_r);
@@ -834,6 +960,12 @@ pub const IPrintTaskSourceRequestedArgs = extern struct {
 };
 pub const IPrintTaskSourceRequestedDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -855,6 +987,12 @@ pub const IPrintTaskSourceRequestedDeferral = extern struct {
 };
 pub const IPrintTaskTargetDeviceSupport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putIsPrinterTargetEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsPrinterTargetEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -895,6 +1033,12 @@ pub const IPrintTaskTargetDeviceSupport = extern struct {
 };
 pub const IStandardPrintTaskOptionsStatic = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMediaSize(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MediaSize(@ptrCast(self), &_r);
@@ -1002,6 +1146,12 @@ pub const IStandardPrintTaskOptionsStatic = extern struct {
 };
 pub const IStandardPrintTaskOptionsStatic2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBordering(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Bordering(@ptrCast(self), &_r);
@@ -1025,6 +1175,12 @@ pub const IStandardPrintTaskOptionsStatic2 = extern struct {
 };
 pub const IStandardPrintTaskOptionsStatic3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCustomPageRanges(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CustomPageRanges(@ptrCast(self), &_r);
@@ -1108,6 +1264,18 @@ pub const PrintHolePunch = enum(i32) {
 };
 pub const PrintManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addPrintTaskRequested(self: *@This(), eventHandler: *TypedEventHandler(PrintManager,PrintTaskRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IPrintManager = @ptrCast(self);
         return try this.addPrintTaskRequested(eventHandler);
@@ -1115,9 +1283,6 @@ pub const PrintManager = extern struct {
     pub fn removePrintTaskRequested(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const this: *IPrintManager = @ptrCast(self);
         return try this.removePrintTaskRequested(eventCookie);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
         const _f = try @This()._IPrintManagerStatic2Cache.get();
@@ -1365,6 +1530,18 @@ pub const PrintPageDescription = extern struct {
 };
 pub const PrintPageInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putMediaSize(self: *@This(), value: PrintMediaSize) core.HResult!void {
         const this: *IPrintPageInfo = @ptrCast(self);
         return try this.putMediaSize(value);
@@ -1405,9 +1582,6 @@ pub const PrintPageInfo = extern struct {
         const this: *IPrintPageInfo = @ptrCast(self);
         return try this.getOrientation();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrintPageInfo.IID)));
@@ -1421,6 +1595,18 @@ pub const PrintPageInfo = extern struct {
 };
 pub const PrintPageRange = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFirstPageNumber(self: *@This()) core.HResult!i32 {
         const this: *IPrintPageRange = @ptrCast(self);
         return try this.getFirstPageNumber();
@@ -1428,9 +1614,6 @@ pub const PrintPageRange = extern struct {
     pub fn getLastPageNumber(self: *@This()) core.HResult!i32 {
         const this: *IPrintPageRange = @ptrCast(self);
         return try this.getLastPageNumber();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(firstPage: i32, lastPage: i32) core.HResult!*PrintPageRange {
         const _f = try @This()._IPrintPageRangeFactoryCache.get();
@@ -1449,6 +1632,18 @@ pub const PrintPageRange = extern struct {
 };
 pub const PrintPageRangeOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAllowAllPages(self: *@This(), value: bool) core.HResult!void {
         const this: *IPrintPageRangeOptions = @ptrCast(self);
         return try this.putAllowAllPages(value);
@@ -1508,6 +1703,18 @@ pub const PrintStaple = enum(i32) {
 };
 pub const PrintTask = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProperties(self: *@This()) core.HResult!*DataPackagePropertySet {
         const this: *IPrintTask = @ptrCast(self);
         return try this.getProperties();
@@ -1602,6 +1809,18 @@ pub const PrintTask = extern struct {
 };
 pub const PrintTaskCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompletion(self: *@This()) core.HResult!PrintTaskCompletion {
         const this: *IPrintTaskCompletedEventArgs = @ptrCast(self);
         return try this.getCompletion();
@@ -1620,6 +1839,18 @@ pub const PrintTaskCompletion = enum(i32) {
 };
 pub const PrintTaskOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPageDescription(self: *@This(), jobPageNumber: u32) core.HResult!PrintPageDescription {
         const this: *IPrintTaskOptionsCore = @ptrCast(self);
         return try this.GetPageDescription(jobPageNumber);
@@ -1842,6 +2073,18 @@ pub const PrintTaskOptions = extern struct {
 };
 pub const PrintTaskProgressingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDocumentPageCount(self: *@This()) core.HResult!u32 {
         const this: *IPrintTaskProgressingEventArgs = @ptrCast(self);
         return try this.getDocumentPageCount();
@@ -1854,6 +2097,18 @@ pub const PrintTaskProgressingEventArgs = extern struct {
 };
 pub const PrintTaskRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeadline(self: *@This()) core.HResult!DateTime {
         const this: *IPrintTaskRequest = @ptrCast(self);
         return try this.getDeadline();
@@ -1874,6 +2129,18 @@ pub const PrintTaskRequest = extern struct {
 };
 pub const PrintTaskRequestedDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IPrintTaskRequestedDeferral = @ptrCast(self);
         return try this.Complete();
@@ -1886,6 +2153,18 @@ pub const PrintTaskRequestedDeferral = extern struct {
 };
 pub const PrintTaskRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*PrintTaskRequest {
         const this: *IPrintTaskRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -1898,6 +2177,18 @@ pub const PrintTaskRequestedEventArgs = extern struct {
 };
 pub const PrintTaskSourceRequestedArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeadline(self: *@This()) core.HResult!DateTime {
         const this: *IPrintTaskSourceRequestedArgs = @ptrCast(self);
         return try this.getDeadline();
@@ -1918,6 +2209,18 @@ pub const PrintTaskSourceRequestedArgs = extern struct {
 };
 pub const PrintTaskSourceRequestedDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IPrintTaskSourceRequestedDeferral = @ptrCast(self);
         return try this.Complete();
@@ -2019,6 +2322,15 @@ pub const PrintTaskSourceRequestedHandler = extern struct {
 };
 pub const StandardPrintTaskOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

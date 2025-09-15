@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ISecurityAppManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Register(self: *@This(), kind: SecurityAppKind, displayName: ?HSTRING, detailsUri: *Uri, registerPerUser: bool) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.Register(@ptrCast(self), kind, displayName, detailsUri, registerPerUser, &_r);
@@ -37,6 +43,18 @@ pub const SecurityAppKind = enum(i32) {
 };
 pub const SecurityAppManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Register(self: *@This(), kind: SecurityAppKind, displayName: ?HSTRING, detailsUri: *Uri, registerPerUser: bool) core.HResult!*Guid {
         const this: *ISecurityAppManager = @ptrCast(self);
         return try this.Register(kind, displayName, detailsUri, registerPerUser);
@@ -48,9 +66,6 @@ pub const SecurityAppManager = extern struct {
     pub fn UpdateState(self: *@This(), kind: SecurityAppKind, guidRegistration: *Guid, state: SecurityAppState, substatus: SecurityAppSubstatus, detailsUri: *Uri) core.HResult!void {
         const this: *ISecurityAppManager = @ptrCast(self);
         return try this.UpdateState(kind, guidRegistration, state, substatus, detailsUri);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -75,6 +90,12 @@ pub const SecurityAppSubstatus = enum(i32) {
 };
 pub const IWindowTab = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTag(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Tag(@ptrCast(self), &_r);
@@ -156,6 +177,12 @@ pub const IWindowTab = extern struct {
 };
 pub const IWindowTabCloseRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTab(self: *@This()) core.HResult!*WindowTab {
         var _r: *WindowTab = undefined;
         const _c = self.vtable.get_Tab(@ptrCast(self), &_r);
@@ -179,6 +206,12 @@ pub const IWindowTabCloseRequestedEventArgs = extern struct {
 };
 pub const IWindowTabCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn MoveTab(self: *@This(), tab: *WindowTab, index: u32) core.HResult!void {
         const _c = self.vtable.MoveTab(@ptrCast(self), tab, index);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -200,6 +233,12 @@ pub const IWindowTabCollection = extern struct {
 };
 pub const IWindowTabGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -240,6 +279,12 @@ pub const IWindowTabGroup = extern struct {
 };
 pub const IWindowTabIcon = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Shell.IWindowTabIcon";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "f92f398f-3669-4d0c-a183-14ddae6f6538";
@@ -256,6 +301,12 @@ pub const IWindowTabIcon = extern struct {
 };
 pub const IWindowTabIconStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromFontGlyph(self: *@This(), glyph: ?HSTRING, fontFamily: ?HSTRING) core.HResult!*WindowTabIcon {
         var _r: *WindowTabIcon = undefined;
         const _c = self.vtable.CreateFromFontGlyph(@ptrCast(self), glyph, fontFamily, &_r);
@@ -293,6 +344,12 @@ pub const IWindowTabIconStatics = extern struct {
 };
 pub const IWindowTabManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTabs(self: *@This()) core.HResult!*WindowTabCollection {
         var _r: *WindowTabCollection = undefined;
         const _c = self.vtable.get_Tabs(@ptrCast(self), &_r);
@@ -369,6 +426,12 @@ pub const IWindowTabManager = extern struct {
 };
 pub const IWindowTabManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForWindow(self: *@This(), id: WindowId) core.HResult!*WindowTabManager {
         var _r: *WindowTabManager = undefined;
         const _c = self.vtable.GetForWindow(@ptrCast(self), id, &_r);
@@ -406,6 +469,12 @@ pub const IWindowTabManagerStatics = extern struct {
 };
 pub const IWindowTabSwitchRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTab(self: *@This()) core.HResult!*WindowTab {
         var _r: *WindowTab = undefined;
         const _c = self.vtable.get_Tab(@ptrCast(self), &_r);
@@ -429,6 +498,12 @@ pub const IWindowTabSwitchRequestedEventArgs = extern struct {
 };
 pub const IWindowTabTearOutRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTab(self: *@This()) core.HResult!*WindowTab {
         var _r: *WindowTab = undefined;
         const _c = self.vtable.get_Tab(@ptrCast(self), &_r);
@@ -471,6 +546,12 @@ pub const IWindowTabTearOutRequestedEventArgs = extern struct {
 };
 pub const IWindowTabThumbnailRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTab(self: *@This()) core.HResult!*WindowTab {
         var _r: *WindowTab = undefined;
         const _c = self.vtable.get_Tab(@ptrCast(self), &_r);
@@ -527,6 +608,18 @@ pub const IWindowTabThumbnailRequestedEventArgs = extern struct {
 };
 pub const WindowTab = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTag(self: *@This()) core.HResult!*IInspectable {
         const this: *IWindowTab = @ptrCast(self);
         return try this.getTag();
@@ -571,9 +664,6 @@ pub const WindowTab = extern struct {
         const this: *IWindowTab = @ptrCast(self);
         return try this.ReportThumbnailAvailable();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWindowTab.IID)));
@@ -587,6 +677,18 @@ pub const WindowTab = extern struct {
 };
 pub const WindowTabCloseRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTab(self: *@This()) core.HResult!*WindowTab {
         const this: *IWindowTabCloseRequestedEventArgs = @ptrCast(self);
         return try this.getTab();
@@ -599,6 +701,18 @@ pub const WindowTabCloseRequestedEventArgs = extern struct {
 };
 pub const WindowTabCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn MoveTab(self: *@This(), tab: *WindowTab, index: u32) core.HResult!void {
         const this: *IWindowTabCollection = @ptrCast(self);
         return try this.MoveTab(tab, index);
@@ -653,6 +767,18 @@ pub const WindowTabCollection = extern struct {
 };
 pub const WindowTabGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowTabGroup = @ptrCast(self);
         return try this.getTitle();
@@ -669,9 +795,6 @@ pub const WindowTabGroup = extern struct {
         const this: *IWindowTabGroup = @ptrCast(self);
         return try this.putIcon(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWindowTabGroup.IID)));
@@ -685,6 +808,15 @@ pub const WindowTabGroup = extern struct {
 };
 pub const WindowTabIcon = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -709,6 +841,18 @@ pub const WindowTabIcon = extern struct {
 };
 pub const WindowTabManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTabs(self: *@This()) core.HResult!*WindowTabCollection {
         const this: *IWindowTabManager = @ptrCast(self);
         return try this.getTabs();
@@ -749,9 +893,6 @@ pub const WindowTabManager = extern struct {
         const this: *IWindowTabManager = @ptrCast(self);
         return try this.removeTabThumbnailRequested(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForWindow(id: WindowId) core.HResult!*WindowTabManager {
         const _f = try @This()._IWindowTabManagerStaticsCache.get();
         return try _f.GetForWindow(id);
@@ -773,6 +914,18 @@ pub const WindowTabManager = extern struct {
 };
 pub const WindowTabSwitchRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTab(self: *@This()) core.HResult!*WindowTab {
         const this: *IWindowTabSwitchRequestedEventArgs = @ptrCast(self);
         return try this.getTab();
@@ -785,6 +938,18 @@ pub const WindowTabSwitchRequestedEventArgs = extern struct {
 };
 pub const WindowTabTearOutRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTab(self: *@This()) core.HResult!*WindowTab {
         const this: *IWindowTabTearOutRequestedEventArgs = @ptrCast(self);
         return try this.getTab();
@@ -809,6 +974,18 @@ pub const WindowTabTearOutRequestedEventArgs = extern struct {
 };
 pub const WindowTabThumbnailRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTab(self: *@This()) core.HResult!*WindowTab {
         const this: *IWindowTabThumbnailRequestedEventArgs = @ptrCast(self);
         return try this.getTab();
@@ -841,6 +1018,15 @@ pub const WindowTabThumbnailRequestedEventArgs = extern struct {
 };
 pub const AdaptiveCardBuilder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -854,6 +1040,18 @@ pub const AdaptiveCardBuilder = extern struct {
 };
 pub const FocusSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IFocusSession = @ptrCast(self);
         return try this.getId();
@@ -870,6 +1068,18 @@ pub const FocusSession = extern struct {
 };
 pub const FocusSessionManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsFocusActive(self: *@This()) core.HResult!bool {
         const this: *IFocusSessionManager = @ptrCast(self);
         return try this.getIsFocusActive();
@@ -898,9 +1108,6 @@ pub const FocusSessionManager = extern struct {
         const this: *IFocusSessionManager = @ptrCast(self);
         return try this.removeIsFocusActiveChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*FocusSessionManager {
         const _f = try @This()._IFocusSessionManagerStaticsCache.get();
         return try _f.GetDefault();
@@ -918,6 +1125,12 @@ pub const FocusSessionManager = extern struct {
 };
 pub const IAdaptiveCard = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.ToJson(@ptrCast(self), &_r);
@@ -941,6 +1154,12 @@ pub const IAdaptiveCard = extern struct {
 };
 pub const IAdaptiveCardBuilderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAdaptiveCardFromJson(self: *@This(), value: ?HSTRING) core.HResult!*IAdaptiveCard {
         var _r: *IAdaptiveCard = undefined;
         const _c = self.vtable.CreateAdaptiveCardFromJson(@ptrCast(self), value, &_r);
@@ -964,6 +1183,12 @@ pub const IAdaptiveCardBuilderStatics = extern struct {
 };
 pub const IFocusSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -992,6 +1217,12 @@ pub const IFocusSession = extern struct {
 };
 pub const IFocusSessionManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsFocusActive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsFocusActive(@ptrCast(self), &_r);
@@ -1053,6 +1284,12 @@ pub const IFocusSessionManager = extern struct {
 };
 pub const IFocusSessionManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*FocusSessionManager {
         var _r: *FocusSessionManager = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -1083,6 +1320,12 @@ pub const IFocusSessionManagerStatics = extern struct {
 };
 pub const IShareWindowCommandEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWindowId(self: *@This()) core.HResult!WindowId {
         var _r: WindowId = undefined;
         const _c = self.vtable.get_WindowId(@ptrCast(self), &_r);
@@ -1118,6 +1361,12 @@ pub const IShareWindowCommandEventArgs = extern struct {
 };
 pub const IShareWindowCommandSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1173,6 +1422,12 @@ pub const IShareWindowCommandSource = extern struct {
 };
 pub const IShareWindowCommandSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*ShareWindowCommandSource {
         var _r: *ShareWindowCommandSource = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -1196,6 +1451,12 @@ pub const IShareWindowCommandSourceStatics = extern struct {
 };
 pub const ITaskbarManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
@@ -1254,6 +1515,12 @@ pub const ITaskbarManager = extern struct {
 };
 pub const ITaskbarManager2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSecondaryTilePinnedAsync(self: *@This(), tileId: ?HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsSecondaryTilePinnedAsync(@ptrCast(self), tileId, &_r);
@@ -1291,6 +1558,12 @@ pub const ITaskbarManager2 = extern struct {
 };
 pub const ITaskbarManagerDesktopAppSupportStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Shell.ITaskbarManagerDesktopAppSupportStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "cdfefd63-e879-4134-b9a7-8283f05f9480";
@@ -1307,6 +1580,12 @@ pub const ITaskbarManagerDesktopAppSupportStatics = extern struct {
 };
 pub const ITaskbarManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*TaskbarManager {
         var _r: *TaskbarManager = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -1335,6 +1614,18 @@ pub const ShareWindowCommand = enum(i32) {
 };
 pub const ShareWindowCommandEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWindowId(self: *@This()) core.HResult!WindowId {
         const this: *IShareWindowCommandEventArgs = @ptrCast(self);
         return try this.getWindowId();
@@ -1355,6 +1646,18 @@ pub const ShareWindowCommandEventArgs = extern struct {
 };
 pub const ShareWindowCommandSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const this: *IShareWindowCommandSource = @ptrCast(self);
         return try this.Start();
@@ -1383,9 +1686,6 @@ pub const ShareWindowCommandSource = extern struct {
         const this: *IShareWindowCommandSource = @ptrCast(self);
         return try this.removeCommandInvoked(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*ShareWindowCommandSource {
         const _f = try @This()._IShareWindowCommandSourceStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -1399,6 +1699,18 @@ pub const ShareWindowCommandSource = extern struct {
 };
 pub const TaskbarManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         const this: *ITaskbarManager = @ptrCast(self);
         return try this.getIsSupported();
@@ -1443,9 +1755,6 @@ pub const TaskbarManager = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITaskbarManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryUnpinSecondaryTileAsync(tileId);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*TaskbarManager {
         const _f = try @This()._ITaskbarManagerStaticsCache.get();

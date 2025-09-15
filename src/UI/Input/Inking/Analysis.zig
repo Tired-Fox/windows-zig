@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IInkAnalysisInkBullet = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
@@ -24,6 +30,12 @@ pub const IInkAnalysisInkBullet = extern struct {
 };
 pub const IInkAnalysisInkDrawing = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDrawingKind(self: *@This()) core.HResult!InkAnalysisDrawingKind {
         var _r: InkAnalysisDrawingKind = undefined;
         const _c = self.vtable.get_DrawingKind(@ptrCast(self), &_r);
@@ -61,6 +73,12 @@ pub const IInkAnalysisInkDrawing = extern struct {
 };
 pub const IInkAnalysisInkWord = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
@@ -91,6 +109,12 @@ pub const IInkAnalysisInkWord = extern struct {
 };
 pub const IInkAnalysisLine = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
@@ -121,6 +145,12 @@ pub const IInkAnalysisLine = extern struct {
 };
 pub const IInkAnalysisListItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
@@ -144,6 +174,12 @@ pub const IInkAnalysisListItem = extern struct {
 };
 pub const IInkAnalysisNode = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -209,6 +245,12 @@ pub const IInkAnalysisNode = extern struct {
 };
 pub const IInkAnalysisParagraph = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
@@ -232,6 +274,12 @@ pub const IInkAnalysisParagraph = extern struct {
 };
 pub const IInkAnalysisResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!InkAnalysisStatus {
         var _r: InkAnalysisStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -255,6 +303,12 @@ pub const IInkAnalysisResult = extern struct {
 };
 pub const IInkAnalysisRoot = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
@@ -285,6 +339,12 @@ pub const IInkAnalysisRoot = extern struct {
 };
 pub const IInkAnalysisWritingRegion = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RecognizedText(@ptrCast(self), &_r);
@@ -308,6 +368,12 @@ pub const IInkAnalysisWritingRegion = extern struct {
 };
 pub const IInkAnalyzer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnalysisRoot(self: *@This()) core.HResult!*InkAnalysisRoot {
         var _r: *InkAnalysisRoot = undefined;
         const _c = self.vtable.get_AnalysisRoot(@ptrCast(self), &_r);
@@ -380,6 +446,12 @@ pub const IInkAnalyzer = extern struct {
 };
 pub const IInkAnalyzerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAnalyzer(self: *@This()) core.HResult!*InkAnalyzer {
         var _r: *InkAnalyzer = undefined;
         const _c = self.vtable.CreateAnalyzer(@ptrCast(self), &_r);
@@ -420,6 +492,18 @@ pub const InkAnalysisDrawingKind = enum(i32) {
 };
 pub const InkAnalysisInkBullet = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisInkBullet = @ptrCast(self);
         return try this.getRecognizedText();
@@ -481,6 +565,18 @@ pub const InkAnalysisInkBullet = extern struct {
 };
 pub const InkAnalysisInkDrawing = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDrawingKind(self: *@This()) core.HResult!InkAnalysisDrawingKind {
         const this: *IInkAnalysisInkDrawing = @ptrCast(self);
         return try this.getDrawingKind();
@@ -550,6 +646,18 @@ pub const InkAnalysisInkDrawing = extern struct {
 };
 pub const InkAnalysisInkWord = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisInkWord = @ptrCast(self);
         return try this.getRecognizedText();
@@ -615,6 +723,18 @@ pub const InkAnalysisInkWord = extern struct {
 };
 pub const InkAnalysisLine = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisLine = @ptrCast(self);
         return try this.getRecognizedText();
@@ -680,6 +800,18 @@ pub const InkAnalysisLine = extern struct {
 };
 pub const InkAnalysisListItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisListItem = @ptrCast(self);
         return try this.getRecognizedText();
@@ -741,6 +873,18 @@ pub const InkAnalysisListItem = extern struct {
 };
 pub const InkAnalysisNode = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!u32 {
         const this: *IInkAnalysisNode = @ptrCast(self);
         return try this.getId();
@@ -788,6 +932,18 @@ pub const InkAnalysisNodeKind = enum(i32) {
 };
 pub const InkAnalysisParagraph = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisParagraph = @ptrCast(self);
         return try this.getRecognizedText();
@@ -849,6 +1005,18 @@ pub const InkAnalysisParagraph = extern struct {
 };
 pub const InkAnalysisResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!InkAnalysisStatus {
         const this: *IInkAnalysisResult = @ptrCast(self);
         return try this.getStatus();
@@ -861,6 +1029,18 @@ pub const InkAnalysisResult = extern struct {
 };
 pub const InkAnalysisRoot = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisRoot = @ptrCast(self);
         return try this.getRecognizedText();
@@ -935,6 +1115,18 @@ pub const InkAnalysisStrokeKind = enum(i32) {
 };
 pub const InkAnalysisWritingRegion = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecognizedText(self: *@This()) core.HResult!?HSTRING {
         const this: *IInkAnalysisWritingRegion = @ptrCast(self);
         return try this.getRecognizedText();
@@ -996,6 +1188,18 @@ pub const InkAnalysisWritingRegion = extern struct {
 };
 pub const InkAnalyzer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnalysisRoot(self: *@This()) core.HResult!*InkAnalysisRoot {
         const this: *IInkAnalyzer = @ptrCast(self);
         return try this.getAnalysisRoot();
@@ -1035,9 +1239,6 @@ pub const InkAnalyzer = extern struct {
     pub fn AnalyzeAsync(self: *@This()) core.HResult!*IAsyncOperation(InkAnalysisResult) {
         const this: *IInkAnalyzer = @ptrCast(self);
         return try this.AnalyzeAsync();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

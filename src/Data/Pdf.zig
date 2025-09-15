@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPdfDocument = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPage(self: *@This(), pageIndex: u32) core.HResult!*PdfPage {
         var _r: *PdfPage = undefined;
         const _c = self.vtable.GetPage(@ptrCast(self), pageIndex, &_r);
@@ -38,6 +44,12 @@ pub const IPdfDocument = extern struct {
 };
 pub const IPdfDocumentStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadFromFileAsync(self: *@This(), file: *IStorageFile) core.HResult!*IAsyncOperation(PdfDocument) {
         var _r: *IAsyncOperation(PdfDocument) = undefined;
         const _c = self.vtable.LoadFromFileAsync(@ptrCast(self), file, &_r);
@@ -82,6 +94,12 @@ pub const IPdfDocumentStatics = extern struct {
 };
 pub const IPdfPage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RenderToStreamAsync(self: *@This(), outputStream: *IRandomAccessStream) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RenderToStreamAsync(@ptrCast(self), outputStream, &_r);
@@ -154,6 +172,12 @@ pub const IPdfPage = extern struct {
 };
 pub const IPdfPageDimensions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMediaBox(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_MediaBox(@ptrCast(self), &_r);
@@ -205,6 +229,12 @@ pub const IPdfPageDimensions = extern struct {
 };
 pub const IPdfPageRenderOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_SourceRect(@ptrCast(self), &_r);
@@ -293,6 +323,18 @@ pub const IPdfPageRenderOptions = extern struct {
 };
 pub const PdfDocument = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPage(self: *@This(), pageIndex: u32) core.HResult!*PdfPage {
         const this: *IPdfDocument = @ptrCast(self);
         return try this.GetPage(pageIndex);
@@ -304,9 +346,6 @@ pub const PdfDocument = extern struct {
     pub fn getIsPasswordProtected(self: *@This()) core.HResult!bool {
         const this: *IPdfDocument = @ptrCast(self);
         return try this.getIsPasswordProtected();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn LoadFromFileAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(PdfDocument) {
         const _f = try @This()._IPdfDocumentStaticsCache.get();
@@ -333,6 +372,18 @@ pub const PdfDocument = extern struct {
 };
 pub const PdfPage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RenderToStreamAsync(self: *@This(), outputStream: *IRandomAccessStream) core.HResult!*IAsyncAction {
         const this: *IPdfPage = @ptrCast(self);
         return try this.RenderToStreamAsync(outputStream);
@@ -380,6 +431,18 @@ pub const PdfPage = extern struct {
 };
 pub const PdfPageDimensions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMediaBox(self: *@This()) core.HResult!Rect {
         const this: *IPdfPageDimensions = @ptrCast(self);
         return try this.getMediaBox();
@@ -408,6 +471,18 @@ pub const PdfPageDimensions = extern struct {
 };
 pub const PdfPageRenderOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceRect(self: *@This()) core.HResult!Rect {
         const this: *IPdfPageRenderOptions = @ptrCast(self);
         return try this.getSourceRect();
@@ -455,9 +530,6 @@ pub const PdfPageRenderOptions = extern struct {
     pub fn putBitmapEncoderId(self: *@This(), value: *Guid) core.HResult!void {
         const this: *IPdfPageRenderOptions = @ptrCast(self);
         return try this.putBitmapEncoderId(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

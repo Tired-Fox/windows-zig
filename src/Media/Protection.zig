@@ -1,6 +1,15 @@
 // ----- This code is automatically generated -----
 pub const ComponentRenewal = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -14,6 +23,12 @@ pub const ComponentRenewal = extern struct {
 };
 pub const IComponentRenewalStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RenewSystemComponentsAsync(self: *@This(), information: *RevocationAndRenewalInformation) core.HResult!*IAsyncOperationWithProgress(RenewalStatus,u32) {
         var _r: *IAsyncOperationWithProgress(RenewalStatus,u32) = undefined;
         const _c = self.vtable.RenewSystemComponentsAsync(@ptrCast(self), information, &_r);
@@ -44,6 +59,18 @@ pub const RenewalStatus = enum(i32) {
 };
 pub const ComponentLoadFailedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInformation(self: *@This()) core.HResult!*RevocationAndRenewalInformation {
         const this: *IComponentLoadFailedEventArgs = @ptrCast(self);
         return try this.getInformation();
@@ -162,6 +189,18 @@ pub const HdcpProtection = enum(i32) {
 };
 pub const HdcpSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsEffectiveProtectionAtLeast(self: *@This(), protection: HdcpProtection) core.HResult!bool {
         const this: *IHdcpSession = @ptrCast(self);
         return try this.IsEffectiveProtectionAtLeast(protection);
@@ -189,9 +228,6 @@ pub const HdcpSession = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHdcpSession.IID)));
@@ -211,6 +247,12 @@ pub const HdcpSetProtectionResult = enum(i32) {
 };
 pub const IComponentLoadFailedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInformation(self: *@This()) core.HResult!*RevocationAndRenewalInformation {
         var _r: *RevocationAndRenewalInformation = undefined;
         const _c = self.vtable.get_Information(@ptrCast(self), &_r);
@@ -241,6 +283,12 @@ pub const IComponentLoadFailedEventArgs = extern struct {
 };
 pub const IHdcpSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsEffectiveProtectionAtLeast(self: *@This(), protection: HdcpProtection) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEffectiveProtectionAtLeast(@ptrCast(self), protection, &_r);
@@ -290,6 +338,12 @@ pub const IHdcpSession = extern struct {
 };
 pub const IMediaProtectionManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addServiceRequested(self: *@This(), handler: *ServiceRequestedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ServiceRequested(@ptrCast(self), handler, &_r);
@@ -349,6 +403,12 @@ pub const IMediaProtectionManager = extern struct {
 };
 pub const IMediaProtectionPMPServer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         var _r: *IPropertySet = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
@@ -372,6 +432,12 @@ pub const IMediaProtectionPMPServer = extern struct {
 };
 pub const IMediaProtectionPMPServerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreatePMPServer(self: *@This(), pProperties: *IPropertySet) core.HResult!*MediaProtectionPMPServer {
         var _r: *MediaProtectionPMPServer = undefined;
         const _c = self.vtable.CreatePMPServer(@ptrCast(self), pProperties, &_r);
@@ -395,6 +461,12 @@ pub const IMediaProtectionPMPServerFactory = extern struct {
 };
 pub const IMediaProtectionServiceCompletion = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This(), success: bool) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self), success);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -416,6 +488,12 @@ pub const IMediaProtectionServiceCompletion = extern struct {
 };
 pub const IMediaProtectionServiceRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProtectionSystem(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ProtectionSystem(@ptrCast(self), &_r);
@@ -446,6 +524,12 @@ pub const IMediaProtectionServiceRequest = extern struct {
 };
 pub const IProtectionCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsTypeSupported(self: *@This(), ty: ?HSTRING, keySystem: ?HSTRING) core.HResult!ProtectionCapabilityResult {
         var _r: ProtectionCapabilityResult = undefined;
         const _c = self.vtable.IsTypeSupported(@ptrCast(self), ty, keySystem, &_r);
@@ -469,6 +553,12 @@ pub const IProtectionCapabilities = extern struct {
 };
 pub const IRevocationAndRenewalInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItems(self: *@This()) core.HResult!*IVector(RevocationAndRenewalItem) {
         var _r: *IVector(RevocationAndRenewalItem) = undefined;
         const _c = self.vtable.get_Items(@ptrCast(self), &_r);
@@ -492,6 +582,12 @@ pub const IRevocationAndRenewalInformation = extern struct {
 };
 pub const IRevocationAndRenewalItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReasons(self: *@This()) core.HResult!RevocationAndRenewalReasons {
         var _r: RevocationAndRenewalReasons = undefined;
         const _c = self.vtable.get_Reasons(@ptrCast(self), &_r);
@@ -543,6 +639,12 @@ pub const IRevocationAndRenewalItem = extern struct {
 };
 pub const IServiceRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*IMediaProtectionServiceRequest {
         var _r: *IMediaProtectionServiceRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -573,6 +675,12 @@ pub const IServiceRequestedEventArgs = extern struct {
 };
 pub const IServiceRequestedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMediaPlaybackItem(self: *@This()) core.HResult!*MediaPlaybackItem {
         var _r: *MediaPlaybackItem = undefined;
         const _c = self.vtable.get_MediaPlaybackItem(@ptrCast(self), &_r);
@@ -596,6 +704,18 @@ pub const IServiceRequestedEventArgs2 = extern struct {
 };
 pub const MediaProtectionManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addServiceRequested(self: *@This(), handler: *ServiceRequestedEventHandler) core.HResult!EventRegistrationToken {
         const this: *IMediaProtectionManager = @ptrCast(self);
         return try this.addServiceRequested(handler);
@@ -624,9 +744,6 @@ pub const MediaProtectionManager = extern struct {
         const this: *IMediaProtectionManager = @ptrCast(self);
         return try this.getProperties();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaProtectionManager.IID)));
@@ -640,12 +757,21 @@ pub const MediaProtectionManager = extern struct {
 };
 pub const MediaProtectionPMPServer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
-        const this: *IMediaProtectionPMPServer = @ptrCast(self);
-        return try this.getProperties();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
+        const this: *IMediaProtectionPMPServer = @ptrCast(self);
+        return try this.getProperties();
     }
     pub fn CreatePMPServer(pProperties: *IPropertySet) core.HResult!*MediaProtectionPMPServer {
         const _f = try @This()._IMediaProtectionPMPServerFactoryCache.get();
@@ -660,6 +786,18 @@ pub const MediaProtectionPMPServer = extern struct {
 };
 pub const MediaProtectionServiceCompletion = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This(), success: bool) core.HResult!void {
         const this: *IMediaProtectionServiceCompletion = @ptrCast(self);
         return try this.Complete(success);
@@ -672,12 +810,21 @@ pub const MediaProtectionServiceCompletion = extern struct {
 };
 pub const ProtectionCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn IsTypeSupported(self: *@This(), ty: ?HSTRING, keySystem: ?HSTRING) core.HResult!ProtectionCapabilityResult {
-        const this: *IProtectionCapabilities = @ptrCast(self);
-        return try this.IsTypeSupported(ty, keySystem);
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn IsTypeSupported(self: *@This(), ty: ?HSTRING, keySystem: ?HSTRING) core.HResult!ProtectionCapabilityResult {
+        const this: *IProtectionCapabilities = @ptrCast(self);
+        return try this.IsTypeSupported(ty, keySystem);
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -786,6 +933,18 @@ pub const RebootNeededEventHandler = extern struct {
 };
 pub const RevocationAndRenewalInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItems(self: *@This()) core.HResult!*IVector(RevocationAndRenewalItem) {
         const this: *IRevocationAndRenewalInformation = @ptrCast(self);
         return try this.getItems();
@@ -798,6 +957,18 @@ pub const RevocationAndRenewalInformation = extern struct {
 };
 pub const RevocationAndRenewalItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReasons(self: *@This()) core.HResult!RevocationAndRenewalReasons {
         const this: *IRevocationAndRenewalItem = @ptrCast(self);
         return try this.getReasons();
@@ -843,6 +1014,18 @@ pub const RevocationAndRenewalReasons = enum(i32) {
 };
 pub const ServiceRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*IMediaProtectionServiceRequest {
         const this: *IServiceRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();

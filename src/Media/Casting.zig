@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CastingConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!CastingConnectionState {
         const this: *ICastingConnection = @ptrCast(self);
         return try this.getState();
@@ -56,6 +68,18 @@ pub const CastingConnection = extern struct {
 };
 pub const CastingConnectionErrorOccurredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getErrorStatus(self: *@This()) core.HResult!CastingConnectionErrorStatus {
         const this: *ICastingConnectionErrorOccurredEventArgs = @ptrCast(self);
         return try this.getErrorStatus();
@@ -88,6 +112,18 @@ pub const CastingConnectionState = enum(i32) {
 };
 pub const CastingDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ICastingDevice = @ptrCast(self);
         return try this.getId();
@@ -107,9 +143,6 @@ pub const CastingDevice = extern struct {
     pub fn CreateCastingConnection(self: *@This()) core.HResult!*CastingConnection {
         const this: *ICastingDevice = @ptrCast(self);
         return try this.CreateCastingConnection();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(ty: CastingPlaybackTypes) core.HResult!?HSTRING {
         const _f = try @This()._ICastingDeviceStaticsCache.get();
@@ -136,6 +169,18 @@ pub const CastingDevice = extern struct {
 };
 pub const CastingDevicePicker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFilter(self: *@This()) core.HResult!*CastingDevicePickerFilter {
         const this: *ICastingDevicePicker = @ptrCast(self);
         return try this.getFilter();
@@ -172,9 +217,6 @@ pub const CastingDevicePicker = extern struct {
         const this: *ICastingDevicePicker = @ptrCast(self);
         return try this.Hide();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICastingDevicePicker.IID)));
@@ -188,6 +230,18 @@ pub const CastingDevicePicker = extern struct {
 };
 pub const CastingDevicePickerFilter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportsAudio(self: *@This()) core.HResult!bool {
         const this: *ICastingDevicePickerFilter = @ptrCast(self);
         return try this.getSupportsAudio();
@@ -224,6 +278,18 @@ pub const CastingDevicePickerFilter = extern struct {
 };
 pub const CastingDeviceSelectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedCastingDevice(self: *@This()) core.HResult!*CastingDevice {
         const this: *ICastingDeviceSelectedEventArgs = @ptrCast(self);
         return try this.getSelectedCastingDevice();
@@ -242,6 +308,18 @@ pub const CastingPlaybackTypes = enum(i32) {
 };
 pub const CastingSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreferredSourceUri(self: *@This()) core.HResult!*Uri {
         const this: *ICastingSource = @ptrCast(self);
         return try this.getPreferredSourceUri();
@@ -258,6 +336,12 @@ pub const CastingSource = extern struct {
 };
 pub const ICastingConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!CastingConnectionState {
         var _r: CastingConnectionState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -338,6 +422,12 @@ pub const ICastingConnection = extern struct {
 };
 pub const ICastingConnectionErrorOccurredEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getErrorStatus(self: *@This()) core.HResult!CastingConnectionErrorStatus {
         var _r: CastingConnectionErrorStatus = undefined;
         const _c = self.vtable.get_ErrorStatus(@ptrCast(self), &_r);
@@ -368,6 +458,12 @@ pub const ICastingConnectionErrorOccurredEventArgs = extern struct {
 };
 pub const ICastingDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -419,6 +515,12 @@ pub const ICastingDevice = extern struct {
 };
 pub const ICastingDevicePicker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFilter(self: *@This()) core.HResult!*CastingDevicePickerFilter {
         var _r: *CastingDevicePickerFilter = undefined;
         const _c = self.vtable.get_Filter(@ptrCast(self), &_r);
@@ -488,6 +590,12 @@ pub const ICastingDevicePicker = extern struct {
 };
 pub const ICastingDevicePickerFilter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportsAudio(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SupportsAudio(@ptrCast(self), &_r);
@@ -547,6 +655,12 @@ pub const ICastingDevicePickerFilter = extern struct {
 };
 pub const ICastingDeviceSelectedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSelectedCastingDevice(self: *@This()) core.HResult!*CastingDevice {
         var _r: *CastingDevice = undefined;
         const _c = self.vtable.get_SelectedCastingDevice(@ptrCast(self), &_r);
@@ -570,6 +684,12 @@ pub const ICastingDeviceSelectedEventArgs = extern struct {
 };
 pub const ICastingDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This(), ty: CastingPlaybackTypes) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), ty, &_r);
@@ -614,6 +734,12 @@ pub const ICastingDeviceStatics = extern struct {
 };
 pub const ICastingSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreferredSourceUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_PreferredSourceUri(@ptrCast(self), &_r);

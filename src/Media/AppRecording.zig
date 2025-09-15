@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AppRecordingManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetStatus(self: *@This()) core.HResult!*AppRecordingStatus {
         const this: *IAppRecordingManager = @ptrCast(self);
         return try this.GetStatus();
@@ -21,9 +33,6 @@ pub const AppRecordingManager = extern struct {
         const this: *IAppRecordingManager = @ptrCast(self);
         return try this.SaveScreenshotToFilesAsync(folder, filenamePrefix, option, requestedFormats);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*AppRecordingManager {
         const _f = try @This()._IAppRecordingManagerStaticsCache.get();
         return try _f.GetDefault();
@@ -37,6 +46,18 @@ pub const AppRecordingManager = extern struct {
 };
 pub const AppRecordingResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         const this: *IAppRecordingResult = @ptrCast(self);
         return try this.getSucceeded();
@@ -65,6 +86,18 @@ pub const AppRecordingSaveScreenshotOption = enum(i32) {
 };
 pub const AppRecordingSaveScreenshotResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         const this: *IAppRecordingSaveScreenshotResult = @ptrCast(self);
         return try this.getSucceeded();
@@ -85,6 +118,18 @@ pub const AppRecordingSaveScreenshotResult = extern struct {
 };
 pub const AppRecordingSavedScreenshotInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFile(self: *@This()) core.HResult!*StorageFile {
         const this: *IAppRecordingSavedScreenshotInfo = @ptrCast(self);
         return try this.getFile();
@@ -101,6 +146,18 @@ pub const AppRecordingSavedScreenshotInfo = extern struct {
 };
 pub const AppRecordingStatus = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanRecord(self: *@This()) core.HResult!bool {
         const this: *IAppRecordingStatus = @ptrCast(self);
         return try this.getCanRecord();
@@ -125,6 +182,18 @@ pub const AppRecordingStatus = extern struct {
 };
 pub const AppRecordingStatusDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAnyAppBroadcasting(self: *@This()) core.HResult!bool {
         const this: *IAppRecordingStatusDetails = @ptrCast(self);
         return try this.getIsAnyAppBroadcasting();
@@ -169,6 +238,12 @@ pub const AppRecordingStatusDetails = extern struct {
 };
 pub const IAppRecordingManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetStatus(self: *@This()) core.HResult!*AppRecordingStatus {
         var _r: *AppRecordingStatus = undefined;
         const _c = self.vtable.GetStatus(@ptrCast(self), &_r);
@@ -220,6 +295,12 @@ pub const IAppRecordingManager = extern struct {
 };
 pub const IAppRecordingManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*AppRecordingManager {
         var _r: *AppRecordingManager = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -243,6 +324,12 @@ pub const IAppRecordingManagerStatics = extern struct {
 };
 pub const IAppRecordingResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Succeeded(@ptrCast(self), &_r);
@@ -287,6 +374,12 @@ pub const IAppRecordingResult = extern struct {
 };
 pub const IAppRecordingSaveScreenshotResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Succeeded(@ptrCast(self), &_r);
@@ -324,6 +417,12 @@ pub const IAppRecordingSaveScreenshotResult = extern struct {
 };
 pub const IAppRecordingSavedScreenshotInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFile(self: *@This()) core.HResult!*StorageFile {
         var _r: *StorageFile = undefined;
         const _c = self.vtable.get_File(@ptrCast(self), &_r);
@@ -354,6 +453,12 @@ pub const IAppRecordingSavedScreenshotInfo = extern struct {
 };
 pub const IAppRecordingStatus = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanRecord(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanRecord(@ptrCast(self), &_r);
@@ -398,6 +503,12 @@ pub const IAppRecordingStatus = extern struct {
 };
 pub const IAppRecordingStatusDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAnyAppBroadcasting(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAnyAppBroadcasting(@ptrCast(self), &_r);

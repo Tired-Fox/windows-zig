@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CoreDragDropManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addTargetRequested(self: *@This(), value: *TypedEventHandler(CoreDragDropManager,CoreDropOperationTargetRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *ICoreDragDropManager = @ptrCast(self);
         return try this.addTargetRequested(value);
@@ -17,9 +29,6 @@ pub const CoreDragDropManager = extern struct {
         const this: *ICoreDragDropManager = @ptrCast(self);
         return try this.putAreConcurrentOperationsEnabled(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*CoreDragDropManager {
         const _f = try @This()._ICoreDragDropManagerStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -33,6 +42,18 @@ pub const CoreDragDropManager = extern struct {
 };
 pub const CoreDragInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!*DataPackageView {
         const this: *ICoreDragInfo = @ptrCast(self);
         return try this.getData();
@@ -60,6 +81,18 @@ pub const CoreDragInfo = extern struct {
 };
 pub const CoreDragOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!*DataPackage {
         const this: *ICoreDragOperation = @ptrCast(self);
         return try this.getData();
@@ -102,9 +135,6 @@ pub const CoreDragOperation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAllowedOperations(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICoreDragOperation.IID)));
@@ -122,6 +152,18 @@ pub const CoreDragUIContentMode = enum(i32) {
 };
 pub const CoreDragUIOverride = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap) core.HResult!void {
         const this: *ICoreDragUIOverride = @ptrCast(self);
         return try this.SetContentFromSoftwareBitmap(softwareBitmap);
@@ -174,6 +216,18 @@ pub const CoreDragUIOverride = extern struct {
 };
 pub const CoreDropOperationTargetRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetTarget(self: *@This(), target: *ICoreDropOperationTarget) core.HResult!void {
         const this: *ICoreDropOperationTargetRequestedEventArgs = @ptrCast(self);
         return try this.SetTarget(target);
@@ -186,6 +240,12 @@ pub const CoreDropOperationTargetRequestedEventArgs = extern struct {
 };
 pub const ICoreDragDropManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addTargetRequested(self: *@This(), value: *TypedEventHandler(CoreDragDropManager,CoreDropOperationTargetRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TargetRequested(@ptrCast(self), value, &_r);
@@ -226,6 +286,12 @@ pub const ICoreDragDropManager = extern struct {
 };
 pub const ICoreDragDropManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*CoreDragDropManager {
         var _r: *CoreDragDropManager = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -249,6 +315,12 @@ pub const ICoreDragDropManagerStatics = extern struct {
 };
 pub const ICoreDragInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!*DataPackageView {
         var _r: *DataPackageView = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
@@ -286,6 +358,12 @@ pub const ICoreDragInfo = extern struct {
 };
 pub const ICoreDragInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowedOperations(self: *@This()) core.HResult!DataPackageOperation {
         var _r: DataPackageOperation = undefined;
         const _c = self.vtable.get_AllowedOperations(@ptrCast(self), &_r);
@@ -309,6 +387,12 @@ pub const ICoreDragInfo2 = extern struct {
 };
 pub const ICoreDragOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!*DataPackage {
         var _r: *DataPackage = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
@@ -366,6 +450,12 @@ pub const ICoreDragOperation = extern struct {
 };
 pub const ICoreDragOperation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowedOperations(self: *@This()) core.HResult!DataPackageOperation {
         var _r: DataPackageOperation = undefined;
         const _c = self.vtable.get_AllowedOperations(@ptrCast(self), &_r);
@@ -394,6 +484,12 @@ pub const ICoreDragOperation2 = extern struct {
 };
 pub const ICoreDragUIOverride = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap) core.HResult!void {
         const _c = self.vtable.SetContentFromSoftwareBitmap(@ptrCast(self), softwareBitmap);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -473,6 +569,12 @@ pub const ICoreDragUIOverride = extern struct {
 };
 pub const ICoreDropOperationTarget = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn EnterAsync(self: *@This(), dragInfo: *CoreDragInfo, dragUIOverride: *CoreDragUIOverride) core.HResult!*IAsyncOperation(DataPackageOperation) {
         var _r: *IAsyncOperation(DataPackageOperation) = undefined;
         const _c = self.vtable.EnterAsync(@ptrCast(self), dragInfo, dragUIOverride, &_r);
@@ -517,6 +619,12 @@ pub const ICoreDropOperationTarget = extern struct {
 };
 pub const ICoreDropOperationTargetRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetTarget(self: *@This(), target: *ICoreDropOperationTarget) core.HResult!void {
         const _c = self.vtable.SetTarget(@ptrCast(self), target);
         if (_c != 0) return core.hresultToError(_c).err;

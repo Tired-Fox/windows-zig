@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const DeleteSmsMessageOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCompleted(self: *@This(), handler: *AsyncActionCompletedHandler) core.HResult!void {
         const this: *IAsyncAction = @ptrCast(self);
         return try this.putCompleted(handler);
@@ -56,6 +68,18 @@ pub const DeleteSmsMessageOperation = extern struct {
 };
 pub const DeleteSmsMessagesOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCompleted(self: *@This(), handler: *AsyncActionCompletedHandler) core.HResult!void {
         const this: *IAsyncAction = @ptrCast(self);
         return try this.putCompleted(handler);
@@ -111,6 +135,18 @@ pub const DeleteSmsMessagesOperation = extern struct {
 };
 pub const GetSmsDeviceOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(SmsDevice)) core.HResult!void {
         const this: *IAsyncOperation(SmsDevice) = @ptrCast(self);
         return try this.putCompleted(handler);
@@ -162,6 +198,18 @@ pub const GetSmsDeviceOperation = extern struct {
 };
 pub const GetSmsMessageOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(ISmsMessage)) core.HResult!void {
         const this: *IAsyncOperation(ISmsMessage) = @ptrCast(self);
         return try this.putCompleted(handler);
@@ -213,6 +261,18 @@ pub const GetSmsMessageOperation = extern struct {
 };
 pub const GetSmsMessagesOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putProgress(self: *@This(), handler: *AsyncOperationProgressHandler(IVectorView(ISmsMessage),i32)) core.HResult!void {
         const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
         return try this.putProgress(handler);
@@ -272,6 +332,12 @@ pub const GetSmsMessagesOperation = extern struct {
 };
 pub const ISmsBinaryMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormat(self: *@This()) core.HResult!SmsDataFormat {
         var _r: SmsDataFormat = undefined;
         const _c = self.vtable.get_Format(@ptrCast(self), &_r);
@@ -312,6 +378,12 @@ pub const ISmsBinaryMessage = extern struct {
 };
 pub const ISmsDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendMessageAsync(self: *@This(), message: *ISmsMessage) core.HResult!*SendSmsMessageOperation {
         var _r: *SendSmsMessageOperation = undefined;
         const _c = self.vtable.SendMessageAsync(@ptrCast(self), message, &_r);
@@ -394,6 +466,12 @@ pub const ISmsDevice = extern struct {
 };
 pub const ISmsDeviceMessageStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DeleteMessageAsync(self: *@This(), messageId: u32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteMessageAsync(@ptrCast(self), messageId, &_r);
@@ -445,6 +523,12 @@ pub const ISmsDeviceMessageStore = extern struct {
 };
 pub const ISmsDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -482,6 +566,12 @@ pub const ISmsDeviceStatics = extern struct {
 };
 pub const ISmsDeviceStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromNetworkAccountIdAsync(self: *@This(), networkAccountId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
         var _r: *IAsyncOperation(SmsDevice) = undefined;
         const _c = self.vtable.FromNetworkAccountIdAsync(@ptrCast(self), networkAccountId, &_r);
@@ -505,6 +595,12 @@ pub const ISmsDeviceStatics2 = extern struct {
 };
 pub const ISmsMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -535,6 +631,12 @@ pub const ISmsMessage = extern struct {
 };
 pub const ISmsMessageReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextMessage(self: *@This()) core.HResult!*SmsTextMessage {
         var _r: *SmsTextMessage = undefined;
         const _c = self.vtable.get_TextMessage(@ptrCast(self), &_r);
@@ -565,6 +667,12 @@ pub const ISmsMessageReceivedEventArgs = extern struct {
 };
 pub const ISmsReceivedEventDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -595,6 +703,12 @@ pub const ISmsReceivedEventDetails = extern struct {
 };
 pub const ISmsReceivedEventDetails2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessageClass(self: *@This()) core.HResult!SmsMessageClass {
         var _r: SmsMessageClass = undefined;
         const _c = self.vtable.get_MessageClass(@ptrCast(self), &_r);
@@ -625,6 +739,12 @@ pub const ISmsReceivedEventDetails2 = extern struct {
 };
 pub const ISmsTextMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -724,6 +844,12 @@ pub const ISmsTextMessage = extern struct {
 };
 pub const ISmsTextMessageStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromBinaryMessage(self: *@This(), binaryMessage: *SmsBinaryMessage) core.HResult!*SmsTextMessage {
         var _r: *SmsTextMessage = undefined;
         const _c = self.vtable.FromBinaryMessage(@ptrCast(self), binaryMessage, &_r);
@@ -754,6 +880,18 @@ pub const ISmsTextMessageStatics = extern struct {
 };
 pub const SendSmsMessageOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCompleted(self: *@This(), handler: *AsyncActionCompletedHandler) core.HResult!void {
         const this: *IAsyncAction = @ptrCast(self);
         return try this.putCompleted(handler);
@@ -809,6 +947,18 @@ pub const SendSmsMessageOperation = extern struct {
 };
 pub const SmsBinaryMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormat(self: *@This()) core.HResult!SmsDataFormat {
         const this: *ISmsBinaryMessage = @ptrCast(self);
         return try this.getFormat();
@@ -839,9 +989,6 @@ pub const SmsBinaryMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageClass();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmsBinaryMessage.IID)));
@@ -855,6 +1002,18 @@ pub const SmsBinaryMessage = extern struct {
 };
 pub const SmsDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendMessageAsync(self: *@This(), message: *ISmsMessage) core.HResult!*SendSmsMessageOperation {
         const this: *ISmsDevice = @ptrCast(self);
         return try this.SendMessageAsync(message);
@@ -895,9 +1054,6 @@ pub const SmsDevice = extern struct {
         const this: *ISmsDevice = @ptrCast(self);
         return try this.removeSmsDeviceStatusChanged(eventCookie);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromNetworkAccountIdAsync(networkAccountId: ?HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
         const _f = try @This()._ISmsDeviceStatics2Cache.get();
         return try _f.FromNetworkAccountIdAsync(networkAccountId);
@@ -924,6 +1080,18 @@ pub const SmsDevice = extern struct {
 };
 pub const SmsDeviceMessageStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DeleteMessageAsync(self: *@This(), messageId: u32) core.HResult!*IAsyncAction {
         const this: *ISmsDeviceMessageStore = @ptrCast(self);
         return try this.DeleteMessageAsync(messageId);
@@ -1048,6 +1216,18 @@ pub const SmsMessageFilter = enum(i32) {
 };
 pub const SmsMessageReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextMessage(self: *@This()) core.HResult!*SmsTextMessage {
         const this: *ISmsMessageReceivedEventArgs = @ptrCast(self);
         return try this.getTextMessage();
@@ -1153,6 +1333,18 @@ pub const SmsMessageReceivedEventHandler = extern struct {
 };
 pub const SmsReceivedEventDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsReceivedEventDetails = @ptrCast(self);
         return try this.getDeviceId();
@@ -1183,6 +1375,18 @@ pub const SmsReceivedEventDetails = extern struct {
 };
 pub const SmsTextMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *ISmsTextMessage = @ptrCast(self);
         return try this.getTimestamp();
@@ -1249,9 +1453,6 @@ pub const SmsTextMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMessageClass();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmsTextMessage.IID)));
@@ -1279,6 +1480,12 @@ pub const CellularClass = enum(i32) {
 };
 pub const ISmsAppMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -1429,6 +1636,12 @@ pub const ISmsAppMessage = extern struct {
 };
 pub const ISmsBroadcastMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -1515,6 +1728,12 @@ pub const ISmsBroadcastMessage = extern struct {
 };
 pub const ISmsDevice2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSmscAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SmscAddress(@ptrCast(self), &_r);
@@ -1604,6 +1823,12 @@ pub const ISmsDevice2 = extern struct {
 };
 pub const ISmsDevice2Statics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -1648,6 +1873,12 @@ pub const ISmsDevice2Statics = extern struct {
 };
 pub const ISmsFilterRule = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         var _r: SmsMessageType = undefined;
         const _c = self.vtable.get_MessageType(@ptrCast(self), &_r);
@@ -1760,6 +1991,12 @@ pub const ISmsFilterRule = extern struct {
 };
 pub const ISmsFilterRuleFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFilterRule(self: *@This(), messageType: SmsMessageType) core.HResult!*SmsFilterRule {
         var _r: *SmsFilterRule = undefined;
         const _c = self.vtable.CreateFilterRule(@ptrCast(self), messageType, &_r);
@@ -1783,6 +2020,12 @@ pub const ISmsFilterRuleFactory = extern struct {
 };
 pub const ISmsFilterRules = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActionType(self: *@This()) core.HResult!SmsFilterActionType {
         var _r: SmsFilterActionType = undefined;
         const _c = self.vtable.get_ActionType(@ptrCast(self), &_r);
@@ -1813,6 +2056,12 @@ pub const ISmsFilterRules = extern struct {
 };
 pub const ISmsFilterRulesFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFilterRules(self: *@This(), actionType: SmsFilterActionType) core.HResult!*SmsFilterRules {
         var _r: *SmsFilterRules = undefined;
         const _c = self.vtable.CreateFilterRules(@ptrCast(self), actionType, &_r);
@@ -1836,6 +2085,12 @@ pub const ISmsFilterRulesFactory = extern struct {
 };
 pub const ISmsMessageBase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         var _r: SmsMessageType = undefined;
         const _c = self.vtable.get_MessageType(@ptrCast(self), &_r);
@@ -1887,6 +2142,12 @@ pub const ISmsMessageBase = extern struct {
 };
 pub const ISmsMessageReceivedTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         var _r: SmsMessageType = undefined;
         const _c = self.vtable.get_MessageType(@ptrCast(self), &_r);
@@ -1962,6 +2223,12 @@ pub const ISmsMessageReceivedTriggerDetails = extern struct {
 };
 pub const ISmsMessageRegistration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -2002,6 +2269,12 @@ pub const ISmsMessageRegistration = extern struct {
 };
 pub const ISmsMessageRegistrationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllRegistrations(self: *@This()) core.HResult!*IVectorView(SmsMessageRegistration) {
         var _r: *IVectorView(SmsMessageRegistration) = undefined;
         const _c = self.vtable.get_AllRegistrations(@ptrCast(self), &_r);
@@ -2032,6 +2305,12 @@ pub const ISmsMessageRegistrationStatics = extern struct {
 };
 pub const ISmsSendMessageResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSuccessful(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSuccessful(@ptrCast(self), &_r);
@@ -2097,6 +2376,12 @@ pub const ISmsSendMessageResult = extern struct {
 };
 pub const ISmsStatusMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_To(@ptrCast(self), &_r);
@@ -2162,6 +2447,12 @@ pub const ISmsStatusMessage = extern struct {
 };
 pub const ISmsTextMessage2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -2278,6 +2569,12 @@ pub const ISmsTextMessage2 = extern struct {
 };
 pub const ISmsVoicemailMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -2322,6 +2619,12 @@ pub const ISmsVoicemailMessage = extern struct {
 };
 pub const ISmsWapMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -2387,6 +2690,18 @@ pub const ISmsWapMessage = extern struct {
 };
 pub const SmsAppMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *ISmsAppMessage = @ptrCast(self);
         return try this.getTimestamp();
@@ -2510,9 +2825,6 @@ pub const SmsAppMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimIccId();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmsAppMessage.IID)));
@@ -2526,6 +2838,18 @@ pub const SmsAppMessage = extern struct {
 };
 pub const SmsBroadcastMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *ISmsBroadcastMessage = @ptrCast(self);
         return try this.getTimestamp();
@@ -2633,6 +2957,18 @@ pub const SmsDataFormat = enum(i32) {
 };
 pub const SmsDevice2 = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSmscAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsDevice2 = @ptrCast(self);
         return try this.getSmscAddress();
@@ -2676,9 +3012,6 @@ pub const SmsDevice2 = extern struct {
     pub fn removeDeviceStatusChanged(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const this: *ISmsDevice2 = @ptrCast(self);
         return try this.removeDeviceStatusChanged(eventCookie);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ISmsDevice2StaticsCache.get();
@@ -2741,6 +3074,18 @@ pub const SmsFilterActionType = enum(i32) {
 };
 pub const SmsFilterRule = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         const this: *ISmsFilterRule = @ptrCast(self);
         return try this.getMessageType();
@@ -2797,9 +3142,6 @@ pub const SmsFilterRule = extern struct {
         const this: *ISmsFilterRule = @ptrCast(self);
         return try this.getBroadcastChannels();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateFilterRule(messageType: SmsMessageType) core.HResult!*SmsFilterRule {
         const _f = try @This()._ISmsFilterRuleFactoryCache.get();
         return try _f.CreateFilterRule(messageType);
@@ -2813,6 +3155,18 @@ pub const SmsFilterRule = extern struct {
 };
 pub const SmsFilterRules = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActionType(self: *@This()) core.HResult!SmsFilterActionType {
         const this: *ISmsFilterRules = @ptrCast(self);
         return try this.getActionType();
@@ -2820,9 +3174,6 @@ pub const SmsFilterRules = extern struct {
     pub fn getRules(self: *@This()) core.HResult!*IVector(SmsFilterRule) {
         const this: *ISmsFilterRules = @ptrCast(self);
         return try this.getRules();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFilterRules(actionType: SmsFilterActionType) core.HResult!*SmsFilterRules {
         const _f = try @This()._ISmsFilterRulesFactoryCache.get();
@@ -2851,6 +3202,18 @@ pub const SmsMessageClass = enum(i32) {
 };
 pub const SmsMessageReceivedTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessageType(self: *@This()) core.HResult!SmsMessageType {
         const this: *ISmsMessageReceivedTriggerDetails = @ptrCast(self);
         return try this.getMessageType();
@@ -2895,6 +3258,18 @@ pub const SmsMessageReceivedTriggerDetails = extern struct {
 };
 pub const SmsMessageRegistration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsMessageRegistration = @ptrCast(self);
         return try this.getId();
@@ -2910,9 +3285,6 @@ pub const SmsMessageRegistration = extern struct {
     pub fn removeMessageReceived(self: *@This(), eventCookie: EventRegistrationToken) core.HResult!void {
         const this: *ISmsMessageRegistration = @ptrCast(self);
         return try this.removeMessageReceived(eventCookie);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAllRegistrations() core.HResult!*IVectorView(SmsMessageRegistration) {
         const _f = try @This()._ISmsMessageRegistrationStaticsCache.get();
@@ -2954,6 +3326,18 @@ pub const SmsModemErrorCode = enum(i32) {
 };
 pub const SmsSendMessageResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSuccessful(self: *@This()) core.HResult!bool {
         const this: *ISmsSendMessageResult = @ptrCast(self);
         return try this.getIsSuccessful();
@@ -2990,6 +3374,18 @@ pub const SmsSendMessageResult = extern struct {
 };
 pub const SmsStatusMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTo(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmsStatusMessage = @ptrCast(self);
         return try this.getTo();
@@ -3061,6 +3457,18 @@ pub const SmsStatusMessage = extern struct {
 };
 pub const SmsTextMessage2 = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *ISmsTextMessage2 = @ptrCast(self);
         return try this.getTimestamp();
@@ -3160,9 +3568,6 @@ pub const SmsTextMessage2 = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSimIccId();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmsTextMessage2.IID)));
@@ -3176,6 +3581,18 @@ pub const SmsTextMessage2 = extern struct {
 };
 pub const SmsVoicemailMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *ISmsVoicemailMessage = @ptrCast(self);
         return try this.getTimestamp();
@@ -3235,6 +3652,18 @@ pub const SmsVoicemailMessage = extern struct {
 };
 pub const SmsWapMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *ISmsWapMessage = @ptrCast(self);
         return try this.getTimestamp();

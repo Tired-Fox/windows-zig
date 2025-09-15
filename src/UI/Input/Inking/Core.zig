@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CoreIncrementalInkStroke = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AppendInkPoints(self: *@This(), inkPoints: *IIterable(InkPoint)) core.HResult!Rect {
         const this: *ICoreIncrementalInkStroke = @ptrCast(self);
         return try this.AppendInkPoints(inkPoints);
@@ -21,9 +33,6 @@ pub const CoreIncrementalInkStroke = extern struct {
         const this: *ICoreIncrementalInkStroke = @ptrCast(self);
         return try this.getBoundingRect();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(drawingAttributes: *InkDrawingAttributes, pointTransform: Matrix3x2) core.HResult!*CoreIncrementalInkStroke {
         const _f = try @This()._ICoreIncrementalInkStrokeFactoryCache.get();
         return try _f.Create(drawingAttributes, pointTransform);
@@ -37,6 +46,18 @@ pub const CoreIncrementalInkStroke = extern struct {
 };
 pub const CoreInkIndependentInputSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addPointerEntering(self: *@This(), handler: *TypedEventHandler(CoreInkIndependentInputSource,PointerEventArgs)) core.HResult!EventRegistrationToken {
         const this: *ICoreInkIndependentInputSource = @ptrCast(self);
         return try this.addPointerEntering(handler);
@@ -111,9 +132,6 @@ pub const CoreInkIndependentInputSource = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPointerCursor(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(inkPresenter: *InkPresenter) core.HResult!*CoreInkIndependentInputSource {
         const _f = try @This()._ICoreInkIndependentInputSourceStaticsCache.get();
         return try _f.Create(inkPresenter);
@@ -127,6 +145,18 @@ pub const CoreInkIndependentInputSource = extern struct {
 };
 pub const CoreInkPresenterHost = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInkPresenter(self: *@This()) core.HResult!*InkPresenter {
         const this: *ICoreInkPresenterHost = @ptrCast(self);
         return try this.getInkPresenter();
@@ -138,9 +168,6 @@ pub const CoreInkPresenterHost = extern struct {
     pub fn putRootVisual(self: *@This(), value: *ContainerVisual) core.HResult!void {
         const this: *ICoreInkPresenterHost = @ptrCast(self);
         return try this.putRootVisual(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -160,6 +187,18 @@ pub const CoreWetStrokeDisposition = enum(i32) {
 };
 pub const CoreWetStrokeUpdateEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNewInkPoints(self: *@This()) core.HResult!*IVector(InkPoint) {
         const this: *ICoreWetStrokeUpdateEventArgs = @ptrCast(self);
         return try this.getNewInkPoints();
@@ -184,6 +223,18 @@ pub const CoreWetStrokeUpdateEventArgs = extern struct {
 };
 pub const CoreWetStrokeUpdateSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addWetStrokeStarting(self: *@This(), handler: *TypedEventHandler(CoreWetStrokeUpdateSource,CoreWetStrokeUpdateEventArgs)) core.HResult!EventRegistrationToken {
         const this: *ICoreWetStrokeUpdateSource = @ptrCast(self);
         return try this.addWetStrokeStarting(handler);
@@ -228,9 +279,6 @@ pub const CoreWetStrokeUpdateSource = extern struct {
         const this: *ICoreWetStrokeUpdateSource = @ptrCast(self);
         return try this.getInkPresenter();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(inkPresenter: *InkPresenter) core.HResult!*CoreWetStrokeUpdateSource {
         const _f = try @This()._ICoreWetStrokeUpdateSourceStaticsCache.get();
         return try _f.Create(inkPresenter);
@@ -244,6 +292,12 @@ pub const CoreWetStrokeUpdateSource = extern struct {
 };
 pub const ICoreIncrementalInkStroke = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AppendInkPoints(self: *@This(), inkPoints: *IIterable(InkPoint)) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.AppendInkPoints(@ptrCast(self), inkPoints, &_r);
@@ -295,6 +349,12 @@ pub const ICoreIncrementalInkStroke = extern struct {
 };
 pub const ICoreIncrementalInkStrokeFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), drawingAttributes: *InkDrawingAttributes, pointTransform: Matrix3x2) core.HResult!*CoreIncrementalInkStroke {
         var _r: *CoreIncrementalInkStroke = undefined;
         const _c = self.vtable.Create(@ptrCast(self), drawingAttributes, pointTransform, &_r);
@@ -318,6 +378,12 @@ pub const ICoreIncrementalInkStrokeFactory = extern struct {
 };
 pub const ICoreInkIndependentInputSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addPointerEntering(self: *@This(), handler: *TypedEventHandler(CoreInkIndependentInputSource,PointerEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PointerEntering(@ptrCast(self), handler, &_r);
@@ -425,6 +491,12 @@ pub const ICoreInkIndependentInputSource = extern struct {
 };
 pub const ICoreInkIndependentInputSource2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerCursor(self: *@This()) core.HResult!*CoreCursor {
         var _r: *CoreCursor = undefined;
         const _c = self.vtable.get_PointerCursor(@ptrCast(self), &_r);
@@ -453,6 +525,12 @@ pub const ICoreInkIndependentInputSource2 = extern struct {
 };
 pub const ICoreInkIndependentInputSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), inkPresenter: *InkPresenter) core.HResult!*CoreInkIndependentInputSource {
         var _r: *CoreInkIndependentInputSource = undefined;
         const _c = self.vtable.Create(@ptrCast(self), inkPresenter, &_r);
@@ -476,6 +554,12 @@ pub const ICoreInkIndependentInputSourceStatics = extern struct {
 };
 pub const ICoreInkPresenterHost = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInkPresenter(self: *@This()) core.HResult!*InkPresenter {
         var _r: *InkPresenter = undefined;
         const _c = self.vtable.get_InkPresenter(@ptrCast(self), &_r);
@@ -511,6 +595,12 @@ pub const ICoreInkPresenterHost = extern struct {
 };
 pub const ICoreWetStrokeUpdateEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNewInkPoints(self: *@This()) core.HResult!*IVector(InkPoint) {
         var _r: *IVector(InkPoint) = undefined;
         const _c = self.vtable.get_NewInkPoints(@ptrCast(self), &_r);
@@ -553,6 +643,12 @@ pub const ICoreWetStrokeUpdateEventArgs = extern struct {
 };
 pub const ICoreWetStrokeUpdateSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addWetStrokeStarting(self: *@This(), handler: *TypedEventHandler(CoreWetStrokeUpdateSource,CoreWetStrokeUpdateEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_WetStrokeStarting(@ptrCast(self), handler, &_r);
@@ -636,6 +732,12 @@ pub const ICoreWetStrokeUpdateSource = extern struct {
 };
 pub const ICoreWetStrokeUpdateSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), inkPresenter: *InkPresenter) core.HResult!*CoreWetStrokeUpdateSource {
         var _r: *CoreWetStrokeUpdateSource = undefined;
         const _c = self.vtable.Create(@ptrCast(self), inkPresenter, &_r);

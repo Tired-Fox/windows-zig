@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IUsbBulkInEndpointDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxPacketSize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxPacketSize(@ptrCast(self), &_r);
@@ -38,6 +44,12 @@ pub const IUsbBulkInEndpointDescriptor = extern struct {
 };
 pub const IUsbBulkInPipe = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxTransferSizeBytes(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxTransferSizeBytes(@ptrCast(self), &_r);
@@ -99,6 +111,12 @@ pub const IUsbBulkInPipe = extern struct {
 };
 pub const IUsbBulkOutEndpointDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxPacketSize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxPacketSize(@ptrCast(self), &_r);
@@ -136,6 +154,12 @@ pub const IUsbBulkOutEndpointDescriptor = extern struct {
 };
 pub const IUsbBulkOutPipe = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndpointDescriptor(self: *@This()) core.HResult!*UsbBulkOutEndpointDescriptor {
         var _r: *UsbBulkOutEndpointDescriptor = undefined;
         const _c = self.vtable.get_EndpointDescriptor(@ptrCast(self), &_r);
@@ -185,6 +209,12 @@ pub const IUsbBulkOutPipe = extern struct {
 };
 pub const IUsbConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUsbInterfaces(self: *@This()) core.HResult!*IVectorView(UsbInterface) {
         var _r: *IVectorView(UsbInterface) = undefined;
         const _c = self.vtable.get_UsbInterfaces(@ptrCast(self), &_r);
@@ -222,6 +252,12 @@ pub const IUsbConfiguration = extern struct {
 };
 pub const IUsbConfigurationDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfigurationValue(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_ConfigurationValue(@ptrCast(self), &_r);
@@ -266,6 +302,12 @@ pub const IUsbConfigurationDescriptor = extern struct {
 };
 pub const IUsbConfigurationDescriptorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryParse(self: *@This(), descriptor: *UsbDescriptor, parsed: *UsbConfigurationDescriptor) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryParse(@ptrCast(self), descriptor, parsed, &_r);
@@ -296,6 +338,12 @@ pub const IUsbConfigurationDescriptorStatics = extern struct {
 };
 pub const IUsbControlRequestType = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDirection(self: *@This()) core.HResult!UsbTransferDirection {
         var _r: UsbTransferDirection = undefined;
         const _c = self.vtable.get_Direction(@ptrCast(self), &_r);
@@ -360,6 +408,12 @@ pub const IUsbControlRequestType = extern struct {
 };
 pub const IUsbDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLength(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_Length(@ptrCast(self), &_r);
@@ -395,6 +449,12 @@ pub const IUsbDescriptor = extern struct {
 };
 pub const IUsbDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendControlOutTransferAsyncWithBuffer(self: *@This(), setupPacket: *UsbSetupPacket, buffer: *IBuffer) core.HResult!*IAsyncOperation(u32) {
         var _r: *IAsyncOperation(u32) = undefined;
         const _c = self.vtable.SendControlOutTransferAsyncWithBuffer(@ptrCast(self), setupPacket, buffer, &_r);
@@ -460,6 +520,12 @@ pub const IUsbDevice = extern struct {
 };
 pub const IUsbDeviceClass = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClassCode(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_ClassCode(@ptrCast(self), &_r);
@@ -512,6 +578,12 @@ pub const IUsbDeviceClass = extern struct {
 };
 pub const IUsbDeviceClasses = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Usb.IUsbDeviceClasses";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "686f955d-9b92-4b30-9781-c22c55ac35cb";
@@ -528,6 +600,12 @@ pub const IUsbDeviceClasses = extern struct {
 };
 pub const IUsbDeviceClassesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCdcControl(self: *@This()) core.HResult!*UsbDeviceClass {
         var _r: *UsbDeviceClass = undefined;
         const _c = self.vtable.get_CdcControl(@ptrCast(self), &_r);
@@ -607,6 +685,12 @@ pub const IUsbDeviceClassesStatics = extern struct {
 };
 pub const IUsbDeviceDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBcdUsb(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_BcdUsb(@ptrCast(self), &_r);
@@ -665,6 +749,12 @@ pub const IUsbDeviceDescriptor = extern struct {
 };
 pub const IUsbDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelectorWithVendorIdAndProductIdAndWinUsbInterfaceClass(self: *@This(), vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelectorWithVendorIdAndProductIdAndWinUsbInterfaceClass(@ptrCast(self), vendorId, productId, winUsbInterfaceClass, &_r);
@@ -716,6 +806,12 @@ pub const IUsbDeviceStatics = extern struct {
 };
 pub const IUsbEndpointDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndpointNumber(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_EndpointNumber(@ptrCast(self), &_r);
@@ -781,6 +877,12 @@ pub const IUsbEndpointDescriptor = extern struct {
 };
 pub const IUsbEndpointDescriptorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryParse(self: *@This(), descriptor: *UsbDescriptor, parsed: *UsbEndpointDescriptor) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryParse(@ptrCast(self), descriptor, parsed, &_r);
@@ -811,6 +913,12 @@ pub const IUsbEndpointDescriptorStatics = extern struct {
 };
 pub const IUsbInterface = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBulkInPipes(self: *@This()) core.HResult!*IVectorView(UsbBulkInPipe) {
         var _r: *IVectorView(UsbBulkInPipe) = undefined;
         const _c = self.vtable.get_BulkInPipes(@ptrCast(self), &_r);
@@ -876,6 +984,12 @@ pub const IUsbInterface = extern struct {
 };
 pub const IUsbInterfaceDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClassCode(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_ClassCode(@ptrCast(self), &_r);
@@ -927,6 +1041,12 @@ pub const IUsbInterfaceDescriptor = extern struct {
 };
 pub const IUsbInterfaceDescriptorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryParse(self: *@This(), descriptor: *UsbDescriptor, parsed: *UsbInterfaceDescriptor) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryParse(@ptrCast(self), descriptor, parsed, &_r);
@@ -957,6 +1077,12 @@ pub const IUsbInterfaceDescriptorStatics = extern struct {
 };
 pub const IUsbInterfaceSetting = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBulkInEndpoints(self: *@This()) core.HResult!*IVectorView(UsbBulkInEndpointDescriptor) {
         var _r: *IVectorView(UsbBulkInEndpointDescriptor) = undefined;
         const _c = self.vtable.get_BulkInEndpoints(@ptrCast(self), &_r);
@@ -1029,6 +1155,12 @@ pub const IUsbInterfaceSetting = extern struct {
 };
 pub const IUsbInterruptInEndpointDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxPacketSize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxPacketSize(@ptrCast(self), &_r);
@@ -1073,6 +1205,12 @@ pub const IUsbInterruptInEndpointDescriptor = extern struct {
 };
 pub const IUsbInterruptInEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInterruptData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_InterruptData(@ptrCast(self), &_r);
@@ -1096,6 +1234,12 @@ pub const IUsbInterruptInEventArgs = extern struct {
 };
 pub const IUsbInterruptInPipe = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndpointDescriptor(self: *@This()) core.HResult!*UsbInterruptInEndpointDescriptor {
         var _r: *UsbInterruptInEndpointDescriptor = undefined;
         const _c = self.vtable.get_EndpointDescriptor(@ptrCast(self), &_r);
@@ -1138,6 +1282,12 @@ pub const IUsbInterruptInPipe = extern struct {
 };
 pub const IUsbInterruptOutEndpointDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxPacketSize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxPacketSize(@ptrCast(self), &_r);
@@ -1182,6 +1332,12 @@ pub const IUsbInterruptOutEndpointDescriptor = extern struct {
 };
 pub const IUsbInterruptOutPipe = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndpointDescriptor(self: *@This()) core.HResult!*UsbInterruptOutEndpointDescriptor {
         var _r: *UsbInterruptOutEndpointDescriptor = undefined;
         const _c = self.vtable.get_EndpointDescriptor(@ptrCast(self), &_r);
@@ -1231,6 +1387,12 @@ pub const IUsbInterruptOutPipe = extern struct {
 };
 pub const IUsbSetupPacket = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestType(self: *@This()) core.HResult!*UsbControlRequestType {
         var _r: *UsbControlRequestType = undefined;
         const _c = self.vtable.get_RequestType(@ptrCast(self), &_r);
@@ -1307,6 +1469,12 @@ pub const IUsbSetupPacket = extern struct {
 };
 pub const IUsbSetupPacketFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithEightByteBuffer(self: *@This(), eightByteBuffer: *IBuffer) core.HResult!*UsbSetupPacket {
         var _r: *UsbSetupPacket = undefined;
         const _c = self.vtable.CreateWithEightByteBuffer(@ptrCast(self), eightByteBuffer, &_r);
@@ -1330,6 +1498,18 @@ pub const IUsbSetupPacketFactory = extern struct {
 };
 pub const UsbBulkInEndpointDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxPacketSize(self: *@This()) core.HResult!u32 {
         const this: *IUsbBulkInEndpointDescriptor = @ptrCast(self);
         return try this.getMaxPacketSize();
@@ -1350,6 +1530,18 @@ pub const UsbBulkInEndpointDescriptor = extern struct {
 };
 pub const UsbBulkInPipe = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxTransferSizeBytes(self: *@This()) core.HResult!u32 {
         const this: *IUsbBulkInPipe = @ptrCast(self);
         return try this.getMaxTransferSizeBytes();
@@ -1386,6 +1578,18 @@ pub const UsbBulkInPipe = extern struct {
 };
 pub const UsbBulkOutEndpointDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxPacketSize(self: *@This()) core.HResult!u32 {
         const this: *IUsbBulkOutEndpointDescriptor = @ptrCast(self);
         return try this.getMaxPacketSize();
@@ -1406,6 +1610,18 @@ pub const UsbBulkOutEndpointDescriptor = extern struct {
 };
 pub const UsbBulkOutPipe = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndpointDescriptor(self: *@This()) core.HResult!*UsbBulkOutEndpointDescriptor {
         const this: *IUsbBulkOutPipe = @ptrCast(self);
         return try this.getEndpointDescriptor();
@@ -1434,6 +1650,18 @@ pub const UsbBulkOutPipe = extern struct {
 };
 pub const UsbConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUsbInterfaces(self: *@This()) core.HResult!*IVectorView(UsbInterface) {
         const this: *IUsbConfiguration = @ptrCast(self);
         return try this.getUsbInterfaces();
@@ -1454,6 +1682,18 @@ pub const UsbConfiguration = extern struct {
 };
 pub const UsbConfigurationDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfigurationValue(self: *@This()) core.HResult!u8 {
         const this: *IUsbConfigurationDescriptor = @ptrCast(self);
         return try this.getConfigurationValue();
@@ -1469,9 +1709,6 @@ pub const UsbConfigurationDescriptor = extern struct {
     pub fn getRemoteWakeup(self: *@This()) core.HResult!bool {
         const this: *IUsbConfigurationDescriptor = @ptrCast(self);
         return try this.getRemoteWakeup();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryParse(descriptor: *UsbDescriptor, parsed: *UsbConfigurationDescriptor) core.HResult!bool {
         const _f = try @This()._IUsbConfigurationDescriptorStaticsCache.get();
@@ -1497,6 +1734,18 @@ pub const UsbControlRecipient = enum(i32) {
 };
 pub const UsbControlRequestType = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDirection(self: *@This()) core.HResult!UsbTransferDirection {
         const this: *IUsbControlRequestType = @ptrCast(self);
         return try this.getDirection();
@@ -1529,9 +1778,6 @@ pub const UsbControlRequestType = extern struct {
         const this: *IUsbControlRequestType = @ptrCast(self);
         return try this.putAsByte(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IUsbControlRequestType.IID)));
@@ -1550,6 +1796,18 @@ pub const UsbControlTransferType = enum(i32) {
 };
 pub const UsbDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLength(self: *@This()) core.HResult!u8 {
         const this: *IUsbDescriptor = @ptrCast(self);
         return try this.getLength();
@@ -1570,6 +1828,18 @@ pub const UsbDescriptor = extern struct {
 };
 pub const UsbDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendControlOutTransferAsyncWithBuffer(self: *@This(), setupPacket: *UsbSetupPacket, buffer: *IBuffer) core.HResult!*IAsyncOperation(u32) {
         const this: *IUsbDevice = @ptrCast(self);
         return try this.SendControlOutTransferAsyncWithBuffer(setupPacket, buffer);
@@ -1605,9 +1875,6 @@ pub const UsbDevice = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDeviceSelectorWithVendorIdAndProductIdAndWinUsbInterfaceClass(vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid) core.HResult!?HSTRING {
         const _f = try @This()._IUsbDeviceStaticsCache.get();
         return try _f.GetDeviceSelectorWithVendorIdAndProductIdAndWinUsbInterfaceClass(vendorId, productId, winUsbInterfaceClass);
@@ -1637,6 +1904,18 @@ pub const UsbDevice = extern struct {
 };
 pub const UsbDeviceClass = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClassCode(self: *@This()) core.HResult!u8 {
         const this: *IUsbDeviceClass = @ptrCast(self);
         return try this.getClassCode();
@@ -1661,9 +1940,6 @@ pub const UsbDeviceClass = extern struct {
         const this: *IUsbDeviceClass = @ptrCast(self);
         return try this.putProtocolCode(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IUsbDeviceClass.IID)));
@@ -1677,6 +1953,15 @@ pub const UsbDeviceClass = extern struct {
 };
 pub const UsbDeviceClasses = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1725,6 +2010,18 @@ pub const UsbDeviceClasses = extern struct {
 };
 pub const UsbDeviceDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBcdUsb(self: *@This()) core.HResult!u32 {
         const this: *IUsbDeviceDescriptor = @ptrCast(self);
         return try this.getBcdUsb();
@@ -1757,6 +2054,18 @@ pub const UsbDeviceDescriptor = extern struct {
 };
 pub const UsbEndpointDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndpointNumber(self: *@This()) core.HResult!u8 {
         const this: *IUsbEndpointDescriptor = @ptrCast(self);
         return try this.getEndpointNumber();
@@ -1785,9 +2094,6 @@ pub const UsbEndpointDescriptor = extern struct {
         const this: *IUsbEndpointDescriptor = @ptrCast(self);
         return try this.getAsInterruptOutEndpointDescriptor();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn TryParse(descriptor: *UsbDescriptor, parsed: *UsbEndpointDescriptor) core.HResult!bool {
         const _f = try @This()._IUsbEndpointDescriptorStaticsCache.get();
         return try _f.TryParse(descriptor, parsed);
@@ -1811,6 +2117,18 @@ pub const UsbEndpointType = enum(i32) {
 };
 pub const UsbInterface = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBulkInPipes(self: *@This()) core.HResult!*IVectorView(UsbBulkInPipe) {
         const this: *IUsbInterface = @ptrCast(self);
         return try this.getBulkInPipes();
@@ -1847,6 +2165,18 @@ pub const UsbInterface = extern struct {
 };
 pub const UsbInterfaceDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClassCode(self: *@This()) core.HResult!u8 {
         const this: *IUsbInterfaceDescriptor = @ptrCast(self);
         return try this.getClassCode();
@@ -1867,9 +2197,6 @@ pub const UsbInterfaceDescriptor = extern struct {
         const this: *IUsbInterfaceDescriptor = @ptrCast(self);
         return try this.getInterfaceNumber();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn TryParse(descriptor: *UsbDescriptor, parsed: *UsbInterfaceDescriptor) core.HResult!bool {
         const _f = try @This()._IUsbInterfaceDescriptorStaticsCache.get();
         return try _f.TryParse(descriptor, parsed);
@@ -1887,6 +2214,18 @@ pub const UsbInterfaceDescriptor = extern struct {
 };
 pub const UsbInterfaceSetting = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBulkInEndpoints(self: *@This()) core.HResult!*IVectorView(UsbBulkInEndpointDescriptor) {
         const this: *IUsbInterfaceSetting = @ptrCast(self);
         return try this.getBulkInEndpoints();
@@ -1927,6 +2266,18 @@ pub const UsbInterfaceSetting = extern struct {
 };
 pub const UsbInterruptInEndpointDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxPacketSize(self: *@This()) core.HResult!u32 {
         const this: *IUsbInterruptInEndpointDescriptor = @ptrCast(self);
         return try this.getMaxPacketSize();
@@ -1951,6 +2302,18 @@ pub const UsbInterruptInEndpointDescriptor = extern struct {
 };
 pub const UsbInterruptInEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInterruptData(self: *@This()) core.HResult!*IBuffer {
         const this: *IUsbInterruptInEventArgs = @ptrCast(self);
         return try this.getInterruptData();
@@ -1963,6 +2326,18 @@ pub const UsbInterruptInEventArgs = extern struct {
 };
 pub const UsbInterruptInPipe = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndpointDescriptor(self: *@This()) core.HResult!*UsbInterruptInEndpointDescriptor {
         const this: *IUsbInterruptInPipe = @ptrCast(self);
         return try this.getEndpointDescriptor();
@@ -1987,6 +2362,18 @@ pub const UsbInterruptInPipe = extern struct {
 };
 pub const UsbInterruptOutEndpointDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxPacketSize(self: *@This()) core.HResult!u32 {
         const this: *IUsbInterruptOutEndpointDescriptor = @ptrCast(self);
         return try this.getMaxPacketSize();
@@ -2011,6 +2398,18 @@ pub const UsbInterruptOutEndpointDescriptor = extern struct {
 };
 pub const UsbInterruptOutPipe = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndpointDescriptor(self: *@This()) core.HResult!*UsbInterruptOutEndpointDescriptor {
         const this: *IUsbInterruptOutPipe = @ptrCast(self);
         return try this.getEndpointDescriptor();
@@ -2046,6 +2445,18 @@ pub const UsbReadOptions = enum(i32) {
 };
 pub const UsbSetupPacket = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestType(self: *@This()) core.HResult!*UsbControlRequestType {
         const this: *IUsbSetupPacket = @ptrCast(self);
         return try this.getRequestType();
@@ -2085,9 +2496,6 @@ pub const UsbSetupPacket = extern struct {
     pub fn putLength(self: *@This(), value: u32) core.HResult!void {
         const this: *IUsbSetupPacket = @ptrCast(self);
         return try this.putLength(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

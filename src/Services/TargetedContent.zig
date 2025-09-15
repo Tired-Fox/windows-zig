@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ITargetedContentAction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InvokeAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.InvokeAsync(@ptrCast(self), &_r);
@@ -24,6 +30,12 @@ pub const ITargetedContentAction = extern struct {
 };
 pub const ITargetedContentAvailabilityChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -47,6 +59,12 @@ pub const ITargetedContentAvailabilityChangedEventArgs = extern struct {
 };
 pub const ITargetedContentChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -77,6 +95,12 @@ pub const ITargetedContentChangedEventArgs = extern struct {
 };
 pub const ITargetedContentCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -138,6 +162,12 @@ pub const ITargetedContentCollection = extern struct {
 };
 pub const ITargetedContentContainer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -189,6 +219,12 @@ pub const ITargetedContentContainer = extern struct {
 };
 pub const ITargetedContentContainerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsync(self: *@This(), contentId: ?HSTRING) core.HResult!*IAsyncOperation(TargetedContentContainer) {
         var _r: *IAsyncOperation(TargetedContentContainer) = undefined;
         const _c = self.vtable.GetAsync(@ptrCast(self), contentId, &_r);
@@ -212,6 +248,12 @@ pub const ITargetedContentContainerStatics = extern struct {
 };
 pub const ITargetedContentImage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeight(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Height(@ptrCast(self), &_r);
@@ -242,6 +284,12 @@ pub const ITargetedContentImage = extern struct {
 };
 pub const ITargetedContentItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
@@ -296,6 +344,12 @@ pub const ITargetedContentItem = extern struct {
 };
 pub const ITargetedContentItemState = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShouldDisplay(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldDisplay(@ptrCast(self), &_r);
@@ -326,6 +380,12 @@ pub const ITargetedContentItemState = extern struct {
 };
 pub const ITargetedContentObject = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getObjectKind(self: *@This()) core.HResult!TargetedContentObjectKind {
         var _r: TargetedContentObjectKind = undefined;
         const _c = self.vtable.get_ObjectKind(@ptrCast(self), &_r);
@@ -370,6 +430,12 @@ pub const ITargetedContentObject = extern struct {
 };
 pub const ITargetedContentStateChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -393,6 +459,12 @@ pub const ITargetedContentStateChangedEventArgs = extern struct {
 };
 pub const ITargetedContentSubscription = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -459,6 +531,12 @@ pub const ITargetedContentSubscription = extern struct {
 };
 pub const ITargetedContentSubscriptionOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSubscriptionId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SubscriptionId(@ptrCast(self), &_r);
@@ -513,6 +591,12 @@ pub const ITargetedContentSubscriptionOptions = extern struct {
 };
 pub const ITargetedContentSubscriptionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsync(self: *@This(), subscriptionId: ?HSTRING) core.HResult!*IAsyncOperation(TargetedContentSubscription) {
         var _r: *IAsyncOperation(TargetedContentSubscription) = undefined;
         const _c = self.vtable.GetAsync(@ptrCast(self), subscriptionId, &_r);
@@ -543,6 +627,12 @@ pub const ITargetedContentSubscriptionStatics = extern struct {
 };
 pub const ITargetedContentValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValueKind(self: *@This()) core.HResult!TargetedContentValueKind {
         var _r: TargetedContentValueKind = undefined;
         const _c = self.vtable.get_ValueKind(@ptrCast(self), &_r);
@@ -671,6 +761,18 @@ pub const ITargetedContentValue = extern struct {
 };
 pub const TargetedContentAction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InvokeAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *ITargetedContentAction = @ptrCast(self);
         return try this.InvokeAsync();
@@ -693,6 +795,18 @@ pub const TargetedContentAvailability = enum(i32) {
 };
 pub const TargetedContentAvailabilityChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *ITargetedContentAvailabilityChangedEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -705,6 +819,18 @@ pub const TargetedContentAvailabilityChangedEventArgs = extern struct {
 };
 pub const TargetedContentChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *ITargetedContentChangedEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -721,6 +847,18 @@ pub const TargetedContentChangedEventArgs = extern struct {
 };
 pub const TargetedContentCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentCollection = @ptrCast(self);
         return try this.getId();
@@ -757,6 +895,18 @@ pub const TargetedContentCollection = extern struct {
 };
 pub const TargetedContentContainer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentContainer = @ptrCast(self);
         return try this.getId();
@@ -777,9 +927,6 @@ pub const TargetedContentContainer = extern struct {
         const this: *ITargetedContentContainer = @ptrCast(self);
         return try this.SelectSingleObject(path);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetAsync(contentId: ?HSTRING) core.HResult!*IAsyncOperation(TargetedContentContainer) {
         const _f = try @This()._ITargetedContentContainerStaticsCache.get();
         return try _f.GetAsync(contentId);
@@ -793,6 +940,18 @@ pub const TargetedContentContainer = extern struct {
 };
 pub const TargetedContentFile = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenReadAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
         const this: *IRandomAccessStreamReference = @ptrCast(self);
         return try this.OpenReadAsync();
@@ -805,6 +964,18 @@ pub const TargetedContentFile = extern struct {
 };
 pub const TargetedContentImage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeight(self: *@This()) core.HResult!u32 {
         const this: *ITargetedContentImage = @ptrCast(self);
         return try this.getHeight();
@@ -843,6 +1014,18 @@ pub const TargetedContentInteraction = enum(i32) {
 };
 pub const TargetedContentItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentItem = @ptrCast(self);
         return try this.getPath();
@@ -875,6 +1058,18 @@ pub const TargetedContentItem = extern struct {
 };
 pub const TargetedContentItemState = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShouldDisplay(self: *@This()) core.HResult!bool {
         const this: *ITargetedContentItemState = @ptrCast(self);
         return try this.getShouldDisplay();
@@ -891,6 +1086,18 @@ pub const TargetedContentItemState = extern struct {
 };
 pub const TargetedContentObject = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getObjectKind(self: *@This()) core.HResult!TargetedContentObjectKind {
         const this: *ITargetedContentObject = @ptrCast(self);
         return try this.getObjectKind();
@@ -920,6 +1127,18 @@ pub const TargetedContentObjectKind = enum(i32) {
 };
 pub const TargetedContentStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *ITargetedContentStateChangedEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -932,6 +1151,18 @@ pub const TargetedContentStateChangedEventArgs = extern struct {
 };
 pub const TargetedContentSubscription = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentSubscription = @ptrCast(self);
         return try this.getId();
@@ -964,9 +1195,6 @@ pub const TargetedContentSubscription = extern struct {
         const this: *ITargetedContentSubscription = @ptrCast(self);
         return try this.removeStateChanged(cookie);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetAsync(subscriptionId: ?HSTRING) core.HResult!*IAsyncOperation(TargetedContentSubscription) {
         const _f = try @This()._ITargetedContentSubscriptionStaticsCache.get();
         return try _f.GetAsync(subscriptionId);
@@ -984,6 +1212,18 @@ pub const TargetedContentSubscription = extern struct {
 };
 pub const TargetedContentSubscriptionOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSubscriptionId(self: *@This()) core.HResult!?HSTRING {
         const this: *ITargetedContentSubscriptionOptions = @ptrCast(self);
         return try this.getSubscriptionId();
@@ -1016,6 +1256,18 @@ pub const TargetedContentSubscriptionOptions = extern struct {
 };
 pub const TargetedContentValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValueKind(self: *@This()) core.HResult!TargetedContentValueKind {
         const this: *ITargetedContentValue = @ptrCast(self);
         return try this.getValueKind();

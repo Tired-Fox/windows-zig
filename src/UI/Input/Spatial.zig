@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ISpatialGestureRecognizer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addRecognitionStarted(self: *@This(), handler: *TypedEventHandler(SpatialGestureRecognizer,SpatialRecognitionStartedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_RecognitionStarted(@ptrCast(self), handler, &_r);
@@ -209,6 +215,12 @@ pub const ISpatialGestureRecognizer = extern struct {
 };
 pub const ISpatialGestureRecognizerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), settings: SpatialGestureSettings) core.HResult!*SpatialGestureRecognizer {
         var _r: *SpatialGestureRecognizer = undefined;
         const _c = self.vtable.Create(@ptrCast(self), settings, &_r);
@@ -232,6 +244,12 @@ pub const ISpatialGestureRecognizerFactory = extern struct {
 };
 pub const ISpatialHoldCanceledEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -255,6 +273,12 @@ pub const ISpatialHoldCanceledEventArgs = extern struct {
 };
 pub const ISpatialHoldCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -278,6 +302,12 @@ pub const ISpatialHoldCompletedEventArgs = extern struct {
 };
 pub const ISpatialHoldStartedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -308,6 +338,12 @@ pub const ISpatialHoldStartedEventArgs = extern struct {
 };
 pub const ISpatialInteraction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceState(self: *@This()) core.HResult!*SpatialInteractionSourceState {
         var _r: *SpatialInteractionSourceState = undefined;
         const _c = self.vtable.get_SourceState(@ptrCast(self), &_r);
@@ -331,6 +367,12 @@ pub const ISpatialInteraction = extern struct {
 };
 pub const ISpatialInteractionController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHasTouchpad(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasTouchpad(@ptrCast(self), &_r);
@@ -389,6 +431,12 @@ pub const ISpatialInteractionController = extern struct {
 };
 pub const ISpatialInteractionController2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetRenderableModelAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
         var _r: *IAsyncOperation(IRandomAccessStreamWithContentType) = undefined;
         const _c = self.vtable.TryGetRenderableModelAsync(@ptrCast(self), &_r);
@@ -412,6 +460,12 @@ pub const ISpatialInteractionController2 = extern struct {
 };
 pub const ISpatialInteractionController3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetBatteryReport(self: *@This()) core.HResult!*BatteryReport {
         var _r: *BatteryReport = undefined;
         const _c = self.vtable.TryGetBatteryReport(@ptrCast(self), &_r);
@@ -435,6 +489,12 @@ pub const ISpatialInteractionController3 = extern struct {
 };
 pub const ISpatialInteractionControllerProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsTouchpadTouched(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTouchpadTouched(@ptrCast(self), &_r);
@@ -500,6 +560,12 @@ pub const ISpatialInteractionControllerProperties = extern struct {
 };
 pub const ISpatialInteractionDetectedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -537,6 +603,12 @@ pub const ISpatialInteractionDetectedEventArgs = extern struct {
 };
 pub const ISpatialInteractionDetectedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSource(self: *@This()) core.HResult!*SpatialInteractionSource {
         var _r: *SpatialInteractionSource = undefined;
         const _c = self.vtable.get_InteractionSource(@ptrCast(self), &_r);
@@ -560,6 +632,12 @@ pub const ISpatialInteractionDetectedEventArgs2 = extern struct {
 };
 pub const ISpatialInteractionManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSourceDetected(self: *@This(), handler: *TypedEventHandler(SpatialInteractionManager,SpatialInteractionSourceEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SourceDetected(@ptrCast(self), handler, &_r);
@@ -655,6 +733,12 @@ pub const ISpatialInteractionManager = extern struct {
 };
 pub const ISpatialInteractionManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*SpatialInteractionManager {
         var _r: *SpatialInteractionManager = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -678,6 +762,12 @@ pub const ISpatialInteractionManagerStatics = extern struct {
 };
 pub const ISpatialInteractionManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSourceKindSupported(self: *@This(), kind: SpatialInteractionSourceKind) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSourceKindSupported(@ptrCast(self), kind, &_r);
@@ -701,6 +791,12 @@ pub const ISpatialInteractionManagerStatics2 = extern struct {
 };
 pub const ISpatialInteractionSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -731,6 +827,12 @@ pub const ISpatialInteractionSource = extern struct {
 };
 pub const ISpatialInteractionSource2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPointingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPointingSupported(@ptrCast(self), &_r);
@@ -782,6 +884,12 @@ pub const ISpatialInteractionSource2 = extern struct {
 };
 pub const ISpatialInteractionSource3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandedness(self: *@This()) core.HResult!SpatialInteractionSourceHandedness {
         var _r: SpatialInteractionSourceHandedness = undefined;
         const _c = self.vtable.get_Handedness(@ptrCast(self), &_r);
@@ -805,6 +913,12 @@ pub const ISpatialInteractionSource3 = extern struct {
 };
 pub const ISpatialInteractionSource4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryCreateHandMeshObserver(self: *@This()) core.HResult!*HandMeshObserver {
         var _r: *HandMeshObserver = undefined;
         const _c = self.vtable.TryCreateHandMeshObserver(@ptrCast(self), &_r);
@@ -835,6 +949,12 @@ pub const ISpatialInteractionSource4 = extern struct {
 };
 pub const ISpatialInteractionSourceEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!*SpatialInteractionSourceState {
         var _r: *SpatialInteractionSourceState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -858,6 +978,12 @@ pub const ISpatialInteractionSourceEventArgs = extern struct {
 };
 pub const ISpatialInteractionSourceEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPressKind(self: *@This()) core.HResult!SpatialInteractionPressKind {
         var _r: SpatialInteractionPressKind = undefined;
         const _c = self.vtable.get_PressKind(@ptrCast(self), &_r);
@@ -881,6 +1007,12 @@ pub const ISpatialInteractionSourceEventArgs2 = extern struct {
 };
 pub const ISpatialInteractionSourceLocation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!*IReference(Vector3) {
         var _r: *IReference(Vector3) = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -911,6 +1043,12 @@ pub const ISpatialInteractionSourceLocation = extern struct {
 };
 pub const ISpatialInteractionSourceLocation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOrientation(self: *@This()) core.HResult!*IReference(Quaternion) {
         var _r: *IReference(Quaternion) = undefined;
         const _c = self.vtable.get_Orientation(@ptrCast(self), &_r);
@@ -934,6 +1072,12 @@ pub const ISpatialInteractionSourceLocation2 = extern struct {
 };
 pub const ISpatialInteractionSourceLocation3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPositionAccuracy(self: *@This()) core.HResult!SpatialInteractionSourcePositionAccuracy {
         var _r: SpatialInteractionSourcePositionAccuracy = undefined;
         const _c = self.vtable.get_PositionAccuracy(@ptrCast(self), &_r);
@@ -971,6 +1115,12 @@ pub const ISpatialInteractionSourceLocation3 = extern struct {
 };
 pub const ISpatialInteractionSourceProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetSourceLossMitigationDirection(self: *@This(), coordinateSystem: *SpatialCoordinateSystem) core.HResult!*IReference(Vector3) {
         var _r: *IReference(Vector3) = undefined;
         const _c = self.vtable.TryGetSourceLossMitigationDirection(@ptrCast(self), coordinateSystem, &_r);
@@ -1008,6 +1158,12 @@ pub const ISpatialInteractionSourceProperties = extern struct {
 };
 pub const ISpatialInteractionSourceState = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*SpatialInteractionSource {
         var _r: *SpatialInteractionSource = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
@@ -1059,6 +1215,12 @@ pub const ISpatialInteractionSourceState = extern struct {
 };
 pub const ISpatialInteractionSourceState2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSelectPressed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSelectPressed(@ptrCast(self), &_r);
@@ -1110,6 +1272,12 @@ pub const ISpatialInteractionSourceState2 = extern struct {
 };
 pub const ISpatialInteractionSourceState3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetHandPose(self: *@This()) core.HResult!*HandPose {
         var _r: *HandPose = undefined;
         const _c = self.vtable.TryGetHandPose(@ptrCast(self), &_r);
@@ -1133,6 +1301,12 @@ pub const ISpatialInteractionSourceState3 = extern struct {
 };
 pub const ISpatialManipulationCanceledEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -1156,6 +1330,12 @@ pub const ISpatialManipulationCanceledEventArgs = extern struct {
 };
 pub const ISpatialManipulationCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -1186,6 +1366,12 @@ pub const ISpatialManipulationCompletedEventArgs = extern struct {
 };
 pub const ISpatialManipulationDelta = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTranslation(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Translation(@ptrCast(self), &_r);
@@ -1209,6 +1395,12 @@ pub const ISpatialManipulationDelta = extern struct {
 };
 pub const ISpatialManipulationStartedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -1239,6 +1431,12 @@ pub const ISpatialManipulationStartedEventArgs = extern struct {
 };
 pub const ISpatialManipulationUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -1269,6 +1467,12 @@ pub const ISpatialManipulationUpdatedEventArgs = extern struct {
 };
 pub const ISpatialNavigationCanceledEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -1292,6 +1496,12 @@ pub const ISpatialNavigationCanceledEventArgs = extern struct {
 };
 pub const ISpatialNavigationCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -1322,6 +1532,12 @@ pub const ISpatialNavigationCompletedEventArgs = extern struct {
 };
 pub const ISpatialNavigationStartedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -1373,6 +1589,12 @@ pub const ISpatialNavigationStartedEventArgs = extern struct {
 };
 pub const ISpatialNavigationUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -1403,6 +1625,12 @@ pub const ISpatialNavigationUpdatedEventArgs = extern struct {
 };
 pub const ISpatialPointerInteractionSourcePose = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -1440,6 +1668,12 @@ pub const ISpatialPointerInteractionSourcePose = extern struct {
 };
 pub const ISpatialPointerInteractionSourcePose2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOrientation(self: *@This()) core.HResult!Quaternion {
         var _r: Quaternion = undefined;
         const _c = self.vtable.get_Orientation(@ptrCast(self), &_r);
@@ -1470,6 +1704,12 @@ pub const ISpatialPointerInteractionSourcePose2 = extern struct {
 };
 pub const ISpatialPointerPose = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!*PerceptionTimestamp {
         var _r: *PerceptionTimestamp = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -1500,6 +1740,12 @@ pub const ISpatialPointerPose = extern struct {
 };
 pub const ISpatialPointerPose2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetInteractionSourcePose(self: *@This(), source: *SpatialInteractionSource) core.HResult!*SpatialPointerInteractionSourcePose {
         var _r: *SpatialPointerInteractionSourcePose = undefined;
         const _c = self.vtable.TryGetInteractionSourcePose(@ptrCast(self), source, &_r);
@@ -1523,6 +1769,12 @@ pub const ISpatialPointerPose2 = extern struct {
 };
 pub const ISpatialPointerPose3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEyes(self: *@This()) core.HResult!*EyesPose {
         var _r: *EyesPose = undefined;
         const _c = self.vtable.get_Eyes(@ptrCast(self), &_r);
@@ -1553,6 +1805,12 @@ pub const ISpatialPointerPose3 = extern struct {
 };
 pub const ISpatialPointerPoseStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetAtTimestamp(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, timestamp: *PerceptionTimestamp) core.HResult!*SpatialPointerPose {
         var _r: *SpatialPointerPose = undefined;
         const _c = self.vtable.TryGetAtTimestamp(@ptrCast(self), coordinateSystem, timestamp, &_r);
@@ -1576,6 +1834,12 @@ pub const ISpatialPointerPoseStatics = extern struct {
 };
 pub const ISpatialRecognitionEndedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -1599,6 +1863,12 @@ pub const ISpatialRecognitionEndedEventArgs = extern struct {
 };
 pub const ISpatialRecognitionStartedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -1636,6 +1906,12 @@ pub const ISpatialRecognitionStartedEventArgs = extern struct {
 };
 pub const ISpatialTappedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         var _r: SpatialInteractionSourceKind = undefined;
         const _c = self.vtable.get_InteractionSourceKind(@ptrCast(self), &_r);
@@ -1673,6 +1949,18 @@ pub const ISpatialTappedEventArgs = extern struct {
 };
 pub const SpatialGestureRecognizer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addRecognitionStarted(self: *@This(), handler: *TypedEventHandler(SpatialGestureRecognizer,SpatialRecognitionStartedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *ISpatialGestureRecognizer = @ptrCast(self);
         return try this.addRecognitionStarted(handler);
@@ -1801,9 +2089,6 @@ pub const SpatialGestureRecognizer = extern struct {
         const this: *ISpatialGestureRecognizer = @ptrCast(self);
         return try this.getGestureSettings();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(settings: SpatialGestureSettings) core.HResult!*SpatialGestureRecognizer {
         const _f = try @This()._ISpatialGestureRecognizerFactoryCache.get();
         return try _f.Create(settings);
@@ -1830,6 +2115,18 @@ pub const SpatialGestureSettings = enum(i32) {
 };
 pub const SpatialHoldCanceledEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialHoldCanceledEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -1842,6 +2139,18 @@ pub const SpatialHoldCanceledEventArgs = extern struct {
 };
 pub const SpatialHoldCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialHoldCompletedEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -1854,6 +2163,18 @@ pub const SpatialHoldCompletedEventArgs = extern struct {
 };
 pub const SpatialHoldStartedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialHoldStartedEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -1870,6 +2191,18 @@ pub const SpatialHoldStartedEventArgs = extern struct {
 };
 pub const SpatialInteraction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceState(self: *@This()) core.HResult!*SpatialInteractionSourceState {
         const this: *ISpatialInteraction = @ptrCast(self);
         return try this.getSourceState();
@@ -1882,6 +2215,18 @@ pub const SpatialInteraction = extern struct {
 };
 pub const SpatialInteractionController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHasTouchpad(self: *@This()) core.HResult!bool {
         const this: *ISpatialInteractionController = @ptrCast(self);
         return try this.getHasTouchpad();
@@ -1928,6 +2273,18 @@ pub const SpatialInteractionController = extern struct {
 };
 pub const SpatialInteractionControllerProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsTouchpadTouched(self: *@This()) core.HResult!bool {
         const this: *ISpatialInteractionControllerProperties = @ptrCast(self);
         return try this.getIsTouchpadTouched();
@@ -1964,6 +2321,18 @@ pub const SpatialInteractionControllerProperties = extern struct {
 };
 pub const SpatialInteractionDetectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialInteractionDetectedEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -1991,6 +2360,18 @@ pub const SpatialInteractionDetectedEventArgs = extern struct {
 };
 pub const SpatialInteractionManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSourceDetected(self: *@This(), handler: *TypedEventHandler(SpatialInteractionManager,SpatialInteractionSourceEventArgs)) core.HResult!EventRegistrationToken {
         const this: *ISpatialInteractionManager = @ptrCast(self);
         return try this.addSourceDetected(handler);
@@ -2043,9 +2424,6 @@ pub const SpatialInteractionManager = extern struct {
         const this: *ISpatialInteractionManager = @ptrCast(self);
         return try this.GetDetectedSourcesAtTimestamp(timeStamp);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn IsSourceKindSupported(kind: SpatialInteractionSourceKind) core.HResult!bool {
         const _f = try @This()._ISpatialInteractionManagerStatics2Cache.get();
         return try _f.IsSourceKindSupported(kind);
@@ -2072,6 +2450,18 @@ pub const SpatialInteractionPressKind = enum(i32) {
 };
 pub const SpatialInteractionSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!u32 {
         const this: *ISpatialInteractionSource = @ptrCast(self);
         return try this.getId();
@@ -2144,6 +2534,18 @@ pub const SpatialInteractionSource = extern struct {
 };
 pub const SpatialInteractionSourceEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!*SpatialInteractionSourceState {
         const this: *ISpatialInteractionSourceEventArgs = @ptrCast(self);
         return try this.getState();
@@ -2174,6 +2576,18 @@ pub const SpatialInteractionSourceKind = enum(i32) {
 };
 pub const SpatialInteractionSourceLocation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!*IReference(Vector3) {
         const this: *ISpatialInteractionSourceLocation = @ptrCast(self);
         return try this.getPosition();
@@ -2222,6 +2636,18 @@ pub const SpatialInteractionSourcePositionAccuracy = enum(i32) {
 };
 pub const SpatialInteractionSourceProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetSourceLossMitigationDirection(self: *@This(), coordinateSystem: *SpatialCoordinateSystem) core.HResult!*IReference(Vector3) {
         const this: *ISpatialInteractionSourceProperties = @ptrCast(self);
         return try this.TryGetSourceLossMitigationDirection(coordinateSystem);
@@ -2242,6 +2668,18 @@ pub const SpatialInteractionSourceProperties = extern struct {
 };
 pub const SpatialInteractionSourceState = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*SpatialInteractionSource {
         const this: *ISpatialInteractionSourceState = @ptrCast(self);
         return try this.getSource();
@@ -2312,6 +2750,18 @@ pub const SpatialInteractionSourceState = extern struct {
 };
 pub const SpatialManipulationCanceledEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialManipulationCanceledEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -2324,6 +2774,18 @@ pub const SpatialManipulationCanceledEventArgs = extern struct {
 };
 pub const SpatialManipulationCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialManipulationCompletedEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -2340,6 +2802,18 @@ pub const SpatialManipulationCompletedEventArgs = extern struct {
 };
 pub const SpatialManipulationDelta = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTranslation(self: *@This()) core.HResult!Vector3 {
         const this: *ISpatialManipulationDelta = @ptrCast(self);
         return try this.getTranslation();
@@ -2352,6 +2826,18 @@ pub const SpatialManipulationDelta = extern struct {
 };
 pub const SpatialManipulationStartedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialManipulationStartedEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -2368,6 +2854,18 @@ pub const SpatialManipulationStartedEventArgs = extern struct {
 };
 pub const SpatialManipulationUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialManipulationUpdatedEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -2384,6 +2882,18 @@ pub const SpatialManipulationUpdatedEventArgs = extern struct {
 };
 pub const SpatialNavigationCanceledEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialNavigationCanceledEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -2396,6 +2906,18 @@ pub const SpatialNavigationCanceledEventArgs = extern struct {
 };
 pub const SpatialNavigationCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialNavigationCompletedEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -2412,6 +2934,18 @@ pub const SpatialNavigationCompletedEventArgs = extern struct {
 };
 pub const SpatialNavigationStartedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialNavigationStartedEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -2440,6 +2974,18 @@ pub const SpatialNavigationStartedEventArgs = extern struct {
 };
 pub const SpatialNavigationUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialNavigationUpdatedEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -2456,6 +3002,18 @@ pub const SpatialNavigationUpdatedEventArgs = extern struct {
 };
 pub const SpatialPointerInteractionSourcePose = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!Vector3 {
         const this: *ISpatialPointerInteractionSourcePose = @ptrCast(self);
         return try this.getPosition();
@@ -2490,6 +3048,18 @@ pub const SpatialPointerInteractionSourcePose = extern struct {
 };
 pub const SpatialPointerPose = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!*PerceptionTimestamp {
         const this: *ISpatialPointerPose = @ptrCast(self);
         return try this.getTimestamp();
@@ -2519,9 +3089,6 @@ pub const SpatialPointerPose = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsHeadCapturedBySystem();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn TryGetAtTimestamp(coordinateSystem: *SpatialCoordinateSystem, timestamp: *PerceptionTimestamp) core.HResult!*SpatialPointerPose {
         const _f = try @This()._ISpatialPointerPoseStaticsCache.get();
         return try _f.TryGetAtTimestamp(coordinateSystem, timestamp);
@@ -2535,6 +3102,18 @@ pub const SpatialPointerPose = extern struct {
 };
 pub const SpatialRecognitionEndedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialRecognitionEndedEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -2547,6 +3126,18 @@ pub const SpatialRecognitionEndedEventArgs = extern struct {
 };
 pub const SpatialRecognitionStartedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialRecognitionStartedEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();
@@ -2567,6 +3158,18 @@ pub const SpatialRecognitionStartedEventArgs = extern struct {
 };
 pub const SpatialTappedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInteractionSourceKind(self: *@This()) core.HResult!SpatialInteractionSourceKind {
         const this: *ISpatialTappedEventArgs = @ptrCast(self);
         return try this.getInteractionSourceKind();

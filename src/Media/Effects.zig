@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AcousticEchoCancellationConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetEchoCancellationRenderEndpoint(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         const this: *IAcousticEchoCancellationConfiguration = @ptrCast(self);
         return try this.SetEchoCancellationRenderEndpoint(deviceId);
@@ -13,6 +25,18 @@ pub const AcousticEchoCancellationConfiguration = extern struct {
 };
 pub const AudioCaptureEffectsManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAudioCaptureEffectsChanged(self: *@This(), handler: *TypedEventHandler(AudioCaptureEffectsManager,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IAudioCaptureEffectsManager = @ptrCast(self);
         return try this.addAudioCaptureEffectsChanged(handler);
@@ -33,6 +57,18 @@ pub const AudioCaptureEffectsManager = extern struct {
 };
 pub const AudioEffect = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAudioEffectType(self: *@This()) core.HResult!AudioEffectType {
         const this: *IAudioEffect = @ptrCast(self);
         return try this.getAudioEffectType();
@@ -73,6 +109,18 @@ pub const AudioEffect = extern struct {
 };
 pub const AudioEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAudioEffectDefinition = @ptrCast(self);
         return try this.getActivatableClassId();
@@ -80,9 +128,6 @@ pub const AudioEffectDefinition = extern struct {
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         const this: *IAudioEffectDefinition = @ptrCast(self);
         return try this.getProperties();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(activatableClassId: ?HSTRING) core.HResult!*AudioEffectDefinition {
         const _f = try @This()._IAudioEffectDefinitionFactoryCache.get();
@@ -127,6 +172,15 @@ pub const AudioEffectType = enum(i32) {
 };
 pub const AudioEffectsManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -152,6 +206,18 @@ pub const AudioEffectsManager = extern struct {
 };
 pub const AudioRenderEffectsManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAudioRenderEffectsChanged(self: *@This(), handler: *TypedEventHandler(AudioRenderEffectsManager,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IAudioRenderEffectsManager = @ptrCast(self);
         return try this.addAudioRenderEffectsChanged(handler);
@@ -193,6 +259,18 @@ pub const AudioRenderEffectsManager = extern struct {
 };
 pub const CompositeVideoFrameContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSurfacesToOverlay(self: *@This()) core.HResult!*IVectorView(IDirect3DSurface) {
         const this: *ICompositeVideoFrameContext = @ptrCast(self);
         return try this.getSurfacesToOverlay();
@@ -217,6 +295,12 @@ pub const CompositeVideoFrameContext = extern struct {
 };
 pub const IAcousticEchoCancellationConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetEchoCancellationRenderEndpoint(self: *@This(), deviceId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.SetEchoCancellationRenderEndpoint(@ptrCast(self), deviceId);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -238,6 +322,12 @@ pub const IAcousticEchoCancellationConfiguration = extern struct {
 };
 pub const IAudioCaptureEffectsManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAudioCaptureEffectsChanged(self: *@This(), handler: *TypedEventHandler(AudioCaptureEffectsManager,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AudioCaptureEffectsChanged(@ptrCast(self), handler, &_r);
@@ -273,6 +363,12 @@ pub const IAudioCaptureEffectsManager = extern struct {
 };
 pub const IAudioEffect = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAudioEffectType(self: *@This()) core.HResult!AudioEffectType {
         var _r: AudioEffectType = undefined;
         const _c = self.vtable.get_AudioEffectType(@ptrCast(self), &_r);
@@ -296,6 +392,12 @@ pub const IAudioEffect = extern struct {
 };
 pub const IAudioEffect2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAcousticEchoCancellationConfiguration(self: *@This()) core.HResult!*AcousticEchoCancellationConfiguration {
         var _r: *AcousticEchoCancellationConfiguration = undefined;
         const _c = self.vtable.get_AcousticEchoCancellationConfiguration(@ptrCast(self), &_r);
@@ -338,6 +440,12 @@ pub const IAudioEffect2 = extern struct {
 };
 pub const IAudioEffectDefinition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActivatableClassId(@ptrCast(self), &_r);
@@ -368,6 +476,12 @@ pub const IAudioEffectDefinition = extern struct {
 };
 pub const IAudioEffectDefinitionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), activatableClassId: ?HSTRING) core.HResult!*AudioEffectDefinition {
         var _r: *AudioEffectDefinition = undefined;
         const _c = self.vtable.Create(@ptrCast(self), activatableClassId, &_r);
@@ -398,6 +512,12 @@ pub const IAudioEffectDefinitionFactory = extern struct {
 };
 pub const IAudioEffectsManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAudioRenderEffectsManager(self: *@This(), deviceId: ?HSTRING, category: AudioRenderCategory) core.HResult!*AudioRenderEffectsManager {
         var _r: *AudioRenderEffectsManager = undefined;
         const _c = self.vtable.CreateAudioRenderEffectsManager(@ptrCast(self), deviceId, category, &_r);
@@ -442,6 +562,12 @@ pub const IAudioEffectsManagerStatics = extern struct {
 };
 pub const IAudioRenderEffectsManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAudioRenderEffectsChanged(self: *@This(), handler: *TypedEventHandler(AudioRenderEffectsManager,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AudioRenderEffectsChanged(@ptrCast(self), handler, &_r);
@@ -477,6 +603,12 @@ pub const IAudioRenderEffectsManager = extern struct {
 };
 pub const IAudioRenderEffectsManager2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEffectsProviderThumbnail(self: *@This()) core.HResult!*IRandomAccessStreamWithContentType {
         var _r: *IRandomAccessStreamWithContentType = undefined;
         const _c = self.vtable.get_EffectsProviderThumbnail(@ptrCast(self), &_r);
@@ -512,6 +644,12 @@ pub const IAudioRenderEffectsManager2 = extern struct {
 };
 pub const IBasicAudioEffect = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUseInputFrameForOutput(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_UseInputFrameForOutput(@ptrCast(self), &_r);
@@ -562,6 +700,12 @@ pub const IBasicAudioEffect = extern struct {
 };
 pub const IBasicVideoEffect = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReadOnly(@ptrCast(self), &_r);
@@ -626,6 +770,12 @@ pub const IBasicVideoEffect = extern struct {
 };
 pub const ICompositeVideoFrameContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSurfacesToOverlay(self: *@This()) core.HResult!*IVectorView(IDirect3DSurface) {
         var _r: *IVectorView(IDirect3DSurface) = undefined;
         const _c = self.vtable.get_SurfacesToOverlay(@ptrCast(self), &_r);
@@ -670,6 +820,12 @@ pub const ICompositeVideoFrameContext = extern struct {
 };
 pub const IProcessAudioFrameContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInputFrame(self: *@This()) core.HResult!*AudioFrame {
         var _r: *AudioFrame = undefined;
         const _c = self.vtable.get_InputFrame(@ptrCast(self), &_r);
@@ -700,6 +856,12 @@ pub const IProcessAudioFrameContext = extern struct {
 };
 pub const IProcessVideoFrameContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInputFrame(self: *@This()) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.get_InputFrame(@ptrCast(self), &_r);
@@ -730,6 +892,12 @@ pub const IProcessVideoFrameContext = extern struct {
 };
 pub const IVideoCompositor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimeIndependent(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_TimeIndependent(@ptrCast(self), &_r);
@@ -773,6 +941,12 @@ pub const IVideoCompositor = extern struct {
 };
 pub const IVideoCompositorDefinition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActivatableClassId(@ptrCast(self), &_r);
@@ -803,6 +977,12 @@ pub const IVideoCompositorDefinition = extern struct {
 };
 pub const IVideoCompositorDefinitionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), activatableClassId: ?HSTRING) core.HResult!*VideoCompositorDefinition {
         var _r: *VideoCompositorDefinition = undefined;
         const _c = self.vtable.Create(@ptrCast(self), activatableClassId, &_r);
@@ -833,6 +1013,12 @@ pub const IVideoCompositorDefinitionFactory = extern struct {
 };
 pub const IVideoEffectDefinition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActivatableClassId(@ptrCast(self), &_r);
@@ -863,6 +1049,12 @@ pub const IVideoEffectDefinition = extern struct {
 };
 pub const IVideoEffectDefinitionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), activatableClassId: ?HSTRING) core.HResult!*VideoEffectDefinition {
         var _r: *VideoEffectDefinition = undefined;
         const _c = self.vtable.Create(@ptrCast(self), activatableClassId, &_r);
@@ -893,6 +1085,12 @@ pub const IVideoEffectDefinitionFactory = extern struct {
 };
 pub const IVideoTransformEffectDefinition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPaddingColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_PaddingColor(@ptrCast(self), &_r);
@@ -981,6 +1179,12 @@ pub const IVideoTransformEffectDefinition = extern struct {
 };
 pub const IVideoTransformEffectDefinition2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSphericalProjection(self: *@This()) core.HResult!*VideoTransformSphericalProjection {
         var _r: *VideoTransformSphericalProjection = undefined;
         const _c = self.vtable.get_SphericalProjection(@ptrCast(self), &_r);
@@ -1004,6 +1208,12 @@ pub const IVideoTransformEffectDefinition2 = extern struct {
 };
 pub const IVideoTransformSphericalProjection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -1091,6 +1301,18 @@ pub const MediaMemoryTypes = enum(i32) {
 };
 pub const ProcessAudioFrameContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInputFrame(self: *@This()) core.HResult!*AudioFrame {
         const this: *IProcessAudioFrameContext = @ptrCast(self);
         return try this.getInputFrame();
@@ -1107,6 +1329,18 @@ pub const ProcessAudioFrameContext = extern struct {
 };
 pub const ProcessVideoFrameContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInputFrame(self: *@This()) core.HResult!*VideoFrame {
         const this: *IProcessVideoFrameContext = @ptrCast(self);
         return try this.getInputFrame();
@@ -1123,6 +1357,18 @@ pub const ProcessVideoFrameContext = extern struct {
 };
 pub const VideoCompositorDefinition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoCompositorDefinition = @ptrCast(self);
         return try this.getActivatableClassId();
@@ -1130,9 +1376,6 @@ pub const VideoCompositorDefinition = extern struct {
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         const this: *IVideoCompositorDefinition = @ptrCast(self);
         return try this.getProperties();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(activatableClassId: ?HSTRING) core.HResult!*VideoCompositorDefinition {
         const _f = try @This()._IVideoCompositorDefinitionFactoryCache.get();
@@ -1151,6 +1394,18 @@ pub const VideoCompositorDefinition = extern struct {
 };
 pub const VideoEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoEffectDefinition = @ptrCast(self);
         return try this.getActivatableClassId();
@@ -1158,9 +1413,6 @@ pub const VideoEffectDefinition = extern struct {
     pub fn getProperties(self: *@This()) core.HResult!*IPropertySet {
         const this: *IVideoEffectDefinition = @ptrCast(self);
         return try this.getProperties();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(activatableClassId: ?HSTRING) core.HResult!*VideoEffectDefinition {
         const _f = try @This()._IVideoEffectDefinitionFactoryCache.get();
@@ -1179,6 +1431,18 @@ pub const VideoEffectDefinition = extern struct {
 };
 pub const VideoTransformEffectDefinition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivatableClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoEffectDefinition = @ptrCast(self);
         return try this.getActivatableClassId();
@@ -1278,9 +1542,6 @@ pub const VideoTransformEffectDefinition = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSphericalProjection();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVideoEffectDefinition.IID)));
@@ -1294,6 +1555,18 @@ pub const VideoTransformEffectDefinition = extern struct {
 };
 pub const VideoTransformSphericalProjection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         const this: *IVideoTransformSphericalProjection = @ptrCast(self);
         return try this.getIsEnabled();

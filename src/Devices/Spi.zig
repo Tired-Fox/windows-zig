@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ISpiBusInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChipSelectLineCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ChipSelectLineCount(@ptrCast(self), &_r);
@@ -45,6 +51,12 @@ pub const ISpiBusInfo = extern struct {
 };
 pub const ISpiConnectionSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChipSelectLine(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ChipSelectLine(@ptrCast(self), &_r);
@@ -121,6 +133,12 @@ pub const ISpiConnectionSettings = extern struct {
 };
 pub const ISpiConnectionSettingsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), chipSelectLine: i32) core.HResult!*SpiConnectionSettings {
         var _r: *SpiConnectionSettings = undefined;
         const _c = self.vtable.Create(@ptrCast(self), chipSelectLine, &_r);
@@ -144,6 +162,12 @@ pub const ISpiConnectionSettingsFactory = extern struct {
 };
 pub const ISpiController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDevice(self: *@This(), settings: *SpiConnectionSettings) core.HResult!*SpiDevice {
         var _r: *SpiDevice = undefined;
         const _c = self.vtable.GetDevice(@ptrCast(self), settings, &_r);
@@ -167,6 +191,12 @@ pub const ISpiController = extern struct {
 };
 pub const ISpiControllerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(SpiController) {
         var _r: *IAsyncOperation(SpiController) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
@@ -197,6 +227,12 @@ pub const ISpiControllerStatics = extern struct {
 };
 pub const ISpiDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -247,6 +283,12 @@ pub const ISpiDevice = extern struct {
 };
 pub const ISpiDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -291,6 +333,18 @@ pub const ISpiDeviceStatics = extern struct {
 };
 pub const SpiBusInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChipSelectLineCount(self: *@This()) core.HResult!i32 {
         const this: *ISpiBusInfo = @ptrCast(self);
         return try this.getChipSelectLineCount();
@@ -315,6 +369,18 @@ pub const SpiBusInfo = extern struct {
 };
 pub const SpiConnectionSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChipSelectLine(self: *@This()) core.HResult!i32 {
         const this: *ISpiConnectionSettings = @ptrCast(self);
         return try this.getChipSelectLine();
@@ -355,9 +421,6 @@ pub const SpiConnectionSettings = extern struct {
         const this: *ISpiConnectionSettings = @ptrCast(self);
         return try this.putSharingMode(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(chipSelectLine: i32) core.HResult!*SpiConnectionSettings {
         const _f = try @This()._ISpiConnectionSettingsFactoryCache.get();
         return try _f.Create(chipSelectLine);
@@ -371,12 +434,21 @@ pub const SpiConnectionSettings = extern struct {
 };
 pub const SpiController = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetDevice(self: *@This(), settings: *SpiConnectionSettings) core.HResult!*SpiDevice {
-        const this: *ISpiController = @ptrCast(self);
-        return try this.GetDevice(settings);
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetDevice(self: *@This(), settings: *SpiConnectionSettings) core.HResult!*SpiDevice {
+        const this: *ISpiController = @ptrCast(self);
+        return try this.GetDevice(settings);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(SpiController) {
         const _f = try @This()._ISpiControllerStaticsCache.get();
@@ -395,6 +467,18 @@ pub const SpiController = extern struct {
 };
 pub const SpiDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISpiDevice = @ptrCast(self);
         return try this.getDeviceId();
@@ -425,9 +509,6 @@ pub const SpiDevice = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ISpiDeviceStaticsCache.get();

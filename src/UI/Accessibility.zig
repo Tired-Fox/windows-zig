@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IScreenReaderPositionChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScreenPositionInRawPixels(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_ScreenPositionInRawPixels(@ptrCast(self), &_r);
@@ -31,6 +37,12 @@ pub const IScreenReaderPositionChangedEventArgs = extern struct {
 };
 pub const IScreenReaderService = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentScreenReaderPosition(self: *@This()) core.HResult!*ScreenReaderPositionChangedEventArgs {
         var _r: *ScreenReaderPositionChangedEventArgs = undefined;
         const _c = self.vtable.get_CurrentScreenReaderPosition(@ptrCast(self), &_r);
@@ -66,6 +78,18 @@ pub const IScreenReaderService = extern struct {
 };
 pub const ScreenReaderPositionChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScreenPositionInRawPixels(self: *@This()) core.HResult!Rect {
         const this: *IScreenReaderPositionChangedEventArgs = @ptrCast(self);
         return try this.getScreenPositionInRawPixels();
@@ -82,6 +106,18 @@ pub const ScreenReaderPositionChangedEventArgs = extern struct {
 };
 pub const ScreenReaderService = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentScreenReaderPosition(self: *@This()) core.HResult!*ScreenReaderPositionChangedEventArgs {
         const this: *IScreenReaderService = @ptrCast(self);
         return try this.getCurrentScreenReaderPosition();
@@ -93,9 +129,6 @@ pub const ScreenReaderService = extern struct {
     pub fn removeScreenReaderPositionChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *IScreenReaderService = @ptrCast(self);
         return try this.removeScreenReaderPositionChanged(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

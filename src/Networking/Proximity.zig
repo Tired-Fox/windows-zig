@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const ConnectionRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPeerInformation(self: *@This()) core.HResult!*PeerInformation {
         const this: *IConnectionRequestedEventArgs = @ptrCast(self);
         return try this.getPeerInformation();
@@ -191,6 +203,12 @@ pub const DeviceDepartedEventHandler = extern struct {
 };
 pub const IConnectionRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPeerInformation(self: *@This()) core.HResult!*PeerInformation {
         var _r: *PeerInformation = undefined;
         const _c = self.vtable.get_PeerInformation(@ptrCast(self), &_r);
@@ -214,6 +232,12 @@ pub const IConnectionRequestedEventArgs = extern struct {
 };
 pub const IPeerFinderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowBluetooth(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowBluetooth(@ptrCast(self), &_r);
@@ -345,6 +369,12 @@ pub const IPeerFinderStatics = extern struct {
 };
 pub const IPeerFinderStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRole(self: *@This()) core.HResult!PeerRole {
         var _r: PeerRole = undefined;
         const _c = self.vtable.get_Role(@ptrCast(self), &_r);
@@ -392,6 +422,12 @@ pub const IPeerFinderStatics2 = extern struct {
 };
 pub const IPeerInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -415,6 +451,12 @@ pub const IPeerInformation = extern struct {
 };
 pub const IPeerInformation3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -445,6 +487,12 @@ pub const IPeerInformation3 = extern struct {
 };
 pub const IPeerInformationWithHostAndService = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHostName(self: *@This()) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.get_HostName(@ptrCast(self), &_r);
@@ -475,6 +523,12 @@ pub const IPeerInformationWithHostAndService = extern struct {
 };
 pub const IPeerWatcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAdded(self: *@This(), handler: *TypedEventHandler(PeerWatcher,PeerInformation)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Added(@ptrCast(self), handler, &_r);
@@ -568,6 +622,12 @@ pub const IPeerWatcher = extern struct {
 };
 pub const IProximityDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SubscribeForMessage(self: *@This(), messageType: ?HSTRING, messageReceivedHandler: *MessageReceivedHandler) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.SubscribeForMessage(@ptrCast(self), messageType, messageReceivedHandler, &_r);
@@ -688,6 +748,12 @@ pub const IProximityDevice = extern struct {
 };
 pub const IProximityDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -725,6 +791,12 @@ pub const IProximityDeviceStatics = extern struct {
 };
 pub const IProximityMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessageType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MessageType(@ptrCast(self), &_r);
@@ -769,6 +841,12 @@ pub const IProximityMessage = extern struct {
 };
 pub const ITriggeredConnectionStateChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!TriggeredConnectState {
         var _r: TriggeredConnectState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -989,6 +1067,15 @@ pub const PeerDiscoveryTypes = enum(i32) {
 };
 pub const PeerFinder = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1095,6 +1182,18 @@ pub const PeerFinder = extern struct {
 };
 pub const PeerInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPeerInformation = @ptrCast(self);
         return try this.getDisplayName();
@@ -1140,6 +1239,18 @@ pub const PeerRole = enum(i32) {
 };
 pub const PeerWatcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAdded(self: *@This(), handler: *TypedEventHandler(PeerWatcher,PeerInformation)) core.HResult!EventRegistrationToken {
         const this: *IPeerWatcher = @ptrCast(self);
         return try this.addAdded(handler);
@@ -1208,6 +1319,18 @@ pub const PeerWatcherStatus = enum(i32) {
 };
 pub const ProximityDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SubscribeForMessage(self: *@This(), messageType: ?HSTRING, messageReceivedHandler: *MessageReceivedHandler) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.SubscribeForMessage(messageType, messageReceivedHandler);
@@ -1272,9 +1395,6 @@ pub const ProximityDevice = extern struct {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.getDeviceId();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IProximityDeviceStaticsCache.get();
         return try _f.GetDeviceSelector();
@@ -1296,6 +1416,18 @@ pub const ProximityDevice = extern struct {
 };
 pub const ProximityMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessageType(self: *@This()) core.HResult!?HSTRING {
         const this: *IProximityMessage = @ptrCast(self);
         return try this.getMessageType();
@@ -1328,6 +1460,18 @@ pub const TriggeredConnectState = enum(i32) {
 };
 pub const TriggeredConnectionStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!TriggeredConnectState {
         const this: *ITriggeredConnectionStateChangedEventArgs = @ptrCast(self);
         return try this.getState();

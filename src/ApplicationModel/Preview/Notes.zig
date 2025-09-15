@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const INotePlacementChangedPreviewEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getViewId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ViewId(@ptrCast(self), &_r);
@@ -24,6 +30,12 @@ pub const INotePlacementChangedPreviewEventArgs = extern struct {
 };
 pub const INoteVisibilityChangedPreviewEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getViewId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ViewId(@ptrCast(self), &_r);
@@ -54,6 +66,12 @@ pub const INoteVisibilityChangedPreviewEventArgs = extern struct {
 };
 pub const INotesWindowManagerPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsScreenLocked(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsScreenLocked(@ptrCast(self), &_r);
@@ -159,6 +177,12 @@ pub const INotesWindowManagerPreview = extern struct {
 };
 pub const INotesWindowManagerPreview2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowNoteRelativeTo(self: *@This(), noteViewId: i32, anchorNoteViewId: i32, options: *NotesWindowManagerPreviewShowNoteOptions) core.HResult!void {
         const _c = self.vtable.ShowNoteRelativeTo(@ptrCast(self), noteViewId, anchorNoteViewId, options);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -197,6 +221,12 @@ pub const INotesWindowManagerPreview2 = extern struct {
 };
 pub const INotesWindowManagerPreviewShowNoteOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShowWithFocus(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShowWithFocus(@ptrCast(self), &_r);
@@ -225,6 +255,12 @@ pub const INotesWindowManagerPreviewShowNoteOptions = extern struct {
 };
 pub const INotesWindowManagerPreviewStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentApp(self: *@This()) core.HResult!*NotesWindowManagerPreview {
         var _r: *NotesWindowManagerPreview = undefined;
         const _c = self.vtable.GetForCurrentApp(@ptrCast(self), &_r);
@@ -248,6 +284,18 @@ pub const INotesWindowManagerPreviewStatics = extern struct {
 };
 pub const NotePlacementChangedPreviewEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getViewId(self: *@This()) core.HResult!i32 {
         const this: *INotePlacementChangedPreviewEventArgs = @ptrCast(self);
         return try this.getViewId();
@@ -260,6 +308,18 @@ pub const NotePlacementChangedPreviewEventArgs = extern struct {
 };
 pub const NoteVisibilityChangedPreviewEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getViewId(self: *@This()) core.HResult!i32 {
         const this: *INoteVisibilityChangedPreviewEventArgs = @ptrCast(self);
         return try this.getViewId();
@@ -276,6 +336,18 @@ pub const NoteVisibilityChangedPreviewEventArgs = extern struct {
 };
 pub const NotesWindowManagerPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsScreenLocked(self: *@This()) core.HResult!bool {
         const this: *INotesWindowManagerPreview = @ptrCast(self);
         return try this.getIsScreenLocked();
@@ -364,9 +436,6 @@ pub const NotesWindowManagerPreview = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetThumbnailImageForTaskSwitcherAsync(bitmap);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentApp() core.HResult!*NotesWindowManagerPreview {
         const _f = try @This()._INotesWindowManagerPreviewStaticsCache.get();
         return try _f.GetForCurrentApp();
@@ -380,6 +449,18 @@ pub const NotesWindowManagerPreview = extern struct {
 };
 pub const NotesWindowManagerPreviewShowNoteOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShowWithFocus(self: *@This()) core.HResult!bool {
         const this: *INotesWindowManagerPreviewShowNoteOptions = @ptrCast(self);
         return try this.getShowWithFocus();
@@ -387,9 +468,6 @@ pub const NotesWindowManagerPreviewShowNoteOptions = extern struct {
     pub fn putShowWithFocus(self: *@This(), value: bool) core.HResult!void {
         const this: *INotesWindowManagerPreviewShowNoteOptions = @ptrCast(self);
         return try this.putShowWithFocus(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

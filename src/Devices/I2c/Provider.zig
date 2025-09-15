@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const II2cControllerProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceProvider(self: *@This(), settings: *ProviderI2cConnectionSettings) core.HResult!*II2cDeviceProvider {
         var _r: *II2cDeviceProvider = undefined;
         const _c = self.vtable.GetDeviceProvider(@ptrCast(self), settings, &_r);
@@ -24,6 +30,12 @@ pub const II2cControllerProvider = extern struct {
 };
 pub const II2cDeviceProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -83,6 +95,12 @@ pub const II2cDeviceProvider = extern struct {
 };
 pub const II2cProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetControllersAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(II2cControllerProvider)) {
         var _r: *IAsyncOperation(IVectorView(II2cControllerProvider)) = undefined;
         const _c = self.vtable.GetControllersAsync(@ptrCast(self), &_r);
@@ -106,6 +124,12 @@ pub const II2cProvider = extern struct {
 };
 pub const IProviderI2cConnectionSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSlaveAddress(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_SlaveAddress(@ptrCast(self), &_r);
@@ -162,6 +186,18 @@ pub const ProviderI2cBusSpeed = enum(i32) {
 };
 pub const ProviderI2cConnectionSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSlaveAddress(self: *@This()) core.HResult!i32 {
         const this: *IProviderI2cConnectionSettings = @ptrCast(self);
         return try this.getSlaveAddress();
@@ -205,6 +241,7 @@ pub const ProviderI2cTransferStatus = enum(i32) {
     PartialTransfer = 1,
     SlaveAddressNotAcknowledged = 2,
 };
+const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;
 const HRESULT = @import("../../root.zig").HRESULT;
 const core = @import("../../root.zig").core;

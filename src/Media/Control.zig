@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CurrentSessionChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Control.CurrentSessionChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ICurrentSessionChangedEventArgs.GUID;
@@ -9,6 +21,18 @@ pub const CurrentSessionChangedEventArgs = extern struct {
 };
 pub const GlobalSystemMediaTransportControlsSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGlobalSystemMediaTransportControlsSession = @ptrCast(self);
         return try this.getSourceAppUserModelId();
@@ -117,6 +141,18 @@ pub const GlobalSystemMediaTransportControlsSession = extern struct {
 };
 pub const GlobalSystemMediaTransportControlsSessionManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentSession(self: *@This()) core.HResult!*GlobalSystemMediaTransportControlsSession {
         const this: *IGlobalSystemMediaTransportControlsSessionManager = @ptrCast(self);
         return try this.GetCurrentSession();
@@ -141,9 +177,6 @@ pub const GlobalSystemMediaTransportControlsSessionManager = extern struct {
         const this: *IGlobalSystemMediaTransportControlsSessionManager = @ptrCast(self);
         return try this.removeSessionsChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn RequestAsync() core.HResult!*IAsyncOperation(GlobalSystemMediaTransportControlsSessionManager) {
         const _f = try @This()._IGlobalSystemMediaTransportControlsSessionManagerStaticsCache.get();
         return try _f.RequestAsync();
@@ -157,6 +190,18 @@ pub const GlobalSystemMediaTransportControlsSessionManager = extern struct {
 };
 pub const GlobalSystemMediaTransportControlsSessionMediaProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IGlobalSystemMediaTransportControlsSessionMediaProperties = @ptrCast(self);
         return try this.getTitle();
@@ -205,6 +250,18 @@ pub const GlobalSystemMediaTransportControlsSessionMediaProperties = extern stru
 };
 pub const GlobalSystemMediaTransportControlsSessionPlaybackControls = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPlayEnabled(self: *@This()) core.HResult!bool {
         const this: *IGlobalSystemMediaTransportControlsSessionPlaybackControls = @ptrCast(self);
         return try this.getIsPlayEnabled();
@@ -273,6 +330,18 @@ pub const GlobalSystemMediaTransportControlsSessionPlaybackControls = extern str
 };
 pub const GlobalSystemMediaTransportControlsSessionPlaybackInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControls(self: *@This()) core.HResult!*GlobalSystemMediaTransportControlsSessionPlaybackControls {
         const this: *IGlobalSystemMediaTransportControlsSessionPlaybackInfo = @ptrCast(self);
         return try this.getControls();
@@ -313,6 +382,18 @@ pub const GlobalSystemMediaTransportControlsSessionPlaybackStatus = enum(i32) {
 };
 pub const GlobalSystemMediaTransportControlsSessionTimelineProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartTime(self: *@This()) core.HResult!TimeSpan {
         const this: *IGlobalSystemMediaTransportControlsSessionTimelineProperties = @ptrCast(self);
         return try this.getStartTime();
@@ -345,6 +426,12 @@ pub const GlobalSystemMediaTransportControlsSessionTimelineProperties = extern s
 };
 pub const ICurrentSessionChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Control.ICurrentSessionChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "6969cb39-0bfa-5fe0-8d73-09cc5e5408e1";
@@ -361,6 +448,12 @@ pub const ICurrentSessionChangedEventArgs = extern struct {
 };
 pub const IGlobalSystemMediaTransportControlsSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceAppUserModelId(@ptrCast(self), &_r);
@@ -546,6 +639,12 @@ pub const IGlobalSystemMediaTransportControlsSession = extern struct {
 };
 pub const IGlobalSystemMediaTransportControlsSessionManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentSession(self: *@This()) core.HResult!*GlobalSystemMediaTransportControlsSession {
         var _r: *GlobalSystemMediaTransportControlsSession = undefined;
         const _c = self.vtable.GetCurrentSession(@ptrCast(self), &_r);
@@ -600,6 +699,12 @@ pub const IGlobalSystemMediaTransportControlsSessionManager = extern struct {
 };
 pub const IGlobalSystemMediaTransportControlsSessionManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAsync(self: *@This()) core.HResult!*IAsyncOperation(GlobalSystemMediaTransportControlsSessionManager) {
         var _r: *IAsyncOperation(GlobalSystemMediaTransportControlsSessionManager) = undefined;
         const _c = self.vtable.RequestAsync(@ptrCast(self), &_r);
@@ -623,6 +728,12 @@ pub const IGlobalSystemMediaTransportControlsSessionManagerStatics = extern stru
 };
 pub const IGlobalSystemMediaTransportControlsSessionMediaProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -709,6 +820,12 @@ pub const IGlobalSystemMediaTransportControlsSessionMediaProperties = extern str
 };
 pub const IGlobalSystemMediaTransportControlsSessionPlaybackControls = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPlayEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPlayEnabled(@ptrCast(self), &_r);
@@ -830,6 +947,12 @@ pub const IGlobalSystemMediaTransportControlsSessionPlaybackControls = extern st
 };
 pub const IGlobalSystemMediaTransportControlsSessionPlaybackInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControls(self: *@This()) core.HResult!*GlobalSystemMediaTransportControlsSessionPlaybackControls {
         var _r: *GlobalSystemMediaTransportControlsSessionPlaybackControls = undefined;
         const _c = self.vtable.get_Controls(@ptrCast(self), &_r);
@@ -888,6 +1011,12 @@ pub const IGlobalSystemMediaTransportControlsSessionPlaybackInfo = extern struct
 };
 pub const IGlobalSystemMediaTransportControlsSessionTimelineProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
@@ -946,6 +1075,12 @@ pub const IGlobalSystemMediaTransportControlsSessionTimelineProperties = extern 
 };
 pub const IMediaPropertiesChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Control.IMediaPropertiesChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "7d3741cb-adf0-5cef-91ba-cfabcdd77678";
@@ -962,6 +1097,12 @@ pub const IMediaPropertiesChangedEventArgs = extern struct {
 };
 pub const IPlaybackInfoChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Control.IPlaybackInfoChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "786756c2-bc0d-50a5-8807-054291fef139";
@@ -978,6 +1119,12 @@ pub const IPlaybackInfoChangedEventArgs = extern struct {
 };
 pub const ISessionsChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Control.ISessionsChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "bbf0cd32-42c4-5a58-b317-f34bbfbd26e0";
@@ -994,6 +1141,12 @@ pub const ISessionsChangedEventArgs = extern struct {
 };
 pub const ITimelinePropertiesChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Control.ITimelinePropertiesChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "29033a2f-c923-5a77-bcaf-055ff415ad32";
@@ -1010,6 +1163,18 @@ pub const ITimelinePropertiesChangedEventArgs = extern struct {
 };
 pub const MediaPropertiesChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Control.MediaPropertiesChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IMediaPropertiesChangedEventArgs.GUID;
@@ -1018,6 +1183,18 @@ pub const MediaPropertiesChangedEventArgs = extern struct {
 };
 pub const PlaybackInfoChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Control.PlaybackInfoChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IPlaybackInfoChangedEventArgs.GUID;
@@ -1026,6 +1203,18 @@ pub const PlaybackInfoChangedEventArgs = extern struct {
 };
 pub const SessionsChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Control.SessionsChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ISessionsChangedEventArgs.GUID;
@@ -1034,14 +1223,26 @@ pub const SessionsChangedEventArgs = extern struct {
 };
 pub const TimelinePropertiesChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Control.TimelinePropertiesChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ITimelinePropertiesChangedEventArgs.GUID;
     pub const IID: Guid = ITimelinePropertiesChangedEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ITimelinePropertiesChangedEventArgs.SIGNATURE);
 };
-const MediaPlaybackAutoRepeatMode = @import("../Media.zig").MediaPlaybackAutoRepeatMode;
 const IUnknown = @import("../root.zig").IUnknown;
+const MediaPlaybackAutoRepeatMode = @import("../Media.zig").MediaPlaybackAutoRepeatMode;
 const Guid = @import("../root.zig").Guid;
 const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
 const IInspectable = @import("../Foundation.zig").IInspectable;

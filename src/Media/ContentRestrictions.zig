@@ -7,6 +7,18 @@ pub const ContentAccessRestrictionLevel = enum(i32) {
 };
 pub const ContentRestrictionsBrowsePolicy = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         const this: *IContentRestrictionsBrowsePolicy = @ptrCast(self);
         return try this.getGeographicRegion();
@@ -27,6 +39,12 @@ pub const ContentRestrictionsBrowsePolicy = extern struct {
 };
 pub const IContentRestrictionsBrowsePolicy = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGeographicRegion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_GeographicRegion(@ptrCast(self), &_r);
@@ -64,6 +82,12 @@ pub const IContentRestrictionsBrowsePolicy = extern struct {
 };
 pub const IRatedContentDescription = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -140,6 +164,12 @@ pub const IRatedContentDescription = extern struct {
 };
 pub const IRatedContentDescriptionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), id: ?HSTRING, title: ?HSTRING, category: RatedContentCategory) core.HResult!*RatedContentDescription {
         var _r: *RatedContentDescription = undefined;
         const _c = self.vtable.Create(@ptrCast(self), id, title, category, &_r);
@@ -163,6 +193,12 @@ pub const IRatedContentDescriptionFactory = extern struct {
 };
 pub const IRatedContentRestrictions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetBrowsePolicyAsync(self: *@This()) core.HResult!*IAsyncOperation(ContentRestrictionsBrowsePolicy) {
         var _r: *IAsyncOperation(ContentRestrictionsBrowsePolicy) = undefined;
         const _c = self.vtable.GetBrowsePolicyAsync(@ptrCast(self), &_r);
@@ -212,6 +248,12 @@ pub const IRatedContentRestrictions = extern struct {
 };
 pub const IRatedContentRestrictionsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithMaxAgeRating(self: *@This(), maxAgeRating: u32) core.HResult!*RatedContentRestrictions {
         var _r: *RatedContentRestrictions = undefined;
         const _c = self.vtable.CreateWithMaxAgeRating(@ptrCast(self), maxAgeRating, &_r);
@@ -243,6 +285,18 @@ pub const RatedContentCategory = enum(i32) {
 };
 pub const RatedContentDescription = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRatedContentDescription = @ptrCast(self);
         return try this.getId();
@@ -283,9 +337,6 @@ pub const RatedContentDescription = extern struct {
         const this: *IRatedContentDescription = @ptrCast(self);
         return try this.putRatings(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(id: ?HSTRING, title: ?HSTRING, category: RatedContentCategory) core.HResult!*RatedContentDescription {
         const _f = try @This()._IRatedContentDescriptionFactoryCache.get();
         return try _f.Create(id, title, category);
@@ -299,6 +350,18 @@ pub const RatedContentDescription = extern struct {
 };
 pub const RatedContentRestrictions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetBrowsePolicyAsync(self: *@This()) core.HResult!*IAsyncOperation(ContentRestrictionsBrowsePolicy) {
         const this: *IRatedContentRestrictions = @ptrCast(self);
         return try this.GetBrowsePolicyAsync();
@@ -319,9 +382,6 @@ pub const RatedContentRestrictions = extern struct {
         const this: *IRatedContentRestrictions = @ptrCast(self);
         return try this.removeRestrictionsChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRatedContentRestrictions.IID)));
@@ -338,8 +398,8 @@ pub const RatedContentRestrictions = extern struct {
     var _IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
     var _IRatedContentRestrictionsFactoryCache: FactoryCache(IRatedContentRestrictionsFactory, RUNTIME_NAME) = .{};
 };
-const IRandomAccessStreamReference = @import("../Storage/Streams.zig").IRandomAccessStreamReference;
 const IUnknown = @import("../root.zig").IUnknown;
+const IRandomAccessStreamReference = @import("../Storage/Streams.zig").IRandomAccessStreamReference;
 const Guid = @import("../root.zig").Guid;
 const HRESULT = @import("../root.zig").HRESULT;
 const core = @import("../root.zig").core;

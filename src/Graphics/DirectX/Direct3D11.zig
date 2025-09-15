@@ -29,6 +29,12 @@ pub const Direct3DUsage = enum(i32) {
 };
 pub const IDirect3DDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Trim(self: *@This()) core.HResult!void {
         const _c = self.vtable.Trim(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -50,6 +56,12 @@ pub const IDirect3DDevice = extern struct {
 };
 pub const IDirect3DSurface = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDescription(self: *@This()) core.HResult!Direct3DSurfaceDescription {
         var _r: Direct3DSurfaceDescription = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
@@ -71,6 +83,7 @@ pub const IDirect3DSurface = extern struct {
         get_Description: *const fn(self: *anyopaque, _r: *Direct3DSurfaceDescription) callconv(.winapi) HRESULT,
     };
 };
+const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;
 const core = @import("../../root.zig").core;
 const HRESULT = @import("../../root.zig").HRESULT;

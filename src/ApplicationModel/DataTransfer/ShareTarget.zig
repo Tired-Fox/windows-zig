@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IQuickLink = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -67,6 +73,12 @@ pub const IQuickLink = extern struct {
 };
 pub const IShareOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!*DataPackageView {
         var _r: *DataPackageView = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
@@ -132,6 +144,12 @@ pub const IShareOperation = extern struct {
 };
 pub const IShareOperation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DismissUI(self: *@This()) core.HResult!void {
         const _c = self.vtable.DismissUI(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -153,6 +171,12 @@ pub const IShareOperation2 = extern struct {
 };
 pub const IShareOperation3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContacts(self: *@This()) core.HResult!*IVectorView(Contact) {
         var _r: *IVectorView(Contact) = undefined;
         const _c = self.vtable.get_Contacts(@ptrCast(self), &_r);
@@ -176,6 +200,18 @@ pub const IShareOperation3 = extern struct {
 };
 pub const QuickLink = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IQuickLink = @ptrCast(self);
         return try this.getTitle();
@@ -208,9 +244,6 @@ pub const QuickLink = extern struct {
         const this: *IQuickLink = @ptrCast(self);
         return try this.getSupportedFileTypes();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IQuickLink.IID)));
@@ -224,6 +257,18 @@ pub const QuickLink = extern struct {
 };
 pub const ShareOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!*DataPackageView {
         const this: *IShareOperation = @ptrCast(self);
         return try this.getData();

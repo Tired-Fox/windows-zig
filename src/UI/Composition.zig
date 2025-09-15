@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CompositionObject = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompositor(self: *@This()) core.HResult!*Compositor {
         const this: *ICompositionObject = @ptrCast(self);
         return try this.getCompositor();
@@ -98,9 +110,6 @@ pub const CompositionObject = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PopulatePropertyInfo(propertyName, propertyInfo);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn StartAnimationWithIAnimationObject(target: *IAnimationObject, propertyName: ?HSTRING, animation: *CompositionAnimation) core.HResult!void {
         const _f = try @This()._ICompositionObjectStaticsCache.get();
         return try _f.StartAnimationWithIAnimationObject(target, propertyName, animation);
@@ -119,6 +128,18 @@ pub const CompositionObject = extern struct {
 };
 pub const CompositionLight = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargets(self: *@This()) core.HResult!*VisualUnorderedCollection {
         const this: *ICompositionLight = @ptrCast(self);
         return try this.getTargets();
@@ -144,9 +165,6 @@ pub const CompositionLight = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsEnabled(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionLight";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ICompositionLight.GUID;
@@ -156,6 +174,18 @@ pub const CompositionLight = extern struct {
 };
 pub const AmbientLight = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         const this: *IAmbientLight = @ptrCast(self);
         return try this.getColor();
@@ -186,6 +216,18 @@ pub const AmbientLight = extern struct {
 };
 pub const AnimationController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPlaybackRate(self: *@This()) core.HResult!f32 {
         const this: *IAnimationController = @ptrCast(self);
         return try this.getPlaybackRate();
@@ -217,9 +259,6 @@ pub const AnimationController = extern struct {
     pub fn Resume(self: *@This()) core.HResult!void {
         const this: *IAnimationController = @ptrCast(self);
         return try this.Resume();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getMaxPlaybackRate() core.HResult!f32 {
         const _f = try @This()._IAnimationControllerStaticsCache.get();
@@ -262,6 +301,18 @@ pub const AnimationPropertyAccessMode = enum(i32) {
 };
 pub const AnimationPropertyInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccessMode(self: *@This()) core.HResult!AnimationPropertyAccessMode {
         const this: *IAnimationPropertyInfo = @ptrCast(self);
         return try this.getAccessMode();
@@ -297,6 +348,15 @@ pub const AnimationStopBehavior = enum(i32) {
 };
 pub const CompositionEasingFunction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -354,6 +414,18 @@ pub const CompositionEasingFunction = extern struct {
 };
 pub const BackEasingFunction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         const this: *IBackEasingFunction = @ptrCast(self);
         return try this.getMode();
@@ -370,6 +442,18 @@ pub const BackEasingFunction = extern struct {
 };
 pub const CompositionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ClearAllParameters(self: *@This()) core.HResult!void {
         const this: *ICompositionAnimation = @ptrCast(self);
         return try this.ClearAllParameters();
@@ -449,9 +533,6 @@ pub const CompositionAnimation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetExpressionReferenceParameter(parameterName, source);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ICompositionAnimation.GUID;
@@ -461,6 +542,18 @@ pub const CompositionAnimation = extern struct {
 };
 pub const KeyFrameAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDelayTime(self: *@This()) core.HResult!TimeSpan {
         const this: *IKeyFrameAnimation = @ptrCast(self);
         return try this.getDelayTime();
@@ -541,9 +634,6 @@ pub const KeyFrameAnimation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDelayBehavior(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.KeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IKeyFrameAnimation.GUID;
@@ -553,6 +643,18 @@ pub const KeyFrameAnimation = extern struct {
 };
 pub const BooleanKeyFrameAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: bool) core.HResult!void {
         const this: *IBooleanKeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
@@ -565,6 +667,18 @@ pub const BooleanKeyFrameAnimation = extern struct {
 };
 pub const BounceEasingFunction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         const this: *IBounceEasingFunction = @ptrCast(self);
         return try this.getMode();
@@ -585,6 +699,18 @@ pub const BounceEasingFunction = extern struct {
 };
 pub const NaturalMotionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDelayBehavior(self: *@This()) core.HResult!AnimationDelayBehavior {
         const this: *INaturalMotionAnimation = @ptrCast(self);
         return try this.getDelayBehavior();
@@ -609,9 +735,6 @@ pub const NaturalMotionAnimation = extern struct {
         const this: *INaturalMotionAnimation = @ptrCast(self);
         return try this.putStopBehavior(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.NaturalMotionAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = INaturalMotionAnimation.GUID;
@@ -621,6 +744,18 @@ pub const NaturalMotionAnimation = extern struct {
 };
 pub const ScalarNaturalMotionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFinalValue(self: *@This()) core.HResult!*IReference(f32) {
         const this: *IScalarNaturalMotionAnimation = @ptrCast(self);
         return try this.getFinalValue();
@@ -645,9 +780,6 @@ pub const ScalarNaturalMotionAnimation = extern struct {
         const this: *IScalarNaturalMotionAnimation = @ptrCast(self);
         return try this.putInitialVelocity(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ScalarNaturalMotionAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IScalarNaturalMotionAnimation.GUID;
@@ -657,6 +789,18 @@ pub const ScalarNaturalMotionAnimation = extern struct {
 };
 pub const BounceScalarNaturalMotionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAcceleration(self: *@This()) core.HResult!f32 {
         const this: *IBounceScalarNaturalMotionAnimation = @ptrCast(self);
         return try this.getAcceleration();
@@ -681,6 +825,18 @@ pub const BounceScalarNaturalMotionAnimation = extern struct {
 };
 pub const Vector2NaturalMotionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFinalValue(self: *@This()) core.HResult!*IReference(Vector2) {
         const this: *IVector2NaturalMotionAnimation = @ptrCast(self);
         return try this.getFinalValue();
@@ -705,9 +861,6 @@ pub const Vector2NaturalMotionAnimation = extern struct {
         const this: *IVector2NaturalMotionAnimation = @ptrCast(self);
         return try this.putInitialVelocity(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Vector2NaturalMotionAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IVector2NaturalMotionAnimation.GUID;
@@ -717,6 +870,18 @@ pub const Vector2NaturalMotionAnimation = extern struct {
 };
 pub const BounceVector2NaturalMotionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAcceleration(self: *@This()) core.HResult!f32 {
         const this: *IBounceVector2NaturalMotionAnimation = @ptrCast(self);
         return try this.getAcceleration();
@@ -741,6 +906,18 @@ pub const BounceVector2NaturalMotionAnimation = extern struct {
 };
 pub const Vector3NaturalMotionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFinalValue(self: *@This()) core.HResult!*IReference(Vector3) {
         const this: *IVector3NaturalMotionAnimation = @ptrCast(self);
         return try this.getFinalValue();
@@ -765,9 +942,6 @@ pub const Vector3NaturalMotionAnimation = extern struct {
         const this: *IVector3NaturalMotionAnimation = @ptrCast(self);
         return try this.putInitialVelocity(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Vector3NaturalMotionAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IVector3NaturalMotionAnimation.GUID;
@@ -777,6 +951,18 @@ pub const Vector3NaturalMotionAnimation = extern struct {
 };
 pub const BounceVector3NaturalMotionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAcceleration(self: *@This()) core.HResult!f32 {
         const this: *IBounceVector3NaturalMotionAnimation = @ptrCast(self);
         return try this.getAcceleration();
@@ -801,6 +987,18 @@ pub const BounceVector3NaturalMotionAnimation = extern struct {
 };
 pub const CircleEasingFunction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         const this: *ICircleEasingFunction = @ptrCast(self);
         return try this.getMode();
@@ -813,6 +1011,18 @@ pub const CircleEasingFunction = extern struct {
 };
 pub const ColorKeyFrameAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInterpolationColorSpace(self: *@This()) core.HResult!CompositionColorSpace {
         const this: *IColorKeyFrameAnimation = @ptrCast(self);
         return try this.getInterpolationColorSpace();
@@ -837,6 +1047,18 @@ pub const ColorKeyFrameAnimation = extern struct {
 };
 pub const CompositionAnimationGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCount(self: *@This()) core.HResult!i32 {
         const this: *ICompositionAnimationGroup = @ptrCast(self);
         return try this.getCount();
@@ -868,6 +1090,15 @@ pub const CompositionAnimationGroup = extern struct {
 };
 pub const CompositionBrush = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -880,6 +1111,18 @@ pub const CompositionBrush = extern struct {
 };
 pub const CompositionBackdropBrush = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionBackdropBrush";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ICompositionBackdropBrush.GUID;
@@ -893,6 +1136,18 @@ pub const CompositionBackfaceVisibility = enum(i32) {
 };
 pub const CompositionBatchCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionBatchCompletedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ICompositionBatchCompletedEventArgs.GUID;
@@ -925,6 +1180,18 @@ pub const CompositionBorderMode = enum(i32) {
 };
 pub const CompositionCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AreEffectsSupported(self: *@This()) core.HResult!bool {
         const this: *ICompositionCapabilities = @ptrCast(self);
         return try this.AreEffectsSupported();
@@ -941,9 +1208,6 @@ pub const CompositionCapabilities = extern struct {
         const this: *ICompositionCapabilities = @ptrCast(self);
         return try this.removeChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*CompositionCapabilities {
         const _f = try @This()._ICompositionCapabilitiesStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -957,6 +1221,18 @@ pub const CompositionCapabilities = extern struct {
 };
 pub const CompositionClip = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnchorPoint(self: *@This()) core.HResult!Vector2 {
         var this: ?*ICompositionClip2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1055,9 +1331,6 @@ pub const CompositionClip = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTransformMatrix(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionClip";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ICompositionClip.GUID;
@@ -1067,6 +1340,18 @@ pub const CompositionClip = extern struct {
 };
 pub const CompositionColorBrush = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         const this: *ICompositionColorBrush = @ptrCast(self);
         return try this.getColor();
@@ -1083,6 +1368,18 @@ pub const CompositionColorBrush = extern struct {
 };
 pub const CompositionColorGradientStop = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         const this: *ICompositionColorGradientStop = @ptrCast(self);
         return try this.getColor();
@@ -1107,6 +1404,18 @@ pub const CompositionColorGradientStop = extern struct {
 };
 pub const CompositionColorGradientStopCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn First(self: *@This()) core.HResult!*IIterator(CompositionColorGradientStop) {
         var this: ?*IIterable(CompositionColorGradientStop) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1164,6 +1473,18 @@ pub const CompositionColorSpace = enum(i32) {
 };
 pub const CompositionCommitBatch = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsActive(self: *@This()) core.HResult!bool {
         const this: *ICompositionCommitBatch = @ptrCast(self);
         return try this.getIsActive();
@@ -1194,6 +1515,18 @@ pub const CompositionCompositeMode = enum(i32) {
 };
 pub const CompositionShape = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCenterPoint(self: *@This()) core.HResult!Vector2 {
         const this: *ICompositionShape = @ptrCast(self);
         return try this.getCenterPoint();
@@ -1242,9 +1575,6 @@ pub const CompositionShape = extern struct {
         const this: *ICompositionShape = @ptrCast(self);
         return try this.putTransformMatrix(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionShape";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ICompositionShape.GUID;
@@ -1254,6 +1584,18 @@ pub const CompositionShape = extern struct {
 };
 pub const CompositionContainerShape = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShapes(self: *@This()) core.HResult!*CompositionShapeCollection {
         const this: *ICompositionContainerShape = @ptrCast(self);
         return try this.getShapes();
@@ -1266,6 +1608,18 @@ pub const CompositionContainerShape = extern struct {
 };
 pub const CompositionDrawingSurface = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlphaMode(self: *@This()) core.HResult!DirectXAlphaMode {
         const this: *ICompositionDrawingSurface = @ptrCast(self);
         return try this.getAlphaMode();
@@ -1320,9 +1674,6 @@ pub const CompositionDrawingSurface = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollWithClipWithScrollRect(offset, clipRect, scrollRect);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionDrawingSurface";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ICompositionDrawingSurface.GUID;
@@ -1341,6 +1692,18 @@ pub const CompositionEasingFunctionMode = enum(i32) {
 };
 pub const CompositionEffectBrush = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSourceParameter(self: *@This(), name: ?HSTRING) core.HResult!*CompositionBrush {
         const this: *ICompositionEffectBrush = @ptrCast(self);
         return try this.GetSourceParameter(name);
@@ -1357,6 +1720,18 @@ pub const CompositionEffectBrush = extern struct {
 };
 pub const CompositionEffectFactory = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateBrush(self: *@This()) core.HResult!*CompositionEffectBrush {
         const this: *ICompositionEffectFactory = @ptrCast(self);
         return try this.CreateBrush();
@@ -1383,12 +1758,21 @@ pub const CompositionEffectFactoryLoadStatus = enum(i32) {
 };
 pub const CompositionEffectSourceParameter = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getName(self: *@This()) core.HResult!?HSTRING {
-        const this: *ICompositionEffectSourceParameter = @ptrCast(self);
-        return try this.getName();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getName(self: *@This()) core.HResult!?HSTRING {
+        const this: *ICompositionEffectSourceParameter = @ptrCast(self);
+        return try this.getName();
     }
     pub fn Create(name: ?HSTRING) core.HResult!*CompositionEffectSourceParameter {
         const _f = try @This()._ICompositionEffectSourceParameterFactoryCache.get();
@@ -1403,6 +1787,18 @@ pub const CompositionEffectSourceParameter = extern struct {
 };
 pub const CompositionGeometry = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrimEnd(self: *@This()) core.HResult!f32 {
         const this: *ICompositionGeometry = @ptrCast(self);
         return try this.getTrimEnd();
@@ -1427,9 +1823,6 @@ pub const CompositionGeometry = extern struct {
         const this: *ICompositionGeometry = @ptrCast(self);
         return try this.putTrimStart(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionGeometry";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ICompositionGeometry.GUID;
@@ -1439,6 +1832,18 @@ pub const CompositionGeometry = extern struct {
 };
 pub const CompositionEllipseGeometry = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCenter(self: *@This()) core.HResult!Vector2 {
         const this: *ICompositionEllipseGeometry = @ptrCast(self);
         return try this.getCenter();
@@ -1463,6 +1868,18 @@ pub const CompositionEllipseGeometry = extern struct {
 };
 pub const CompositionGeometricClip = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGeometry(self: *@This()) core.HResult!*CompositionGeometry {
         const this: *ICompositionGeometricClip = @ptrCast(self);
         return try this.getGeometry();
@@ -1492,6 +1909,18 @@ pub const CompositionGetValueStatus = enum(i32) {
 };
 pub const CompositionGradientBrush = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnchorPoint(self: *@This()) core.HResult!Vector2 {
         const this: *ICompositionGradientBrush = @ptrCast(self);
         return try this.getAnchorPoint();
@@ -1582,9 +2011,6 @@ pub const CompositionGradientBrush = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMappingMode(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionGradientBrush";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ICompositionGradientBrush.GUID;
@@ -1599,6 +2025,18 @@ pub const CompositionGradientExtendMode = enum(i32) {
 };
 pub const CompositionGraphicsDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateDrawingSurface(self: *@This(), sizePixels: Size, pixelFormat: DirectXPixelFormat, alphaMode: DirectXAlphaMode) core.HResult!*CompositionDrawingSurface {
         const this: *ICompositionGraphicsDevice = @ptrCast(self);
         return try this.CreateDrawingSurface(sizePixels, pixelFormat, alphaMode);
@@ -1654,6 +2092,18 @@ pub const CompositionGraphicsDevice = extern struct {
 };
 pub const CompositionLineGeometry = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStart(self: *@This()) core.HResult!Vector2 {
         const this: *ICompositionLineGeometry = @ptrCast(self);
         return try this.getStart();
@@ -1678,6 +2128,18 @@ pub const CompositionLineGeometry = extern struct {
 };
 pub const CompositionLinearGradientBrush = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndPoint(self: *@This()) core.HResult!Vector2 {
         const this: *ICompositionLinearGradientBrush = @ptrCast(self);
         return try this.getEndPoint();
@@ -1706,6 +2168,18 @@ pub const CompositionMappingMode = enum(i32) {
 };
 pub const CompositionMaskBrush = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMask(self: *@This()) core.HResult!*CompositionBrush {
         const this: *ICompositionMaskBrush = @ptrCast(self);
         return try this.getMask();
@@ -1730,6 +2204,18 @@ pub const CompositionMaskBrush = extern struct {
 };
 pub const CompositionMipmapSurface = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLevelCount(self: *@This()) core.HResult!u32 {
         const this: *ICompositionMipmapSurface = @ptrCast(self);
         return try this.getLevelCount();
@@ -1758,6 +2244,18 @@ pub const CompositionMipmapSurface = extern struct {
 };
 pub const CompositionNineGridBrush = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBottomInset(self: *@This()) core.HResult!f32 {
         const this: *ICompositionNineGridBrush = @ptrCast(self);
         return try this.getBottomInset();
@@ -1862,6 +2360,15 @@ pub const CompositionNineGridBrush = extern struct {
 };
 pub const CompositionPath = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1878,6 +2385,18 @@ pub const CompositionPath = extern struct {
 };
 pub const CompositionPathGeometry = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPath(self: *@This()) core.HResult!*CompositionPath {
         const this: *ICompositionPathGeometry = @ptrCast(self);
         return try this.getPath();
@@ -1894,6 +2413,18 @@ pub const CompositionPathGeometry = extern struct {
 };
 pub const CompositionProjectedShadow = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBlurRadiusMultiplier(self: *@This()) core.HResult!f32 {
         const this: *ICompositionProjectedShadow = @ptrCast(self);
         return try this.getBlurRadiusMultiplier();
@@ -1942,6 +2473,18 @@ pub const CompositionProjectedShadow = extern struct {
 };
 pub const CompositionProjectedShadowCaster = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBrush(self: *@This()) core.HResult!*CompositionBrush {
         const this: *ICompositionProjectedShadowCaster = @ptrCast(self);
         return try this.getBrush();
@@ -1966,6 +2509,18 @@ pub const CompositionProjectedShadowCaster = extern struct {
 };
 pub const CompositionProjectedShadowCasterCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCount(self: *@This()) core.HResult!i32 {
         const this: *ICompositionProjectedShadowCasterCollection = @ptrCast(self);
         return try this.getCount();
@@ -2001,9 +2556,6 @@ pub const CompositionProjectedShadowCasterCollection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getMaxRespectedCasters() core.HResult!i32 {
         const _f = try @This()._ICompositionProjectedShadowCasterCollectionStaticsCache.get();
         return try _f.getMaxRespectedCasters();
@@ -2017,6 +2569,18 @@ pub const CompositionProjectedShadowCasterCollection = extern struct {
 };
 pub const CompositionProjectedShadowReceiver = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReceivingVisual(self: *@This()) core.HResult!*Visual {
         const this: *ICompositionProjectedShadowReceiver = @ptrCast(self);
         return try this.getReceivingVisual();
@@ -2033,6 +2597,18 @@ pub const CompositionProjectedShadowReceiver = extern struct {
 };
 pub const CompositionProjectedShadowReceiverUnorderedCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), value: *CompositionProjectedShadowReceiver) core.HResult!void {
         const this: *ICompositionProjectedShadowReceiverUnorderedCollection = @ptrCast(self);
         return try this.Add(value);
@@ -2064,6 +2640,18 @@ pub const CompositionProjectedShadowReceiverUnorderedCollection = extern struct 
 };
 pub const CompositionPropertySet = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertColor(self: *@This(), propertyName: ?HSTRING, value: Color) core.HResult!void {
         const this: *ICompositionPropertySet = @ptrCast(self);
         return try this.InsertColor(propertyName, value);
@@ -2150,6 +2738,18 @@ pub const CompositionPropertySet = extern struct {
 };
 pub const CompositionRadialGradientBrush = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEllipseCenter(self: *@This()) core.HResult!Vector2 {
         const this: *ICompositionRadialGradientBrush = @ptrCast(self);
         return try this.getEllipseCenter();
@@ -2182,6 +2782,18 @@ pub const CompositionRadialGradientBrush = extern struct {
 };
 pub const CompositionRectangleGeometry = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOffset(self: *@This()) core.HResult!Vector2 {
         const this: *ICompositionRectangleGeometry = @ptrCast(self);
         return try this.getOffset();
@@ -2206,6 +2818,18 @@ pub const CompositionRectangleGeometry = extern struct {
 };
 pub const CompositionRoundedRectangleGeometry = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCornerRadius(self: *@This()) core.HResult!Vector2 {
         const this: *ICompositionRoundedRectangleGeometry = @ptrCast(self);
         return try this.getCornerRadius();
@@ -2238,6 +2862,18 @@ pub const CompositionRoundedRectangleGeometry = extern struct {
 };
 pub const CompositionScopedBatch = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsActive(self: *@This()) core.HResult!bool {
         const this: *ICompositionScopedBatch = @ptrCast(self);
         return try this.getIsActive();
@@ -2274,6 +2910,15 @@ pub const CompositionScopedBatch = extern struct {
 };
 pub const CompositionShadow = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2286,6 +2931,18 @@ pub const CompositionShadow = extern struct {
 };
 pub const CompositionShapeCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVector(CompositionShape) = @ptrCast(self);
         return try this.getSize();
@@ -2321,6 +2978,18 @@ pub const CompositionShapeCollection = extern struct {
 };
 pub const CompositionSpriteShape = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFillBrush(self: *@This()) core.HResult!*CompositionBrush {
         const this: *ICompositionSpriteShape = @ptrCast(self);
         return try this.getFillBrush();
@@ -2433,6 +3102,18 @@ pub const CompositionStrokeCap = enum(i32) {
 };
 pub const CompositionStrokeDashArray = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVector(f32) = @ptrCast(self);
         return try this.getSize();
@@ -2474,6 +3155,18 @@ pub const CompositionStrokeLineJoin = enum(i32) {
 };
 pub const CompositionSurfaceBrush = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapInterpolationMode(self: *@This()) core.HResult!CompositionBitmapInterpolationMode {
         const this: *ICompositionSurfaceBrush = @ptrCast(self);
         return try this.getBitmapInterpolationMode();
@@ -2634,6 +3327,18 @@ pub const CompositionSurfaceBrush = extern struct {
 };
 pub const CompositionTarget = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRoot(self: *@This()) core.HResult!*Visual {
         const this: *ICompositionTarget = @ptrCast(self);
         return try this.getRoot();
@@ -2641,9 +3346,6 @@ pub const CompositionTarget = extern struct {
     pub fn putRoot(self: *@This(), value: *Visual) core.HResult!void {
         const this: *ICompositionTarget = @ptrCast(self);
         return try this.putRoot(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionTarget";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2654,6 +3356,18 @@ pub const CompositionTarget = extern struct {
 };
 pub const CompositionTexture = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceRect(self: *@This()) core.HResult!RectInt32 {
         const this: *ICompositionTexture = @ptrCast(self);
         return try this.getSourceRect();
@@ -2678,9 +3392,6 @@ pub const CompositionTexture = extern struct {
         const this: *ICompositionTexture = @ptrCast(self);
         return try this.putColorSpace(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionTexture";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ICompositionTexture.GUID;
@@ -2690,6 +3401,15 @@ pub const CompositionTexture = extern struct {
 };
 pub const CompositionTransform = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2702,6 +3422,18 @@ pub const CompositionTransform = extern struct {
 };
 pub const CompositionViewBox = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontalAlignmentRatio(self: *@This()) core.HResult!f32 {
         const this: *ICompositionViewBox = @ptrCast(self);
         return try this.getHorizontalAlignmentRatio();
@@ -2750,12 +3482,21 @@ pub const CompositionViewBox = extern struct {
 };
 pub const CompositionVirtualDrawingSurface = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Trim(self: *@This(), rects: [*]RectInt32) core.HResult!void {
-        const this: *ICompositionVirtualDrawingSurface = @ptrCast(self);
-        return try this.Trim(rects);
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Trim(self: *@This(), rects: [*]RectInt32) core.HResult!void {
+        const this: *ICompositionVirtualDrawingSurface = @ptrCast(self);
+        return try this.Trim(rects);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionVirtualDrawingSurface";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2766,6 +3507,18 @@ pub const CompositionVirtualDrawingSurface = extern struct {
 };
 pub const CompositionVisualSurface = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceVisual(self: *@This()) core.HResult!*Visual {
         const this: *ICompositionVisualSurface = @ptrCast(self);
         return try this.getSourceVisual();
@@ -2798,6 +3551,18 @@ pub const CompositionVisualSurface = extern struct {
 };
 pub const Compositor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateColorKeyFrameAnimation(self: *@This()) core.HResult!*ColorKeyFrameAnimation {
         const this: *ICompositor = @ptrCast(self);
         return try this.CreateColorKeyFrameAnimation();
@@ -3300,9 +4065,6 @@ pub const Compositor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICompositor.IID)));
@@ -3325,6 +4087,18 @@ pub const Compositor = extern struct {
 };
 pub const Visual = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnchorPoint(self: *@This()) core.HResult!Vector2 {
         const this: *IVisual = @ptrCast(self);
         return try this.getAnchorPoint();
@@ -3527,9 +4301,6 @@ pub const Visual = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsPixelSnappingEnabled(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.UI.Composition.Visual";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IVisual.GUID;
@@ -3539,12 +4310,21 @@ pub const Visual = extern struct {
 };
 pub const ContainerVisual = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getChildren(self: *@This()) core.HResult!*VisualCollection {
-        const this: *IContainerVisual = @ptrCast(self);
-        return try this.getChildren();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getChildren(self: *@This()) core.HResult!*VisualCollection {
+        const this: *IContainerVisual = @ptrCast(self);
+        return try this.getChildren();
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.ContainerVisual";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3555,6 +4335,18 @@ pub const ContainerVisual = extern struct {
 };
 pub const CubicBezierEasingFunction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControlPoint1(self: *@This()) core.HResult!Vector2 {
         const this: *ICubicBezierEasingFunction = @ptrCast(self);
         return try this.getControlPoint1();
@@ -3571,6 +4363,18 @@ pub const CubicBezierEasingFunction = extern struct {
 };
 pub const DelegatedInkTrailVisual = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddTrailPoints(self: *@This(), inkPoints: [*]InkTrailPoint) core.HResult!u32 {
         const this: *IDelegatedInkTrailVisual = @ptrCast(self);
         return try this.AddTrailPoints(inkPoints);
@@ -3586,9 +4390,6 @@ pub const DelegatedInkTrailVisual = extern struct {
     pub fn StartNewTrail(self: *@This(), color: Color) core.HResult!void {
         const this: *IDelegatedInkTrailVisual = @ptrCast(self);
         return try this.StartNewTrail(color);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*DelegatedInkTrailVisual {
         const _f = try @This()._IDelegatedInkTrailVisualStaticsCache.get();
@@ -3607,6 +4408,18 @@ pub const DelegatedInkTrailVisual = extern struct {
 };
 pub const DistantLight = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         const this: *IDistantLight = @ptrCast(self);
         return try this.getColor();
@@ -3653,6 +4466,18 @@ pub const DistantLight = extern struct {
 };
 pub const DropShadow = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBlurRadius(self: *@This()) core.HResult!f32 {
         const this: *IDropShadow = @ptrCast(self);
         return try this.getBlurRadius();
@@ -3715,6 +4540,18 @@ pub const DropShadow = extern struct {
 };
 pub const ElasticEasingFunction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         const this: *IElasticEasingFunction = @ptrCast(self);
         return try this.getMode();
@@ -3735,6 +4572,18 @@ pub const ElasticEasingFunction = extern struct {
 };
 pub const ExponentialEasingFunction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         const this: *IExponentialEasingFunction = @ptrCast(self);
         return try this.getMode();
@@ -3751,6 +4600,18 @@ pub const ExponentialEasingFunction = extern struct {
 };
 pub const ExpressionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExpression(self: *@This()) core.HResult!?HSTRING {
         const this: *IExpressionAnimation = @ptrCast(self);
         return try this.getExpression();
@@ -3767,6 +4628,12 @@ pub const ExpressionAnimation = extern struct {
 };
 pub const IAmbientLight = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
@@ -3795,6 +4662,12 @@ pub const IAmbientLight = extern struct {
 };
 pub const IAmbientLight2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIntensity(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Intensity(@ptrCast(self), &_r);
@@ -3823,6 +4696,12 @@ pub const IAmbientLight2 = extern struct {
 };
 pub const IAnimationController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPlaybackRate(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_PlaybackRate(@ptrCast(self), &_r);
@@ -3885,6 +4764,12 @@ pub const IAnimationController = extern struct {
 };
 pub const IAnimationControllerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxPlaybackRate(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_MaxPlaybackRate(@ptrCast(self), &_r);
@@ -3915,6 +4800,12 @@ pub const IAnimationControllerStatics = extern struct {
 };
 pub const IAnimationObject = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn PopulatePropertyInfo(self: *@This(), propertyName: ?HSTRING, propertyInfo: *AnimationPropertyInfo) core.HResult!void {
         const _c = self.vtable.PopulatePropertyInfo(@ptrCast(self), propertyName, propertyInfo);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3936,6 +4827,12 @@ pub const IAnimationObject = extern struct {
 };
 pub const IAnimationPropertyInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccessMode(self: *@This()) core.HResult!AnimationPropertyAccessMode {
         var _r: AnimationPropertyAccessMode = undefined;
         const _c = self.vtable.get_AccessMode(@ptrCast(self), &_r);
@@ -3964,6 +4861,12 @@ pub const IAnimationPropertyInfo = extern struct {
 };
 pub const IAnimationPropertyInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetResolvedCompositionObject(self: *@This()) core.HResult!*CompositionObject {
         var _r: *CompositionObject = undefined;
         const _c = self.vtable.GetResolvedCompositionObject(@ptrCast(self), &_r);
@@ -3994,6 +4897,12 @@ pub const IAnimationPropertyInfo2 = extern struct {
 };
 pub const IBackEasingFunction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         var _r: CompositionEasingFunctionMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -4024,6 +4933,12 @@ pub const IBackEasingFunction = extern struct {
 };
 pub const IBooleanKeyFrameAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: bool) core.HResult!void {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4045,6 +4960,12 @@ pub const IBooleanKeyFrameAnimation = extern struct {
 };
 pub const IBounceEasingFunction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         var _r: CompositionEasingFunctionMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -4082,6 +5003,12 @@ pub const IBounceEasingFunction = extern struct {
 };
 pub const IBounceScalarNaturalMotionAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAcceleration(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Acceleration(@ptrCast(self), &_r);
@@ -4122,6 +5049,12 @@ pub const IBounceScalarNaturalMotionAnimation = extern struct {
 };
 pub const IBounceVector2NaturalMotionAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAcceleration(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Acceleration(@ptrCast(self), &_r);
@@ -4162,6 +5095,12 @@ pub const IBounceVector2NaturalMotionAnimation = extern struct {
 };
 pub const IBounceVector3NaturalMotionAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAcceleration(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Acceleration(@ptrCast(self), &_r);
@@ -4202,6 +5141,12 @@ pub const IBounceVector3NaturalMotionAnimation = extern struct {
 };
 pub const ICircleEasingFunction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         var _r: CompositionEasingFunctionMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -4225,6 +5170,12 @@ pub const ICircleEasingFunction = extern struct {
 };
 pub const IColorKeyFrameAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInterpolationColorSpace(self: *@This()) core.HResult!CompositionColorSpace {
         var _r: CompositionColorSpace = undefined;
         const _c = self.vtable.get_InterpolationColorSpace(@ptrCast(self), &_r);
@@ -4263,6 +5214,12 @@ pub const IColorKeyFrameAnimation = extern struct {
 };
 pub const ICompositionAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ClearAllParameters(self: *@This()) core.HResult!void {
         const _c = self.vtable.ClearAllParameters(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4334,6 +5291,12 @@ pub const ICompositionAnimation = extern struct {
 };
 pub const ICompositionAnimation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetBooleanParameter(self: *@This(), key: ?HSTRING, value: bool) core.HResult!void {
         const _c = self.vtable.SetBooleanParameter(@ptrCast(self), key, value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4367,6 +5330,12 @@ pub const ICompositionAnimation2 = extern struct {
 };
 pub const ICompositionAnimation3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInitialValueExpressions(self: *@This()) core.HResult!*InitialValueExpressionCollection {
         var _r: *InitialValueExpressionCollection = undefined;
         const _c = self.vtable.get_InitialValueExpressions(@ptrCast(self), &_r);
@@ -4390,6 +5359,12 @@ pub const ICompositionAnimation3 = extern struct {
 };
 pub const ICompositionAnimation4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetExpressionReferenceParameter(self: *@This(), parameterName: ?HSTRING, source: *IAnimationObject) core.HResult!void {
         const _c = self.vtable.SetExpressionReferenceParameter(@ptrCast(self), parameterName, source);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4411,6 +5386,12 @@ pub const ICompositionAnimation4 = extern struct {
 };
 pub const ICompositionAnimationBase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionAnimationBase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1c2c2999-e818-48d3-a6dd-d78c82f8ace9";
@@ -4427,6 +5408,12 @@ pub const ICompositionAnimationBase = extern struct {
 };
 pub const ICompositionAnimationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionAnimationFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "10f6c4fb-6e51-4c25-bbd3-586a9bec3ef4";
@@ -4443,6 +5430,12 @@ pub const ICompositionAnimationFactory = extern struct {
 };
 pub const ICompositionAnimationGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Count(@ptrCast(self), &_r);
@@ -4481,6 +5474,12 @@ pub const ICompositionAnimationGroup = extern struct {
 };
 pub const ICompositionBackdropBrush = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionBackdropBrush";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c5acae58-3898-499e-8d7f-224e91286a5d";
@@ -4497,6 +5496,12 @@ pub const ICompositionBackdropBrush = extern struct {
 };
 pub const ICompositionBatchCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionBatchCompletedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "0d00dad0-9464-450a-a562-2e2698b0a812";
@@ -4513,6 +5518,12 @@ pub const ICompositionBatchCompletedEventArgs = extern struct {
 };
 pub const ICompositionBrush = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionBrush";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ab0d7608-30c0-40e9-b568-b60a6bd1fb46";
@@ -4529,6 +5540,12 @@ pub const ICompositionBrush = extern struct {
 };
 pub const ICompositionBrushFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionBrushFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "da53fb4c-4650-47c4-ad76-765379607ed6";
@@ -4545,6 +5562,12 @@ pub const ICompositionBrushFactory = extern struct {
 };
 pub const ICompositionCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AreEffectsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.AreEffectsSupported(@ptrCast(self), &_r);
@@ -4587,6 +5610,12 @@ pub const ICompositionCapabilities = extern struct {
 };
 pub const ICompositionCapabilitiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*CompositionCapabilities {
         var _r: *CompositionCapabilities = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -4610,6 +5639,12 @@ pub const ICompositionCapabilitiesStatics = extern struct {
 };
 pub const ICompositionClip = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionClip";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1ccd2a52-cfc7-4ace-9983-146bb8eb6a3c";
@@ -4626,6 +5661,12 @@ pub const ICompositionClip = extern struct {
 };
 pub const ICompositionClip2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnchorPoint(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_AnchorPoint(@ptrCast(self), &_r);
@@ -4726,6 +5767,12 @@ pub const ICompositionClip2 = extern struct {
 };
 pub const ICompositionClipFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionClipFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "b9484caf-20c7-4aed-ac4a-9c78ba1302cf";
@@ -4742,6 +5789,12 @@ pub const ICompositionClipFactory = extern struct {
 };
 pub const ICompositionColorBrush = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
@@ -4770,6 +5823,12 @@ pub const ICompositionColorBrush = extern struct {
 };
 pub const ICompositionColorGradientStop = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
@@ -4810,6 +5869,12 @@ pub const ICompositionColorGradientStop = extern struct {
 };
 pub const ICompositionColorGradientStopCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionColorGradientStopCollection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "9f1d20ec-7b04-4b1d-90bc-9fa32c0cfd26";
@@ -4826,6 +5891,12 @@ pub const ICompositionColorGradientStopCollection = extern struct {
 };
 pub const ICompositionCommitBatch = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsActive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsActive(@ptrCast(self), &_r);
@@ -4868,6 +5939,12 @@ pub const ICompositionCommitBatch = extern struct {
 };
 pub const ICompositionContainerShape = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShapes(self: *@This()) core.HResult!*CompositionShapeCollection {
         var _r: *CompositionShapeCollection = undefined;
         const _c = self.vtable.get_Shapes(@ptrCast(self), &_r);
@@ -4891,6 +5968,12 @@ pub const ICompositionContainerShape = extern struct {
 };
 pub const ICompositionDrawingSurface = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlphaMode(self: *@This()) core.HResult!DirectXAlphaMode {
         var _r: DirectXAlphaMode = undefined;
         const _c = self.vtable.get_AlphaMode(@ptrCast(self), &_r);
@@ -4928,6 +6011,12 @@ pub const ICompositionDrawingSurface = extern struct {
 };
 pub const ICompositionDrawingSurface2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSizeInt32(self: *@This()) core.HResult!SizeInt32 {
         var _r: SizeInt32 = undefined;
         const _c = self.vtable.get_SizeInt32(@ptrCast(self), &_r);
@@ -4976,6 +6065,12 @@ pub const ICompositionDrawingSurface2 = extern struct {
 };
 pub const ICompositionDrawingSurfaceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionDrawingSurfaceFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "9497b00a-312d-46b9-9db3-412fd79464c8";
@@ -4992,6 +6087,12 @@ pub const ICompositionDrawingSurfaceFactory = extern struct {
 };
 pub const ICompositionEasingFunction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionEasingFunction";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "5145e356-bf79-4ea8-8cc2-6b5b472e6c9a";
@@ -5008,6 +6109,12 @@ pub const ICompositionEasingFunction = extern struct {
 };
 pub const ICompositionEasingFunctionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionEasingFunctionFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "60840774-3da0-4949-8200-7206c00190a0";
@@ -5024,6 +6131,12 @@ pub const ICompositionEasingFunctionFactory = extern struct {
 };
 pub const ICompositionEasingFunctionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateCubicBezierEasingFunction(self: *@This(), owner: *Compositor, controlPoint1: Vector2, controlPoint2: Vector2) core.HResult!*CubicBezierEasingFunction {
         var _r: *CubicBezierEasingFunction = undefined;
         const _c = self.vtable.CreateCubicBezierEasingFunction(@ptrCast(self), owner, controlPoint1, controlPoint2, &_r);
@@ -5117,6 +6230,12 @@ pub const ICompositionEasingFunctionStatics = extern struct {
 };
 pub const ICompositionEffectBrush = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSourceParameter(self: *@This(), name: ?HSTRING) core.HResult!*CompositionBrush {
         var _r: *CompositionBrush = undefined;
         const _c = self.vtable.GetSourceParameter(@ptrCast(self), name, &_r);
@@ -5145,6 +6264,12 @@ pub const ICompositionEffectBrush = extern struct {
 };
 pub const ICompositionEffectFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateBrush(self: *@This()) core.HResult!*CompositionEffectBrush {
         var _r: *CompositionEffectBrush = undefined;
         const _c = self.vtable.CreateBrush(@ptrCast(self), &_r);
@@ -5182,6 +6307,12 @@ pub const ICompositionEffectFactory = extern struct {
 };
 pub const ICompositionEffectSourceParameter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -5205,6 +6336,12 @@ pub const ICompositionEffectSourceParameter = extern struct {
 };
 pub const ICompositionEffectSourceParameterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), name: ?HSTRING) core.HResult!*CompositionEffectSourceParameter {
         var _r: *CompositionEffectSourceParameter = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, &_r);
@@ -5228,6 +6365,12 @@ pub const ICompositionEffectSourceParameterFactory = extern struct {
 };
 pub const ICompositionEllipseGeometry = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCenter(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_Center(@ptrCast(self), &_r);
@@ -5268,6 +6411,12 @@ pub const ICompositionEllipseGeometry = extern struct {
 };
 pub const ICompositionGeometricClip = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGeometry(self: *@This()) core.HResult!*CompositionGeometry {
         var _r: *CompositionGeometry = undefined;
         const _c = self.vtable.get_Geometry(@ptrCast(self), &_r);
@@ -5308,6 +6457,12 @@ pub const ICompositionGeometricClip = extern struct {
 };
 pub const ICompositionGeometry = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTrimEnd(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_TrimEnd(@ptrCast(self), &_r);
@@ -5360,6 +6515,12 @@ pub const ICompositionGeometry = extern struct {
 };
 pub const ICompositionGeometryFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionGeometryFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "bffebfe1-8c25-480b-9f56-fed6b288055d";
@@ -5376,6 +6537,12 @@ pub const ICompositionGeometryFactory = extern struct {
 };
 pub const ICompositionGradientBrush = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnchorPoint(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_AnchorPoint(@ptrCast(self), &_r);
@@ -5507,6 +6674,12 @@ pub const ICompositionGradientBrush = extern struct {
 };
 pub const ICompositionGradientBrush2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMappingMode(self: *@This()) core.HResult!CompositionMappingMode {
         var _r: CompositionMappingMode = undefined;
         const _c = self.vtable.get_MappingMode(@ptrCast(self), &_r);
@@ -5535,6 +6708,12 @@ pub const ICompositionGradientBrush2 = extern struct {
 };
 pub const ICompositionGradientBrushFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionGradientBrushFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "56d765d7-f189-48c9-9c8d-94daf1bec010";
@@ -5551,6 +6730,12 @@ pub const ICompositionGradientBrushFactory = extern struct {
 };
 pub const ICompositionGraphicsDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateDrawingSurface(self: *@This(), sizePixels: Size, pixelFormat: DirectXPixelFormat, alphaMode: DirectXAlphaMode) core.HResult!*CompositionDrawingSurface {
         var _r: *CompositionDrawingSurface = undefined;
         const _c = self.vtable.CreateDrawingSurface(@ptrCast(self), sizePixels, pixelFormat, alphaMode, &_r);
@@ -5586,6 +6771,12 @@ pub const ICompositionGraphicsDevice = extern struct {
 };
 pub const ICompositionGraphicsDevice2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateDrawingSurface2(self: *@This(), sizePixels: SizeInt32, pixelFormat: DirectXPixelFormat, alphaMode: DirectXAlphaMode) core.HResult!*CompositionDrawingSurface {
         var _r: *CompositionDrawingSurface = undefined;
         const _c = self.vtable.CreateDrawingSurface2(@ptrCast(self), sizePixels, pixelFormat, alphaMode, &_r);
@@ -5616,6 +6807,12 @@ pub const ICompositionGraphicsDevice2 = extern struct {
 };
 pub const ICompositionGraphicsDevice3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMipmapSurface(self: *@This(), sizePixels: SizeInt32, pixelFormat: DirectXPixelFormat, alphaMode: DirectXAlphaMode) core.HResult!*CompositionMipmapSurface {
         var _r: *CompositionMipmapSurface = undefined;
         const _c = self.vtable.CreateMipmapSurface(@ptrCast(self), sizePixels, pixelFormat, alphaMode, &_r);
@@ -5644,6 +6841,12 @@ pub const ICompositionGraphicsDevice3 = extern struct {
 };
 pub const ICompositionGraphicsDevice4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CaptureAsync(self: *@This(), captureVisual: *Visual, size: SizeInt32, pixelFormat: DirectXPixelFormat, alphaMode: DirectXAlphaMode, sdrBoost: f32) core.HResult!*IAsyncOperation(ICompositionSurface) {
         var _r: *IAsyncOperation(ICompositionSurface) = undefined;
         const _c = self.vtable.CaptureAsync(@ptrCast(self), captureVisual, size, pixelFormat, alphaMode, sdrBoost, &_r);
@@ -5667,6 +6870,12 @@ pub const ICompositionGraphicsDevice4 = extern struct {
 };
 pub const ICompositionLight = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargets(self: *@This()) core.HResult!*VisualUnorderedCollection {
         var _r: *VisualUnorderedCollection = undefined;
         const _c = self.vtable.get_Targets(@ptrCast(self), &_r);
@@ -5690,6 +6899,12 @@ pub const ICompositionLight = extern struct {
 };
 pub const ICompositionLight2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExclusionsFromTargets(self: *@This()) core.HResult!*VisualUnorderedCollection {
         var _r: *VisualUnorderedCollection = undefined;
         const _c = self.vtable.get_ExclusionsFromTargets(@ptrCast(self), &_r);
@@ -5713,6 +6928,12 @@ pub const ICompositionLight2 = extern struct {
 };
 pub const ICompositionLight3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -5741,6 +6962,12 @@ pub const ICompositionLight3 = extern struct {
 };
 pub const ICompositionLightFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionLightFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "069cf306-da3c-4b44-838a-5e03d51ace55";
@@ -5757,6 +6984,12 @@ pub const ICompositionLightFactory = extern struct {
 };
 pub const ICompositionLineGeometry = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStart(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_Start(@ptrCast(self), &_r);
@@ -5797,6 +7030,12 @@ pub const ICompositionLineGeometry = extern struct {
 };
 pub const ICompositionLinearGradientBrush = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndPoint(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_EndPoint(@ptrCast(self), &_r);
@@ -5837,6 +7076,12 @@ pub const ICompositionLinearGradientBrush = extern struct {
 };
 pub const ICompositionMaskBrush = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMask(self: *@This()) core.HResult!*CompositionBrush {
         var _r: *CompositionBrush = undefined;
         const _c = self.vtable.get_Mask(@ptrCast(self), &_r);
@@ -5877,6 +7122,12 @@ pub const ICompositionMaskBrush = extern struct {
 };
 pub const ICompositionMipmapSurface = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLevelCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_LevelCount(@ptrCast(self), &_r);
@@ -5928,6 +7179,12 @@ pub const ICompositionMipmapSurface = extern struct {
 };
 pub const ICompositionNineGridBrush = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBottomInset(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_BottomInset(@ptrCast(self), &_r);
@@ -6084,6 +7341,12 @@ pub const ICompositionNineGridBrush = extern struct {
 };
 pub const ICompositionObject = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompositor(self: *@This()) core.HResult!*Compositor {
         var _r: *Compositor = undefined;
         const _c = self.vtable.get_Compositor(@ptrCast(self), &_r);
@@ -6131,6 +7394,12 @@ pub const ICompositionObject = extern struct {
 };
 pub const ICompositionObject2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getComment(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Comment(@ptrCast(self), &_r);
@@ -6181,6 +7450,12 @@ pub const ICompositionObject2 = extern struct {
 };
 pub const ICompositionObject3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDispatcherQueue(self: *@This()) core.HResult!*DispatcherQueue {
         var _r: *DispatcherQueue = undefined;
         const _c = self.vtable.get_DispatcherQueue(@ptrCast(self), &_r);
@@ -6204,6 +7479,12 @@ pub const ICompositionObject3 = extern struct {
 };
 pub const ICompositionObject4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetAnimationController(self: *@This(), propertyName: ?HSTRING) core.HResult!*AnimationController {
         var _r: *AnimationController = undefined;
         const _c = self.vtable.TryGetAnimationController(@ptrCast(self), propertyName, &_r);
@@ -6227,6 +7508,12 @@ pub const ICompositionObject4 = extern struct {
 };
 pub const ICompositionObject5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartAnimation(self: *@This(), propertyName: ?HSTRING, animation: *CompositionAnimation, animationController: *AnimationController) core.HResult!void {
         const _c = self.vtable.StartAnimation(@ptrCast(self), propertyName, animation, animationController);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6248,6 +7535,12 @@ pub const ICompositionObject5 = extern struct {
 };
 pub const ICompositionObjectFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionObjectFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "51205c5e-558a-4f2a-8d39-37bfe1e20ddd";
@@ -6264,6 +7557,12 @@ pub const ICompositionObjectFactory = extern struct {
 };
 pub const ICompositionObjectStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartAnimationWithIAnimationObject(self: *@This(), target: *IAnimationObject, propertyName: ?HSTRING, animation: *CompositionAnimation) core.HResult!void {
         const _c = self.vtable.StartAnimationWithIAnimationObject(@ptrCast(self), target, propertyName, animation);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6290,6 +7589,12 @@ pub const ICompositionObjectStatics = extern struct {
 };
 pub const ICompositionPath = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionPath";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "66da1d5f-2e10-4f22-8a06-0a8151919e60";
@@ -6306,6 +7611,12 @@ pub const ICompositionPath = extern struct {
 };
 pub const ICompositionPathFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), source: *IGeometrySource2D) core.HResult!*CompositionPath {
         var _r: *CompositionPath = undefined;
         const _c = self.vtable.Create(@ptrCast(self), source, &_r);
@@ -6329,6 +7640,12 @@ pub const ICompositionPathFactory = extern struct {
 };
 pub const ICompositionPathGeometry = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPath(self: *@This()) core.HResult!*CompositionPath {
         var _r: *CompositionPath = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
@@ -6357,6 +7674,12 @@ pub const ICompositionPathGeometry = extern struct {
 };
 pub const ICompositionProjectedShadow = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBlurRadiusMultiplier(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_BlurRadiusMultiplier(@ptrCast(self), &_r);
@@ -6435,6 +7758,12 @@ pub const ICompositionProjectedShadow = extern struct {
 };
 pub const ICompositionProjectedShadowCaster = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBrush(self: *@This()) core.HResult!*CompositionBrush {
         var _r: *CompositionBrush = undefined;
         const _c = self.vtable.get_Brush(@ptrCast(self), &_r);
@@ -6475,6 +7804,12 @@ pub const ICompositionProjectedShadowCaster = extern struct {
 };
 pub const ICompositionProjectedShadowCasterCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Count(@ptrCast(self), &_r);
@@ -6528,6 +7863,12 @@ pub const ICompositionProjectedShadowCasterCollection = extern struct {
 };
 pub const ICompositionProjectedShadowCasterCollectionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxRespectedCasters(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MaxRespectedCasters(@ptrCast(self), &_r);
@@ -6551,6 +7892,12 @@ pub const ICompositionProjectedShadowCasterCollectionStatics = extern struct {
 };
 pub const ICompositionProjectedShadowReceiver = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReceivingVisual(self: *@This()) core.HResult!*Visual {
         var _r: *Visual = undefined;
         const _c = self.vtable.get_ReceivingVisual(@ptrCast(self), &_r);
@@ -6579,6 +7926,12 @@ pub const ICompositionProjectedShadowReceiver = extern struct {
 };
 pub const ICompositionProjectedShadowReceiverUnorderedCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), value: *CompositionProjectedShadowReceiver) core.HResult!void {
         const _c = self.vtable.Add(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6617,6 +7970,12 @@ pub const ICompositionProjectedShadowReceiverUnorderedCollection = extern struct
 };
 pub const ICompositionPropertySet = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertColor(self: *@This(), propertyName: ?HSTRING, value: Color) core.HResult!void {
         const _c = self.vtable.InsertColor(@ptrCast(self), propertyName, value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6729,6 +8088,12 @@ pub const ICompositionPropertySet = extern struct {
 };
 pub const ICompositionPropertySet2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertBoolean(self: *@This(), propertyName: ?HSTRING, value: bool) core.HResult!void {
         const _c = self.vtable.InsertBoolean(@ptrCast(self), propertyName, value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6757,6 +8122,12 @@ pub const ICompositionPropertySet2 = extern struct {
 };
 pub const ICompositionRadialGradientBrush = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEllipseCenter(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_EllipseCenter(@ptrCast(self), &_r);
@@ -6809,6 +8180,12 @@ pub const ICompositionRadialGradientBrush = extern struct {
 };
 pub const ICompositionRectangleGeometry = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOffset(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_Offset(@ptrCast(self), &_r);
@@ -6849,6 +8226,12 @@ pub const ICompositionRectangleGeometry = extern struct {
 };
 pub const ICompositionRoundedRectangleGeometry = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCornerRadius(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_CornerRadius(@ptrCast(self), &_r);
@@ -6901,6 +8284,12 @@ pub const ICompositionRoundedRectangleGeometry = extern struct {
 };
 pub const ICompositionScopedBatch = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsActive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsActive(@ptrCast(self), &_r);
@@ -6958,6 +8347,12 @@ pub const ICompositionScopedBatch = extern struct {
 };
 pub const ICompositionShadow = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionShadow";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "329e52e2-4335-49cc-b14a-37782d10f0c4";
@@ -6974,6 +8369,12 @@ pub const ICompositionShadow = extern struct {
 };
 pub const ICompositionShadowFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionShadowFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "221f492f-dcba-4b91-999e-1dc217a01530";
@@ -6990,6 +8391,12 @@ pub const ICompositionShadowFactory = extern struct {
 };
 pub const ICompositionShape = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCenterPoint(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_CenterPoint(@ptrCast(self), &_r);
@@ -7078,6 +8485,12 @@ pub const ICompositionShape = extern struct {
 };
 pub const ICompositionShapeFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionShapeFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1dfc36d0-b05a-44ef-82b0-12118bcd4cd0";
@@ -7094,6 +8507,12 @@ pub const ICompositionShapeFactory = extern struct {
 };
 pub const ICompositionSpriteShape = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFillBrush(self: *@This()) core.HResult!*CompositionBrush {
         var _r: *CompositionBrush = undefined;
         const _c = self.vtable.get_FillBrush(@ptrCast(self), &_r);
@@ -7249,6 +8668,12 @@ pub const ICompositionSpriteShape = extern struct {
 };
 pub const ICompositionSupportsSystemBackdrop = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSystemBackdrop(self: *@This()) core.HResult!*CompositionBrush {
         var _r: *CompositionBrush = undefined;
         const _c = self.vtable.get_SystemBackdrop(@ptrCast(self), &_r);
@@ -7277,6 +8702,12 @@ pub const ICompositionSupportsSystemBackdrop = extern struct {
 };
 pub const ICompositionSurface = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionSurface";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1527540d-42c7-47a6-a408-668f79a90dfb";
@@ -7293,6 +8724,12 @@ pub const ICompositionSurface = extern struct {
 };
 pub const ICompositionSurfaceBrush = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapInterpolationMode(self: *@This()) core.HResult!CompositionBitmapInterpolationMode {
         var _r: CompositionBitmapInterpolationMode = undefined;
         const _c = self.vtable.get_BitmapInterpolationMode(@ptrCast(self), &_r);
@@ -7369,6 +8806,12 @@ pub const ICompositionSurfaceBrush = extern struct {
 };
 pub const ICompositionSurfaceBrush2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnchorPoint(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_AnchorPoint(@ptrCast(self), &_r);
@@ -7469,6 +8912,12 @@ pub const ICompositionSurfaceBrush2 = extern struct {
 };
 pub const ICompositionSurfaceBrush3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSnapToPixels(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SnapToPixels(@ptrCast(self), &_r);
@@ -7497,6 +8946,12 @@ pub const ICompositionSurfaceBrush3 = extern struct {
 };
 pub const ICompositionSurfaceFacade = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetRealSurface(self: *@This()) core.HResult!*ICompositionSurface {
         var _r: *ICompositionSurface = undefined;
         const _c = self.vtable.GetRealSurface(@ptrCast(self), &_r);
@@ -7520,6 +8975,12 @@ pub const ICompositionSurfaceFacade = extern struct {
 };
 pub const ICompositionTarget = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRoot(self: *@This()) core.HResult!*Visual {
         var _r: *Visual = undefined;
         const _c = self.vtable.get_Root(@ptrCast(self), &_r);
@@ -7548,6 +9009,12 @@ pub const ICompositionTarget = extern struct {
 };
 pub const ICompositionTargetFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionTargetFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "93cd9d2b-8516-4b14-a8ce-f49e2119ec42";
@@ -7564,6 +9031,12 @@ pub const ICompositionTargetFactory = extern struct {
 };
 pub const ICompositionTexture = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceRect(self: *@This()) core.HResult!RectInt32 {
         var _r: RectInt32 = undefined;
         const _c = self.vtable.get_SourceRect(@ptrCast(self), &_r);
@@ -7616,6 +9089,12 @@ pub const ICompositionTexture = extern struct {
 };
 pub const ICompositionTextureFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionTextureFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "09d9523d-471c-5ab5-b053-b568ee46ebfb";
@@ -7632,6 +9111,12 @@ pub const ICompositionTextureFactory = extern struct {
 };
 pub const ICompositionTransform = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionTransform";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "7cd54529-fbed-4112-abc5-185906dd927c";
@@ -7648,6 +9133,12 @@ pub const ICompositionTransform = extern struct {
 };
 pub const ICompositionTransformFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionTransformFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "aaaeca26-c149-517a-8f72-6bff7a65ce08";
@@ -7664,6 +9155,12 @@ pub const ICompositionTransformFactory = extern struct {
 };
 pub const ICompositionViewBox = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontalAlignmentRatio(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_HorizontalAlignmentRatio(@ptrCast(self), &_r);
@@ -7740,6 +9237,12 @@ pub const ICompositionViewBox = extern struct {
 };
 pub const ICompositionVirtualDrawingSurface = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Trim(self: *@This(), rects: [*]RectInt32) core.HResult!void {
         const _c = self.vtable.Trim(@ptrCast(self), rects);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -7761,6 +9264,12 @@ pub const ICompositionVirtualDrawingSurface = extern struct {
 };
 pub const ICompositionVirtualDrawingSurfaceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionVirtualDrawingSurfaceFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "6766106c-d56b-4a49-b1df-5076a0620768";
@@ -7777,6 +9286,12 @@ pub const ICompositionVirtualDrawingSurfaceFactory = extern struct {
 };
 pub const ICompositionVisualSurface = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceVisual(self: *@This()) core.HResult!*Visual {
         var _r: *Visual = undefined;
         const _c = self.vtable.get_SourceVisual(@ptrCast(self), &_r);
@@ -7829,6 +9344,12 @@ pub const ICompositionVisualSurface = extern struct {
 };
 pub const ICompositor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateColorKeyFrameAnimation(self: *@This()) core.HResult!*ColorKeyFrameAnimation {
         var _r: *ColorKeyFrameAnimation = undefined;
         const _c = self.vtable.CreateColorKeyFrameAnimation(@ptrCast(self), &_r);
@@ -8013,6 +9534,12 @@ pub const ICompositor = extern struct {
 };
 pub const ICompositor2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAmbientLight(self: *@This()) core.HResult!*AmbientLight {
         var _r: *AmbientLight = undefined;
         const _c = self.vtable.CreateAmbientLight(@ptrCast(self), &_r);
@@ -8120,6 +9647,12 @@ pub const ICompositor2 = extern struct {
 };
 pub const ICompositor3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateHostBackdropBrush(self: *@This()) core.HResult!*CompositionBackdropBrush {
         var _r: *CompositionBackdropBrush = undefined;
         const _c = self.vtable.CreateHostBackdropBrush(@ptrCast(self), &_r);
@@ -8143,6 +9676,12 @@ pub const ICompositor3 = extern struct {
 };
 pub const ICompositor4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateColorGradientStop(self: *@This()) core.HResult!*CompositionColorGradientStop {
         var _r: *CompositionColorGradientStop = undefined;
         const _c = self.vtable.CreateColorGradientStop(@ptrCast(self), &_r);
@@ -8201,6 +9740,12 @@ pub const ICompositor4 = extern struct {
 };
 pub const ICompositor5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getComment(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Comment(@ptrCast(self), &_r);
@@ -8353,6 +9898,12 @@ pub const ICompositor5 = extern struct {
 };
 pub const ICompositor6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateGeometricClip(self: *@This()) core.HResult!*CompositionGeometricClip {
         var _r: *CompositionGeometricClip = undefined;
         const _c = self.vtable.CreateGeometricClip(@ptrCast(self), &_r);
@@ -8404,6 +9955,12 @@ pub const ICompositor6 = extern struct {
 };
 pub const ICompositor7 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDispatcherQueue(self: *@This()) core.HResult!*DispatcherQueue {
         var _r: *DispatcherQueue = undefined;
         const _c = self.vtable.get_DispatcherQueue(@ptrCast(self), &_r);
@@ -8455,6 +10012,12 @@ pub const ICompositor7 = extern struct {
 };
 pub const ICompositor8 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAnimationController(self: *@This()) core.HResult!*AnimationController {
         var _r: *AnimationController = undefined;
         const _c = self.vtable.CreateAnimationController(@ptrCast(self), &_r);
@@ -8478,6 +10041,12 @@ pub const ICompositor8 = extern struct {
 };
 pub const ICompositorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxGlobalPlaybackRate(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_MaxGlobalPlaybackRate(@ptrCast(self), &_r);
@@ -8508,6 +10077,12 @@ pub const ICompositorStatics = extern struct {
 };
 pub const ICompositorWithBlurredWallpaperBackdropBrush = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryCreateBlurredWallpaperBackdropBrush(self: *@This()) core.HResult!*CompositionBackdropBrush {
         var _r: *CompositionBackdropBrush = undefined;
         const _c = self.vtable.TryCreateBlurredWallpaperBackdropBrush(@ptrCast(self), &_r);
@@ -8531,6 +10106,12 @@ pub const ICompositorWithBlurredWallpaperBackdropBrush = extern struct {
 };
 pub const ICompositorWithProjectedShadow = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateProjectedShadowCaster(self: *@This()) core.HResult!*CompositionProjectedShadowCaster {
         var _r: *CompositionProjectedShadowCaster = undefined;
         const _c = self.vtable.CreateProjectedShadowCaster(@ptrCast(self), &_r);
@@ -8568,6 +10149,12 @@ pub const ICompositorWithProjectedShadow = extern struct {
 };
 pub const ICompositorWithRadialGradient = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateRadialGradientBrush(self: *@This()) core.HResult!*CompositionRadialGradientBrush {
         var _r: *CompositionRadialGradientBrush = undefined;
         const _c = self.vtable.CreateRadialGradientBrush(@ptrCast(self), &_r);
@@ -8591,6 +10178,12 @@ pub const ICompositorWithRadialGradient = extern struct {
 };
 pub const ICompositorWithVisualSurface = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateVisualSurface(self: *@This()) core.HResult!*CompositionVisualSurface {
         var _r: *CompositionVisualSurface = undefined;
         const _c = self.vtable.CreateVisualSurface(@ptrCast(self), &_r);
@@ -8614,6 +10207,12 @@ pub const ICompositorWithVisualSurface = extern struct {
 };
 pub const IContainerVisual = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChildren(self: *@This()) core.HResult!*VisualCollection {
         var _r: *VisualCollection = undefined;
         const _c = self.vtable.get_Children(@ptrCast(self), &_r);
@@ -8637,6 +10236,12 @@ pub const IContainerVisual = extern struct {
 };
 pub const IContainerVisualFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.IContainerVisualFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "0363a65b-c7da-4d9a-95f4-69b5c8df670b";
@@ -8653,6 +10258,12 @@ pub const IContainerVisualFactory = extern struct {
 };
 pub const ICubicBezierEasingFunction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControlPoint1(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_ControlPoint1(@ptrCast(self), &_r);
@@ -8683,6 +10294,12 @@ pub const ICubicBezierEasingFunction = extern struct {
 };
 pub const IDelegatedInkTrailVisual = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddTrailPoints(self: *@This(), inkPoints: [*]InkTrailPoint) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.AddTrailPoints(@ptrCast(self), inkPoints, &_r);
@@ -8723,6 +10340,12 @@ pub const IDelegatedInkTrailVisual = extern struct {
 };
 pub const IDelegatedInkTrailVisualStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), compositor: *Compositor) core.HResult!*DelegatedInkTrailVisual {
         var _r: *DelegatedInkTrailVisual = undefined;
         const _c = self.vtable.Create(@ptrCast(self), compositor, &_r);
@@ -8753,6 +10376,12 @@ pub const IDelegatedInkTrailVisualStatics = extern struct {
 };
 pub const IDistantLight = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
@@ -8805,6 +10434,12 @@ pub const IDistantLight = extern struct {
 };
 pub const IDistantLight2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIntensity(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Intensity(@ptrCast(self), &_r);
@@ -8833,6 +10468,12 @@ pub const IDistantLight2 = extern struct {
 };
 pub const IDropShadow = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBlurRadius(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_BlurRadius(@ptrCast(self), &_r);
@@ -8909,6 +10550,12 @@ pub const IDropShadow = extern struct {
 };
 pub const IDropShadow2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourcePolicy(self: *@This()) core.HResult!CompositionDropShadowSourcePolicy {
         var _r: CompositionDropShadowSourcePolicy = undefined;
         const _c = self.vtable.get_SourcePolicy(@ptrCast(self), &_r);
@@ -8937,6 +10584,12 @@ pub const IDropShadow2 = extern struct {
 };
 pub const IElasticEasingFunction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         var _r: CompositionEasingFunctionMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -8974,6 +10627,12 @@ pub const IElasticEasingFunction = extern struct {
 };
 pub const IExponentialEasingFunction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         var _r: CompositionEasingFunctionMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -9004,6 +10663,12 @@ pub const IExponentialEasingFunction = extern struct {
 };
 pub const IExpressionAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExpression(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Expression(@ptrCast(self), &_r);
@@ -9032,6 +10697,12 @@ pub const IExpressionAnimation = extern struct {
 };
 pub const IImplicitAnimationCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.IImplicitAnimationCollection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "0598a3ff-0a92-4c9d-a427-b25519250dbf";
@@ -9048,6 +10719,12 @@ pub const IImplicitAnimationCollection = extern struct {
 };
 pub const IInsetClip = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBottomInset(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_BottomInset(@ptrCast(self), &_r);
@@ -9112,6 +10789,12 @@ pub const IInsetClip = extern struct {
 };
 pub const IKeyFrameAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDelayTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_DelayTime(@ptrCast(self), &_r);
@@ -9205,6 +10888,12 @@ pub const IKeyFrameAnimation = extern struct {
 };
 pub const IKeyFrameAnimation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDirection(self: *@This()) core.HResult!AnimationDirection {
         var _r: AnimationDirection = undefined;
         const _c = self.vtable.get_Direction(@ptrCast(self), &_r);
@@ -9233,6 +10922,12 @@ pub const IKeyFrameAnimation2 = extern struct {
 };
 pub const IKeyFrameAnimation3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDelayBehavior(self: *@This()) core.HResult!AnimationDelayBehavior {
         var _r: AnimationDelayBehavior = undefined;
         const _c = self.vtable.get_DelayBehavior(@ptrCast(self), &_r);
@@ -9261,6 +10956,12 @@ pub const IKeyFrameAnimation3 = extern struct {
 };
 pub const IKeyFrameAnimationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.IKeyFrameAnimationFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "bf0803f8-712a-4fc1-8c87-970859ed8d2e";
@@ -9277,6 +10978,12 @@ pub const IKeyFrameAnimationFactory = extern struct {
 };
 pub const ILayerVisual = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEffect(self: *@This()) core.HResult!*CompositionEffectBrush {
         var _r: *CompositionEffectBrush = undefined;
         const _c = self.vtable.get_Effect(@ptrCast(self), &_r);
@@ -9305,6 +11012,12 @@ pub const ILayerVisual = extern struct {
 };
 pub const ILayerVisual2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShadow(self: *@This()) core.HResult!*CompositionShadow {
         var _r: *CompositionShadow = undefined;
         const _c = self.vtable.get_Shadow(@ptrCast(self), &_r);
@@ -9333,6 +11046,12 @@ pub const ILayerVisual2 = extern struct {
 };
 pub const ILinearEasingFunction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.ILinearEasingFunction";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "9400975a-c7a6-46b3-acf7-1a268a0a117d";
@@ -9349,6 +11068,12 @@ pub const ILinearEasingFunction = extern struct {
 };
 pub const INaturalMotionAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDelayBehavior(self: *@This()) core.HResult!AnimationDelayBehavior {
         var _r: AnimationDelayBehavior = undefined;
         const _c = self.vtable.get_DelayBehavior(@ptrCast(self), &_r);
@@ -9401,6 +11126,12 @@ pub const INaturalMotionAnimation = extern struct {
 };
 pub const INaturalMotionAnimationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.INaturalMotionAnimationFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "f53acb06-cf6a-4387-a3fe-5221f3e7e0e0";
@@ -9417,6 +11148,12 @@ pub const INaturalMotionAnimationFactory = extern struct {
 };
 pub const IPathKeyFrameAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, path: *CompositionPath) core.HResult!void {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, path);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -9443,6 +11180,12 @@ pub const IPathKeyFrameAnimation = extern struct {
 };
 pub const IPointLight = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
@@ -9531,6 +11274,12 @@ pub const IPointLight = extern struct {
 };
 pub const IPointLight2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIntensity(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Intensity(@ptrCast(self), &_r);
@@ -9559,6 +11308,12 @@ pub const IPointLight2 = extern struct {
 };
 pub const IPointLight3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinAttenuationCutoff(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_MinAttenuationCutoff(@ptrCast(self), &_r);
@@ -9599,6 +11354,12 @@ pub const IPointLight3 = extern struct {
 };
 pub const IPowerEasingFunction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         var _r: CompositionEasingFunctionMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -9629,6 +11390,12 @@ pub const IPowerEasingFunction = extern struct {
 };
 pub const IQuaternionKeyFrameAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Quaternion) core.HResult!void {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -9655,6 +11422,12 @@ pub const IQuaternionKeyFrameAnimation = extern struct {
 };
 pub const IRectangleClip = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBottom(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Bottom(@ptrCast(self), &_r);
@@ -9767,6 +11540,12 @@ pub const IRectangleClip = extern struct {
 };
 pub const IRedirectVisual = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*Visual {
         var _r: *Visual = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
@@ -9795,6 +11574,12 @@ pub const IRedirectVisual = extern struct {
 };
 pub const IRenderingDeviceReplacedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGraphicsDevice(self: *@This()) core.HResult!*CompositionGraphicsDevice {
         var _r: *CompositionGraphicsDevice = undefined;
         const _c = self.vtable.get_GraphicsDevice(@ptrCast(self), &_r);
@@ -9818,6 +11603,12 @@ pub const IRenderingDeviceReplacedEventArgs = extern struct {
 };
 pub const IScalarKeyFrameAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: f32) core.HResult!void {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -9844,6 +11635,12 @@ pub const IScalarKeyFrameAnimation = extern struct {
 };
 pub const IScalarNaturalMotionAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFinalValue(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_FinalValue(@ptrCast(self), &_r);
@@ -9896,6 +11693,12 @@ pub const IScalarNaturalMotionAnimation = extern struct {
 };
 pub const IScalarNaturalMotionAnimationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.IScalarNaturalMotionAnimationFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "835aa4fc-671c-41dd-af48-ae8def8b1529";
@@ -9912,6 +11715,12 @@ pub const IScalarNaturalMotionAnimationFactory = extern struct {
 };
 pub const IShapeVisual = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShapes(self: *@This()) core.HResult!*CompositionShapeCollection {
         var _r: *CompositionShapeCollection = undefined;
         const _c = self.vtable.get_Shapes(@ptrCast(self), &_r);
@@ -9947,6 +11756,12 @@ pub const IShapeVisual = extern struct {
 };
 pub const ISineEasingFunction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         var _r: CompositionEasingFunctionMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -9970,6 +11785,12 @@ pub const ISineEasingFunction = extern struct {
 };
 pub const ISpotLight = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConstantAttenuation(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_ConstantAttenuation(@ptrCast(self), &_r);
@@ -10130,6 +11951,12 @@ pub const ISpotLight = extern struct {
 };
 pub const ISpotLight2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInnerConeIntensity(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_InnerConeIntensity(@ptrCast(self), &_r);
@@ -10170,6 +11997,12 @@ pub const ISpotLight2 = extern struct {
 };
 pub const ISpotLight3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinAttenuationCutoff(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_MinAttenuationCutoff(@ptrCast(self), &_r);
@@ -10210,6 +12043,12 @@ pub const ISpotLight3 = extern struct {
 };
 pub const ISpringScalarNaturalMotionAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDampingRatio(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_DampingRatio(@ptrCast(self), &_r);
@@ -10250,6 +12089,12 @@ pub const ISpringScalarNaturalMotionAnimation = extern struct {
 };
 pub const ISpringVector2NaturalMotionAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDampingRatio(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_DampingRatio(@ptrCast(self), &_r);
@@ -10290,6 +12135,12 @@ pub const ISpringVector2NaturalMotionAnimation = extern struct {
 };
 pub const ISpringVector3NaturalMotionAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDampingRatio(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_DampingRatio(@ptrCast(self), &_r);
@@ -10330,6 +12181,12 @@ pub const ISpringVector3NaturalMotionAnimation = extern struct {
 };
 pub const ISpriteVisual = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBrush(self: *@This()) core.HResult!*CompositionBrush {
         var _r: *CompositionBrush = undefined;
         const _c = self.vtable.get_Brush(@ptrCast(self), &_r);
@@ -10358,6 +12215,12 @@ pub const ISpriteVisual = extern struct {
 };
 pub const ISpriteVisual2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShadow(self: *@This()) core.HResult!*CompositionShadow {
         var _r: *CompositionShadow = undefined;
         const _c = self.vtable.get_Shadow(@ptrCast(self), &_r);
@@ -10386,6 +12249,12 @@ pub const ISpriteVisual2 = extern struct {
 };
 pub const IStepEasingFunction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFinalStep(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_FinalStep(@ptrCast(self), &_r);
@@ -10462,6 +12331,12 @@ pub const IStepEasingFunction = extern struct {
 };
 pub const IVector2KeyFrameAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Vector2) core.HResult!void {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -10488,6 +12363,12 @@ pub const IVector2KeyFrameAnimation = extern struct {
 };
 pub const IVector2NaturalMotionAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFinalValue(self: *@This()) core.HResult!*IReference(Vector2) {
         var _r: *IReference(Vector2) = undefined;
         const _c = self.vtable.get_FinalValue(@ptrCast(self), &_r);
@@ -10540,6 +12421,12 @@ pub const IVector2NaturalMotionAnimation = extern struct {
 };
 pub const IVector2NaturalMotionAnimationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.IVector2NaturalMotionAnimationFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "8c74ff61-0761-48a2-bddb-6afcc52b89d8";
@@ -10556,6 +12443,12 @@ pub const IVector2NaturalMotionAnimationFactory = extern struct {
 };
 pub const IVector3KeyFrameAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Vector3) core.HResult!void {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -10582,6 +12475,12 @@ pub const IVector3KeyFrameAnimation = extern struct {
 };
 pub const IVector3NaturalMotionAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFinalValue(self: *@This()) core.HResult!*IReference(Vector3) {
         var _r: *IReference(Vector3) = undefined;
         const _c = self.vtable.get_FinalValue(@ptrCast(self), &_r);
@@ -10634,6 +12533,12 @@ pub const IVector3NaturalMotionAnimation = extern struct {
 };
 pub const IVector3NaturalMotionAnimationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.IVector3NaturalMotionAnimationFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "21a81d2f-0880-457b-ac87-b609018c876d";
@@ -10650,6 +12555,12 @@ pub const IVector3NaturalMotionAnimationFactory = extern struct {
 };
 pub const IVector4KeyFrameAnimation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Vector4) core.HResult!void {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -10676,6 +12587,12 @@ pub const IVector4KeyFrameAnimation = extern struct {
 };
 pub const IVisual = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnchorPoint(self: *@This()) core.HResult!Vector2 {
         var _r: Vector2 = undefined;
         const _c = self.vtable.get_AnchorPoint(@ptrCast(self), &_r);
@@ -10891,6 +12808,12 @@ pub const IVisual = extern struct {
 };
 pub const IVisual2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParentForTransform(self: *@This()) core.HResult!*Visual {
         var _r: *Visual = undefined;
         const _c = self.vtable.get_ParentForTransform(@ptrCast(self), &_r);
@@ -10943,6 +12866,12 @@ pub const IVisual2 = extern struct {
 };
 pub const IVisual3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsHitTestVisible(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsHitTestVisible(@ptrCast(self), &_r);
@@ -10971,6 +12900,12 @@ pub const IVisual3 = extern struct {
 };
 pub const IVisual4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPixelSnappingEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPixelSnappingEnabled(@ptrCast(self), &_r);
@@ -10999,6 +12934,12 @@ pub const IVisual4 = extern struct {
 };
 pub const IVisualCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Count(@ptrCast(self), &_r);
@@ -11052,6 +12993,12 @@ pub const IVisualCollection = extern struct {
 };
 pub const IVisualElement = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.IVisualElement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "01e64612-1d82-42f4-8e3f-a722ded33fc7";
@@ -11068,6 +13015,12 @@ pub const IVisualElement = extern struct {
 };
 pub const IVisualElement2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetVisualInternal(self: *@This()) core.HResult!*Visual {
         var _r: *Visual = undefined;
         const _c = self.vtable.GetVisualInternal(@ptrCast(self), &_r);
@@ -11091,6 +13044,12 @@ pub const IVisualElement2 = extern struct {
 };
 pub const IVisualFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.IVisualFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ad0ff93e-b502-4eb5-87b4-9a38a71d0137";
@@ -11107,6 +13066,12 @@ pub const IVisualFactory = extern struct {
 };
 pub const IVisualUnorderedCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Count(@ptrCast(self), &_r);
@@ -11145,6 +13110,18 @@ pub const IVisualUnorderedCollection = extern struct {
 };
 pub const ImplicitAnimationCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(?HSTRING,ICompositionAnimationBase)) {
         var this: ?*IIterable(IKeyValuePair(?HSTRING,ICompositionAnimationBase)) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -11181,6 +13158,18 @@ pub const ImplicitAnimationCollection = extern struct {
 };
 pub const InitialValueExpressionCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IMap(?HSTRING,?HSTRING) = @ptrCast(self);
         return try this.getSize();
@@ -11212,6 +13201,18 @@ pub const InkTrailPoint = extern struct {
 };
 pub const InsetClip = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBottomInset(self: *@This()) core.HResult!f32 {
         const this: *IInsetClip = @ptrCast(self);
         return try this.getBottomInset();
@@ -11252,6 +13253,18 @@ pub const InsetClip = extern struct {
 };
 pub const LayerVisual = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEffect(self: *@This()) core.HResult!*CompositionEffectBrush {
         const this: *ILayerVisual = @ptrCast(self);
         return try this.getEffect();
@@ -11282,6 +13295,18 @@ pub const LayerVisual = extern struct {
 };
 pub const LinearEasingFunction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Composition.LinearEasingFunction";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ILinearEasingFunction.GUID;
@@ -11290,6 +13315,18 @@ pub const LinearEasingFunction = extern struct {
 };
 pub const PathKeyFrameAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, path: *CompositionPath) core.HResult!void {
         const this: *IPathKeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, path);
@@ -11306,6 +13343,18 @@ pub const PathKeyFrameAnimation = extern struct {
 };
 pub const PointLight = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         const this: *IPointLight = @ptrCast(self);
         return try this.getColor();
@@ -11404,6 +13453,18 @@ pub const PointLight = extern struct {
 };
 pub const PowerEasingFunction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         const this: *IPowerEasingFunction = @ptrCast(self);
         return try this.getMode();
@@ -11420,6 +13481,18 @@ pub const PowerEasingFunction = extern struct {
 };
 pub const QuaternionKeyFrameAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Quaternion) core.HResult!void {
         const this: *IQuaternionKeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
@@ -11436,6 +13509,18 @@ pub const QuaternionKeyFrameAnimation = extern struct {
 };
 pub const RectangleClip = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBottom(self: *@This()) core.HResult!f32 {
         const this: *IRectangleClip = @ptrCast(self);
         return try this.getBottom();
@@ -11508,6 +13593,18 @@ pub const RectangleClip = extern struct {
 };
 pub const RedirectVisual = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*Visual {
         const this: *IRedirectVisual = @ptrCast(self);
         return try this.getSource();
@@ -11524,6 +13621,18 @@ pub const RedirectVisual = extern struct {
 };
 pub const RenderingDeviceReplacedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGraphicsDevice(self: *@This()) core.HResult!*CompositionGraphicsDevice {
         const this: *IRenderingDeviceReplacedEventArgs = @ptrCast(self);
         return try this.getGraphicsDevice();
@@ -11536,6 +13645,18 @@ pub const RenderingDeviceReplacedEventArgs = extern struct {
 };
 pub const ScalarKeyFrameAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: f32) core.HResult!void {
         const this: *IScalarKeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
@@ -11552,6 +13673,18 @@ pub const ScalarKeyFrameAnimation = extern struct {
 };
 pub const ShapeVisual = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShapes(self: *@This()) core.HResult!*CompositionShapeCollection {
         const this: *IShapeVisual = @ptrCast(self);
         return try this.getShapes();
@@ -11572,6 +13705,18 @@ pub const ShapeVisual = extern struct {
 };
 pub const SineEasingFunction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!CompositionEasingFunctionMode {
         const this: *ISineEasingFunction = @ptrCast(self);
         return try this.getMode();
@@ -11584,6 +13729,18 @@ pub const SineEasingFunction = extern struct {
 };
 pub const SpotLight = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConstantAttenuation(self: *@This()) core.HResult!f32 {
         const this: *ISpotLight = @ptrCast(self);
         return try this.getConstantAttenuation();
@@ -11744,6 +13901,18 @@ pub const SpotLight = extern struct {
 };
 pub const SpringScalarNaturalMotionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDampingRatio(self: *@This()) core.HResult!f32 {
         const this: *ISpringScalarNaturalMotionAnimation = @ptrCast(self);
         return try this.getDampingRatio();
@@ -11768,6 +13937,18 @@ pub const SpringScalarNaturalMotionAnimation = extern struct {
 };
 pub const SpringVector2NaturalMotionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDampingRatio(self: *@This()) core.HResult!f32 {
         const this: *ISpringVector2NaturalMotionAnimation = @ptrCast(self);
         return try this.getDampingRatio();
@@ -11792,6 +13973,18 @@ pub const SpringVector2NaturalMotionAnimation = extern struct {
 };
 pub const SpringVector3NaturalMotionAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDampingRatio(self: *@This()) core.HResult!f32 {
         const this: *ISpringVector3NaturalMotionAnimation = @ptrCast(self);
         return try this.getDampingRatio();
@@ -11816,6 +14009,18 @@ pub const SpringVector3NaturalMotionAnimation = extern struct {
 };
 pub const SpriteVisual = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBrush(self: *@This()) core.HResult!*CompositionBrush {
         const this: *ISpriteVisual = @ptrCast(self);
         return try this.getBrush();
@@ -11846,6 +14051,18 @@ pub const SpriteVisual = extern struct {
 };
 pub const StepEasingFunction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFinalStep(self: *@This()) core.HResult!i32 {
         const this: *IStepEasingFunction = @ptrCast(self);
         return try this.getFinalStep();
@@ -11894,6 +14111,18 @@ pub const StepEasingFunction = extern struct {
 };
 pub const Vector2KeyFrameAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Vector2) core.HResult!void {
         const this: *IVector2KeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
@@ -11910,6 +14139,18 @@ pub const Vector2KeyFrameAnimation = extern struct {
 };
 pub const Vector3KeyFrameAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Vector3) core.HResult!void {
         const this: *IVector3KeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
@@ -11926,6 +14167,18 @@ pub const Vector3KeyFrameAnimation = extern struct {
 };
 pub const Vector4KeyFrameAnimation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Vector4) core.HResult!void {
         const this: *IVector4KeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
@@ -11942,6 +14195,18 @@ pub const Vector4KeyFrameAnimation = extern struct {
 };
 pub const VisualCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCount(self: *@This()) core.HResult!i32 {
         const this: *IVisualCollection = @ptrCast(self);
         return try this.getCount();
@@ -11985,6 +14250,18 @@ pub const VisualCollection = extern struct {
 };
 pub const VisualUnorderedCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCount(self: *@This()) core.HResult!i32 {
         const this: *IVisualUnorderedCollection = @ptrCast(self);
         return try this.getCount();

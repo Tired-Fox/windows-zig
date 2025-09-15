@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IWebAuthenticationBrokerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AuthenticateAsyncWithCallbackUri(self: *@This(), options: WebAuthenticationOptions, requestUri: *Uri, callbackUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         var _r: *IAsyncOperation(WebAuthenticationResult) = undefined;
         const _c = self.vtable.AuthenticateAsyncWithCallbackUri(@ptrCast(self), options, requestUri, callbackUri, &_r);
@@ -38,6 +44,12 @@ pub const IWebAuthenticationBrokerStatics = extern struct {
 };
 pub const IWebAuthenticationBrokerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AuthenticateAndContinue(self: *@This(), requestUri: *Uri) core.HResult!void {
         const _c = self.vtable.AuthenticateAndContinue(@ptrCast(self), requestUri);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -83,6 +95,12 @@ pub const IWebAuthenticationBrokerStatics2 = extern struct {
 };
 pub const IWebAuthenticationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResponseData(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResponseData(@ptrCast(self), &_r);
@@ -125,6 +143,15 @@ pub const TokenBindingKeyType = enum(i32) {
 };
 pub const WebAuthenticationBroker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -174,6 +201,18 @@ pub const WebAuthenticationOptions = enum(i32) {
 };
 pub const WebAuthenticationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResponseData(self: *@This()) core.HResult!?HSTRING {
         const this: *IWebAuthenticationResult = @ptrCast(self);
         return try this.getResponseData();

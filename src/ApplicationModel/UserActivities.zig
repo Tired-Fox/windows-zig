@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IUserActivity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!UserActivityState {
         var _r: UserActivityState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -112,6 +118,12 @@ pub const IUserActivity = extern struct {
 };
 pub const IUserActivity2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.ToJson(@ptrCast(self), &_r);
@@ -135,6 +147,12 @@ pub const IUserActivity2 = extern struct {
 };
 pub const IUserActivity3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsRoamable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsRoamable(@ptrCast(self), &_r);
@@ -163,6 +181,12 @@ pub const IUserActivity3 = extern struct {
 };
 pub const IUserActivityAttribution = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIconUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_IconUri(@ptrCast(self), &_r);
@@ -215,6 +239,12 @@ pub const IUserActivityAttribution = extern struct {
 };
 pub const IUserActivityAttributionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithUri(self: *@This(), iconUri: *Uri) core.HResult!*UserActivityAttribution {
         var _r: *UserActivityAttribution = undefined;
         const _c = self.vtable.CreateWithUri(@ptrCast(self), iconUri, &_r);
@@ -238,6 +268,12 @@ pub const IUserActivityAttributionFactory = extern struct {
 };
 pub const IUserActivityChannel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetOrCreateUserActivityAsync(self: *@This(), activityId: ?HSTRING) core.HResult!*IAsyncOperation(UserActivity) {
         var _r: *IAsyncOperation(UserActivity) = undefined;
         const _c = self.vtable.GetOrCreateUserActivityAsync(@ptrCast(self), activityId, &_r);
@@ -275,6 +311,12 @@ pub const IUserActivityChannel = extern struct {
 };
 pub const IUserActivityChannel2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetRecentUserActivitiesAsync(self: *@This(), maxUniqueActivities: i32) core.HResult!*IAsyncOperation(IVector(UserActivitySessionHistoryItem)) {
         var _r: *IAsyncOperation(IVector(UserActivitySessionHistoryItem)) = undefined;
         const _c = self.vtable.GetRecentUserActivitiesAsync(@ptrCast(self), maxUniqueActivities, &_r);
@@ -305,6 +347,12 @@ pub const IUserActivityChannel2 = extern struct {
 };
 pub const IUserActivityChannelStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*UserActivityChannel {
         var _r: *UserActivityChannel = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -328,6 +376,12 @@ pub const IUserActivityChannelStatics = extern struct {
 };
 pub const IUserActivityChannelStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DisableAutoSessionCreation(self: *@This()) core.HResult!void {
         const _c = self.vtable.DisableAutoSessionCreation(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -356,6 +410,12 @@ pub const IUserActivityChannelStatics2 = extern struct {
 };
 pub const IUserActivityChannelStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForUser(self: *@This(), user: *User) core.HResult!*UserActivityChannel {
         var _r: *UserActivityChannel = undefined;
         const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
@@ -379,6 +439,12 @@ pub const IUserActivityChannelStatics3 = extern struct {
 };
 pub const IUserActivityContentInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.ToJson(@ptrCast(self), &_r);
@@ -402,6 +468,12 @@ pub const IUserActivityContentInfo = extern struct {
 };
 pub const IUserActivityContentInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromJson(self: *@This(), value: ?HSTRING) core.HResult!*UserActivityContentInfo {
         var _r: *UserActivityContentInfo = undefined;
         const _c = self.vtable.FromJson(@ptrCast(self), value, &_r);
@@ -425,6 +497,12 @@ pub const IUserActivityContentInfoStatics = extern struct {
 };
 pub const IUserActivityFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithActivityId(self: *@This(), activityId: ?HSTRING) core.HResult!*UserActivity {
         var _r: *UserActivity = undefined;
         const _c = self.vtable.CreateWithActivityId(@ptrCast(self), activityId, &_r);
@@ -448,6 +526,12 @@ pub const IUserActivityFactory = extern struct {
 };
 pub const IUserActivityRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetUserActivity(self: *@This(), activity: *UserActivity) core.HResult!void {
         const _c = self.vtable.SetUserActivity(@ptrCast(self), activity);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -469,6 +553,12 @@ pub const IUserActivityRequest = extern struct {
 };
 pub const IUserActivityRequestManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addUserActivityRequested(self: *@This(), handler: *TypedEventHandler(UserActivityRequestManager,UserActivityRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_UserActivityRequested(@ptrCast(self), handler, &_r);
@@ -497,6 +587,12 @@ pub const IUserActivityRequestManager = extern struct {
 };
 pub const IUserActivityRequestManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*UserActivityRequestManager {
         var _r: *UserActivityRequestManager = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -520,6 +616,12 @@ pub const IUserActivityRequestManagerStatics = extern struct {
 };
 pub const IUserActivityRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*UserActivityRequest {
         var _r: *UserActivityRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -550,6 +652,12 @@ pub const IUserActivityRequestedEventArgs = extern struct {
 };
 pub const IUserActivitySession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ActivityId(@ptrCast(self), &_r);
@@ -573,6 +681,12 @@ pub const IUserActivitySession = extern struct {
 };
 pub const IUserActivitySessionHistoryItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserActivity(self: *@This()) core.HResult!*UserActivity {
         var _r: *UserActivity = undefined;
         const _c = self.vtable.get_UserActivity(@ptrCast(self), &_r);
@@ -610,6 +724,12 @@ pub const IUserActivitySessionHistoryItem = extern struct {
 };
 pub const IUserActivityStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryParseFromJson(self: *@This(), json: ?HSTRING) core.HResult!*UserActivity {
         var _r: *UserActivity = undefined;
         const _c = self.vtable.TryParseFromJson(@ptrCast(self), json, &_r);
@@ -647,6 +767,12 @@ pub const IUserActivityStatics = extern struct {
 };
 pub const IUserActivityVisualElements = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
@@ -723,6 +849,12 @@ pub const IUserActivityVisualElements = extern struct {
 };
 pub const IUserActivityVisualElements2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAttributionDisplayText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AttributionDisplayText(@ptrCast(self), &_r);
@@ -751,6 +883,18 @@ pub const IUserActivityVisualElements2 = extern struct {
 };
 pub const UserActivity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!UserActivityState {
         const this: *IUserActivity = @ptrCast(self);
         return try this.getState();
@@ -832,9 +976,6 @@ pub const UserActivity = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsRoamable(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWithActivityId(activityId: ?HSTRING) core.HResult!*UserActivity {
         const _f = try @This()._IUserActivityFactoryCache.get();
         return try _f.CreateWithActivityId(activityId);
@@ -861,6 +1002,18 @@ pub const UserActivity = extern struct {
 };
 pub const UserActivityAttribution = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIconUri(self: *@This()) core.HResult!*Uri {
         const this: *IUserActivityAttribution = @ptrCast(self);
         return try this.getIconUri();
@@ -885,9 +1038,6 @@ pub const UserActivityAttribution = extern struct {
         const this: *IUserActivityAttribution = @ptrCast(self);
         return try this.putAddImageQuery(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IUserActivityAttribution.IID)));
@@ -906,6 +1056,18 @@ pub const UserActivityAttribution = extern struct {
 };
 pub const UserActivityChannel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetOrCreateUserActivityAsync(self: *@This(), activityId: ?HSTRING) core.HResult!*IAsyncOperation(UserActivity) {
         const this: *IUserActivityChannel = @ptrCast(self);
         return try this.GetOrCreateUserActivityAsync(activityId);
@@ -931,9 +1093,6 @@ pub const UserActivityChannel = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserActivityChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSessionHistoryItemsForUserActivityAsync(activityId, startTime);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForUser(user: *User) core.HResult!*UserActivityChannel {
         const _f = try @This()._IUserActivityChannelStatics3Cache.get();
@@ -962,12 +1121,21 @@ pub const UserActivityChannel = extern struct {
 };
 pub const UserActivityContentInfo = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
-        const this: *IUserActivityContentInfo = @ptrCast(self);
-        return try this.ToJson();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn ToJson(self: *@This()) core.HResult!?HSTRING {
+        const this: *IUserActivityContentInfo = @ptrCast(self);
+        return try this.ToJson();
     }
     pub fn FromJson(value: ?HSTRING) core.HResult!*UserActivityContentInfo {
         const _f = try @This()._IUserActivityContentInfoStaticsCache.get();
@@ -982,6 +1150,18 @@ pub const UserActivityContentInfo = extern struct {
 };
 pub const UserActivityRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetUserActivity(self: *@This(), activity: *UserActivity) core.HResult!void {
         const this: *IUserActivityRequest = @ptrCast(self);
         return try this.SetUserActivity(activity);
@@ -994,6 +1174,18 @@ pub const UserActivityRequest = extern struct {
 };
 pub const UserActivityRequestManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addUserActivityRequested(self: *@This(), handler: *TypedEventHandler(UserActivityRequestManager,UserActivityRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IUserActivityRequestManager = @ptrCast(self);
         return try this.addUserActivityRequested(handler);
@@ -1001,9 +1193,6 @@ pub const UserActivityRequestManager = extern struct {
     pub fn removeUserActivityRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *IUserActivityRequestManager = @ptrCast(self);
         return try this.removeUserActivityRequested(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*UserActivityRequestManager {
         const _f = try @This()._IUserActivityRequestManagerStaticsCache.get();
@@ -1018,6 +1207,18 @@ pub const UserActivityRequestManager = extern struct {
 };
 pub const UserActivityRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*UserActivityRequest {
         const this: *IUserActivityRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -1034,6 +1235,18 @@ pub const UserActivityRequestedEventArgs = extern struct {
 };
 pub const UserActivitySession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserActivitySession = @ptrCast(self);
         return try this.getActivityId();
@@ -1053,6 +1266,18 @@ pub const UserActivitySession = extern struct {
 };
 pub const UserActivitySessionHistoryItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserActivity(self: *@This()) core.HResult!*UserActivity {
         const this: *IUserActivitySessionHistoryItem = @ptrCast(self);
         return try this.getUserActivity();
@@ -1077,6 +1302,18 @@ pub const UserActivityState = enum(i32) {
 };
 pub const UserActivityVisualElements = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserActivityVisualElements = @ptrCast(self);
         return try this.getDisplayText();

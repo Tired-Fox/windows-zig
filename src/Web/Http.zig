@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const HttpBufferContent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeaders(self: *@This()) core.HResult!*HttpContentHeaderCollection {
         const this: *IHttpContent = @ptrCast(self);
         return try this.getHeaders();
@@ -43,9 +55,6 @@ pub const HttpBufferContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateFromBuffer(content: *IBuffer) core.HResult!*HttpBufferContent {
         const _f = try @This()._IHttpBufferContentFactoryCache.get();
         return try _f.CreateFromBuffer(content);
@@ -63,6 +72,18 @@ pub const HttpBufferContent = extern struct {
 };
 pub const HttpClient = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DeleteAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         const this: *IHttpClient = @ptrCast(self);
         return try this.DeleteAsync(uri);
@@ -205,9 +226,6 @@ pub const HttpClient = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpClient.IID)));
@@ -230,6 +248,18 @@ pub const HttpCompletionOption = enum(i32) {
 };
 pub const HttpCookie = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpCookie = @ptrCast(self);
         return try this.getName();
@@ -281,9 +311,6 @@ pub const HttpCookie = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(name: ?HSTRING, domain: ?HSTRING, path: ?HSTRING) core.HResult!*HttpCookie {
         const _f = try @This()._IHttpCookieFactoryCache.get();
         return try _f.Create(name, domain, path);
@@ -297,6 +324,18 @@ pub const HttpCookie = extern struct {
 };
 pub const HttpCookieCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVectorView(HttpCookie) = @ptrCast(self);
         return try this.getSize();
@@ -316,6 +355,18 @@ pub const HttpCookieCollection = extern struct {
 };
 pub const HttpCookieManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetCookie(self: *@This(), cookie: *HttpCookie) core.HResult!bool {
         const this: *IHttpCookieManager = @ptrCast(self);
         return try this.SetCookie(cookie);
@@ -340,6 +391,18 @@ pub const HttpCookieManager = extern struct {
 };
 pub const HttpFormUrlEncodedContent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeaders(self: *@This()) core.HResult!*HttpContentHeaderCollection {
         const this: *IHttpContent = @ptrCast(self);
         return try this.getHeaders();
@@ -382,9 +445,6 @@ pub const HttpFormUrlEncodedContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(content: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*HttpFormUrlEncodedContent {
         const _f = try @This()._IHttpFormUrlEncodedContentFactoryCache.get();
         return try _f.Create(content);
@@ -398,6 +458,18 @@ pub const HttpFormUrlEncodedContent = extern struct {
 };
 pub const HttpGetBufferResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         const this: *IHttpGetBufferResult = @ptrCast(self);
         return try this.getExtendedError();
@@ -440,6 +512,18 @@ pub const HttpGetBufferResult = extern struct {
 };
 pub const HttpGetInputStreamResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         const this: *IHttpGetInputStreamResult = @ptrCast(self);
         return try this.getExtendedError();
@@ -482,6 +566,18 @@ pub const HttpGetInputStreamResult = extern struct {
 };
 pub const HttpGetStringResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         const this: *IHttpGetStringResult = @ptrCast(self);
         return try this.getExtendedError();
@@ -524,6 +620,18 @@ pub const HttpGetStringResult = extern struct {
 };
 pub const HttpMethod = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpMethod = @ptrCast(self);
         return try this.getMethod();
@@ -534,9 +642,6 @@ pub const HttpMethod = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(method: ?HSTRING) core.HResult!*HttpMethod {
         const _f = try @This()._IHttpMethodFactoryCache.get();
@@ -580,6 +685,18 @@ pub const HttpMethod = extern struct {
 };
 pub const HttpMultipartContent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), content: *IHttpContent) core.HResult!void {
         var this: ?*IHttpMultipartContent = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -636,9 +753,6 @@ pub const HttpMultipartContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpContent.IID)));
@@ -661,6 +775,18 @@ pub const HttpMultipartContent = extern struct {
 };
 pub const HttpMultipartFormDataContent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), content: *IHttpContent) core.HResult!void {
         var this: ?*IHttpMultipartFormDataContent = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -731,9 +857,6 @@ pub const HttpMultipartFormDataContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpContent.IID)));
@@ -772,6 +895,18 @@ pub const HttpProgressStage = enum(i32) {
 };
 pub const HttpRequestMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContent(self: *@This()) core.HResult!*IHttpContent {
         const this: *IHttpRequestMessage = @ptrCast(self);
         return try this.getContent();
@@ -836,9 +971,6 @@ pub const HttpRequestMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpRequestMessage.IID)));
@@ -857,6 +989,18 @@ pub const HttpRequestMessage = extern struct {
 };
 pub const HttpRequestResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         const this: *IHttpRequestResult = @ptrCast(self);
         return try this.getExtendedError();
@@ -895,6 +1039,18 @@ pub const HttpRequestResult = extern struct {
 };
 pub const HttpResponseMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContent(self: *@This()) core.HResult!*IHttpContent {
         const this: *IHttpResponseMessage = @ptrCast(self);
         return try this.getContent();
@@ -968,9 +1124,6 @@ pub const HttpResponseMessage = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1055,6 +1208,18 @@ pub const HttpStatusCode = enum(i32) {
 };
 pub const HttpStreamContent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeaders(self: *@This()) core.HResult!*HttpContentHeaderCollection {
         const this: *IHttpContent = @ptrCast(self);
         return try this.getHeaders();
@@ -1096,9 +1261,6 @@ pub const HttpStreamContent = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromInputStream(content: *IInputStream) core.HResult!*HttpStreamContent {
         const _f = try @This()._IHttpStreamContentFactoryCache.get();
@@ -1113,6 +1275,18 @@ pub const HttpStreamContent = extern struct {
 };
 pub const HttpStringContent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeaders(self: *@This()) core.HResult!*HttpContentHeaderCollection {
         const this: *IHttpContent = @ptrCast(self);
         return try this.getHeaders();
@@ -1154,9 +1328,6 @@ pub const HttpStringContent = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromString(content: ?HSTRING) core.HResult!*HttpStringContent {
         const _f = try @This()._IHttpStringContentFactoryCache.get();
@@ -1179,6 +1350,18 @@ pub const HttpStringContent = extern struct {
 };
 pub const HttpTransportInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServerCertificate(self: *@This()) core.HResult!*Certificate {
         const this: *IHttpTransportInformation = @ptrCast(self);
         return try this.getServerCertificate();
@@ -1216,6 +1399,12 @@ pub const HttpVersion = enum(i32) {
 };
 pub const IHttpBufferContentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromBuffer(self: *@This(), content: *IBuffer) core.HResult!*HttpBufferContent {
         var _r: *HttpBufferContent = undefined;
         const _c = self.vtable.CreateFromBuffer(@ptrCast(self), content, &_r);
@@ -1246,6 +1435,12 @@ pub const IHttpBufferContentFactory = extern struct {
 };
 pub const IHttpClient = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DeleteAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) = undefined;
         const _c = self.vtable.DeleteAsync(@ptrCast(self), uri, &_r);
@@ -1339,6 +1534,12 @@ pub const IHttpClient = extern struct {
 };
 pub const IHttpClient2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryDeleteAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) = undefined;
         const _c = self.vtable.TryDeleteAsync(@ptrCast(self), uri, &_r);
@@ -1425,6 +1626,12 @@ pub const IHttpClient2 = extern struct {
 };
 pub const IHttpClient3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDefaultPrivacyAnnotation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DefaultPrivacyAnnotation(@ptrCast(self), &_r);
@@ -1453,6 +1660,12 @@ pub const IHttpClient3 = extern struct {
 };
 pub const IHttpClientFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), filter: *IHttpFilter) core.HResult!*HttpClient {
         var _r: *HttpClient = undefined;
         const _c = self.vtable.Create(@ptrCast(self), filter, &_r);
@@ -1476,6 +1689,12 @@ pub const IHttpClientFactory = extern struct {
 };
 pub const IHttpContent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeaders(self: *@This()) core.HResult!*HttpContentHeaderCollection {
         var _r: *HttpContentHeaderCollection = undefined;
         const _c = self.vtable.get_Headers(@ptrCast(self), &_r);
@@ -1541,6 +1760,12 @@ pub const IHttpContent = extern struct {
 };
 pub const IHttpCookie = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -1626,6 +1851,12 @@ pub const IHttpCookie = extern struct {
 };
 pub const IHttpCookieFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), name: ?HSTRING, domain: ?HSTRING, path: ?HSTRING) core.HResult!*HttpCookie {
         var _r: *HttpCookie = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, domain, path, &_r);
@@ -1649,6 +1880,12 @@ pub const IHttpCookieFactory = extern struct {
 };
 pub const IHttpCookieManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetCookie(self: *@This(), cookie: *HttpCookie) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.SetCookie(@ptrCast(self), cookie, &_r);
@@ -1691,6 +1928,12 @@ pub const IHttpCookieManager = extern struct {
 };
 pub const IHttpFormUrlEncodedContentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), content: *IIterable(IKeyValuePair(?HSTRING,?HSTRING))) core.HResult!*HttpFormUrlEncodedContent {
         var _r: *HttpFormUrlEncodedContent = undefined;
         const _c = self.vtable.Create(@ptrCast(self), content, &_r);
@@ -1714,6 +1957,12 @@ pub const IHttpFormUrlEncodedContentFactory = extern struct {
 };
 pub const IHttpGetBufferResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
@@ -1765,6 +2014,12 @@ pub const IHttpGetBufferResult = extern struct {
 };
 pub const IHttpGetInputStreamResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
@@ -1816,6 +2071,12 @@ pub const IHttpGetInputStreamResult = extern struct {
 };
 pub const IHttpGetStringResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
@@ -1867,6 +2128,12 @@ pub const IHttpGetStringResult = extern struct {
 };
 pub const IHttpMethod = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMethod(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Method(@ptrCast(self), &_r);
@@ -1890,6 +2157,12 @@ pub const IHttpMethod = extern struct {
 };
 pub const IHttpMethodFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), method: ?HSTRING) core.HResult!*HttpMethod {
         var _r: *HttpMethod = undefined;
         const _c = self.vtable.Create(@ptrCast(self), method, &_r);
@@ -1913,6 +2186,12 @@ pub const IHttpMethodFactory = extern struct {
 };
 pub const IHttpMethodStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDelete(self: *@This()) core.HResult!*HttpMethod {
         var _r: *HttpMethod = undefined;
         const _c = self.vtable.get_Delete(@ptrCast(self), &_r);
@@ -1978,6 +2257,12 @@ pub const IHttpMethodStatics = extern struct {
 };
 pub const IHttpMultipartContent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), content: *IHttpContent) core.HResult!void {
         const _c = self.vtable.Add(@ptrCast(self), content);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1999,6 +2284,12 @@ pub const IHttpMultipartContent = extern struct {
 };
 pub const IHttpMultipartContentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithSubtype(self: *@This(), subtype: ?HSTRING) core.HResult!*HttpMultipartContent {
         var _r: *HttpMultipartContent = undefined;
         const _c = self.vtable.CreateWithSubtype(@ptrCast(self), subtype, &_r);
@@ -2029,6 +2320,12 @@ pub const IHttpMultipartContentFactory = extern struct {
 };
 pub const IHttpMultipartFormDataContent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), content: *IHttpContent) core.HResult!void {
         const _c = self.vtable.Add(@ptrCast(self), content);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2060,6 +2357,12 @@ pub const IHttpMultipartFormDataContent = extern struct {
 };
 pub const IHttpMultipartFormDataContentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithBoundary(self: *@This(), boundary: ?HSTRING) core.HResult!*HttpMultipartFormDataContent {
         var _r: *HttpMultipartFormDataContent = undefined;
         const _c = self.vtable.CreateWithBoundary(@ptrCast(self), boundary, &_r);
@@ -2083,6 +2386,12 @@ pub const IHttpMultipartFormDataContentFactory = extern struct {
 };
 pub const IHttpRequestMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContent(self: *@This()) core.HResult!*IHttpContent {
         var _r: *IHttpContent = undefined;
         const _c = self.vtable.get_Content(@ptrCast(self), &_r);
@@ -2156,6 +2465,12 @@ pub const IHttpRequestMessage = extern struct {
 };
 pub const IHttpRequestMessage2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrivacyAnnotation(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrivacyAnnotation(@ptrCast(self), &_r);
@@ -2184,6 +2499,12 @@ pub const IHttpRequestMessage2 = extern struct {
 };
 pub const IHttpRequestMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), method: *HttpMethod, uri: *Uri) core.HResult!*HttpRequestMessage {
         var _r: *HttpRequestMessage = undefined;
         const _c = self.vtable.Create(@ptrCast(self), method, uri, &_r);
@@ -2207,6 +2528,12 @@ pub const IHttpRequestMessageFactory = extern struct {
 };
 pub const IHttpRequestResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
@@ -2251,6 +2578,12 @@ pub const IHttpRequestResult = extern struct {
 };
 pub const IHttpResponseMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContent(self: *@This()) core.HResult!*IHttpContent {
         var _r: *IHttpContent = undefined;
         const _c = self.vtable.get_Content(@ptrCast(self), &_r);
@@ -2360,6 +2693,12 @@ pub const IHttpResponseMessage = extern struct {
 };
 pub const IHttpResponseMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), statusCode: HttpStatusCode) core.HResult!*HttpResponseMessage {
         var _r: *HttpResponseMessage = undefined;
         const _c = self.vtable.Create(@ptrCast(self), statusCode, &_r);
@@ -2383,6 +2722,12 @@ pub const IHttpResponseMessageFactory = extern struct {
 };
 pub const IHttpStreamContentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromInputStream(self: *@This(), content: *IInputStream) core.HResult!*HttpStreamContent {
         var _r: *HttpStreamContent = undefined;
         const _c = self.vtable.CreateFromInputStream(@ptrCast(self), content, &_r);
@@ -2406,6 +2751,12 @@ pub const IHttpStreamContentFactory = extern struct {
 };
 pub const IHttpStringContentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromString(self: *@This(), content: ?HSTRING) core.HResult!*HttpStringContent {
         var _r: *HttpStringContent = undefined;
         const _c = self.vtable.CreateFromString(@ptrCast(self), content, &_r);
@@ -2443,6 +2794,12 @@ pub const IHttpStringContentFactory = extern struct {
 };
 pub const IHttpTransportInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServerCertificate(self: *@This()) core.HResult!*Certificate {
         var _r: *Certificate = undefined;
         const _c = self.vtable.get_ServerCertificate(@ptrCast(self), &_r);

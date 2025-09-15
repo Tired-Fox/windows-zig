@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IUserDataTaskDataProviderConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addCreateOrUpdateTaskRequested(self: *@This(), handler: *TypedEventHandler(UserDataTaskDataProviderConnection,UserDataTaskListCreateOrUpdateTaskRequestEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CreateOrUpdateTaskRequested(@ptrCast(self), handler, &_r);
@@ -82,6 +88,12 @@ pub const IUserDataTaskDataProviderConnection = extern struct {
 };
 pub const IUserDataTaskDataProviderTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*UserDataTaskDataProviderConnection {
         var _r: *UserDataTaskDataProviderConnection = undefined;
         const _c = self.vtable.get_Connection(@ptrCast(self), &_r);
@@ -105,6 +117,12 @@ pub const IUserDataTaskDataProviderTriggerDetails = extern struct {
 };
 pub const IUserDataTaskListCompleteTaskRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskListId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TaskListId(@ptrCast(self), &_r);
@@ -149,6 +167,12 @@ pub const IUserDataTaskListCompleteTaskRequest = extern struct {
 };
 pub const IUserDataTaskListCompleteTaskRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*UserDataTaskListCompleteTaskRequest {
         var _r: *UserDataTaskListCompleteTaskRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -179,6 +203,12 @@ pub const IUserDataTaskListCompleteTaskRequestEventArgs = extern struct {
 };
 pub const IUserDataTaskListCreateOrUpdateTaskRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskListId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TaskListId(@ptrCast(self), &_r);
@@ -223,6 +253,12 @@ pub const IUserDataTaskListCreateOrUpdateTaskRequest = extern struct {
 };
 pub const IUserDataTaskListCreateOrUpdateTaskRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*UserDataTaskListCreateOrUpdateTaskRequest {
         var _r: *UserDataTaskListCreateOrUpdateTaskRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -253,6 +289,12 @@ pub const IUserDataTaskListCreateOrUpdateTaskRequestEventArgs = extern struct {
 };
 pub const IUserDataTaskListDeleteTaskRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskListId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TaskListId(@ptrCast(self), &_r);
@@ -297,6 +339,12 @@ pub const IUserDataTaskListDeleteTaskRequest = extern struct {
 };
 pub const IUserDataTaskListDeleteTaskRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*UserDataTaskListDeleteTaskRequest {
         var _r: *UserDataTaskListDeleteTaskRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -327,6 +375,12 @@ pub const IUserDataTaskListDeleteTaskRequestEventArgs = extern struct {
 };
 pub const IUserDataTaskListSkipOccurrenceRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskListId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TaskListId(@ptrCast(self), &_r);
@@ -371,6 +425,12 @@ pub const IUserDataTaskListSkipOccurrenceRequest = extern struct {
 };
 pub const IUserDataTaskListSkipOccurrenceRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*UserDataTaskListSkipOccurrenceRequest {
         var _r: *UserDataTaskListSkipOccurrenceRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -401,6 +461,12 @@ pub const IUserDataTaskListSkipOccurrenceRequestEventArgs = extern struct {
 };
 pub const IUserDataTaskListSyncManagerSyncRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskListId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TaskListId(@ptrCast(self), &_r);
@@ -438,6 +504,12 @@ pub const IUserDataTaskListSyncManagerSyncRequest = extern struct {
 };
 pub const IUserDataTaskListSyncManagerSyncRequestEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*UserDataTaskListSyncManagerSyncRequest {
         var _r: *UserDataTaskListSyncManagerSyncRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -468,6 +540,18 @@ pub const IUserDataTaskListSyncManagerSyncRequestEventArgs = extern struct {
 };
 pub const UserDataTaskDataProviderConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addCreateOrUpdateTaskRequested(self: *@This(), handler: *TypedEventHandler(UserDataTaskDataProviderConnection,UserDataTaskListCreateOrUpdateTaskRequestEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IUserDataTaskDataProviderConnection = @ptrCast(self);
         return try this.addCreateOrUpdateTaskRequested(handler);
@@ -520,6 +604,18 @@ pub const UserDataTaskDataProviderConnection = extern struct {
 };
 pub const UserDataTaskDataProviderTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*UserDataTaskDataProviderConnection {
         const this: *IUserDataTaskDataProviderTriggerDetails = @ptrCast(self);
         return try this.getConnection();
@@ -532,6 +628,18 @@ pub const UserDataTaskDataProviderTriggerDetails = extern struct {
 };
 pub const UserDataTaskListCompleteTaskRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTaskListCompleteTaskRequest = @ptrCast(self);
         return try this.getTaskListId();
@@ -556,6 +664,18 @@ pub const UserDataTaskListCompleteTaskRequest = extern struct {
 };
 pub const UserDataTaskListCompleteTaskRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*UserDataTaskListCompleteTaskRequest {
         const this: *IUserDataTaskListCompleteTaskRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -572,6 +692,18 @@ pub const UserDataTaskListCompleteTaskRequestEventArgs = extern struct {
 };
 pub const UserDataTaskListCreateOrUpdateTaskRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTaskListCreateOrUpdateTaskRequest = @ptrCast(self);
         return try this.getTaskListId();
@@ -596,6 +728,18 @@ pub const UserDataTaskListCreateOrUpdateTaskRequest = extern struct {
 };
 pub const UserDataTaskListCreateOrUpdateTaskRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*UserDataTaskListCreateOrUpdateTaskRequest {
         const this: *IUserDataTaskListCreateOrUpdateTaskRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -612,6 +756,18 @@ pub const UserDataTaskListCreateOrUpdateTaskRequestEventArgs = extern struct {
 };
 pub const UserDataTaskListDeleteTaskRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTaskListDeleteTaskRequest = @ptrCast(self);
         return try this.getTaskListId();
@@ -636,6 +792,18 @@ pub const UserDataTaskListDeleteTaskRequest = extern struct {
 };
 pub const UserDataTaskListDeleteTaskRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*UserDataTaskListDeleteTaskRequest {
         const this: *IUserDataTaskListDeleteTaskRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -652,6 +820,18 @@ pub const UserDataTaskListDeleteTaskRequestEventArgs = extern struct {
 };
 pub const UserDataTaskListSkipOccurrenceRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTaskListSkipOccurrenceRequest = @ptrCast(self);
         return try this.getTaskListId();
@@ -676,6 +856,18 @@ pub const UserDataTaskListSkipOccurrenceRequest = extern struct {
 };
 pub const UserDataTaskListSkipOccurrenceRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*UserDataTaskListSkipOccurrenceRequest {
         const this: *IUserDataTaskListSkipOccurrenceRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -692,6 +884,18 @@ pub const UserDataTaskListSkipOccurrenceRequestEventArgs = extern struct {
 };
 pub const UserDataTaskListSyncManagerSyncRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskListId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataTaskListSyncManagerSyncRequest = @ptrCast(self);
         return try this.getTaskListId();
@@ -712,6 +916,18 @@ pub const UserDataTaskListSyncManagerSyncRequest = extern struct {
 };
 pub const UserDataTaskListSyncManagerSyncRequestEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*UserDataTaskListSyncManagerSyncRequest {
         const this: *IUserDataTaskListSyncManagerSyncRequestEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -726,6 +942,7 @@ pub const UserDataTaskListSyncManagerSyncRequestEventArgs = extern struct {
     pub const IID: Guid = IUserDataTaskListSyncManagerSyncRequestEventArgs.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IUserDataTaskListSyncManagerSyncRequestEventArgs.SIGNATURE);
 };
+const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;
 const Deferral = @import("../../Foundation.zig").Deferral;
 const IInspectable = @import("../../Foundation.zig").IInspectable;

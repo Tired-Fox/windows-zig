@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const Appointment = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         const this: *IAppointment = @ptrCast(self);
         return try this.getStartTime();
@@ -276,9 +288,6 @@ pub const Appointment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putDetailsKind(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAppointment.IID)));
@@ -299,6 +308,18 @@ pub const AppointmentBusyStatus = enum(i32) {
 };
 pub const AppointmentCalendar = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayColor(self: *@This()) core.HResult!Color {
         const this: *IAppointmentCalendar = @ptrCast(self);
         return try this.getDisplayColor();
@@ -604,6 +625,18 @@ pub const AppointmentCalendarOtherAppWriteAccess = enum(i32) {
 };
 pub const AppointmentCalendarSyncManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!AppointmentCalendarSyncStatus {
         const this: *IAppointmentCalendarSyncManager = @ptrCast(self);
         return try this.getStatus();
@@ -666,6 +699,18 @@ pub const AppointmentCalendarSyncStatus = enum(i32) {
 };
 pub const AppointmentConflictResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!AppointmentConflictType {
         const this: *IAppointmentConflictResult = @ptrCast(self);
         return try this.getType();
@@ -701,6 +746,18 @@ pub const AppointmentDetailsKind = enum(i32) {
 };
 pub const AppointmentException = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointment(self: *@This()) core.HResult!*Appointment {
         const this: *IAppointmentException = @ptrCast(self);
         return try this.getAppointment();
@@ -721,6 +778,18 @@ pub const AppointmentException = extern struct {
 };
 pub const AppointmentInvitee = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRole(self: *@This()) core.HResult!AppointmentParticipantRole {
         const this: *IAppointmentInvitee = @ptrCast(self);
         return try this.getRole();
@@ -765,9 +834,6 @@ pub const AppointmentInvitee = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAddress(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAppointmentInvitee.IID)));
@@ -781,6 +847,15 @@ pub const AppointmentInvitee = extern struct {
 };
 pub const AppointmentManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -848,6 +923,18 @@ pub const AppointmentManager = extern struct {
 };
 pub const AppointmentManagerForUser = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowAddAppointmentAsync(self: *@This(), appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(?HSTRING) {
         const this: *IAppointmentManagerForUser = @ptrCast(self);
         return try this.ShowAddAppointmentAsync(appointment, selection);
@@ -912,6 +999,18 @@ pub const AppointmentManagerForUser = extern struct {
 };
 pub const AppointmentOrganizer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppointmentParticipant = @ptrCast(self);
         return try this.getDisplayName();
@@ -927,9 +1026,6 @@ pub const AppointmentOrganizer = extern struct {
     pub fn putAddress(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IAppointmentParticipant = @ptrCast(self);
         return try this.putAddress(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -956,6 +1052,15 @@ pub const AppointmentParticipantRole = enum(i32) {
 };
 pub const AppointmentProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1070,6 +1175,18 @@ pub const AppointmentProperties = extern struct {
 };
 pub const AppointmentRecurrence = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnit(self: *@This()) core.HResult!AppointmentRecurrenceUnit {
         const this: *IAppointmentRecurrence = @ptrCast(self);
         return try this.getUnit();
@@ -1162,9 +1279,6 @@ pub const AppointmentRecurrence = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCalendarIdentifier();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAppointmentRecurrence.IID)));
@@ -1190,6 +1304,18 @@ pub const AppointmentSensitivity = enum(i32) {
 };
 pub const AppointmentStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeTracker(self: *@This()) core.HResult!*AppointmentStoreChangeTracker {
         const this: *IAppointmentStore = @ptrCast(self);
         return try this.getChangeTracker();
@@ -1315,6 +1441,18 @@ pub const AppointmentStoreAccessType = enum(i32) {
 };
 pub const AppointmentStoreChange = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointment(self: *@This()) core.HResult!*Appointment {
         const this: *IAppointmentStoreChange = @ptrCast(self);
         return try this.getAppointment();
@@ -1338,6 +1476,18 @@ pub const AppointmentStoreChange = extern struct {
 };
 pub const AppointmentStoreChangeReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(AppointmentStoreChange)) {
         const this: *IAppointmentStoreChangeReader = @ptrCast(self);
         return try this.ReadBatchAsync();
@@ -1358,6 +1508,18 @@ pub const AppointmentStoreChangeReader = extern struct {
 };
 pub const AppointmentStoreChangeTracker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetChangeReader(self: *@This()) core.HResult!*AppointmentStoreChangeReader {
         const this: *IAppointmentStoreChangeTracker = @ptrCast(self);
         return try this.GetChangeReader();
@@ -1394,6 +1556,18 @@ pub const AppointmentStoreChangeType = enum(i32) {
 };
 pub const AppointmentStoreChangedDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IAppointmentStoreChangedDeferral = @ptrCast(self);
         return try this.Complete();
@@ -1406,6 +1580,18 @@ pub const AppointmentStoreChangedDeferral = extern struct {
 };
 pub const AppointmentStoreChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*AppointmentStoreChangedDeferral {
         const this: *IAppointmentStoreChangedEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -1418,6 +1604,18 @@ pub const AppointmentStoreChangedEventArgs = extern struct {
 };
 pub const AppointmentStoreNotificationTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.AppointmentStoreNotificationTriggerDetails";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IAppointmentStoreNotificationTriggerDetails.GUID;
@@ -1441,6 +1639,18 @@ pub const FindAppointmentCalendarsOptions = enum(i32) {
 };
 pub const FindAppointmentsOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCalendarIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IFindAppointmentsOptions = @ptrCast(self);
         return try this.getCalendarIds();
@@ -1465,9 +1675,6 @@ pub const FindAppointmentsOptions = extern struct {
         const this: *IFindAppointmentsOptions = @ptrCast(self);
         return try this.putMaxCount(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFindAppointmentsOptions.IID)));
@@ -1481,6 +1688,12 @@ pub const FindAppointmentsOptions = extern struct {
 };
 pub const IAppointment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
@@ -1648,6 +1861,12 @@ pub const IAppointment = extern struct {
 };
 pub const IAppointment2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalId(@ptrCast(self), &_r);
@@ -1788,6 +2007,12 @@ pub const IAppointment2 = extern struct {
 };
 pub const IAppointment3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeNumber(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_ChangeNumber(@ptrCast(self), &_r);
@@ -1835,6 +2060,12 @@ pub const IAppointment3 = extern struct {
 };
 pub const IAppointmentCalendar = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_DisplayColor(@ptrCast(self), &_r);
@@ -2025,6 +2256,12 @@ pub const IAppointmentCalendar = extern struct {
 };
 pub const IAppointmentCalendar2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSyncManager(self: *@This()) core.HResult!*AppointmentCalendarSyncManager {
         var _r: *AppointmentCalendarSyncManager = undefined;
         const _c = self.vtable.get_SyncManager(@ptrCast(self), &_r);
@@ -2196,6 +2433,12 @@ pub const IAppointmentCalendar2 = extern struct {
 };
 pub const IAppointmentCalendar3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RegisterSyncManagerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RegisterSyncManagerAsync(@ptrCast(self), &_r);
@@ -2219,6 +2462,12 @@ pub const IAppointmentCalendar3 = extern struct {
 };
 pub const IAppointmentCalendarSyncManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!AppointmentCalendarSyncStatus {
         var _r: AppointmentCalendarSyncStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -2275,6 +2524,12 @@ pub const IAppointmentCalendarSyncManager = extern struct {
 };
 pub const IAppointmentCalendarSyncManager2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putStatus(self: *@This(), value: AppointmentCalendarSyncStatus) core.HResult!void {
         const _c = self.vtable.put_Status(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2306,6 +2561,12 @@ pub const IAppointmentCalendarSyncManager2 = extern struct {
 };
 pub const IAppointmentConflictResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!AppointmentConflictType {
         var _r: AppointmentConflictType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -2336,6 +2597,12 @@ pub const IAppointmentConflictResult = extern struct {
 };
 pub const IAppointmentException = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointment(self: *@This()) core.HResult!*Appointment {
         var _r: *Appointment = undefined;
         const _c = self.vtable.get_Appointment(@ptrCast(self), &_r);
@@ -2373,6 +2640,12 @@ pub const IAppointmentException = extern struct {
 };
 pub const IAppointmentInvitee = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRole(self: *@This()) core.HResult!AppointmentParticipantRole {
         var _r: AppointmentParticipantRole = undefined;
         const _c = self.vtable.get_Role(@ptrCast(self), &_r);
@@ -2413,6 +2686,12 @@ pub const IAppointmentInvitee = extern struct {
 };
 pub const IAppointmentManagerForUser = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowAddAppointmentAsync(self: *@This(), appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowAddAppointmentAsync(@ptrCast(self), appointment, selection, &_r);
@@ -2527,6 +2806,12 @@ pub const IAppointmentManagerForUser = extern struct {
 };
 pub const IAppointmentManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowAddAppointmentAsync(self: *@This(), appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.ShowAddAppointmentAsync(@ptrCast(self), appointment, selection, &_r);
@@ -2606,6 +2891,12 @@ pub const IAppointmentManagerStatics = extern struct {
 };
 pub const IAppointmentManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowAppointmentDetailsAsync(self: *@This(), appointmentId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowAppointmentDetailsAsync(@ptrCast(self), appointmentId, &_r);
@@ -2650,6 +2941,12 @@ pub const IAppointmentManagerStatics2 = extern struct {
 };
 pub const IAppointmentManagerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForUser(self: *@This(), user: *User) core.HResult!*AppointmentManagerForUser {
         var _r: *AppointmentManagerForUser = undefined;
         const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
@@ -2673,6 +2970,12 @@ pub const IAppointmentManagerStatics3 = extern struct {
 };
 pub const IAppointmentParticipant = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -2713,6 +3016,12 @@ pub const IAppointmentParticipant = extern struct {
 };
 pub const IAppointmentPropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSubject(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Subject(@ptrCast(self), &_r);
@@ -2890,6 +3199,12 @@ pub const IAppointmentPropertiesStatics = extern struct {
 };
 pub const IAppointmentPropertiesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ChangeNumber(@ptrCast(self), &_r);
@@ -2927,6 +3242,12 @@ pub const IAppointmentPropertiesStatics2 = extern struct {
 };
 pub const IAppointmentRecurrence = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnit(self: *@This()) core.HResult!AppointmentRecurrenceUnit {
         var _r: AppointmentRecurrenceUnit = undefined;
         const _c = self.vtable.get_Unit(@ptrCast(self), &_r);
@@ -3039,6 +3360,12 @@ pub const IAppointmentRecurrence = extern struct {
 };
 pub const IAppointmentRecurrence2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecurrenceType(self: *@This()) core.HResult!RecurrenceType {
         var _r: RecurrenceType = undefined;
         const _c = self.vtable.get_RecurrenceType(@ptrCast(self), &_r);
@@ -3074,6 +3401,12 @@ pub const IAppointmentRecurrence2 = extern struct {
 };
 pub const IAppointmentRecurrence3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCalendarIdentifier(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CalendarIdentifier(@ptrCast(self), &_r);
@@ -3097,6 +3430,12 @@ pub const IAppointmentRecurrence3 = extern struct {
 };
 pub const IAppointmentStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeTracker(self: *@This()) core.HResult!*AppointmentStoreChangeTracker {
         var _r: *AppointmentStoreChangeTracker = undefined;
         const _c = self.vtable.get_ChangeTracker(@ptrCast(self), &_r);
@@ -3260,6 +3599,12 @@ pub const IAppointmentStore = extern struct {
 };
 pub const IAppointmentStore2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addStoreChanged(self: *@This(), pHandler: *TypedEventHandler(AppointmentStore,AppointmentStoreChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StoreChanged(@ptrCast(self), pHandler, &_r);
@@ -3295,6 +3640,12 @@ pub const IAppointmentStore2 = extern struct {
 };
 pub const IAppointmentStore3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*AppointmentStoreChangeTracker {
         var _r: *AppointmentStoreChangeTracker = undefined;
         const _c = self.vtable.GetChangeTracker(@ptrCast(self), identity, &_r);
@@ -3318,6 +3669,12 @@ pub const IAppointmentStore3 = extern struct {
 };
 pub const IAppointmentStoreChange = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointment(self: *@This()) core.HResult!*Appointment {
         var _r: *Appointment = undefined;
         const _c = self.vtable.get_Appointment(@ptrCast(self), &_r);
@@ -3348,6 +3705,12 @@ pub const IAppointmentStoreChange = extern struct {
 };
 pub const IAppointmentStoreChange2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppointmentCalendar(self: *@This()) core.HResult!*AppointmentCalendar {
         var _r: *AppointmentCalendar = undefined;
         const _c = self.vtable.get_AppointmentCalendar(@ptrCast(self), &_r);
@@ -3371,6 +3734,12 @@ pub const IAppointmentStoreChange2 = extern struct {
 };
 pub const IAppointmentStoreChangeReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(AppointmentStoreChange)) {
         var _r: *IAsyncOperation(IVectorView(AppointmentStoreChange)) = undefined;
         const _c = self.vtable.ReadBatchAsync(@ptrCast(self), &_r);
@@ -3404,6 +3773,12 @@ pub const IAppointmentStoreChangeReader = extern struct {
 };
 pub const IAppointmentStoreChangeTracker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetChangeReader(self: *@This()) core.HResult!*AppointmentStoreChangeReader {
         var _r: *AppointmentStoreChangeReader = undefined;
         const _c = self.vtable.GetChangeReader(@ptrCast(self), &_r);
@@ -3437,6 +3812,12 @@ pub const IAppointmentStoreChangeTracker = extern struct {
 };
 pub const IAppointmentStoreChangeTracker2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsTracking(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTracking(@ptrCast(self), &_r);
@@ -3460,6 +3841,12 @@ pub const IAppointmentStoreChangeTracker2 = extern struct {
 };
 pub const IAppointmentStoreChangedDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3481,6 +3868,12 @@ pub const IAppointmentStoreChangedDeferral = extern struct {
 };
 pub const IAppointmentStoreChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*AppointmentStoreChangedDeferral {
         var _r: *AppointmentStoreChangedDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -3504,6 +3897,12 @@ pub const IAppointmentStoreChangedEventArgs = extern struct {
 };
 pub const IAppointmentStoreNotificationTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.IAppointmentStoreNotificationTriggerDetails";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "9b33cb11-c301-421e-afef-047ecfa76adb";
@@ -3520,6 +3919,12 @@ pub const IAppointmentStoreNotificationTriggerDetails = extern struct {
 };
 pub const IFindAppointmentsOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCalendarIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_CalendarIds(@ptrCast(self), &_r);

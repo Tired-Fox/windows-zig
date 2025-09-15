@@ -1,16 +1,46 @@
 // ----- This code is automatically generated -----
 pub const ContentPropertyAttribute = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.ContentPropertyAttribute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
 };
 pub const FullXamlMetadataProviderAttribute = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.FullXamlMetadataProviderAttribute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
 };
 pub const IComponentConnector = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Connect(self: *@This(), connectionId: i32, target: *IInspectable) core.HResult!void {
         const _c = self.vtable.Connect(@ptrCast(self), connectionId, target);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -32,6 +62,12 @@ pub const IComponentConnector = extern struct {
 };
 pub const IComponentConnector2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetBindingConnector(self: *@This(), connectionId: i32, target: *IInspectable) core.HResult!*IComponentConnector {
         var _r: *IComponentConnector = undefined;
         const _c = self.vtable.GetBindingConnector(@ptrCast(self), connectionId, target, &_r);
@@ -55,6 +91,12 @@ pub const IComponentConnector2 = extern struct {
 };
 pub const IDataTemplateComponent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Recycle(self: *@This()) core.HResult!void {
         const _c = self.vtable.Recycle(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -81,6 +123,12 @@ pub const IDataTemplateComponent = extern struct {
 };
 pub const IMarkupExtension = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IMarkupExtension";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1ee3416d-562b-486e-9ee5-0f0cbcc8048c";
@@ -97,6 +145,12 @@ pub const IMarkupExtension = extern struct {
 };
 pub const IMarkupExtensionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MarkupExtension {
         var _r: *MarkupExtension = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -120,6 +174,12 @@ pub const IMarkupExtensionFactory = extern struct {
 };
 pub const IMarkupExtensionOverrides = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ProvideValue(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.ProvideValue(@ptrCast(self), &_r);
@@ -143,6 +203,12 @@ pub const IMarkupExtensionOverrides = extern struct {
 };
 pub const IXamlBinaryWriter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlBinaryWriter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "829d2ad3-620a-46f6-845d-436a05927100";
@@ -159,6 +225,12 @@ pub const IXamlBinaryWriter = extern struct {
 };
 pub const IXamlBinaryWriterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Write(self: *@This(), inputStreams: *IVector(IRandomAccessStream), outputStreams: *IVector(IRandomAccessStream), xamlMetadataProvider: *IXamlMetadataProvider) core.HResult!XamlBinaryWriterErrorInformation {
         var _r: XamlBinaryWriterErrorInformation = undefined;
         const _c = self.vtable.Write(@ptrCast(self), inputStreams, outputStreams, xamlMetadataProvider, &_r);
@@ -182,6 +254,12 @@ pub const IXamlBinaryWriterStatics = extern struct {
 };
 pub const IXamlBindScopeDiagnostics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Disable(self: *@This(), lineNumber: i32, columnNumber: i32) core.HResult!void {
         const _c = self.vtable.Disable(@ptrCast(self), lineNumber, columnNumber);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -203,6 +281,12 @@ pub const IXamlBindScopeDiagnostics = extern struct {
 };
 pub const IXamlBindingHelper = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlBindingHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "faa6fb06-8ab9-4ef7-8ae7-fbd30bbfd06d";
@@ -219,6 +303,12 @@ pub const IXamlBindingHelper = extern struct {
 };
 pub const IXamlBindingHelperStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataTemplateComponentProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DataTemplateComponentProperty(@ptrCast(self), &_r);
@@ -356,6 +446,12 @@ pub const IXamlBindingHelperStatics = extern struct {
 };
 pub const IXamlMarkupHelper = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlMarkupHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "d0e6673c-5342-44ef-85a7-ed327a739d9a";
@@ -372,6 +468,12 @@ pub const IXamlMarkupHelper = extern struct {
 };
 pub const IXamlMarkupHelperStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn UnloadObject(self: *@This(), element: *DependencyObject) core.HResult!void {
         const _c = self.vtable.UnloadObject(@ptrCast(self), element);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -393,6 +495,12 @@ pub const IXamlMarkupHelperStatics = extern struct {
 };
 pub const IXamlMember = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAttachable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAttachable(@ptrCast(self), &_r);
@@ -463,6 +571,12 @@ pub const IXamlMember = extern struct {
 };
 pub const IXamlMetadataProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetXamlType(self: *@This(), ty: TypeName) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
         const _c = self.vtable.GetXamlType(@ptrCast(self), ty, &_r);
@@ -500,6 +614,12 @@ pub const IXamlMetadataProvider = extern struct {
 };
 pub const IXamlReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.IXamlReader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "24374cf1-cceb-48bf-a514-41b0186f84c2";
@@ -516,6 +636,12 @@ pub const IXamlReader = extern struct {
 };
 pub const IXamlReaderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Load(self: *@This(), xaml: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.Load(@ptrCast(self), xaml, &_r);
@@ -546,6 +672,12 @@ pub const IXamlReaderStatics = extern struct {
 };
 pub const IXamlType = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBaseType(self: *@This()) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
         const _c = self.vtable.get_BaseType(@ptrCast(self), &_r);
@@ -682,6 +814,12 @@ pub const IXamlType = extern struct {
 };
 pub const IXamlType2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBoxedType(self: *@This()) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
         const _c = self.vtable.get_BoxedType(@ptrCast(self), &_r);
@@ -705,15 +843,24 @@ pub const IXamlType2 = extern struct {
 };
 pub const MarkupExtension = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ProvideValue(self: *@This()) core.HResult!*IInspectable {
         var this: ?*IMarkupExtensionOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMarkupExtensionOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ProvideValue();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MarkupExtension {
         const _f = try @This()._IMarkupExtensionFactoryCache.get();
@@ -728,11 +875,32 @@ pub const MarkupExtension = extern struct {
 };
 pub const MarkupExtensionReturnTypeAttribute = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Markup.MarkupExtensionReturnTypeAttribute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
 };
 pub const XamlBinaryWriter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -754,6 +922,15 @@ pub const XamlBinaryWriterErrorInformation = extern struct {
 };
 pub const XamlBindingHelper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -858,6 +1035,15 @@ pub const XamlBindingHelper = extern struct {
 };
 pub const XamlMarkupHelper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -874,6 +1060,15 @@ pub const XamlMarkupHelper = extern struct {
 };
 pub const XamlReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

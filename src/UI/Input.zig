@@ -1,15 +1,24 @@
 // ----- This code is automatically generated -----
 pub const AttachableInputObject = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub const NAME: []const u8 = "Windows.UI.Input.AttachableInputObject";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -26,6 +35,18 @@ pub const CrossSlideThresholds = extern struct {
 };
 pub const CrossSlidingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         const this: *ICrossSlidingEventArgs = @ptrCast(self);
         return try this.getPointerDeviceType();
@@ -62,6 +83,18 @@ pub const CrossSlidingState = enum(i32) {
 };
 pub const DraggingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         const this: *IDraggingEventArgs = @ptrCast(self);
         return try this.getPointerDeviceType();
@@ -94,6 +127,18 @@ pub const DraggingState = enum(i32) {
 };
 pub const EdgeGesture = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addStarting(self: *@This(), handler: *TypedEventHandler(EdgeGesture,EdgeGestureEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IEdgeGesture = @ptrCast(self);
         return try this.addStarting(handler);
@@ -118,9 +163,6 @@ pub const EdgeGesture = extern struct {
         const this: *IEdgeGesture = @ptrCast(self);
         return try this.removeCanceled(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*EdgeGesture {
         const _f = try @This()._IEdgeGestureStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -134,6 +176,18 @@ pub const EdgeGesture = extern struct {
 };
 pub const EdgeGestureEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!EdgeGestureKind {
         const this: *IEdgeGestureEventArgs = @ptrCast(self);
         return try this.getKind();
@@ -157,6 +211,18 @@ pub const GazeInputAccessStatus = enum(i32) {
 };
 pub const GestureRecognizer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGestureSettings(self: *@This()) core.HResult!GestureSettings {
         const this: *IGestureRecognizer = @ptrCast(self);
         return try this.getGestureSettings();
@@ -501,9 +567,6 @@ pub const GestureRecognizer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTranslationMaxContactCount(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGestureRecognizer.IID)));
@@ -537,6 +600,18 @@ pub const GestureSettings = enum(i32) {
 };
 pub const HoldingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         const this: *IHoldingEventArgs = @ptrCast(self);
         return try this.getPointerDeviceType();
@@ -576,6 +651,12 @@ pub const HoldingState = enum(i32) {
 };
 pub const IAttachableInputObject = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Input.IAttachableInputObject";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "9b822734-a3c1-542a-b2f4-0e32b773fb07";
@@ -592,6 +673,12 @@ pub const IAttachableInputObject = extern struct {
 };
 pub const IAttachableInputObjectFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Input.IAttachableInputObjectFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a4c54c4e-42bc-58fa-a640-ea1516f4c06b";
@@ -608,6 +695,12 @@ pub const IAttachableInputObjectFactory = extern struct {
 };
 pub const ICrossSlidingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
@@ -645,6 +738,12 @@ pub const ICrossSlidingEventArgs = extern struct {
 };
 pub const ICrossSlidingEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ContactCount(@ptrCast(self), &_r);
@@ -668,6 +767,12 @@ pub const ICrossSlidingEventArgs2 = extern struct {
 };
 pub const IDraggingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
@@ -705,6 +810,12 @@ pub const IDraggingEventArgs = extern struct {
 };
 pub const IDraggingEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ContactCount(@ptrCast(self), &_r);
@@ -728,6 +839,12 @@ pub const IDraggingEventArgs2 = extern struct {
 };
 pub const IEdgeGesture = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addStarting(self: *@This(), handler: *TypedEventHandler(EdgeGesture,EdgeGestureEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Starting(@ptrCast(self), handler, &_r);
@@ -780,6 +897,12 @@ pub const IEdgeGesture = extern struct {
 };
 pub const IEdgeGestureEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!EdgeGestureKind {
         var _r: EdgeGestureKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -803,6 +926,12 @@ pub const IEdgeGestureEventArgs = extern struct {
 };
 pub const IEdgeGestureStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*EdgeGesture {
         var _r: *EdgeGesture = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -826,6 +955,12 @@ pub const IEdgeGestureStatics = extern struct {
 };
 pub const IGestureRecognizer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGestureSettings(self: *@This()) core.HResult!GestureSettings {
         var _r: GestureSettings = undefined;
         const _c = self.vtable.get_GestureSettings(@ptrCast(self), &_r);
@@ -1188,6 +1323,12 @@ pub const IGestureRecognizer = extern struct {
 };
 pub const IGestureRecognizer2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTapMinContactCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_TapMinContactCount(@ptrCast(self), &_r);
@@ -1300,6 +1441,12 @@ pub const IGestureRecognizer2 = extern struct {
 };
 pub const IHoldingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
@@ -1337,6 +1484,12 @@ pub const IHoldingEventArgs = extern struct {
 };
 pub const IHoldingEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ContactCount(@ptrCast(self), &_r);
@@ -1367,6 +1520,12 @@ pub const IHoldingEventArgs2 = extern struct {
 };
 pub const IInputActivationListener = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!InputActivationState {
         var _r: InputActivationState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -1402,6 +1561,12 @@ pub const IInputActivationListener = extern struct {
 };
 pub const IInputActivationListenerActivationChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!InputActivationState {
         var _r: InputActivationState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -1425,6 +1590,12 @@ pub const IInputActivationListenerActivationChangedEventArgs = extern struct {
 };
 pub const IKeyboardDeliveryInterceptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsInterceptionEnabledWhenInForeground(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsInterceptionEnabledWhenInForeground(@ptrCast(self), &_r);
@@ -1477,6 +1648,12 @@ pub const IKeyboardDeliveryInterceptor = extern struct {
 };
 pub const IKeyboardDeliveryInterceptorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*KeyboardDeliveryInterceptor {
         var _r: *KeyboardDeliveryInterceptor = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -1500,6 +1677,12 @@ pub const IKeyboardDeliveryInterceptorStatics = extern struct {
 };
 pub const IManipulationCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
@@ -1544,6 +1727,12 @@ pub const IManipulationCompletedEventArgs = extern struct {
 };
 pub const IManipulationCompletedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ContactCount(@ptrCast(self), &_r);
@@ -1574,6 +1763,12 @@ pub const IManipulationCompletedEventArgs2 = extern struct {
 };
 pub const IManipulationInertiaStartingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
@@ -1625,6 +1820,12 @@ pub const IManipulationInertiaStartingEventArgs = extern struct {
 };
 pub const IManipulationInertiaStartingEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ContactCount(@ptrCast(self), &_r);
@@ -1648,6 +1849,12 @@ pub const IManipulationInertiaStartingEventArgs2 = extern struct {
 };
 pub const IManipulationStartedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
@@ -1685,6 +1892,12 @@ pub const IManipulationStartedEventArgs = extern struct {
 };
 pub const IManipulationStartedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ContactCount(@ptrCast(self), &_r);
@@ -1708,6 +1921,12 @@ pub const IManipulationStartedEventArgs2 = extern struct {
 };
 pub const IManipulationUpdatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
@@ -1759,6 +1978,12 @@ pub const IManipulationUpdatedEventArgs = extern struct {
 };
 pub const IManipulationUpdatedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ContactCount(@ptrCast(self), &_r);
@@ -1789,6 +2014,12 @@ pub const IManipulationUpdatedEventArgs2 = extern struct {
 };
 pub const IMouseWheelParameters = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharTranslation(self: *@This()) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.get_CharTranslation(@ptrCast(self), &_r);
@@ -1853,6 +2084,12 @@ pub const IMouseWheelParameters = extern struct {
 };
 pub const IPhysicalGestureRecognizer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsActive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsActive(@ptrCast(self), &_r);
@@ -2064,6 +2301,12 @@ pub const IPhysicalGestureRecognizer = extern struct {
 };
 pub const IPointerPoint = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDevice(self: *@This()) core.HResult!*PointerDevice {
         var _r: *PointerDevice = undefined;
         const _c = self.vtable.get_PointerDevice(@ptrCast(self), &_r);
@@ -2136,6 +2379,12 @@ pub const IPointerPoint = extern struct {
 };
 pub const IPointerPointPhysicalPosition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPhysicalPositionSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPhysicalPositionSupported(@ptrCast(self), &_r);
@@ -2166,6 +2415,12 @@ pub const IPointerPointPhysicalPosition = extern struct {
 };
 pub const IPointerPointProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPressure(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_Pressure(@ptrCast(self), &_r);
@@ -2350,6 +2605,12 @@ pub const IPointerPointProperties = extern struct {
 };
 pub const IPointerPointProperties2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getZDistance(self: *@This()) core.HResult!*IReference(f32) {
         var _r: *IReference(f32) = undefined;
         const _c = self.vtable.get_ZDistance(@ptrCast(self), &_r);
@@ -2373,6 +2634,12 @@ pub const IPointerPointProperties2 = extern struct {
 };
 pub const IPointerPointStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentPoint(self: *@This(), pointerId: u32) core.HResult!*PointerPoint {
         var _r: *PointerPoint = undefined;
         const _c = self.vtable.GetCurrentPoint(@ptrCast(self), pointerId, &_r);
@@ -2417,6 +2684,12 @@ pub const IPointerPointStatics = extern struct {
 };
 pub const IPointerPointTransform = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInverse(self: *@This()) core.HResult!*IPointerPointTransform {
         var _r: *IPointerPointTransform = undefined;
         const _c = self.vtable.get_Inverse(@ptrCast(self), &_r);
@@ -2454,6 +2727,12 @@ pub const IPointerPointTransform = extern struct {
 };
 pub const IPointerVisualizationSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putIsContactFeedbackEnabled(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsContactFeedbackEnabled(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2494,6 +2773,12 @@ pub const IPointerVisualizationSettings = extern struct {
 };
 pub const IPointerVisualizationSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*PointerVisualizationSettings {
         var _r: *PointerVisualizationSettings = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -2517,6 +2802,12 @@ pub const IPointerVisualizationSettingsStatics = extern struct {
 };
 pub const IRadialController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMenu(self: *@This()) core.HResult!*RadialControllerMenu {
         var _r: *RadialControllerMenu = undefined;
         const _c = self.vtable.get_Menu(@ptrCast(self), &_r);
@@ -2648,6 +2939,12 @@ pub const IRadialController = extern struct {
 };
 pub const IRadialController2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addButtonPressed(self: *@This(), handler: *TypedEventHandler(RadialController,RadialControllerButtonPressedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ButtonPressed(@ptrCast(self), handler, &_r);
@@ -2700,6 +2997,12 @@ pub const IRadialController2 = extern struct {
 };
 pub const IRadialControllerButtonClickedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         var _r: *RadialControllerScreenContact = undefined;
         const _c = self.vtable.get_Contact(@ptrCast(self), &_r);
@@ -2723,6 +3026,12 @@ pub const IRadialControllerButtonClickedEventArgs = extern struct {
 };
 pub const IRadialControllerButtonClickedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSimpleHapticsController(self: *@This()) core.HResult!*SimpleHapticsController {
         var _r: *SimpleHapticsController = undefined;
         const _c = self.vtable.get_SimpleHapticsController(@ptrCast(self), &_r);
@@ -2746,6 +3055,12 @@ pub const IRadialControllerButtonClickedEventArgs2 = extern struct {
 };
 pub const IRadialControllerButtonHoldingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         var _r: *RadialControllerScreenContact = undefined;
         const _c = self.vtable.get_Contact(@ptrCast(self), &_r);
@@ -2776,6 +3091,12 @@ pub const IRadialControllerButtonHoldingEventArgs = extern struct {
 };
 pub const IRadialControllerButtonPressedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         var _r: *RadialControllerScreenContact = undefined;
         const _c = self.vtable.get_Contact(@ptrCast(self), &_r);
@@ -2806,6 +3127,12 @@ pub const IRadialControllerButtonPressedEventArgs = extern struct {
 };
 pub const IRadialControllerButtonReleasedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         var _r: *RadialControllerScreenContact = undefined;
         const _c = self.vtable.get_Contact(@ptrCast(self), &_r);
@@ -2836,6 +3163,12 @@ pub const IRadialControllerButtonReleasedEventArgs = extern struct {
 };
 pub const IRadialControllerConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetDefaultMenuItems(self: *@This(), buttons: *IIterable(RadialControllerSystemMenuItemKind)) core.HResult!void {
         const _c = self.vtable.SetDefaultMenuItems(@ptrCast(self), buttons);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2869,6 +3202,12 @@ pub const IRadialControllerConfiguration = extern struct {
 };
 pub const IRadialControllerConfiguration2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putActiveControllerWhenMenuIsSuppressed(self: *@This(), value: *RadialController) core.HResult!void {
         const _c = self.vtable.put_ActiveControllerWhenMenuIsSuppressed(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2909,6 +3248,12 @@ pub const IRadialControllerConfiguration2 = extern struct {
 };
 pub const IRadialControllerConfigurationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*RadialControllerConfiguration {
         var _r: *RadialControllerConfiguration = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -2932,6 +3277,12 @@ pub const IRadialControllerConfigurationStatics = extern struct {
 };
 pub const IRadialControllerConfigurationStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAppController(self: *@This(), value: *RadialController) core.HResult!void {
         const _c = self.vtable.put_AppController(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2972,6 +3323,12 @@ pub const IRadialControllerConfigurationStatics2 = extern struct {
 };
 pub const IRadialControllerControlAcquiredEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         var _r: *RadialControllerScreenContact = undefined;
         const _c = self.vtable.get_Contact(@ptrCast(self), &_r);
@@ -2995,6 +3352,12 @@ pub const IRadialControllerControlAcquiredEventArgs = extern struct {
 };
 pub const IRadialControllerControlAcquiredEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsButtonPressed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsButtonPressed(@ptrCast(self), &_r);
@@ -3025,6 +3388,12 @@ pub const IRadialControllerControlAcquiredEventArgs2 = extern struct {
 };
 pub const IRadialControllerMenu = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItems(self: *@This()) core.HResult!*IVector(RadialControllerMenuItem) {
         var _r: *IVector(RadialControllerMenuItem) = undefined;
         const _c = self.vtable.get_Items(@ptrCast(self), &_r);
@@ -3079,6 +3448,12 @@ pub const IRadialControllerMenu = extern struct {
 };
 pub const IRadialControllerMenuItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
@@ -3126,6 +3501,12 @@ pub const IRadialControllerMenuItem = extern struct {
 };
 pub const IRadialControllerMenuItemStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromIcon(self: *@This(), displayText: ?HSTRING, icon: *RandomAccessStreamReference) core.HResult!*RadialControllerMenuItem {
         var _r: *RadialControllerMenuItem = undefined;
         const _c = self.vtable.CreateFromIcon(@ptrCast(self), displayText, icon, &_r);
@@ -3156,6 +3537,12 @@ pub const IRadialControllerMenuItemStatics = extern struct {
 };
 pub const IRadialControllerMenuItemStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromFontGlyph(self: *@This(), displayText: ?HSTRING, glyph: ?HSTRING, fontFamily: ?HSTRING) core.HResult!*RadialControllerMenuItem {
         var _r: *RadialControllerMenuItem = undefined;
         const _c = self.vtable.CreateFromFontGlyph(@ptrCast(self), displayText, glyph, fontFamily, &_r);
@@ -3186,6 +3573,12 @@ pub const IRadialControllerMenuItemStatics2 = extern struct {
 };
 pub const IRadialControllerRotationChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRotationDeltaInDegrees(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_RotationDeltaInDegrees(@ptrCast(self), &_r);
@@ -3216,6 +3609,12 @@ pub const IRadialControllerRotationChangedEventArgs = extern struct {
 };
 pub const IRadialControllerRotationChangedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsButtonPressed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsButtonPressed(@ptrCast(self), &_r);
@@ -3246,6 +3645,12 @@ pub const IRadialControllerRotationChangedEventArgs2 = extern struct {
 };
 pub const IRadialControllerScreenContact = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBounds(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_Bounds(@ptrCast(self), &_r);
@@ -3276,6 +3681,12 @@ pub const IRadialControllerScreenContact = extern struct {
 };
 pub const IRadialControllerScreenContactContinuedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         var _r: *RadialControllerScreenContact = undefined;
         const _c = self.vtable.get_Contact(@ptrCast(self), &_r);
@@ -3299,6 +3710,12 @@ pub const IRadialControllerScreenContactContinuedEventArgs = extern struct {
 };
 pub const IRadialControllerScreenContactContinuedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsButtonPressed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsButtonPressed(@ptrCast(self), &_r);
@@ -3329,6 +3746,12 @@ pub const IRadialControllerScreenContactContinuedEventArgs2 = extern struct {
 };
 pub const IRadialControllerScreenContactEndedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsButtonPressed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsButtonPressed(@ptrCast(self), &_r);
@@ -3359,6 +3782,12 @@ pub const IRadialControllerScreenContactEndedEventArgs = extern struct {
 };
 pub const IRadialControllerScreenContactStartedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         var _r: *RadialControllerScreenContact = undefined;
         const _c = self.vtable.get_Contact(@ptrCast(self), &_r);
@@ -3382,6 +3811,12 @@ pub const IRadialControllerScreenContactStartedEventArgs = extern struct {
 };
 pub const IRadialControllerScreenContactStartedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsButtonPressed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsButtonPressed(@ptrCast(self), &_r);
@@ -3412,6 +3847,12 @@ pub const IRadialControllerScreenContactStartedEventArgs2 = extern struct {
 };
 pub const IRadialControllerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
@@ -3442,6 +3883,12 @@ pub const IRadialControllerStatics = extern struct {
 };
 pub const IRightTappedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
@@ -3472,6 +3919,12 @@ pub const IRightTappedEventArgs = extern struct {
 };
 pub const IRightTappedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ContactCount(@ptrCast(self), &_r);
@@ -3495,6 +3948,12 @@ pub const IRightTappedEventArgs2 = extern struct {
 };
 pub const ISystemButtonEventController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSystemFunctionButtonPressed(self: *@This(), handler: *TypedEventHandler(SystemButtonEventController,SystemFunctionButtonEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SystemFunctionButtonPressed(@ptrCast(self), handler, &_r);
@@ -3559,6 +4018,12 @@ pub const ISystemButtonEventController = extern struct {
 };
 pub const ISystemButtonEventControllerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateForDispatcherQueue(self: *@This(), queue: *DispatcherQueue) core.HResult!*SystemButtonEventController {
         var _r: *SystemButtonEventController = undefined;
         const _c = self.vtable.CreateForDispatcherQueue(@ptrCast(self), queue, &_r);
@@ -3582,6 +4047,12 @@ pub const ISystemButtonEventControllerStatics = extern struct {
 };
 pub const ISystemFunctionButtonEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -3617,6 +4088,12 @@ pub const ISystemFunctionButtonEventArgs = extern struct {
 };
 pub const ISystemFunctionLockChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -3659,6 +4136,12 @@ pub const ISystemFunctionLockChangedEventArgs = extern struct {
 };
 pub const ISystemFunctionLockIndicatorChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -3701,6 +4184,12 @@ pub const ISystemFunctionLockIndicatorChangedEventArgs = extern struct {
 };
 pub const ITappedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         var _r: PointerDeviceType = undefined;
         const _c = self.vtable.get_PointerDeviceType(@ptrCast(self), &_r);
@@ -3738,6 +4227,12 @@ pub const ITappedEventArgs = extern struct {
 };
 pub const ITappedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ContactCount(@ptrCast(self), &_r);
@@ -3761,6 +4256,12 @@ pub const ITappedEventArgs2 = extern struct {
 };
 pub const ITouchpadGesturesController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Enabled(@ptrCast(self), &_r);
@@ -3849,6 +4350,12 @@ pub const ITouchpadGesturesController = extern struct {
 };
 pub const ITouchpadGesturesControllerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
@@ -3879,6 +4386,12 @@ pub const ITouchpadGesturesControllerStatics = extern struct {
 };
 pub const ITouchpadGlobalActionEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!TouchpadGlobalAction {
         var _r: TouchpadGlobalAction = undefined;
         const _c = self.vtable.get_Action(@ptrCast(self), &_r);
@@ -3909,6 +4422,18 @@ pub const ITouchpadGlobalActionEventArgs = extern struct {
 };
 pub const InputActivationListener = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!InputActivationState {
         const this: *IInputActivationListener = @ptrCast(self);
         return try this.getState();
@@ -3929,6 +4454,18 @@ pub const InputActivationListener = extern struct {
 };
 pub const InputActivationListenerActivationChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!InputActivationState {
         const this: *IInputActivationListenerActivationChangedEventArgs = @ptrCast(self);
         return try this.getState();
@@ -3947,6 +4484,18 @@ pub const InputActivationState = enum(i32) {
 };
 pub const KeyboardDeliveryInterceptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsInterceptionEnabledWhenInForeground(self: *@This()) core.HResult!bool {
         const this: *IKeyboardDeliveryInterceptor = @ptrCast(self);
         return try this.getIsInterceptionEnabledWhenInForeground();
@@ -3971,9 +4520,6 @@ pub const KeyboardDeliveryInterceptor = extern struct {
         const this: *IKeyboardDeliveryInterceptor = @ptrCast(self);
         return try this.removeKeyUp(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*KeyboardDeliveryInterceptor {
         const _f = try @This()._IKeyboardDeliveryInterceptorStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -3987,6 +4533,18 @@ pub const KeyboardDeliveryInterceptor = extern struct {
 };
 pub const ManipulationCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         const this: *IManipulationCompletedEventArgs = @ptrCast(self);
         return try this.getPointerDeviceType();
@@ -4031,6 +4589,18 @@ pub const ManipulationDelta = extern struct {
 };
 pub const ManipulationInertiaStartingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         const this: *IManipulationInertiaStartingEventArgs = @ptrCast(self);
         return try this.getPointerDeviceType();
@@ -4066,6 +4636,18 @@ pub const ManipulationInertiaStartingEventArgs = extern struct {
 };
 pub const ManipulationStartedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         const this: *IManipulationStartedEventArgs = @ptrCast(self);
         return try this.getPointerDeviceType();
@@ -4093,6 +4675,18 @@ pub const ManipulationStartedEventArgs = extern struct {
 };
 pub const ManipulationUpdatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         const this: *IManipulationUpdatedEventArgs = @ptrCast(self);
         return try this.getPointerDeviceType();
@@ -4140,6 +4734,18 @@ pub const ManipulationVelocities = extern struct {
 };
 pub const MouseWheelParameters = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharTranslation(self: *@This()) core.HResult!Point {
         const this: *IMouseWheelParameters = @ptrCast(self);
         return try this.getCharTranslation();
@@ -4180,6 +4786,18 @@ pub const MouseWheelParameters = extern struct {
 };
 pub const PhysicalGestureRecognizer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsActive(self: *@This()) core.HResult!bool {
         const this: *IPhysicalGestureRecognizer = @ptrCast(self);
         return try this.getIsActive();
@@ -4312,9 +4930,6 @@ pub const PhysicalGestureRecognizer = extern struct {
         const this: *IPhysicalGestureRecognizer = @ptrCast(self);
         return try this.removeHolding(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPhysicalGestureRecognizer.IID)));
@@ -4328,6 +4943,18 @@ pub const PhysicalGestureRecognizer = extern struct {
 };
 pub const PointerPoint = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDevice(self: *@This()) core.HResult!*PointerDevice {
         const this: *IPointerPoint = @ptrCast(self);
         return try this.getPointerDevice();
@@ -4374,9 +5001,6 @@ pub const PointerPoint = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getPhysicalPosition();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetCurrentPoint(pointerId: u32) core.HResult!*PointerPoint {
         const _f = try @This()._IPointerPointStaticsCache.get();
         return try _f.GetCurrentPoint(pointerId);
@@ -4402,6 +5026,18 @@ pub const PointerPoint = extern struct {
 };
 pub const PointerPointProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPressure(self: *@This()) core.HResult!f32 {
         const this: *IPointerPointProperties = @ptrCast(self);
         return try this.getPressure();
@@ -4526,6 +5162,18 @@ pub const PointerUpdateKind = enum(i32) {
 };
 pub const PointerVisualizationSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putIsContactFeedbackEnabled(self: *@This(), value: bool) core.HResult!void {
         const this: *IPointerVisualizationSettings = @ptrCast(self);
         return try this.putIsContactFeedbackEnabled(value);
@@ -4542,9 +5190,6 @@ pub const PointerVisualizationSettings = extern struct {
         const this: *IPointerVisualizationSettings = @ptrCast(self);
         return try this.getIsBarrelButtonFeedbackEnabled();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*PointerVisualizationSettings {
         const _f = try @This()._IPointerVisualizationSettingsStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -4558,6 +5203,18 @@ pub const PointerVisualizationSettings = extern struct {
 };
 pub const RadialController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMenu(self: *@This()) core.HResult!*RadialControllerMenu {
         const this: *IRadialController = @ptrCast(self);
         return try this.getMenu();
@@ -4676,9 +5333,6 @@ pub const RadialController = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeButtonReleased(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn IsSupported() core.HResult!bool {
         const _f = try @This()._IRadialControllerStaticsCache.get();
         return try _f.IsSupported();
@@ -4696,6 +5350,18 @@ pub const RadialController = extern struct {
 };
 pub const RadialControllerButtonClickedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         const this: *IRadialControllerButtonClickedEventArgs = @ptrCast(self);
         return try this.getContact();
@@ -4715,6 +5381,18 @@ pub const RadialControllerButtonClickedEventArgs = extern struct {
 };
 pub const RadialControllerButtonHoldingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         const this: *IRadialControllerButtonHoldingEventArgs = @ptrCast(self);
         return try this.getContact();
@@ -4731,6 +5409,18 @@ pub const RadialControllerButtonHoldingEventArgs = extern struct {
 };
 pub const RadialControllerButtonPressedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         const this: *IRadialControllerButtonPressedEventArgs = @ptrCast(self);
         return try this.getContact();
@@ -4747,6 +5437,18 @@ pub const RadialControllerButtonPressedEventArgs = extern struct {
 };
 pub const RadialControllerButtonReleasedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         const this: *IRadialControllerButtonReleasedEventArgs = @ptrCast(self);
         return try this.getContact();
@@ -4763,6 +5465,18 @@ pub const RadialControllerButtonReleasedEventArgs = extern struct {
 };
 pub const RadialControllerConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetDefaultMenuItems(self: *@This(), buttons: *IIterable(RadialControllerSystemMenuItemKind)) core.HResult!void {
         const this: *IRadialControllerConfiguration = @ptrCast(self);
         return try this.SetDefaultMenuItems(buttons);
@@ -4803,9 +5517,6 @@ pub const RadialControllerConfiguration = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsMenuSuppressed();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*RadialControllerConfiguration {
         const _f = try @This()._IRadialControllerConfigurationStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -4836,6 +5547,18 @@ pub const RadialControllerConfiguration = extern struct {
 };
 pub const RadialControllerControlAcquiredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         const this: *IRadialControllerControlAcquiredEventArgs = @ptrCast(self);
         return try this.getContact();
@@ -4862,6 +5585,18 @@ pub const RadialControllerControlAcquiredEventArgs = extern struct {
 };
 pub const RadialControllerMenu = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItems(self: *@This()) core.HResult!*IVector(RadialControllerMenuItem) {
         const this: *IRadialControllerMenu = @ptrCast(self);
         return try this.getItems();
@@ -4894,6 +5629,18 @@ pub const RadialControllerMenu = extern struct {
 };
 pub const RadialControllerMenuItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         const this: *IRadialControllerMenuItem = @ptrCast(self);
         return try this.getDisplayText();
@@ -4913,9 +5660,6 @@ pub const RadialControllerMenuItem = extern struct {
     pub fn removeInvoked(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *IRadialControllerMenuItem = @ptrCast(self);
         return try this.removeInvoked(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromIcon(displayText: ?HSTRING, icon: *RandomAccessStreamReference) core.HResult!*RadialControllerMenuItem {
         const _f = try @This()._IRadialControllerMenuItemStaticsCache.get();
@@ -4954,6 +5698,18 @@ pub const RadialControllerMenuKnownIcon = enum(i32) {
 };
 pub const RadialControllerRotationChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRotationDeltaInDegrees(self: *@This()) core.HResult!f64 {
         const this: *IRadialControllerRotationChangedEventArgs = @ptrCast(self);
         return try this.getRotationDeltaInDegrees();
@@ -4984,6 +5740,18 @@ pub const RadialControllerRotationChangedEventArgs = extern struct {
 };
 pub const RadialControllerScreenContact = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBounds(self: *@This()) core.HResult!Rect {
         const this: *IRadialControllerScreenContact = @ptrCast(self);
         return try this.getBounds();
@@ -5000,6 +5768,18 @@ pub const RadialControllerScreenContact = extern struct {
 };
 pub const RadialControllerScreenContactContinuedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         const this: *IRadialControllerScreenContactContinuedEventArgs = @ptrCast(self);
         return try this.getContact();
@@ -5026,6 +5806,18 @@ pub const RadialControllerScreenContactContinuedEventArgs = extern struct {
 };
 pub const RadialControllerScreenContactEndedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsButtonPressed(self: *@This()) core.HResult!bool {
         const this: *IRadialControllerScreenContactEndedEventArgs = @ptrCast(self);
         return try this.getIsButtonPressed();
@@ -5042,6 +5834,18 @@ pub const RadialControllerScreenContactEndedEventArgs = extern struct {
 };
 pub const RadialControllerScreenContactStartedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*RadialControllerScreenContact {
         const this: *IRadialControllerScreenContactStartedEventArgs = @ptrCast(self);
         return try this.getContact();
@@ -5075,6 +5879,18 @@ pub const RadialControllerSystemMenuItemKind = enum(i32) {
 };
 pub const RightTappedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         const this: *IRightTappedEventArgs = @ptrCast(self);
         return try this.getPointerDeviceType();
@@ -5098,6 +5914,18 @@ pub const RightTappedEventArgs = extern struct {
 };
 pub const SystemButtonEventController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSystemFunctionButtonPressed(self: *@This(), handler: *TypedEventHandler(SystemButtonEventController,SystemFunctionButtonEventArgs)) core.HResult!EventRegistrationToken {
         const this: *ISystemButtonEventController = @ptrCast(self);
         return try this.addSystemFunctionButtonPressed(handler);
@@ -5130,9 +5958,6 @@ pub const SystemButtonEventController = extern struct {
         const this: *ISystemButtonEventController = @ptrCast(self);
         return try this.removeSystemFunctionLockIndicatorChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateForDispatcherQueue(queue: *DispatcherQueue) core.HResult!*SystemButtonEventController {
         const _f = try @This()._ISystemButtonEventControllerStaticsCache.get();
         return try _f.CreateForDispatcherQueue(queue);
@@ -5146,6 +5971,18 @@ pub const SystemButtonEventController = extern struct {
 };
 pub const SystemFunctionButtonEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!u64 {
         const this: *ISystemFunctionButtonEventArgs = @ptrCast(self);
         return try this.getTimestamp();
@@ -5166,6 +6003,18 @@ pub const SystemFunctionButtonEventArgs = extern struct {
 };
 pub const SystemFunctionLockChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!u64 {
         const this: *ISystemFunctionLockChangedEventArgs = @ptrCast(self);
         return try this.getTimestamp();
@@ -5190,6 +6039,18 @@ pub const SystemFunctionLockChangedEventArgs = extern struct {
 };
 pub const SystemFunctionLockIndicatorChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!u64 {
         const this: *ISystemFunctionLockIndicatorChangedEventArgs = @ptrCast(self);
         return try this.getTimestamp();
@@ -5214,6 +6075,18 @@ pub const SystemFunctionLockIndicatorChangedEventArgs = extern struct {
 };
 pub const TappedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPointerDeviceType(self: *@This()) core.HResult!PointerDeviceType {
         const this: *ITappedEventArgs = @ptrCast(self);
         return try this.getPointerDeviceType();
@@ -5241,6 +6114,18 @@ pub const TappedEventArgs = extern struct {
 };
 pub const TouchpadGesturesController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnabled(self: *@This()) core.HResult!bool {
         const this: *ITouchpadGesturesController = @ptrCast(self);
         return try this.getEnabled();
@@ -5289,9 +6174,6 @@ pub const TouchpadGesturesController = extern struct {
         const this: *ITouchpadGesturesController = @ptrCast(self);
         return try this.removeGlobalActionPerformed(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn IsSupported() core.HResult!bool {
         const _f = try @This()._ITouchpadGesturesControllerStaticsCache.get();
         return try _f.IsSupported();
@@ -5320,6 +6202,18 @@ pub const TouchpadGlobalAction = enum(i32) {
 };
 pub const TouchpadGlobalActionEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!TouchpadGlobalAction {
         const this: *ITouchpadGlobalActionEventArgs = @ptrCast(self);
         return try this.getAction();

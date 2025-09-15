@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPowerGridData = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSeverity(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Severity(@ptrCast(self), &_r);
@@ -31,6 +37,12 @@ pub const IPowerGridData = extern struct {
 };
 pub const IPowerGridForecast = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
@@ -68,6 +80,12 @@ pub const IPowerGridForecast = extern struct {
 };
 pub const IPowerGridForecastStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForecast(self: *@This()) core.HResult!*PowerGridForecast {
         var _r: *PowerGridForecast = undefined;
         const _c = self.vtable.GetForecast(@ptrCast(self), &_r);
@@ -103,6 +121,18 @@ pub const IPowerGridForecastStatics = extern struct {
 };
 pub const PowerGridData = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSeverity(self: *@This()) core.HResult!f64 {
         const this: *IPowerGridData = @ptrCast(self);
         return try this.getSeverity();
@@ -119,6 +149,18 @@ pub const PowerGridData = extern struct {
 };
 pub const PowerGridForecast = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartTime(self: *@This()) core.HResult!DateTime {
         const this: *IPowerGridForecast = @ptrCast(self);
         return try this.getStartTime();
@@ -130,9 +172,6 @@ pub const PowerGridForecast = extern struct {
     pub fn getForecast(self: *@This()) core.HResult!*IVectorView(PowerGridData) {
         const this: *IPowerGridForecast = @ptrCast(self);
         return try this.getForecast();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForecast() core.HResult!*PowerGridForecast {
         const _f = try @This()._IPowerGridForecastStaticsCache.get();
@@ -155,6 +194,18 @@ pub const PowerGridForecast = extern struct {
 };
 pub const Battery = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IBattery = @ptrCast(self);
         return try this.getDeviceId();
@@ -170,9 +221,6 @@ pub const Battery = extern struct {
     pub fn removeReportUpdated(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *IBattery = @ptrCast(self);
         return try this.removeReportUpdated(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getAggregateBattery() core.HResult!*Battery {
         const _f = try @This()._IBatteryStaticsCache.get();
@@ -195,6 +243,18 @@ pub const Battery = extern struct {
 };
 pub const BatteryReport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChargeRateInMilliwatts(self: *@This()) core.HResult!*IReference(i32) {
         const this: *IBatteryReport = @ptrCast(self);
         return try this.getChargeRateInMilliwatts();
@@ -223,6 +283,12 @@ pub const BatteryReport = extern struct {
 };
 pub const IBattery = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -265,6 +331,12 @@ pub const IBattery = extern struct {
 };
 pub const IBatteryReport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChargeRateInMilliwatts(self: *@This()) core.HResult!*IReference(i32) {
         var _r: *IReference(i32) = undefined;
         const _c = self.vtable.get_ChargeRateInMilliwatts(@ptrCast(self), &_r);
@@ -316,6 +388,12 @@ pub const IBatteryReport = extern struct {
 };
 pub const IBatteryStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAggregateBattery(self: *@This()) core.HResult!*Battery {
         var _r: *Battery = undefined;
         const _c = self.vtable.get_AggregateBattery(@ptrCast(self), &_r);

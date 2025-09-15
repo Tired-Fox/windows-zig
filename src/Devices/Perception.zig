@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IKnownCameraIntrinsicsPropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFocalLength(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FocalLength(@ptrCast(self), &_r);
@@ -45,6 +51,12 @@ pub const IKnownCameraIntrinsicsPropertiesStatics = extern struct {
 };
 pub const IKnownPerceptionColorFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExposure(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Exposure(@ptrCast(self), &_r);
@@ -82,6 +94,12 @@ pub const IKnownPerceptionColorFrameSourcePropertiesStatics = extern struct {
 };
 pub const IKnownPerceptionDepthFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinDepth(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MinDepth(@ptrCast(self), &_r);
@@ -112,6 +130,12 @@ pub const IKnownPerceptionDepthFrameSourcePropertiesStatics = extern struct {
 };
 pub const IKnownPerceptionFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -163,6 +187,12 @@ pub const IKnownPerceptionFrameSourcePropertiesStatics = extern struct {
 };
 pub const IKnownPerceptionFrameSourcePropertiesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -186,6 +216,12 @@ pub const IKnownPerceptionFrameSourcePropertiesStatics2 = extern struct {
 };
 pub const IKnownPerceptionInfraredFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExposure(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Exposure(@ptrCast(self), &_r);
@@ -251,6 +287,12 @@ pub const IKnownPerceptionInfraredFrameSourcePropertiesStatics = extern struct {
 };
 pub const IKnownPerceptionVideoFrameSourcePropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoProfile(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoProfile(@ptrCast(self), &_r);
@@ -302,6 +344,12 @@ pub const IKnownPerceptionVideoFrameSourcePropertiesStatics = extern struct {
 };
 pub const IKnownPerceptionVideoProfilePropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapPixelFormat(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BitmapPixelFormat(@ptrCast(self), &_r);
@@ -353,6 +401,12 @@ pub const IKnownPerceptionVideoProfilePropertiesStatics = extern struct {
 };
 pub const IPerceptionColorFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoFrame(self: *@This()) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.get_VideoFrame(@ptrCast(self), &_r);
@@ -376,6 +430,12 @@ pub const IPerceptionColorFrame = extern struct {
 };
 pub const IPerceptionColorFrameArrivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelativeTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RelativeTime(@ptrCast(self), &_r);
@@ -406,6 +466,12 @@ pub const IPerceptionColorFrameArrivedEventArgs = extern struct {
 };
 pub const IPerceptionColorFrameReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameReader,PerceptionColorFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FrameArrived(@ptrCast(self), handler, &_r);
@@ -460,6 +526,12 @@ pub const IPerceptionColorFrameReader = extern struct {
 };
 pub const IPerceptionColorFrameSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAvailableChanged(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AvailableChanged(@ptrCast(self), handler, &_r);
@@ -669,6 +741,12 @@ pub const IPerceptionColorFrameSource = extern struct {
 };
 pub const IPerceptionColorFrameSource2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -692,6 +770,12 @@ pub const IPerceptionColorFrameSource2 = extern struct {
 };
 pub const IPerceptionColorFrameSourceAddedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionColorFrameSource {
         var _r: *PerceptionColorFrameSource = undefined;
         const _c = self.vtable.get_FrameSource(@ptrCast(self), &_r);
@@ -715,6 +799,12 @@ pub const IPerceptionColorFrameSourceAddedEventArgs = extern struct {
 };
 pub const IPerceptionColorFrameSourceRemovedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionColorFrameSource {
         var _r: *PerceptionColorFrameSource = undefined;
         const _c = self.vtable.get_FrameSource(@ptrCast(self), &_r);
@@ -738,6 +828,12 @@ pub const IPerceptionColorFrameSourceRemovedEventArgs = extern struct {
 };
 pub const IPerceptionColorFrameSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWatcher(self: *@This()) core.HResult!*PerceptionColorFrameSourceWatcher {
         var _r: *PerceptionColorFrameSourceWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), &_r);
@@ -782,6 +878,12 @@ pub const IPerceptionColorFrameSourceStatics = extern struct {
 };
 pub const IPerceptionColorFrameSourceWatcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSourceAdded(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSourceWatcher,PerceptionColorFrameSourceAddedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SourceAdded(@ptrCast(self), handler, &_r);
@@ -863,6 +965,12 @@ pub const IPerceptionColorFrameSourceWatcher = extern struct {
 };
 pub const IPerceptionControlSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addControlLost(self: *@This(), handler: *TypedEventHandler(PerceptionControlSession,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ControlLost(@ptrCast(self), handler, &_r);
@@ -898,6 +1006,12 @@ pub const IPerceptionControlSession = extern struct {
 };
 pub const IPerceptionDepthCorrelatedCameraIntrinsics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn UnprojectPixelAtCorrelatedDepth(self: *@This(), pixelCoordinate: Point, depthFrame: *PerceptionDepthFrame) core.HResult!Vector3 {
         var _r: Vector3 = undefined;
         const _c = self.vtable.UnprojectPixelAtCorrelatedDepth(@ptrCast(self), pixelCoordinate, depthFrame, &_r);
@@ -940,6 +1054,12 @@ pub const IPerceptionDepthCorrelatedCameraIntrinsics = extern struct {
 };
 pub const IPerceptionDepthCorrelatedCoordinateMapper = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn MapPixelToTarget(self: *@This(), sourcePixelCoordinate: Point, depthFrame: *PerceptionDepthFrame) core.HResult!Point {
         var _r: Point = undefined;
         const _c = self.vtable.MapPixelToTarget(@ptrCast(self), sourcePixelCoordinate, depthFrame, &_r);
@@ -982,6 +1102,12 @@ pub const IPerceptionDepthCorrelatedCoordinateMapper = extern struct {
 };
 pub const IPerceptionDepthFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoFrame(self: *@This()) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.get_VideoFrame(@ptrCast(self), &_r);
@@ -1005,6 +1131,12 @@ pub const IPerceptionDepthFrame = extern struct {
 };
 pub const IPerceptionDepthFrameArrivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelativeTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RelativeTime(@ptrCast(self), &_r);
@@ -1035,6 +1167,12 @@ pub const IPerceptionDepthFrameArrivedEventArgs = extern struct {
 };
 pub const IPerceptionDepthFrameReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameReader,PerceptionDepthFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FrameArrived(@ptrCast(self), handler, &_r);
@@ -1089,6 +1227,12 @@ pub const IPerceptionDepthFrameReader = extern struct {
 };
 pub const IPerceptionDepthFrameSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAvailableChanged(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AvailableChanged(@ptrCast(self), handler, &_r);
@@ -1298,6 +1442,12 @@ pub const IPerceptionDepthFrameSource = extern struct {
 };
 pub const IPerceptionDepthFrameSource2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -1321,6 +1471,12 @@ pub const IPerceptionDepthFrameSource2 = extern struct {
 };
 pub const IPerceptionDepthFrameSourceAddedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionDepthFrameSource {
         var _r: *PerceptionDepthFrameSource = undefined;
         const _c = self.vtable.get_FrameSource(@ptrCast(self), &_r);
@@ -1344,6 +1500,12 @@ pub const IPerceptionDepthFrameSourceAddedEventArgs = extern struct {
 };
 pub const IPerceptionDepthFrameSourceRemovedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionDepthFrameSource {
         var _r: *PerceptionDepthFrameSource = undefined;
         const _c = self.vtable.get_FrameSource(@ptrCast(self), &_r);
@@ -1367,6 +1529,12 @@ pub const IPerceptionDepthFrameSourceRemovedEventArgs = extern struct {
 };
 pub const IPerceptionDepthFrameSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWatcher(self: *@This()) core.HResult!*PerceptionDepthFrameSourceWatcher {
         var _r: *PerceptionDepthFrameSourceWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), &_r);
@@ -1411,6 +1579,12 @@ pub const IPerceptionDepthFrameSourceStatics = extern struct {
 };
 pub const IPerceptionDepthFrameSourceWatcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSourceAdded(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSourceWatcher,PerceptionDepthFrameSourceAddedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SourceAdded(@ptrCast(self), handler, &_r);
@@ -1492,6 +1666,12 @@ pub const IPerceptionDepthFrameSourceWatcher = extern struct {
 };
 pub const IPerceptionFrameSourcePropertiesChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCollectionChange(self: *@This()) core.HResult!CollectionChange {
         var _r: CollectionChange = undefined;
         const _c = self.vtable.get_CollectionChange(@ptrCast(self), &_r);
@@ -1522,6 +1702,12 @@ pub const IPerceptionFrameSourcePropertiesChangedEventArgs = extern struct {
 };
 pub const IPerceptionFrameSourcePropertyChangeResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!PerceptionFrameSourcePropertyChangeStatus {
         var _r: PerceptionFrameSourcePropertyChangeStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1552,6 +1738,12 @@ pub const IPerceptionFrameSourcePropertyChangeResult = extern struct {
 };
 pub const IPerceptionInfraredFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoFrame(self: *@This()) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.get_VideoFrame(@ptrCast(self), &_r);
@@ -1575,6 +1767,12 @@ pub const IPerceptionInfraredFrame = extern struct {
 };
 pub const IPerceptionInfraredFrameArrivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelativeTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RelativeTime(@ptrCast(self), &_r);
@@ -1605,6 +1803,12 @@ pub const IPerceptionInfraredFrameArrivedEventArgs = extern struct {
 };
 pub const IPerceptionInfraredFrameReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameReader,PerceptionInfraredFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_FrameArrived(@ptrCast(self), handler, &_r);
@@ -1659,6 +1863,12 @@ pub const IPerceptionInfraredFrameReader = extern struct {
 };
 pub const IPerceptionInfraredFrameSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAvailableChanged(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_AvailableChanged(@ptrCast(self), handler, &_r);
@@ -1868,6 +2078,12 @@ pub const IPerceptionInfraredFrameSource = extern struct {
 };
 pub const IPerceptionInfraredFrameSource2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -1891,6 +2107,12 @@ pub const IPerceptionInfraredFrameSource2 = extern struct {
 };
 pub const IPerceptionInfraredFrameSourceAddedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionInfraredFrameSource {
         var _r: *PerceptionInfraredFrameSource = undefined;
         const _c = self.vtable.get_FrameSource(@ptrCast(self), &_r);
@@ -1914,6 +2136,12 @@ pub const IPerceptionInfraredFrameSourceAddedEventArgs = extern struct {
 };
 pub const IPerceptionInfraredFrameSourceRemovedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionInfraredFrameSource {
         var _r: *PerceptionInfraredFrameSource = undefined;
         const _c = self.vtable.get_FrameSource(@ptrCast(self), &_r);
@@ -1937,6 +2165,12 @@ pub const IPerceptionInfraredFrameSourceRemovedEventArgs = extern struct {
 };
 pub const IPerceptionInfraredFrameSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWatcher(self: *@This()) core.HResult!*PerceptionInfraredFrameSourceWatcher {
         var _r: *PerceptionInfraredFrameSourceWatcher = undefined;
         const _c = self.vtable.CreateWatcher(@ptrCast(self), &_r);
@@ -1981,6 +2215,12 @@ pub const IPerceptionInfraredFrameSourceStatics = extern struct {
 };
 pub const IPerceptionInfraredFrameSourceWatcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSourceAdded(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSourceWatcher,PerceptionInfraredFrameSourceAddedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SourceAdded(@ptrCast(self), handler, &_r);
@@ -2062,6 +2302,12 @@ pub const IPerceptionInfraredFrameSourceWatcher = extern struct {
 };
 pub const IPerceptionVideoProfile = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapPixelFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         var _r: BitmapPixelFormat = undefined;
         const _c = self.vtable.get_BitmapPixelFormat(@ptrCast(self), &_r);
@@ -2120,6 +2366,15 @@ pub const IPerceptionVideoProfile = extern struct {
 };
 pub const KnownCameraIntrinsicsProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2145,6 +2400,15 @@ pub const KnownCameraIntrinsicsProperties = extern struct {
 };
 pub const KnownPerceptionColorFrameSourceProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2166,6 +2430,15 @@ pub const KnownPerceptionColorFrameSourceProperties = extern struct {
 };
 pub const KnownPerceptionDepthFrameSourceProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2183,6 +2456,15 @@ pub const KnownPerceptionDepthFrameSourceProperties = extern struct {
 };
 pub const KnownPerceptionFrameSourceProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2217,6 +2499,15 @@ pub const KnownPerceptionFrameSourceProperties = extern struct {
 };
 pub const KnownPerceptionInfraredFrameSourceProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2254,6 +2545,15 @@ pub const KnownPerceptionInfraredFrameSourceProperties = extern struct {
 };
 pub const KnownPerceptionVideoFrameSourceProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2283,6 +2583,15 @@ pub const KnownPerceptionVideoFrameSourceProperties = extern struct {
 };
 pub const KnownPerceptionVideoProfileProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2312,6 +2621,18 @@ pub const KnownPerceptionVideoProfileProperties = extern struct {
 };
 pub const PerceptionColorFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoFrame(self: *@This()) core.HResult!*VideoFrame {
         const this: *IPerceptionColorFrame = @ptrCast(self);
         return try this.getVideoFrame();
@@ -2331,6 +2652,18 @@ pub const PerceptionColorFrame = extern struct {
 };
 pub const PerceptionColorFrameArrivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelativeTime(self: *@This()) core.HResult!TimeSpan {
         const this: *IPerceptionColorFrameArrivedEventArgs = @ptrCast(self);
         return try this.getRelativeTime();
@@ -2347,6 +2680,18 @@ pub const PerceptionColorFrameArrivedEventArgs = extern struct {
 };
 pub const PerceptionColorFrameReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameReader,PerceptionColorFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IPerceptionColorFrameReader = @ptrCast(self);
         return try this.addFrameArrived(handler);
@@ -2386,6 +2731,18 @@ pub const PerceptionColorFrameReader = extern struct {
 };
 pub const PerceptionColorFrameSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAvailableChanged(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IPerceptionColorFrameSource = @ptrCast(self);
         return try this.addAvailableChanged(handler);
@@ -2509,9 +2866,6 @@ pub const PerceptionColorFrameSource = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWatcher() core.HResult!*PerceptionColorFrameSourceWatcher {
         const _f = try @This()._IPerceptionColorFrameSourceStaticsCache.get();
         return try _f.CreateWatcher();
@@ -2537,6 +2891,18 @@ pub const PerceptionColorFrameSource = extern struct {
 };
 pub const PerceptionColorFrameSourceAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionColorFrameSource {
         const this: *IPerceptionColorFrameSourceAddedEventArgs = @ptrCast(self);
         return try this.getFrameSource();
@@ -2549,6 +2915,18 @@ pub const PerceptionColorFrameSourceAddedEventArgs = extern struct {
 };
 pub const PerceptionColorFrameSourceRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionColorFrameSource {
         const this: *IPerceptionColorFrameSourceRemovedEventArgs = @ptrCast(self);
         return try this.getFrameSource();
@@ -2561,6 +2939,18 @@ pub const PerceptionColorFrameSourceRemovedEventArgs = extern struct {
 };
 pub const PerceptionColorFrameSourceWatcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSourceAdded(self: *@This(), handler: *TypedEventHandler(PerceptionColorFrameSourceWatcher,PerceptionColorFrameSourceAddedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IPerceptionColorFrameSourceWatcher = @ptrCast(self);
         return try this.addSourceAdded(handler);
@@ -2613,6 +3003,18 @@ pub const PerceptionColorFrameSourceWatcher = extern struct {
 };
 pub const PerceptionControlSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addControlLost(self: *@This(), handler: *TypedEventHandler(PerceptionControlSession,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IPerceptionControlSession = @ptrCast(self);
         return try this.addControlLost(handler);
@@ -2640,6 +3042,18 @@ pub const PerceptionControlSession = extern struct {
 };
 pub const PerceptionDepthCorrelatedCameraIntrinsics = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn UnprojectPixelAtCorrelatedDepth(self: *@This(), pixelCoordinate: Point, depthFrame: *PerceptionDepthFrame) core.HResult!Vector3 {
         const this: *IPerceptionDepthCorrelatedCameraIntrinsics = @ptrCast(self);
         return try this.UnprojectPixelAtCorrelatedDepth(pixelCoordinate, depthFrame);
@@ -2664,6 +3078,18 @@ pub const PerceptionDepthCorrelatedCameraIntrinsics = extern struct {
 };
 pub const PerceptionDepthCorrelatedCoordinateMapper = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn MapPixelToTarget(self: *@This(), sourcePixelCoordinate: Point, depthFrame: *PerceptionDepthFrame) core.HResult!Point {
         const this: *IPerceptionDepthCorrelatedCoordinateMapper = @ptrCast(self);
         return try this.MapPixelToTarget(sourcePixelCoordinate, depthFrame);
@@ -2688,6 +3114,18 @@ pub const PerceptionDepthCorrelatedCoordinateMapper = extern struct {
 };
 pub const PerceptionDepthFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoFrame(self: *@This()) core.HResult!*VideoFrame {
         const this: *IPerceptionDepthFrame = @ptrCast(self);
         return try this.getVideoFrame();
@@ -2707,6 +3145,18 @@ pub const PerceptionDepthFrame = extern struct {
 };
 pub const PerceptionDepthFrameArrivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelativeTime(self: *@This()) core.HResult!TimeSpan {
         const this: *IPerceptionDepthFrameArrivedEventArgs = @ptrCast(self);
         return try this.getRelativeTime();
@@ -2723,6 +3173,18 @@ pub const PerceptionDepthFrameArrivedEventArgs = extern struct {
 };
 pub const PerceptionDepthFrameReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameReader,PerceptionDepthFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IPerceptionDepthFrameReader = @ptrCast(self);
         return try this.addFrameArrived(handler);
@@ -2762,6 +3224,18 @@ pub const PerceptionDepthFrameReader = extern struct {
 };
 pub const PerceptionDepthFrameSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAvailableChanged(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IPerceptionDepthFrameSource = @ptrCast(self);
         return try this.addAvailableChanged(handler);
@@ -2885,9 +3359,6 @@ pub const PerceptionDepthFrameSource = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWatcher() core.HResult!*PerceptionDepthFrameSourceWatcher {
         const _f = try @This()._IPerceptionDepthFrameSourceStaticsCache.get();
         return try _f.CreateWatcher();
@@ -2913,6 +3384,18 @@ pub const PerceptionDepthFrameSource = extern struct {
 };
 pub const PerceptionDepthFrameSourceAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionDepthFrameSource {
         const this: *IPerceptionDepthFrameSourceAddedEventArgs = @ptrCast(self);
         return try this.getFrameSource();
@@ -2925,6 +3408,18 @@ pub const PerceptionDepthFrameSourceAddedEventArgs = extern struct {
 };
 pub const PerceptionDepthFrameSourceRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionDepthFrameSource {
         const this: *IPerceptionDepthFrameSourceRemovedEventArgs = @ptrCast(self);
         return try this.getFrameSource();
@@ -2937,6 +3432,18 @@ pub const PerceptionDepthFrameSourceRemovedEventArgs = extern struct {
 };
 pub const PerceptionDepthFrameSourceWatcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSourceAdded(self: *@This(), handler: *TypedEventHandler(PerceptionDepthFrameSourceWatcher,PerceptionDepthFrameSourceAddedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IPerceptionDepthFrameSourceWatcher = @ptrCast(self);
         return try this.addSourceAdded(handler);
@@ -2995,6 +3502,18 @@ pub const PerceptionFrameSourceAccessStatus = enum(i32) {
 };
 pub const PerceptionFrameSourcePropertiesChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCollectionChange(self: *@This()) core.HResult!CollectionChange {
         const this: *IPerceptionFrameSourcePropertiesChangedEventArgs = @ptrCast(self);
         return try this.getCollectionChange();
@@ -3011,6 +3530,18 @@ pub const PerceptionFrameSourcePropertiesChangedEventArgs = extern struct {
 };
 pub const PerceptionFrameSourcePropertyChangeResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!PerceptionFrameSourcePropertyChangeStatus {
         const this: *IPerceptionFrameSourcePropertyChangeResult = @ptrCast(self);
         return try this.getStatus();
@@ -3035,6 +3566,18 @@ pub const PerceptionFrameSourcePropertyChangeStatus = enum(i32) {
 };
 pub const PerceptionInfraredFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoFrame(self: *@This()) core.HResult!*VideoFrame {
         const this: *IPerceptionInfraredFrame = @ptrCast(self);
         return try this.getVideoFrame();
@@ -3054,6 +3597,18 @@ pub const PerceptionInfraredFrame = extern struct {
 };
 pub const PerceptionInfraredFrameArrivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelativeTime(self: *@This()) core.HResult!TimeSpan {
         const this: *IPerceptionInfraredFrameArrivedEventArgs = @ptrCast(self);
         return try this.getRelativeTime();
@@ -3070,6 +3625,18 @@ pub const PerceptionInfraredFrameArrivedEventArgs = extern struct {
 };
 pub const PerceptionInfraredFrameReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addFrameArrived(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameReader,PerceptionInfraredFrameArrivedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IPerceptionInfraredFrameReader = @ptrCast(self);
         return try this.addFrameArrived(handler);
@@ -3109,6 +3676,18 @@ pub const PerceptionInfraredFrameReader = extern struct {
 };
 pub const PerceptionInfraredFrameSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAvailableChanged(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSource,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IPerceptionInfraredFrameSource = @ptrCast(self);
         return try this.addAvailableChanged(handler);
@@ -3232,9 +3811,6 @@ pub const PerceptionInfraredFrameSource = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDeviceId();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWatcher() core.HResult!*PerceptionInfraredFrameSourceWatcher {
         const _f = try @This()._IPerceptionInfraredFrameSourceStaticsCache.get();
         return try _f.CreateWatcher();
@@ -3260,6 +3836,18 @@ pub const PerceptionInfraredFrameSource = extern struct {
 };
 pub const PerceptionInfraredFrameSourceAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionInfraredFrameSource {
         const this: *IPerceptionInfraredFrameSourceAddedEventArgs = @ptrCast(self);
         return try this.getFrameSource();
@@ -3272,6 +3860,18 @@ pub const PerceptionInfraredFrameSourceAddedEventArgs = extern struct {
 };
 pub const PerceptionInfraredFrameSourceRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameSource(self: *@This()) core.HResult!*PerceptionInfraredFrameSource {
         const this: *IPerceptionInfraredFrameSourceRemovedEventArgs = @ptrCast(self);
         return try this.getFrameSource();
@@ -3284,6 +3884,18 @@ pub const PerceptionInfraredFrameSourceRemovedEventArgs = extern struct {
 };
 pub const PerceptionInfraredFrameSourceWatcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSourceAdded(self: *@This(), handler: *TypedEventHandler(PerceptionInfraredFrameSourceWatcher,PerceptionInfraredFrameSourceAddedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IPerceptionInfraredFrameSourceWatcher = @ptrCast(self);
         return try this.addSourceAdded(handler);
@@ -3336,6 +3948,18 @@ pub const PerceptionInfraredFrameSourceWatcher = extern struct {
 };
 pub const PerceptionVideoProfile = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapPixelFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         const this: *IPerceptionVideoProfile = @ptrCast(self);
         return try this.getBitmapPixelFormat();
@@ -3376,8 +4000,8 @@ const FactoryCache = @import("../core.zig").FactoryCache;
 const Rect = @import("../Foundation.zig").Rect;
 const DeviceWatcherStatus = @import("./Enumeration.zig").DeviceWatcherStatus;
 const TrustLevel = @import("../root.zig").TrustLevel;
-const BitmapPixelFormat = @import("../Graphics/Imaging.zig").BitmapPixelFormat;
 const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
+const BitmapPixelFormat = @import("../Graphics/Imaging.zig").BitmapPixelFormat;
 const IClosable = @import("../Foundation.zig").IClosable;
 const CollectionChange = @import("../Foundation/Collections.zig").CollectionChange;
 const HSTRING = @import("../root.zig").HSTRING;

@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const ConversionModeChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNewConversionMode(self: *@This()) core.HResult!TextConversionMode {
         const this: *IConversionModeChangedEventArgs = @ptrCast(self);
         return try this.getNewConversionMode();
@@ -13,6 +25,18 @@ pub const ConversionModeChangedEventArgs = extern struct {
 };
 pub const FocusEnteredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFocusedTextBoxInfo(self: *@This()) core.HResult!*TextBoxInfo {
         const this: *IFocusEnteredEventArgs = @ptrCast(self);
         return try this.getFocusedTextBoxInfo();
@@ -25,6 +49,12 @@ pub const FocusEnteredEventArgs = extern struct {
 };
 pub const IConversionModeChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNewConversionMode(self: *@This()) core.HResult!TextConversionMode {
         var _r: TextConversionMode = undefined;
         const _c = self.vtable.get_NewConversionMode(@ptrCast(self), &_r);
@@ -48,6 +78,12 @@ pub const IConversionModeChangedEventArgs = extern struct {
 };
 pub const IFocusEnteredEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFocusedTextBoxInfo(self: *@This()) core.HResult!*TextBoxInfo {
         var _r: *TextBoxInfo = undefined;
         const _c = self.vtable.get_FocusedTextBoxInfo(@ptrCast(self), &_r);
@@ -71,6 +107,12 @@ pub const IFocusEnteredEventArgs = extern struct {
 };
 pub const IInputDelegationModeChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDelegationOn(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_DelegationOn(@ptrCast(self), &_r);
@@ -94,6 +136,12 @@ pub const IInputDelegationModeChangedEventArgs = extern struct {
 };
 pub const IKeyEventReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVirtualKey(self: *@This()) core.HResult!VirtualKey {
         var _r: VirtualKey = undefined;
         const _c = self.vtable.get_VirtualKey(@ptrCast(self), &_r);
@@ -171,6 +219,12 @@ pub const IKeyEventReceivedEventArgs = extern struct {
 };
 pub const IKeyboardInputProcessor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInputProfile(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InputProfile(@ptrCast(self), &_r);
@@ -375,6 +429,12 @@ pub const IKeyboardInputProcessor = extern struct {
 };
 pub const IReconversionRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRange(self: *@This()) core.HResult!CoreTextRange {
         var _r: CoreTextRange = undefined;
         const _c = self.vtable.get_Range(@ptrCast(self), &_r);
@@ -398,6 +458,12 @@ pub const IReconversionRequestedEventArgs = extern struct {
 };
 pub const ITextBoxContentChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextBoxId(self: *@This()) core.HResult!TextBoxId {
         var _r: TextBoxId = undefined;
         const _c = self.vtable.get_TextBoxId(@ptrCast(self), &_r);
@@ -442,6 +508,12 @@ pub const ITextBoxContentChangedEventArgs = extern struct {
 };
 pub const ITextBoxInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!TextBoxId {
         var _r: TextBoxId = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -500,6 +572,12 @@ pub const ITextBoxInfo = extern struct {
 };
 pub const ITextBoxInfoChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextBoxInfo(self: *@This()) core.HResult!*TextBoxInfo {
         var _r: *TextBoxInfo = undefined;
         const _c = self.vtable.get_TextBoxInfo(@ptrCast(self), &_r);
@@ -523,6 +601,12 @@ pub const ITextBoxInfoChangedEventArgs = extern struct {
 };
 pub const ITextComposition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
@@ -594,6 +678,12 @@ pub const ITextComposition = extern struct {
 };
 pub const ITextCompositionSegment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
@@ -691,6 +781,12 @@ pub const ITextCompositionSegment = extern struct {
 };
 pub const ITextEditSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextBoxId(self: *@This()) core.HResult!TextBoxId {
         var _r: TextBoxId = undefined;
         const _c = self.vtable.get_TextBoxId(@ptrCast(self), &_r);
@@ -796,6 +892,12 @@ pub const ITextEditSession = extern struct {
 };
 pub const ITextInputProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSubscription(self: *@This()) core.HResult!TextInputServiceSubscription {
         var _r: TextInputServiceSubscription = undefined;
         const _c = self.vtable.GetSubscription(@ptrCast(self), &_r);
@@ -962,6 +1064,12 @@ pub const ITextInputProvider = extern struct {
 };
 pub const ITextInputService = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateKeyboardInputProcessor(self: *@This(), inputProfile: ?HSTRING) core.HResult!*KeyboardInputProcessor {
         var _r: *KeyboardInputProcessor = undefined;
         const _c = self.vtable.CreateKeyboardInputProcessor(@ptrCast(self), inputProfile, &_r);
@@ -992,6 +1100,12 @@ pub const ITextInputService = extern struct {
 };
 pub const ITextInputServiceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentThread(self: *@This()) core.HResult!*TextInputService {
         var _r: *TextInputService = undefined;
         const _c = self.vtable.GetForCurrentThread(@ptrCast(self), &_r);
@@ -1015,6 +1129,18 @@ pub const ITextInputServiceStatics = extern struct {
 };
 pub const InputDelegationModeChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDelegationOn(self: *@This()) core.HResult!bool {
         const this: *IInputDelegationModeChangedEventArgs = @ptrCast(self);
         return try this.getDelegationOn();
@@ -1034,6 +1160,18 @@ pub const KeyEventDeviceType = enum(i32) {
 };
 pub const KeyEventReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVirtualKey(self: *@This()) core.HResult!VirtualKey {
         const this: *IKeyEventReceivedEventArgs = @ptrCast(self);
         return try this.getVirtualKey();
@@ -1078,6 +1216,18 @@ pub const KeyEventReceivedEventArgs = extern struct {
 };
 pub const KeyboardInputProcessor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInputProfile(self: *@This()) core.HResult!?HSTRING {
         const this: *IKeyboardInputProcessor = @ptrCast(self);
         return try this.getInputProfile();
@@ -1215,6 +1365,18 @@ pub const PayloadResult = enum(i32) {
 };
 pub const ReconversionRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRange(self: *@This()) core.HResult!CoreTextRange {
         const this: *IReconversionRequestedEventArgs = @ptrCast(self);
         return try this.getRange();
@@ -1234,6 +1396,18 @@ pub const TextBoxContentAttribute = enum(i32) {
 };
 pub const TextBoxContentChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextBoxId(self: *@This()) core.HResult!TextBoxId {
         const this: *ITextBoxContentChangedEventArgs = @ptrCast(self);
         return try this.getTextBoxId();
@@ -1267,6 +1441,18 @@ pub const TextBoxId = extern struct {
 };
 pub const TextBoxInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!TextBoxId {
         const this: *ITextBoxInfo = @ptrCast(self);
         return try this.getId();
@@ -1299,6 +1485,18 @@ pub const TextBoxInfo = extern struct {
 };
 pub const TextBoxInfoChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextBoxInfo(self: *@This()) core.HResult!*TextBoxInfo {
         const this: *ITextBoxInfoChangedEventArgs = @ptrCast(self);
         return try this.getTextBoxInfo();
@@ -1327,6 +1525,18 @@ pub const TextChangeSource = enum(i32) {
 };
 pub const TextComposition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextComposition = @ptrCast(self);
         return try this.getText();
@@ -1371,6 +1581,18 @@ pub const TextComposition = extern struct {
 };
 pub const TextCompositionSegment = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextCompositionSegment = @ptrCast(self);
         return try this.getText();
@@ -1445,6 +1667,18 @@ pub const TextConversionMode = enum(i32) {
 };
 pub const TextEditSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextBoxId(self: *@This()) core.HResult!TextBoxId {
         const this: *ITextEditSession = @ptrCast(self);
         return try this.getTextBoxId();
@@ -1505,6 +1739,18 @@ pub const TextEditSession = extern struct {
 };
 pub const TextInputProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSubscription(self: *@This()) core.HResult!TextInputServiceSubscription {
         const this: *ITextInputProvider = @ptrCast(self);
         return try this.GetSubscription();
@@ -1609,6 +1855,18 @@ pub const TextInputProvider = extern struct {
 };
 pub const TextInputService = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateKeyboardInputProcessor(self: *@This(), inputProfile: ?HSTRING) core.HResult!*KeyboardInputProcessor {
         const this: *ITextInputService = @ptrCast(self);
         return try this.CreateKeyboardInputProcessor(inputProfile);
@@ -1616,9 +1874,6 @@ pub const TextInputService = extern struct {
     pub fn CreateTextInputProvider(self: *@This(), inputProfile: ?HSTRING) core.HResult!*TextInputProvider {
         const this: *ITextInputService = @ptrCast(self);
         return try this.CreateTextInputProvider(inputProfile);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentThread() core.HResult!*TextInputService {
         const _f = try @This()._ITextInputServiceStaticsCache.get();

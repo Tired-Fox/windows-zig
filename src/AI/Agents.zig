@@ -5,6 +5,18 @@ pub const AgentAuthorizationResponse = enum(i32) {
 };
 pub const AgentContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAgentContext = @ptrCast(self);
         return try this.getAppUserModelId();
@@ -12,9 +24,6 @@ pub const AgentContext = extern struct {
     pub fn RequestResourceAccess(self: *@This(), resource: *Uri, description: ?HSTRING, reasonForAsking: ?HSTRING) core.HResult!AgentAuthorizationResponse {
         const this: *IAgentContext = @ptrCast(self);
         return try this.RequestResourceAccess(resource, description, reasonForAsking);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetContextForCaller() core.HResult!*AgentContext {
         const _f = try @This()._IAgentContextStaticsCache.get();
@@ -29,6 +38,18 @@ pub const AgentContext = extern struct {
 };
 pub const AgentInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*Guid {
         const this: *IAgentInfo = @ptrCast(self);
         return try this.getId();
@@ -53,6 +74,15 @@ pub const AgentInfo = extern struct {
 };
 pub const AgentResources = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -94,6 +124,12 @@ pub const AgentResources = extern struct {
 };
 pub const IAgentContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppUserModelId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppUserModelId(@ptrCast(self), &_r);
@@ -124,6 +160,12 @@ pub const IAgentContext = extern struct {
 };
 pub const IAgentContextStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetContextForCaller(self: *@This()) core.HResult!*AgentContext {
         var _r: *AgentContext = undefined;
         const _c = self.vtable.GetContextForCaller(@ptrCast(self), &_r);
@@ -147,6 +189,12 @@ pub const IAgentContextStatics = extern struct {
 };
 pub const IAgentInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -191,6 +239,12 @@ pub const IAgentInfo = extern struct {
 };
 pub const IAgentResourcesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFileSystemRead(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FileSystemRead(@ptrCast(self), &_r);

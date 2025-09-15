@@ -11,6 +11,15 @@ pub const CachedFileTarget = enum(i32) {
 };
 pub const CachedFileUpdater = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -24,6 +33,18 @@ pub const CachedFileUpdater = extern struct {
 };
 pub const CachedFileUpdaterUI = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *ICachedFileUpdaterUI = @ptrCast(self);
         return try this.getTitle();
@@ -78,6 +99,18 @@ pub const CachedFileUpdaterUI = extern struct {
 };
 pub const FileUpdateRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentId(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileUpdateRequest = @ptrCast(self);
         return try this.getContentId();
@@ -124,6 +157,18 @@ pub const FileUpdateRequest = extern struct {
 };
 pub const FileUpdateRequestDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IFileUpdateRequestDeferral = @ptrCast(self);
         return try this.Complete();
@@ -136,6 +181,18 @@ pub const FileUpdateRequestDeferral = extern struct {
 };
 pub const FileUpdateRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*FileUpdateRequest {
         const this: *IFileUpdateRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -156,6 +213,12 @@ pub const FileUpdateStatus = enum(i32) {
 };
 pub const ICachedFileUpdaterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetUpdateInformation(self: *@This(), file: *IStorageFile, contentId: ?HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) core.HResult!void {
         const _c = self.vtable.SetUpdateInformation(@ptrCast(self), file, contentId, readMode, writeMode, options);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -177,6 +240,12 @@ pub const ICachedFileUpdaterStatics = extern struct {
 };
 pub const ICachedFileUpdaterUI = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -243,6 +312,12 @@ pub const ICachedFileUpdaterUI = extern struct {
 };
 pub const ICachedFileUpdaterUI2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUpdateRequest(self: *@This()) core.HResult!*FileUpdateRequest {
         var _r: *FileUpdateRequest = undefined;
         const _c = self.vtable.get_UpdateRequest(@ptrCast(self), &_r);
@@ -273,6 +348,12 @@ pub const ICachedFileUpdaterUI2 = extern struct {
 };
 pub const IFileUpdateRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentId(@ptrCast(self), &_r);
@@ -327,6 +408,12 @@ pub const IFileUpdateRequest = extern struct {
 };
 pub const IFileUpdateRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserInputNeededMessage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserInputNeededMessage(@ptrCast(self), &_r);
@@ -355,6 +442,12 @@ pub const IFileUpdateRequest2 = extern struct {
 };
 pub const IFileUpdateRequestDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -376,6 +469,12 @@ pub const IFileUpdateRequestDeferral = extern struct {
 };
 pub const IFileUpdateRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*FileUpdateRequest {
         var _r: *FileUpdateRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -414,6 +513,12 @@ pub const WriteActivationMode = enum(i32) {
 };
 pub const IStorageProviderFileTypeInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFileExtension(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FileExtension(@ptrCast(self), &_r);
@@ -444,6 +549,12 @@ pub const IStorageProviderFileTypeInfo = extern struct {
 };
 pub const IStorageProviderFileTypeInfoFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), fileExtension: ?HSTRING, iconResource: ?HSTRING) core.HResult!*StorageProviderFileTypeInfo {
         var _r: *StorageProviderFileTypeInfo = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), fileExtension, iconResource, &_r);
@@ -467,6 +578,12 @@ pub const IStorageProviderFileTypeInfoFactory = extern struct {
 };
 pub const IStorageProviderGetContentInfoForPathResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!StorageProviderUriSourceStatus {
         var _r: StorageProviderUriSourceStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -519,6 +636,12 @@ pub const IStorageProviderGetContentInfoForPathResult = extern struct {
 };
 pub const IStorageProviderGetPathForContentUriResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!StorageProviderUriSourceStatus {
         var _r: StorageProviderUriSourceStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -559,6 +682,12 @@ pub const IStorageProviderGetPathForContentUriResult = extern struct {
 };
 pub const IStorageProviderItemPropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetAsync(self: *@This(), item: *IStorageItem, itemProperties: *IIterable(StorageProviderItemProperty)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetAsync(@ptrCast(self), item, itemProperties, &_r);
@@ -582,6 +711,12 @@ pub const IStorageProviderItemPropertiesStatics = extern struct {
 };
 pub const IStorageProviderItemProperty = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putId(self: *@This(), value: i32) core.HResult!void {
         const _c = self.vtable.put_Id(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -634,6 +769,12 @@ pub const IStorageProviderItemProperty = extern struct {
 };
 pub const IStorageProviderItemPropertyDefinition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -674,6 +815,12 @@ pub const IStorageProviderItemPropertyDefinition = extern struct {
 };
 pub const IStorageProviderItemPropertySource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetItemProperties(self: *@This(), itemPath: ?HSTRING) core.HResult!*IIterable(StorageProviderItemProperty) {
         var _r: *IIterable(StorageProviderItemProperty) = undefined;
         const _c = self.vtable.GetItemProperties(@ptrCast(self), itemPath, &_r);
@@ -697,6 +844,12 @@ pub const IStorageProviderItemPropertySource = extern struct {
 };
 pub const IStorageProviderKnownFolderEntry = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKnownFolderId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_KnownFolderId(@ptrCast(self), &_r);
@@ -737,6 +890,12 @@ pub const IStorageProviderKnownFolderEntry = extern struct {
 };
 pub const IStorageProviderKnownFolderSyncInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProviderDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderDisplayName(@ptrCast(self), &_r);
@@ -784,6 +943,12 @@ pub const IStorageProviderKnownFolderSyncInfo = extern struct {
 };
 pub const IStorageProviderKnownFolderSyncInfoSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetKnownFolderSyncInfo(self: *@This()) core.HResult!*StorageProviderKnownFolderSyncInfo {
         var _r: *StorageProviderKnownFolderSyncInfo = undefined;
         const _c = self.vtable.GetKnownFolderSyncInfo(@ptrCast(self), &_r);
@@ -819,6 +984,12 @@ pub const IStorageProviderKnownFolderSyncInfoSource = extern struct {
 };
 pub const IStorageProviderKnownFolderSyncInfoSourceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetKnownFolderSyncInfoSource(self: *@This()) core.HResult!*IStorageProviderKnownFolderSyncInfoSource {
         var _r: *IStorageProviderKnownFolderSyncInfoSource = undefined;
         const _c = self.vtable.GetKnownFolderSyncInfoSource(@ptrCast(self), &_r);
@@ -842,6 +1013,12 @@ pub const IStorageProviderKnownFolderSyncInfoSourceFactory = extern struct {
 };
 pub const IStorageProviderKnownFolderSyncRequestArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKnownFolders(self: *@This()) core.HResult!*IVectorView(Guid) {
         var _r: *IVectorView(Guid) = undefined;
         const _c = self.vtable.get_KnownFolders(@ptrCast(self), &_r);
@@ -872,6 +1049,12 @@ pub const IStorageProviderKnownFolderSyncRequestArgs = extern struct {
 };
 pub const IStorageProviderMoreInfoUI = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
@@ -912,6 +1095,12 @@ pub const IStorageProviderMoreInfoUI = extern struct {
 };
 pub const IStorageProviderPropertyCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsPropertySupported(self: *@This(), propertyCanonicalName: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsPropertySupported(@ptrCast(self), propertyCanonicalName, &_r);
@@ -935,6 +1124,12 @@ pub const IStorageProviderPropertyCapabilities = extern struct {
 };
 pub const IStorageProviderQueryResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!StorageProviderResultKind {
         var _r: StorageProviderResultKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -1006,6 +1201,12 @@ pub const IStorageProviderQueryResult = extern struct {
 };
 pub const IStorageProviderQueryResultSet = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetResults(self: *@This()) core.HResult![*]IStorageProviderQueryResult {
         var _r: [*]IStorageProviderQueryResult = undefined;
         const _c = self.vtable.GetResults(@ptrCast(self), &_r);
@@ -1053,6 +1254,12 @@ pub const IStorageProviderQueryResultSet = extern struct {
 };
 pub const IStorageProviderQueryResultSetFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), results: [*]IStorageProviderQueryResult) core.HResult!*StorageProviderQueryResultSet {
         var _r: *StorageProviderQueryResultSet = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), results, &_r);
@@ -1076,6 +1283,12 @@ pub const IStorageProviderQueryResultSetFactory = extern struct {
 };
 pub const IStorageProviderQuotaUI = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQuotaTotalInBytes(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_QuotaTotalInBytes(@ptrCast(self), &_r);
@@ -1140,6 +1353,12 @@ pub const IStorageProviderQuotaUI = extern struct {
 };
 pub const IStorageProviderSearchHandler = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Find(self: *@This(), options: *StorageProviderSearchQueryOptions) core.HResult!*StorageProviderQueryResultSet {
         var _r: *StorageProviderQueryResultSet = undefined;
         const _c = self.vtable.Find(@ptrCast(self), options, &_r);
@@ -1168,6 +1387,12 @@ pub const IStorageProviderSearchHandler = extern struct {
 };
 pub const IStorageProviderSearchHandlerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSearchHandler(self: *@This(), cloudProviderId: ?HSTRING) core.HResult!*IStorageProviderSearchHandler {
         var _r: *IStorageProviderSearchHandler = undefined;
         const _c = self.vtable.CreateSearchHandler(@ptrCast(self), cloudProviderId, &_r);
@@ -1191,6 +1416,12 @@ pub const IStorageProviderSearchHandlerFactory = extern struct {
 };
 pub const IStorageProviderSearchQueryOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserQuery(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserQuery(@ptrCast(self), &_r);
@@ -1263,6 +1494,12 @@ pub const IStorageProviderSearchQueryOptions = extern struct {
 };
 pub const IStorageProviderSearchResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMatchScore(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MatchScore(@ptrCast(self), &_r);
@@ -1315,6 +1552,12 @@ pub const IStorageProviderSearchResult = extern struct {
 };
 pub const IStorageProviderShareLinkSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateLinkAsync(self: *@This(), storageItemList: *IVectorView(IStorageItem)) core.HResult!*IAsyncOperation(Uri) {
         var _r: *IAsyncOperation(Uri) = undefined;
         const _c = self.vtable.CreateLinkAsync(@ptrCast(self), storageItemList, &_r);
@@ -1352,6 +1595,12 @@ pub const IStorageProviderShareLinkSource = extern struct {
 };
 pub const IStorageProviderStatusUI = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProviderState(self: *@This()) core.HResult!StorageProviderState {
         var _r: StorageProviderState = undefined;
         const _c = self.vtable.get_ProviderState(@ptrCast(self), &_r);
@@ -1464,6 +1713,12 @@ pub const IStorageProviderStatusUI = extern struct {
 };
 pub const IStorageProviderStatusUISource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetStatusUI(self: *@This()) core.HResult!*StorageProviderStatusUI {
         var _r: *StorageProviderStatusUI = undefined;
         const _c = self.vtable.GetStatusUI(@ptrCast(self), &_r);
@@ -1499,6 +1754,12 @@ pub const IStorageProviderStatusUISource = extern struct {
 };
 pub const IStorageProviderStatusUISourceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetStatusUISource(self: *@This(), syncRootId: ?HSTRING) core.HResult!*IStorageProviderStatusUISource {
         var _r: *IStorageProviderStatusUISource = undefined;
         const _c = self.vtable.GetStatusUISource(@ptrCast(self), syncRootId, &_r);
@@ -1522,6 +1783,12 @@ pub const IStorageProviderStatusUISourceFactory = extern struct {
 };
 pub const IStorageProviderSuggestionsHandler = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSuggestions(self: *@This(), options: *StorageProviderSuggestionsQueryOptions) core.HResult!*StorageProviderQueryResultSet {
         var _r: *StorageProviderQueryResultSet = undefined;
         const _c = self.vtable.GetSuggestions(@ptrCast(self), options, &_r);
@@ -1567,6 +1834,12 @@ pub const IStorageProviderSuggestionsHandler = extern struct {
 };
 pub const IStorageProviderSuggestionsHandlerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSuggestionsHandler(self: *@This(), cloudProviderId: ?HSTRING) core.HResult!*IStorageProviderSuggestionsHandler {
         var _r: *IStorageProviderSuggestionsHandler = undefined;
         const _c = self.vtable.CreateSuggestionsHandler(@ptrCast(self), cloudProviderId, &_r);
@@ -1590,6 +1863,12 @@ pub const IStorageProviderSuggestionsHandlerFactory = extern struct {
 };
 pub const IStorageProviderSuggestionsQueryOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSuggestionsKind(self: *@This()) core.HResult!StorageProviderResultKind {
         var _r: StorageProviderResultKind = undefined;
         const _c = self.vtable.get_SuggestionsKind(@ptrCast(self), &_r);
@@ -1641,6 +1920,12 @@ pub const IStorageProviderSuggestionsQueryOptions = extern struct {
 };
 pub const IStorageProviderSyncRootInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -1844,6 +2129,12 @@ pub const IStorageProviderSyncRootInfo = extern struct {
 };
 pub const IStorageProviderSyncRootInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProviderId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
@@ -1872,6 +2163,12 @@ pub const IStorageProviderSyncRootInfo2 = extern struct {
 };
 pub const IStorageProviderSyncRootInfo3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFallbackFileTypeInfo(self: *@This()) core.HResult!*IVector(StorageProviderFileTypeInfo) {
         var _r: *IVector(StorageProviderFileTypeInfo) = undefined;
         const _c = self.vtable.get_FallbackFileTypeInfo(@ptrCast(self), &_r);
@@ -1895,6 +2192,12 @@ pub const IStorageProviderSyncRootInfo3 = extern struct {
 };
 pub const IStorageProviderSyncRootManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Register(self: *@This(), syncRootInformation: *StorageProviderSyncRootInfo) core.HResult!void {
         const _c = self.vtable.Register(@ptrCast(self), syncRootInformation);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1942,6 +2245,12 @@ pub const IStorageProviderSyncRootManagerStatics = extern struct {
 };
 pub const IStorageProviderSyncRootManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
@@ -1965,6 +2274,12 @@ pub const IStorageProviderSyncRootManagerStatics2 = extern struct {
 };
 pub const IStorageProviderUICommand = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
@@ -2014,6 +2329,12 @@ pub const IStorageProviderUICommand = extern struct {
 };
 pub const IStorageProviderUriSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPathForContentUri(self: *@This(), contentUri: ?HSTRING, result: *StorageProviderGetPathForContentUriResult) core.HResult!void {
         const _c = self.vtable.GetPathForContentUri(@ptrCast(self), contentUri, result);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2040,6 +2361,18 @@ pub const IStorageProviderUriSource = extern struct {
 };
 pub const StorageProviderFileTypeInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFileExtension(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderFileTypeInfo = @ptrCast(self);
         return try this.getFileExtension();
@@ -2047,9 +2380,6 @@ pub const StorageProviderFileTypeInfo = extern struct {
     pub fn getIconResource(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderFileTypeInfo = @ptrCast(self);
         return try this.getIconResource();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(fileExtension: ?HSTRING, iconResource: ?HSTRING) core.HResult!*StorageProviderFileTypeInfo {
         const _f = try @This()._IStorageProviderFileTypeInfoFactoryCache.get();
@@ -2064,6 +2394,18 @@ pub const StorageProviderFileTypeInfo = extern struct {
 };
 pub const StorageProviderGetContentInfoForPathResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!StorageProviderUriSourceStatus {
         const this: *IStorageProviderGetContentInfoForPathResult = @ptrCast(self);
         return try this.getStatus();
@@ -2088,9 +2430,6 @@ pub const StorageProviderGetContentInfoForPathResult = extern struct {
         const this: *IStorageProviderGetContentInfoForPathResult = @ptrCast(self);
         return try this.putContentId(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorageProviderGetContentInfoForPathResult.IID)));
@@ -2104,6 +2443,18 @@ pub const StorageProviderGetContentInfoForPathResult = extern struct {
 };
 pub const StorageProviderGetPathForContentUriResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!StorageProviderUriSourceStatus {
         const this: *IStorageProviderGetPathForContentUriResult = @ptrCast(self);
         return try this.getStatus();
@@ -2119,9 +2470,6 @@ pub const StorageProviderGetPathForContentUriResult = extern struct {
     pub fn putPath(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IStorageProviderGetPathForContentUriResult = @ptrCast(self);
         return try this.putPath(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2167,6 +2515,15 @@ pub const StorageProviderInSyncPolicy = enum(i32) {
 };
 pub const StorageProviderItemProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2180,6 +2537,18 @@ pub const StorageProviderItemProperties = extern struct {
 };
 pub const StorageProviderItemProperty = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putId(self: *@This(), value: i32) core.HResult!void {
         const this: *IStorageProviderItemProperty = @ptrCast(self);
         return try this.putId(value);
@@ -2204,9 +2573,6 @@ pub const StorageProviderItemProperty = extern struct {
         const this: *IStorageProviderItemProperty = @ptrCast(self);
         return try this.getIconResource();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorageProviderItemProperty.IID)));
@@ -2220,6 +2586,18 @@ pub const StorageProviderItemProperty = extern struct {
 };
 pub const StorageProviderItemPropertyDefinition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!i32 {
         const this: *IStorageProviderItemPropertyDefinition = @ptrCast(self);
         return try this.getId();
@@ -2236,9 +2614,6 @@ pub const StorageProviderItemPropertyDefinition = extern struct {
         const this: *IStorageProviderItemPropertyDefinition = @ptrCast(self);
         return try this.putDisplayNameResource(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorageProviderItemPropertyDefinition.IID)));
@@ -2252,6 +2627,18 @@ pub const StorageProviderItemPropertyDefinition = extern struct {
 };
 pub const StorageProviderKnownFolderEntry = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKnownFolderId(self: *@This()) core.HResult!*Guid {
         const this: *IStorageProviderKnownFolderEntry = @ptrCast(self);
         return try this.getKnownFolderId();
@@ -2268,9 +2655,6 @@ pub const StorageProviderKnownFolderEntry = extern struct {
         const this: *IStorageProviderKnownFolderEntry = @ptrCast(self);
         return try this.putStatus(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorageProviderKnownFolderEntry.IID)));
@@ -2284,6 +2668,18 @@ pub const StorageProviderKnownFolderEntry = extern struct {
 };
 pub const StorageProviderKnownFolderSyncInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProviderDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderKnownFolderSyncInfo = @ptrCast(self);
         return try this.getProviderDisplayName();
@@ -2304,9 +2700,6 @@ pub const StorageProviderKnownFolderSyncInfo = extern struct {
         const this: *IStorageProviderKnownFolderSyncInfo = @ptrCast(self);
         return try this.putSyncRequested(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorageProviderKnownFolderSyncInfo.IID)));
@@ -2320,6 +2713,18 @@ pub const StorageProviderKnownFolderSyncInfo = extern struct {
 };
 pub const StorageProviderKnownFolderSyncRequestArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKnownFolders(self: *@This()) core.HResult!*IVectorView(Guid) {
         const this: *IStorageProviderKnownFolderSyncRequestArgs = @ptrCast(self);
         return try this.getKnownFolders();
@@ -2430,6 +2835,18 @@ pub const StorageProviderKnownFolderSyncStatus = enum(i32) {
 };
 pub const StorageProviderMoreInfoUI = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderMoreInfoUI = @ptrCast(self);
         return try this.getMessage();
@@ -2445,9 +2862,6 @@ pub const StorageProviderMoreInfoUI = extern struct {
     pub fn putCommand(self: *@This(), value: *IStorageProviderUICommand) core.HResult!void {
         const this: *IStorageProviderMoreInfoUI = @ptrCast(self);
         return try this.putCommand(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2470,6 +2884,18 @@ pub const StorageProviderProtectionMode = enum(i32) {
 };
 pub const StorageProviderQueryResultSet = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetResults(self: *@This()) core.HResult![*]IStorageProviderQueryResult {
         const this: *IStorageProviderQueryResultSet = @ptrCast(self);
         return try this.GetResults();
@@ -2490,9 +2916,6 @@ pub const StorageProviderQueryResultSet = extern struct {
         const this: *IStorageProviderQueryResultSet = @ptrCast(self);
         return try this.putStatus(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(results: [*]IStorageProviderQueryResult) core.HResult!*StorageProviderQueryResultSet {
         const _f = try @This()._IStorageProviderQueryResultSetFactoryCache.get();
         return try _f.CreateInstance(results);
@@ -2506,6 +2929,18 @@ pub const StorageProviderQueryResultSet = extern struct {
 };
 pub const StorageProviderQuotaUI = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQuotaTotalInBytes(self: *@This()) core.HResult!u64 {
         const this: *IStorageProviderQuotaUI = @ptrCast(self);
         return try this.getQuotaTotalInBytes();
@@ -2538,9 +2973,6 @@ pub const StorageProviderQuotaUI = extern struct {
         const this: *IStorageProviderQuotaUI = @ptrCast(self);
         return try this.putQuotaUsedColor(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorageProviderQuotaUI.IID)));
@@ -2572,6 +3004,18 @@ pub const StorageProviderSearchMatchKind = enum(i32) {
 };
 pub const StorageProviderSearchQueryOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserQuery(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSearchQueryOptions = @ptrCast(self);
         return try this.getUserQuery();
@@ -2622,6 +3066,18 @@ pub const StorageProviderSearchQueryStatus = enum(i32) {
 };
 pub const StorageProviderSearchResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMatchScore(self: *@This()) core.HResult!f64 {
         const this: *IStorageProviderSearchResult = @ptrCast(self);
         return try this.getMatchScore();
@@ -2709,9 +3165,6 @@ pub const StorageProviderSearchResult = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getRequestedProperties();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorageProviderSearchResult.IID)));
@@ -2737,6 +3190,18 @@ pub const StorageProviderState = enum(i32) {
 };
 pub const StorageProviderStatusUI = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProviderState(self: *@This()) core.HResult!StorageProviderState {
         const this: *IStorageProviderStatusUI = @ptrCast(self);
         return try this.getProviderState();
@@ -2801,9 +3266,6 @@ pub const StorageProviderStatusUI = extern struct {
         const this: *IStorageProviderStatusUI = @ptrCast(self);
         return try this.putProviderSecondaryCommands(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorageProviderStatusUI.IID)));
@@ -2817,6 +3279,18 @@ pub const StorageProviderStatusUI = extern struct {
 };
 pub const StorageProviderSuggestionResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!StorageProviderResultKind {
         const this: *IStorageProviderQueryResult = @ptrCast(self);
         return try this.getKind();
@@ -2853,9 +3327,6 @@ pub const StorageProviderSuggestionResult = extern struct {
         const this: *IStorageProviderQueryResult = @ptrCast(self);
         return try this.getRequestedProperties();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorageProviderQueryResult.IID)));
@@ -2869,6 +3340,18 @@ pub const StorageProviderSuggestionResult = extern struct {
 };
 pub const StorageProviderSuggestionsQueryOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSuggestionsKind(self: *@This()) core.HResult!StorageProviderResultKind {
         const this: *IStorageProviderSuggestionsQueryOptions = @ptrCast(self);
         return try this.getSuggestionsKind();
@@ -2897,6 +3380,18 @@ pub const StorageProviderSuggestionsQueryOptions = extern struct {
 };
 pub const StorageProviderSyncRootInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStorageProviderSyncRootInfo = @ptrCast(self);
         return try this.getId();
@@ -3042,9 +3537,6 @@ pub const StorageProviderSyncRootInfo = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getFallbackFileTypeInfo();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorageProviderSyncRootInfo.IID)));
@@ -3058,6 +3550,15 @@ pub const StorageProviderSyncRootInfo = extern struct {
 };
 pub const StorageProviderSyncRootManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

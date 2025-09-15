@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ISocialFeedChildItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthor(self: *@This()) core.HResult!*SocialUserInfo {
         var _r: *SocialUserInfo = undefined;
         const _c = self.vtable.get_Author(@ptrCast(self), &_r);
@@ -81,6 +87,12 @@ pub const ISocialFeedChildItem = extern struct {
 };
 pub const ISocialFeedContent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -133,6 +145,12 @@ pub const ISocialFeedContent = extern struct {
 };
 pub const ISocialFeedItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthor(self: *@This()) core.HResult!*SocialUserInfo {
         var _r: *SocialUserInfo = undefined;
         const _c = self.vtable.get_Author(@ptrCast(self), &_r);
@@ -273,6 +291,12 @@ pub const ISocialFeedItem = extern struct {
 };
 pub const ISocialFeedSharedItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOriginalSource(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_OriginalSource(@ptrCast(self), &_r);
@@ -344,6 +368,12 @@ pub const ISocialFeedSharedItem = extern struct {
 };
 pub const ISocialItemThumbnail = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_TargetUri(@ptrCast(self), &_r);
@@ -403,6 +433,12 @@ pub const ISocialItemThumbnail = extern struct {
 };
 pub const ISocialUserInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -467,6 +503,18 @@ pub const ISocialUserInfo = extern struct {
 };
 pub const SocialFeedChildItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthor(self: *@This()) core.HResult!*SocialUserInfo {
         const this: *ISocialFeedChildItem = @ptrCast(self);
         return try this.getAuthor();
@@ -507,9 +555,6 @@ pub const SocialFeedChildItem = extern struct {
         const this: *ISocialFeedChildItem = @ptrCast(self);
         return try this.putSharedItem(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISocialFeedChildItem.IID)));
@@ -523,6 +568,18 @@ pub const SocialFeedChildItem = extern struct {
 };
 pub const SocialFeedContent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *ISocialFeedContent = @ptrCast(self);
         return try this.getTitle();
@@ -555,6 +612,18 @@ pub const SocialFeedContent = extern struct {
 };
 pub const SocialFeedItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthor(self: *@This()) core.HResult!*SocialUserInfo {
         const this: *ISocialFeedItem = @ptrCast(self);
         return try this.getAuthor();
@@ -635,9 +704,6 @@ pub const SocialFeedItem = extern struct {
         const this: *ISocialFeedItem = @ptrCast(self);
         return try this.putStyle(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISocialFeedItem.IID)));
@@ -660,6 +726,18 @@ pub const SocialFeedKind = enum(i32) {
 };
 pub const SocialFeedSharedItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOriginalSource(self: *@This()) core.HResult!*Uri {
         const this: *ISocialFeedSharedItem = @ptrCast(self);
         return try this.getOriginalSource();
@@ -696,9 +774,6 @@ pub const SocialFeedSharedItem = extern struct {
         const this: *ISocialFeedSharedItem = @ptrCast(self);
         return try this.getThumbnail();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISocialFeedSharedItem.IID)));
@@ -721,6 +796,18 @@ pub const SocialItemBadgeStyle = enum(i32) {
 };
 pub const SocialItemThumbnail = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetUri(self: *@This()) core.HResult!*Uri {
         const this: *ISocialItemThumbnail = @ptrCast(self);
         return try this.getTargetUri();
@@ -749,9 +836,6 @@ pub const SocialItemThumbnail = extern struct {
         const this: *ISocialItemThumbnail = @ptrCast(self);
         return try this.SetImageAsync(image);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISocialItemThumbnail.IID)));
@@ -765,6 +849,18 @@ pub const SocialItemThumbnail = extern struct {
 };
 pub const SocialUserInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISocialUserInfo = @ptrCast(self);
         return try this.getDisplayName();

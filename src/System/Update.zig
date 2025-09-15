@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ISystemUpdateItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!SystemUpdateItemState {
         var _r: SystemUpdateItemState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -73,6 +79,12 @@ pub const ISystemUpdateItem = extern struct {
 };
 pub const ISystemUpdateLastErrorInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!SystemUpdateManagerState {
         var _r: SystemUpdateManagerState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -110,6 +122,12 @@ pub const ISystemUpdateLastErrorInfo = extern struct {
 };
 pub const ISystemUpdateManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
@@ -293,6 +311,18 @@ pub const SystemUpdateAttentionRequiredReason = enum(i32) {
 };
 pub const SystemUpdateItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!SystemUpdateItemState {
         const this: *ISystemUpdateItem = @ptrCast(self);
         return try this.getState();
@@ -344,6 +374,18 @@ pub const SystemUpdateItemState = enum(i32) {
 };
 pub const SystemUpdateLastErrorInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!SystemUpdateManagerState {
         const this: *ISystemUpdateLastErrorInfo = @ptrCast(self);
         return try this.getState();
@@ -364,6 +406,15 @@ pub const SystemUpdateLastErrorInfo = extern struct {
 };
 pub const SystemUpdateManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IAnnotationProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnnotationTypeId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_AnnotationTypeId(@ptrCast(self), &_r);
@@ -52,6 +58,12 @@ pub const IAnnotationProvider = extern struct {
 };
 pub const ICustomNavigationProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn NavigateCustom(self: *@This(), direction: AutomationNavigationDirection) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.NavigateCustom(@ptrCast(self), direction, &_r);
@@ -75,6 +87,12 @@ pub const ICustomNavigationProvider = extern struct {
 };
 pub const IDockProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDockPosition(self: *@This()) core.HResult!DockPosition {
         var _r: DockPosition = undefined;
         const _c = self.vtable.get_DockPosition(@ptrCast(self), &_r);
@@ -103,6 +121,12 @@ pub const IDockProvider = extern struct {
 };
 pub const IDragProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsGrabbed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsGrabbed(@ptrCast(self), &_r);
@@ -147,6 +171,12 @@ pub const IDragProvider = extern struct {
 };
 pub const IDropTargetProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDropEffect(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DropEffect(@ptrCast(self), &_r);
@@ -177,6 +207,12 @@ pub const IDropTargetProvider = extern struct {
 };
 pub const IExpandCollapseProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var _r: ExpandCollapseState = undefined;
         const _c = self.vtable.get_ExpandCollapseState(@ptrCast(self), &_r);
@@ -210,6 +246,12 @@ pub const IExpandCollapseProvider = extern struct {
 };
 pub const IGridItemProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColumn(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Column(@ptrCast(self), &_r);
@@ -261,6 +303,12 @@ pub const IGridItemProvider = extern struct {
 };
 pub const IGridProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColumnCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ColumnCount(@ptrCast(self), &_r);
@@ -298,6 +346,12 @@ pub const IGridProvider = extern struct {
 };
 pub const IIRawElementProviderSimple = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Provider.IIRawElementProviderSimple";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ec752224-9b77-4720-bb21-4ac89fdb1afd";
@@ -314,6 +368,12 @@ pub const IIRawElementProviderSimple = extern struct {
 };
 pub const IInvokeProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Invoke(self: *@This()) core.HResult!void {
         const _c = self.vtable.Invoke(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -335,6 +395,12 @@ pub const IInvokeProvider = extern struct {
 };
 pub const IItemContainerProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindItemByProperty(self: *@This(), startAfter: *IRawElementProviderSimple, automationProperty: *AutomationProperty, value: *IInspectable) core.HResult!*IRawElementProviderSimple {
         var _r: *IRawElementProviderSimple = undefined;
         const _c = self.vtable.FindItemByProperty(@ptrCast(self), startAfter, automationProperty, value, &_r);
@@ -358,6 +424,12 @@ pub const IItemContainerProvider = extern struct {
 };
 pub const IMultipleViewProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentView(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_CurrentView(@ptrCast(self), &_r);
@@ -400,6 +472,12 @@ pub const IMultipleViewProvider = extern struct {
 };
 pub const IObjectModelProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetUnderlyingObjectModel(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetUnderlyingObjectModel(@ptrCast(self), &_r);
@@ -423,6 +501,12 @@ pub const IObjectModelProvider = extern struct {
 };
 pub const IRangeValueProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReadOnly(@ptrCast(self), &_r);
@@ -486,6 +570,18 @@ pub const IRangeValueProvider = extern struct {
 };
 pub const IRawElementProviderSimple = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Provider.IRawElementProviderSimple";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IIRawElementProviderSimple.GUID;
@@ -494,6 +590,12 @@ pub const IRawElementProviderSimple = extern struct {
 };
 pub const IScrollItemProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         const _c = self.vtable.ScrollIntoView(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -515,6 +617,12 @@ pub const IScrollItemProvider = extern struct {
 };
 pub const IScrollProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontallyScrollable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HorizontallyScrollable(@ptrCast(self), &_r);
@@ -583,6 +691,12 @@ pub const IScrollProvider = extern struct {
 };
 pub const ISelectionItemProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSelected(@ptrCast(self), &_r);
@@ -628,6 +742,12 @@ pub const ISelectionItemProvider = extern struct {
 };
 pub const ISelectionProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanSelectMultiple(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanSelectMultiple(@ptrCast(self), &_r);
@@ -665,6 +785,12 @@ pub const ISelectionProvider = extern struct {
 };
 pub const ISpreadsheetItemProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormula(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Formula(@ptrCast(self), &_r);
@@ -702,6 +828,12 @@ pub const ISpreadsheetItemProvider = extern struct {
 };
 pub const ISpreadsheetProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetItemByName(self: *@This(), name: ?HSTRING) core.HResult!*IRawElementProviderSimple {
         var _r: *IRawElementProviderSimple = undefined;
         const _c = self.vtable.GetItemByName(@ptrCast(self), name, &_r);
@@ -725,6 +857,12 @@ pub const ISpreadsheetProvider = extern struct {
 };
 pub const IStylesProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedProperties(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ExtendedProperties(@ptrCast(self), &_r);
@@ -790,6 +928,12 @@ pub const IStylesProvider = extern struct {
 };
 pub const ISynchronizedInputProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Cancel(self: *@This()) core.HResult!void {
         const _c = self.vtable.Cancel(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -816,6 +960,12 @@ pub const ISynchronizedInputProvider = extern struct {
 };
 pub const ITableItemProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetColumnHeaderItems(self: *@This()) core.HResult![*]IRawElementProviderSimple {
         var _r: [*]IRawElementProviderSimple = undefined;
         const _c = self.vtable.GetColumnHeaderItems(@ptrCast(self), &_r);
@@ -846,6 +996,12 @@ pub const ITableItemProvider = extern struct {
 };
 pub const ITableProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRowOrColumnMajor(self: *@This()) core.HResult!RowOrColumnMajor {
         var _r: RowOrColumnMajor = undefined;
         const _c = self.vtable.get_RowOrColumnMajor(@ptrCast(self), &_r);
@@ -883,6 +1039,12 @@ pub const ITableProvider = extern struct {
 };
 pub const ITextChildProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextContainer(self: *@This()) core.HResult!*IRawElementProviderSimple {
         var _r: *IRawElementProviderSimple = undefined;
         const _c = self.vtable.get_TextContainer(@ptrCast(self), &_r);
@@ -913,6 +1075,12 @@ pub const ITextChildProvider = extern struct {
 };
 pub const ITextEditProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetActiveComposition(self: *@This()) core.HResult!*ITextRangeProvider {
         var _r: *ITextRangeProvider = undefined;
         const _c = self.vtable.GetActiveComposition(@ptrCast(self), &_r);
@@ -943,6 +1111,12 @@ pub const ITextEditProvider = extern struct {
 };
 pub const ITextProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDocumentRange(self: *@This()) core.HResult!*ITextRangeProvider {
         var _r: *ITextRangeProvider = undefined;
         const _c = self.vtable.get_DocumentRange(@ptrCast(self), &_r);
@@ -1001,6 +1175,12 @@ pub const ITextProvider = extern struct {
 };
 pub const ITextProvider2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RangeFromAnnotation(self: *@This(), annotationElement: *IRawElementProviderSimple) core.HResult!*ITextRangeProvider {
         var _r: *ITextRangeProvider = undefined;
         const _c = self.vtable.RangeFromAnnotation(@ptrCast(self), annotationElement, &_r);
@@ -1031,6 +1211,12 @@ pub const ITextProvider2 = extern struct {
 };
 pub const ITextRangeProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Clone(self: *@This()) core.HResult!*ITextRangeProvider {
         var _r: *ITextRangeProvider = undefined;
         const _c = self.vtable.Clone(@ptrCast(self), &_r);
@@ -1159,6 +1345,12 @@ pub const ITextRangeProvider = extern struct {
 };
 pub const ITextRangeProvider2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowContextMenu(self: *@This()) core.HResult!void {
         const _c = self.vtable.ShowContextMenu(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1180,6 +1372,12 @@ pub const ITextRangeProvider2 = extern struct {
 };
 pub const IToggleProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var _r: ToggleState = undefined;
         const _c = self.vtable.get_ToggleState(@ptrCast(self), &_r);
@@ -1208,6 +1406,12 @@ pub const IToggleProvider = extern struct {
 };
 pub const ITransformProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanMove(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanMove(@ptrCast(self), &_r);
@@ -1260,6 +1464,12 @@ pub const ITransformProvider = extern struct {
 };
 pub const ITransformProvider2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanZoom(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanZoom(@ptrCast(self), &_r);
@@ -1314,6 +1524,12 @@ pub const ITransformProvider2 = extern struct {
 };
 pub const IValueProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsReadOnly(@ptrCast(self), &_r);
@@ -1349,6 +1565,12 @@ pub const IValueProvider = extern struct {
 };
 pub const IVirtualizedItemProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Realize(self: *@This()) core.HResult!void {
         const _c = self.vtable.Realize(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1370,6 +1592,12 @@ pub const IVirtualizedItemProvider = extern struct {
 };
 pub const IWindowProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsModal(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsModal(@ptrCast(self), &_r);
@@ -1443,6 +1671,7 @@ pub const IWindowProvider = extern struct {
         WaitForInputIdle: *const fn(self: *anyopaque, milliseconds: i32, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
+const IUnknown = @import("../../../root.zig").IUnknown;
 const Guid = @import("../../../root.zig").Guid;
 const Color = @import("../../../UI.zig").Color;
 const IInspectable = @import("../../../Foundation.zig").IInspectable;

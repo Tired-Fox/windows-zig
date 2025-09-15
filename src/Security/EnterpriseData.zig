@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const BufferProtectUnprotectResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBuffer(self: *@This()) core.HResult!*IBuffer {
         const this: *IBufferProtectUnprotectResult = @ptrCast(self);
         return try this.getBuffer();
@@ -17,6 +29,18 @@ pub const BufferProtectUnprotectResult = extern struct {
 };
 pub const DataProtectionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!DataProtectionStatus {
         const this: *IDataProtectionInfo = @ptrCast(self);
         return try this.getStatus();
@@ -33,6 +57,15 @@ pub const DataProtectionInfo = extern struct {
 };
 pub const DataProtectionManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -80,6 +113,18 @@ pub const EnforcementLevel = enum(i32) {
 };
 pub const FileProtectionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!FileProtectionStatus {
         const this: *IFileProtectionInfo = @ptrCast(self);
         return try this.getStatus();
@@ -107,6 +152,15 @@ pub const FileProtectionInfo = extern struct {
 };
 pub const FileProtectionManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -180,6 +234,15 @@ pub const FileProtectionStatus = enum(i32) {
 };
 pub const FileRevocationManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -205,6 +268,18 @@ pub const FileRevocationManager = extern struct {
 };
 pub const FileUnprotectOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAudit(self: *@This(), value: bool) core.HResult!void {
         const this: *IFileUnprotectOptions = @ptrCast(self);
         return try this.putAudit(value);
@@ -212,9 +287,6 @@ pub const FileUnprotectOptions = extern struct {
     pub fn getAudit(self: *@This()) core.HResult!bool {
         const this: *IFileUnprotectOptions = @ptrCast(self);
         return try this.getAudit();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(audit: bool) core.HResult!*FileUnprotectOptions {
         const _f = try @This()._IFileUnprotectOptionsFactoryCache.get();
@@ -229,6 +301,12 @@ pub const FileUnprotectOptions = extern struct {
 };
 pub const IBufferProtectUnprotectResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBuffer(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Buffer(@ptrCast(self), &_r);
@@ -259,6 +337,12 @@ pub const IBufferProtectUnprotectResult = extern struct {
 };
 pub const IDataProtectionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!DataProtectionStatus {
         var _r: DataProtectionStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -289,6 +373,12 @@ pub const IDataProtectionInfo = extern struct {
 };
 pub const IDataProtectionManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ProtectAsync(self: *@This(), data: *IBuffer, identity: ?HSTRING) core.HResult!*IAsyncOperation(BufferProtectUnprotectResult) {
         var _r: *IAsyncOperation(BufferProtectUnprotectResult) = undefined;
         const _c = self.vtable.ProtectAsync(@ptrCast(self), data, identity, &_r);
@@ -347,6 +437,12 @@ pub const IDataProtectionManagerStatics = extern struct {
 };
 pub const IFileProtectionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!FileProtectionStatus {
         var _r: FileProtectionStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -384,6 +480,12 @@ pub const IFileProtectionInfo = extern struct {
 };
 pub const IFileProtectionInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsProtectWhileOpenSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsProtectWhileOpenSupported(@ptrCast(self), &_r);
@@ -407,6 +509,12 @@ pub const IFileProtectionInfo2 = extern struct {
 };
 pub const IFileProtectionManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ProtectAsync(self: *@This(), target: *IStorageItem, identity: ?HSTRING) core.HResult!*IAsyncOperation(FileProtectionInfo) {
         var _r: *IAsyncOperation(FileProtectionInfo) = undefined;
         const _c = self.vtable.ProtectAsync(@ptrCast(self), target, identity, &_r);
@@ -472,6 +580,12 @@ pub const IFileProtectionManagerStatics = extern struct {
 };
 pub const IFileProtectionManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsContainerAsync(self: *@This(), file: *IStorageFile) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsContainerAsync(@ptrCast(self), file, &_r);
@@ -509,6 +623,12 @@ pub const IFileProtectionManagerStatics2 = extern struct {
 };
 pub const IFileProtectionManagerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn UnprotectAsync(self: *@This(), target: *IStorageItem) core.HResult!*IAsyncOperation(FileProtectionInfo) {
         var _r: *IAsyncOperation(FileProtectionInfo) = undefined;
         const _c = self.vtable.UnprotectAsync(@ptrCast(self), target, &_r);
@@ -539,6 +659,12 @@ pub const IFileProtectionManagerStatics3 = extern struct {
 };
 pub const IFileRevocationManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ProtectAsync(self: *@This(), storageItem: *IStorageItem, enterpriseIdentity: ?HSTRING) core.HResult!*IAsyncOperation(FileProtectionStatus) {
         var _r: *IAsyncOperation(FileProtectionStatus) = undefined;
         const _c = self.vtable.ProtectAsync(@ptrCast(self), storageItem, enterpriseIdentity, &_r);
@@ -581,6 +707,12 @@ pub const IFileRevocationManagerStatics = extern struct {
 };
 pub const IFileUnprotectOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAudit(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Audit(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -609,6 +741,12 @@ pub const IFileUnprotectOptions = extern struct {
 };
 pub const IFileUnprotectOptionsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), audit: bool) core.HResult!*FileUnprotectOptions {
         var _r: *FileUnprotectOptions = undefined;
         const _c = self.vtable.Create(@ptrCast(self), audit, &_r);
@@ -632,6 +770,12 @@ pub const IFileUnprotectOptionsFactory = extern struct {
 };
 pub const IProtectedAccessResumedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Identities(@ptrCast(self), &_r);
@@ -655,6 +799,12 @@ pub const IProtectedAccessResumedEventArgs = extern struct {
 };
 pub const IProtectedAccessSuspendingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Identities(@ptrCast(self), &_r);
@@ -692,6 +842,12 @@ pub const IProtectedAccessSuspendingEventArgs = extern struct {
 };
 pub const IProtectedContainerExportResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!ProtectedImportExportStatus {
         var _r: ProtectedImportExportStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -722,6 +878,12 @@ pub const IProtectedContainerExportResult = extern struct {
 };
 pub const IProtectedContainerImportResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!ProtectedImportExportStatus {
         var _r: ProtectedImportExportStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -752,6 +914,12 @@ pub const IProtectedContainerImportResult = extern struct {
 };
 pub const IProtectedContentRevokedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.get_Identities(@ptrCast(self), &_r);
@@ -775,6 +943,12 @@ pub const IProtectedContentRevokedEventArgs = extern struct {
 };
 pub const IProtectedFileCreateResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFile(self: *@This()) core.HResult!*StorageFile {
         var _r: *StorageFile = undefined;
         const _c = self.vtable.get_File(@ptrCast(self), &_r);
@@ -812,6 +986,12 @@ pub const IProtectedFileCreateResult = extern struct {
 };
 pub const IProtectionPolicyAuditInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAction(self: *@This(), value: ProtectionPolicyAuditAction) core.HResult!void {
         const _c = self.vtable.put_Action(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -876,6 +1056,12 @@ pub const IProtectionPolicyAuditInfo = extern struct {
 };
 pub const IProtectionPolicyAuditInfoFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), action: ProtectionPolicyAuditAction, dataDescription: ?HSTRING, sourceDescription: ?HSTRING, targetDescription: ?HSTRING) core.HResult!*ProtectionPolicyAuditInfo {
         var _r: *ProtectionPolicyAuditInfo = undefined;
         const _c = self.vtable.Create(@ptrCast(self), action, dataDescription, sourceDescription, targetDescription, &_r);
@@ -906,6 +1092,12 @@ pub const IProtectionPolicyAuditInfoFactory = extern struct {
 };
 pub const IProtectionPolicyManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putIdentity(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Identity(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -934,6 +1126,12 @@ pub const IProtectionPolicyManager = extern struct {
 };
 pub const IProtectionPolicyManager2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putShowEnterpriseIndicator(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_ShowEnterpriseIndicator(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -962,6 +1160,12 @@ pub const IProtectionPolicyManager2 = extern struct {
 };
 pub const IProtectionPolicyManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsIdentityManaged(self: *@This(), identity: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsIdentityManaged(@ptrCast(self), identity, &_r);
@@ -1073,6 +1277,12 @@ pub const IProtectionPolicyManagerStatics = extern struct {
 };
 pub const IProtectionPolicyManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn HasContentBeenRevokedSince(self: *@This(), identity: ?HSTRING, since: DateTime) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.HasContentBeenRevokedSince(@ptrCast(self), identity, since, &_r);
@@ -1150,6 +1360,12 @@ pub const IProtectionPolicyManagerStatics2 = extern struct {
 };
 pub const IProtectionPolicyManagerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAccessAsync(self: *@This(), sourceIdentity: ?HSTRING, targetIdentity: ?HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), sourceIdentity, targetIdentity, auditInfo, &_r);
@@ -1199,6 +1415,12 @@ pub const IProtectionPolicyManagerStatics3 = extern struct {
 };
 pub const IProtectionPolicyManagerStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsRoamableProtectionEnabled(self: *@This(), identity: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsRoamableProtectionEnabled(@ptrCast(self), identity, &_r);
@@ -1292,6 +1514,12 @@ pub const IProtectionPolicyManagerStatics4 = extern struct {
 };
 pub const IThreadNetworkContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Security.EnterpriseData.IThreadNetworkContext";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "fa4ea8e9-ef13-405a-b12c-d7348c6f41fc";
@@ -1308,6 +1536,18 @@ pub const IThreadNetworkContext = extern struct {
 };
 pub const ProtectedAccessResumedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IProtectedAccessResumedEventArgs = @ptrCast(self);
         return try this.getIdentities();
@@ -1320,6 +1560,18 @@ pub const ProtectedAccessResumedEventArgs = extern struct {
 };
 pub const ProtectedAccessSuspendingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IProtectedAccessSuspendingEventArgs = @ptrCast(self);
         return try this.getIdentities();
@@ -1340,6 +1592,18 @@ pub const ProtectedAccessSuspendingEventArgs = extern struct {
 };
 pub const ProtectedContainerExportResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!ProtectedImportExportStatus {
         const this: *IProtectedContainerExportResult = @ptrCast(self);
         return try this.getStatus();
@@ -1356,6 +1620,18 @@ pub const ProtectedContainerExportResult = extern struct {
 };
 pub const ProtectedContainerImportResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!ProtectedImportExportStatus {
         const this: *IProtectedContainerImportResult = @ptrCast(self);
         return try this.getStatus();
@@ -1372,6 +1648,18 @@ pub const ProtectedContainerImportResult = extern struct {
 };
 pub const ProtectedContentRevokedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIdentities(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *IProtectedContentRevokedEventArgs = @ptrCast(self);
         return try this.getIdentities();
@@ -1384,6 +1672,18 @@ pub const ProtectedContentRevokedEventArgs = extern struct {
 };
 pub const ProtectedFileCreateResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFile(self: *@This()) core.HResult!*StorageFile {
         const this: *IProtectedFileCreateResult = @ptrCast(self);
         return try this.getFile();
@@ -1420,6 +1720,18 @@ pub const ProtectionPolicyAuditAction = enum(i32) {
 };
 pub const ProtectionPolicyAuditInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putAction(self: *@This(), value: ProtectionPolicyAuditAction) core.HResult!void {
         const this: *IProtectionPolicyAuditInfo = @ptrCast(self);
         return try this.putAction(value);
@@ -1452,9 +1764,6 @@ pub const ProtectionPolicyAuditInfo = extern struct {
         const this: *IProtectionPolicyAuditInfo = @ptrCast(self);
         return try this.getTargetDescription();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(action: ProtectionPolicyAuditAction, dataDescription: ?HSTRING, sourceDescription: ?HSTRING, targetDescription: ?HSTRING) core.HResult!*ProtectionPolicyAuditInfo {
         const _f = try @This()._IProtectionPolicyAuditInfoFactoryCache.get();
         return try _f.Create(action, dataDescription, sourceDescription, targetDescription);
@@ -1472,6 +1781,18 @@ pub const ProtectionPolicyAuditInfo = extern struct {
 };
 pub const ProtectionPolicyManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putIdentity(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IProtectionPolicyManager = @ptrCast(self);
         return try this.putIdentity(value);
@@ -1493,9 +1814,6 @@ pub const ProtectionPolicyManager = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IProtectionPolicyManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getShowEnterpriseIndicator();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsRoamableProtectionEnabled(identity: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IProtectionPolicyManagerStatics4Cache.get();
@@ -1673,6 +1991,18 @@ pub const ProtectionPolicyRequestAccessBehavior = enum(i32) {
 };
 pub const ThreadNetworkContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));

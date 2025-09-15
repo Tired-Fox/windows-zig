@@ -1,11 +1,32 @@
 // ----- This code is automatically generated -----
 pub const BindableAttribute = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.BindableAttribute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
 };
 pub const BindingBase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -22,6 +43,18 @@ pub const BindingBase = extern struct {
 };
 pub const Binding = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPath(self: *@This()) core.HResult!*PropertyPath {
         const this: *IBinding = @ptrCast(self);
         return try this.getPath();
@@ -128,9 +161,6 @@ pub const Binding = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUpdateSourceTrigger(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Binding {
         const _f = try @This()._IBindingFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
@@ -144,6 +174,15 @@ pub const Binding = extern struct {
 };
 pub const BindingExpressionBase = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -156,6 +195,18 @@ pub const BindingExpressionBase = extern struct {
 };
 pub const BindingExpression = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataItem(self: *@This()) core.HResult!*IInspectable {
         const this: *IBindingExpression = @ptrCast(self);
         return try this.getDataItem();
@@ -167,9 +218,6 @@ pub const BindingExpression = extern struct {
     pub fn UpdateSource(self: *@This()) core.HResult!void {
         const this: *IBindingExpression = @ptrCast(self);
         return try this.UpdateSource();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.BindingExpression";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -185,6 +233,15 @@ pub const BindingMode = enum(i32) {
 };
 pub const BindingOperations = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -201,6 +258,18 @@ pub const BindingOperations = extern struct {
 };
 pub const CollectionViewSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*IInspectable {
         const this: *ICollectionViewSource = @ptrCast(self);
         return try this.getSource();
@@ -228,9 +297,6 @@ pub const CollectionViewSource = extern struct {
     pub fn putItemsPath(self: *@This(), value: *PropertyPath) core.HResult!void {
         const this: *ICollectionViewSource = @ptrCast(self);
         return try this.putItemsPath(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -262,6 +328,18 @@ pub const CollectionViewSource = extern struct {
 };
 pub const CurrentChangingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCancel(self: *@This()) core.HResult!bool {
         const this: *ICurrentChangingEventArgs = @ptrCast(self);
         return try this.getCancel();
@@ -273,9 +351,6 @@ pub const CurrentChangingEventArgs = extern struct {
     pub fn getIsCancelable(self: *@This()) core.HResult!bool {
         const this: *ICurrentChangingEventArgs = @ptrCast(self);
         return try this.getIsCancelable();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CurrentChangingEventArgs {
         const _f = try @This()._ICurrentChangingEventArgsFactoryCache.get();
@@ -383,6 +458,12 @@ pub const CurrentChangingEventHandler = extern struct {
 };
 pub const IBinding = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPath(self: *@This()) core.HResult!*PropertyPath {
         var _r: *PropertyPath = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
@@ -495,6 +576,12 @@ pub const IBinding = extern struct {
 };
 pub const IBinding2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFallbackValue(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_FallbackValue(@ptrCast(self), &_r);
@@ -547,6 +634,12 @@ pub const IBinding2 = extern struct {
 };
 pub const IBindingBase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.IBindingBase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1589a2ab-3d15-49bc-a447-8a5448e58870";
@@ -563,6 +656,12 @@ pub const IBindingBase = extern struct {
 };
 pub const IBindingBaseFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*BindingBase {
         var _r: *BindingBase = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -586,6 +685,12 @@ pub const IBindingBaseFactory = extern struct {
 };
 pub const IBindingExpression = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataItem(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_DataItem(@ptrCast(self), &_r);
@@ -621,6 +726,12 @@ pub const IBindingExpression = extern struct {
 };
 pub const IBindingExpressionBase = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.IBindingExpressionBase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "fded3154-e954-4f67-8fb6-6ed79b3a1cb3";
@@ -637,6 +748,12 @@ pub const IBindingExpressionBase = extern struct {
 };
 pub const IBindingExpressionBaseFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.IBindingExpressionBaseFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ea7116a7-c2d9-4375-b471-66b9c48c7930";
@@ -653,6 +770,12 @@ pub const IBindingExpressionBaseFactory = extern struct {
 };
 pub const IBindingExpressionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.IBindingExpressionFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1cb55cd9-db72-40b3-a2b5-24ee6ea5c328";
@@ -669,6 +792,12 @@ pub const IBindingExpressionFactory = extern struct {
 };
 pub const IBindingFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Binding {
         var _r: *Binding = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -692,6 +821,12 @@ pub const IBindingFactory = extern struct {
 };
 pub const IBindingOperations = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.IBindingOperations";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "6fffd738-9839-419c-a17a-4b3604e1524e";
@@ -708,6 +843,12 @@ pub const IBindingOperations = extern struct {
 };
 pub const IBindingOperationsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetBinding(self: *@This(), target: *DependencyObject, dp: *DependencyProperty, binding: *BindingBase) core.HResult!void {
         const _c = self.vtable.SetBinding(@ptrCast(self), target, dp, binding);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -729,6 +870,12 @@ pub const IBindingOperationsStatics = extern struct {
 };
 pub const ICollectionView = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentItem(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_CurrentItem(@ptrCast(self), &_r);
@@ -860,6 +1007,12 @@ pub const ICollectionView = extern struct {
 };
 pub const ICollectionViewFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateView(self: *@This()) core.HResult!*ICollectionView {
         var _r: *ICollectionView = undefined;
         const _c = self.vtable.CreateView(@ptrCast(self), &_r);
@@ -883,6 +1036,12 @@ pub const ICollectionViewFactory = extern struct {
 };
 pub const ICollectionViewGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGroup(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Group(@ptrCast(self), &_r);
@@ -913,6 +1072,12 @@ pub const ICollectionViewGroup = extern struct {
 };
 pub const ICollectionViewSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
@@ -972,6 +1137,12 @@ pub const ICollectionViewSource = extern struct {
 };
 pub const ICollectionViewSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SourceProperty(@ptrCast(self), &_r);
@@ -1016,6 +1187,12 @@ pub const ICollectionViewSourceStatics = extern struct {
 };
 pub const ICurrentChangingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCancel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Cancel(@ptrCast(self), &_r);
@@ -1051,6 +1228,12 @@ pub const ICurrentChangingEventArgs = extern struct {
 };
 pub const ICurrentChangingEventArgsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CurrentChangingEventArgs {
         var _r: *CurrentChangingEventArgs = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -1081,6 +1264,12 @@ pub const ICurrentChangingEventArgsFactory = extern struct {
 };
 pub const ICustomProperty = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!TypeName {
         var _r: TypeName = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -1149,6 +1338,12 @@ pub const ICustomProperty = extern struct {
 };
 pub const ICustomPropertyProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCustomProperty(self: *@This(), name: ?HSTRING) core.HResult!*ICustomProperty {
         var _r: *ICustomProperty = undefined;
         const _c = self.vtable.GetCustomProperty(@ptrCast(self), name, &_r);
@@ -1193,6 +1388,12 @@ pub const ICustomPropertyProvider = extern struct {
 };
 pub const IItemIndexRange = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFirstIndex(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_FirstIndex(@ptrCast(self), &_r);
@@ -1230,6 +1431,12 @@ pub const IItemIndexRange = extern struct {
 };
 pub const IItemIndexRangeFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), firstIndex: i32, length: u32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemIndexRange {
         var _r: *ItemIndexRange = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), firstIndex, length, baseInterface, innerInterface, &_r);
@@ -1253,6 +1460,12 @@ pub const IItemIndexRangeFactory = extern struct {
 };
 pub const IItemsRangeInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RangesChanged(self: *@This(), visibleRange: *ItemIndexRange, trackedItems: *IVectorView(ItemIndexRange)) core.HResult!void {
         const _c = self.vtable.RangesChanged(@ptrCast(self), visibleRange, trackedItems);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1274,6 +1487,12 @@ pub const IItemsRangeInfo = extern struct {
 };
 pub const INotifyPropertyChanged = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addPropertyChanged(self: *@This(), handler: *PropertyChangedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PropertyChanged(@ptrCast(self), handler, &_r);
@@ -1302,6 +1521,12 @@ pub const INotifyPropertyChanged = extern struct {
 };
 pub const IPropertyChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPropertyName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PropertyName(@ptrCast(self), &_r);
@@ -1325,6 +1550,12 @@ pub const IPropertyChangedEventArgs = extern struct {
 };
 pub const IPropertyChangedEventArgsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), name: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PropertyChangedEventArgs {
         var _r: *PropertyChangedEventArgs = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), name, baseInterface, innerInterface, &_r);
@@ -1348,6 +1579,12 @@ pub const IPropertyChangedEventArgsFactory = extern struct {
 };
 pub const IRelativeSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!RelativeSourceMode {
         var _r: RelativeSourceMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -1376,6 +1613,12 @@ pub const IRelativeSource = extern struct {
 };
 pub const IRelativeSourceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RelativeSource {
         var _r: *RelativeSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -1399,6 +1642,12 @@ pub const IRelativeSourceFactory = extern struct {
 };
 pub const ISelectionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SelectRange(self: *@This(), itemIndexRange: *ItemIndexRange) core.HResult!void {
         const _c = self.vtable.SelectRange(@ptrCast(self), itemIndexRange);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1439,6 +1688,12 @@ pub const ISelectionInfo = extern struct {
 };
 pub const ISupportIncrementalLoading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadMoreItemsAsync(self: *@This(), count: u32) core.HResult!*IAsyncOperation(LoadMoreItemsResult) {
         var _r: *IAsyncOperation(LoadMoreItemsResult) = undefined;
         const _c = self.vtable.LoadMoreItemsAsync(@ptrCast(self), count, &_r);
@@ -1469,6 +1724,12 @@ pub const ISupportIncrementalLoading = extern struct {
 };
 pub const IValueConverter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Convert(self: *@This(), value: *IInspectable, targetType: TypeName, parameter: *IInspectable, language: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.Convert(@ptrCast(self), value, targetType, parameter, language, &_r);
@@ -1499,6 +1760,18 @@ pub const IValueConverter = extern struct {
 };
 pub const ItemIndexRange = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFirstIndex(self: *@This()) core.HResult!i32 {
         const this: *IItemIndexRange = @ptrCast(self);
         return try this.getFirstIndex();
@@ -1510,9 +1783,6 @@ pub const ItemIndexRange = extern struct {
     pub fn getLastIndex(self: *@This()) core.HResult!i32 {
         const this: *IItemIndexRange = @ptrCast(self);
         return try this.getLastIndex();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(firstIndex: i32, length: u32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemIndexRange {
         const _f = try @This()._IItemIndexRangeFactoryCache.get();
@@ -1530,12 +1800,21 @@ pub const LoadMoreItemsResult = extern struct {
 };
 pub const PropertyChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPropertyName(self: *@This()) core.HResult!?HSTRING {
-        const this: *IPropertyChangedEventArgs = @ptrCast(self);
-        return try this.getPropertyName();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getPropertyName(self: *@This()) core.HResult!?HSTRING {
+        const this: *IPropertyChangedEventArgs = @ptrCast(self);
+        return try this.getPropertyName();
     }
     pub fn CreateInstance(name: ?HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PropertyChangedEventArgs {
         const _f = try @This()._IPropertyChangedEventArgsFactoryCache.get();
@@ -1639,6 +1918,18 @@ pub const PropertyChangedEventHandler = extern struct {
 };
 pub const RelativeSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!RelativeSourceMode {
         const this: *IRelativeSource = @ptrCast(self);
         return try this.getMode();
@@ -1646,9 +1937,6 @@ pub const RelativeSource = extern struct {
     pub fn putMode(self: *@This(), value: RelativeSourceMode) core.HResult!void {
         const this: *IRelativeSource = @ptrCast(self);
         return try this.putMode(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RelativeSource {
         const _f = try @This()._IRelativeSourceFactoryCache.get();

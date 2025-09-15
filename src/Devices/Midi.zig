@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IMidiChannelPressureMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_Channel(@ptrCast(self), &_r);
@@ -31,6 +37,12 @@ pub const IMidiChannelPressureMessage = extern struct {
 };
 pub const IMidiChannelPressureMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMidiChannelPressureMessage(self: *@This(), channel: u8, pressure: u8) core.HResult!*MidiChannelPressureMessage {
         var _r: *MidiChannelPressureMessage = undefined;
         const _c = self.vtable.CreateMidiChannelPressureMessage(@ptrCast(self), channel, pressure, &_r);
@@ -54,6 +66,12 @@ pub const IMidiChannelPressureMessageFactory = extern struct {
 };
 pub const IMidiControlChangeMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_Channel(@ptrCast(self), &_r);
@@ -91,6 +109,12 @@ pub const IMidiControlChangeMessage = extern struct {
 };
 pub const IMidiControlChangeMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMidiControlChangeMessage(self: *@This(), channel: u8, controller: u8, controlValue: u8) core.HResult!*MidiControlChangeMessage {
         var _r: *MidiControlChangeMessage = undefined;
         const _c = self.vtable.CreateMidiControlChangeMessage(@ptrCast(self), channel, controller, controlValue, &_r);
@@ -114,6 +138,12 @@ pub const IMidiControlChangeMessageFactory = extern struct {
 };
 pub const IMidiInPort = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMessageReceived(self: *@This(), handler: *TypedEventHandler(MidiInPort,MidiMessageReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MessageReceived(@ptrCast(self), handler, &_r);
@@ -149,6 +179,12 @@ pub const IMidiInPort = extern struct {
 };
 pub const IMidiInPortStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(MidiInPort) {
         var _r: *IAsyncOperation(MidiInPort) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
@@ -179,6 +215,12 @@ pub const IMidiInPortStatics = extern struct {
 };
 pub const IMidiMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -216,6 +258,12 @@ pub const IMidiMessage = extern struct {
 };
 pub const IMidiMessageReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!*IMidiMessage {
         var _r: *IMidiMessage = undefined;
         const _c = self.vtable.get_Message(@ptrCast(self), &_r);
@@ -239,6 +287,12 @@ pub const IMidiMessageReceivedEventArgs = extern struct {
 };
 pub const IMidiNoteOffMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_Channel(@ptrCast(self), &_r);
@@ -276,6 +330,12 @@ pub const IMidiNoteOffMessage = extern struct {
 };
 pub const IMidiNoteOffMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMidiNoteOffMessage(self: *@This(), channel: u8, note: u8, velocity: u8) core.HResult!*MidiNoteOffMessage {
         var _r: *MidiNoteOffMessage = undefined;
         const _c = self.vtable.CreateMidiNoteOffMessage(@ptrCast(self), channel, note, velocity, &_r);
@@ -299,6 +359,12 @@ pub const IMidiNoteOffMessageFactory = extern struct {
 };
 pub const IMidiNoteOnMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_Channel(@ptrCast(self), &_r);
@@ -336,6 +402,12 @@ pub const IMidiNoteOnMessage = extern struct {
 };
 pub const IMidiNoteOnMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMidiNoteOnMessage(self: *@This(), channel: u8, note: u8, velocity: u8) core.HResult!*MidiNoteOnMessage {
         var _r: *MidiNoteOnMessage = undefined;
         const _c = self.vtable.CreateMidiNoteOnMessage(@ptrCast(self), channel, note, velocity, &_r);
@@ -359,6 +431,12 @@ pub const IMidiNoteOnMessageFactory = extern struct {
 };
 pub const IMidiOutPort = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendMessage(self: *@This(), midiMessage: *IMidiMessage) core.HResult!void {
         const _c = self.vtable.SendMessage(@ptrCast(self), midiMessage);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -392,6 +470,12 @@ pub const IMidiOutPort = extern struct {
 };
 pub const IMidiOutPortStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(IMidiOutPort) {
         var _r: *IAsyncOperation(IMidiOutPort) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
@@ -422,6 +506,12 @@ pub const IMidiOutPortStatics = extern struct {
 };
 pub const IMidiPitchBendChangeMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_Channel(@ptrCast(self), &_r);
@@ -452,6 +542,12 @@ pub const IMidiPitchBendChangeMessage = extern struct {
 };
 pub const IMidiPitchBendChangeMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMidiPitchBendChangeMessage(self: *@This(), channel: u8, bend: u16) core.HResult!*MidiPitchBendChangeMessage {
         var _r: *MidiPitchBendChangeMessage = undefined;
         const _c = self.vtable.CreateMidiPitchBendChangeMessage(@ptrCast(self), channel, bend, &_r);
@@ -475,6 +571,12 @@ pub const IMidiPitchBendChangeMessageFactory = extern struct {
 };
 pub const IMidiPolyphonicKeyPressureMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_Channel(@ptrCast(self), &_r);
@@ -512,6 +614,12 @@ pub const IMidiPolyphonicKeyPressureMessage = extern struct {
 };
 pub const IMidiPolyphonicKeyPressureMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMidiPolyphonicKeyPressureMessage(self: *@This(), channel: u8, note: u8, pressure: u8) core.HResult!*MidiPolyphonicKeyPressureMessage {
         var _r: *MidiPolyphonicKeyPressureMessage = undefined;
         const _c = self.vtable.CreateMidiPolyphonicKeyPressureMessage(@ptrCast(self), channel, note, pressure, &_r);
@@ -535,6 +643,12 @@ pub const IMidiPolyphonicKeyPressureMessageFactory = extern struct {
 };
 pub const IMidiProgramChangeMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_Channel(@ptrCast(self), &_r);
@@ -565,6 +679,12 @@ pub const IMidiProgramChangeMessage = extern struct {
 };
 pub const IMidiProgramChangeMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMidiProgramChangeMessage(self: *@This(), channel: u8, program: u8) core.HResult!*MidiProgramChangeMessage {
         var _r: *MidiProgramChangeMessage = undefined;
         const _c = self.vtable.CreateMidiProgramChangeMessage(@ptrCast(self), channel, program, &_r);
@@ -588,6 +708,12 @@ pub const IMidiProgramChangeMessageFactory = extern struct {
 };
 pub const IMidiSongPositionPointerMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBeats(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Beats(@ptrCast(self), &_r);
@@ -611,6 +737,12 @@ pub const IMidiSongPositionPointerMessage = extern struct {
 };
 pub const IMidiSongPositionPointerMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMidiSongPositionPointerMessage(self: *@This(), beats: u16) core.HResult!*MidiSongPositionPointerMessage {
         var _r: *MidiSongPositionPointerMessage = undefined;
         const _c = self.vtable.CreateMidiSongPositionPointerMessage(@ptrCast(self), beats, &_r);
@@ -634,6 +766,12 @@ pub const IMidiSongPositionPointerMessageFactory = extern struct {
 };
 pub const IMidiSongSelectMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSong(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_Song(@ptrCast(self), &_r);
@@ -657,6 +795,12 @@ pub const IMidiSongSelectMessage = extern struct {
 };
 pub const IMidiSongSelectMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMidiSongSelectMessage(self: *@This(), song: u8) core.HResult!*MidiSongSelectMessage {
         var _r: *MidiSongSelectMessage = undefined;
         const _c = self.vtable.CreateMidiSongSelectMessage(@ptrCast(self), song, &_r);
@@ -680,6 +824,12 @@ pub const IMidiSongSelectMessageFactory = extern struct {
 };
 pub const IMidiSynthesizer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAudioDevice(self: *@This()) core.HResult!*DeviceInformation {
         var _r: *DeviceInformation = undefined;
         const _c = self.vtable.get_AudioDevice(@ptrCast(self), &_r);
@@ -715,6 +865,12 @@ pub const IMidiSynthesizer = extern struct {
 };
 pub const IMidiSynthesizerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAsync(self: *@This()) core.HResult!*IAsyncOperation(MidiSynthesizer) {
         var _r: *IAsyncOperation(MidiSynthesizer) = undefined;
         const _c = self.vtable.CreateAsync(@ptrCast(self), &_r);
@@ -752,6 +908,12 @@ pub const IMidiSynthesizerStatics = extern struct {
 };
 pub const IMidiSystemExclusiveMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMidiSystemExclusiveMessage(self: *@This(), rawData: *IBuffer) core.HResult!*MidiSystemExclusiveMessage {
         var _r: *MidiSystemExclusiveMessage = undefined;
         const _c = self.vtable.CreateMidiSystemExclusiveMessage(@ptrCast(self), rawData, &_r);
@@ -775,6 +937,12 @@ pub const IMidiSystemExclusiveMessageFactory = extern struct {
 };
 pub const IMidiTimeCodeMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameType(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_FrameType(@ptrCast(self), &_r);
@@ -805,6 +973,12 @@ pub const IMidiTimeCodeMessage = extern struct {
 };
 pub const IMidiTimeCodeMessageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateMidiTimeCodeMessage(self: *@This(), frameType: u8, values: u8) core.HResult!*MidiTimeCodeMessage {
         var _r: *MidiTimeCodeMessage = undefined;
         const _c = self.vtable.CreateMidiTimeCodeMessage(@ptrCast(self), frameType, values, &_r);
@@ -828,6 +1002,18 @@ pub const IMidiTimeCodeMessageFactory = extern struct {
 };
 pub const MidiActiveSensingMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getTimestamp();
@@ -839,9 +1025,6 @@ pub const MidiActiveSensingMessage = extern struct {
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -856,6 +1039,18 @@ pub const MidiActiveSensingMessage = extern struct {
 };
 pub const MidiChannelPressureMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         const this: *IMidiChannelPressureMessage = @ptrCast(self);
         return try this.getChannel();
@@ -885,9 +1080,6 @@ pub const MidiChannelPressureMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateMidiChannelPressureMessage(channel: u8, pressure: u8) core.HResult!*MidiChannelPressureMessage {
         const _f = try @This()._IMidiChannelPressureMessageFactoryCache.get();
         return try _f.CreateMidiChannelPressureMessage(channel, pressure);
@@ -901,6 +1093,18 @@ pub const MidiChannelPressureMessage = extern struct {
 };
 pub const MidiContinueMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getTimestamp();
@@ -912,9 +1116,6 @@ pub const MidiContinueMessage = extern struct {
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -929,6 +1130,18 @@ pub const MidiContinueMessage = extern struct {
 };
 pub const MidiControlChangeMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         const this: *IMidiControlChangeMessage = @ptrCast(self);
         return try this.getChannel();
@@ -962,9 +1175,6 @@ pub const MidiControlChangeMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateMidiControlChangeMessage(channel: u8, controller: u8, controlValue: u8) core.HResult!*MidiControlChangeMessage {
         const _f = try @This()._IMidiControlChangeMessageFactoryCache.get();
         return try _f.CreateMidiControlChangeMessage(channel, controller, controlValue);
@@ -978,6 +1188,18 @@ pub const MidiControlChangeMessage = extern struct {
 };
 pub const MidiInPort = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMessageReceived(self: *@This(), handler: *TypedEventHandler(MidiInPort,MidiMessageReceivedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IMidiInPort = @ptrCast(self);
         return try this.addMessageReceived(handler);
@@ -997,9 +1219,6 @@ pub const MidiInPort = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(MidiInPort) {
         const _f = try @This()._IMidiInPortStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
@@ -1017,6 +1236,18 @@ pub const MidiInPort = extern struct {
 };
 pub const MidiMessageReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessage(self: *@This()) core.HResult!*IMidiMessage {
         const this: *IMidiMessageReceivedEventArgs = @ptrCast(self);
         return try this.getMessage();
@@ -1051,6 +1282,18 @@ pub const MidiMessageType = enum(i32) {
 };
 pub const MidiNoteOffMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         const this: *IMidiNoteOffMessage = @ptrCast(self);
         return try this.getChannel();
@@ -1083,9 +1326,6 @@ pub const MidiNoteOffMessage = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMidiMessage.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiNoteOffMessage(channel: u8, note: u8, velocity: u8) core.HResult!*MidiNoteOffMessage {
         const _f = try @This()._IMidiNoteOffMessageFactoryCache.get();
@@ -1100,6 +1340,18 @@ pub const MidiNoteOffMessage = extern struct {
 };
 pub const MidiNoteOnMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         const this: *IMidiNoteOnMessage = @ptrCast(self);
         return try this.getChannel();
@@ -1133,9 +1385,6 @@ pub const MidiNoteOnMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateMidiNoteOnMessage(channel: u8, note: u8, velocity: u8) core.HResult!*MidiNoteOnMessage {
         const _f = try @This()._IMidiNoteOnMessageFactoryCache.get();
         return try _f.CreateMidiNoteOnMessage(channel, note, velocity);
@@ -1149,6 +1398,18 @@ pub const MidiNoteOnMessage = extern struct {
 };
 pub const MidiOutPort = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendMessage(self: *@This(), midiMessage: *IMidiMessage) core.HResult!void {
         const this: *IMidiOutPort = @ptrCast(self);
         return try this.SendMessage(midiMessage);
@@ -1168,9 +1429,6 @@ pub const MidiOutPort = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(IMidiOutPort) {
         const _f = try @This()._IMidiOutPortStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
@@ -1188,6 +1446,18 @@ pub const MidiOutPort = extern struct {
 };
 pub const MidiPitchBendChangeMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         const this: *IMidiPitchBendChangeMessage = @ptrCast(self);
         return try this.getChannel();
@@ -1217,9 +1487,6 @@ pub const MidiPitchBendChangeMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateMidiPitchBendChangeMessage(channel: u8, bend: u16) core.HResult!*MidiPitchBendChangeMessage {
         const _f = try @This()._IMidiPitchBendChangeMessageFactoryCache.get();
         return try _f.CreateMidiPitchBendChangeMessage(channel, bend);
@@ -1233,6 +1500,18 @@ pub const MidiPitchBendChangeMessage = extern struct {
 };
 pub const MidiPolyphonicKeyPressureMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         const this: *IMidiPolyphonicKeyPressureMessage = @ptrCast(self);
         return try this.getChannel();
@@ -1266,9 +1545,6 @@ pub const MidiPolyphonicKeyPressureMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateMidiPolyphonicKeyPressureMessage(channel: u8, note: u8, pressure: u8) core.HResult!*MidiPolyphonicKeyPressureMessage {
         const _f = try @This()._IMidiPolyphonicKeyPressureMessageFactoryCache.get();
         return try _f.CreateMidiPolyphonicKeyPressureMessage(channel, note, pressure);
@@ -1282,6 +1558,18 @@ pub const MidiPolyphonicKeyPressureMessage = extern struct {
 };
 pub const MidiProgramChangeMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!u8 {
         const this: *IMidiProgramChangeMessage = @ptrCast(self);
         return try this.getChannel();
@@ -1311,9 +1599,6 @@ pub const MidiProgramChangeMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateMidiProgramChangeMessage(channel: u8, program: u8) core.HResult!*MidiProgramChangeMessage {
         const _f = try @This()._IMidiProgramChangeMessageFactoryCache.get();
         return try _f.CreateMidiProgramChangeMessage(channel, program);
@@ -1327,6 +1612,18 @@ pub const MidiProgramChangeMessage = extern struct {
 };
 pub const MidiSongPositionPointerMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBeats(self: *@This()) core.HResult!u16 {
         const this: *IMidiSongPositionPointerMessage = @ptrCast(self);
         return try this.getBeats();
@@ -1352,9 +1649,6 @@ pub const MidiSongPositionPointerMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateMidiSongPositionPointerMessage(beats: u16) core.HResult!*MidiSongPositionPointerMessage {
         const _f = try @This()._IMidiSongPositionPointerMessageFactoryCache.get();
         return try _f.CreateMidiSongPositionPointerMessage(beats);
@@ -1368,6 +1662,18 @@ pub const MidiSongPositionPointerMessage = extern struct {
 };
 pub const MidiSongSelectMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSong(self: *@This()) core.HResult!u8 {
         const this: *IMidiSongSelectMessage = @ptrCast(self);
         return try this.getSong();
@@ -1393,9 +1699,6 @@ pub const MidiSongSelectMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateMidiSongSelectMessage(song: u8) core.HResult!*MidiSongSelectMessage {
         const _f = try @This()._IMidiSongSelectMessageFactoryCache.get();
         return try _f.CreateMidiSongSelectMessage(song);
@@ -1409,6 +1712,18 @@ pub const MidiSongSelectMessage = extern struct {
 };
 pub const MidiStartMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getTimestamp();
@@ -1420,9 +1735,6 @@ pub const MidiStartMessage = extern struct {
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1437,6 +1749,18 @@ pub const MidiStartMessage = extern struct {
 };
 pub const MidiStopMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getTimestamp();
@@ -1448,9 +1772,6 @@ pub const MidiStopMessage = extern struct {
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1465,6 +1786,18 @@ pub const MidiStopMessage = extern struct {
 };
 pub const MidiSynthesizer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAudioDevice(self: *@This()) core.HResult!*DeviceInformation {
         const this: *IMidiSynthesizer = @ptrCast(self);
         return try this.getAudioDevice();
@@ -1505,9 +1838,6 @@ pub const MidiSynthesizer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateAsync() core.HResult!*IAsyncOperation(MidiSynthesizer) {
         const _f = try @This()._IMidiSynthesizerStaticsCache.get();
         return try _f.CreateAsync();
@@ -1529,6 +1859,18 @@ pub const MidiSynthesizer = extern struct {
 };
 pub const MidiSystemExclusiveMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getTimestamp();
@@ -1540,9 +1882,6 @@ pub const MidiSystemExclusiveMessage = extern struct {
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMidiSystemExclusiveMessage(rawData: *IBuffer) core.HResult!*MidiSystemExclusiveMessage {
         const _f = try @This()._IMidiSystemExclusiveMessageFactoryCache.get();
@@ -1557,6 +1896,18 @@ pub const MidiSystemExclusiveMessage = extern struct {
 };
 pub const MidiSystemResetMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getTimestamp();
@@ -1568,9 +1919,6 @@ pub const MidiSystemResetMessage = extern struct {
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1585,6 +1933,18 @@ pub const MidiSystemResetMessage = extern struct {
 };
 pub const MidiTimeCodeMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrameType(self: *@This()) core.HResult!u8 {
         const this: *IMidiTimeCodeMessage = @ptrCast(self);
         return try this.getFrameType();
@@ -1614,9 +1974,6 @@ pub const MidiTimeCodeMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateMidiTimeCodeMessage(frameType: u8, values: u8) core.HResult!*MidiTimeCodeMessage {
         const _f = try @This()._IMidiTimeCodeMessageFactoryCache.get();
         return try _f.CreateMidiTimeCodeMessage(frameType, values);
@@ -1630,6 +1987,18 @@ pub const MidiTimeCodeMessage = extern struct {
 };
 pub const MidiTimingClockMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getTimestamp();
@@ -1641,9 +2010,6 @@ pub const MidiTimingClockMessage = extern struct {
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1658,6 +2024,18 @@ pub const MidiTimingClockMessage = extern struct {
 };
 pub const MidiTuneRequestMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!TimeSpan {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getTimestamp();
@@ -1669,9 +2047,6 @@ pub const MidiTuneRequestMessage = extern struct {
     pub fn getType(self: *@This()) core.HResult!MidiMessageType {
         const this: *IMidiMessage = @ptrCast(self);
         return try this.getType();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

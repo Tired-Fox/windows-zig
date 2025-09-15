@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IGraphicsEffect = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -29,6 +35,12 @@ pub const IGraphicsEffect = extern struct {
 };
 pub const IGraphicsEffectSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Graphics.Effects.IGraphicsEffectSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "2d8f9ddc-4339-4eb9-9216-f9deb75658a2";
@@ -43,9 +55,10 @@ pub const IGraphicsEffectSource = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
-const IInspectable = @import("../Foundation.zig").IInspectable;
-const TrustLevel = @import("../root.zig").TrustLevel;
+const IUnknown = @import("../root.zig").IUnknown;
 const Guid = @import("../root.zig").Guid;
 const HRESULT = @import("../root.zig").HRESULT;
 const core = @import("../root.zig").core;
+const IInspectable = @import("../Foundation.zig").IInspectable;
+const TrustLevel = @import("../root.zig").TrustLevel;
 const HSTRING = @import("../root.zig").HSTRING;

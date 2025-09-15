@@ -94,7 +94,7 @@ pub fn main() !void {
         defer WindowsDeleteString(toast_tag);
 
         const toastElement = try xml_document.CreateElement(toast_tag.?);
-        defer _ = IUnknown.Release(@ptrCast(toastElement));
+        defer toastElement.deinit();
         _ = try xml_document.AppendChild(@ptrCast(toastElement));
 
         {
@@ -102,7 +102,7 @@ pub fn main() !void {
             defer WindowsDeleteString(visual_tag);
 
             const visualElement = try xml_document.CreateElement(visual_tag.?);
-            defer _ = IUnknown.Release(@ptrCast(visualElement));
+            defer visualElement.deinit();
             _ = try toastElement.AppendChild(@ptrCast(visualElement));
 
             {
@@ -110,8 +110,8 @@ pub fn main() !void {
                 defer WindowsDeleteString(binding_tag);
 
                 const bindingElement = try xml_document.CreateElement(binding_tag.?);
-                defer _ = IUnknown.Release(@ptrCast(bindingElement));
-                _ = try visualElement.AppendChild(@ptrCast(bindingElement));
+                defer bindingElement.deinit();
+                _ = try visualElement.AppendChild(try bindingElement.cast(IXmlNode));
 
                 {
                     {
@@ -127,7 +127,7 @@ pub fn main() !void {
                     defer WindowsDeleteString(text_tag);
 
                     const titleElement = try xml_document.CreateElement(text_tag.?);
-                    defer _ = IUnknown.Release(@ptrCast(titleElement));
+                    defer titleElement.deinit();
                     _ = try bindingElement.AppendChild(@ptrCast(titleElement));
 
                     {
@@ -151,7 +151,7 @@ pub fn main() !void {
                     defer WindowsDeleteString(title_text);
 
                     const titleText = try xml_document.CreateTextNode(title_text.?);
-                    defer _ = IUnknown.Release(@ptrCast(titleText));
+                    defer titleText.deinit();
                     _ = try titleElement.AppendChild(@ptrCast(titleText));
                 }
             }
@@ -203,7 +203,7 @@ pub fn main() !void {
     const fhandle = try notification.addFailed(fhandler);
 
     var notifier = try ToastNotificationManager.CreateToastNotifierWithApplicationId(POWERSHELL.?);
-    defer _ = IUnknown.Release(@ptrCast(notifier));
+    defer notifier.deinit();
 
     try notifier.Show(notification);
 

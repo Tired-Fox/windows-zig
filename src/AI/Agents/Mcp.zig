@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IMcpHttpConnectionResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
@@ -36,6 +42,12 @@ pub const IMcpHttpConnectionResult = extern struct {
 };
 pub const IMcpNamedPipeConnectionResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.AI.Agents.Mcp.IMcpNamedPipeConnectionResult";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "8a2aef6f-b4dc-5180-a3e1-47b63dbbb70a";
@@ -52,6 +64,12 @@ pub const IMcpNamedPipeConnectionResult = extern struct {
 };
 pub const IMcpNamedPipeConnectionServer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Connect(self: *@This(), hostContext: *AgentContext, pipeName: ?HSTRING, connectionResult: *McpNamedPipeConnectionResult) core.HResult!*McpNamedPipeConnectionResult {
         var _r: *McpNamedPipeConnectionResult = undefined;
         const _c = self.vtable.Connect(@ptrCast(self), hostContext, pipeName, connectionResult, &_r);
@@ -75,6 +93,12 @@ pub const IMcpNamedPipeConnectionServer = extern struct {
 };
 pub const IMcpServerRegistry = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAgentInfos(self: *@This()) core.HResult![*]AgentInfo {
         var _r: [*]AgentInfo = undefined;
         const _c = self.vtable.GetAgentInfos(@ptrCast(self), &_r);
@@ -105,6 +129,12 @@ pub const IMcpServerRegistry = extern struct {
 };
 pub const IMcpServerRegistryStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*McpServerRegistry {
         var _r: *McpServerRegistry = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -128,6 +158,12 @@ pub const IMcpServerRegistryStatics = extern struct {
 };
 pub const IMcpSseConnectionServer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Connect(self: *@This(), hostContext: *AgentContext, connectionResult: *McpHttpConnectionResult) core.HResult!*McpHttpConnectionResult {
         var _r: *McpHttpConnectionResult = undefined;
         const _c = self.vtable.Connect(@ptrCast(self), hostContext, connectionResult, &_r);
@@ -151,6 +187,12 @@ pub const IMcpSseConnectionServer = extern struct {
 };
 pub const IMcpStdioConnectionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCommand(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Command(@ptrCast(self), &_r);
@@ -188,6 +230,18 @@ pub const IMcpStdioConnectionInfo = extern struct {
 };
 pub const McpHttpConnectionResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         const this: *IMcpHttpConnectionResult = @ptrCast(self);
         return try this.getUri();
@@ -208,6 +262,18 @@ pub const McpHttpConnectionResult = extern struct {
 };
 pub const McpNamedPipeConnectionResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.AI.Agents.Mcp.McpNamedPipeConnectionResult";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IMcpNamedPipeConnectionResult.GUID;
@@ -216,6 +282,18 @@ pub const McpNamedPipeConnectionResult = extern struct {
 };
 pub const McpServerRegistry = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAgentInfos(self: *@This()) core.HResult![*]AgentInfo {
         const this: *IMcpServerRegistry = @ptrCast(self);
         return try this.GetAgentInfos();
@@ -223,9 +301,6 @@ pub const McpServerRegistry = extern struct {
     pub fn GetMcpConnectionInfo(self: *@This(), agentId: *Guid, ownerWindowId: WindowId) core.HResult!*McpStdioConnectionInfo {
         const this: *IMcpServerRegistry = @ptrCast(self);
         return try this.GetMcpConnectionInfo(agentId, ownerWindowId);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*McpServerRegistry {
         const _f = try @This()._IMcpServerRegistryStaticsCache.get();
@@ -240,6 +315,18 @@ pub const McpServerRegistry = extern struct {
 };
 pub const McpStdioConnectionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCommand(self: *@This()) core.HResult!?HSTRING {
         const this: *IMcpStdioConnectionInfo = @ptrCast(self);
         return try this.getCommand();
@@ -265,9 +352,9 @@ pub const McpStdioConnectionInfo = extern struct {
     pub const IID: Guid = IMcpStdioConnectionInfo.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IMcpStdioConnectionInfo.SIGNATURE);
 };
-const HSTRING = @import("../../root.zig").HSTRING;
-const AgentInfo = @import("../Agents.zig").AgentInfo;
 const IUnknown = @import("../../root.zig").IUnknown;
+const AgentInfo = @import("../Agents.zig").AgentInfo;
+const HSTRING = @import("../../root.zig").HSTRING;
 const Guid = @import("../../root.zig").Guid;
 const HRESULT = @import("../../root.zig").HRESULT;
 const core = @import("../../root.zig").core;

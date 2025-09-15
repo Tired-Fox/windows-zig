@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IMessageDialog = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -91,6 +97,12 @@ pub const IMessageDialog = extern struct {
 };
 pub const IMessageDialogFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), content: ?HSTRING) core.HResult!*MessageDialog {
         var _r: *MessageDialog = undefined;
         const _c = self.vtable.Create(@ptrCast(self), content, &_r);
@@ -121,6 +133,12 @@ pub const IMessageDialogFactory = extern struct {
 };
 pub const IPopupMenu = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCommands(self: *@This()) core.HResult!*IVector(IUICommand) {
         var _r: *IVector(IUICommand) = undefined;
         const _c = self.vtable.get_Commands(@ptrCast(self), &_r);
@@ -165,6 +183,12 @@ pub const IPopupMenu = extern struct {
 };
 pub const IUICommand = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
@@ -217,6 +241,12 @@ pub const IUICommand = extern struct {
 };
 pub const IUICommandFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), label: ?HSTRING) core.HResult!*UICommand {
         var _r: *UICommand = undefined;
         const _c = self.vtable.Create(@ptrCast(self), label, &_r);
@@ -254,6 +284,18 @@ pub const IUICommandFactory = extern struct {
 };
 pub const MessageDialog = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IMessageDialog = @ptrCast(self);
         return try this.getTitle();
@@ -302,9 +344,6 @@ pub const MessageDialog = extern struct {
         const this: *IMessageDialog = @ptrCast(self);
         return try this.putOptions(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(content: ?HSTRING) core.HResult!*MessageDialog {
         const _f = try @This()._IMessageDialogFactoryCache.get();
         return try _f.Create(content);
@@ -333,6 +372,18 @@ pub const Placement = enum(i32) {
 };
 pub const PopupMenu = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCommands(self: *@This()) core.HResult!*IVector(IUICommand) {
         const this: *IPopupMenu = @ptrCast(self);
         return try this.getCommands();
@@ -349,9 +400,6 @@ pub const PopupMenu = extern struct {
         const this: *IPopupMenu = @ptrCast(self);
         return try this.ShowForSelectionAsyncWithPreferredPlacement(selection, preferredPlacement);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPopupMenu.IID)));
@@ -365,6 +413,18 @@ pub const PopupMenu = extern struct {
 };
 pub const UICommand = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IUICommand = @ptrCast(self);
         return try this.getLabel();
@@ -388,9 +448,6 @@ pub const UICommand = extern struct {
     pub fn putId(self: *@This(), value: *IInspectable) core.HResult!void {
         const this: *IUICommand = @ptrCast(self);
         return try this.putId(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -507,6 +564,18 @@ pub const UICommandInvokedHandler = extern struct {
 };
 pub const UICommandSeparator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IUICommand = @ptrCast(self);
         return try this.getLabel();
@@ -530,9 +599,6 @@ pub const UICommandSeparator = extern struct {
     pub fn putId(self: *@This(), value: *IInspectable) core.HResult!void {
         const this: *IUICommand = @ptrCast(self);
         return try this.putId(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

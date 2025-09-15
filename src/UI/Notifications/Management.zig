@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IUserNotificationListener = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(UserNotificationListenerAccessStatus) {
         var _r: *IAsyncOperation(UserNotificationListenerAccessStatus) = undefined;
         const _c = self.vtable.RequestAccessAsync(@ptrCast(self), &_r);
@@ -67,6 +73,12 @@ pub const IUserNotificationListener = extern struct {
 };
 pub const IUserNotificationListenerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrent(self: *@This()) core.HResult!*UserNotificationListener {
         var _r: *UserNotificationListener = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
@@ -90,6 +102,18 @@ pub const IUserNotificationListenerStatics = extern struct {
 };
 pub const UserNotificationListener = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAccessAsync(self: *@This()) core.HResult!*IAsyncOperation(UserNotificationListenerAccessStatus) {
         const this: *IUserNotificationListener = @ptrCast(self);
         return try this.RequestAccessAsync();
@@ -122,9 +146,6 @@ pub const UserNotificationListener = extern struct {
         const this: *IUserNotificationListener = @ptrCast(self);
         return try this.RemoveNotification(notificationId);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getCurrent() core.HResult!*UserNotificationListener {
         const _f = try @This()._IUserNotificationListenerStaticsCache.get();
         return try _f.getCurrent();
@@ -141,8 +162,8 @@ pub const UserNotificationListenerAccessStatus = enum(i32) {
     Allowed = 1,
     Denied = 2,
 };
-const UserNotification = @import("../Notifications.zig").UserNotification;
 const IUnknown = @import("../../root.zig").IUnknown;
+const UserNotification = @import("../Notifications.zig").UserNotification;
 const Guid = @import("../../root.zig").Guid;
 const HRESULT = @import("../../root.zig").HRESULT;
 const core = @import("../../root.zig").core;

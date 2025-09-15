@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const ActionCatalog = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAllActions(self: *@This()) core.HResult![*]ActionDefinition {
         const this: *IActionCatalog = @ptrCast(self);
         return try this.GetAllActions();
@@ -49,6 +61,18 @@ pub const ActionCatalog = extern struct {
 };
 pub const ActionDefinition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionDefinition = @ptrCast(self);
         return try this.getId();
@@ -127,6 +151,18 @@ pub const ActionDefinition = extern struct {
 };
 pub const ActionEntityRegistrationInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionEntityRegistrationInfo = @ptrCast(self);
         return try this.getName();
@@ -158,6 +194,18 @@ pub const ActionEntityRegistrationInfo = extern struct {
 };
 pub const ActionInstance = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayInfo(self: *@This()) core.HResult!*ActionInstanceDisplayInfo {
         const this: *IActionInstance = @ptrCast(self);
         return try this.getDisplayInfo();
@@ -182,6 +230,18 @@ pub const ActionInstance = extern struct {
 };
 pub const ActionInstanceDisplayInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionInstanceDisplayInfo = @ptrCast(self);
         return try this.getDescription();
@@ -194,6 +254,18 @@ pub const ActionInstanceDisplayInfo = extern struct {
 };
 pub const ActionOverload = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDescriptionTemplate(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionOverload = @ptrCast(self);
         return try this.getDescriptionTemplate();
@@ -235,6 +307,12 @@ pub const ActionOverload = extern struct {
 };
 pub const IActionCatalog = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAllActions(self: *@This()) core.HResult![*]ActionDefinition {
         var _r: [*]ActionDefinition = undefined;
         const _c = self.vtable.GetAllActions(@ptrCast(self), &_r);
@@ -270,6 +348,12 @@ pub const IActionCatalog = extern struct {
 };
 pub const IActionCatalog2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetActionsForInputs(self: *@This(), inputEntities: [*]ActionEntity) core.HResult![*]ActionInstance {
         var _r: [*]ActionInstance = undefined;
         const _c = self.vtable.GetActionsForInputs(@ptrCast(self), inputEntities, &_r);
@@ -300,6 +384,12 @@ pub const IActionCatalog2 = extern struct {
 };
 pub const IActionCatalog3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetActionsForCurrentApp(self: *@This()) core.HResult![*]ActionDefinition {
         var _r: [*]ActionDefinition = undefined;
         const _c = self.vtable.GetActionsForCurrentApp(@ptrCast(self), &_r);
@@ -323,6 +413,12 @@ pub const IActionCatalog3 = extern struct {
 };
 pub const IActionDefinition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -388,6 +484,12 @@ pub const IActionDefinition = extern struct {
 };
 pub const IActionDefinition2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplaysUI(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_DisplaysUI(@ptrCast(self), &_r);
@@ -425,6 +527,12 @@ pub const IActionDefinition2 = extern struct {
 };
 pub const IActionDefinition3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackageRelativeApplicationId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageRelativeApplicationId(@ptrCast(self), &_r);
@@ -448,6 +556,12 @@ pub const IActionDefinition3 = extern struct {
 };
 pub const IActionDefinition4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsCurrentlyAvailable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsCurrentlyAvailable(@ptrCast(self), &_r);
@@ -471,6 +585,12 @@ pub const IActionDefinition4 = extern struct {
 };
 pub const IActionEntityRegistrationInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -511,6 +631,12 @@ pub const IActionEntityRegistrationInfo = extern struct {
 };
 pub const IActionInstance = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayInfo(self: *@This()) core.HResult!*ActionInstanceDisplayInfo {
         var _r: *ActionInstanceDisplayInfo = undefined;
         const _c = self.vtable.get_DisplayInfo(@ptrCast(self), &_r);
@@ -555,6 +681,12 @@ pub const IActionInstance = extern struct {
 };
 pub const IActionInstanceDisplayInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
@@ -578,6 +710,12 @@ pub const IActionInstanceDisplayInfo = extern struct {
 };
 pub const IActionOverload = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDescriptionTemplate(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DescriptionTemplate(@ptrCast(self), &_r);
@@ -615,6 +753,12 @@ pub const IActionOverload = extern struct {
 };
 pub const IActionOverload2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InvokeFeedbackAsync(self: *@This(), context: *ActionInvocationContext, feedback: *ActionFeedback) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.InvokeFeedbackAsync(@ptrCast(self), context, feedback, &_r);

@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IUserDataAvailabilityStateChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -24,6 +30,12 @@ pub const IUserDataAvailabilityStateChangedEventArgs = extern struct {
 };
 pub const IUserDataBufferUnprotectResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!UserDataBufferUnprotectStatus {
         var _r: UserDataBufferUnprotectStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -54,6 +66,12 @@ pub const IUserDataBufferUnprotectResult = extern struct {
 };
 pub const IUserDataProtectionManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ProtectStorageItemAsync(self: *@This(), storageItem: *IStorageItem, availability: UserDataAvailability) core.HResult!*IAsyncOperation(UserDataStorageItemProtectionStatus) {
         var _r: *IAsyncOperation(UserDataStorageItemProtectionStatus) = undefined;
         const _c = self.vtable.ProtectStorageItemAsync(@ptrCast(self), storageItem, availability, &_r);
@@ -117,6 +135,12 @@ pub const IUserDataProtectionManager = extern struct {
 };
 pub const IUserDataProtectionManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetDefault(self: *@This()) core.HResult!*UserDataProtectionManager {
         var _r: *UserDataProtectionManager = undefined;
         const _c = self.vtable.TryGetDefault(@ptrCast(self), &_r);
@@ -147,6 +171,12 @@ pub const IUserDataProtectionManagerStatics = extern struct {
 };
 pub const IUserDataStorageItemProtectionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAvailability(self: *@This()) core.HResult!UserDataAvailability {
         var _r: UserDataAvailability = undefined;
         const _c = self.vtable.get_Availability(@ptrCast(self), &_r);
@@ -175,6 +205,18 @@ pub const UserDataAvailability = enum(i32) {
 };
 pub const UserDataAvailabilityStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *IUserDataAvailabilityStateChangedEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -187,6 +229,18 @@ pub const UserDataAvailabilityStateChangedEventArgs = extern struct {
 };
 pub const UserDataBufferUnprotectResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!UserDataBufferUnprotectStatus {
         const this: *IUserDataBufferUnprotectResult = @ptrCast(self);
         return try this.getStatus();
@@ -207,6 +261,18 @@ pub const UserDataBufferUnprotectStatus = enum(i32) {
 };
 pub const UserDataProtectionManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ProtectStorageItemAsync(self: *@This(), storageItem: *IStorageItem, availability: UserDataAvailability) core.HResult!*IAsyncOperation(UserDataStorageItemProtectionStatus) {
         const this: *IUserDataProtectionManager = @ptrCast(self);
         return try this.ProtectStorageItemAsync(storageItem, availability);
@@ -235,9 +301,6 @@ pub const UserDataProtectionManager = extern struct {
         const this: *IUserDataProtectionManager = @ptrCast(self);
         return try this.removeDataAvailabilityStateChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn TryGetDefault() core.HResult!*UserDataProtectionManager {
         const _f = try @This()._IUserDataProtectionManagerStaticsCache.get();
         return try _f.TryGetDefault();
@@ -255,6 +318,18 @@ pub const UserDataProtectionManager = extern struct {
 };
 pub const UserDataStorageItemProtectionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAvailability(self: *@This()) core.HResult!UserDataAvailability {
         const this: *IUserDataStorageItemProtectionInfo = @ptrCast(self);
         return try this.getAvailability();

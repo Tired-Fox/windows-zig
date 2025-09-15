@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AggregateContactManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindRawContactsAsync(self: *@This(), contact: *Contact) core.HResult!*IAsyncOperation(IVectorView(Contact)) {
         const this: *IAggregateContactManager = @ptrCast(self);
         return try this.FindRawContactsAsync(contact);
@@ -32,6 +44,18 @@ pub const AggregateContactManager = extern struct {
 };
 pub const Contact = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContact = @ptrCast(self);
         return try this.getName();
@@ -423,9 +447,6 @@ pub const Contact = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSortName();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContact.IID)));
@@ -439,6 +460,18 @@ pub const Contact = extern struct {
 };
 pub const ContactAddress = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStreetAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAddress = @ptrCast(self);
         return try this.getStreetAddress();
@@ -495,9 +528,6 @@ pub const ContactAddress = extern struct {
         const this: *IContactAddress = @ptrCast(self);
         return try this.putDescription(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactAddress.IID)));
@@ -516,6 +546,18 @@ pub const ContactAddressKind = enum(i32) {
 };
 pub const ContactAnnotation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAnnotation = @ptrCast(self);
         return try this.getId();
@@ -570,9 +612,6 @@ pub const ContactAnnotation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putContactListId(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactAnnotation.IID)));
@@ -586,6 +625,18 @@ pub const ContactAnnotation = extern struct {
 };
 pub const ContactAnnotationList = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactAnnotationList = @ptrCast(self);
         return try this.getId();
@@ -639,6 +690,18 @@ pub const ContactAnnotationOperations = enum(i32) {
 };
 pub const ContactAnnotationStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindContactIdsByEmailAsync(self: *@This(), emailAddress: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         const this: *IContactAnnotationStore = @ptrCast(self);
         return try this.FindContactIdsByEmailAsync(emailAddress);
@@ -690,6 +753,18 @@ pub const ContactAnnotationStoreAccessType = enum(i32) {
 };
 pub const ContactBatch = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContacts(self: *@This()) core.HResult!*IVectorView(Contact) {
         const this: *IContactBatch = @ptrCast(self);
         return try this.getContacts();
@@ -711,6 +786,18 @@ pub const ContactBatchStatus = enum(i32) {
 };
 pub const ContactCardDelayedDataLoader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetData(self: *@This(), contact: *Contact) core.HResult!void {
         const this: *IContactCardDelayedDataLoader = @ptrCast(self);
         return try this.SetData(contact);
@@ -735,6 +822,18 @@ pub const ContactCardHeaderKind = enum(i32) {
 };
 pub const ContactCardOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeaderKind(self: *@This()) core.HResult!ContactCardHeaderKind {
         const this: *IContactCardOptions = @ptrCast(self);
         return try this.getHeaderKind();
@@ -758,9 +857,6 @@ pub const ContactCardOptions = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getServerSearchContactListIds();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactCardOptions.IID)));
@@ -782,6 +878,18 @@ pub const ContactCardTabKind = enum(i32) {
 };
 pub const ContactChange = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeType(self: *@This()) core.HResult!ContactChangeType {
         const this: *IContactChange = @ptrCast(self);
         return try this.getChangeType();
@@ -798,6 +906,18 @@ pub const ContactChange = extern struct {
 };
 pub const ContactChangeReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AcceptChanges(self: *@This()) core.HResult!void {
         const this: *IContactChangeReader = @ptrCast(self);
         return try this.AcceptChanges();
@@ -818,6 +938,18 @@ pub const ContactChangeReader = extern struct {
 };
 pub const ContactChangeTracker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Enable(self: *@This()) core.HResult!void {
         const this: *IContactChangeTracker = @ptrCast(self);
         return try this.Enable();
@@ -851,6 +983,18 @@ pub const ContactChangeType = enum(i32) {
 };
 pub const ContactChangedDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IContactChangedDeferral = @ptrCast(self);
         return try this.Complete();
@@ -863,6 +1007,18 @@ pub const ContactChangedDeferral = extern struct {
 };
 pub const ContactChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*ContactChangedDeferral {
         const this: *IContactChangedEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -875,6 +1031,18 @@ pub const ContactChangedEventArgs = extern struct {
 };
 pub const ContactConnectedServiceAccount = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactConnectedServiceAccount = @ptrCast(self);
         return try this.getId();
@@ -891,9 +1059,6 @@ pub const ContactConnectedServiceAccount = extern struct {
         const this: *IContactConnectedServiceAccount = @ptrCast(self);
         return try this.putServiceName(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactConnectedServiceAccount.IID)));
@@ -907,6 +1072,18 @@ pub const ContactConnectedServiceAccount = extern struct {
 };
 pub const ContactDate = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDay(self: *@This()) core.HResult!*IReference(u32) {
         const this: *IContactDate = @ptrCast(self);
         return try this.getDay();
@@ -947,9 +1124,6 @@ pub const ContactDate = extern struct {
         const this: *IContactDate = @ptrCast(self);
         return try this.putDescription(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactDate.IID)));
@@ -968,6 +1142,18 @@ pub const ContactDateKind = enum(i32) {
 };
 pub const ContactEmail = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactEmail = @ptrCast(self);
         return try this.getAddress();
@@ -992,9 +1178,6 @@ pub const ContactEmail = extern struct {
         const this: *IContactEmail = @ptrCast(self);
         return try this.putDescription(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactEmail.IID)));
@@ -1013,6 +1196,18 @@ pub const ContactEmailKind = enum(i32) {
 };
 pub const ContactField = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!ContactFieldType {
         const this: *IContactField = @ptrCast(self);
         return try this.getType();
@@ -1028,9 +1223,6 @@ pub const ContactField = extern struct {
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactField = @ptrCast(self);
         return try this.getValue();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateField(value: ?HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
         const _f = try @This()._IContactFieldFactoryCache.get();
@@ -1060,6 +1252,18 @@ pub const ContactFieldCategory = enum(i32) {
 };
 pub const ContactFieldFactory = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateField(self: *@This(), value: ?HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
         const this: *IContactFieldFactory = @ptrCast(self);
         return try this.CreateField(value, ty);
@@ -1114,9 +1318,6 @@ pub const ContactFieldFactory = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateInstantMessageWithCategoryAndServiceAndDisplayTextAndVerb(userName, category, service, displayText, verb);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactFieldFactory.IID)));
@@ -1144,6 +1345,18 @@ pub const ContactFieldType = enum(i32) {
 };
 pub const ContactGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IContactGroup.GUID;
@@ -1152,6 +1365,18 @@ pub const ContactGroup = extern struct {
 };
 pub const ContactInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactInformation = @ptrCast(self);
         return try this.getName();
@@ -1192,6 +1417,18 @@ pub const ContactInformation = extern struct {
 };
 pub const ContactInstantMessageField = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactInstantMessageField = @ptrCast(self);
         return try this.getUserName();
@@ -1236,9 +1473,6 @@ pub const ContactInstantMessageField = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValue();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstantMessage(userName: ?HSTRING) core.HResult!*ContactInstantMessageField {
         const _f = try @This()._IContactInstantMessageFieldFactoryCache.get();
         return try _f.CreateInstantMessage(userName);
@@ -1260,6 +1494,18 @@ pub const ContactInstantMessageField = extern struct {
 };
 pub const ContactJobInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompanyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.getCompanyName();
@@ -1324,9 +1570,6 @@ pub const ContactJobInfo = extern struct {
         const this: *IContactJobInfo = @ptrCast(self);
         return try this.putDescription(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactJobInfo.IID)));
@@ -1340,6 +1583,15 @@ pub const ContactJobInfo = extern struct {
 };
 pub const ContactLaunchActionVerbs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1369,6 +1621,18 @@ pub const ContactLaunchActionVerbs = extern struct {
 };
 pub const ContactList = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactList = @ptrCast(self);
         return try this.getId();
@@ -1512,6 +1776,18 @@ pub const ContactList = extern struct {
 };
 pub const ContactListLimitedWriteOperations = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryCreateOrUpdateContactAsync(self: *@This(), contact: *Contact) core.HResult!*IAsyncOperation(bool) {
         const this: *IContactListLimitedWriteOperations = @ptrCast(self);
         return try this.TryCreateOrUpdateContactAsync(contact);
@@ -1539,6 +1815,18 @@ pub const ContactListOtherAppWriteAccess = enum(i32) {
 };
 pub const ContactListSyncConstraints = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanSyncDescriptions(self: *@This()) core.HResult!bool {
         const this: *IContactListSyncConstraints = @ptrCast(self);
         return try this.getCanSyncDescriptions();
@@ -1771,6 +2059,18 @@ pub const ContactListSyncConstraints = extern struct {
 };
 pub const ContactListSyncManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!ContactListSyncStatus {
         const this: *IContactListSyncManager = @ptrCast(self);
         return try this.getStatus();
@@ -1833,6 +2133,18 @@ pub const ContactListSyncStatus = enum(i32) {
 };
 pub const ContactLocationField = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnstructuredAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactLocationField = @ptrCast(self);
         return try this.getUnstructuredAddress();
@@ -1885,9 +2197,6 @@ pub const ContactLocationField = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getValue();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateLocation(unstructuredAddress: ?HSTRING) core.HResult!*ContactLocationField {
         const _f = try @This()._IContactLocationFieldFactoryCache.get();
         return try _f.CreateLocation(unstructuredAddress);
@@ -1909,6 +2218,15 @@ pub const ContactLocationField = extern struct {
 };
 pub const ContactManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2010,6 +2328,18 @@ pub const ContactManager = extern struct {
 };
 pub const ContactManagerForUser = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ConvertContactToVCardAsync(self: *@This(), contact: *Contact) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
         const this: *IContactManagerForUser = @ptrCast(self);
         return try this.ConvertContactToVCardAsync(contact);
@@ -2065,6 +2395,18 @@ pub const ContactManagerForUser = extern struct {
 };
 pub const ContactMatchReason = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getField(self: *@This()) core.HResult!ContactMatchReasonKind {
         const this: *IContactMatchReason = @ptrCast(self);
         return try this.getField();
@@ -2097,6 +2439,18 @@ pub const ContactNameOrder = enum(i32) {
 };
 pub const ContactPanel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ClosePanel(self: *@This()) core.HResult!void {
         const this: *IContactPanel = @ptrCast(self);
         return try this.ClosePanel();
@@ -2133,6 +2487,18 @@ pub const ContactPanel = extern struct {
 };
 pub const ContactPanelClosingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *IContactPanelClosingEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -2145,6 +2511,18 @@ pub const ContactPanelClosingEventArgs = extern struct {
 };
 pub const ContactPanelLaunchFullAppRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         const this: *IContactPanelLaunchFullAppRequestedEventArgs = @ptrCast(self);
         return try this.getHandled();
@@ -2161,6 +2539,18 @@ pub const ContactPanelLaunchFullAppRequestedEventArgs = extern struct {
 };
 pub const ContactPhone = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactPhone = @ptrCast(self);
         return try this.getNumber();
@@ -2184,9 +2574,6 @@ pub const ContactPhone = extern struct {
     pub fn putDescription(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IContactPhone = @ptrCast(self);
         return try this.putDescription(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2213,6 +2600,18 @@ pub const ContactPhoneKind = enum(i32) {
 };
 pub const ContactPicker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactPicker = @ptrCast(self);
         return try this.getCommitButtonText();
@@ -2269,9 +2668,6 @@ pub const ContactPicker = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getUser();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactPicker.IID)));
@@ -2300,6 +2696,18 @@ pub const ContactQueryDesiredFields = enum(i32) {
 };
 pub const ContactQueryOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextSearch(self: *@This()) core.HResult!*ContactQueryTextSearch {
         const this: *IContactQueryOptions = @ptrCast(self);
         return try this.getTextSearch();
@@ -2336,9 +2744,6 @@ pub const ContactQueryOptions = extern struct {
         const this: *IContactQueryOptions = @ptrCast(self);
         return try this.getAnnotationListIds();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactQueryOptions.IID)));
@@ -2372,6 +2777,18 @@ pub const ContactQuerySearchScope = enum(i32) {
 };
 pub const ContactQueryTextSearch = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFields(self: *@This()) core.HResult!ContactQuerySearchFields {
         const this: *IContactQueryTextSearch = @ptrCast(self);
         return try this.getFields();
@@ -2404,6 +2821,18 @@ pub const ContactQueryTextSearch = extern struct {
 };
 pub const ContactReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(ContactBatch) {
         const this: *IContactReader = @ptrCast(self);
         return try this.ReadBatchAsync();
@@ -2432,6 +2861,18 @@ pub const ContactSelectionMode = enum(i32) {
 };
 pub const ContactSignificantOther = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IContactSignificantOther = @ptrCast(self);
         return try this.getName();
@@ -2462,9 +2903,6 @@ pub const ContactSignificantOther = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRelationship(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactSignificantOther.IID)));
@@ -2478,6 +2916,18 @@ pub const ContactSignificantOther = extern struct {
 };
 pub const ContactStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindContactsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(Contact)) {
         const this: *IContactStore = @ptrCast(self);
         return try this.FindContactsAsync();
@@ -2587,6 +3037,18 @@ pub const ContactStoreAccessType = enum(i32) {
 };
 pub const ContactStoreNotificationTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactStoreNotificationTriggerDetails";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IContactStoreNotificationTriggerDetails.GUID;
@@ -2595,6 +3057,18 @@ pub const ContactStoreNotificationTriggerDetails = extern struct {
 };
 pub const ContactWebsite = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         const this: *IContactWebsite = @ptrCast(self);
         return try this.getUri();
@@ -2625,9 +3099,6 @@ pub const ContactWebsite = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putRawValue(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContactWebsite.IID)));
@@ -2641,6 +3112,18 @@ pub const ContactWebsite = extern struct {
 };
 pub const FullContactCardOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesiredRemainingView(self: *@This()) core.HResult!ViewSizePreference {
         const this: *IFullContactCardOptions = @ptrCast(self);
         return try this.getDesiredRemainingView();
@@ -2648,9 +3131,6 @@ pub const FullContactCardOptions = extern struct {
     pub fn putDesiredRemainingView(self: *@This(), value: ViewSizePreference) core.HResult!void {
         const this: *IFullContactCardOptions = @ptrCast(self);
         return try this.putDesiredRemainingView(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2665,6 +3145,12 @@ pub const FullContactCardOptions = extern struct {
 };
 pub const IAggregateContactManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindRawContactsAsync(self: *@This(), contact: *Contact) core.HResult!*IAsyncOperation(IVectorView(Contact)) {
         var _r: *IAsyncOperation(IVectorView(Contact)) = undefined;
         const _c = self.vtable.FindRawContactsAsync(@ptrCast(self), contact, &_r);
@@ -2709,6 +3195,12 @@ pub const IAggregateContactManager = extern struct {
 };
 pub const IAggregateContactManager2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetRemoteIdentificationInformationAsync(self: *@This(), contactListId: ?HSTRING, remoteSourceId: ?HSTRING, accountId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetRemoteIdentificationInformationAsync(@ptrCast(self), contactListId, remoteSourceId, accountId, &_r);
@@ -2732,6 +3224,12 @@ pub const IAggregateContactManager2 = extern struct {
 };
 pub const IContact = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -2779,6 +3277,12 @@ pub const IContact = extern struct {
 };
 pub const IContact2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -2889,6 +3393,12 @@ pub const IContact2 = extern struct {
 };
 pub const IContact3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactListId(@ptrCast(self), &_r);
@@ -3052,6 +3562,12 @@ pub const IContact3 = extern struct {
 };
 pub const IContactAddress = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStreetAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StreetAddress(@ptrCast(self), &_r);
@@ -3152,6 +3668,12 @@ pub const IContactAddress = extern struct {
 };
 pub const IContactAnnotation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -3232,6 +3754,12 @@ pub const IContactAnnotation = extern struct {
 };
 pub const IContactAnnotation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactListId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactListId(@ptrCast(self), &_r);
@@ -3260,6 +3788,12 @@ pub const IContactAnnotation2 = extern struct {
 };
 pub const IContactAnnotationList = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -3339,6 +3873,12 @@ pub const IContactAnnotationList = extern struct {
 };
 pub const IContactAnnotationStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindContactIdsByEmailAsync(self: *@This(), emailAddress: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.FindContactIdsByEmailAsync(@ptrCast(self), emailAddress, &_r);
@@ -3411,6 +3951,12 @@ pub const IContactAnnotationStore = extern struct {
 };
 pub const IContactAnnotationStore2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAnnotationsForContactListAsync(self: *@This(), contactListId: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(ContactAnnotation)) {
         var _r: *IAsyncOperation(IVectorView(ContactAnnotation)) = undefined;
         const _c = self.vtable.FindAnnotationsForContactListAsync(@ptrCast(self), contactListId, &_r);
@@ -3434,6 +3980,12 @@ pub const IContactAnnotationStore2 = extern struct {
 };
 pub const IContactBatch = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContacts(self: *@This()) core.HResult!*IVectorView(Contact) {
         var _r: *IVectorView(Contact) = undefined;
         const _c = self.vtable.get_Contacts(@ptrCast(self), &_r);
@@ -3464,6 +4016,12 @@ pub const IContactBatch = extern struct {
 };
 pub const IContactCardDelayedDataLoader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetData(self: *@This(), contact: *Contact) core.HResult!void {
         const _c = self.vtable.SetData(@ptrCast(self), contact);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3485,6 +4043,12 @@ pub const IContactCardDelayedDataLoader = extern struct {
 };
 pub const IContactCardOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeaderKind(self: *@This()) core.HResult!ContactCardHeaderKind {
         var _r: ContactCardHeaderKind = undefined;
         const _c = self.vtable.get_HeaderKind(@ptrCast(self), &_r);
@@ -3525,6 +4089,12 @@ pub const IContactCardOptions = extern struct {
 };
 pub const IContactCardOptions2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServerSearchContactListIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ServerSearchContactListIds(@ptrCast(self), &_r);
@@ -3548,6 +4118,12 @@ pub const IContactCardOptions2 = extern struct {
 };
 pub const IContactChange = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeType(self: *@This()) core.HResult!ContactChangeType {
         var _r: ContactChangeType = undefined;
         const _c = self.vtable.get_ChangeType(@ptrCast(self), &_r);
@@ -3578,6 +4154,12 @@ pub const IContactChange = extern struct {
 };
 pub const IContactChangeReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AcceptChanges(self: *@This()) core.HResult!void {
         const _c = self.vtable.AcceptChanges(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3611,6 +4193,12 @@ pub const IContactChangeReader = extern struct {
 };
 pub const IContactChangeTracker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Enable(self: *@This()) core.HResult!void {
         const _c = self.vtable.Enable(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3644,6 +4232,12 @@ pub const IContactChangeTracker = extern struct {
 };
 pub const IContactChangeTracker2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsTracking(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsTracking(@ptrCast(self), &_r);
@@ -3667,6 +4261,12 @@ pub const IContactChangeTracker2 = extern struct {
 };
 pub const IContactChangedDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3688,6 +4288,12 @@ pub const IContactChangedDeferral = extern struct {
 };
 pub const IContactChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*ContactChangedDeferral {
         var _r: *ContactChangedDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -3711,6 +4317,12 @@ pub const IContactChangedEventArgs = extern struct {
 };
 pub const IContactConnectedServiceAccount = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -3751,6 +4363,12 @@ pub const IContactConnectedServiceAccount = extern struct {
 };
 pub const IContactDate = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDay(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_Day(@ptrCast(self), &_r);
@@ -3827,6 +4445,12 @@ pub const IContactDate = extern struct {
 };
 pub const IContactEmail = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Address(@ptrCast(self), &_r);
@@ -3879,6 +4503,12 @@ pub const IContactEmail = extern struct {
 };
 pub const IContactField = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!ContactFieldType {
         var _r: ContactFieldType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -3923,6 +4553,12 @@ pub const IContactField = extern struct {
 };
 pub const IContactFieldFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateField(self: *@This(), value: ?HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
         var _r: *ContactField = undefined;
         const _c = self.vtable.CreateField(@ptrCast(self), value, ty, &_r);
@@ -3960,6 +4596,12 @@ pub const IContactFieldFactory = extern struct {
 };
 pub const IContactGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.IContactGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "59bdeb01-9e9a-475d-bfe5-a37b806d852c";
@@ -3976,6 +4618,12 @@ pub const IContactGroup = extern struct {
 };
 pub const IContactInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -4048,6 +4696,12 @@ pub const IContactInformation = extern struct {
 };
 pub const IContactInstantMessageField = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserName(@ptrCast(self), &_r);
@@ -4092,6 +4746,12 @@ pub const IContactInstantMessageField = extern struct {
 };
 pub const IContactInstantMessageFieldFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstantMessage(self: *@This(), userName: ?HSTRING) core.HResult!*ContactInstantMessageField {
         var _r: *ContactInstantMessageField = undefined;
         const _c = self.vtable.CreateInstantMessage(@ptrCast(self), userName, &_r);
@@ -4129,6 +4789,12 @@ pub const IContactInstantMessageFieldFactory = extern struct {
 };
 pub const IContactJobInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompanyName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CompanyName(@ptrCast(self), &_r);
@@ -4241,6 +4907,12 @@ pub const IContactJobInfo = extern struct {
 };
 pub const IContactLaunchActionVerbsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCall(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Call(@ptrCast(self), &_r);
@@ -4292,6 +4964,12 @@ pub const IContactLaunchActionVerbsStatics = extern struct {
 };
 pub const IContactList = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -4473,6 +5151,12 @@ pub const IContactList = extern struct {
 };
 pub const IContactList2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RegisterSyncManagerAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RegisterSyncManagerAsync(@ptrCast(self), &_r);
@@ -4508,6 +5192,12 @@ pub const IContactList2 = extern struct {
 };
 pub const IContactList3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLimitedWriteOperations(self: *@This()) core.HResult!*ContactListLimitedWriteOperations {
         var _r: *ContactListLimitedWriteOperations = undefined;
         const _c = self.vtable.get_LimitedWriteOperations(@ptrCast(self), &_r);
@@ -4538,6 +5228,12 @@ pub const IContactList3 = extern struct {
 };
 pub const IContactListLimitedWriteOperations = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryCreateOrUpdateContactAsync(self: *@This(), contact: *Contact) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryCreateOrUpdateContactAsync(@ptrCast(self), contact, &_r);
@@ -4568,6 +5264,12 @@ pub const IContactListLimitedWriteOperations = extern struct {
 };
 pub const IContactListSyncConstraints = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanSyncDescriptions(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanSyncDescriptions(@ptrCast(self), &_r);
@@ -4920,6 +5622,12 @@ pub const IContactListSyncConstraints = extern struct {
 };
 pub const IContactListSyncManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!ContactListSyncStatus {
         var _r: ContactListSyncStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -4976,6 +5684,12 @@ pub const IContactListSyncManager = extern struct {
 };
 pub const IContactListSyncManager2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putStatus(self: *@This(), value: ContactListSyncStatus) core.HResult!void {
         const _c = self.vtable.put_Status(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5007,6 +5721,12 @@ pub const IContactListSyncManager2 = extern struct {
 };
 pub const IContactLocationField = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnstructuredAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UnstructuredAddress(@ptrCast(self), &_r);
@@ -5065,6 +5785,12 @@ pub const IContactLocationField = extern struct {
 };
 pub const IContactLocationFieldFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateLocation(self: *@This(), unstructuredAddress: ?HSTRING) core.HResult!*ContactLocationField {
         var _r: *ContactLocationField = undefined;
         const _c = self.vtable.CreateLocation(@ptrCast(self), unstructuredAddress, &_r);
@@ -5102,6 +5828,12 @@ pub const IContactLocationFieldFactory = extern struct {
 };
 pub const IContactManagerForUser = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ConvertContactToVCardAsync(self: *@This(), contact: *Contact) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
         var _r: *IAsyncOperation(RandomAccessStreamReference) = undefined;
         const _c = self.vtable.ConvertContactToVCardAsync(@ptrCast(self), contact, &_r);
@@ -5184,6 +5916,12 @@ pub const IContactManagerForUser = extern struct {
 };
 pub const IContactManagerForUser2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowFullContactCard(self: *@This(), contact: *Contact, fullContactCardOptions: *FullContactCardOptions) core.HResult!void {
         const _c = self.vtable.ShowFullContactCard(@ptrCast(self), contact, fullContactCardOptions);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5205,6 +5943,12 @@ pub const IContactManagerForUser2 = extern struct {
 };
 pub const IContactManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowContactCard(self: *@This(), contact: *Contact, selection: Rect) core.HResult!void {
         const _c = self.vtable.ShowContactCard(@ptrCast(self), contact, selection);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5238,6 +5982,12 @@ pub const IContactManagerStatics = extern struct {
 };
 pub const IContactManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestStoreAsync(self: *@This()) core.HResult!*IAsyncOperation(ContactStore) {
         var _r: *IAsyncOperation(ContactStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), &_r);
@@ -5261,6 +6011,12 @@ pub const IContactManagerStatics2 = extern struct {
 };
 pub const IContactManagerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ConvertContactToVCardAsync(self: *@This(), contact: *Contact) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
         var _r: *IAsyncOperation(RandomAccessStreamReference) = undefined;
         const _c = self.vtable.ConvertContactToVCardAsync(@ptrCast(self), contact, &_r);
@@ -5367,6 +6123,12 @@ pub const IContactManagerStatics3 = extern struct {
 };
 pub const IContactManagerStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForUser(self: *@This(), user: *User) core.HResult!*ContactManagerForUser {
         var _r: *ContactManagerForUser = undefined;
         const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
@@ -5390,6 +6152,12 @@ pub const IContactManagerStatics4 = extern struct {
 };
 pub const IContactManagerStatics5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsShowFullContactCardSupportedAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsShowFullContactCardSupportedAsync(@ptrCast(self), &_r);
@@ -5425,6 +6193,12 @@ pub const IContactManagerStatics5 = extern struct {
 };
 pub const IContactMatchReason = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getField(self: *@This()) core.HResult!ContactMatchReasonKind {
         var _r: ContactMatchReasonKind = undefined;
         const _c = self.vtable.get_Field(@ptrCast(self), &_r);
@@ -5462,6 +6236,12 @@ pub const IContactMatchReason = extern struct {
 };
 pub const IContactName = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFirstName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FirstName(@ptrCast(self), &_r);
@@ -5576,6 +6356,12 @@ pub const IContactName = extern struct {
 };
 pub const IContactPanel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ClosePanel(self: *@This()) core.HResult!void {
         const _c = self.vtable.ClosePanel(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5633,6 +6419,12 @@ pub const IContactPanel = extern struct {
 };
 pub const IContactPanelClosingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -5656,6 +6448,12 @@ pub const IContactPanelClosingEventArgs = extern struct {
 };
 pub const IContactPanelLaunchFullAppRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
@@ -5684,6 +6482,12 @@ pub const IContactPanelLaunchFullAppRequestedEventArgs = extern struct {
 };
 pub const IContactPhone = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Number(@ptrCast(self), &_r);
@@ -5736,6 +6540,12 @@ pub const IContactPhone = extern struct {
 };
 pub const IContactPicker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCommitButtonText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CommitButtonText(@ptrCast(self), &_r);
@@ -5797,6 +6607,12 @@ pub const IContactPicker = extern struct {
 };
 pub const IContactPicker2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesiredFieldsWithContactFieldType(self: *@This()) core.HResult!*IVector(ContactFieldType) {
         var _r: *IVector(ContactFieldType) = undefined;
         const _c = self.vtable.get_DesiredFieldsWithContactFieldType(@ptrCast(self), &_r);
@@ -5834,6 +6650,12 @@ pub const IContactPicker2 = extern struct {
 };
 pub const IContactPicker3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -5857,6 +6679,12 @@ pub const IContactPicker3 = extern struct {
 };
 pub const IContactPickerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateForUser(self: *@This(), user: *User) core.HResult!*ContactPicker {
         var _r: *ContactPicker = undefined;
         const _c = self.vtable.CreateForUser(@ptrCast(self), user, &_r);
@@ -5887,6 +6715,12 @@ pub const IContactPickerStatics = extern struct {
 };
 pub const IContactQueryOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextSearch(self: *@This()) core.HResult!*ContactQueryTextSearch {
         var _r: *ContactQueryTextSearch = undefined;
         const _c = self.vtable.get_TextSearch(@ptrCast(self), &_r);
@@ -5960,6 +6794,12 @@ pub const IContactQueryOptions = extern struct {
 };
 pub const IContactQueryOptionsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithText(self: *@This(), text: ?HSTRING) core.HResult!*ContactQueryOptions {
         var _r: *ContactQueryOptions = undefined;
         const _c = self.vtable.CreateWithText(@ptrCast(self), text, &_r);
@@ -5990,6 +6830,12 @@ pub const IContactQueryOptionsFactory = extern struct {
 };
 pub const IContactQueryTextSearch = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFields(self: *@This()) core.HResult!ContactQuerySearchFields {
         var _r: ContactQuerySearchFields = undefined;
         const _c = self.vtable.get_Fields(@ptrCast(self), &_r);
@@ -6042,6 +6888,12 @@ pub const IContactQueryTextSearch = extern struct {
 };
 pub const IContactReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(ContactBatch) {
         var _r: *IAsyncOperation(ContactBatch) = undefined;
         const _c = self.vtable.ReadBatchAsync(@ptrCast(self), &_r);
@@ -6072,6 +6924,12 @@ pub const IContactReader = extern struct {
 };
 pub const IContactSignificantOther = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -6112,6 +6970,12 @@ pub const IContactSignificantOther = extern struct {
 };
 pub const IContactSignificantOther2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelationship(self: *@This()) core.HResult!ContactRelationship {
         var _r: ContactRelationship = undefined;
         const _c = self.vtable.get_Relationship(@ptrCast(self), &_r);
@@ -6140,6 +7004,12 @@ pub const IContactSignificantOther2 = extern struct {
 };
 pub const IContactStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindContactsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(Contact)) {
         var _r: *IAsyncOperation(IVectorView(Contact)) = undefined;
         const _c = self.vtable.FindContactsAsync(@ptrCast(self), &_r);
@@ -6177,6 +7047,12 @@ pub const IContactStore = extern struct {
 };
 pub const IContactStore2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeTracker(self: *@This()) core.HResult!*ContactChangeTracker {
         var _r: *ContactChangeTracker = undefined;
         const _c = self.vtable.get_ChangeTracker(@ptrCast(self), &_r);
@@ -6268,6 +7144,12 @@ pub const IContactStore2 = extern struct {
 };
 pub const IContactStore3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetChangeTracker(self: *@This(), identity: ?HSTRING) core.HResult!*ContactChangeTracker {
         var _r: *ContactChangeTracker = undefined;
         const _c = self.vtable.GetChangeTracker(@ptrCast(self), identity, &_r);
@@ -6291,6 +7173,12 @@ pub const IContactStore3 = extern struct {
 };
 pub const IContactStoreNotificationTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.IContactStoreNotificationTriggerDetails";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "abb298d6-878a-4f8b-a9ce-46bb7d1c84ce";
@@ -6307,6 +7195,12 @@ pub const IContactStoreNotificationTriggerDetails = extern struct {
 };
 pub const IContactWebsite = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
@@ -6347,6 +7241,12 @@ pub const IContactWebsite = extern struct {
 };
 pub const IContactWebsite2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRawValue(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RawValue(@ptrCast(self), &_r);
@@ -6375,6 +7275,12 @@ pub const IContactWebsite2 = extern struct {
 };
 pub const IFullContactCardOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesiredRemainingView(self: *@This()) core.HResult!ViewSizePreference {
         var _r: ViewSizePreference = undefined;
         const _c = self.vtable.get_DesiredRemainingView(@ptrCast(self), &_r);
@@ -6403,6 +7309,12 @@ pub const IFullContactCardOptions = extern struct {
 };
 pub const IKnownContactFieldStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEmail(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Email(@ptrCast(self), &_r);
@@ -6461,6 +7373,12 @@ pub const IKnownContactFieldStatics = extern struct {
 };
 pub const IPinnedContactIdsQueryResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ContactIds(@ptrCast(self), &_r);
@@ -6484,6 +7402,12 @@ pub const IPinnedContactIdsQueryResult = extern struct {
 };
 pub const IPinnedContactManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -6554,6 +7478,12 @@ pub const IPinnedContactManager = extern struct {
 };
 pub const IPinnedContactManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*PinnedContactManager {
         var _r: *PinnedContactManager = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -6591,6 +7521,15 @@ pub const IPinnedContactManagerStatics = extern struct {
 };
 pub const KnownContactField = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -6624,6 +7563,18 @@ pub const KnownContactField = extern struct {
 };
 pub const PinnedContactIdsQueryResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactIds(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IPinnedContactIdsQueryResult = @ptrCast(self);
         return try this.getContactIds();
@@ -6636,6 +7587,18 @@ pub const PinnedContactIdsQueryResult = extern struct {
 };
 pub const PinnedContactManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         const this: *IPinnedContactManager = @ptrCast(self);
         return try this.getUser();
@@ -6667,9 +7630,6 @@ pub const PinnedContactManager = extern struct {
     pub fn GetPinnedContactIdsAsync(self: *@This()) core.HResult!*IAsyncOperation(PinnedContactIdsQueryResult) {
         const this: *IPinnedContactManager = @ptrCast(self);
         return try this.GetPinnedContactIdsAsync();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PinnedContactManager {
         const _f = try @This()._IPinnedContactManagerStaticsCache.get();

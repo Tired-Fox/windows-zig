@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ILicenseManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddLicenseAsync(self: *@This(), license: *IBuffer) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.AddLicenseAsync(@ptrCast(self), license, &_r);
@@ -31,6 +37,12 @@ pub const ILicenseManagerStatics = extern struct {
 };
 pub const ILicenseManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RefreshLicensesAsync(self: *@This(), refreshOption: LicenseRefreshOption) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RefreshLicensesAsync(@ptrCast(self), refreshOption, &_r);
@@ -54,6 +66,12 @@ pub const ILicenseManagerStatics2 = extern struct {
 };
 pub const ILicenseSatisfactionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSatisfiedByDevice(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SatisfiedByDevice(@ptrCast(self), &_r);
@@ -119,6 +137,12 @@ pub const ILicenseSatisfactionInfo = extern struct {
 };
 pub const ILicenseSatisfactionResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLicenseSatisfactionInfos(self: *@This()) core.HResult!*IMapView(?HSTRING,LicenseSatisfactionInfo) {
         var _r: *IMapView(?HSTRING,LicenseSatisfactionInfo) = undefined;
         const _c = self.vtable.get_LicenseSatisfactionInfos(@ptrCast(self), &_r);
@@ -149,6 +173,15 @@ pub const ILicenseSatisfactionResult = extern struct {
 };
 pub const LicenseManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -175,6 +208,18 @@ pub const LicenseRefreshOption = enum(i32) {
 };
 pub const LicenseSatisfactionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSatisfiedByDevice(self: *@This()) core.HResult!bool {
         const this: *ILicenseSatisfactionInfo = @ptrCast(self);
         return try this.getSatisfiedByDevice();
@@ -211,6 +256,18 @@ pub const LicenseSatisfactionInfo = extern struct {
 };
 pub const LicenseSatisfactionResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLicenseSatisfactionInfos(self: *@This()) core.HResult!*IMapView(?HSTRING,LicenseSatisfactionInfo) {
         const this: *ILicenseSatisfactionResult = @ptrCast(self);
         return try this.getLicenseSatisfactionInfos();

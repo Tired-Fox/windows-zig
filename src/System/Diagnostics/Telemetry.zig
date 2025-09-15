@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPlatformTelemetryClientStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Register(self: *@This(), id: ?HSTRING) core.HResult!*PlatformTelemetryRegistrationResult {
         var _r: *PlatformTelemetryRegistrationResult = undefined;
         const _c = self.vtable.Register(@ptrCast(self), id, &_r);
@@ -31,6 +37,12 @@ pub const IPlatformTelemetryClientStatics = extern struct {
 };
 pub const IPlatformTelemetryRegistrationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!PlatformTelemetryRegistrationStatus {
         var _r: PlatformTelemetryRegistrationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -54,6 +66,12 @@ pub const IPlatformTelemetryRegistrationResult = extern struct {
 };
 pub const IPlatformTelemetryRegistrationSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStorageSize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_StorageSize(@ptrCast(self), &_r);
@@ -94,6 +112,15 @@ pub const IPlatformTelemetryRegistrationSettings = extern struct {
 };
 pub const PlatformTelemetryClient = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -111,6 +138,18 @@ pub const PlatformTelemetryClient = extern struct {
 };
 pub const PlatformTelemetryRegistrationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!PlatformTelemetryRegistrationStatus {
         const this: *IPlatformTelemetryRegistrationResult = @ptrCast(self);
         return try this.getStatus();
@@ -123,6 +162,18 @@ pub const PlatformTelemetryRegistrationResult = extern struct {
 };
 pub const PlatformTelemetryRegistrationSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStorageSize(self: *@This()) core.HResult!u32 {
         const this: *IPlatformTelemetryRegistrationSettings = @ptrCast(self);
         return try this.getStorageSize();
@@ -138,9 +189,6 @@ pub const PlatformTelemetryRegistrationSettings = extern struct {
     pub fn putUploadQuotaSize(self: *@This(), value: u32) core.HResult!void {
         const this: *IPlatformTelemetryRegistrationSettings = @ptrCast(self);
         return try this.putUploadQuotaSize(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

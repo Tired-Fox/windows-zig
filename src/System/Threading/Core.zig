@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPreallocatedWorkItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RunAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.RunAsync(@ptrCast(self), &_r);
@@ -24,6 +30,12 @@ pub const IPreallocatedWorkItem = extern struct {
 };
 pub const IPreallocatedWorkItemFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWorkItem(self: *@This(), handler: *WorkItemHandler) core.HResult!*PreallocatedWorkItem {
         var _r: *PreallocatedWorkItem = undefined;
         const _c = self.vtable.CreateWorkItem(@ptrCast(self), handler, &_r);
@@ -61,6 +73,12 @@ pub const IPreallocatedWorkItemFactory = extern struct {
 };
 pub const ISignalNotifier = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Enable(self: *@This()) core.HResult!void {
         const _c = self.vtable.Enable(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -87,6 +105,12 @@ pub const ISignalNotifier = extern struct {
 };
 pub const ISignalNotifierStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AttachToEvent(self: *@This(), name: ?HSTRING, handler: *SignalHandler) core.HResult!*SignalNotifier {
         var _r: *SignalNotifier = undefined;
         const _c = self.vtable.AttachToEvent(@ptrCast(self), name, handler, &_r);
@@ -131,12 +155,21 @@ pub const ISignalNotifierStatics = extern struct {
 };
 pub const PreallocatedWorkItem = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn RunAsync(self: *@This()) core.HResult!*IAsyncAction {
-        const this: *IPreallocatedWorkItem = @ptrCast(self);
-        return try this.RunAsync();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn RunAsync(self: *@This()) core.HResult!*IAsyncAction {
+        const this: *IPreallocatedWorkItem = @ptrCast(self);
+        return try this.RunAsync();
     }
     pub fn CreateWorkItem(handler: *WorkItemHandler) core.HResult!*PreallocatedWorkItem {
         const _f = try @This()._IPreallocatedWorkItemFactoryCache.get();
@@ -248,6 +281,18 @@ pub const SignalHandler = extern struct {
 };
 pub const SignalNotifier = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Enable(self: *@This()) core.HResult!void {
         const this: *ISignalNotifier = @ptrCast(self);
         return try this.Enable();
@@ -255,9 +300,6 @@ pub const SignalNotifier = extern struct {
     pub fn Terminate(self: *@This()) core.HResult!void {
         const this: *ISignalNotifier = @ptrCast(self);
         return try this.Terminate();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AttachToEvent(name: ?HSTRING, handler: *SignalHandler) core.HResult!*SignalNotifier {
         const _f = try @This()._ISignalNotifierStaticsCache.get();

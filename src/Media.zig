@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IMediaControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSoundLevelChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SoundLevelChanged(@ptrCast(self), handler, &_r);
@@ -216,6 +222,15 @@ pub const IMediaControl = extern struct {
 };
 pub const MediaControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -357,6 +372,18 @@ pub const MediaControl = extern struct {
 };
 pub const AudioBuffer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapacity(self: *@This()) core.HResult!u32 {
         const this: *IAudioBuffer = @ptrCast(self);
         return try this.getCapacity();
@@ -396,6 +423,18 @@ pub const AudioBufferAccessMode = enum(i32) {
 };
 pub const AudioFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LockBuffer(self: *@This(), mode: AudioBufferAccessMode) core.HResult!*AudioBuffer {
         const this: *IAudioFrame = @ptrCast(self);
         return try this.LockBuffer(mode);
@@ -484,9 +523,6 @@ pub const AudioFrame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(capacity: u32) core.HResult!*AudioFrame {
         const _f = try @This()._IAudioFrameFactoryCache.get();
         return try _f.Create(capacity);
@@ -504,6 +540,18 @@ pub const AudioProcessing = enum(i32) {
 };
 pub const AutoRepeatModeChangeRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestedAutoRepeatMode(self: *@This()) core.HResult!MediaPlaybackAutoRepeatMode {
         const this: *IAutoRepeatModeChangeRequestedEventArgs = @ptrCast(self);
         return try this.getRequestedAutoRepeatMode();
@@ -516,6 +564,12 @@ pub const AutoRepeatModeChangeRequestedEventArgs = extern struct {
 };
 pub const IAudioBuffer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapacity(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Capacity(@ptrCast(self), &_r);
@@ -551,6 +605,12 @@ pub const IAudioBuffer = extern struct {
 };
 pub const IAudioFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LockBuffer(self: *@This(), mode: AudioBufferAccessMode) core.HResult!*AudioBuffer {
         var _r: *AudioBuffer = undefined;
         const _c = self.vtable.LockBuffer(@ptrCast(self), mode, &_r);
@@ -574,6 +634,12 @@ pub const IAudioFrame = extern struct {
 };
 pub const IAudioFrameFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), capacity: u32) core.HResult!*AudioFrame {
         var _r: *AudioFrame = undefined;
         const _c = self.vtable.Create(@ptrCast(self), capacity, &_r);
@@ -597,6 +663,12 @@ pub const IAudioFrameFactory = extern struct {
 };
 pub const IAutoRepeatModeChangeRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestedAutoRepeatMode(self: *@This()) core.HResult!MediaPlaybackAutoRepeatMode {
         var _r: MediaPlaybackAutoRepeatMode = undefined;
         const _c = self.vtable.get_RequestedAutoRepeatMode(@ptrCast(self), &_r);
@@ -620,6 +692,12 @@ pub const IAutoRepeatModeChangeRequestedEventArgs = extern struct {
 };
 pub const IImageDisplayProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -660,6 +738,12 @@ pub const IImageDisplayProperties = extern struct {
 };
 pub const IMediaExtension = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetProperties(self: *@This(), configuration: *IPropertySet) core.HResult!void {
         const _c = self.vtable.SetProperties(@ptrCast(self), configuration);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -681,6 +765,12 @@ pub const IMediaExtension = extern struct {
 };
 pub const IMediaExtensionManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RegisterSchemeHandler(self: *@This(), activatableClassId: ?HSTRING, scheme: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RegisterSchemeHandler(@ptrCast(self), activatableClassId, scheme);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -757,6 +847,12 @@ pub const IMediaExtensionManager = extern struct {
 };
 pub const IMediaExtensionManager2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RegisterMediaExtensionForAppService(self: *@This(), extension: *IMediaExtension, connection: *AppServiceConnection) core.HResult!void {
         const _c = self.vtable.RegisterMediaExtensionForAppService(@ptrCast(self), extension, connection);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -778,6 +874,12 @@ pub const IMediaExtensionManager2 = extern struct {
 };
 pub const IMediaFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -863,6 +965,12 @@ pub const IMediaFrame = extern struct {
 };
 pub const IMediaMarker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Time(@ptrCast(self), &_r);
@@ -900,6 +1008,12 @@ pub const IMediaMarker = extern struct {
 };
 pub const IMediaMarkerTypesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBookmark(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Bookmark(@ptrCast(self), &_r);
@@ -923,6 +1037,12 @@ pub const IMediaMarkerTypesStatics = extern struct {
 };
 pub const IMediaMarkers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMarkers(self: *@This()) core.HResult!*IVectorView(IMediaMarker) {
         var _r: *IVectorView(IMediaMarker) = undefined;
         const _c = self.vtable.get_Markers(@ptrCast(self), &_r);
@@ -946,6 +1066,12 @@ pub const IMediaMarkers = extern struct {
 };
 pub const IMediaProcessingTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getArguments(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_Arguments(@ptrCast(self), &_r);
@@ -969,6 +1095,12 @@ pub const IMediaProcessingTriggerDetails = extern struct {
 };
 pub const IMediaTimelineController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const _c = self.vtable.Start(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1055,6 +1187,12 @@ pub const IMediaTimelineController = extern struct {
 };
 pub const IMediaTimelineController2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_Duration(@ptrCast(self), &_r);
@@ -1119,6 +1257,12 @@ pub const IMediaTimelineController2 = extern struct {
 };
 pub const IMediaTimelineControllerFailedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
@@ -1142,6 +1286,12 @@ pub const IMediaTimelineControllerFailedEventArgs = extern struct {
 };
 pub const IMusicDisplayProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -1194,6 +1344,12 @@ pub const IMusicDisplayProperties = extern struct {
 };
 pub const IMusicDisplayProperties2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlbumTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlbumTitle(@ptrCast(self), &_r);
@@ -1241,6 +1397,12 @@ pub const IMusicDisplayProperties2 = extern struct {
 };
 pub const IMusicDisplayProperties3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlbumTrackCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_AlbumTrackCount(@ptrCast(self), &_r);
@@ -1269,6 +1431,12 @@ pub const IMusicDisplayProperties3 = extern struct {
 };
 pub const IPlaybackPositionChangeRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestedPlaybackPosition(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_RequestedPlaybackPosition(@ptrCast(self), &_r);
@@ -1292,6 +1460,12 @@ pub const IPlaybackPositionChangeRequestedEventArgs = extern struct {
 };
 pub const IPlaybackRateChangeRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestedPlaybackRate(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_RequestedPlaybackRate(@ptrCast(self), &_r);
@@ -1315,6 +1489,12 @@ pub const IPlaybackRateChangeRequestedEventArgs = extern struct {
 };
 pub const IShuffleEnabledChangeRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestedShuffleEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_RequestedShuffleEnabled(@ptrCast(self), &_r);
@@ -1338,6 +1518,12 @@ pub const IShuffleEnabledChangeRequestedEventArgs = extern struct {
 };
 pub const ISystemMediaTransportControls = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPlaybackStatus(self: *@This()) core.HResult!MediaPlaybackStatus {
         var _r: MediaPlaybackStatus = undefined;
         const _c = self.vtable.get_PlaybackStatus(@ptrCast(self), &_r);
@@ -1536,6 +1722,12 @@ pub const ISystemMediaTransportControls = extern struct {
 };
 pub const ISystemMediaTransportControls2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAutoRepeatMode(self: *@This()) core.HResult!MediaPlaybackAutoRepeatMode {
         var _r: MediaPlaybackAutoRepeatMode = undefined;
         const _c = self.vtable.get_AutoRepeatMode(@ptrCast(self), &_r);
@@ -1641,6 +1833,12 @@ pub const ISystemMediaTransportControls2 = extern struct {
 };
 pub const ISystemMediaTransportControlsButtonPressedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getButton(self: *@This()) core.HResult!SystemMediaTransportControlsButton {
         var _r: SystemMediaTransportControlsButton = undefined;
         const _c = self.vtable.get_Button(@ptrCast(self), &_r);
@@ -1664,6 +1862,12 @@ pub const ISystemMediaTransportControlsButtonPressedEventArgs = extern struct {
 };
 pub const ISystemMediaTransportControlsDisplayUpdater = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!MediaPlaybackType {
         var _r: MediaPlaybackType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -1754,6 +1958,12 @@ pub const ISystemMediaTransportControlsDisplayUpdater = extern struct {
 };
 pub const ISystemMediaTransportControlsPropertyChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProperty(self: *@This()) core.HResult!SystemMediaTransportControlsProperty {
         var _r: SystemMediaTransportControlsProperty = undefined;
         const _c = self.vtable.get_Property(@ptrCast(self), &_r);
@@ -1777,6 +1987,12 @@ pub const ISystemMediaTransportControlsPropertyChangedEventArgs = extern struct 
 };
 pub const ISystemMediaTransportControlsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*SystemMediaTransportControls {
         var _r: *SystemMediaTransportControls = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -1800,6 +2016,12 @@ pub const ISystemMediaTransportControlsStatics = extern struct {
 };
 pub const ISystemMediaTransportControlsTimelineProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_StartTime(@ptrCast(self), &_r);
@@ -1876,6 +2098,12 @@ pub const ISystemMediaTransportControlsTimelineProperties = extern struct {
 };
 pub const IVideoDisplayProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -1916,6 +2144,12 @@ pub const IVideoDisplayProperties = extern struct {
 };
 pub const IVideoDisplayProperties2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGenres(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_Genres(@ptrCast(self), &_r);
@@ -1939,6 +2173,12 @@ pub const IVideoDisplayProperties2 = extern struct {
 };
 pub const IVideoEffectsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoStabilization(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_VideoStabilization(@ptrCast(self), &_r);
@@ -1962,6 +2202,12 @@ pub const IVideoEffectsStatics = extern struct {
 };
 pub const IVideoFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSoftwareBitmap(self: *@This()) core.HResult!*SoftwareBitmap {
         var _r: *SoftwareBitmap = undefined;
         const _c = self.vtable.get_SoftwareBitmap(@ptrCast(self), &_r);
@@ -1999,6 +2245,12 @@ pub const IVideoFrame = extern struct {
 };
 pub const IVideoFrame2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CopyToAsync(self: *@This(), frame: *VideoFrame, sourceBounds: *IReference(BitmapBounds), destinationBounds: *IReference(BitmapBounds)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.CopyToAsync(@ptrCast(self), frame, sourceBounds, destinationBounds, &_r);
@@ -2022,6 +2274,12 @@ pub const IVideoFrame2 = extern struct {
 };
 pub const IVideoFrameFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), format: BitmapPixelFormat, width: i32, height: i32) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.Create(@ptrCast(self), format, width, height, &_r);
@@ -2052,6 +2310,12 @@ pub const IVideoFrameFactory = extern struct {
 };
 pub const IVideoFrameStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAsDirect3D11SurfaceBacked(self: *@This(), format: DirectXPixelFormat, width: i32, height: i32) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.CreateAsDirect3D11SurfaceBacked(@ptrCast(self), format, width, height, &_r);
@@ -2096,6 +2360,18 @@ pub const IVideoFrameStatics = extern struct {
 };
 pub const ImageDisplayProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IImageDisplayProperties = @ptrCast(self);
         return try this.getTitle();
@@ -2120,6 +2396,18 @@ pub const ImageDisplayProperties = extern struct {
 };
 pub const MediaExtensionManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RegisterSchemeHandler(self: *@This(), activatableClassId: ?HSTRING, scheme: ?HSTRING) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterSchemeHandler(activatableClassId, scheme);
@@ -2175,9 +2463,6 @@ pub const MediaExtensionManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RegisterMediaExtensionForAppService(extension, connection);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaExtensionManager.IID)));
@@ -2191,6 +2476,15 @@ pub const MediaExtensionManager = extern struct {
 };
 pub const MediaMarkerTypes = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2222,6 +2516,18 @@ pub const MediaPlaybackType = enum(i32) {
 };
 pub const MediaProcessingTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getArguments(self: *@This()) core.HResult!*ValueSet {
         const this: *IMediaProcessingTriggerDetails = @ptrCast(self);
         return try this.getArguments();
@@ -2238,6 +2544,18 @@ pub const MediaTimeRange = extern struct {
 };
 pub const MediaTimelineController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Start(self: *@This()) core.HResult!void {
         const this: *IMediaTimelineController = @ptrCast(self);
         return try this.Start();
@@ -2342,9 +2660,6 @@ pub const MediaTimelineController = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeEnded(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaTimelineController.IID)));
@@ -2358,6 +2673,18 @@ pub const MediaTimelineController = extern struct {
 };
 pub const MediaTimelineControllerFailedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         const this: *IMediaTimelineControllerFailedEventArgs = @ptrCast(self);
         return try this.getExtendedError();
@@ -2376,6 +2703,18 @@ pub const MediaTimelineControllerState = enum(i32) {
 };
 pub const MusicDisplayProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IMusicDisplayProperties = @ptrCast(self);
         return try this.getTitle();
@@ -2457,6 +2796,18 @@ pub const MusicDisplayProperties = extern struct {
 };
 pub const PlaybackPositionChangeRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestedPlaybackPosition(self: *@This()) core.HResult!TimeSpan {
         const this: *IPlaybackPositionChangeRequestedEventArgs = @ptrCast(self);
         return try this.getRequestedPlaybackPosition();
@@ -2469,6 +2820,18 @@ pub const PlaybackPositionChangeRequestedEventArgs = extern struct {
 };
 pub const PlaybackRateChangeRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestedPlaybackRate(self: *@This()) core.HResult!f64 {
         const this: *IPlaybackRateChangeRequestedEventArgs = @ptrCast(self);
         return try this.getRequestedPlaybackRate();
@@ -2481,6 +2844,18 @@ pub const PlaybackRateChangeRequestedEventArgs = extern struct {
 };
 pub const ShuffleEnabledChangeRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestedShuffleEnabled(self: *@This()) core.HResult!bool {
         const this: *IShuffleEnabledChangeRequestedEventArgs = @ptrCast(self);
         return try this.getRequestedShuffleEnabled();
@@ -2498,6 +2873,18 @@ pub const SoundLevel = enum(i32) {
 };
 pub const SystemMediaTransportControls = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPlaybackStatus(self: *@This()) core.HResult!MediaPlaybackStatus {
         const this: *ISystemMediaTransportControls = @ptrCast(self);
         return try this.getPlaybackStatus();
@@ -2723,9 +3110,6 @@ pub const SystemMediaTransportControls = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeAutoRepeatModeChangeRequested(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*SystemMediaTransportControls {
         const _f = try @This()._ISystemMediaTransportControlsStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -2751,6 +3135,18 @@ pub const SystemMediaTransportControlsButton = enum(i32) {
 };
 pub const SystemMediaTransportControlsButtonPressedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getButton(self: *@This()) core.HResult!SystemMediaTransportControlsButton {
         const this: *ISystemMediaTransportControlsButtonPressedEventArgs = @ptrCast(self);
         return try this.getButton();
@@ -2763,6 +3159,18 @@ pub const SystemMediaTransportControlsButtonPressedEventArgs = extern struct {
 };
 pub const SystemMediaTransportControlsDisplayUpdater = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!MediaPlaybackType {
         const this: *ISystemMediaTransportControlsDisplayUpdater = @ptrCast(self);
         return try this.getType();
@@ -2822,6 +3230,18 @@ pub const SystemMediaTransportControlsProperty = enum(i32) {
 };
 pub const SystemMediaTransportControlsPropertyChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProperty(self: *@This()) core.HResult!SystemMediaTransportControlsProperty {
         const this: *ISystemMediaTransportControlsPropertyChangedEventArgs = @ptrCast(self);
         return try this.getProperty();
@@ -2834,6 +3254,18 @@ pub const SystemMediaTransportControlsPropertyChangedEventArgs = extern struct {
 };
 pub const SystemMediaTransportControlsTimelineProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStartTime(self: *@This()) core.HResult!TimeSpan {
         const this: *ISystemMediaTransportControlsTimelineProperties = @ptrCast(self);
         return try this.getStartTime();
@@ -2874,9 +3306,6 @@ pub const SystemMediaTransportControlsTimelineProperties = extern struct {
         const this: *ISystemMediaTransportControlsTimelineProperties = @ptrCast(self);
         return try this.putPosition(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISystemMediaTransportControlsTimelineProperties.IID)));
@@ -2890,6 +3319,18 @@ pub const SystemMediaTransportControlsTimelineProperties = extern struct {
 };
 pub const VideoDisplayProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IVideoDisplayProperties = @ptrCast(self);
         return try this.getTitle();
@@ -2921,6 +3362,15 @@ pub const VideoDisplayProperties = extern struct {
 };
 pub const VideoEffects = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2934,6 +3384,18 @@ pub const VideoEffects = extern struct {
 };
 pub const VideoFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSoftwareBitmap(self: *@This()) core.HResult!*SoftwareBitmap {
         const this: *IVideoFrame = @ptrCast(self);
         return try this.getSoftwareBitmap();
@@ -3036,9 +3498,6 @@ pub const VideoFrame = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CopyToAsyncWithSourceBoundsAndDestinationBounds(frame, sourceBounds, destinationBounds);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(format: BitmapPixelFormat, width: i32, height: i32) core.HResult!*VideoFrame {
         const _f = try @This()._IVideoFrameFactoryCache.get();

@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IUserDataAccount = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -111,6 +117,12 @@ pub const IUserDataAccount = extern struct {
 };
 pub const IUserDataAccount2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnterpriseId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EnterpriseId(@ptrCast(self), &_r);
@@ -141,6 +153,12 @@ pub const IUserDataAccount2 = extern struct {
 };
 pub const IUserDataAccount3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExplictReadAccessPackageFamilyNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_ExplictReadAccessPackageFamilyNames(@ptrCast(self), &_r);
@@ -176,6 +194,12 @@ pub const IUserDataAccount3 = extern struct {
 };
 pub const IUserDataAccount4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanShowCreateContactGroup(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanShowCreateContactGroup(@ptrCast(self), &_r);
@@ -242,6 +266,12 @@ pub const IUserDataAccount4 = extern struct {
 };
 pub const IUserDataAccountManagerForUser = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestStoreAsync(self: *@This(), storeAccessType: UserDataAccountStoreAccessType) core.HResult!*IAsyncOperation(UserDataAccountStore) {
         var _r: *IAsyncOperation(UserDataAccountStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), storeAccessType, &_r);
@@ -272,6 +302,12 @@ pub const IUserDataAccountManagerForUser = extern struct {
 };
 pub const IUserDataAccountManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestStoreAsync(self: *@This(), storeAccessType: UserDataAccountStoreAccessType) core.HResult!*IAsyncOperation(UserDataAccountStore) {
         var _r: *IAsyncOperation(UserDataAccountStore) = undefined;
         const _c = self.vtable.RequestStoreAsync(@ptrCast(self), storeAccessType, &_r);
@@ -316,6 +352,12 @@ pub const IUserDataAccountManagerStatics = extern struct {
 };
 pub const IUserDataAccountManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForUser(self: *@This(), user: *User) core.HResult!*UserDataAccountManagerForUser {
         var _r: *UserDataAccountManagerForUser = undefined;
         const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
@@ -339,6 +381,12 @@ pub const IUserDataAccountManagerStatics2 = extern struct {
 };
 pub const IUserDataAccountStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAccountsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(UserDataAccount)) {
         var _r: *IAsyncOperation(IVectorView(UserDataAccount)) = undefined;
         const _c = self.vtable.FindAccountsAsync(@ptrCast(self), &_r);
@@ -376,6 +424,12 @@ pub const IUserDataAccountStore = extern struct {
 };
 pub const IUserDataAccountStore2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAccountAsync(self: *@This(), userDisplayName: ?HSTRING, packageRelativeAppId: ?HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var _r: *IAsyncOperation(UserDataAccount) = undefined;
         const _c = self.vtable.CreateAccountAsync(@ptrCast(self), userDisplayName, packageRelativeAppId, &_r);
@@ -411,6 +465,12 @@ pub const IUserDataAccountStore2 = extern struct {
 };
 pub const IUserDataAccountStore3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAccountAsync(self: *@This(), userDisplayName: ?HSTRING, packageRelativeAppId: ?HSTRING, enterpriseId: ?HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var _r: *IAsyncOperation(UserDataAccount) = undefined;
         const _c = self.vtable.CreateAccountAsync(@ptrCast(self), userDisplayName, packageRelativeAppId, enterpriseId, &_r);
@@ -434,6 +494,12 @@ pub const IUserDataAccountStore3 = extern struct {
 };
 pub const IUserDataAccountStoreChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -457,6 +523,18 @@ pub const IUserDataAccountStoreChangedEventArgs = extern struct {
 };
 pub const UserDataAccount = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataAccount = @ptrCast(self);
         return try this.getId();
@@ -617,6 +695,15 @@ pub const UserDataAccountContentKinds = enum(i32) {
 };
 pub const UserDataAccountManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -647,6 +734,18 @@ pub const UserDataAccountManager = extern struct {
 };
 pub const UserDataAccountManagerForUser = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestStoreAsync(self: *@This(), storeAccessType: UserDataAccountStoreAccessType) core.HResult!*IAsyncOperation(UserDataAccountStore) {
         const this: *IUserDataAccountManagerForUser = @ptrCast(self);
         return try this.RequestStoreAsync(storeAccessType);
@@ -668,6 +767,18 @@ pub const UserDataAccountOtherAppReadAccess = enum(i32) {
 };
 pub const UserDataAccountStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAccountsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(UserDataAccount)) {
         const this: *IUserDataAccountStore = @ptrCast(self);
         return try this.FindAccountsAsync();
@@ -720,6 +831,18 @@ pub const UserDataAccountStoreAccessType = enum(i32) {
 };
 pub const UserDataAccountStoreChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *IUserDataAccountStoreChangedEventArgs = @ptrCast(self);
         return try this.GetDeferral();

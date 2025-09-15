@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const HolographicKeyboard = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetPlacementOverride(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion) core.HResult!void {
         const this: *IHolographicKeyboard = @ptrCast(self);
         return try this.SetPlacementOverride(coordinateSystem, topCenterPosition, orientation);
@@ -12,9 +24,6 @@ pub const HolographicKeyboard = extern struct {
     pub fn ResetPlacementOverride(self: *@This()) core.HResult!void {
         const this: *IHolographicKeyboard = @ptrCast(self);
         return try this.ResetPlacementOverride();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*HolographicKeyboard {
         const _f = try @This()._IHolographicKeyboardStaticsCache.get();
@@ -29,6 +38,12 @@ pub const HolographicKeyboard = extern struct {
 };
 pub const IHolographicKeyboard = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetPlacementOverride(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion) core.HResult!void {
         const _c = self.vtable.SetPlacementOverride(@ptrCast(self), coordinateSystem, topCenterPosition, orientation);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -60,6 +75,12 @@ pub const IHolographicKeyboard = extern struct {
 };
 pub const IHolographicKeyboardStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*HolographicKeyboard {
         var _r: *HolographicKeyboard = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);

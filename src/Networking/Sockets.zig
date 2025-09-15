@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const ControlChannelTrigger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControlChannelTriggerId(self: *@This()) core.HResult!?HSTRING {
         const this: *IControlChannelTrigger = @ptrCast(self);
         return try this.getControlChannelTriggerId();
@@ -59,9 +71,6 @@ pub const ControlChannelTrigger = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsWakeFromLowPowerSupported();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateControlChannelTrigger(channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32) core.HResult!*ControlChannelTrigger {
         const _f = try @This()._IControlChannelTriggerFactoryCache.get();
         return try _f.CreateControlChannelTrigger(channelId, serverKeepAliveIntervalInMinutes);
@@ -89,6 +98,12 @@ pub const ControlChannelTriggerResourceType = enum(i32) {
 };
 pub const IControlChannelTrigger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControlChannelTriggerId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ControlChannelTriggerId(@ptrCast(self), &_r);
@@ -174,6 +189,12 @@ pub const IControlChannelTrigger = extern struct {
 };
 pub const IControlChannelTrigger2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsWakeFromLowPowerSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsWakeFromLowPowerSupported(@ptrCast(self), &_r);
@@ -197,6 +218,12 @@ pub const IControlChannelTrigger2 = extern struct {
 };
 pub const IControlChannelTriggerEventDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControlChannelTrigger(self: *@This()) core.HResult!*ControlChannelTrigger {
         var _r: *ControlChannelTrigger = undefined;
         const _c = self.vtable.get_ControlChannelTrigger(@ptrCast(self), &_r);
@@ -220,6 +247,12 @@ pub const IControlChannelTriggerEventDetails = extern struct {
 };
 pub const IControlChannelTriggerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateControlChannelTrigger(self: *@This(), channelId: ?HSTRING, serverKeepAliveIntervalInMinutes: u32) core.HResult!*ControlChannelTrigger {
         var _r: *ControlChannelTrigger = undefined;
         const _c = self.vtable.CreateControlChannelTrigger(@ptrCast(self), channelId, serverKeepAliveIntervalInMinutes, &_r);
@@ -250,6 +283,12 @@ pub const IControlChannelTriggerFactory = extern struct {
 };
 pub const IControlChannelTriggerResetEventDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResetReason(self: *@This()) core.HResult!ControlChannelTriggerResetReason {
         var _r: ControlChannelTriggerResetReason = undefined;
         const _c = self.vtable.get_ResetReason(@ptrCast(self), &_r);
@@ -304,6 +343,18 @@ pub const ControlChannelTriggerStatus = enum(i32) {
 };
 pub const DatagramSocket = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControl(self: *@This()) core.HResult!*DatagramSocketControl {
         const this: *IDatagramSocket = @ptrCast(self);
         return try this.getControl();
@@ -408,9 +459,6 @@ pub const DatagramSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnershipWithDataAndKeepAliveTime(socketId, data, keepAliveTime);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDatagramSocket.IID)));
@@ -433,6 +481,18 @@ pub const DatagramSocket = extern struct {
 };
 pub const DatagramSocketControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQualityOfService(self: *@This()) core.HResult!SocketQualityOfService {
         const this: *IDatagramSocketControl = @ptrCast(self);
         return try this.getQualityOfService();
@@ -499,6 +559,18 @@ pub const DatagramSocketControl = extern struct {
 };
 pub const DatagramSocketInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalAddress(self: *@This()) core.HResult!*HostName {
         const this: *IDatagramSocketInformation = @ptrCast(self);
         return try this.getLocalAddress();
@@ -523,6 +595,18 @@ pub const DatagramSocketInformation = extern struct {
 };
 pub const DatagramSocketMessageReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteAddress(self: *@This()) core.HResult!*HostName {
         const this: *IDatagramSocketMessageReceivedEventArgs = @ptrCast(self);
         return try this.getRemoteAddress();
@@ -551,6 +635,12 @@ pub const DatagramSocketMessageReceivedEventArgs = extern struct {
 };
 pub const IDatagramSocket = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControl(self: *@This()) core.HResult!*DatagramSocketControl {
         var _r: *DatagramSocketControl = undefined;
         const _c = self.vtable.get_Control(@ptrCast(self), &_r);
@@ -647,6 +737,12 @@ pub const IDatagramSocket = extern struct {
 };
 pub const IDatagramSocket2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn BindServiceNameAsync(self: *@This(), localServiceName: ?HSTRING, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.BindServiceNameAsync(@ptrCast(self), localServiceName, adapter, &_r);
@@ -670,6 +766,12 @@ pub const IDatagramSocket2 = extern struct {
 };
 pub const IDatagramSocket3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CancelIOAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.CancelIOAsync(@ptrCast(self), &_r);
@@ -718,6 +820,12 @@ pub const IDatagramSocket3 = extern struct {
 };
 pub const IDatagramSocketControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQualityOfService(self: *@This()) core.HResult!SocketQualityOfService {
         var _r: SocketQualityOfService = undefined;
         const _c = self.vtable.get_QualityOfService(@ptrCast(self), &_r);
@@ -758,6 +866,12 @@ pub const IDatagramSocketControl = extern struct {
 };
 pub const IDatagramSocketControl2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInboundBufferSizeInBytes(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_InboundBufferSizeInBytes(@ptrCast(self), &_r);
@@ -798,6 +912,12 @@ pub const IDatagramSocketControl2 = extern struct {
 };
 pub const IDatagramSocketControl3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMulticastOnly(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_MulticastOnly(@ptrCast(self), &_r);
@@ -826,6 +946,12 @@ pub const IDatagramSocketControl3 = extern struct {
 };
 pub const IDatagramSocketInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalAddress(self: *@This()) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.get_LocalAddress(@ptrCast(self), &_r);
@@ -870,6 +996,12 @@ pub const IDatagramSocketInformation = extern struct {
 };
 pub const IDatagramSocketMessageReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteAddress(self: *@This()) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.get_RemoteAddress(@ptrCast(self), &_r);
@@ -921,6 +1053,12 @@ pub const IDatagramSocketMessageReceivedEventArgs = extern struct {
 };
 pub const IDatagramSocketStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetEndpointPairsAsync(self: *@This(), remoteHostName: *HostName, remoteServiceName: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
         var _r: *IAsyncOperation(IVectorView(EndpointPair)) = undefined;
         const _c = self.vtable.GetEndpointPairsAsync(@ptrCast(self), remoteHostName, remoteServiceName, &_r);
@@ -951,6 +1089,12 @@ pub const IDatagramSocketStatics = extern struct {
 };
 pub const IMessageWebSocket = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControl(self: *@This()) core.HResult!*MessageWebSocketControl {
         var _r: *MessageWebSocketControl = undefined;
         const _c = self.vtable.get_Control(@ptrCast(self), &_r);
@@ -993,6 +1137,12 @@ pub const IMessageWebSocket = extern struct {
 };
 pub const IMessageWebSocket2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addServerCustomValidationRequested(self: *@This(), eventHandler: *TypedEventHandler(MessageWebSocket,WebSocketServerCustomValidationRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ServerCustomValidationRequested(@ptrCast(self), eventHandler, &_r);
@@ -1021,6 +1171,12 @@ pub const IMessageWebSocket2 = extern struct {
 };
 pub const IMessageWebSocket3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendNonfinalFrameAsync(self: *@This(), data: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var _r: *IAsyncOperationWithProgress(u32,u32) = undefined;
         const _c = self.vtable.SendNonfinalFrameAsync(@ptrCast(self), data, &_r);
@@ -1051,6 +1207,12 @@ pub const IMessageWebSocket3 = extern struct {
 };
 pub const IMessageWebSocketControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxMessageSize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxMessageSize(@ptrCast(self), &_r);
@@ -1091,6 +1253,12 @@ pub const IMessageWebSocketControl = extern struct {
 };
 pub const IMessageWebSocketControl2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesiredUnsolicitedPongInterval(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_DesiredUnsolicitedPongInterval(@ptrCast(self), &_r);
@@ -1150,6 +1318,12 @@ pub const IMessageWebSocketControl2 = extern struct {
 };
 pub const IMessageWebSocketMessageReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessageType(self: *@This()) core.HResult!SocketMessageType {
         var _r: SocketMessageType = undefined;
         const _c = self.vtable.get_MessageType(@ptrCast(self), &_r);
@@ -1187,6 +1361,12 @@ pub const IMessageWebSocketMessageReceivedEventArgs = extern struct {
 };
 pub const IMessageWebSocketMessageReceivedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsMessageComplete(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsMessageComplete(@ptrCast(self), &_r);
@@ -1210,6 +1390,12 @@ pub const IMessageWebSocketMessageReceivedEventArgs2 = extern struct {
 };
 pub const IServerMessageWebSocket = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMessageReceived(self: *@This(), value: *TypedEventHandler(ServerMessageWebSocket,MessageWebSocketMessageReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MessageReceived(@ptrCast(self), value, &_r);
@@ -1276,6 +1462,12 @@ pub const IServerMessageWebSocket = extern struct {
 };
 pub const IServerMessageWebSocketControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessageType(self: *@This()) core.HResult!SocketMessageType {
         var _r: SocketMessageType = undefined;
         const _c = self.vtable.get_MessageType(@ptrCast(self), &_r);
@@ -1304,6 +1496,12 @@ pub const IServerMessageWebSocketControl = extern struct {
 };
 pub const IServerMessageWebSocketInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBandwidthStatistics(self: *@This()) core.HResult!BandwidthStatistics {
         var _r: BandwidthStatistics = undefined;
         const _c = self.vtable.get_BandwidthStatistics(@ptrCast(self), &_r);
@@ -1341,6 +1539,12 @@ pub const IServerMessageWebSocketInformation = extern struct {
 };
 pub const IServerStreamWebSocket = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInformation(self: *@This()) core.HResult!*ServerStreamWebSocketInformation {
         var _r: *ServerStreamWebSocketInformation = undefined;
         const _c = self.vtable.get_Information(@ptrCast(self), &_r);
@@ -1395,6 +1599,12 @@ pub const IServerStreamWebSocket = extern struct {
 };
 pub const IServerStreamWebSocketInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBandwidthStatistics(self: *@This()) core.HResult!BandwidthStatistics {
         var _r: BandwidthStatistics = undefined;
         const _c = self.vtable.get_BandwidthStatistics(@ptrCast(self), &_r);
@@ -1432,6 +1642,12 @@ pub const IServerStreamWebSocketInformation = extern struct {
 };
 pub const ISocketActivityContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Data(@ptrCast(self), &_r);
@@ -1455,6 +1671,12 @@ pub const ISocketActivityContext = extern struct {
 };
 pub const ISocketActivityContextFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), data: *IBuffer) core.HResult!*SocketActivityContext {
         var _r: *SocketActivityContext = undefined;
         const _c = self.vtable.Create(@ptrCast(self), data, &_r);
@@ -1478,6 +1700,12 @@ pub const ISocketActivityContextFactory = extern struct {
 };
 pub const ISocketActivityInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_TaskId(@ptrCast(self), &_r);
@@ -1543,6 +1771,12 @@ pub const ISocketActivityInformation = extern struct {
 };
 pub const ISocketActivityInformationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllSockets(self: *@This()) core.HResult!*IMapView(?HSTRING,SocketActivityInformation) {
         var _r: *IMapView(?HSTRING,SocketActivityInformation) = undefined;
         const _c = self.vtable.get_AllSockets(@ptrCast(self), &_r);
@@ -1566,6 +1800,12 @@ pub const ISocketActivityInformationStatics = extern struct {
 };
 pub const ISocketActivityTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!SocketActivityTriggerReason {
         var _r: SocketActivityTriggerReason = undefined;
         const _c = self.vtable.get_Reason(@ptrCast(self), &_r);
@@ -1596,6 +1836,12 @@ pub const ISocketActivityTriggerDetails = extern struct {
 };
 pub const ISocketErrorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetStatus(self: *@This(), hresult: i32) core.HResult!SocketErrorStatus {
         var _r: SocketErrorStatus = undefined;
         const _c = self.vtable.GetStatus(@ptrCast(self), hresult, &_r);
@@ -1619,6 +1865,12 @@ pub const ISocketErrorStatics = extern struct {
 };
 pub const IStreamSocket = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControl(self: *@This()) core.HResult!*StreamSocketControl {
         var _r: *StreamSocketControl = undefined;
         const _c = self.vtable.get_Control(@ptrCast(self), &_r);
@@ -1698,6 +1950,12 @@ pub const IStreamSocket = extern struct {
 };
 pub const IStreamSocket2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ConnectAsync(self: *@This(), remoteHostName: *HostName, remoteServiceName: ?HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ConnectAsync(@ptrCast(self), remoteHostName, remoteServiceName, protectionLevel, adapter, &_r);
@@ -1721,6 +1979,12 @@ pub const IStreamSocket2 = extern struct {
 };
 pub const IStreamSocket3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CancelIOAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.CancelIOAsync(@ptrCast(self), &_r);
@@ -1769,6 +2033,12 @@ pub const IStreamSocket3 = extern struct {
 };
 pub const IStreamSocketControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNoDelay(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_NoDelay(@ptrCast(self), &_r);
@@ -1845,6 +2115,12 @@ pub const IStreamSocketControl = extern struct {
 };
 pub const IStreamSocketControl2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIgnorableServerCertificateErrors(self: *@This()) core.HResult!*IVector(ChainValidationResult) {
         var _r: *IVector(ChainValidationResult) = undefined;
         const _c = self.vtable.get_IgnorableServerCertificateErrors(@ptrCast(self), &_r);
@@ -1868,6 +2144,12 @@ pub const IStreamSocketControl2 = extern struct {
 };
 pub const IStreamSocketControl3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSerializeConnectionAttempts(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_SerializeConnectionAttempts(@ptrCast(self), &_r);
@@ -1908,6 +2190,12 @@ pub const IStreamSocketControl3 = extern struct {
 };
 pub const IStreamSocketControl4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinProtectionLevel(self: *@This()) core.HResult!SocketProtectionLevel {
         var _r: SocketProtectionLevel = undefined;
         const _c = self.vtable.get_MinProtectionLevel(@ptrCast(self), &_r);
@@ -1936,6 +2224,12 @@ pub const IStreamSocketControl4 = extern struct {
 };
 pub const IStreamSocketInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalAddress(self: *@This()) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.get_LocalAddress(@ptrCast(self), &_r);
@@ -2022,6 +2316,12 @@ pub const IStreamSocketInformation = extern struct {
 };
 pub const IStreamSocketInformation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServerCertificateErrorSeverity(self: *@This()) core.HResult!SocketSslErrorSeverity {
         var _r: SocketSslErrorSeverity = undefined;
         const _c = self.vtable.get_ServerCertificateErrorSeverity(@ptrCast(self), &_r);
@@ -2066,6 +2366,12 @@ pub const IStreamSocketInformation2 = extern struct {
 };
 pub const IStreamSocketListener = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControl(self: *@This()) core.HResult!*StreamSocketListenerControl {
         var _r: *StreamSocketListenerControl = undefined;
         const _c = self.vtable.get_Control(@ptrCast(self), &_r);
@@ -2122,6 +2428,12 @@ pub const IStreamSocketListener = extern struct {
 };
 pub const IStreamSocketListener2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn BindServiceNameAsync(self: *@This(), localServiceName: ?HSTRING, protectionLevel: SocketProtectionLevel) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.BindServiceNameAsync(@ptrCast(self), localServiceName, protectionLevel, &_r);
@@ -2152,6 +2464,12 @@ pub const IStreamSocketListener2 = extern struct {
 };
 pub const IStreamSocketListener3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CancelIOAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.CancelIOAsync(@ptrCast(self), &_r);
@@ -2195,6 +2513,12 @@ pub const IStreamSocketListener3 = extern struct {
 };
 pub const IStreamSocketListenerConnectionReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSocket(self: *@This()) core.HResult!*StreamSocket {
         var _r: *StreamSocket = undefined;
         const _c = self.vtable.get_Socket(@ptrCast(self), &_r);
@@ -2218,6 +2542,12 @@ pub const IStreamSocketListenerConnectionReceivedEventArgs = extern struct {
 };
 pub const IStreamSocketListenerControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQualityOfService(self: *@This()) core.HResult!SocketQualityOfService {
         var _r: SocketQualityOfService = undefined;
         const _c = self.vtable.get_QualityOfService(@ptrCast(self), &_r);
@@ -2246,6 +2576,12 @@ pub const IStreamSocketListenerControl = extern struct {
 };
 pub const IStreamSocketListenerControl2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNoDelay(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_NoDelay(@ptrCast(self), &_r);
@@ -2310,6 +2646,12 @@ pub const IStreamSocketListenerControl2 = extern struct {
 };
 pub const IStreamSocketListenerInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalPort(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LocalPort(@ptrCast(self), &_r);
@@ -2333,6 +2675,12 @@ pub const IStreamSocketListenerInformation = extern struct {
 };
 pub const IStreamSocketStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetEndpointPairsAsync(self: *@This(), remoteHostName: *HostName, remoteServiceName: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
         var _r: *IAsyncOperation(IVectorView(EndpointPair)) = undefined;
         const _c = self.vtable.GetEndpointPairsAsync(@ptrCast(self), remoteHostName, remoteServiceName, &_r);
@@ -2363,6 +2711,12 @@ pub const IStreamSocketStatics = extern struct {
 };
 pub const IStreamWebSocket = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControl(self: *@This()) core.HResult!*StreamWebSocketControl {
         var _r: *StreamWebSocketControl = undefined;
         const _c = self.vtable.get_Control(@ptrCast(self), &_r);
@@ -2400,6 +2754,12 @@ pub const IStreamWebSocket = extern struct {
 };
 pub const IStreamWebSocket2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addServerCustomValidationRequested(self: *@This(), eventHandler: *TypedEventHandler(StreamWebSocket,WebSocketServerCustomValidationRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ServerCustomValidationRequested(@ptrCast(self), eventHandler, &_r);
@@ -2428,6 +2788,12 @@ pub const IStreamWebSocket2 = extern struct {
 };
 pub const IStreamWebSocketControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNoDelay(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_NoDelay(@ptrCast(self), &_r);
@@ -2456,6 +2822,12 @@ pub const IStreamWebSocketControl = extern struct {
 };
 pub const IStreamWebSocketControl2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesiredUnsolicitedPongInterval(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_DesiredUnsolicitedPongInterval(@ptrCast(self), &_r);
@@ -2503,6 +2875,12 @@ pub const IStreamWebSocketControl2 = extern struct {
 };
 pub const IWebSocket = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOutputStream(self: *@This()) core.HResult!*IOutputStream {
         var _r: *IOutputStream = undefined;
         const _c = self.vtable.get_OutputStream(@ptrCast(self), &_r);
@@ -2555,6 +2933,12 @@ pub const IWebSocket = extern struct {
 };
 pub const IWebSocketClosedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCode(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_Code(@ptrCast(self), &_r);
@@ -2585,6 +2969,12 @@ pub const IWebSocketClosedEventArgs = extern struct {
 };
 pub const IWebSocketControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOutboundBufferSizeInBytes(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_OutboundBufferSizeInBytes(@ptrCast(self), &_r);
@@ -2644,6 +3034,12 @@ pub const IWebSocketControl = extern struct {
 };
 pub const IWebSocketControl2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIgnorableServerCertificateErrors(self: *@This()) core.HResult!*IVector(ChainValidationResult) {
         var _r: *IVector(ChainValidationResult) = undefined;
         const _c = self.vtable.get_IgnorableServerCertificateErrors(@ptrCast(self), &_r);
@@ -2667,6 +3063,12 @@ pub const IWebSocketControl2 = extern struct {
 };
 pub const IWebSocketErrorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetStatus(self: *@This(), hresult: i32) core.HResult!WebErrorStatus {
         var _r: WebErrorStatus = undefined;
         const _c = self.vtable.GetStatus(@ptrCast(self), hresult, &_r);
@@ -2690,6 +3092,12 @@ pub const IWebSocketErrorStatics = extern struct {
 };
 pub const IWebSocketInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalAddress(self: *@This()) core.HResult!*HostName {
         var _r: *HostName = undefined;
         const _c = self.vtable.get_LocalAddress(@ptrCast(self), &_r);
@@ -2727,6 +3135,12 @@ pub const IWebSocketInformation = extern struct {
 };
 pub const IWebSocketInformation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServerCertificate(self: *@This()) core.HResult!*Certificate {
         var _r: *Certificate = undefined;
         const _c = self.vtable.get_ServerCertificate(@ptrCast(self), &_r);
@@ -2771,6 +3185,12 @@ pub const IWebSocketInformation2 = extern struct {
 };
 pub const IWebSocketServerCustomValidationRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServerCertificate(self: *@This()) core.HResult!*Certificate {
         var _r: *Certificate = undefined;
         const _c = self.vtable.get_ServerCertificate(@ptrCast(self), &_r);
@@ -2827,6 +3247,18 @@ pub const IWebSocketServerCustomValidationRequestedEventArgs = extern struct {
 };
 pub const MessageWebSocket = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControl(self: *@This()) core.HResult!*MessageWebSocketControl {
         const this: *IMessageWebSocket = @ptrCast(self);
         return try this.getControl();
@@ -2920,9 +3352,6 @@ pub const MessageWebSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SendFinalFrameAsync(data);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMessageWebSocket.IID)));
@@ -2936,6 +3365,18 @@ pub const MessageWebSocket = extern struct {
 };
 pub const MessageWebSocketControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxMessageSize(self: *@This()) core.HResult!u32 {
         const this: *IMessageWebSocketControl = @ptrCast(self);
         return try this.getMaxMessageSize();
@@ -3065,6 +3506,18 @@ pub const MessageWebSocketControl = extern struct {
 };
 pub const MessageWebSocketInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalAddress(self: *@This()) core.HResult!*HostName {
         const this: *IWebSocketInformation = @ptrCast(self);
         return try this.getLocalAddress();
@@ -3113,6 +3566,18 @@ pub const MessageWebSocketInformation = extern struct {
 };
 pub const MessageWebSocketMessageReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessageType(self: *@This()) core.HResult!SocketMessageType {
         const this: *IMessageWebSocketMessageReceivedEventArgs = @ptrCast(self);
         return try this.getMessageType();
@@ -3150,6 +3615,18 @@ pub const RoundTripTimeStatistics = extern struct {
 };
 pub const ServerMessageWebSocket = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMessageReceived(self: *@This(), value: *TypedEventHandler(ServerMessageWebSocket,MessageWebSocketMessageReceivedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IServerMessageWebSocket = @ptrCast(self);
         return try this.addMessageReceived(value);
@@ -3197,6 +3674,18 @@ pub const ServerMessageWebSocket = extern struct {
 };
 pub const ServerMessageWebSocketControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMessageType(self: *@This()) core.HResult!SocketMessageType {
         const this: *IServerMessageWebSocketControl = @ptrCast(self);
         return try this.getMessageType();
@@ -3213,6 +3702,18 @@ pub const ServerMessageWebSocketControl = extern struct {
 };
 pub const ServerMessageWebSocketInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBandwidthStatistics(self: *@This()) core.HResult!BandwidthStatistics {
         const this: *IServerMessageWebSocketInformation = @ptrCast(self);
         return try this.getBandwidthStatistics();
@@ -3233,6 +3734,18 @@ pub const ServerMessageWebSocketInformation = extern struct {
 };
 pub const ServerStreamWebSocket = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInformation(self: *@This()) core.HResult!*ServerStreamWebSocketInformation {
         const this: *IServerStreamWebSocket = @ptrCast(self);
         return try this.getInformation();
@@ -3272,6 +3785,18 @@ pub const ServerStreamWebSocket = extern struct {
 };
 pub const ServerStreamWebSocketInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBandwidthStatistics(self: *@This()) core.HResult!BandwidthStatistics {
         const this: *IServerStreamWebSocketInformation = @ptrCast(self);
         return try this.getBandwidthStatistics();
@@ -3296,12 +3821,21 @@ pub const SocketActivityConnectedStandbyAction = enum(i32) {
 };
 pub const SocketActivityContext = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getData(self: *@This()) core.HResult!*IBuffer {
-        const this: *ISocketActivityContext = @ptrCast(self);
-        return try this.getData();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getData(self: *@This()) core.HResult!*IBuffer {
+        const this: *ISocketActivityContext = @ptrCast(self);
+        return try this.getData();
     }
     pub fn Create(data: *IBuffer) core.HResult!*SocketActivityContext {
         const _f = try @This()._ISocketActivityContextFactoryCache.get();
@@ -3316,6 +3850,18 @@ pub const SocketActivityContext = extern struct {
 };
 pub const SocketActivityInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTaskId(self: *@This()) core.HResult!*Guid {
         const this: *ISocketActivityInformation = @ptrCast(self);
         return try this.getTaskId();
@@ -3344,9 +3890,6 @@ pub const SocketActivityInformation = extern struct {
         const this: *ISocketActivityInformation = @ptrCast(self);
         return try this.getStreamSocketListener();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getAllSockets() core.HResult!*IMapView(?HSTRING,SocketActivityInformation) {
         const _f = try @This()._ISocketActivityInformationStaticsCache.get();
         return try _f.getAllSockets();
@@ -3366,6 +3909,18 @@ pub const SocketActivityKind = enum(i32) {
 };
 pub const SocketActivityTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!SocketActivityTriggerReason {
         const this: *ISocketActivityTriggerDetails = @ptrCast(self);
         return try this.getReason();
@@ -3389,6 +3944,15 @@ pub const SocketActivityTriggerReason = enum(i32) {
 };
 pub const SocketError = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3461,6 +4025,18 @@ pub const SocketSslErrorSeverity = enum(i32) {
 };
 pub const StreamSocket = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControl(self: *@This()) core.HResult!*StreamSocketControl {
         const this: *IStreamSocket = @ptrCast(self);
         return try this.getControl();
@@ -3553,9 +4129,6 @@ pub const StreamSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnershipWithDataAndKeepAliveTime(socketId, data, keepAliveTime);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStreamSocket.IID)));
@@ -3578,6 +4151,18 @@ pub const StreamSocket = extern struct {
 };
 pub const StreamSocketControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNoDelay(self: *@This()) core.HResult!bool {
         const this: *IStreamSocketControl = @ptrCast(self);
         return try this.getNoDelay();
@@ -3675,6 +4260,18 @@ pub const StreamSocketControl = extern struct {
 };
 pub const StreamSocketInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalAddress(self: *@This()) core.HResult!*HostName {
         const this: *IStreamSocketInformation = @ptrCast(self);
         return try this.getLocalAddress();
@@ -3751,6 +4348,18 @@ pub const StreamSocketInformation = extern struct {
 };
 pub const StreamSocketListener = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControl(self: *@This()) core.HResult!*StreamSocketListenerControl {
         const this: *IStreamSocketListener = @ptrCast(self);
         return try this.getControl();
@@ -3831,9 +4440,6 @@ pub const StreamSocketListener = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnershipWithData(socketId, data);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStreamSocketListener.IID)));
@@ -3847,6 +4453,18 @@ pub const StreamSocketListener = extern struct {
 };
 pub const StreamSocketListenerConnectionReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSocket(self: *@This()) core.HResult!*StreamSocket {
         const this: *IStreamSocketListenerConnectionReceivedEventArgs = @ptrCast(self);
         return try this.getSocket();
@@ -3859,6 +4477,18 @@ pub const StreamSocketListenerConnectionReceivedEventArgs = extern struct {
 };
 pub const StreamSocketListenerControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQualityOfService(self: *@This()) core.HResult!SocketQualityOfService {
         const this: *IStreamSocketListenerControl = @ptrCast(self);
         return try this.getQualityOfService();
@@ -3931,6 +4561,18 @@ pub const StreamSocketListenerControl = extern struct {
 };
 pub const StreamSocketListenerInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalPort(self: *@This()) core.HResult!?HSTRING {
         const this: *IStreamSocketListenerInformation = @ptrCast(self);
         return try this.getLocalPort();
@@ -3943,6 +4585,18 @@ pub const StreamSocketListenerInformation = extern struct {
 };
 pub const StreamWebSocket = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControl(self: *@This()) core.HResult!*StreamWebSocketControl {
         const this: *IStreamWebSocket = @ptrCast(self);
         return try this.getControl();
@@ -4018,9 +4672,6 @@ pub const StreamWebSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeServerCustomValidationRequested(eventCookie);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStreamWebSocket.IID)));
@@ -4034,6 +4685,18 @@ pub const StreamWebSocket = extern struct {
 };
 pub const StreamWebSocketControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNoDelay(self: *@This()) core.HResult!bool {
         const this: *IStreamWebSocketControl = @ptrCast(self);
         return try this.getNoDelay();
@@ -4141,6 +4804,18 @@ pub const StreamWebSocketControl = extern struct {
 };
 pub const StreamWebSocketInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLocalAddress(self: *@This()) core.HResult!*HostName {
         const this: *IWebSocketInformation = @ptrCast(self);
         return try this.getLocalAddress();
@@ -4189,6 +4864,18 @@ pub const StreamWebSocketInformation = extern struct {
 };
 pub const WebSocketClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCode(self: *@This()) core.HResult!u16 {
         const this: *IWebSocketClosedEventArgs = @ptrCast(self);
         return try this.getCode();
@@ -4205,6 +4892,15 @@ pub const WebSocketClosedEventArgs = extern struct {
 };
 pub const WebSocketError = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4218,12 +4914,21 @@ pub const WebSocketError = extern struct {
 };
 pub const WebSocketKeepAlive = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Run(self: *@This(), taskInstance: *IBackgroundTaskInstance) core.HResult!void {
-        const this: *IBackgroundTask = @ptrCast(self);
-        return try this.Run(taskInstance);
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn Run(self: *@This(), taskInstance: *IBackgroundTaskInstance) core.HResult!void {
+        const this: *IBackgroundTask = @ptrCast(self);
+        return try this.Run(taskInstance);
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -4238,6 +4943,18 @@ pub const WebSocketKeepAlive = extern struct {
 };
 pub const WebSocketServerCustomValidationRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServerCertificate(self: *@This()) core.HResult!*Certificate {
         const this: *IWebSocketServerCustomValidationRequestedEventArgs = @ptrCast(self);
         return try this.getServerCertificate();

@@ -1,6 +1,15 @@
 // ----- This code is automatically generated -----
 pub const AnnotationPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -73,6 +82,18 @@ pub const AutomationAnimationStyle = enum(i32) {
 };
 pub const AutomationAnnotation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!AnnotationType {
         const this: *IAutomationAnnotation = @ptrCast(self);
         return try this.getType();
@@ -88,9 +109,6 @@ pub const AutomationAnnotation = extern struct {
     pub fn putElement(self: *@This(), value: *UIElement) core.HResult!void {
         const this: *IAutomationAnnotation = @ptrCast(self);
         return try this.putElement(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -141,6 +159,15 @@ pub const AutomationCaretPosition = enum(i32) {
 };
 pub const AutomationElementIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -329,6 +356,15 @@ pub const AutomationOutlineStyles = enum(i32) {
 };
 pub const AutomationProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -677,6 +713,18 @@ pub const AutomationProperties = extern struct {
 };
 pub const AutomationProperty = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.AutomationProperty";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IAutomationProperty.GUID;
@@ -729,6 +777,15 @@ pub const AutomationTextEditChangeType = enum(i32) {
 };
 pub const DockPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -753,6 +810,15 @@ pub const DockPosition = enum(i32) {
 };
 pub const DragPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -781,6 +847,15 @@ pub const DragPatternIdentifiers = extern struct {
 };
 pub const DropTargetPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -801,6 +876,15 @@ pub const DropTargetPatternIdentifiers = extern struct {
 };
 pub const ExpandCollapsePatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -823,6 +907,15 @@ pub const ExpandCollapseState = enum(i32) {
 };
 pub const GridItemPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -855,6 +948,15 @@ pub const GridItemPatternIdentifiers = extern struct {
 };
 pub const GridPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -875,6 +977,12 @@ pub const GridPatternIdentifiers = extern struct {
 };
 pub const IAnnotationPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAnnotationPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "d475a0c1-48b2-4e40-a6cf-3dc4b638c0de";
@@ -891,6 +999,12 @@ pub const IAnnotationPatternIdentifiers = extern struct {
 };
 pub const IAnnotationPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAnnotationTypeIdProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_AnnotationTypeIdProperty(@ptrCast(self), &_r);
@@ -942,6 +1056,12 @@ pub const IAnnotationPatternIdentifiersStatics = extern struct {
 };
 pub const IAutomationAnnotation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!AnnotationType {
         var _r: AnnotationType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -982,6 +1102,12 @@ pub const IAutomationAnnotation = extern struct {
 };
 pub const IAutomationAnnotationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), ty: AnnotationType) core.HResult!*AutomationAnnotation {
         var _r: *AutomationAnnotation = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), ty, &_r);
@@ -1012,6 +1138,12 @@ pub const IAutomationAnnotationFactory = extern struct {
 };
 pub const IAutomationAnnotationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TypeProperty(@ptrCast(self), &_r);
@@ -1042,6 +1174,12 @@ pub const IAutomationAnnotationStatics = extern struct {
 };
 pub const IAutomationElementIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationElementIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e68a63cf-4345-4e2d-8a6a-49cce1fa2dcc";
@@ -1058,6 +1196,12 @@ pub const IAutomationElementIdentifiers = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAcceleratorKeyProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_AcceleratorKeyProperty(@ptrCast(self), &_r);
@@ -1235,6 +1379,12 @@ pub const IAutomationElementIdentifiersStatics = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getControlledPeersProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ControlledPeersProperty(@ptrCast(self), &_r);
@@ -1258,6 +1408,12 @@ pub const IAutomationElementIdentifiersStatics2 = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPositionInSetProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_PositionInSetProperty(@ptrCast(self), &_r);
@@ -1302,6 +1458,12 @@ pub const IAutomationElementIdentifiersStatics3 = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLandmarkTypeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_LandmarkTypeProperty(@ptrCast(self), &_r);
@@ -1332,6 +1494,12 @@ pub const IAutomationElementIdentifiersStatics4 = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPeripheralProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsPeripheralProperty(@ptrCast(self), &_r);
@@ -1390,6 +1558,12 @@ pub const IAutomationElementIdentifiersStatics5 = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCultureProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CultureProperty(@ptrCast(self), &_r);
@@ -1413,6 +1587,12 @@ pub const IAutomationElementIdentifiersStatics6 = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics7 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeadingLevelProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_HeadingLevelProperty(@ptrCast(self), &_r);
@@ -1436,6 +1616,12 @@ pub const IAutomationElementIdentifiersStatics7 = extern struct {
 };
 pub const IAutomationElementIdentifiersStatics8 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsDialogProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsDialogProperty(@ptrCast(self), &_r);
@@ -1459,6 +1645,12 @@ pub const IAutomationElementIdentifiersStatics8 = extern struct {
 };
 pub const IAutomationProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "68d7232c-e622-48e9-af0b-1ffa33cc5cba";
@@ -1475,6 +1667,12 @@ pub const IAutomationProperties = extern struct {
 };
 pub const IAutomationPropertiesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAcceleratorKeyProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AcceleratorKeyProperty(@ptrCast(self), &_r);
@@ -1681,6 +1879,12 @@ pub const IAutomationPropertiesStatics = extern struct {
 };
 pub const IAutomationPropertiesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccessibilityViewProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AccessibilityViewProperty(@ptrCast(self), &_r);
@@ -1730,6 +1934,12 @@ pub const IAutomationPropertiesStatics2 = extern struct {
 };
 pub const IAutomationPropertiesStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPositionInSetProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PositionInSetProperty(@ptrCast(self), &_r);
@@ -1817,6 +2027,12 @@ pub const IAutomationPropertiesStatics3 = extern struct {
 };
 pub const IAutomationPropertiesStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLandmarkTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_LandmarkTypeProperty(@ptrCast(self), &_r);
@@ -1871,6 +2087,12 @@ pub const IAutomationPropertiesStatics4 = extern struct {
 };
 pub const IAutomationPropertiesStatics5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPeripheralProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsPeripheralProperty(@ptrCast(self), &_r);
@@ -2005,6 +2227,12 @@ pub const IAutomationPropertiesStatics5 = extern struct {
 };
 pub const IAutomationPropertiesStatics6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCultureProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CultureProperty(@ptrCast(self), &_r);
@@ -2040,6 +2268,12 @@ pub const IAutomationPropertiesStatics6 = extern struct {
 };
 pub const IAutomationPropertiesStatics7 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeadingLevelProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_HeadingLevelProperty(@ptrCast(self), &_r);
@@ -2075,6 +2309,12 @@ pub const IAutomationPropertiesStatics7 = extern struct {
 };
 pub const IAutomationPropertiesStatics8 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsDialogProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsDialogProperty(@ptrCast(self), &_r);
@@ -2110,6 +2350,12 @@ pub const IAutomationPropertiesStatics8 = extern struct {
 };
 pub const IAutomationPropertiesStatics9 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAutomationControlTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_AutomationControlTypeProperty(@ptrCast(self), &_r);
@@ -2145,6 +2391,12 @@ pub const IAutomationPropertiesStatics9 = extern struct {
 };
 pub const IAutomationProperty = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IAutomationProperty";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "b627195b-3227-4e16-9534-ddece30ddb46";
@@ -2161,6 +2413,12 @@ pub const IAutomationProperty = extern struct {
 };
 pub const IDockPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IDockPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ccd7f4e6-e4f9-47ff-bde7-378b11f78e09";
@@ -2177,6 +2435,12 @@ pub const IDockPatternIdentifiers = extern struct {
 };
 pub const IDockPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDockPositionProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_DockPositionProperty(@ptrCast(self), &_r);
@@ -2200,6 +2464,12 @@ pub const IDockPatternIdentifiersStatics = extern struct {
 };
 pub const IDragPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IDragPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "6266e985-4d07-4e80-82eb-8f96690a1a0c";
@@ -2216,6 +2486,12 @@ pub const IDragPatternIdentifiers = extern struct {
 };
 pub const IDragPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDropEffectProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_DropEffectProperty(@ptrCast(self), &_r);
@@ -2260,6 +2536,12 @@ pub const IDragPatternIdentifiersStatics = extern struct {
 };
 pub const IDropTargetPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IDropTargetPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "11865133-a6fe-4634-bd18-0ef612b7b208";
@@ -2276,6 +2558,12 @@ pub const IDropTargetPatternIdentifiers = extern struct {
 };
 pub const IDropTargetPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDropTargetEffectProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_DropTargetEffectProperty(@ptrCast(self), &_r);
@@ -2306,6 +2594,12 @@ pub const IDropTargetPatternIdentifiersStatics = extern struct {
 };
 pub const IExpandCollapsePatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IExpandCollapsePatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "b006bac0-751b-4d55-92cb-613ec1bdf5d0";
@@ -2322,6 +2616,12 @@ pub const IExpandCollapsePatternIdentifiers = extern struct {
 };
 pub const IExpandCollapsePatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExpandCollapseStateProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ExpandCollapseStateProperty(@ptrCast(self), &_r);
@@ -2345,6 +2645,12 @@ pub const IExpandCollapsePatternIdentifiersStatics = extern struct {
 };
 pub const IGridItemPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IGridItemPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "757744f1-3285-4fb1-803b-2545bd431599";
@@ -2361,6 +2667,12 @@ pub const IGridItemPatternIdentifiers = extern struct {
 };
 pub const IGridItemPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColumnProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ColumnProperty(@ptrCast(self), &_r);
@@ -2412,6 +2724,12 @@ pub const IGridItemPatternIdentifiersStatics = extern struct {
 };
 pub const IGridPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IGridPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c902980f-96c5-450c-9044-7e52c24f9e94";
@@ -2428,6 +2746,12 @@ pub const IGridPatternIdentifiers = extern struct {
 };
 pub const IGridPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColumnCountProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ColumnCountProperty(@ptrCast(self), &_r);
@@ -2458,6 +2782,12 @@ pub const IGridPatternIdentifiersStatics = extern struct {
 };
 pub const IMultipleViewPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IMultipleViewPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "5d5cd3b8-1e12-488b-b0ea-5e6cb89816e1";
@@ -2474,6 +2804,12 @@ pub const IMultipleViewPatternIdentifiers = extern struct {
 };
 pub const IMultipleViewPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrentViewProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CurrentViewProperty(@ptrCast(self), &_r);
@@ -2504,6 +2840,12 @@ pub const IMultipleViewPatternIdentifiersStatics = extern struct {
 };
 pub const IRangeValuePatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IRangeValuePatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "f8760f45-33c9-467d-bc9e-d1515263ace1";
@@ -2520,6 +2862,12 @@ pub const IRangeValuePatternIdentifiers = extern struct {
 };
 pub const IRangeValuePatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsReadOnlyProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsReadOnlyProperty(@ptrCast(self), &_r);
@@ -2578,6 +2926,12 @@ pub const IRangeValuePatternIdentifiersStatics = extern struct {
 };
 pub const IScrollPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IScrollPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "366b1003-425c-4951-ae83-d521e73bc696";
@@ -2594,6 +2948,12 @@ pub const IScrollPatternIdentifiers = extern struct {
 };
 pub const IScrollPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontallyScrollableProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_HorizontallyScrollableProperty(@ptrCast(self), &_r);
@@ -2659,6 +3019,12 @@ pub const IScrollPatternIdentifiersStatics = extern struct {
 };
 pub const ISelectionItemPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ISelectionItemPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "2dafa41a-3ef8-4bb5-a02b-3ee1b2274740";
@@ -2675,6 +3041,12 @@ pub const ISelectionItemPatternIdentifiers = extern struct {
 };
 pub const ISelectionItemPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSelectedProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsSelectedProperty(@ptrCast(self), &_r);
@@ -2705,6 +3077,12 @@ pub const ISelectionItemPatternIdentifiersStatics = extern struct {
 };
 pub const ISelectionPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ISelectionPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "4aa66fb0-e3f7-475f-b78d-f8a83bb730c4";
@@ -2721,6 +3099,12 @@ pub const ISelectionPatternIdentifiers = extern struct {
 };
 pub const ISelectionPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanSelectMultipleProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CanSelectMultipleProperty(@ptrCast(self), &_r);
@@ -2758,6 +3142,12 @@ pub const ISelectionPatternIdentifiersStatics = extern struct {
 };
 pub const ISpreadsheetItemPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ISpreadsheetItemPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "84347e19-ca4b-46a2-a794-c87928a3b1ab";
@@ -2774,6 +3164,12 @@ pub const ISpreadsheetItemPatternIdentifiers = extern struct {
 };
 pub const ISpreadsheetItemPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormulaProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_FormulaProperty(@ptrCast(self), &_r);
@@ -2797,6 +3193,12 @@ pub const ISpreadsheetItemPatternIdentifiersStatics = extern struct {
 };
 pub const IStylesPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IStylesPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "b0e4e201-e89d-436b-8287-4f7903466879";
@@ -2813,6 +3215,12 @@ pub const IStylesPatternIdentifiers = extern struct {
 };
 pub const IStylesPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedPropertiesProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ExtendedPropertiesProperty(@ptrCast(self), &_r);
@@ -2878,6 +3286,12 @@ pub const IStylesPatternIdentifiersStatics = extern struct {
 };
 pub const ITableItemPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ITableItemPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c326e5ad-8077-4c64-98e4-e83bcf1b4389";
@@ -2894,6 +3308,12 @@ pub const ITableItemPatternIdentifiers = extern struct {
 };
 pub const ITableItemPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColumnHeaderItemsProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ColumnHeaderItemsProperty(@ptrCast(self), &_r);
@@ -2924,6 +3344,12 @@ pub const ITableItemPatternIdentifiersStatics = extern struct {
 };
 pub const ITablePatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ITablePatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "38d104fe-0d0c-412a-bf8d-51ede683baf5";
@@ -2940,6 +3366,12 @@ pub const ITablePatternIdentifiers = extern struct {
 };
 pub const ITablePatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColumnHeadersProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ColumnHeadersProperty(@ptrCast(self), &_r);
@@ -2977,6 +3409,12 @@ pub const ITablePatternIdentifiersStatics = extern struct {
 };
 pub const ITogglePatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ITogglePatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "7e191f6b-34d4-4ae7-83ac-29f88882d985";
@@ -2993,6 +3431,12 @@ pub const ITogglePatternIdentifiers = extern struct {
 };
 pub const ITogglePatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getToggleStateProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_ToggleStateProperty(@ptrCast(self), &_r);
@@ -3016,6 +3460,12 @@ pub const ITogglePatternIdentifiersStatics = extern struct {
 };
 pub const ITransformPattern2Identifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ITransformPattern2Identifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "08aaa03d-dea7-402f-8097-9a2783d60e5d";
@@ -3032,6 +3482,12 @@ pub const ITransformPattern2Identifiers = extern struct {
 };
 pub const ITransformPattern2IdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanZoomProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CanZoomProperty(@ptrCast(self), &_r);
@@ -3076,6 +3532,12 @@ pub const ITransformPattern2IdentifiersStatics = extern struct {
 };
 pub const ITransformPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ITransformPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e4115b8c-c3c8-4a37-b994-2709a7811665";
@@ -3092,6 +3554,12 @@ pub const ITransformPatternIdentifiers = extern struct {
 };
 pub const ITransformPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanMoveProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CanMoveProperty(@ptrCast(self), &_r);
@@ -3129,6 +3597,12 @@ pub const ITransformPatternIdentifiersStatics = extern struct {
 };
 pub const IValuePatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IValuePatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "425bf64c-5333-4e41-b470-2bad14ecd085";
@@ -3145,6 +3619,12 @@ pub const IValuePatternIdentifiers = extern struct {
 };
 pub const IValuePatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsReadOnlyProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_IsReadOnlyProperty(@ptrCast(self), &_r);
@@ -3175,6 +3655,12 @@ pub const IValuePatternIdentifiersStatics = extern struct {
 };
 pub const IWindowPatternIdentifiers = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.IWindowPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "39f78bb4-7032-41e2-b79e-27b74a8628de";
@@ -3191,6 +3677,12 @@ pub const IWindowPatternIdentifiers = extern struct {
 };
 pub const IWindowPatternIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanMaximizeProperty(self: *@This()) core.HResult!*AutomationProperty {
         var _r: *AutomationProperty = undefined;
         const _c = self.vtable.get_CanMaximizeProperty(@ptrCast(self), &_r);
@@ -3249,6 +3741,15 @@ pub const IWindowPatternIdentifiersStatics = extern struct {
 };
 pub const MultipleViewPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3269,6 +3770,15 @@ pub const MultipleViewPatternIdentifiers = extern struct {
 };
 pub const RangeValuePatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3317,6 +3827,15 @@ pub const ScrollAmount = enum(i32) {
 };
 pub const ScrollPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3357,6 +3876,15 @@ pub const ScrollPatternIdentifiers = extern struct {
 };
 pub const SelectionItemPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3377,6 +3905,15 @@ pub const SelectionItemPatternIdentifiers = extern struct {
 };
 pub const SelectionPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3401,6 +3938,15 @@ pub const SelectionPatternIdentifiers = extern struct {
 };
 pub const SpreadsheetItemPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3417,6 +3963,15 @@ pub const SpreadsheetItemPatternIdentifiers = extern struct {
 };
 pub const StylesPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3470,6 +4025,15 @@ pub const SynchronizedInputType = enum(i32) {
 };
 pub const TableItemPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3490,6 +4054,15 @@ pub const TableItemPatternIdentifiers = extern struct {
 };
 pub const TablePatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3514,6 +4087,15 @@ pub const TablePatternIdentifiers = extern struct {
 };
 pub const TogglePatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3535,6 +4117,15 @@ pub const ToggleState = enum(i32) {
 };
 pub const TransformPattern2Identifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3563,6 +4154,15 @@ pub const TransformPattern2Identifiers = extern struct {
 };
 pub const TransformPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3587,6 +4187,15 @@ pub const TransformPatternIdentifiers = extern struct {
 };
 pub const ValuePatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3614,6 +4223,15 @@ pub const WindowInteractionState = enum(i32) {
 };
 pub const WindowPatternIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

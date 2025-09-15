@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AgentProvisioningProgressReport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!DeploymentAgentProgressState {
         const this: *IAgentProvisioningProgressReport = @ptrCast(self);
         return try this.getState();
@@ -53,9 +65,6 @@ pub const AgentProvisioningProgressReport = extern struct {
         const this: *IAgentProvisioningProgressReport = @ptrCast(self);
         return try this.putCurrentBatchIndex(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAgentProvisioningProgressReport.IID)));
@@ -87,6 +96,18 @@ pub const DeploymentSessionConnectionChange = enum(i32) {
 };
 pub const DeploymentSessionConnectionChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeploymentSessionConnectionChangedEventArgs = @ptrCast(self);
         return try this.getSessionId();
@@ -192,6 +213,18 @@ pub const DeploymentSessionHeartbeatRequested = extern struct {
 };
 pub const DeploymentSessionHeartbeatRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         const this: *IDeploymentSessionHeartbeatRequestedEventArgs = @ptrCast(self);
         return try this.getHandled();
@@ -213,6 +246,18 @@ pub const DeploymentSessionStateChange = enum(i32) {
 };
 pub const DeploymentSessionStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeploymentSessionStateChangedEventArgs = @ptrCast(self);
         return try this.getSessionId();
@@ -229,6 +274,18 @@ pub const DeploymentSessionStateChangedEventArgs = extern struct {
 };
 pub const DeploymentWorkload = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.getId();
@@ -305,9 +362,6 @@ pub const DeploymentWorkload = extern struct {
         const this: *IDeploymentWorkload = @ptrCast(self);
         return try this.putStateDetails(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(id: ?HSTRING) core.HResult!*DeploymentWorkload {
         const _f = try @This()._IDeploymentWorkloadFactoryCache.get();
         return try _f.CreateInstance(id);
@@ -321,6 +375,18 @@ pub const DeploymentWorkload = extern struct {
 };
 pub const DeploymentWorkloadBatch = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!u32 {
         const this: *IDeploymentWorkloadBatch = @ptrCast(self);
         return try this.getId();
@@ -336,9 +402,6 @@ pub const DeploymentWorkloadBatch = extern struct {
     pub fn getBatchWorkloads(self: *@This()) core.HResult!*IVector(DeploymentWorkload) {
         const this: *IDeploymentWorkloadBatch = @ptrCast(self);
         return try this.getBatchWorkloads();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(id: u32) core.HResult!*DeploymentWorkloadBatch {
         const _f = try @This()._IDeploymentWorkloadBatchFactoryCache.get();
@@ -363,6 +426,18 @@ pub const DeploymentWorkloadState = enum(i32) {
 };
 pub const DevicePreparationExecutionContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContext(self: *@This()) core.HResult!?HSTRING {
         const this: *IDevicePreparationExecutionContext = @ptrCast(self);
         return try this.getContext();
@@ -375,6 +450,12 @@ pub const DevicePreparationExecutionContext = extern struct {
 };
 pub const IAgentProvisioningProgressReport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!DeploymentAgentProgressState {
         var _r: DeploymentAgentProgressState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -470,6 +551,12 @@ pub const IAgentProvisioningProgressReport = extern struct {
 };
 pub const IDeploymentSessionConnectionChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
@@ -500,6 +587,12 @@ pub const IDeploymentSessionConnectionChangedEventArgs = extern struct {
 };
 pub const IDeploymentSessionHeartbeatRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Handled(@ptrCast(self), &_r);
@@ -528,6 +621,12 @@ pub const IDeploymentSessionHeartbeatRequestedEventArgs = extern struct {
 };
 pub const IDeploymentSessionStateChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
@@ -558,6 +657,12 @@ pub const IDeploymentSessionStateChangedEventArgs = extern struct {
 };
 pub const IDeploymentWorkload = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -689,6 +794,12 @@ pub const IDeploymentWorkload = extern struct {
 };
 pub const IDeploymentWorkloadBatch = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -731,6 +842,12 @@ pub const IDeploymentWorkloadBatch = extern struct {
 };
 pub const IDeploymentWorkloadBatchFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), id: u32) core.HResult!*DeploymentWorkloadBatch {
         var _r: *DeploymentWorkloadBatch = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), id, &_r);
@@ -754,6 +871,12 @@ pub const IDeploymentWorkloadBatchFactory = extern struct {
 };
 pub const IDeploymentWorkloadFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), id: ?HSTRING) core.HResult!*DeploymentWorkload {
         var _r: *DeploymentWorkload = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), id, &_r);
@@ -777,6 +900,12 @@ pub const IDeploymentWorkloadFactory = extern struct {
 };
 pub const IDevicePreparationExecutionContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContext(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Context(@ptrCast(self), &_r);
@@ -800,6 +929,12 @@ pub const IDevicePreparationExecutionContext = extern struct {
 };
 pub const IMachineProvisioningProgressReporter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
@@ -873,6 +1008,12 @@ pub const IMachineProvisioningProgressReporter = extern struct {
 };
 pub const IMachineProvisioningProgressReporterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForLaunchUri(self: *@This(), launchUri: *Uri, heartbeatHandler: *DeploymentSessionHeartbeatRequested) core.HResult!*MachineProvisioningProgressReporter {
         var _r: *MachineProvisioningProgressReporter = undefined;
         const _c = self.vtable.GetForLaunchUri(@ptrCast(self), launchUri, heartbeatHandler, &_r);
@@ -896,6 +1037,18 @@ pub const IMachineProvisioningProgressReporterStatics = extern struct {
 };
 pub const MachineProvisioningProgressReporter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionId(self: *@This()) core.HResult!*Guid {
         const this: *IMachineProvisioningProgressReporter = @ptrCast(self);
         return try this.getSessionId();
@@ -931,9 +1084,6 @@ pub const MachineProvisioningProgressReporter = extern struct {
     pub fn GetDevicePreparationExecutionContextAsync(self: *@This()) core.HResult!*IAsyncOperation(DevicePreparationExecutionContext) {
         const this: *IMachineProvisioningProgressReporter = @ptrCast(self);
         return try this.GetDevicePreparationExecutionContextAsync();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForLaunchUri(launchUri: *Uri, heartbeatHandler: *DeploymentSessionHeartbeatRequested) core.HResult!*MachineProvisioningProgressReporter {
         const _f = try @This()._IMachineProvisioningProgressReporterStaticsCache.get();

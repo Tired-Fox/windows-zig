@@ -90,6 +90,12 @@ pub const BindableVectorChangedEventHandler = extern struct {
 };
 pub const IBindableIterable = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn First(self: *@This()) core.HResult!*IBindableIterator {
         var _r: *IBindableIterator = undefined;
         const _c = self.vtable.First(@ptrCast(self), &_r);
@@ -113,6 +119,12 @@ pub const IBindableIterable = extern struct {
 };
 pub const IBindableIterator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrent(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
@@ -150,6 +162,12 @@ pub const IBindableIterator = extern struct {
 };
 pub const IBindableObservableVector = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addVectorChanged(self: *@This(), handler: *BindableVectorChangedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VectorChanged(@ptrCast(self), handler, &_r);
@@ -178,6 +196,12 @@ pub const IBindableObservableVector = extern struct {
 };
 pub const IBindableVector = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAt(self: *@This(), index: u32) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetAt(@ptrCast(self), index, &_r);
@@ -252,6 +276,12 @@ pub const IBindableVector = extern struct {
 };
 pub const IBindableVectorView = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAt(self: *@This(), index: u32) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetAt(@ptrCast(self), index, &_r);
@@ -289,6 +319,12 @@ pub const IBindableVectorView = extern struct {
 };
 pub const INotifyCollectionChanged = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addCollectionChanged(self: *@This(), handler: *NotifyCollectionChangedEventHandler) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_CollectionChanged(@ptrCast(self), handler, &_r);
@@ -317,6 +353,12 @@ pub const INotifyCollectionChanged = extern struct {
 };
 pub const INotifyCollectionChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!NotifyCollectionChangedAction {
         var _r: NotifyCollectionChangedAction = undefined;
         const _c = self.vtable.get_Action(@ptrCast(self), &_r);
@@ -368,6 +410,12 @@ pub const INotifyCollectionChangedEventArgs = extern struct {
 };
 pub const INotifyCollectionChangedEventArgsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithAllParameters(self: *@This(), action: NotifyCollectionChangedAction, newItems: *IBindableVector, oldItems: *IBindableVector, newIndex: i32, oldIndex: i32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NotifyCollectionChangedEventArgs {
         var _r: *NotifyCollectionChangedEventArgs = undefined;
         const _c = self.vtable.CreateInstanceWithAllParameters(@ptrCast(self), action, newItems, oldItems, newIndex, oldIndex, baseInterface, innerInterface, &_r);
@@ -398,6 +446,18 @@ pub const NotifyCollectionChangedAction = enum(i32) {
 };
 pub const NotifyCollectionChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!NotifyCollectionChangedAction {
         const this: *INotifyCollectionChangedEventArgs = @ptrCast(self);
         return try this.getAction();
@@ -417,9 +477,6 @@ pub const NotifyCollectionChangedEventArgs = extern struct {
     pub fn getOldStartingIndex(self: *@This()) core.HResult!i32 {
         const this: *INotifyCollectionChangedEventArgs = @ptrCast(self);
         return try this.getOldStartingIndex();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithAllParameters(action: NotifyCollectionChangedAction, newItems: *IBindableVector, oldItems: *IBindableVector, newIndex: i32, oldIndex: i32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NotifyCollectionChangedEventArgs {
         const _f = try @This()._INotifyCollectionChangedEventArgsFactoryCache.get();

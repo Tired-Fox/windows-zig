@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const FileInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMusicProperties(self: *@This()) core.HResult!*MusicProperties {
         const this: *IStorageItemInformation = @ptrCast(self);
         return try this.getMusicProperties();
@@ -308,6 +320,18 @@ pub const FileInformation = extern struct {
 };
 pub const FileInformationFactory = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetItemsAsyncWithStartIndexAndMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(IStorageItemInformation)) {
         const this: *IFileInformationFactory = @ptrCast(self);
         return try this.GetItemsAsyncWithStartIndexAndMaxItemsToRetrieve(startIndex, maxItemsToRetrieve);
@@ -344,9 +368,6 @@ pub const FileInformationFactory = extern struct {
         const this: *IFileInformationFactory = @ptrCast(self);
         return try this.GetVirtualizedFoldersVector();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWithMode(queryResult: *IStorageQueryResultBase, mode: ThumbnailMode) core.HResult!*FileInformationFactory {
         const _f = try @This()._IFileInformationFactoryFactoryCache.get();
         return try _f.CreateWithMode(queryResult, mode);
@@ -372,6 +393,18 @@ pub const FileInformationFactory = extern struct {
 };
 pub const FolderInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMusicProperties(self: *@This()) core.HResult!*MusicProperties {
         const this: *IStorageItemInformation = @ptrCast(self);
         return try this.getMusicProperties();
@@ -756,6 +789,12 @@ pub const FolderInformation = extern struct {
 };
 pub const IFileInformationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetItemsAsyncWithStartIndexAndMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(IStorageItemInformation)) {
         var _r: *IAsyncOperation(IVectorView(IStorageItemInformation)) = undefined;
         const _c = self.vtable.GetItemsAsyncWithStartIndexAndMaxItemsToRetrieve(@ptrCast(self), startIndex, maxItemsToRetrieve, &_r);
@@ -835,6 +874,12 @@ pub const IFileInformationFactory = extern struct {
 };
 pub const IFileInformationFactoryFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithMode(self: *@This(), queryResult: *IStorageQueryResultBase, mode: ThumbnailMode) core.HResult!*FileInformationFactory {
         var _r: *FileInformationFactory = undefined;
         const _c = self.vtable.CreateWithMode(@ptrCast(self), queryResult, mode, &_r);
@@ -879,6 +924,12 @@ pub const IFileInformationFactoryFactory = extern struct {
 };
 pub const IStorageItemInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMusicProperties(self: *@This()) core.HResult!*MusicProperties {
         var _r: *MusicProperties = undefined;
         const _c = self.vtable.get_MusicProperties(@ptrCast(self), &_r);

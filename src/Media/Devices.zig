@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CallControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IndicateNewIncomingCall(self: *@This(), enableRinger: bool, callerId: ?HSTRING) core.HResult!u64 {
         const this: *ICallControl = @ptrCast(self);
         return try this.IndicateNewIncomingCall(enableRinger, callerId);
@@ -68,9 +80,6 @@ pub const CallControl = extern struct {
     pub fn removeAudioTransferRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *ICallControl = @ptrCast(self);
         return try this.removeAudioTransferRequested(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*CallControl {
         const _f = try @This()._ICallControlStaticsCache.get();
@@ -178,6 +187,18 @@ pub const CallControlEventHandler = extern struct {
 };
 pub const DialRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Handled(self: *@This()) core.HResult!void {
         const this: *IDialRequestedEventArgs = @ptrCast(self);
         return try this.Handled();
@@ -283,6 +304,12 @@ pub const DialRequestedEventHandler = extern struct {
 };
 pub const ICallControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IndicateNewIncomingCall(self: *@This(), enableRinger: bool, callerId: ?HSTRING) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.IndicateNewIncomingCall(@ptrCast(self), enableRinger, callerId, &_r);
@@ -402,6 +429,12 @@ pub const ICallControl = extern struct {
 };
 pub const ICallControlStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*CallControl {
         var _r: *CallControl = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -432,6 +465,12 @@ pub const ICallControlStatics = extern struct {
 };
 pub const IDialRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Handled(self: *@This()) core.HResult!void {
         const _c = self.vtable.Handled(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -460,6 +499,12 @@ pub const IDialRequestedEventArgs = extern struct {
 };
 pub const IKeypadPressedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTelephonyKey(self: *@This()) core.HResult!TelephonyKey {
         var _r: TelephonyKey = undefined;
         const _c = self.vtable.get_TelephonyKey(@ptrCast(self), &_r);
@@ -483,6 +528,12 @@ pub const IKeypadPressedEventArgs = extern struct {
 };
 pub const IRedialRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Handled(self: *@This()) core.HResult!void {
         const _c = self.vtable.Handled(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -504,6 +555,18 @@ pub const IRedialRequestedEventArgs = extern struct {
 };
 pub const KeypadPressedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTelephonyKey(self: *@This()) core.HResult!TelephonyKey {
         const this: *IKeypadPressedEventArgs = @ptrCast(self);
         return try this.getTelephonyKey();
@@ -605,6 +668,18 @@ pub const KeypadPressedEventHandler = extern struct {
 };
 pub const RedialRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Handled(self: *@This()) core.HResult!void {
         const this: *IRedialRequestedEventArgs = @ptrCast(self);
         return try this.Handled();
@@ -724,6 +799,18 @@ pub const TelephonyKey = enum(i32) {
 };
 pub const AdvancedPhotoCaptureSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!AdvancedPhotoMode {
         const this: *IAdvancedPhotoCaptureSettings = @ptrCast(self);
         return try this.getMode();
@@ -731,9 +818,6 @@ pub const AdvancedPhotoCaptureSettings = extern struct {
     pub fn putMode(self: *@This(), value: AdvancedPhotoMode) core.HResult!void {
         const this: *IAdvancedPhotoCaptureSettings = @ptrCast(self);
         return try this.putMode(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -748,6 +832,18 @@ pub const AdvancedPhotoCaptureSettings = extern struct {
 };
 pub const AdvancedPhotoControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IAdvancedPhotoControl = @ptrCast(self);
         return try this.getSupported();
@@ -778,6 +874,18 @@ pub const AdvancedPhotoMode = enum(i32) {
 };
 pub const AudioDeviceController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putMuted(self: *@This(), value: bool) core.HResult!void {
         const this: *IAudioDeviceController = @ptrCast(self);
         return try this.putMuted(value);
@@ -830,6 +938,18 @@ pub const AudioDeviceController = extern struct {
 };
 pub const AudioDeviceModule = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClassId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAudioDeviceModule = @ptrCast(self);
         return try this.getClassId();
@@ -862,6 +982,18 @@ pub const AudioDeviceModule = extern struct {
 };
 pub const AudioDeviceModuleNotificationEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getModule(self: *@This()) core.HResult!*AudioDeviceModule {
         const this: *IAudioDeviceModuleNotificationEventArgs = @ptrCast(self);
         return try this.getModule();
@@ -878,6 +1010,18 @@ pub const AudioDeviceModuleNotificationEventArgs = extern struct {
 };
 pub const AudioDeviceModulesManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addModuleNotificationReceived(self: *@This(), handler: *TypedEventHandler(AudioDeviceModulesManager,AudioDeviceModuleNotificationEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IAudioDeviceModulesManager = @ptrCast(self);
         return try this.addModuleNotificationReceived(handler);
@@ -893,9 +1037,6 @@ pub const AudioDeviceModulesManager = extern struct {
     pub fn FindAll(self: *@This()) core.HResult!*IVectorView(AudioDeviceModule) {
         const this: *IAudioDeviceModulesManager = @ptrCast(self);
         return try this.FindAll();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(deviceId: ?HSTRING) core.HResult!*AudioDeviceModulesManager {
         const _f = try @This()._IAudioDeviceModulesManagerFactoryCache.get();
@@ -919,6 +1060,18 @@ pub const AutoFocusRange = enum(i32) {
 };
 pub const CameraOcclusionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetState(self: *@This()) core.HResult!*CameraOcclusionState {
         const this: *ICameraOcclusionInfo = @ptrCast(self);
         return try this.GetState();
@@ -947,6 +1100,18 @@ pub const CameraOcclusionKind = enum(i32) {
 };
 pub const CameraOcclusionState = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsOccluded(self: *@This()) core.HResult!bool {
         const this: *ICameraOcclusionState = @ptrCast(self);
         return try this.getIsOccluded();
@@ -963,6 +1128,18 @@ pub const CameraOcclusionState = extern struct {
 };
 pub const CameraOcclusionStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!*CameraOcclusionState {
         const this: *ICameraOcclusionStateChangedEventArgs = @ptrCast(self);
         return try this.getState();
@@ -1011,6 +1188,18 @@ pub const ColorTemperaturePreset = enum(i32) {
 };
 pub const DefaultAudioCaptureDeviceChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDefaultAudioDeviceChangedEventArgs = @ptrCast(self);
         return try this.getId();
@@ -1027,6 +1216,18 @@ pub const DefaultAudioCaptureDeviceChangedEventArgs = extern struct {
 };
 pub const DefaultAudioRenderDeviceChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDefaultAudioDeviceChangedEventArgs = @ptrCast(self);
         return try this.getId();
@@ -1043,6 +1244,18 @@ pub const DefaultAudioRenderDeviceChangedEventArgs = extern struct {
 };
 pub const DigitalWindowBounds = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNormalizedOriginTop(self: *@This()) core.HResult!f64 {
         const this: *IDigitalWindowBounds = @ptrCast(self);
         return try this.getNormalizedOriginTop();
@@ -1067,9 +1280,6 @@ pub const DigitalWindowBounds = extern struct {
         const this: *IDigitalWindowBounds = @ptrCast(self);
         return try this.putScale(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDigitalWindowBounds.IID)));
@@ -1083,6 +1293,18 @@ pub const DigitalWindowBounds = extern struct {
 };
 pub const DigitalWindowCapability = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWidth(self: *@This()) core.HResult!i32 {
         const this: *IDigitalWindowCapability = @ptrCast(self);
         return try this.getWidth();
@@ -1115,6 +1337,18 @@ pub const DigitalWindowCapability = extern struct {
 };
 pub const DigitalWindowControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         const this: *IDigitalWindowControl = @ptrCast(self);
         return try this.getIsSupported();
@@ -1160,6 +1394,18 @@ pub const DigitalWindowMode = enum(i32) {
 };
 pub const ExposureCompensationControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IExposureCompensationControl = @ptrCast(self);
         return try this.getSupported();
@@ -1192,6 +1438,18 @@ pub const ExposureCompensationControl = extern struct {
 };
 pub const ExposureControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IExposureControl = @ptrCast(self);
         return try this.getSupported();
@@ -1232,6 +1490,18 @@ pub const ExposureControl = extern struct {
 };
 pub const ExposurePriorityVideoControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IExposurePriorityVideoControl = @ptrCast(self);
         return try this.getSupported();
@@ -1252,6 +1522,18 @@ pub const ExposurePriorityVideoControl = extern struct {
 };
 pub const FlashControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IFlashControl = @ptrCast(self);
         return try this.getSupported();
@@ -1325,6 +1607,18 @@ pub const FlashControl = extern struct {
 };
 pub const FocusControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IFocusControl = @ptrCast(self);
         return try this.getSupported();
@@ -1461,6 +1755,18 @@ pub const FocusPreset = enum(i32) {
 };
 pub const FocusSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!FocusMode {
         const this: *IFocusSettings = @ptrCast(self);
         return try this.getMode();
@@ -1509,9 +1815,6 @@ pub const FocusSettings = extern struct {
         const this: *IFocusSettings = @ptrCast(self);
         return try this.putDisableDriverFallback(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFocusSettings.IID)));
@@ -1525,6 +1828,18 @@ pub const FocusSettings = extern struct {
 };
 pub const HdrVideoControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IHdrVideoControl = @ptrCast(self);
         return try this.getSupported();
@@ -1554,6 +1869,12 @@ pub const HdrVideoMode = enum(i32) {
 };
 pub const IAdvancedPhotoCaptureSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!AdvancedPhotoMode {
         var _r: AdvancedPhotoMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -1582,6 +1903,12 @@ pub const IAdvancedPhotoCaptureSettings = extern struct {
 };
 pub const IAdvancedPhotoControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -1624,6 +1951,12 @@ pub const IAdvancedPhotoControl = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetDeviceProperty(self: *@This(), propertyId: ?HSTRING, propertyValue: *IInspectable) core.HResult!void {
         const _c = self.vtable.SetDeviceProperty(@ptrCast(self), propertyId, propertyValue);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1652,6 +1985,12 @@ pub const IAdvancedVideoCaptureDeviceController = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController10 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCameraOcclusionInfo(self: *@This()) core.HResult!*CameraOcclusionInfo {
         var _r: *CameraOcclusionInfo = undefined;
         const _c = self.vtable.get_CameraOcclusionInfo(@ptrCast(self), &_r);
@@ -1675,6 +2014,12 @@ pub const IAdvancedVideoCaptureDeviceController10 = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController11 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryAcquireExclusiveControl(self: *@This(), deviceId: ?HSTRING, mode: MediaCaptureDeviceExclusiveControlReleaseMode) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TryAcquireExclusiveControl(@ptrCast(self), deviceId, mode, &_r);
@@ -1698,6 +2043,12 @@ pub const IAdvancedVideoCaptureDeviceController11 = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLowLagPhotoSequence(self: *@This()) core.HResult!*LowLagPhotoSequenceControl {
         var _r: *LowLagPhotoSequenceControl = undefined;
         const _c = self.vtable.get_LowLagPhotoSequence(@ptrCast(self), &_r);
@@ -1803,6 +2154,12 @@ pub const IAdvancedVideoCaptureDeviceController2 = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVariablePhotoSequenceController(self: *@This()) core.HResult!*VariablePhotoSequenceController {
         var _r: *VariablePhotoSequenceController = undefined;
         const _c = self.vtable.get_VariablePhotoSequenceController(@ptrCast(self), &_r);
@@ -1840,6 +2197,12 @@ pub const IAdvancedVideoCaptureDeviceController3 = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExposurePriorityVideoControl(self: *@This()) core.HResult!*ExposurePriorityVideoControl {
         var _r: *ExposurePriorityVideoControl = undefined;
         const _c = self.vtable.get_ExposurePriorityVideoControl(@ptrCast(self), &_r);
@@ -1896,6 +2259,12 @@ pub const IAdvancedVideoCaptureDeviceController4 = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -1947,6 +2316,12 @@ pub const IAdvancedVideoCaptureDeviceController5 = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoTemporalDenoisingControl(self: *@This()) core.HResult!*VideoTemporalDenoisingControl {
         var _r: *VideoTemporalDenoisingControl = undefined;
         const _c = self.vtable.get_VideoTemporalDenoisingControl(@ptrCast(self), &_r);
@@ -1970,6 +2345,12 @@ pub const IAdvancedVideoCaptureDeviceController6 = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController7 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInfraredTorchControl(self: *@This()) core.HResult!*InfraredTorchControl {
         var _r: *InfraredTorchControl = undefined;
         const _c = self.vtable.get_InfraredTorchControl(@ptrCast(self), &_r);
@@ -1993,6 +2374,12 @@ pub const IAdvancedVideoCaptureDeviceController7 = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController8 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPanelBasedOptimizationControl(self: *@This()) core.HResult!*PanelBasedOptimizationControl {
         var _r: *PanelBasedOptimizationControl = undefined;
         const _c = self.vtable.get_PanelBasedOptimizationControl(@ptrCast(self), &_r);
@@ -2016,6 +2403,12 @@ pub const IAdvancedVideoCaptureDeviceController8 = extern struct {
 };
 pub const IAdvancedVideoCaptureDeviceController9 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDigitalWindowControl(self: *@This()) core.HResult!*DigitalWindowControl {
         var _r: *DigitalWindowControl = undefined;
         const _c = self.vtable.get_DigitalWindowControl(@ptrCast(self), &_r);
@@ -2039,6 +2432,12 @@ pub const IAdvancedVideoCaptureDeviceController9 = extern struct {
 };
 pub const IAudioDeviceController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putMuted(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Muted(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2079,6 +2478,12 @@ pub const IAudioDeviceController = extern struct {
 };
 pub const IAudioDeviceController2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAudioCaptureEffectsManager(self: *@This()) core.HResult!*AudioCaptureEffectsManager {
         var _r: *AudioCaptureEffectsManager = undefined;
         const _c = self.vtable.get_AudioCaptureEffectsManager(@ptrCast(self), &_r);
@@ -2102,6 +2507,12 @@ pub const IAudioDeviceController2 = extern struct {
 };
 pub const IAudioDeviceModule = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClassId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ClassId(@ptrCast(self), &_r);
@@ -2160,6 +2571,12 @@ pub const IAudioDeviceModule = extern struct {
 };
 pub const IAudioDeviceModuleNotificationEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getModule(self: *@This()) core.HResult!*AudioDeviceModule {
         var _r: *AudioDeviceModule = undefined;
         const _c = self.vtable.get_Module(@ptrCast(self), &_r);
@@ -2190,6 +2607,12 @@ pub const IAudioDeviceModuleNotificationEventArgs = extern struct {
 };
 pub const IAudioDeviceModulesManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addModuleNotificationReceived(self: *@This(), handler: *TypedEventHandler(AudioDeviceModulesManager,AudioDeviceModuleNotificationEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ModuleNotificationReceived(@ptrCast(self), handler, &_r);
@@ -2232,6 +2655,12 @@ pub const IAudioDeviceModulesManager = extern struct {
 };
 pub const IAudioDeviceModulesManagerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), deviceId: ?HSTRING) core.HResult!*AudioDeviceModulesManager {
         var _r: *AudioDeviceModulesManager = undefined;
         const _c = self.vtable.Create(@ptrCast(self), deviceId, &_r);
@@ -2255,6 +2684,12 @@ pub const IAudioDeviceModulesManagerFactory = extern struct {
 };
 pub const ICameraOcclusionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetState(self: *@This()) core.HResult!*CameraOcclusionState {
         var _r: *CameraOcclusionState = undefined;
         const _c = self.vtable.GetState(@ptrCast(self), &_r);
@@ -2297,6 +2732,12 @@ pub const ICameraOcclusionInfo = extern struct {
 };
 pub const ICameraOcclusionState = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsOccluded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsOccluded(@ptrCast(self), &_r);
@@ -2327,6 +2768,12 @@ pub const ICameraOcclusionState = extern struct {
 };
 pub const ICameraOcclusionStateChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!*CameraOcclusionState {
         var _r: *CameraOcclusionState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -2350,6 +2797,12 @@ pub const ICameraOcclusionStateChangedEventArgs = extern struct {
 };
 pub const IDefaultAudioDeviceChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -2380,6 +2833,12 @@ pub const IDefaultAudioDeviceChangedEventArgs = extern struct {
 };
 pub const IDigitalWindowBounds = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNormalizedOriginTop(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_NormalizedOriginTop(@ptrCast(self), &_r);
@@ -2432,6 +2891,12 @@ pub const IDigitalWindowBounds = extern struct {
 };
 pub const IDigitalWindowCapability = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWidth(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Width(@ptrCast(self), &_r);
@@ -2490,6 +2955,12 @@ pub const IDigitalWindowCapability = extern struct {
 };
 pub const IDigitalWindowControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
@@ -2558,6 +3029,12 @@ pub const IDigitalWindowControl = extern struct {
 };
 pub const IExposureCompensationControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -2616,6 +3093,12 @@ pub const IExposureCompensationControl = extern struct {
 };
 pub const IExposureControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -2688,6 +3171,12 @@ pub const IExposureControl = extern struct {
 };
 pub const IExposurePriorityVideoControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -2723,6 +3212,12 @@ pub const IExposurePriorityVideoControl = extern struct {
 };
 pub const IFlashControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -2808,6 +3303,12 @@ pub const IFlashControl = extern struct {
 };
 pub const IFlashControl2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAssistantLightSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AssistantLightSupported(@ptrCast(self), &_r);
@@ -2843,6 +3344,12 @@ pub const IFlashControl2 = extern struct {
 };
 pub const IFocusControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -2936,6 +3443,12 @@ pub const IFocusControl = extern struct {
 };
 pub const IFocusControl2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFocusChangedSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_FocusChangedSupported(@ptrCast(self), &_r);
@@ -3020,6 +3533,12 @@ pub const IFocusControl2 = extern struct {
 };
 pub const IFocusSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!FocusMode {
         var _r: FocusMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -3108,6 +3627,12 @@ pub const IFocusSettings = extern struct {
 };
 pub const IHdrVideoControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -3150,6 +3675,12 @@ pub const IHdrVideoControl = extern struct {
 };
 pub const IInfraredTorchControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
@@ -3225,6 +3756,12 @@ pub const IInfraredTorchControl = extern struct {
 };
 pub const IIsoSpeedControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -3269,6 +3806,12 @@ pub const IIsoSpeedControl = extern struct {
 };
 pub const IIsoSpeedControl2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMin(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Min(@ptrCast(self), &_r);
@@ -3334,6 +3877,12 @@ pub const IIsoSpeedControl2 = extern struct {
 };
 pub const ILowLagPhotoControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetHighestConcurrentFrameRate(self: *@This(), captureProperties: *IMediaEncodingProperties) core.HResult!*MediaRatio {
         var _r: *MediaRatio = undefined;
         const _c = self.vtable.GetHighestConcurrentFrameRate(@ptrCast(self), captureProperties, &_r);
@@ -3407,6 +3956,12 @@ pub const ILowLagPhotoControl = extern struct {
 };
 pub const ILowLagPhotoSequenceControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -3525,6 +4080,12 @@ pub const ILowLagPhotoSequenceControl = extern struct {
 };
 pub const IMediaDeviceControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapabilities(self: *@This()) core.HResult!*MediaDeviceControlCapabilities {
         var _r: *MediaDeviceControlCapabilities = undefined;
         const _c = self.vtable.get_Capabilities(@ptrCast(self), &_r);
@@ -3576,6 +4137,12 @@ pub const IMediaDeviceControl = extern struct {
 };
 pub const IMediaDeviceControlCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -3634,6 +4201,12 @@ pub const IMediaDeviceControlCapabilities = extern struct {
 };
 pub const IMediaDeviceController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAvailableMediaStreamProperties(self: *@This(), mediaStreamType: MediaStreamType) core.HResult!*IVectorView(IMediaEncodingProperties) {
         var _r: *IVectorView(IMediaEncodingProperties) = undefined;
         const _c = self.vtable.GetAvailableMediaStreamProperties(@ptrCast(self), mediaStreamType, &_r);
@@ -3671,6 +4244,12 @@ pub const IMediaDeviceController = extern struct {
 };
 pub const IMediaDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAudioCaptureSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetAudioCaptureSelector(@ptrCast(self), &_r);
@@ -3746,6 +4325,12 @@ pub const IMediaDeviceStatics = extern struct {
 };
 pub const IModuleCommandResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!SendCommandStatus {
         var _r: SendCommandStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -3776,6 +4361,12 @@ pub const IModuleCommandResult = extern struct {
 };
 pub const IOpticalImageStabilizationControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -3818,6 +4409,12 @@ pub const IOpticalImageStabilizationControl = extern struct {
 };
 pub const IPanelBasedOptimizationControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSupported(@ptrCast(self), &_r);
@@ -3853,6 +4450,12 @@ pub const IPanelBasedOptimizationControl = extern struct {
 };
 pub const IPhotoConfirmationControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -3900,6 +4503,12 @@ pub const IPhotoConfirmationControl = extern struct {
 };
 pub const IRegionOfInterest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAutoFocusEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AutoFocusEnabled(@ptrCast(self), &_r);
@@ -3964,6 +4573,12 @@ pub const IRegionOfInterest = extern struct {
 };
 pub const IRegionOfInterest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!RegionOfInterestType {
         var _r: RegionOfInterestType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -4016,6 +4631,12 @@ pub const IRegionOfInterest2 = extern struct {
 };
 pub const IRegionsOfInterestControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxRegions(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MaxRegions(@ptrCast(self), &_r);
@@ -4081,6 +4702,12 @@ pub const IRegionsOfInterestControl = extern struct {
 };
 pub const ISceneModeControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedModes(self: *@This()) core.HResult!*IVectorView(CaptureSceneMode) {
         var _r: *IVectorView(CaptureSceneMode) = undefined;
         const _c = self.vtable.get_SupportedModes(@ptrCast(self), &_r);
@@ -4118,6 +4745,12 @@ pub const ISceneModeControl = extern struct {
 };
 pub const ITorchControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -4172,6 +4805,12 @@ pub const ITorchControl = extern struct {
 };
 pub const IVideoDeviceController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBrightness(self: *@This()) core.HResult!*MediaDeviceControl {
         var _r: *MediaDeviceControl = undefined;
         const _c = self.vtable.get_Brightness(@ptrCast(self), &_r);
@@ -4279,6 +4918,12 @@ pub const IVideoDeviceController = extern struct {
 };
 pub const IVideoDeviceControllerGetDevicePropertyResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!VideoDeviceControllerGetDevicePropertyStatus {
         var _r: VideoDeviceControllerGetDevicePropertyStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -4309,6 +4954,12 @@ pub const IVideoDeviceControllerGetDevicePropertyResult = extern struct {
 };
 pub const IVideoTemporalDenoisingControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -4351,6 +5002,12 @@ pub const IVideoTemporalDenoisingControl = extern struct {
 };
 pub const IWhiteBalanceControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -4423,6 +5080,12 @@ pub const IWhiteBalanceControl = extern struct {
 };
 pub const IZoomControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Supported(@ptrCast(self), &_r);
@@ -4479,6 +5142,12 @@ pub const IZoomControl = extern struct {
 };
 pub const IZoomControl2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedModes(self: *@This()) core.HResult!*IVectorView(ZoomTransitionMode) {
         var _r: *IVectorView(ZoomTransitionMode) = undefined;
         const _c = self.vtable.get_SupportedModes(@ptrCast(self), &_r);
@@ -4514,6 +5183,12 @@ pub const IZoomControl2 = extern struct {
 };
 pub const IZoomSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!ZoomTransitionMode {
         var _r: ZoomTransitionMode = undefined;
         const _c = self.vtable.get_Mode(@ptrCast(self), &_r);
@@ -4554,6 +5229,18 @@ pub const IZoomSettings = extern struct {
 };
 pub const InfraredTorchControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         const this: *IInfraredTorchControl = @ptrCast(self);
         return try this.getIsSupported();
@@ -4603,6 +5290,18 @@ pub const InfraredTorchMode = enum(i32) {
 };
 pub const IsoSpeedControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IIsoSpeedControl = @ptrCast(self);
         return try this.getSupported();
@@ -4690,6 +5389,18 @@ pub const IsoSpeedPreset = enum(i32) {
 };
 pub const LowLagPhotoControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetHighestConcurrentFrameRate(self: *@This(), captureProperties: *IMediaEncodingProperties) core.HResult!*MediaRatio {
         const this: *ILowLagPhotoControl = @ptrCast(self);
         return try this.GetHighestConcurrentFrameRate(captureProperties);
@@ -4734,6 +5445,18 @@ pub const LowLagPhotoControl = extern struct {
 };
 pub const LowLagPhotoSequenceControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *ILowLagPhotoSequenceControl = @ptrCast(self);
         return try this.getSupported();
@@ -4831,6 +5554,15 @@ pub const MediaCapturePauseBehavior = enum(i32) {
 };
 pub const MediaDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -4876,6 +5608,18 @@ pub const MediaDevice = extern struct {
 };
 pub const MediaDeviceControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapabilities(self: *@This()) core.HResult!*MediaDeviceControlCapabilities {
         const this: *IMediaDeviceControl = @ptrCast(self);
         return try this.getCapabilities();
@@ -4904,6 +5648,18 @@ pub const MediaDeviceControl = extern struct {
 };
 pub const MediaDeviceControlCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IMediaDeviceControlCapabilities = @ptrCast(self);
         return try this.getSupported();
@@ -4936,6 +5692,18 @@ pub const MediaDeviceControlCapabilities = extern struct {
 };
 pub const ModuleCommandResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!SendCommandStatus {
         const this: *IModuleCommandResult = @ptrCast(self);
         return try this.getStatus();
@@ -4952,6 +5720,18 @@ pub const ModuleCommandResult = extern struct {
 };
 pub const OpticalImageStabilizationControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IOpticalImageStabilizationControl = @ptrCast(self);
         return try this.getSupported();
@@ -4981,6 +5761,18 @@ pub const OpticalImageStabilizationMode = enum(i32) {
 };
 pub const PanelBasedOptimizationControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSupported(self: *@This()) core.HResult!bool {
         const this: *IPanelBasedOptimizationControl = @ptrCast(self);
         return try this.getIsSupported();
@@ -5001,6 +5793,18 @@ pub const PanelBasedOptimizationControl = extern struct {
 };
 pub const PhotoConfirmationControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IPhotoConfirmationControl = @ptrCast(self);
         return try this.getSupported();
@@ -5029,6 +5833,18 @@ pub const PhotoConfirmationControl = extern struct {
 };
 pub const RegionOfInterest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAutoFocusEnabled(self: *@This()) core.HResult!bool {
         const this: *IRegionOfInterest = @ptrCast(self);
         return try this.getAutoFocusEnabled();
@@ -5103,9 +5919,6 @@ pub const RegionOfInterest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putWeight(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRegionOfInterest.IID)));
@@ -5123,6 +5936,18 @@ pub const RegionOfInterestType = enum(i32) {
 };
 pub const RegionsOfInterestControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxRegions(self: *@This()) core.HResult!u32 {
         const this: *IRegionsOfInterestControl = @ptrCast(self);
         return try this.getMaxRegions();
@@ -5159,6 +5984,18 @@ pub const RegionsOfInterestControl = extern struct {
 };
 pub const SceneModeControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedModes(self: *@This()) core.HResult!*IVectorView(CaptureSceneMode) {
         const this: *ISceneModeControl = @ptrCast(self);
         return try this.getSupportedModes();
@@ -5183,6 +6020,18 @@ pub const SendCommandStatus = enum(i32) {
 };
 pub const TorchControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *ITorchControl = @ptrCast(self);
         return try this.getSupported();
@@ -5215,6 +6064,18 @@ pub const TorchControl = extern struct {
 };
 pub const VideoDeviceController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBrightness(self: *@This()) core.HResult!*MediaDeviceControl {
         const this: *IVideoDeviceController = @ptrCast(self);
         return try this.getBrightness();
@@ -5541,6 +6402,18 @@ pub const VideoDeviceController = extern struct {
 };
 pub const VideoDeviceControllerGetDevicePropertyResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!VideoDeviceControllerGetDevicePropertyStatus {
         const this: *IVideoDeviceControllerGetDevicePropertyResult = @ptrCast(self);
         return try this.getStatus();
@@ -5574,6 +6447,18 @@ pub const VideoDeviceControllerSetDevicePropertyStatus = enum(i32) {
 };
 pub const VideoTemporalDenoisingControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IVideoTemporalDenoisingControl = @ptrCast(self);
         return try this.getSupported();
@@ -5603,6 +6488,18 @@ pub const VideoTemporalDenoisingMode = enum(i32) {
 };
 pub const WhiteBalanceControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IWhiteBalanceControl = @ptrCast(self);
         return try this.getSupported();
@@ -5643,6 +6540,18 @@ pub const WhiteBalanceControl = extern struct {
 };
 pub const ZoomControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupported(self: *@This()) core.HResult!bool {
         const this: *IZoomControl = @ptrCast(self);
         return try this.getSupported();
@@ -5696,6 +6605,18 @@ pub const ZoomControl = extern struct {
 };
 pub const ZoomSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMode(self: *@This()) core.HResult!ZoomTransitionMode {
         const this: *IZoomSettings = @ptrCast(self);
         return try this.getMode();
@@ -5711,9 +6632,6 @@ pub const ZoomSettings = extern struct {
     pub fn putValue(self: *@This(), value: f32) core.HResult!void {
         const this: *IZoomSettings = @ptrCast(self);
         return try this.putValue(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

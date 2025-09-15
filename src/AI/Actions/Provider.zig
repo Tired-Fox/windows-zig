@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IActionFeedbackHandler = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ProcessFeedbackAsync(self: *@This(), context: *ActionInvocationContext, feedback: *ActionFeedback) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ProcessFeedbackAsync(@ptrCast(self), context, feedback, &_r);
@@ -24,6 +30,12 @@ pub const IActionFeedbackHandler = extern struct {
 };
 pub const IActionProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn InvokeAsync(self: *@This(), context: *ActionInvocationContext) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.InvokeAsync(@ptrCast(self), context, &_r);
@@ -45,6 +57,7 @@ pub const IActionProvider = extern struct {
         InvokeAsync: *const fn(self: *anyopaque, context: *ActionInvocationContext, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
+const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;
 const HRESULT = @import("../../root.zig").HRESULT;
 const core = @import("../../root.zig").core;

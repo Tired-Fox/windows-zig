@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IMiracastReceiver = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultSettings(self: *@This()) core.HResult!*MiracastReceiverSettings {
         var _r: *MiracastReceiverSettings = undefined;
         const _c = self.vtable.GetDefaultSettings(@ptrCast(self), &_r);
@@ -102,6 +108,12 @@ pub const IMiracastReceiver = extern struct {
 };
 pub const IMiracastReceiverApplySettingsResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!MiracastReceiverApplySettingsStatus {
         var _r: MiracastReceiverApplySettingsStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -132,6 +144,12 @@ pub const IMiracastReceiverApplySettingsResult = extern struct {
 };
 pub const IMiracastReceiverConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Disconnect(self: *@This(), reason: MiracastReceiverDisconnectReason) core.HResult!void {
         const _c = self.vtable.Disconnect(@ptrCast(self), reason);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -210,6 +228,12 @@ pub const IMiracastReceiverConnection = extern struct {
 };
 pub const IMiracastReceiverConnectionCreatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*MiracastReceiverConnection {
         var _r: *MiracastReceiverConnection = undefined;
         const _c = self.vtable.get_Connection(@ptrCast(self), &_r);
@@ -247,6 +271,12 @@ pub const IMiracastReceiverConnectionCreatedEventArgs = extern struct {
 };
 pub const IMiracastReceiverCursorImageChannel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -315,6 +345,12 @@ pub const IMiracastReceiverCursorImageChannel = extern struct {
 };
 pub const IMiracastReceiverCursorImageChannelSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -355,6 +391,12 @@ pub const IMiracastReceiverCursorImageChannelSettings = extern struct {
 };
 pub const IMiracastReceiverDisconnectedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*MiracastReceiverConnection {
         var _r: *MiracastReceiverConnection = undefined;
         const _c = self.vtable.get_Connection(@ptrCast(self), &_r);
@@ -378,6 +420,12 @@ pub const IMiracastReceiverDisconnectedEventArgs = extern struct {
 };
 pub const IMiracastReceiverGameControllerDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransmitInput(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_TransmitInput(@ptrCast(self), &_r);
@@ -444,6 +492,12 @@ pub const IMiracastReceiverGameControllerDevice = extern struct {
 };
 pub const IMiracastReceiverInputDevices = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyboard(self: *@This()) core.HResult!*MiracastReceiverKeyboardDevice {
         var _r: *MiracastReceiverKeyboardDevice = undefined;
         const _c = self.vtable.get_Keyboard(@ptrCast(self), &_r);
@@ -474,6 +528,12 @@ pub const IMiracastReceiverInputDevices = extern struct {
 };
 pub const IMiracastReceiverKeyboardDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransmitInput(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_TransmitInput(@ptrCast(self), &_r);
@@ -528,6 +588,12 @@ pub const IMiracastReceiverKeyboardDevice = extern struct {
 };
 pub const IMiracastReceiverMediaSourceCreatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*MiracastReceiverConnection {
         var _r: *MiracastReceiverConnection = undefined;
         const _c = self.vtable.get_Connection(@ptrCast(self), &_r);
@@ -572,6 +638,12 @@ pub const IMiracastReceiverMediaSourceCreatedEventArgs = extern struct {
 };
 pub const IMiracastReceiverSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addConnectionCreated(self: *@This(), handler: *TypedEventHandler(MiracastReceiverSession,MiracastReceiverConnectionCreatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ConnectionCreated(@ptrCast(self), handler, &_r);
@@ -662,6 +734,12 @@ pub const IMiracastReceiverSession = extern struct {
 };
 pub const IMiracastReceiverSessionStartResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!MiracastReceiverSessionStartStatus {
         var _r: MiracastReceiverSessionStartStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -692,6 +770,12 @@ pub const IMiracastReceiverSessionStartResult = extern struct {
 };
 pub const IMiracastReceiverSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
@@ -768,6 +852,12 @@ pub const IMiracastReceiverSettings = extern struct {
 };
 pub const IMiracastReceiverStatus = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getListeningStatus(self: *@This()) core.HResult!MiracastReceiverListeningStatus {
         var _r: MiracastReceiverListeningStatus = undefined;
         const _c = self.vtable.get_ListeningStatus(@ptrCast(self), &_r);
@@ -819,6 +909,12 @@ pub const IMiracastReceiverStatus = extern struct {
 };
 pub const IMiracastReceiverStreamControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetVideoStreamSettings(self: *@This()) core.HResult!*MiracastReceiverVideoStreamSettings {
         var _r: *MiracastReceiverVideoStreamSettings = undefined;
         const _c = self.vtable.GetVideoStreamSettings(@ptrCast(self), &_r);
@@ -873,6 +969,12 @@ pub const IMiracastReceiverStreamControl = extern struct {
 };
 pub const IMiracastReceiverVideoStreamSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!SizeInt32 {
         var _r: SizeInt32 = undefined;
         const _c = self.vtable.get_Size(@ptrCast(self), &_r);
@@ -913,6 +1015,12 @@ pub const IMiracastReceiverVideoStreamSettings = extern struct {
 };
 pub const IMiracastTransmitter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -974,6 +1082,18 @@ pub const IMiracastTransmitter = extern struct {
 };
 pub const MiracastReceiver = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultSettings(self: *@This()) core.HResult!*MiracastReceiverSettings {
         const this: *IMiracastReceiver = @ptrCast(self);
         return try this.GetDefaultSettings();
@@ -1026,9 +1146,6 @@ pub const MiracastReceiver = extern struct {
         const this: *IMiracastReceiver = @ptrCast(self);
         return try this.RemoveKnownTransmitter(transmitter);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMiracastReceiver.IID)));
@@ -1042,6 +1159,18 @@ pub const MiracastReceiver = extern struct {
 };
 pub const MiracastReceiverApplySettingsResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!MiracastReceiverApplySettingsStatus {
         const this: *IMiracastReceiverApplySettingsResult = @ptrCast(self);
         return try this.getStatus();
@@ -1074,6 +1203,18 @@ pub const MiracastReceiverAuthorizationMethod = enum(i32) {
 };
 pub const MiracastReceiverConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Disconnect(self: *@This(), reason: MiracastReceiverDisconnectReason) core.HResult!void {
         const this: *IMiracastReceiverConnection = @ptrCast(self);
         return try this.Disconnect(reason);
@@ -1129,6 +1270,18 @@ pub const MiracastReceiverConnection = extern struct {
 };
 pub const MiracastReceiverConnectionCreatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*MiracastReceiverConnection {
         const this: *IMiracastReceiverConnectionCreatedEventArgs = @ptrCast(self);
         return try this.getConnection();
@@ -1149,6 +1302,18 @@ pub const MiracastReceiverConnectionCreatedEventArgs = extern struct {
 };
 pub const MiracastReceiverCursorImageChannel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         const this: *IMiracastReceiverCursorImageChannel = @ptrCast(self);
         return try this.getIsEnabled();
@@ -1189,6 +1354,18 @@ pub const MiracastReceiverCursorImageChannel = extern struct {
 };
 pub const MiracastReceiverCursorImageChannelSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         const this: *IMiracastReceiverCursorImageChannelSettings = @ptrCast(self);
         return try this.getIsEnabled();
@@ -1223,6 +1400,18 @@ pub const MiracastReceiverDisconnectReason = enum(i32) {
 };
 pub const MiracastReceiverDisconnectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*MiracastReceiverConnection {
         const this: *IMiracastReceiverDisconnectedEventArgs = @ptrCast(self);
         return try this.getConnection();
@@ -1235,6 +1424,18 @@ pub const MiracastReceiverDisconnectedEventArgs = extern struct {
 };
 pub const MiracastReceiverGameControllerDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransmitInput(self: *@This()) core.HResult!bool {
         const this: *IMiracastReceiverGameControllerDevice = @ptrCast(self);
         return try this.getTransmitInput();
@@ -1279,6 +1480,18 @@ pub const MiracastReceiverGameControllerDeviceUsageMode = enum(i32) {
 };
 pub const MiracastReceiverInputDevices = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyboard(self: *@This()) core.HResult!*MiracastReceiverKeyboardDevice {
         const this: *IMiracastReceiverInputDevices = @ptrCast(self);
         return try this.getKeyboard();
@@ -1295,6 +1508,18 @@ pub const MiracastReceiverInputDevices = extern struct {
 };
 pub const MiracastReceiverKeyboardDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransmitInput(self: *@This()) core.HResult!bool {
         const this: *IMiracastReceiverKeyboardDevice = @ptrCast(self);
         return try this.getTransmitInput();
@@ -1335,6 +1560,18 @@ pub const MiracastReceiverListeningStatus = enum(i32) {
 };
 pub const MiracastReceiverMediaSourceCreatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*MiracastReceiverConnection {
         const this: *IMiracastReceiverMediaSourceCreatedEventArgs = @ptrCast(self);
         return try this.getConnection();
@@ -1359,6 +1596,18 @@ pub const MiracastReceiverMediaSourceCreatedEventArgs = extern struct {
 };
 pub const MiracastReceiverSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addConnectionCreated(self: *@This(), handler: *TypedEventHandler(MiracastReceiverSession,MiracastReceiverConnectionCreatedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IMiracastReceiverSession = @ptrCast(self);
         return try this.addConnectionCreated(handler);
@@ -1422,6 +1671,18 @@ pub const MiracastReceiverSession = extern struct {
 };
 pub const MiracastReceiverSessionStartResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!MiracastReceiverSessionStartStatus {
         const this: *IMiracastReceiverSessionStartResult = @ptrCast(self);
         return try this.getStatus();
@@ -1444,6 +1705,18 @@ pub const MiracastReceiverSessionStartStatus = enum(i32) {
 };
 pub const MiracastReceiverSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMiracastReceiverSettings = @ptrCast(self);
         return try this.getFriendlyName();
@@ -1492,6 +1765,18 @@ pub const MiracastReceiverSettings = extern struct {
 };
 pub const MiracastReceiverStatus = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getListeningStatus(self: *@This()) core.HResult!MiracastReceiverListeningStatus {
         const this: *IMiracastReceiverStatus = @ptrCast(self);
         return try this.getListeningStatus();
@@ -1520,6 +1805,18 @@ pub const MiracastReceiverStatus = extern struct {
 };
 pub const MiracastReceiverStreamControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetVideoStreamSettings(self: *@This()) core.HResult!*MiracastReceiverVideoStreamSettings {
         const this: *IMiracastReceiverStreamControl = @ptrCast(self);
         return try this.GetVideoStreamSettings();
@@ -1552,6 +1849,18 @@ pub const MiracastReceiverStreamControl = extern struct {
 };
 pub const MiracastReceiverVideoStreamSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!SizeInt32 {
         const this: *IMiracastReceiverVideoStreamSettings = @ptrCast(self);
         return try this.getSize();
@@ -1582,6 +1891,18 @@ pub const MiracastReceiverWiFiStatus = enum(i32) {
 };
 pub const MiracastTransmitter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMiracastTransmitter = @ptrCast(self);
         return try this.getName();

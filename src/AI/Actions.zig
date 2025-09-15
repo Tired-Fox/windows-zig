@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const ActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!ActionEntityKind {
         const this: *IActionEntity = @ptrCast(self);
         return try this.getKind();
@@ -23,9 +35,6 @@ pub const ActionEntity = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.AI.Actions.ActionEntity";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IActionEntity.GUID;
@@ -35,6 +44,18 @@ pub const ActionEntity = extern struct {
 };
 pub const ActionEntityDisplayInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IActionEntityDisplayInfo = @ptrCast(self);
         return try this.getTitle();
@@ -54,6 +75,18 @@ pub const ActionEntityDisplayInfo = extern struct {
 };
 pub const ActionEntityFactory = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFileEntity(self: *@This(), path: ?HSTRING) core.HResult!*FileActionEntity {
         const this: *IActionEntityFactory2 = @ptrCast(self);
         return try this.CreateFileEntity(path);
@@ -112,9 +145,6 @@ pub const ActionEntityFactory = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.AI.Actions.ActionEntityFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IActionEntityFactory2.GUID;
@@ -139,6 +169,18 @@ pub const ActionEntityTextFormat = enum(i32) {
 };
 pub const ActionFeedback = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFeedbackKind(self: *@This()) core.HResult!ActionFeedbackKind {
         const this: *IActionFeedback = @ptrCast(self);
         return try this.getFeedbackKind();
@@ -162,6 +204,18 @@ pub const ActionFeedbackKind = enum(i32) {
 };
 pub const ActionInvocationContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntityFactory(self: *@This()) core.HResult!*ActionEntityFactory {
         const this: *IActionInvocationContext = @ptrCast(self);
         return try this.getEntityFactory();
@@ -241,6 +295,18 @@ pub const ActionInvocationContext = extern struct {
 };
 pub const ActionInvocationHelpDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!ActionInvocationHelpKind {
         const this: *IActionInvocationHelpDetails = @ptrCast(self);
         return try this.getKind();
@@ -307,6 +373,18 @@ pub const ActionInvocationResult = enum(i32) {
 };
 pub const ActionRuntime = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActionCatalog(self: *@This()) core.HResult!*ActionCatalog {
         const this: *IActionRuntime = @ptrCast(self);
         return try this.getActionCatalog();
@@ -375,9 +453,6 @@ pub const ActionRuntime = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub const NAME: []const u8 = "Windows.AI.Actions.ActionRuntime";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IActionRuntime.GUID;
@@ -387,6 +462,18 @@ pub const ActionRuntime = extern struct {
 };
 pub const ContactActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*Contact {
         const this: *IContactActionEntity = @ptrCast(self);
         return try this.getContact();
@@ -399,6 +486,18 @@ pub const ContactActionEntity = extern struct {
 };
 pub const DocumentActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFullPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IDocumentActionEntity = @ptrCast(self);
         return try this.getFullPath();
@@ -411,6 +510,18 @@ pub const DocumentActionEntity = extern struct {
 };
 pub const FileActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFullPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileActionEntity = @ptrCast(self);
         return try this.getFullPath();
@@ -423,6 +534,12 @@ pub const FileActionEntity = extern struct {
 };
 pub const IActionEntity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!ActionEntityKind {
         var _r: ActionEntityKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -453,6 +570,12 @@ pub const IActionEntity = extern struct {
 };
 pub const IActionEntity2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -476,6 +599,12 @@ pub const IActionEntity2 = extern struct {
 };
 pub const IActionEntityDisplayInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -499,6 +628,12 @@ pub const IActionEntityDisplayInfo = extern struct {
 };
 pub const IActionEntityFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.AI.Actions.IActionEntityFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "9cb752a0-5bf8-5be2-916e-b00eff80088d";
@@ -515,6 +650,12 @@ pub const IActionEntityFactory = extern struct {
 };
 pub const IActionEntityFactory2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFileEntity(self: *@This(), path: ?HSTRING) core.HResult!*FileActionEntity {
         var _r: *FileActionEntity = undefined;
         const _c = self.vtable.CreateFileEntity(@ptrCast(self), path, &_r);
@@ -559,6 +700,12 @@ pub const IActionEntityFactory2 = extern struct {
 };
 pub const IActionEntityFactory3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateRemoteFileEntity(self: *@This(), sourceId: ?HSTRING, fileKind: RemoteFileKind, sourceUri: *Uri, fileId: ?HSTRING, contentType: ?HSTRING, driveId: ?HSTRING, accountId: ?HSTRING, extension: ?HSTRING) core.HResult!*RemoteFileActionEntity {
         var _r: *RemoteFileActionEntity = undefined;
         const _c = self.vtable.CreateRemoteFileEntity(@ptrCast(self), sourceId, fileKind, sourceUri, fileId, contentType, driveId, accountId, extension, &_r);
@@ -596,6 +743,12 @@ pub const IActionEntityFactory3 = extern struct {
 };
 pub const IActionEntityFactory4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateTableEntity(self: *@This(), data: ?[*]HSTRING, columnCount: u32) core.HResult!*TableActionEntity {
         var _r: *TableActionEntity = undefined;
         const _c = self.vtable.CreateTableEntity(@ptrCast(self), data, columnCount, &_r);
@@ -626,6 +779,12 @@ pub const IActionEntityFactory4 = extern struct {
 };
 pub const IActionEntityFactoryFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.AI.Actions.IActionEntityFactoryFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c9147d8f-88a0-5ec0-a564-47e2a1081412";
@@ -642,6 +801,12 @@ pub const IActionEntityFactoryFactory = extern struct {
 };
 pub const IActionFeedback = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFeedbackKind(self: *@This()) core.HResult!ActionFeedbackKind {
         var _r: ActionFeedbackKind = undefined;
         const _c = self.vtable.get_FeedbackKind(@ptrCast(self), &_r);
@@ -665,6 +830,12 @@ pub const IActionFeedback = extern struct {
 };
 pub const IActionInvocationContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEntityFactory(self: *@This()) core.HResult!*ActionEntityFactory {
         var _r: *ActionEntityFactory = undefined;
         const _c = self.vtable.get_EntityFactory(@ptrCast(self), &_r);
@@ -736,6 +907,12 @@ pub const IActionInvocationContext = extern struct {
 };
 pub const IActionInvocationContext2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInvokerWindowId(self: *@This()) core.HResult!WindowId {
         var _r: WindowId = undefined;
         const _c = self.vtable.get_InvokerWindowId(@ptrCast(self), &_r);
@@ -780,6 +957,12 @@ pub const IActionInvocationContext2 = extern struct {
 };
 pub const IActionInvocationHelpDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!ActionInvocationHelpKind {
         var _r: ActionInvocationHelpKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -856,6 +1039,12 @@ pub const IActionInvocationHelpDetails = extern struct {
 };
 pub const IActionRuntime = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActionCatalog(self: *@This()) core.HResult!*ActionCatalog {
         var _r: *ActionCatalog = undefined;
         const _c = self.vtable.get_ActionCatalog(@ptrCast(self), &_r);
@@ -893,6 +1082,12 @@ pub const IActionRuntime = extern struct {
 };
 pub const IActionRuntime2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateActionFeedback(self: *@This(), feedbackKind: ActionFeedbackKind) core.HResult!*ActionFeedback {
         var _r: *ActionFeedback = undefined;
         const _c = self.vtable.CreateActionFeedback(@ptrCast(self), feedbackKind, &_r);
@@ -928,6 +1123,12 @@ pub const IActionRuntime2 = extern struct {
 };
 pub const IActionRuntime3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInvocationContextWithWindowId(self: *@This(), actionId: ?HSTRING, invokerWindowId: WindowId) core.HResult!*ActionInvocationContext {
         var _r: *ActionInvocationContext = undefined;
         const _c = self.vtable.CreateInvocationContextWithWindowId(@ptrCast(self), actionId, invokerWindowId, &_r);
@@ -965,6 +1166,12 @@ pub const IActionRuntime3 = extern struct {
 };
 pub const IActionRuntime4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetActionInvocationContextFromToken(self: *@This(), token: ?HSTRING) core.HResult!*ActionInvocationContext {
         var _r: *ActionInvocationContext = undefined;
         const _c = self.vtable.GetActionInvocationContextFromToken(@ptrCast(self), token, &_r);
@@ -988,6 +1195,12 @@ pub const IActionRuntime4 = extern struct {
 };
 pub const IActionRuntimeFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.AI.Actions.IActionRuntimeFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "d3f366e9-8dc9-50a0-8040-e5c14fa609d6";
@@ -1004,6 +1217,12 @@ pub const IActionRuntimeFactory = extern struct {
 };
 pub const IContactActionEntity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContact(self: *@This()) core.HResult!*Contact {
         var _r: *Contact = undefined;
         const _c = self.vtable.get_Contact(@ptrCast(self), &_r);
@@ -1027,6 +1246,12 @@ pub const IContactActionEntity = extern struct {
 };
 pub const IDocumentActionEntity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFullPath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FullPath(@ptrCast(self), &_r);
@@ -1050,6 +1275,12 @@ pub const IDocumentActionEntity = extern struct {
 };
 pub const IFileActionEntity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFullPath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FullPath(@ptrCast(self), &_r);
@@ -1073,6 +1304,12 @@ pub const IFileActionEntity = extern struct {
 };
 pub const INamedActionEntity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -1113,6 +1350,12 @@ pub const INamedActionEntity = extern struct {
 };
 pub const IPhotoActionEntity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFullPath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FullPath(@ptrCast(self), &_r);
@@ -1136,6 +1379,12 @@ pub const IPhotoActionEntity = extern struct {
 };
 pub const IRemoteFileActionEntity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceId(@ptrCast(self), &_r);
@@ -1208,6 +1457,12 @@ pub const IRemoteFileActionEntity = extern struct {
 };
 pub const IStreamingTextActionEntity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsComplete(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsComplete(@ptrCast(self), &_r);
@@ -1257,6 +1512,12 @@ pub const IStreamingTextActionEntity = extern struct {
 };
 pub const IStreamingTextActionEntityTextChangedArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
@@ -1287,6 +1548,12 @@ pub const IStreamingTextActionEntityTextChangedArgs = extern struct {
 };
 pub const IStreamingTextActionEntityWriter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReaderEntity(self: *@This()) core.HResult!*StreamingTextActionEntity {
         var _r: *StreamingTextActionEntity = undefined;
         const _c = self.vtable.get_ReaderEntity(@ptrCast(self), &_r);
@@ -1322,6 +1589,12 @@ pub const IStreamingTextActionEntityWriter = extern struct {
 };
 pub const ITableActionEntity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetTextContent(self: *@This()) core.HResult!?[*]HSTRING {
         var _r: ?[*]HSTRING = undefined;
         const _c = self.vtable.GetTextContent(@ptrCast(self), &_r);
@@ -1359,6 +1632,12 @@ pub const ITableActionEntity = extern struct {
 };
 pub const ITextActionEntity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
@@ -1382,6 +1661,12 @@ pub const ITextActionEntity = extern struct {
 };
 pub const ITextActionEntity2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextFormat(self: *@This()) core.HResult!ActionEntityTextFormat {
         var _r: ActionEntityTextFormat = undefined;
         const _c = self.vtable.get_TextFormat(@ptrCast(self), &_r);
@@ -1405,6 +1690,18 @@ pub const ITextActionEntity2 = extern struct {
 };
 pub const NamedActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *INamedActionEntity = @ptrCast(self);
         return try this.getName();
@@ -1436,6 +1733,18 @@ pub const NamedActionEntity = extern struct {
 };
 pub const PhotoActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFullPath(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoActionEntity = @ptrCast(self);
         return try this.getFullPath();
@@ -1448,6 +1757,18 @@ pub const PhotoActionEntity = extern struct {
 };
 pub const RemoteFileActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteFileActionEntity = @ptrCast(self);
         return try this.getSourceId();
@@ -1493,6 +1814,18 @@ pub const RemoteFileKind = enum(i32) {
 };
 pub const StreamingTextActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsComplete(self: *@This()) core.HResult!bool {
         const this: *IStreamingTextActionEntity = @ptrCast(self);
         return try this.getIsComplete();
@@ -1521,6 +1854,18 @@ pub const StreamingTextActionEntity = extern struct {
 };
 pub const StreamingTextActionEntityTextChangedArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IStreamingTextActionEntityTextChangedArgs = @ptrCast(self);
         return try this.getText();
@@ -1537,6 +1882,18 @@ pub const StreamingTextActionEntityTextChangedArgs = extern struct {
 };
 pub const StreamingTextActionEntityWriter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReaderEntity(self: *@This()) core.HResult!*StreamingTextActionEntity {
         const this: *IStreamingTextActionEntityWriter = @ptrCast(self);
         return try this.getReaderEntity();
@@ -1564,6 +1921,18 @@ pub const StreamingTextActionEntityWriter = extern struct {
 };
 pub const TableActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetTextContent(self: *@This()) core.HResult!?[*]HSTRING {
         const this: *ITableActionEntity = @ptrCast(self);
         return try this.GetTextContent();
@@ -1584,6 +1953,18 @@ pub const TableActionEntity = extern struct {
 };
 pub const TextActionEntity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextActionEntity = @ptrCast(self);
         return try this.getText();

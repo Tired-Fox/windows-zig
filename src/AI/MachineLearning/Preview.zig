@@ -19,6 +19,12 @@ pub const FeatureElementKindPreview = enum(i32) {
 };
 pub const IImageVariableDescriptorPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapPixelFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         var _r: BitmapPixelFormat = undefined;
         const _c = self.vtable.get_BitmapPixelFormat(@ptrCast(self), &_r);
@@ -56,6 +62,12 @@ pub const IImageVariableDescriptorPreview = extern struct {
 };
 pub const IInferencingOptionsPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreferredDeviceKind(self: *@This()) core.HResult!LearningModelDeviceKindPreview {
         var _r: LearningModelDeviceKindPreview = undefined;
         const _c = self.vtable.get_PreferredDeviceKind(@ptrCast(self), &_r);
@@ -132,6 +144,12 @@ pub const IInferencingOptionsPreview = extern struct {
 };
 pub const ILearningModelBindingPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Bind(self: *@This(), name: ?HSTRING, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.Bind(@ptrCast(self), name, value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -163,6 +181,12 @@ pub const ILearningModelBindingPreview = extern struct {
 };
 pub const ILearningModelBindingPreviewFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromModel(self: *@This(), model: *LearningModelPreview) core.HResult!*LearningModelBindingPreview {
         var _r: *LearningModelBindingPreview = undefined;
         const _c = self.vtable.CreateFromModel(@ptrCast(self), model, &_r);
@@ -186,6 +210,12 @@ pub const ILearningModelBindingPreviewFactory = extern struct {
 };
 pub const ILearningModelDescriptionPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Author(@ptrCast(self), &_r);
@@ -258,6 +288,12 @@ pub const ILearningModelDescriptionPreview = extern struct {
 };
 pub const ILearningModelEvaluationResultPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
@@ -288,6 +324,12 @@ pub const ILearningModelEvaluationResultPreview = extern struct {
 };
 pub const ILearningModelPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn EvaluateAsync(self: *@This(), binding: *LearningModelBindingPreview, correlationId: ?HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResultPreview) {
         var _r: *IAsyncOperation(LearningModelEvaluationResultPreview) = undefined;
         const _c = self.vtable.EvaluateAsync(@ptrCast(self), binding, correlationId, &_r);
@@ -337,6 +379,12 @@ pub const ILearningModelPreview = extern struct {
 };
 pub const ILearningModelPreviewStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadModelFromStorageFileAsync(self: *@This(), modelFile: *IStorageFile) core.HResult!*IAsyncOperation(LearningModelPreview) {
         var _r: *IAsyncOperation(LearningModelPreview) = undefined;
         const _c = self.vtable.LoadModelFromStorageFileAsync(@ptrCast(self), modelFile, &_r);
@@ -367,6 +415,12 @@ pub const ILearningModelPreviewStatics = extern struct {
 };
 pub const ILearningModelVariableDescriptorPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -411,6 +465,12 @@ pub const ILearningModelVariableDescriptorPreview = extern struct {
 };
 pub const IMapVariableDescriptorPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyKind(self: *@This()) core.HResult!FeatureElementKindPreview {
         var _r: FeatureElementKindPreview = undefined;
         const _c = self.vtable.get_KeyKind(@ptrCast(self), &_r);
@@ -455,6 +515,12 @@ pub const IMapVariableDescriptorPreview = extern struct {
 };
 pub const ISequenceVariableDescriptorPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getElementType(self: *@This()) core.HResult!*ILearningModelVariableDescriptorPreview {
         var _r: *ILearningModelVariableDescriptorPreview = undefined;
         const _c = self.vtable.get_ElementType(@ptrCast(self), &_r);
@@ -478,6 +544,12 @@ pub const ISequenceVariableDescriptorPreview = extern struct {
 };
 pub const ITensorVariableDescriptorPreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataType(self: *@This()) core.HResult!FeatureElementKindPreview {
         var _r: FeatureElementKindPreview = undefined;
         const _c = self.vtable.get_DataType(@ptrCast(self), &_r);
@@ -508,6 +580,18 @@ pub const ITensorVariableDescriptorPreview = extern struct {
 };
 pub const ImageVariableDescriptorPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapPixelFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         const this: *IImageVariableDescriptorPreview = @ptrCast(self);
         return try this.getBitmapPixelFormat();
@@ -556,6 +640,18 @@ pub const ImageVariableDescriptorPreview = extern struct {
 };
 pub const InferencingOptionsPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreferredDeviceKind(self: *@This()) core.HResult!LearningModelDeviceKindPreview {
         const this: *IInferencingOptionsPreview = @ptrCast(self);
         return try this.getPreferredDeviceKind();
@@ -604,6 +700,18 @@ pub const InferencingOptionsPreview = extern struct {
 };
 pub const LearningModelBindingPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Bind(self: *@This(), name: ?HSTRING, value: *IInspectable) core.HResult!void {
         const this: *ILearningModelBindingPreview = @ptrCast(self);
         return try this.Bind(name, value);
@@ -637,9 +745,6 @@ pub const LearningModelBindingPreview = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateFromModel(model: *LearningModelPreview) core.HResult!*LearningModelBindingPreview {
         const _f = try @This()._ILearningModelBindingPreviewFactoryCache.get();
         return try _f.CreateFromModel(model);
@@ -653,6 +758,18 @@ pub const LearningModelBindingPreview = extern struct {
 };
 pub const LearningModelDescriptionPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModelDescriptionPreview = @ptrCast(self);
         return try this.getAuthor();
@@ -701,6 +818,18 @@ pub const LearningModelDeviceKindPreview = enum(i32) {
 };
 pub const LearningModelEvaluationResultPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModelEvaluationResultPreview = @ptrCast(self);
         return try this.getCorrelationId();
@@ -724,6 +853,18 @@ pub const LearningModelFeatureKindPreview = enum(i32) {
 };
 pub const LearningModelPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn EvaluateAsync(self: *@This(), binding: *LearningModelBindingPreview, correlationId: ?HSTRING) core.HResult!*IAsyncOperation(LearningModelEvaluationResultPreview) {
         const this: *ILearningModelPreview = @ptrCast(self);
         return try this.EvaluateAsync(binding, correlationId);
@@ -744,9 +885,6 @@ pub const LearningModelPreview = extern struct {
         const this: *ILearningModelPreview = @ptrCast(self);
         return try this.putInferencingOptions(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn LoadModelFromStorageFileAsync(modelFile: *IStorageFile) core.HResult!*IAsyncOperation(LearningModelPreview) {
         const _f = try @This()._ILearningModelPreviewStaticsCache.get();
         return try _f.LoadModelFromStorageFileAsync(modelFile);
@@ -764,6 +902,18 @@ pub const LearningModelPreview = extern struct {
 };
 pub const LearningModelVariableDescriptorPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModelVariableDescriptorPreview = @ptrCast(self);
         return try this.getName();
@@ -788,6 +938,18 @@ pub const LearningModelVariableDescriptorPreview = extern struct {
 };
 pub const MapVariableDescriptorPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyKind(self: *@This()) core.HResult!FeatureElementKindPreview {
         const this: *IMapVariableDescriptorPreview = @ptrCast(self);
         return try this.getKeyKind();
@@ -840,6 +1002,18 @@ pub const MapVariableDescriptorPreview = extern struct {
 };
 pub const SequenceVariableDescriptorPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getElementType(self: *@This()) core.HResult!*ILearningModelVariableDescriptorPreview {
         const this: *ISequenceVariableDescriptorPreview = @ptrCast(self);
         return try this.getElementType();
@@ -880,6 +1054,18 @@ pub const SequenceVariableDescriptorPreview = extern struct {
 };
 pub const TensorVariableDescriptorPreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataType(self: *@This()) core.HResult!FeatureElementKindPreview {
         const this: *ITensorVariableDescriptorPreview = @ptrCast(self);
         return try this.getDataType();

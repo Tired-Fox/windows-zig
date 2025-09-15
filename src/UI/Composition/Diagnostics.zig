@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CompositionDebugHeatMaps = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Hide(self: *@This(), subtree: *Visual) core.HResult!void {
         const this: *ICompositionDebugHeatMaps = @ptrCast(self);
         return try this.Hide(subtree);
@@ -36,12 +48,21 @@ pub const CompositionDebugOverdrawContentKinds = enum(i32) {
 };
 pub const CompositionDebugSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getHeatMaps(self: *@This()) core.HResult!*CompositionDebugHeatMaps {
-        const this: *ICompositionDebugSettings = @ptrCast(self);
-        return try this.getHeatMaps();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getHeatMaps(self: *@This()) core.HResult!*CompositionDebugHeatMaps {
+        const this: *ICompositionDebugSettings = @ptrCast(self);
+        return try this.getHeatMaps();
     }
     pub fn TryGetSettings(compositor: *Compositor) core.HResult!*CompositionDebugSettings {
         const _f = try @This()._ICompositionDebugSettingsStaticsCache.get();
@@ -56,6 +77,12 @@ pub const CompositionDebugSettings = extern struct {
 };
 pub const ICompositionDebugHeatMaps = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Hide(self: *@This(), subtree: *Visual) core.HResult!void {
         const _c = self.vtable.Hide(@ptrCast(self), subtree);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -92,6 +119,12 @@ pub const ICompositionDebugHeatMaps = extern struct {
 };
 pub const ICompositionDebugSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeatMaps(self: *@This()) core.HResult!*CompositionDebugHeatMaps {
         var _r: *CompositionDebugHeatMaps = undefined;
         const _c = self.vtable.get_HeatMaps(@ptrCast(self), &_r);
@@ -115,6 +148,12 @@ pub const ICompositionDebugSettings = extern struct {
 };
 pub const ICompositionDebugSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetSettings(self: *@This(), compositor: *Compositor) core.HResult!*CompositionDebugSettings {
         var _r: *CompositionDebugSettings = undefined;
         const _c = self.vtable.TryGetSettings(@ptrCast(self), compositor, &_r);

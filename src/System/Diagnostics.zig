@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const DiagnosticActionResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         const this: *IDiagnosticActionResult = @ptrCast(self);
         return try this.getExtendedError();
@@ -26,6 +38,18 @@ pub const DiagnosticActionState = enum(i32) {
 };
 pub const DiagnosticInvoker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RunDiagnosticActionAsync(self: *@This(), context: *JsonObject) core.HResult!*IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState) {
         const this: *IDiagnosticInvoker = @ptrCast(self);
         return try this.RunDiagnosticActionAsync(context);
@@ -36,9 +60,6 @@ pub const DiagnosticInvoker = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDiagnosticInvoker2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RunDiagnosticActionFromStringAsync(context);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*DiagnosticInvoker {
         const _f = try @This()._IDiagnosticInvokerStaticsCache.get();
@@ -61,6 +82,12 @@ pub const DiagnosticInvoker = extern struct {
 };
 pub const IDiagnosticActionResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
@@ -91,6 +118,12 @@ pub const IDiagnosticActionResult = extern struct {
 };
 pub const IDiagnosticInvoker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RunDiagnosticActionAsync(self: *@This(), context: *JsonObject) core.HResult!*IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState) {
         var _r: *IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState) = undefined;
         const _c = self.vtable.RunDiagnosticActionAsync(@ptrCast(self), context, &_r);
@@ -114,6 +147,12 @@ pub const IDiagnosticInvoker = extern struct {
 };
 pub const IDiagnosticInvoker2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RunDiagnosticActionFromStringAsync(self: *@This(), context: ?HSTRING) core.HResult!*IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState) {
         var _r: *IAsyncOperationWithProgress(DiagnosticActionResult,DiagnosticActionState) = undefined;
         const _c = self.vtable.RunDiagnosticActionFromStringAsync(@ptrCast(self), context, &_r);
@@ -137,6 +176,12 @@ pub const IDiagnosticInvoker2 = extern struct {
 };
 pub const IDiagnosticInvokerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*DiagnosticInvoker {
         var _r: *DiagnosticInvoker = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -174,6 +219,12 @@ pub const IDiagnosticInvokerStatics = extern struct {
 };
 pub const IProcessCpuUsage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetReport(self: *@This()) core.HResult!*ProcessCpuUsageReport {
         var _r: *ProcessCpuUsageReport = undefined;
         const _c = self.vtable.GetReport(@ptrCast(self), &_r);
@@ -197,6 +248,12 @@ pub const IProcessCpuUsage = extern struct {
 };
 pub const IProcessCpuUsageReport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKernelTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_KernelTime(@ptrCast(self), &_r);
@@ -227,6 +284,12 @@ pub const IProcessCpuUsageReport = extern struct {
 };
 pub const IProcessDiagnosticInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProcessId(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ProcessId(@ptrCast(self), &_r);
@@ -292,6 +355,12 @@ pub const IProcessDiagnosticInfo = extern struct {
 };
 pub const IProcessDiagnosticInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAppDiagnosticInfos(self: *@This()) core.HResult!*IVector(AppDiagnosticInfo) {
         var _r: *IVector(AppDiagnosticInfo) = undefined;
         const _c = self.vtable.GetAppDiagnosticInfos(@ptrCast(self), &_r);
@@ -322,6 +391,12 @@ pub const IProcessDiagnosticInfo2 = extern struct {
 };
 pub const IProcessDiagnosticInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForProcesses(self: *@This()) core.HResult!*IVectorView(ProcessDiagnosticInfo) {
         var _r: *IVectorView(ProcessDiagnosticInfo) = undefined;
         const _c = self.vtable.GetForProcesses(@ptrCast(self), &_r);
@@ -352,6 +427,12 @@ pub const IProcessDiagnosticInfoStatics = extern struct {
 };
 pub const IProcessDiagnosticInfoStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryGetForProcessId(self: *@This(), processId: u32) core.HResult!*ProcessDiagnosticInfo {
         var _r: *ProcessDiagnosticInfo = undefined;
         const _c = self.vtable.TryGetForProcessId(@ptrCast(self), processId, &_r);
@@ -375,6 +456,12 @@ pub const IProcessDiagnosticInfoStatics2 = extern struct {
 };
 pub const IProcessDiskUsage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetReport(self: *@This()) core.HResult!*ProcessDiskUsageReport {
         var _r: *ProcessDiskUsageReport = undefined;
         const _c = self.vtable.GetReport(@ptrCast(self), &_r);
@@ -398,6 +485,12 @@ pub const IProcessDiskUsage = extern struct {
 };
 pub const IProcessDiskUsageReport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReadOperationCount(self: *@This()) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.get_ReadOperationCount(@ptrCast(self), &_r);
@@ -456,6 +549,12 @@ pub const IProcessDiskUsageReport = extern struct {
 };
 pub const IProcessMemoryUsage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetReport(self: *@This()) core.HResult!*ProcessMemoryUsageReport {
         var _r: *ProcessMemoryUsageReport = undefined;
         const _c = self.vtable.GetReport(@ptrCast(self), &_r);
@@ -479,6 +578,12 @@ pub const IProcessMemoryUsage = extern struct {
 };
 pub const IProcessMemoryUsageReport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNonPagedPoolSizeInBytes(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_NonPagedPoolSizeInBytes(@ptrCast(self), &_r);
@@ -579,6 +684,12 @@ pub const IProcessMemoryUsageReport = extern struct {
 };
 pub const ISystemCpuUsage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetReport(self: *@This()) core.HResult!*SystemCpuUsageReport {
         var _r: *SystemCpuUsageReport = undefined;
         const _c = self.vtable.GetReport(@ptrCast(self), &_r);
@@ -602,6 +713,12 @@ pub const ISystemCpuUsage = extern struct {
 };
 pub const ISystemCpuUsageReport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKernelTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_KernelTime(@ptrCast(self), &_r);
@@ -639,6 +756,12 @@ pub const ISystemCpuUsageReport = extern struct {
 };
 pub const ISystemDiagnosticInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMemoryUsage(self: *@This()) core.HResult!*SystemMemoryUsage {
         var _r: *SystemMemoryUsage = undefined;
         const _c = self.vtable.get_MemoryUsage(@ptrCast(self), &_r);
@@ -669,6 +792,12 @@ pub const ISystemDiagnosticInfo = extern struct {
 };
 pub const ISystemDiagnosticInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentSystem(self: *@This()) core.HResult!*SystemDiagnosticInfo {
         var _r: *SystemDiagnosticInfo = undefined;
         const _c = self.vtable.GetForCurrentSystem(@ptrCast(self), &_r);
@@ -692,6 +821,12 @@ pub const ISystemDiagnosticInfoStatics = extern struct {
 };
 pub const ISystemDiagnosticInfoStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsArchitectureSupported(self: *@This(), ty: ProcessorArchitecture) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsArchitectureSupported(@ptrCast(self), ty, &_r);
@@ -722,6 +857,12 @@ pub const ISystemDiagnosticInfoStatics2 = extern struct {
 };
 pub const ISystemMemoryUsage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetReport(self: *@This()) core.HResult!*SystemMemoryUsageReport {
         var _r: *SystemMemoryUsageReport = undefined;
         const _c = self.vtable.GetReport(@ptrCast(self), &_r);
@@ -745,6 +886,12 @@ pub const ISystemMemoryUsage = extern struct {
 };
 pub const ISystemMemoryUsageReport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTotalPhysicalSizeInBytes(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_TotalPhysicalSizeInBytes(@ptrCast(self), &_r);
@@ -782,6 +929,18 @@ pub const ISystemMemoryUsageReport = extern struct {
 };
 pub const ProcessCpuUsage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetReport(self: *@This()) core.HResult!*ProcessCpuUsageReport {
         const this: *IProcessCpuUsage = @ptrCast(self);
         return try this.GetReport();
@@ -794,6 +953,18 @@ pub const ProcessCpuUsage = extern struct {
 };
 pub const ProcessCpuUsageReport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKernelTime(self: *@This()) core.HResult!TimeSpan {
         const this: *IProcessCpuUsageReport = @ptrCast(self);
         return try this.getKernelTime();
@@ -810,6 +981,18 @@ pub const ProcessCpuUsageReport = extern struct {
 };
 pub const ProcessDiagnosticInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProcessId(self: *@This()) core.HResult!u32 {
         const this: *IProcessDiagnosticInfo = @ptrCast(self);
         return try this.getProcessId();
@@ -852,9 +1035,6 @@ pub const ProcessDiagnosticInfo = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsPackaged();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForProcesses() core.HResult!*IVectorView(ProcessDiagnosticInfo) {
         const _f = try @This()._IProcessDiagnosticInfoStaticsCache.get();
         return try _f.GetForProcesses();
@@ -877,6 +1057,18 @@ pub const ProcessDiagnosticInfo = extern struct {
 };
 pub const ProcessDiskUsage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetReport(self: *@This()) core.HResult!*ProcessDiskUsageReport {
         const this: *IProcessDiskUsage = @ptrCast(self);
         return try this.GetReport();
@@ -889,6 +1081,18 @@ pub const ProcessDiskUsage = extern struct {
 };
 pub const ProcessDiskUsageReport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReadOperationCount(self: *@This()) core.HResult!i64 {
         const this: *IProcessDiskUsageReport = @ptrCast(self);
         return try this.getReadOperationCount();
@@ -921,6 +1125,18 @@ pub const ProcessDiskUsageReport = extern struct {
 };
 pub const ProcessMemoryUsage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetReport(self: *@This()) core.HResult!*ProcessMemoryUsageReport {
         const this: *IProcessMemoryUsage = @ptrCast(self);
         return try this.GetReport();
@@ -933,6 +1149,18 @@ pub const ProcessMemoryUsage = extern struct {
 };
 pub const ProcessMemoryUsageReport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNonPagedPoolSizeInBytes(self: *@This()) core.HResult!u64 {
         const this: *IProcessMemoryUsageReport = @ptrCast(self);
         return try this.getNonPagedPoolSizeInBytes();
@@ -989,6 +1217,18 @@ pub const ProcessMemoryUsageReport = extern struct {
 };
 pub const SystemCpuUsage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetReport(self: *@This()) core.HResult!*SystemCpuUsageReport {
         const this: *ISystemCpuUsage = @ptrCast(self);
         return try this.GetReport();
@@ -1001,6 +1241,18 @@ pub const SystemCpuUsage = extern struct {
 };
 pub const SystemCpuUsageReport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKernelTime(self: *@This()) core.HResult!TimeSpan {
         const this: *ISystemCpuUsageReport = @ptrCast(self);
         return try this.getKernelTime();
@@ -1021,6 +1273,18 @@ pub const SystemCpuUsageReport = extern struct {
 };
 pub const SystemDiagnosticInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMemoryUsage(self: *@This()) core.HResult!*SystemMemoryUsage {
         const this: *ISystemDiagnosticInfo = @ptrCast(self);
         return try this.getMemoryUsage();
@@ -1028,9 +1292,6 @@ pub const SystemDiagnosticInfo = extern struct {
     pub fn getCpuUsage(self: *@This()) core.HResult!*SystemCpuUsage {
         const this: *ISystemDiagnosticInfo = @ptrCast(self);
         return try this.getCpuUsage();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentSystem() core.HResult!*SystemDiagnosticInfo {
         const _f = try @This()._ISystemDiagnosticInfoStaticsCache.get();
@@ -1054,6 +1315,18 @@ pub const SystemDiagnosticInfo = extern struct {
 };
 pub const SystemMemoryUsage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetReport(self: *@This()) core.HResult!*SystemMemoryUsageReport {
         const this: *ISystemMemoryUsage = @ptrCast(self);
         return try this.GetReport();
@@ -1066,6 +1339,18 @@ pub const SystemMemoryUsage = extern struct {
 };
 pub const SystemMemoryUsageReport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTotalPhysicalSizeInBytes(self: *@This()) core.HResult!u64 {
         const this: *ISystemMemoryUsageReport = @ptrCast(self);
         return try this.getTotalPhysicalSizeInBytes();

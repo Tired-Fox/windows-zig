@@ -1,6 +1,15 @@
 // ----- This code is automatically generated -----
 pub const AsymmetricAlgorithmNames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -95,6 +104,18 @@ pub const AsymmetricAlgorithmNames = extern struct {
 };
 pub const AsymmetricKeyAlgorithmProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAsymmetricKeyAlgorithmProvider = @ptrCast(self);
         return try this.getAlgorithmName();
@@ -133,9 +154,6 @@ pub const AsymmetricKeyAlgorithmProvider = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateKeyPairWithCurveParameters(parameters);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn OpenAlgorithm(algorithm: ?HSTRING) core.HResult!*AsymmetricKeyAlgorithmProvider {
         const _f = try @This()._IAsymmetricKeyAlgorithmProviderStaticsCache.get();
         return try _f.OpenAlgorithm(algorithm);
@@ -153,6 +171,15 @@ pub const Capi1KdfTargetAlgorithm = enum(i32) {
 };
 pub const CryptographicEngine = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -211,6 +238,18 @@ pub const CryptographicEngine = extern struct {
 };
 pub const CryptographicHash = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Append(self: *@This(), data: *IBuffer) core.HResult!void {
         const this: *IHashComputation = @ptrCast(self);
         return try this.Append(data);
@@ -227,6 +266,18 @@ pub const CryptographicHash = extern struct {
 };
 pub const CryptographicKey = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeySize(self: *@This()) core.HResult!u32 {
         const this: *ICryptographicKey = @ptrCast(self);
         return try this.getKeySize();
@@ -275,6 +326,15 @@ pub const CryptographicPublicKeyBlobType = enum(i32) {
 };
 pub const EccCurveNames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -468,6 +528,18 @@ pub const EccCurveNames = extern struct {
 };
 pub const EncryptedAndAuthenticatedData = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEncryptedData(self: *@This()) core.HResult!*IBuffer {
         const this: *IEncryptedAndAuthenticatedData = @ptrCast(self);
         return try this.getEncryptedData();
@@ -484,6 +556,15 @@ pub const EncryptedAndAuthenticatedData = extern struct {
 };
 pub const HashAlgorithmNames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -513,6 +594,18 @@ pub const HashAlgorithmNames = extern struct {
 };
 pub const HashAlgorithmProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *IHashAlgorithmProvider = @ptrCast(self);
         return try this.getAlgorithmName();
@@ -529,9 +622,6 @@ pub const HashAlgorithmProvider = extern struct {
         const this: *IHashAlgorithmProvider = @ptrCast(self);
         return try this.CreateHash();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn OpenAlgorithm(algorithm: ?HSTRING) core.HResult!*HashAlgorithmProvider {
         const _f = try @This()._IHashAlgorithmProviderStaticsCache.get();
         return try _f.OpenAlgorithm(algorithm);
@@ -545,6 +635,12 @@ pub const HashAlgorithmProvider = extern struct {
 };
 pub const IAsymmetricAlgorithmNamesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRsaPkcs1(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RsaPkcs1(@ptrCast(self), &_r);
@@ -687,6 +783,12 @@ pub const IAsymmetricAlgorithmNamesStatics = extern struct {
 };
 pub const IAsymmetricAlgorithmNamesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEcdsaSha256(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_EcdsaSha256(@ptrCast(self), &_r);
@@ -724,6 +826,12 @@ pub const IAsymmetricAlgorithmNamesStatics2 = extern struct {
 };
 pub const IAsymmetricKeyAlgorithmProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlgorithmName(@ptrCast(self), &_r);
@@ -782,6 +890,12 @@ pub const IAsymmetricKeyAlgorithmProvider = extern struct {
 };
 pub const IAsymmetricKeyAlgorithmProvider2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateKeyPairWithCurveName(self: *@This(), curveName: ?HSTRING) core.HResult!*CryptographicKey {
         var _r: *CryptographicKey = undefined;
         const _c = self.vtable.CreateKeyPairWithCurveName(@ptrCast(self), curveName, &_r);
@@ -812,6 +926,12 @@ pub const IAsymmetricKeyAlgorithmProvider2 = extern struct {
 };
 pub const IAsymmetricKeyAlgorithmProviderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenAlgorithm(self: *@This(), algorithm: ?HSTRING) core.HResult!*AsymmetricKeyAlgorithmProvider {
         var _r: *AsymmetricKeyAlgorithmProvider = undefined;
         const _c = self.vtable.OpenAlgorithm(@ptrCast(self), algorithm, &_r);
@@ -835,6 +955,12 @@ pub const IAsymmetricKeyAlgorithmProviderStatics = extern struct {
 };
 pub const ICryptographicEngineStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Encrypt(self: *@This(), key: *CryptographicKey, data: *IBuffer, iv: *IBuffer) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.Encrypt(@ptrCast(self), key, data, iv, &_r);
@@ -900,6 +1026,12 @@ pub const ICryptographicEngineStatics = extern struct {
 };
 pub const ICryptographicEngineStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SignHashedData(self: *@This(), key: *CryptographicKey, data: *IBuffer) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.SignHashedData(@ptrCast(self), key, data, &_r);
@@ -951,6 +1083,12 @@ pub const ICryptographicEngineStatics2 = extern struct {
 };
 pub const ICryptographicKey = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeySize(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_KeySize(@ptrCast(self), &_r);
@@ -1002,6 +1140,12 @@ pub const ICryptographicKey = extern struct {
 };
 pub const IEccCurveNamesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBrainpoolP160r1(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BrainpoolP160r1(@ptrCast(self), &_r);
@@ -1340,6 +1484,12 @@ pub const IEccCurveNamesStatics = extern struct {
 };
 pub const IEncryptedAndAuthenticatedData = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEncryptedData(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_EncryptedData(@ptrCast(self), &_r);
@@ -1370,6 +1520,12 @@ pub const IEncryptedAndAuthenticatedData = extern struct {
 };
 pub const IHashAlgorithmNamesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMd5(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Md5(@ptrCast(self), &_r);
@@ -1421,6 +1577,12 @@ pub const IHashAlgorithmNamesStatics = extern struct {
 };
 pub const IHashAlgorithmProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlgorithmName(@ptrCast(self), &_r);
@@ -1465,6 +1627,12 @@ pub const IHashAlgorithmProvider = extern struct {
 };
 pub const IHashAlgorithmProviderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenAlgorithm(self: *@This(), algorithm: ?HSTRING) core.HResult!*HashAlgorithmProvider {
         var _r: *HashAlgorithmProvider = undefined;
         const _c = self.vtable.OpenAlgorithm(@ptrCast(self), algorithm, &_r);
@@ -1488,6 +1656,12 @@ pub const IHashAlgorithmProviderStatics = extern struct {
 };
 pub const IHashComputation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Append(self: *@This(), data: *IBuffer) core.HResult!void {
         const _c = self.vtable.Append(@ptrCast(self), data);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1516,6 +1690,12 @@ pub const IHashComputation = extern struct {
 };
 pub const IKeyDerivationAlgorithmNamesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPbkdf2Md5(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Pbkdf2Md5(@ptrCast(self), &_r);
@@ -1637,6 +1817,12 @@ pub const IKeyDerivationAlgorithmNamesStatics = extern struct {
 };
 pub const IKeyDerivationAlgorithmNamesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapiKdfMd5(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CapiKdfMd5(@ptrCast(self), &_r);
@@ -1688,6 +1874,12 @@ pub const IKeyDerivationAlgorithmNamesStatics2 = extern struct {
 };
 pub const IKeyDerivationAlgorithmProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlgorithmName(@ptrCast(self), &_r);
@@ -1718,6 +1910,12 @@ pub const IKeyDerivationAlgorithmProvider = extern struct {
 };
 pub const IKeyDerivationAlgorithmProviderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenAlgorithm(self: *@This(), algorithm: ?HSTRING) core.HResult!*KeyDerivationAlgorithmProvider {
         var _r: *KeyDerivationAlgorithmProvider = undefined;
         const _c = self.vtable.OpenAlgorithm(@ptrCast(self), algorithm, &_r);
@@ -1741,6 +1939,12 @@ pub const IKeyDerivationAlgorithmProviderStatics = extern struct {
 };
 pub const IKeyDerivationParameters = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKdfGenericBinary(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_KdfGenericBinary(@ptrCast(self), &_r);
@@ -1776,6 +1980,12 @@ pub const IKeyDerivationParameters = extern struct {
 };
 pub const IKeyDerivationParameters2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCapi1KdfTargetAlgorithm(self: *@This()) core.HResult!Capi1KdfTargetAlgorithm {
         var _r: Capi1KdfTargetAlgorithm = undefined;
         const _c = self.vtable.get_Capi1KdfTargetAlgorithm(@ptrCast(self), &_r);
@@ -1804,6 +2014,12 @@ pub const IKeyDerivationParameters2 = extern struct {
 };
 pub const IKeyDerivationParametersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn BuildForPbkdf2(self: *@This(), pbkdf2Salt: *IBuffer, iterationCount: u32) core.HResult!*KeyDerivationParameters {
         var _r: *KeyDerivationParameters = undefined;
         const _c = self.vtable.BuildForPbkdf2(@ptrCast(self), pbkdf2Salt, iterationCount, &_r);
@@ -1841,6 +2057,12 @@ pub const IKeyDerivationParametersStatics = extern struct {
 };
 pub const IKeyDerivationParametersStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn BuildForCapi1Kdf(self: *@This(), capi1KdfTargetAlgorithm: Capi1KdfTargetAlgorithm) core.HResult!*KeyDerivationParameters {
         var _r: *KeyDerivationParameters = undefined;
         const _c = self.vtable.BuildForCapi1Kdf(@ptrCast(self), capi1KdfTargetAlgorithm, &_r);
@@ -1864,6 +2086,12 @@ pub const IKeyDerivationParametersStatics2 = extern struct {
 };
 pub const IMacAlgorithmNamesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHmacMd5(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_HmacMd5(@ptrCast(self), &_r);
@@ -1922,6 +2150,12 @@ pub const IMacAlgorithmNamesStatics = extern struct {
 };
 pub const IMacAlgorithmProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlgorithmName(@ptrCast(self), &_r);
@@ -1959,6 +2193,12 @@ pub const IMacAlgorithmProvider = extern struct {
 };
 pub const IMacAlgorithmProvider2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateHash(self: *@This(), keyMaterial: *IBuffer) core.HResult!*CryptographicHash {
         var _r: *CryptographicHash = undefined;
         const _c = self.vtable.CreateHash(@ptrCast(self), keyMaterial, &_r);
@@ -1982,6 +2222,12 @@ pub const IMacAlgorithmProvider2 = extern struct {
 };
 pub const IMacAlgorithmProviderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenAlgorithm(self: *@This(), algorithm: ?HSTRING) core.HResult!*MacAlgorithmProvider {
         var _r: *MacAlgorithmProvider = undefined;
         const _c = self.vtable.OpenAlgorithm(@ptrCast(self), algorithm, &_r);
@@ -2005,6 +2251,12 @@ pub const IMacAlgorithmProviderStatics = extern struct {
 };
 pub const IPersistedKeyProviderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenKeyPairFromCertificateAsync(self: *@This(), certificate: *Certificate, hashAlgorithmName: ?HSTRING, padding: CryptographicPadding) core.HResult!*IAsyncOperation(CryptographicKey) {
         var _r: *IAsyncOperation(CryptographicKey) = undefined;
         const _c = self.vtable.OpenKeyPairFromCertificateAsync(@ptrCast(self), certificate, hashAlgorithmName, padding, &_r);
@@ -2035,6 +2287,12 @@ pub const IPersistedKeyProviderStatics = extern struct {
 };
 pub const ISymmetricAlgorithmNamesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesCbc(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DesCbc(@ptrCast(self), &_r);
@@ -2184,6 +2442,12 @@ pub const ISymmetricAlgorithmNamesStatics = extern struct {
 };
 pub const ISymmetricKeyAlgorithmProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AlgorithmName(@ptrCast(self), &_r);
@@ -2221,6 +2485,12 @@ pub const ISymmetricKeyAlgorithmProvider = extern struct {
 };
 pub const ISymmetricKeyAlgorithmProviderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenAlgorithm(self: *@This(), algorithm: ?HSTRING) core.HResult!*SymmetricKeyAlgorithmProvider {
         var _r: *SymmetricKeyAlgorithmProvider = undefined;
         const _c = self.vtable.OpenAlgorithm(@ptrCast(self), algorithm, &_r);
@@ -2244,6 +2514,15 @@ pub const ISymmetricKeyAlgorithmProviderStatics = extern struct {
 };
 pub const KeyDerivationAlgorithmNames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2334,6 +2613,18 @@ pub const KeyDerivationAlgorithmNames = extern struct {
 };
 pub const KeyDerivationAlgorithmProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *IKeyDerivationAlgorithmProvider = @ptrCast(self);
         return try this.getAlgorithmName();
@@ -2341,9 +2632,6 @@ pub const KeyDerivationAlgorithmProvider = extern struct {
     pub fn CreateKey(self: *@This(), keyMaterial: *IBuffer) core.HResult!*CryptographicKey {
         const this: *IKeyDerivationAlgorithmProvider = @ptrCast(self);
         return try this.CreateKey(keyMaterial);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OpenAlgorithm(algorithm: ?HSTRING) core.HResult!*KeyDerivationAlgorithmProvider {
         const _f = try @This()._IKeyDerivationAlgorithmProviderStaticsCache.get();
@@ -2358,6 +2646,18 @@ pub const KeyDerivationAlgorithmProvider = extern struct {
 };
 pub const KeyDerivationParameters = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKdfGenericBinary(self: *@This()) core.HResult!*IBuffer {
         const this: *IKeyDerivationParameters = @ptrCast(self);
         return try this.getKdfGenericBinary();
@@ -2383,9 +2683,6 @@ pub const KeyDerivationParameters = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IKeyDerivationParameters2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCapi1KdfTargetAlgorithm(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn BuildForCapi1Kdf(capi1KdfTargetAlgorithm: Capi1KdfTargetAlgorithm) core.HResult!*KeyDerivationParameters {
         const _f = try @This()._IKeyDerivationParametersStatics2Cache.get();
@@ -2413,6 +2710,15 @@ pub const KeyDerivationParameters = extern struct {
 };
 pub const MacAlgorithmNames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2446,6 +2752,18 @@ pub const MacAlgorithmNames = extern struct {
 };
 pub const MacAlgorithmProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *IMacAlgorithmProvider = @ptrCast(self);
         return try this.getAlgorithmName();
@@ -2465,9 +2783,6 @@ pub const MacAlgorithmProvider = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateHash(keyMaterial);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn OpenAlgorithm(algorithm: ?HSTRING) core.HResult!*MacAlgorithmProvider {
         const _f = try @This()._IMacAlgorithmProviderStaticsCache.get();
         return try _f.OpenAlgorithm(algorithm);
@@ -2481,6 +2796,15 @@ pub const MacAlgorithmProvider = extern struct {
 };
 pub const PersistedKeyProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2498,6 +2822,15 @@ pub const PersistedKeyProvider = extern struct {
 };
 pub const SymmetricAlgorithmNames = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2583,6 +2916,18 @@ pub const SymmetricAlgorithmNames = extern struct {
 };
 pub const SymmetricKeyAlgorithmProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlgorithmName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISymmetricKeyAlgorithmProvider = @ptrCast(self);
         return try this.getAlgorithmName();
@@ -2594,9 +2939,6 @@ pub const SymmetricKeyAlgorithmProvider = extern struct {
     pub fn CreateSymmetricKey(self: *@This(), keyMaterial: *IBuffer) core.HResult!*CryptographicKey {
         const this: *ISymmetricKeyAlgorithmProvider = @ptrCast(self);
         return try this.CreateSymmetricKey(keyMaterial);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OpenAlgorithm(algorithm: ?HSTRING) core.HResult!*SymmetricKeyAlgorithmProvider {
         const _f = try @This()._ISymmetricKeyAlgorithmProviderStaticsCache.get();

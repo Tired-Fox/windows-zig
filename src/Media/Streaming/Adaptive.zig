@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AdaptiveMediaSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsLive(self: *@This()) core.HResult!bool {
         const this: *IAdaptiveMediaSource = @ptrCast(self);
         return try this.getIsLive();
@@ -161,9 +173,6 @@ pub const AdaptiveMediaSource = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn IsContentTypeSupported(contentType: ?HSTRING) core.HResult!bool {
         const _f = try @This()._IAdaptiveMediaSourceStaticsCache.get();
         return try _f.IsContentTypeSupported(contentType);
@@ -193,6 +202,18 @@ pub const AdaptiveMediaSource = extern struct {
 };
 pub const AdaptiveMediaSourceAdvancedSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllSegmentsIndependent(self: *@This()) core.HResult!bool {
         const this: *IAdaptiveMediaSourceAdvancedSettings = @ptrCast(self);
         return try this.getAllSegmentsIndependent();
@@ -225,6 +246,18 @@ pub const AdaptiveMediaSourceAdvancedSettings = extern struct {
 };
 pub const AdaptiveMediaSourceCorrelatedTimes = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!*IReference(TimeSpan) {
         const this: *IAdaptiveMediaSourceCorrelatedTimes = @ptrCast(self);
         return try this.getPosition();
@@ -245,6 +278,18 @@ pub const AdaptiveMediaSourceCorrelatedTimes = extern struct {
 };
 pub const AdaptiveMediaSourceCreationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!AdaptiveMediaSourceCreationStatus {
         const this: *IAdaptiveMediaSourceCreationResult = @ptrCast(self);
         return try this.getStatus();
@@ -281,6 +326,18 @@ pub const AdaptiveMediaSourceCreationStatus = enum(i32) {
 };
 pub const AdaptiveMediaSourceDiagnosticAvailableEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDiagnosticType(self: *@This()) core.HResult!AdaptiveMediaSourceDiagnosticType {
         const this: *IAdaptiveMediaSourceDiagnosticAvailableEventArgs = @ptrCast(self);
         return try this.getDiagnosticType();
@@ -357,6 +414,18 @@ pub const AdaptiveMediaSourceDiagnosticType = enum(i32) {
 };
 pub const AdaptiveMediaSourceDiagnostics = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addDiagnosticAvailable(self: *@This(), handler: *TypedEventHandler(AdaptiveMediaSourceDiagnostics,AdaptiveMediaSourceDiagnosticAvailableEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IAdaptiveMediaSourceDiagnostics = @ptrCast(self);
         return try this.addDiagnosticAvailable(handler);
@@ -373,6 +442,18 @@ pub const AdaptiveMediaSourceDiagnostics = extern struct {
 };
 pub const AdaptiveMediaSourceDownloadBitrateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOldValue(self: *@This()) core.HResult!u32 {
         const this: *IAdaptiveMediaSourceDownloadBitrateChangedEventArgs = @ptrCast(self);
         return try this.getOldValue();
@@ -405,6 +486,18 @@ pub const AdaptiveMediaSourceDownloadBitrateChangedReason = enum(i32) {
 };
 pub const AdaptiveMediaSourceDownloadCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceType(self: *@This()) core.HResult!AdaptiveMediaSourceResourceType {
         const this: *IAdaptiveMediaSourceDownloadCompletedEventArgs = @ptrCast(self);
         return try this.getResourceType();
@@ -468,6 +561,18 @@ pub const AdaptiveMediaSourceDownloadCompletedEventArgs = extern struct {
 };
 pub const AdaptiveMediaSourceDownloadFailedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceType(self: *@This()) core.HResult!AdaptiveMediaSourceResourceType {
         const this: *IAdaptiveMediaSourceDownloadFailedEventArgs = @ptrCast(self);
         return try this.getResourceType();
@@ -538,6 +643,18 @@ pub const AdaptiveMediaSourceDownloadFailedEventArgs = extern struct {
 };
 pub const AdaptiveMediaSourceDownloadRequestedDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IAdaptiveMediaSourceDownloadRequestedDeferral = @ptrCast(self);
         return try this.Complete();
@@ -550,6 +667,18 @@ pub const AdaptiveMediaSourceDownloadRequestedDeferral = extern struct {
 };
 pub const AdaptiveMediaSourceDownloadRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceType(self: *@This()) core.HResult!AdaptiveMediaSourceResourceType {
         const this: *IAdaptiveMediaSourceDownloadRequestedEventArgs = @ptrCast(self);
         return try this.getResourceType();
@@ -610,6 +739,18 @@ pub const AdaptiveMediaSourceDownloadRequestedEventArgs = extern struct {
 };
 pub const AdaptiveMediaSourceDownloadResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceUri(self: *@This()) core.HResult!*Uri {
         const this: *IAdaptiveMediaSourceDownloadResult = @ptrCast(self);
         return try this.getResourceUri();
@@ -686,6 +827,18 @@ pub const AdaptiveMediaSourceDownloadResult = extern struct {
 };
 pub const AdaptiveMediaSourceDownloadStatistics = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentBytesReceivedCount(self: *@This()) core.HResult!u64 {
         const this: *IAdaptiveMediaSourceDownloadStatistics = @ptrCast(self);
         return try this.getContentBytesReceivedCount();
@@ -710,6 +863,18 @@ pub const AdaptiveMediaSourceDownloadStatistics = extern struct {
 };
 pub const AdaptiveMediaSourcePlaybackBitrateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOldValue(self: *@This()) core.HResult!u32 {
         const this: *IAdaptiveMediaSourcePlaybackBitrateChangedEventArgs = @ptrCast(self);
         return try this.getOldValue();
@@ -738,6 +903,12 @@ pub const AdaptiveMediaSourceResourceType = enum(i32) {
 };
 pub const IAdaptiveMediaSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsLive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsLive(@ptrCast(self), &_r);
@@ -916,6 +1087,12 @@ pub const IAdaptiveMediaSource = extern struct {
 };
 pub const IAdaptiveMediaSource2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdvancedSettings(self: *@This()) core.HResult!*AdaptiveMediaSourceAdvancedSettings {
         var _r: *AdaptiveMediaSourceAdvancedSettings = undefined;
         const _c = self.vtable.get_AdvancedSettings(@ptrCast(self), &_r);
@@ -939,6 +1116,12 @@ pub const IAdaptiveMediaSource2 = extern struct {
 };
 pub const IAdaptiveMediaSource3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinLiveOffset(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_MinLiveOffset(@ptrCast(self), &_r);
@@ -995,6 +1178,12 @@ pub const IAdaptiveMediaSource3 = extern struct {
 };
 pub const IAdaptiveMediaSourceAdvancedSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllSegmentsIndependent(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllSegmentsIndependent(@ptrCast(self), &_r);
@@ -1047,6 +1236,12 @@ pub const IAdaptiveMediaSourceAdvancedSettings = extern struct {
 };
 pub const IAdaptiveMediaSourceCorrelatedTimes = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPosition(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_Position(@ptrCast(self), &_r);
@@ -1084,6 +1279,12 @@ pub const IAdaptiveMediaSourceCorrelatedTimes = extern struct {
 };
 pub const IAdaptiveMediaSourceCreationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!AdaptiveMediaSourceCreationStatus {
         var _r: AdaptiveMediaSourceCreationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1121,6 +1322,12 @@ pub const IAdaptiveMediaSourceCreationResult = extern struct {
 };
 pub const IAdaptiveMediaSourceCreationResult2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
@@ -1144,6 +1351,12 @@ pub const IAdaptiveMediaSourceCreationResult2 = extern struct {
 };
 pub const IAdaptiveMediaSourceDiagnosticAvailableEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDiagnosticType(self: *@This()) core.HResult!AdaptiveMediaSourceDiagnosticType {
         var _r: AdaptiveMediaSourceDiagnosticType = undefined;
         const _c = self.vtable.get_DiagnosticType(@ptrCast(self), &_r);
@@ -1223,6 +1436,12 @@ pub const IAdaptiveMediaSourceDiagnosticAvailableEventArgs = extern struct {
 };
 pub const IAdaptiveMediaSourceDiagnosticAvailableEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedError(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_ExtendedError(@ptrCast(self), &_r);
@@ -1246,6 +1465,12 @@ pub const IAdaptiveMediaSourceDiagnosticAvailableEventArgs2 = extern struct {
 };
 pub const IAdaptiveMediaSourceDiagnosticAvailableEventArgs3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_ResourceDuration(@ptrCast(self), &_r);
@@ -1276,6 +1501,12 @@ pub const IAdaptiveMediaSourceDiagnosticAvailableEventArgs3 = extern struct {
 };
 pub const IAdaptiveMediaSourceDiagnostics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addDiagnosticAvailable(self: *@This(), handler: *TypedEventHandler(AdaptiveMediaSourceDiagnostics,AdaptiveMediaSourceDiagnosticAvailableEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_DiagnosticAvailable(@ptrCast(self), handler, &_r);
@@ -1304,6 +1535,12 @@ pub const IAdaptiveMediaSourceDiagnostics = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadBitrateChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOldValue(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_OldValue(@ptrCast(self), &_r);
@@ -1334,6 +1571,12 @@ pub const IAdaptiveMediaSourceDownloadBitrateChangedEventArgs = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadBitrateChangedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!AdaptiveMediaSourceDownloadBitrateChangedReason {
         var _r: AdaptiveMediaSourceDownloadBitrateChangedReason = undefined;
         const _c = self.vtable.get_Reason(@ptrCast(self), &_r);
@@ -1357,6 +1600,12 @@ pub const IAdaptiveMediaSourceDownloadBitrateChangedEventArgs2 = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceType(self: *@This()) core.HResult!AdaptiveMediaSourceResourceType {
         var _r: AdaptiveMediaSourceResourceType = undefined;
         const _c = self.vtable.get_ResourceType(@ptrCast(self), &_r);
@@ -1408,6 +1657,12 @@ pub const IAdaptiveMediaSourceDownloadCompletedEventArgs = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadCompletedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RequestId(@ptrCast(self), &_r);
@@ -1445,6 +1700,12 @@ pub const IAdaptiveMediaSourceDownloadCompletedEventArgs2 = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadCompletedEventArgs3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_ResourceDuration(@ptrCast(self), &_r);
@@ -1475,6 +1736,12 @@ pub const IAdaptiveMediaSourceDownloadCompletedEventArgs3 = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadFailedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceType(self: *@This()) core.HResult!AdaptiveMediaSourceResourceType {
         var _r: AdaptiveMediaSourceResourceType = undefined;
         const _c = self.vtable.get_ResourceType(@ptrCast(self), &_r);
@@ -1526,6 +1793,12 @@ pub const IAdaptiveMediaSourceDownloadFailedEventArgs = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadFailedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RequestId(@ptrCast(self), &_r);
@@ -1570,6 +1843,12 @@ pub const IAdaptiveMediaSourceDownloadFailedEventArgs2 = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadFailedEventArgs3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_ResourceDuration(@ptrCast(self), &_r);
@@ -1600,6 +1879,12 @@ pub const IAdaptiveMediaSourceDownloadFailedEventArgs3 = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadRequestedDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1621,6 +1906,12 @@ pub const IAdaptiveMediaSourceDownloadRequestedDeferral = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceType(self: *@This()) core.HResult!AdaptiveMediaSourceResourceType {
         var _r: AdaptiveMediaSourceResourceType = undefined;
         const _c = self.vtable.get_ResourceType(@ptrCast(self), &_r);
@@ -1679,6 +1970,12 @@ pub const IAdaptiveMediaSourceDownloadRequestedEventArgs = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadRequestedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_RequestId(@ptrCast(self), &_r);
@@ -1709,6 +2006,12 @@ pub const IAdaptiveMediaSourceDownloadRequestedEventArgs2 = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadRequestedEventArgs3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceDuration(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_ResourceDuration(@ptrCast(self), &_r);
@@ -1739,6 +2042,12 @@ pub const IAdaptiveMediaSourceDownloadRequestedEventArgs3 = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_ResourceUri(@ptrCast(self), &_r);
@@ -1815,6 +2124,12 @@ pub const IAdaptiveMediaSourceDownloadResult = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadResult2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResourceByteRangeOffset(self: *@This()) core.HResult!*IReference(u64) {
         var _r: *IReference(u64) = undefined;
         const _c = self.vtable.get_ResourceByteRangeOffset(@ptrCast(self), &_r);
@@ -1855,6 +2170,12 @@ pub const IAdaptiveMediaSourceDownloadResult2 = extern struct {
 };
 pub const IAdaptiveMediaSourceDownloadStatistics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentBytesReceivedCount(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_ContentBytesReceivedCount(@ptrCast(self), &_r);
@@ -1899,6 +2220,12 @@ pub const IAdaptiveMediaSourceDownloadStatistics = extern struct {
 };
 pub const IAdaptiveMediaSourcePlaybackBitrateChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOldValue(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_OldValue(@ptrCast(self), &_r);
@@ -1936,6 +2263,12 @@ pub const IAdaptiveMediaSourcePlaybackBitrateChangedEventArgs = extern struct {
 };
 pub const IAdaptiveMediaSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsContentTypeSupported(self: *@This(), contentType: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsContentTypeSupported(@ptrCast(self), contentType, &_r);

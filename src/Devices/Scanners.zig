@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IImageScanner = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -80,6 +86,12 @@ pub const IImageScanner = extern struct {
 };
 pub const IImageScannerFeederConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanAutoDetectPageSize(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanAutoDetectPageSize(@ptrCast(self), &_r);
@@ -203,6 +215,12 @@ pub const IImageScannerFeederConfiguration = extern struct {
 };
 pub const IImageScannerFormatConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDefaultFormat(self: *@This()) core.HResult!ImageScannerFormat {
         var _r: ImageScannerFormat = undefined;
         const _c = self.vtable.get_DefaultFormat(@ptrCast(self), &_r);
@@ -245,6 +263,12 @@ pub const IImageScannerFormatConfiguration = extern struct {
 };
 pub const IImageScannerPreviewResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Succeeded(@ptrCast(self), &_r);
@@ -275,6 +299,12 @@ pub const IImageScannerPreviewResult = extern struct {
 };
 pub const IImageScannerScanResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScannedFiles(self: *@This()) core.HResult!*IVectorView(StorageFile) {
         var _r: *IVectorView(StorageFile) = undefined;
         const _c = self.vtable.get_ScannedFiles(@ptrCast(self), &_r);
@@ -298,6 +328,12 @@ pub const IImageScannerScanResult = extern struct {
 };
 pub const IImageScannerSourceConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinScanArea(self: *@This()) core.HResult!Size {
         var _r: Size = undefined;
         const _c = self.vtable.get_MinScanArea(@ptrCast(self), &_r);
@@ -505,6 +541,12 @@ pub const IImageScannerSourceConfiguration = extern struct {
 };
 pub const IImageScannerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(ImageScanner) {
         var _r: *IAsyncOperation(ImageScanner) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
@@ -535,6 +577,18 @@ pub const IImageScannerStatics = extern struct {
 };
 pub const ImageScanner = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IImageScanner = @ptrCast(self);
         return try this.getDeviceId();
@@ -571,9 +625,6 @@ pub const ImageScanner = extern struct {
         const this: *IImageScanner = @ptrCast(self);
         return try this.ScanFilesToFolderAsync(scanSource, storageFolder);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(ImageScanner) {
         const _f = try @This()._IImageScannerStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
@@ -591,6 +642,18 @@ pub const ImageScanner = extern struct {
 };
 pub const ImageScannerAutoConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDefaultFormat(self: *@This()) core.HResult!ImageScannerFormat {
         const this: *IImageScannerFormatConfiguration = @ptrCast(self);
         return try this.getDefaultFormat();
@@ -626,6 +689,18 @@ pub const ImageScannerColorMode = enum(i32) {
 };
 pub const ImageScannerFeederConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDefaultFormat(self: *@This()) core.HResult!ImageScannerFormat {
         const this: *IImageScannerFormatConfiguration = @ptrCast(self);
         return try this.getDefaultFormat();
@@ -972,6 +1047,18 @@ pub const ImageScannerFeederConfiguration = extern struct {
 };
 pub const ImageScannerFlatbedConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDefaultFormat(self: *@This()) core.HResult!ImageScannerFormat {
         const this: *IImageScannerFormatConfiguration = @ptrCast(self);
         return try this.getDefaultFormat();
@@ -1208,6 +1295,18 @@ pub const ImageScannerFormat = enum(i32) {
 };
 pub const ImageScannerPreviewResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSucceeded(self: *@This()) core.HResult!bool {
         const this: *IImageScannerPreviewResult = @ptrCast(self);
         return try this.getSucceeded();
@@ -1228,6 +1327,18 @@ pub const ImageScannerResolution = extern struct {
 };
 pub const ImageScannerScanResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getScannedFiles(self: *@This()) core.HResult!*IVectorView(StorageFile) {
         const this: *IImageScannerScanResult = @ptrCast(self);
         return try this.getScannedFiles();
@@ -1244,8 +1355,8 @@ pub const ImageScannerScanSource = enum(i32) {
     Feeder = 2,
     AutoConfigured = 3,
 };
-const HSTRING = @import("../root.zig").HSTRING;
 const IUnknown = @import("../root.zig").IUnknown;
+const HSTRING = @import("../root.zig").HSTRING;
 const Guid = @import("../root.zig").Guid;
 const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
 const IInspectable = @import("../Foundation.zig").IInspectable;

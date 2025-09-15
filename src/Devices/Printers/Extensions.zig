@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPrintExtensionContextStatic = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromDeviceId(self: *@This(), deviceId: ?HSTRING) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.FromDeviceId(@ptrCast(self), deviceId, &_r);
@@ -24,6 +30,12 @@ pub const IPrintExtensionContextStatic = extern struct {
 };
 pub const IPrintNotificationEventDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrinterName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrinterName(@ptrCast(self), &_r);
@@ -59,6 +71,12 @@ pub const IPrintNotificationEventDetails = extern struct {
 };
 pub const IPrintTaskConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrinterExtensionContext(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_PrinterExtensionContext(@ptrCast(self), &_r);
@@ -94,6 +112,12 @@ pub const IPrintTaskConfiguration = extern struct {
 };
 pub const IPrintTaskConfigurationSaveRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Cancel(self: *@This()) core.HResult!void {
         const _c = self.vtable.Cancel(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -134,6 +158,12 @@ pub const IPrintTaskConfigurationSaveRequest = extern struct {
 };
 pub const IPrintTaskConfigurationSaveRequestedDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -155,6 +185,12 @@ pub const IPrintTaskConfigurationSaveRequestedDeferral = extern struct {
 };
 pub const IPrintTaskConfigurationSaveRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*PrintTaskConfigurationSaveRequest {
         var _r: *PrintTaskConfigurationSaveRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -178,6 +214,15 @@ pub const IPrintTaskConfigurationSaveRequestedEventArgs = extern struct {
 };
 pub const PrintExtensionContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -191,6 +236,18 @@ pub const PrintExtensionContext = extern struct {
 };
 pub const PrintNotificationEventDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrinterName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintNotificationEventDetails = @ptrCast(self);
         return try this.getPrinterName();
@@ -211,6 +268,18 @@ pub const PrintNotificationEventDetails = extern struct {
 };
 pub const PrintTaskConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrinterExtensionContext(self: *@This()) core.HResult!*IInspectable {
         const this: *IPrintTaskConfiguration = @ptrCast(self);
         return try this.getPrinterExtensionContext();
@@ -231,6 +300,18 @@ pub const PrintTaskConfiguration = extern struct {
 };
 pub const PrintTaskConfigurationSaveRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Cancel(self: *@This()) core.HResult!void {
         const this: *IPrintTaskConfigurationSaveRequest = @ptrCast(self);
         return try this.Cancel();
@@ -255,6 +336,18 @@ pub const PrintTaskConfigurationSaveRequest = extern struct {
 };
 pub const PrintTaskConfigurationSaveRequestedDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IPrintTaskConfigurationSaveRequestedDeferral = @ptrCast(self);
         return try this.Complete();
@@ -267,6 +360,18 @@ pub const PrintTaskConfigurationSaveRequestedDeferral = extern struct {
 };
 pub const PrintTaskConfigurationSaveRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*PrintTaskConfigurationSaveRequest {
         const this: *IPrintTaskConfigurationSaveRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -279,6 +384,12 @@ pub const PrintTaskConfigurationSaveRequestedEventArgs = extern struct {
 };
 pub const IPrint3DWorkflow = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceID(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceID(@ptrCast(self), &_r);
@@ -333,6 +444,12 @@ pub const IPrint3DWorkflow = extern struct {
 };
 pub const IPrint3DWorkflow2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addPrinterChanged(self: *@This(), eventHandler: *TypedEventHandler(Print3DWorkflow,Print3DWorkflowPrinterChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PrinterChanged(@ptrCast(self), eventHandler, &_r);
@@ -361,6 +478,12 @@ pub const IPrint3DWorkflow2 = extern struct {
 };
 pub const IPrint3DWorkflowPrintRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!Print3DWorkflowStatus {
         var _r: Print3DWorkflowStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -399,6 +522,12 @@ pub const IPrint3DWorkflowPrintRequestedEventArgs = extern struct {
 };
 pub const IPrint3DWorkflowPrinterChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNewDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NewDeviceId(@ptrCast(self), &_r);
@@ -422,6 +551,18 @@ pub const IPrint3DWorkflowPrinterChangedEventArgs = extern struct {
 };
 pub const Print3DWorkflow = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceID(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrint3DWorkflow = @ptrCast(self);
         return try this.getDeviceID();
@@ -477,6 +618,18 @@ pub const Print3DWorkflowDetail = enum(i32) {
 };
 pub const Print3DWorkflowPrintRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!Print3DWorkflowStatus {
         const this: *IPrint3DWorkflowPrintRequestedEventArgs = @ptrCast(self);
         return try this.getStatus();
@@ -501,6 +654,18 @@ pub const Print3DWorkflowPrintRequestedEventArgs = extern struct {
 };
 pub const Print3DWorkflowPrinterChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNewDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrint3DWorkflowPrinterChangedEventArgs = @ptrCast(self);
         return try this.getNewDeviceId();

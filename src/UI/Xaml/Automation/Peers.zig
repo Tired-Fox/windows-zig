@@ -6,6 +6,18 @@ pub const AccessibilityView = enum(i32) {
 };
 pub const AutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEventsSource(self: *@This()) core.HResult!*AutomationPeer {
         const this: *IAutomationPeer = @ptrCast(self);
         return try this.getEventsSource();
@@ -628,9 +640,6 @@ pub const AutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsDialogCore();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GenerateRawElementProviderRuntimeId() core.HResult!RawElementProviderRuntimeId {
         const _f = try @This()._IAutomationPeerStatics3Cache.get();
         return try _f.GenerateRawElementProviderRuntimeId();
@@ -654,12 +663,21 @@ pub const AutomationPeer = extern struct {
 };
 pub const FrameworkElementAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getOwner(self: *@This()) core.HResult!*UIElement {
-        const this: *IFrameworkElementAutomationPeer = @ptrCast(self);
-        return try this.getOwner();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getOwner(self: *@This()) core.HResult!*UIElement {
+        const this: *IFrameworkElementAutomationPeer = @ptrCast(self);
+        return try this.getOwner();
     }
     pub fn FromElement(element: *UIElement) core.HResult!*AutomationPeer {
         const _f = try @This()._IFrameworkElementAutomationPeerStaticsCache.get();
@@ -683,6 +701,18 @@ pub const FrameworkElementAutomationPeer = extern struct {
 };
 pub const AppBarAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -781,9 +811,6 @@ pub const AppBarAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WaitForInputIdle(milliseconds);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *AppBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarAutomationPeer {
         const _f = try @This()._IAppBarAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -797,6 +824,15 @@ pub const AppBarAutomationPeer = extern struct {
 };
 pub const ButtonBaseAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -813,15 +849,24 @@ pub const ButtonBaseAutomationPeer = extern struct {
 };
 pub const ButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *Button, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ButtonAutomationPeer {
         const _f = try @This()._IButtonAutomationPeerFactoryCache.get();
@@ -836,6 +881,18 @@ pub const ButtonAutomationPeer = extern struct {
 };
 pub const AppBarButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -857,9 +914,6 @@ pub const AppBarButtonAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Expand();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *AppBarButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarButtonAutomationPeer {
         const _f = try @This()._IAppBarButtonAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -873,6 +927,18 @@ pub const AppBarButtonAutomationPeer = extern struct {
 };
 pub const ToggleButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -887,9 +953,6 @@ pub const ToggleButtonAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Toggle();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *ToggleButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleButtonAutomationPeer {
         const _f = try @This()._IToggleButtonAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -903,6 +966,15 @@ pub const ToggleButtonAutomationPeer = extern struct {
 };
 pub const AppBarToggleButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -919,15 +991,24 @@ pub const AppBarToggleButtonAutomationPeer = extern struct {
 };
 pub const AutoSuggestBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *AutoSuggestBox) core.HResult!*AutoSuggestBoxAutomationPeer {
         const _f = try @This()._IAutoSuggestBoxAutomationPeerFactoryCache.get();
@@ -1068,6 +1149,18 @@ pub const AutomationOrientation = enum(i32) {
 };
 pub const AutomationPeerAnnotation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!AnnotationType {
         const this: *IAutomationPeerAnnotation = @ptrCast(self);
         return try this.getType();
@@ -1083,9 +1176,6 @@ pub const AutomationPeerAnnotation = extern struct {
     pub fn putPeer(self: *@This(), value: *AutomationPeer) core.HResult!void {
         const this: *IAutomationPeerAnnotation = @ptrCast(self);
         return try this.putPeer(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1126,6 +1216,18 @@ pub const AutomationStructureChangeType = enum(i32) {
 };
 pub const CalendarDatePickerAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1154,9 +1256,6 @@ pub const CalendarDatePickerAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetValue(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *CalendarDatePicker, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CalendarDatePickerAutomationPeer {
         const _f = try @This()._ICalendarDatePickerAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -1170,6 +1269,15 @@ pub const CalendarDatePickerAutomationPeer = extern struct {
 };
 pub const CaptureElementAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1186,6 +1294,15 @@ pub const CaptureElementAutomationPeer = extern struct {
 };
 pub const CheckBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1202,6 +1319,18 @@ pub const CheckBoxAutomationPeer = extern struct {
 };
 pub const RangeBaseAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var this: ?*IRangeValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1251,9 +1380,6 @@ pub const RangeBaseAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetValue(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *RangeBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RangeBaseAutomationPeer {
         const _f = try @This()._IRangeBaseAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -1267,6 +1393,15 @@ pub const RangeBaseAutomationPeer = extern struct {
 };
 pub const SliderAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1283,6 +1418,15 @@ pub const SliderAutomationPeer = extern struct {
 };
 pub const ColorPickerSliderAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1299,6 +1443,15 @@ pub const ColorPickerSliderAutomationPeer = extern struct {
 };
 pub const ColorSpectrumAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1315,6 +1468,18 @@ pub const ColorSpectrumAutomationPeer = extern struct {
 };
 pub const ItemsControlAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateItemAutomationPeer(self: *@This(), item: *IInspectable) core.HResult!*ItemAutomationPeer {
         var this: ?*IItemsControlAutomationPeer2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1336,9 +1501,6 @@ pub const ItemsControlAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindItemByProperty(startAfter, automationProperty, value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *ItemsControl, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemsControlAutomationPeer {
         const _f = try @This()._IItemsControlAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -1352,6 +1514,18 @@ pub const ItemsControlAutomationPeer = extern struct {
 };
 pub const SelectorAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanSelectMultiple(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1373,9 +1547,6 @@ pub const SelectorAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSelection();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *Selector, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorAutomationPeer {
         const _f = try @This()._ISelectorAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -1389,6 +1560,18 @@ pub const SelectorAutomationPeer = extern struct {
 };
 pub const ComboBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsReadOnly(self: *@This()) core.HResult!bool {
         var this: ?*IValueProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1494,9 +1677,6 @@ pub const ComboBoxAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WaitForInputIdle(milliseconds);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *ComboBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxAutomationPeer {
         const _f = try @This()._IComboBoxAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -1510,6 +1690,15 @@ pub const ComboBoxAutomationPeer = extern struct {
 };
 pub const ComboBoxItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1526,6 +1715,18 @@ pub const ComboBoxItemAutomationPeer = extern struct {
 };
 pub const ItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItem(self: *@This()) core.HResult!*IInspectable {
         const this: *IItemAutomationPeer = @ptrCast(self);
         return try this.getItem();
@@ -1541,9 +1742,6 @@ pub const ItemAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Realize();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *ItemsControlAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemAutomationPeer {
         const _f = try @This()._IItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithParentAndItem(item, parent, baseInterface, innerInterface);
@@ -1557,6 +1755,18 @@ pub const ItemAutomationPeer = extern struct {
 };
 pub const SelectorItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1592,9 +1802,6 @@ pub const SelectorItemAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Select();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *SelectorAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorItemAutomationPeer {
         const _f = try @This()._ISelectorItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithParentAndItem(item, parent, baseInterface, innerInterface);
@@ -1608,15 +1815,24 @@ pub const SelectorItemAutomationPeer = extern struct {
 };
 pub const ComboBoxItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *ComboBoxAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxItemDataAutomationPeer {
         const _f = try @This()._IComboBoxItemDataAutomationPeerFactoryCache.get();
@@ -1631,6 +1847,15 @@ pub const ComboBoxItemDataAutomationPeer = extern struct {
 };
 pub const DatePickerAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1647,6 +1872,18 @@ pub const DatePickerAutomationPeer = extern struct {
 };
 pub const DatePickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.DatePickerFlyoutPresenterAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IDatePickerFlyoutPresenterAutomationPeer.GUID;
@@ -1655,6 +1892,15 @@ pub const DatePickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const FlipViewAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1671,6 +1917,15 @@ pub const FlipViewAutomationPeer = extern struct {
 };
 pub const FlipViewItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1687,15 +1942,24 @@ pub const FlipViewItemAutomationPeer = extern struct {
 };
 pub const FlipViewItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *FlipViewAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipViewItemDataAutomationPeer {
         const _f = try @This()._IFlipViewItemDataAutomationPeerFactoryCache.get();
@@ -1710,6 +1974,15 @@ pub const FlipViewItemDataAutomationPeer = extern struct {
 };
 pub const FlyoutPresenterAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1726,6 +1999,18 @@ pub const FlyoutPresenterAutomationPeer = extern struct {
 };
 pub const ListViewBaseAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDropEffect(self: *@This()) core.HResult!?HSTRING {
         var this: ?*IDropTargetProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1740,9 +2025,6 @@ pub const ListViewBaseAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDropEffects();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *ListViewBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewBaseAutomationPeer {
         const _f = try @This()._IListViewBaseAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -1756,6 +2038,15 @@ pub const ListViewBaseAutomationPeer = extern struct {
 };
 pub const GridViewAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1772,6 +2063,15 @@ pub const GridViewAutomationPeer = extern struct {
 };
 pub const ListViewBaseHeaderItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1788,6 +2088,15 @@ pub const ListViewBaseHeaderItemAutomationPeer = extern struct {
 };
 pub const GridViewHeaderItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1804,6 +2113,15 @@ pub const GridViewHeaderItemAutomationPeer = extern struct {
 };
 pub const GridViewItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1820,15 +2138,24 @@ pub const GridViewItemAutomationPeer = extern struct {
 };
 pub const GridViewItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *GridViewAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewItemDataAutomationPeer {
         const _f = try @This()._IGridViewItemDataAutomationPeerFactoryCache.get();
@@ -1843,6 +2170,15 @@ pub const GridViewItemDataAutomationPeer = extern struct {
 };
 pub const GroupItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1859,6 +2195,15 @@ pub const GroupItemAutomationPeer = extern struct {
 };
 pub const HubAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1875,15 +2220,24 @@ pub const HubAutomationPeer = extern struct {
 };
 pub const HubSectionAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *HubSection, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HubSectionAutomationPeer {
         const _f = try @This()._IHubSectionAutomationPeerFactoryCache.get();
@@ -1898,15 +2252,24 @@ pub const HubSectionAutomationPeer = extern struct {
 };
 pub const HyperlinkButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *HyperlinkButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HyperlinkButtonAutomationPeer {
         const _f = try @This()._IHyperlinkButtonAutomationPeerFactoryCache.get();
@@ -1921,6 +2284,12 @@ pub const HyperlinkButtonAutomationPeer = extern struct {
 };
 pub const IAppBarAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAppBarAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "8b4acfeb-89fa-4f13-84be-35ca5b7c9590";
@@ -1937,6 +2306,12 @@ pub const IAppBarAutomationPeer = extern struct {
 };
 pub const IAppBarAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *AppBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarAutomationPeer {
         var _r: *AppBarAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -1960,6 +2335,12 @@ pub const IAppBarAutomationPeerFactory = extern struct {
 };
 pub const IAppBarButtonAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAppBarButtonAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "443262b2-4f6d-4b76-9d2e-3eff777e8864";
@@ -1976,6 +2357,12 @@ pub const IAppBarButtonAutomationPeer = extern struct {
 };
 pub const IAppBarButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *AppBarButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarButtonAutomationPeer {
         var _r: *AppBarButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -1999,6 +2386,12 @@ pub const IAppBarButtonAutomationPeerFactory = extern struct {
 };
 pub const IAppBarToggleButtonAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAppBarToggleButtonAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "8464efad-9655-4aff-9550-63ae9ec8fe9c";
@@ -2015,6 +2408,12 @@ pub const IAppBarToggleButtonAutomationPeer = extern struct {
 };
 pub const IAppBarToggleButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *AppBarToggleButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarToggleButtonAutomationPeer {
         var _r: *AppBarToggleButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -2038,6 +2437,12 @@ pub const IAppBarToggleButtonAutomationPeerFactory = extern struct {
 };
 pub const IAutoSuggestBoxAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutoSuggestBoxAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "2f32c302-f99b-491d-9726-a5e181643efa";
@@ -2054,6 +2459,12 @@ pub const IAutoSuggestBoxAutomationPeer = extern struct {
 };
 pub const IAutoSuggestBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *AutoSuggestBox) core.HResult!*AutoSuggestBoxAutomationPeer {
         var _r: *AutoSuggestBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, &_r);
@@ -2077,6 +2488,12 @@ pub const IAutoSuggestBoxAutomationPeerFactory = extern struct {
 };
 pub const IAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEventsSource(self: *@This()) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.get_EventsSource(@ptrCast(self), &_r);
@@ -2314,6 +2731,12 @@ pub const IAutomationPeer = extern struct {
 };
 pub const IAutomationPeer2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IAutomationPeer2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ea1f89c7-ebf5-4ab8-88f7-680d821dac61";
@@ -2330,6 +2753,12 @@ pub const IAutomationPeer2 = extern struct {
 };
 pub const IAutomationPeer3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Navigate(self: *@This(), direction: AutomationNavigationDirection) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.Navigate(@ptrCast(self), direction, &_r);
@@ -2422,6 +2851,12 @@ pub const IAutomationPeer3 = extern struct {
 };
 pub const IAutomationPeer4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetLandmarkType(self: *@This()) core.HResult!AutomationLandmarkType {
         var _r: AutomationLandmarkType = undefined;
         const _c = self.vtable.GetLandmarkType(@ptrCast(self), &_r);
@@ -2452,6 +2887,12 @@ pub const IAutomationPeer4 = extern struct {
 };
 pub const IAutomationPeer5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsPeripheral(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsPeripheral(@ptrCast(self), &_r);
@@ -2489,6 +2930,12 @@ pub const IAutomationPeer5 = extern struct {
 };
 pub const IAutomationPeer6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCulture(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetCulture(@ptrCast(self), &_r);
@@ -2512,6 +2959,12 @@ pub const IAutomationPeer6 = extern struct {
 };
 pub const IAutomationPeer7 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RaiseNotificationEvent(self: *@This(), notificationKind: AutomationNotificationKind, notificationProcessing: AutomationNotificationProcessing, displayString: ?HSTRING, activityId: ?HSTRING) core.HResult!void {
         const _c = self.vtable.RaiseNotificationEvent(@ptrCast(self), notificationKind, notificationProcessing, displayString, activityId);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2533,6 +2986,12 @@ pub const IAutomationPeer7 = extern struct {
 };
 pub const IAutomationPeer8 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetHeadingLevel(self: *@This()) core.HResult!AutomationHeadingLevel {
         var _r: AutomationHeadingLevel = undefined;
         const _c = self.vtable.GetHeadingLevel(@ptrCast(self), &_r);
@@ -2556,6 +3015,12 @@ pub const IAutomationPeer8 = extern struct {
 };
 pub const IAutomationPeer9 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsDialog(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsDialog(@ptrCast(self), &_r);
@@ -2579,6 +3044,12 @@ pub const IAutomationPeer9 = extern struct {
 };
 pub const IAutomationPeerAnnotation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!AnnotationType {
         var _r: AnnotationType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -2619,6 +3090,12 @@ pub const IAutomationPeerAnnotation = extern struct {
 };
 pub const IAutomationPeerAnnotationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), ty: AnnotationType) core.HResult!*AutomationPeerAnnotation {
         var _r: *AutomationPeerAnnotation = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), ty, &_r);
@@ -2649,6 +3126,12 @@ pub const IAutomationPeerAnnotationFactory = extern struct {
 };
 pub const IAutomationPeerAnnotationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_TypeProperty(@ptrCast(self), &_r);
@@ -2679,6 +3162,12 @@ pub const IAutomationPeerAnnotationStatics = extern struct {
 };
 pub const IAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -2702,6 +3191,12 @@ pub const IAutomationPeerFactory = extern struct {
 };
 pub const IAutomationPeerOverrides = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPatternCore(self: *@This(), patternInterface: PatternInterface) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetPatternCore(@ptrCast(self), patternInterface, &_r);
@@ -2905,6 +3400,12 @@ pub const IAutomationPeerOverrides = extern struct {
 };
 pub const IAutomationPeerOverrides2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowContextMenuCore(self: *@This()) core.HResult!void {
         const _c = self.vtable.ShowContextMenuCore(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2933,6 +3434,12 @@ pub const IAutomationPeerOverrides2 = extern struct {
 };
 pub const IAutomationPeerOverrides3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn NavigateCore(self: *@This(), direction: AutomationNavigationDirection) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.NavigateCore(@ptrCast(self), direction, &_r);
@@ -2998,6 +3505,12 @@ pub const IAutomationPeerOverrides3 = extern struct {
 };
 pub const IAutomationPeerOverrides4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetLandmarkTypeCore(self: *@This()) core.HResult!AutomationLandmarkType {
         var _r: AutomationLandmarkType = undefined;
         const _c = self.vtable.GetLandmarkTypeCore(@ptrCast(self), &_r);
@@ -3028,6 +3541,12 @@ pub const IAutomationPeerOverrides4 = extern struct {
 };
 pub const IAutomationPeerOverrides5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsPeripheralCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsPeripheralCore(@ptrCast(self), &_r);
@@ -3086,6 +3605,12 @@ pub const IAutomationPeerOverrides5 = extern struct {
 };
 pub const IAutomationPeerOverrides6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCultureCore(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.GetCultureCore(@ptrCast(self), &_r);
@@ -3109,6 +3634,12 @@ pub const IAutomationPeerOverrides6 = extern struct {
 };
 pub const IAutomationPeerOverrides8 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetHeadingLevelCore(self: *@This()) core.HResult!AutomationHeadingLevel {
         var _r: AutomationHeadingLevel = undefined;
         const _c = self.vtable.GetHeadingLevelCore(@ptrCast(self), &_r);
@@ -3132,6 +3663,12 @@ pub const IAutomationPeerOverrides8 = extern struct {
 };
 pub const IAutomationPeerOverrides9 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsDialogCore(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsDialogCore(@ptrCast(self), &_r);
@@ -3155,6 +3692,12 @@ pub const IAutomationPeerOverrides9 = extern struct {
 };
 pub const IAutomationPeerProtected = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn PeerFromProvider(self: *@This(), provider: *IRawElementProviderSimple) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.PeerFromProvider(@ptrCast(self), provider, &_r);
@@ -3185,6 +3728,12 @@ pub const IAutomationPeerProtected = extern struct {
 };
 pub const IAutomationPeerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ListenerExists(self: *@This(), eventId: AutomationEvents) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.ListenerExists(@ptrCast(self), eventId, &_r);
@@ -3208,6 +3757,12 @@ pub const IAutomationPeerStatics = extern struct {
 };
 pub const IAutomationPeerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GenerateRawElementProviderRuntimeId(self: *@This()) core.HResult!RawElementProviderRuntimeId {
         var _r: RawElementProviderRuntimeId = undefined;
         const _c = self.vtable.GenerateRawElementProviderRuntimeId(@ptrCast(self), &_r);
@@ -3231,6 +3786,12 @@ pub const IAutomationPeerStatics3 = extern struct {
 };
 pub const IButtonAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IButtonAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "fb77efbe-39ec-4508-8ac3-51a1424027d7";
@@ -3247,6 +3808,12 @@ pub const IButtonAutomationPeer = extern struct {
 };
 pub const IButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Button, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ButtonAutomationPeer {
         var _r: *ButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3270,6 +3837,12 @@ pub const IButtonAutomationPeerFactory = extern struct {
 };
 pub const IButtonBaseAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IButtonBaseAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a4f3b5b6-7585-4e0b-96d2-08cf6f28befa";
@@ -3286,6 +3859,12 @@ pub const IButtonBaseAutomationPeer = extern struct {
 };
 pub const IButtonBaseAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ButtonBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ButtonBaseAutomationPeer {
         var _r: *ButtonBaseAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3309,6 +3888,12 @@ pub const IButtonBaseAutomationPeerFactory = extern struct {
 };
 pub const ICalendarDatePickerAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ICalendarDatePickerAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "40d8938e-db5e-4b03-beba-d10f62419787";
@@ -3325,6 +3910,12 @@ pub const ICalendarDatePickerAutomationPeer = extern struct {
 };
 pub const ICalendarDatePickerAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *CalendarDatePicker, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CalendarDatePickerAutomationPeer {
         var _r: *CalendarDatePickerAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3348,6 +3939,12 @@ pub const ICalendarDatePickerAutomationPeerFactory = extern struct {
 };
 pub const ICaptureElementAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ICaptureElementAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "dcc44ee0-fa45-45c6-8bb7-320d808f5958";
@@ -3364,6 +3961,12 @@ pub const ICaptureElementAutomationPeer = extern struct {
 };
 pub const ICaptureElementAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *CaptureElement, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CaptureElementAutomationPeer {
         var _r: *CaptureElementAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3387,6 +3990,12 @@ pub const ICaptureElementAutomationPeerFactory = extern struct {
 };
 pub const ICheckBoxAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ICheckBoxAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "eb15bc42-c0a9-46c6-ac24-b83de429c733";
@@ -3403,6 +4012,12 @@ pub const ICheckBoxAutomationPeer = extern struct {
 };
 pub const ICheckBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *CheckBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CheckBoxAutomationPeer {
         var _r: *CheckBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3426,6 +4041,12 @@ pub const ICheckBoxAutomationPeerFactory = extern struct {
 };
 pub const IColorPickerSliderAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IColorPickerSliderAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a514215a-7293-4577-924c-47d4e0bf9b90";
@@ -3442,6 +4063,12 @@ pub const IColorPickerSliderAutomationPeer = extern struct {
 };
 pub const IColorPickerSliderAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ColorPickerSlider, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorPickerSliderAutomationPeer {
         var _r: *ColorPickerSliderAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3465,6 +4092,12 @@ pub const IColorPickerSliderAutomationPeerFactory = extern struct {
 };
 pub const IColorSpectrumAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IColorSpectrumAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "15d5ba03-010d-4ff7-9087-f4dd09f831b7";
@@ -3481,6 +4114,12 @@ pub const IColorSpectrumAutomationPeer = extern struct {
 };
 pub const IColorSpectrumAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ColorSpectrum, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorSpectrumAutomationPeer {
         var _r: *ColorSpectrumAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3504,6 +4143,12 @@ pub const IColorSpectrumAutomationPeerFactory = extern struct {
 };
 pub const IComboBoxAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IComboBoxAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "7eb40d0b-75c5-4263-ba6a-d4a54fb0f239";
@@ -3520,6 +4165,12 @@ pub const IComboBoxAutomationPeer = extern struct {
 };
 pub const IComboBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ComboBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxAutomationPeer {
         var _r: *ComboBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3543,6 +4194,12 @@ pub const IComboBoxAutomationPeerFactory = extern struct {
 };
 pub const IComboBoxItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IComboBoxItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "12ddc76e-9552-446a-82ee-938cc371800f";
@@ -3559,6 +4216,12 @@ pub const IComboBoxItemAutomationPeer = extern struct {
 };
 pub const IComboBoxItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ComboBoxItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxItemAutomationPeer {
         var _r: *ComboBoxItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3582,6 +4245,12 @@ pub const IComboBoxItemAutomationPeerFactory = extern struct {
 };
 pub const IComboBoxItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IComboBoxItemDataAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "4fef6df2-289c-4c04-831b-5a668c6d7104";
@@ -3598,6 +4267,12 @@ pub const IComboBoxItemDataAutomationPeer = extern struct {
 };
 pub const IComboBoxItemDataAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *ComboBoxAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxItemDataAutomationPeer {
         var _r: *ComboBoxItemDataAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
@@ -3621,6 +4296,12 @@ pub const IComboBoxItemDataAutomationPeerFactory = extern struct {
 };
 pub const IDatePickerAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IDatePickerAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "d07d357f-a0b9-45dc-991a-76c505e7d0f5";
@@ -3637,6 +4318,12 @@ pub const IDatePickerAutomationPeer = extern struct {
 };
 pub const IDatePickerAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *DatePicker, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DatePickerAutomationPeer {
         var _r: *DatePickerAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3660,6 +4347,12 @@ pub const IDatePickerAutomationPeerFactory = extern struct {
 };
 pub const IDatePickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IDatePickerFlyoutPresenterAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "752aed38-c2bf-4880-82b2-a6c05e90c135";
@@ -3676,6 +4369,12 @@ pub const IDatePickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const IFlipViewAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IFlipViewAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "8ec0353a-4284-4b00-aef8-a2688ea5e3c4";
@@ -3692,6 +4391,12 @@ pub const IFlipViewAutomationPeer = extern struct {
 };
 pub const IFlipViewAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *FlipView, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipViewAutomationPeer {
         var _r: *FlipViewAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3715,6 +4420,12 @@ pub const IFlipViewAutomationPeerFactory = extern struct {
 };
 pub const IFlipViewItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IFlipViewItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c83034de-fa08-4bd3-aeb2-d2e5bfa04df9";
@@ -3731,6 +4442,12 @@ pub const IFlipViewItemAutomationPeer = extern struct {
 };
 pub const IFlipViewItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *FlipViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipViewItemAutomationPeer {
         var _r: *FlipViewItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3754,6 +4471,12 @@ pub const IFlipViewItemAutomationPeerFactory = extern struct {
 };
 pub const IFlipViewItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IFlipViewItemDataAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "b0986175-00bc-4118-8a6f-16ee9c15d968";
@@ -3770,6 +4493,12 @@ pub const IFlipViewItemDataAutomationPeer = extern struct {
 };
 pub const IFlipViewItemDataAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *FlipViewAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipViewItemDataAutomationPeer {
         var _r: *FlipViewItemDataAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
@@ -3793,6 +4522,12 @@ pub const IFlipViewItemDataAutomationPeerFactory = extern struct {
 };
 pub const IFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IFlyoutPresenterAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a01840b4-5fca-456f-98ea-300eb40b585e";
@@ -3809,6 +4544,12 @@ pub const IFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const IFlyoutPresenterAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *FlyoutPresenter, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlyoutPresenterAutomationPeer {
         var _r: *FlyoutPresenterAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3832,6 +4573,12 @@ pub const IFlyoutPresenterAutomationPeerFactory = extern struct {
 };
 pub const IFrameworkElementAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOwner(self: *@This()) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
         const _c = self.vtable.get_Owner(@ptrCast(self), &_r);
@@ -3855,6 +4602,12 @@ pub const IFrameworkElementAutomationPeer = extern struct {
 };
 pub const IFrameworkElementAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *FrameworkElement, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FrameworkElementAutomationPeer {
         var _r: *FrameworkElementAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3878,6 +4631,12 @@ pub const IFrameworkElementAutomationPeerFactory = extern struct {
 };
 pub const IFrameworkElementAutomationPeerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromElement(self: *@This(), element: *UIElement) core.HResult!*AutomationPeer {
         var _r: *AutomationPeer = undefined;
         const _c = self.vtable.FromElement(@ptrCast(self), element, &_r);
@@ -3908,6 +4667,12 @@ pub const IFrameworkElementAutomationPeerStatics = extern struct {
 };
 pub const IGridViewAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IGridViewAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1c4401a4-d951-49ca-8f82-c7f3c60681b0";
@@ -3924,6 +4689,12 @@ pub const IGridViewAutomationPeer = extern struct {
 };
 pub const IGridViewAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *GridView, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewAutomationPeer {
         var _r: *GridViewAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3947,6 +4718,12 @@ pub const IGridViewAutomationPeerFactory = extern struct {
 };
 pub const IGridViewHeaderItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IGridViewHeaderItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e3dcef3a-e08a-48e7-b23a-2be5b66e474e";
@@ -3963,6 +4740,12 @@ pub const IGridViewHeaderItemAutomationPeer = extern struct {
 };
 pub const IGridViewHeaderItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *GridViewHeaderItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewHeaderItemAutomationPeer {
         var _r: *GridViewHeaderItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -3986,6 +4769,12 @@ pub const IGridViewHeaderItemAutomationPeerFactory = extern struct {
 };
 pub const IGridViewItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IGridViewItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "93ef2d07-346c-4166-a4ba-bc6a181e7f33";
@@ -4002,6 +4791,12 @@ pub const IGridViewItemAutomationPeer = extern struct {
 };
 pub const IGridViewItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *GridViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewItemAutomationPeer {
         var _r: *GridViewItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4025,6 +4820,12 @@ pub const IGridViewItemAutomationPeerFactory = extern struct {
 };
 pub const IGridViewItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IGridViewItemDataAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "f3f4868f-29d4-4094-8c54-ea61a88294a4";
@@ -4041,6 +4842,12 @@ pub const IGridViewItemDataAutomationPeer = extern struct {
 };
 pub const IGridViewItemDataAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *GridViewAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewItemDataAutomationPeer {
         var _r: *GridViewItemDataAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
@@ -4064,6 +4871,12 @@ pub const IGridViewItemDataAutomationPeerFactory = extern struct {
 };
 pub const IGroupItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IGroupItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1914fe6d-0740-4236-9ee1-38cf19c1c388";
@@ -4080,6 +4893,12 @@ pub const IGroupItemAutomationPeer = extern struct {
 };
 pub const IGroupItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *GroupItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GroupItemAutomationPeer {
         var _r: *GroupItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4103,6 +4922,12 @@ pub const IGroupItemAutomationPeerFactory = extern struct {
 };
 pub const IHubAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IHubAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "4ddee056-4ebc-4620-a05d-903e3c9a4ead";
@@ -4119,6 +4944,12 @@ pub const IHubAutomationPeer = extern struct {
 };
 pub const IHubAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Hub, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HubAutomationPeer {
         var _r: *HubAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4142,6 +4973,12 @@ pub const IHubAutomationPeerFactory = extern struct {
 };
 pub const IHubSectionAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IHubSectionAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "16d91ff7-7431-4d82-83ce-cfa3192b0f18";
@@ -4158,6 +4995,12 @@ pub const IHubSectionAutomationPeer = extern struct {
 };
 pub const IHubSectionAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *HubSection, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HubSectionAutomationPeer {
         var _r: *HubSectionAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4181,6 +5024,12 @@ pub const IHubSectionAutomationPeerFactory = extern struct {
 };
 pub const IHyperlinkButtonAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IHyperlinkButtonAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "aa7afcb1-0edf-46d9-aa9e-0eb21d140097";
@@ -4197,6 +5046,12 @@ pub const IHyperlinkButtonAutomationPeer = extern struct {
 };
 pub const IHyperlinkButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *HyperlinkButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HyperlinkButtonAutomationPeer {
         var _r: *HyperlinkButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4220,6 +5075,12 @@ pub const IHyperlinkButtonAutomationPeerFactory = extern struct {
 };
 pub const IImageAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IImageAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "9b0bbf8c-60a2-48bf-ab2c-1a52a451d2d4";
@@ -4236,6 +5097,12 @@ pub const IImageAutomationPeer = extern struct {
 };
 pub const IImageAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Image, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ImageAutomationPeer {
         var _r: *ImageAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4259,6 +5126,12 @@ pub const IImageAutomationPeerFactory = extern struct {
 };
 pub const IInkToolbarAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IInkToolbarAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "123baaa4-f2e8-4bcb-9382-5dfdd11fe45f";
@@ -4275,6 +5148,12 @@ pub const IInkToolbarAutomationPeer = extern struct {
 };
 pub const IItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItem(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Item(@ptrCast(self), &_r);
@@ -4305,6 +5184,12 @@ pub const IItemAutomationPeer = extern struct {
 };
 pub const IItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *ItemsControlAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemAutomationPeer {
         var _r: *ItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
@@ -4328,6 +5213,12 @@ pub const IItemAutomationPeerFactory = extern struct {
 };
 pub const IItemsControlAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IItemsControlAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "96e76bf1-37f7-4088-925d-65268e83e34d";
@@ -4344,6 +5235,12 @@ pub const IItemsControlAutomationPeer = extern struct {
 };
 pub const IItemsControlAutomationPeer2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateItemAutomationPeer(self: *@This(), item: *IInspectable) core.HResult!*ItemAutomationPeer {
         var _r: *ItemAutomationPeer = undefined;
         const _c = self.vtable.CreateItemAutomationPeer(@ptrCast(self), item, &_r);
@@ -4367,6 +5264,12 @@ pub const IItemsControlAutomationPeer2 = extern struct {
 };
 pub const IItemsControlAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ItemsControl, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemsControlAutomationPeer {
         var _r: *ItemsControlAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4390,6 +5293,12 @@ pub const IItemsControlAutomationPeerFactory = extern struct {
 };
 pub const IItemsControlAutomationPeerOverrides2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnCreateItemAutomationPeer(self: *@This(), item: *IInspectable) core.HResult!*ItemAutomationPeer {
         var _r: *ItemAutomationPeer = undefined;
         const _c = self.vtable.OnCreateItemAutomationPeer(@ptrCast(self), item, &_r);
@@ -4413,6 +5322,12 @@ pub const IItemsControlAutomationPeerOverrides2 = extern struct {
 };
 pub const IListBoxAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListBoxAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "8cd0d608-b402-4a6e-bd9a-343f8845eb32";
@@ -4429,6 +5344,12 @@ pub const IListBoxAutomationPeer = extern struct {
 };
 pub const IListBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBoxAutomationPeer {
         var _r: *ListBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4452,6 +5373,12 @@ pub const IListBoxAutomationPeerFactory = extern struct {
 };
 pub const IListBoxItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListBoxItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1bc6e1c6-2997-42df-99eb-92bc1dd149fb";
@@ -4468,6 +5395,12 @@ pub const IListBoxItemAutomationPeer = extern struct {
 };
 pub const IListBoxItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListBoxItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBoxItemAutomationPeer {
         var _r: *ListBoxItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4491,6 +5424,12 @@ pub const IListBoxItemAutomationPeerFactory = extern struct {
 };
 pub const IListBoxItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListBoxItemDataAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "fd7d5fee-fde0-482a-8084-dcebba5b9806";
@@ -4507,6 +5446,12 @@ pub const IListBoxItemDataAutomationPeer = extern struct {
 };
 pub const IListBoxItemDataAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *ListBoxAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBoxItemDataAutomationPeer {
         var _r: *ListBoxItemDataAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
@@ -4530,6 +5475,12 @@ pub const IListBoxItemDataAutomationPeerFactory = extern struct {
 };
 pub const IListPickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListPickerFlyoutPresenterAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "56dfdc58-2395-4060-8047-8ea463698a24";
@@ -4546,6 +5497,12 @@ pub const IListPickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const IListViewAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListViewAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "73cecc87-c0dc-4260-9148-75e9864a7230";
@@ -4562,6 +5519,12 @@ pub const IListViewAutomationPeer = extern struct {
 };
 pub const IListViewAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListView, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewAutomationPeer {
         var _r: *ListViewAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4585,6 +5548,12 @@ pub const IListViewAutomationPeerFactory = extern struct {
 };
 pub const IListViewBaseAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListViewBaseAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "87ec7649-b83d-4e55-9afd-bd835e748f5c";
@@ -4601,6 +5570,12 @@ pub const IListViewBaseAutomationPeer = extern struct {
 };
 pub const IListViewBaseAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListViewBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewBaseAutomationPeer {
         var _r: *ListViewBaseAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4624,6 +5599,12 @@ pub const IListViewBaseAutomationPeerFactory = extern struct {
 };
 pub const IListViewBaseHeaderItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListViewBaseHeaderItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "7cb8b732-c1f0-4a3c-bc14-85dd48dedb85";
@@ -4640,6 +5621,12 @@ pub const IListViewBaseHeaderItemAutomationPeer = extern struct {
 };
 pub const IListViewBaseHeaderItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListViewBaseHeaderItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewBaseHeaderItemAutomationPeer {
         var _r: *ListViewBaseHeaderItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4663,6 +5650,12 @@ pub const IListViewBaseHeaderItemAutomationPeerFactory = extern struct {
 };
 pub const IListViewHeaderItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListViewHeaderItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "67ab1e4b-ad61-4c88-ba45-0f3a8d061f8f";
@@ -4679,6 +5672,12 @@ pub const IListViewHeaderItemAutomationPeer = extern struct {
 };
 pub const IListViewHeaderItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListViewHeaderItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewHeaderItemAutomationPeer {
         var _r: *ListViewHeaderItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4702,6 +5701,12 @@ pub const IListViewHeaderItemAutomationPeerFactory = extern struct {
 };
 pub const IListViewItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListViewItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ca114e70-a16d-4d09-a1cf-1856ef98a9ec";
@@ -4718,6 +5723,12 @@ pub const IListViewItemAutomationPeer = extern struct {
 };
 pub const IListViewItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ListViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewItemAutomationPeer {
         var _r: *ListViewItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4741,6 +5752,12 @@ pub const IListViewItemAutomationPeerFactory = extern struct {
 };
 pub const IListViewItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IListViewItemDataAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "15a8d7fd-d7a5-4a6c-963c-6f7ce464671a";
@@ -4757,6 +5774,12 @@ pub const IListViewItemDataAutomationPeer = extern struct {
 };
 pub const IListViewItemDataAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *ListViewBaseAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewItemDataAutomationPeer {
         var _r: *ListViewItemDataAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
@@ -4780,6 +5803,12 @@ pub const IListViewItemDataAutomationPeerFactory = extern struct {
 };
 pub const ILoopingSelectorAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ILoopingSelectorAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "50b406ca-bae9-4816-8a3a-0cb4f96478a2";
@@ -4796,6 +5825,12 @@ pub const ILoopingSelectorAutomationPeer = extern struct {
 };
 pub const ILoopingSelectorItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ILoopingSelectorItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "d3fa68bf-04cf-4f4c-8d3e-4780a19d4788";
@@ -4812,6 +5847,12 @@ pub const ILoopingSelectorItemAutomationPeer = extern struct {
 };
 pub const ILoopingSelectorItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ILoopingSelectorItemDataAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ef567e32-7cd2-4d32-9590-1f588d5ef38d";
@@ -4828,6 +5869,12 @@ pub const ILoopingSelectorItemDataAutomationPeer = extern struct {
 };
 pub const IMapControlAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMapControlAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "425beee4-f2e8-4bcb-9382-5dfdd11fe45f";
@@ -4844,6 +5891,12 @@ pub const IMapControlAutomationPeer = extern struct {
 };
 pub const IMediaElementAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMediaElementAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ba0b9fc2-a6e2-41a5-b17a-d1594613efba";
@@ -4860,6 +5913,12 @@ pub const IMediaElementAutomationPeer = extern struct {
 };
 pub const IMediaElementAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *MediaElement, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MediaElementAutomationPeer {
         var _r: *MediaElementAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4883,6 +5942,12 @@ pub const IMediaElementAutomationPeerFactory = extern struct {
 };
 pub const IMediaPlayerElementAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMediaPlayerElementAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "02bed209-3f65-4fdd-b5ca-c4750d4e6ea4";
@@ -4899,6 +5964,12 @@ pub const IMediaPlayerElementAutomationPeer = extern struct {
 };
 pub const IMediaPlayerElementAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *MediaPlayerElement, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MediaPlayerElementAutomationPeer {
         var _r: *MediaPlayerElementAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4922,6 +5993,12 @@ pub const IMediaPlayerElementAutomationPeerFactory = extern struct {
 };
 pub const IMediaTransportControlsAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMediaTransportControlsAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a3ad8d93-79f8-4958-a3c8-980defb83d15";
@@ -4938,6 +6015,12 @@ pub const IMediaTransportControlsAutomationPeer = extern struct {
 };
 pub const IMediaTransportControlsAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *MediaTransportControls, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MediaTransportControlsAutomationPeer {
         var _r: *MediaTransportControlsAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -4961,6 +6044,12 @@ pub const IMediaTransportControlsAutomationPeerFactory = extern struct {
 };
 pub const IMenuBarAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMenuBarAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "4b6adcf1-f274-5592-85a8-7b099e99b320";
@@ -4977,6 +6066,12 @@ pub const IMenuBarAutomationPeer = extern struct {
 };
 pub const IMenuBarAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), owner: *MenuBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuBarAutomationPeer {
         var _r: *MenuBarAutomationPeer = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5000,6 +6095,12 @@ pub const IMenuBarAutomationPeerFactory = extern struct {
 };
 pub const IMenuBarItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMenuBarItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "0fce49b4-cff5-5c4b-98ee-e75fdddf799a";
@@ -5016,6 +6117,12 @@ pub const IMenuBarItemAutomationPeer = extern struct {
 };
 pub const IMenuBarItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), owner: *MenuBarItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuBarItemAutomationPeer {
         var _r: *MenuBarItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5039,6 +6146,12 @@ pub const IMenuBarItemAutomationPeerFactory = extern struct {
 };
 pub const IMenuFlyoutItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMenuFlyoutItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1fc19462-21df-456e-aa11-8fac6b4b2af6";
@@ -5055,6 +6168,12 @@ pub const IMenuFlyoutItemAutomationPeer = extern struct {
 };
 pub const IMenuFlyoutItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *MenuFlyoutItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuFlyoutItemAutomationPeer {
         var _r: *MenuFlyoutItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5078,6 +6197,12 @@ pub const IMenuFlyoutItemAutomationPeerFactory = extern struct {
 };
 pub const IMenuFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IMenuFlyoutPresenterAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e244a871-fcbb-48fc-8a93-41ea134b53ce";
@@ -5094,6 +6219,12 @@ pub const IMenuFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const IMenuFlyoutPresenterAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *MenuFlyoutPresenter, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuFlyoutPresenterAutomationPeer {
         var _r: *MenuFlyoutPresenterAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5117,6 +6248,12 @@ pub const IMenuFlyoutPresenterAutomationPeerFactory = extern struct {
 };
 pub const INavigationViewItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.INavigationViewItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "309847a5-9971-4d8d-a81c-085c7086a1b9";
@@ -5133,6 +6270,12 @@ pub const INavigationViewItemAutomationPeer = extern struct {
 };
 pub const INavigationViewItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *NavigationViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationViewItemAutomationPeer {
         var _r: *NavigationViewItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5156,6 +6299,12 @@ pub const INavigationViewItemAutomationPeerFactory = extern struct {
 };
 pub const IPasswordBoxAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IPasswordBoxAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "684f065e-3df3-4b9f-82ad-8819db3b218a";
@@ -5172,6 +6321,12 @@ pub const IPasswordBoxAutomationPeer = extern struct {
 };
 pub const IPasswordBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *PasswordBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PasswordBoxAutomationPeer {
         var _r: *PasswordBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5195,6 +6350,12 @@ pub const IPasswordBoxAutomationPeerFactory = extern struct {
 };
 pub const IPersonPictureAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IPersonPictureAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "27156d4c-a66f-4aaf-8286-4f796d30628c";
@@ -5211,6 +6372,12 @@ pub const IPersonPictureAutomationPeer = extern struct {
 };
 pub const IPersonPictureAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *PersonPicture, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PersonPictureAutomationPeer {
         var _r: *PersonPictureAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5234,6 +6401,12 @@ pub const IPersonPictureAutomationPeerFactory = extern struct {
 };
 pub const IPickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IPickerFlyoutPresenterAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "28414bf7-8382-4eae-93c1-d6f035aa8155";
@@ -5250,6 +6423,12 @@ pub const IPickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const IPivotAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IPivotAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e715a8f8-3b9d-402c-81e2-6e912ef58981";
@@ -5266,6 +6445,12 @@ pub const IPivotAutomationPeer = extern struct {
 };
 pub const IPivotAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Pivot) core.HResult!*PivotAutomationPeer {
         var _r: *PivotAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, &_r);
@@ -5289,6 +6474,12 @@ pub const IPivotAutomationPeerFactory = extern struct {
 };
 pub const IPivotItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IPivotItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "1a4241ad-5d55-4d27-b40f-2d37506fbe78";
@@ -5305,6 +6496,12 @@ pub const IPivotItemAutomationPeer = extern struct {
 };
 pub const IPivotItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *PivotItem) core.HResult!*PivotItemAutomationPeer {
         var _r: *PivotItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, &_r);
@@ -5328,6 +6525,12 @@ pub const IPivotItemAutomationPeerFactory = extern struct {
 };
 pub const IPivotItemDataAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IPivotItemDataAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a2a3b788-ea1d-48b7-88ee-f08b6aa07fee";
@@ -5344,6 +6547,12 @@ pub const IPivotItemDataAutomationPeer = extern struct {
 };
 pub const IPivotItemDataAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *PivotAutomationPeer) core.HResult!*PivotItemDataAutomationPeer {
         var _r: *PivotItemDataAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, &_r);
@@ -5367,6 +6576,12 @@ pub const IPivotItemDataAutomationPeerFactory = extern struct {
 };
 pub const IProgressBarAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IProgressBarAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "93f48f86-d840-4fb6-ac2f-5f779b854b0d";
@@ -5383,6 +6598,12 @@ pub const IProgressBarAutomationPeer = extern struct {
 };
 pub const IProgressBarAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ProgressBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ProgressBarAutomationPeer {
         var _r: *ProgressBarAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5406,6 +6627,12 @@ pub const IProgressBarAutomationPeerFactory = extern struct {
 };
 pub const IProgressRingAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IProgressRingAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "bc305eee-39d3-4eeb-ac33-2394de123e2e";
@@ -5422,6 +6649,12 @@ pub const IProgressRingAutomationPeer = extern struct {
 };
 pub const IProgressRingAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ProgressRing, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ProgressRingAutomationPeer {
         var _r: *ProgressRingAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5445,6 +6678,12 @@ pub const IProgressRingAutomationPeerFactory = extern struct {
 };
 pub const IRadioButtonAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRadioButtonAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "7e6a5ed8-0b30-4743-b102-dcdf548e3131";
@@ -5461,6 +6700,12 @@ pub const IRadioButtonAutomationPeer = extern struct {
 };
 pub const IRadioButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RadioButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RadioButtonAutomationPeer {
         var _r: *RadioButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5484,6 +6729,12 @@ pub const IRadioButtonAutomationPeerFactory = extern struct {
 };
 pub const IRangeBaseAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRangeBaseAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "e454b549-4b2c-42ad-b04b-d35947d1ee50";
@@ -5500,6 +6751,12 @@ pub const IRangeBaseAutomationPeer = extern struct {
 };
 pub const IRangeBaseAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RangeBase, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RangeBaseAutomationPeer {
         var _r: *RangeBaseAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5523,6 +6780,12 @@ pub const IRangeBaseAutomationPeerFactory = extern struct {
 };
 pub const IRatingControlAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRatingControlAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "3d14349a-9963-4a47-823c-f457cb3209d5";
@@ -5539,6 +6802,12 @@ pub const IRatingControlAutomationPeer = extern struct {
 };
 pub const IRatingControlAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RatingControl, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RatingControlAutomationPeer {
         var _r: *RatingControlAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5562,6 +6831,12 @@ pub const IRatingControlAutomationPeerFactory = extern struct {
 };
 pub const IRepeatButtonAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRepeatButtonAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "29e41ad5-a8ac-4e8a-83d8-09e37e054257";
@@ -5578,6 +6853,12 @@ pub const IRepeatButtonAutomationPeer = extern struct {
 };
 pub const IRepeatButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RepeatButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RepeatButtonAutomationPeer {
         var _r: *RepeatButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5601,6 +6882,12 @@ pub const IRepeatButtonAutomationPeerFactory = extern struct {
 };
 pub const IRichEditBoxAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRichEditBoxAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c69f5c04-16ee-467a-a833-c3da8458ad64";
@@ -5617,6 +6904,12 @@ pub const IRichEditBoxAutomationPeer = extern struct {
 };
 pub const IRichEditBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RichEditBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RichEditBoxAutomationPeer {
         var _r: *RichEditBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5640,6 +6933,12 @@ pub const IRichEditBoxAutomationPeerFactory = extern struct {
 };
 pub const IRichTextBlockAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRichTextBlockAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "93a01a9c-9609-41fa-82f3-909c09f49a72";
@@ -5656,6 +6955,12 @@ pub const IRichTextBlockAutomationPeer = extern struct {
 };
 pub const IRichTextBlockAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RichTextBlock, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RichTextBlockAutomationPeer {
         var _r: *RichTextBlockAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5679,6 +6984,12 @@ pub const IRichTextBlockAutomationPeerFactory = extern struct {
 };
 pub const IRichTextBlockOverflowAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IRichTextBlockOverflowAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "8c9a409a-2736-437b-ab36-a16a202f105d";
@@ -5695,6 +7006,12 @@ pub const IRichTextBlockOverflowAutomationPeer = extern struct {
 };
 pub const IRichTextBlockOverflowAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *RichTextBlockOverflow, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RichTextBlockOverflowAutomationPeer {
         var _r: *RichTextBlockOverflowAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5718,6 +7035,12 @@ pub const IRichTextBlockOverflowAutomationPeerFactory = extern struct {
 };
 pub const IScrollBarAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IScrollBarAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "69e0c369-bbe7-41f2-87ca-aad813fe550e";
@@ -5734,6 +7057,12 @@ pub const IScrollBarAutomationPeer = extern struct {
 };
 pub const IScrollBarAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ScrollBar, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ScrollBarAutomationPeer {
         var _r: *ScrollBarAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5757,6 +7086,12 @@ pub const IScrollBarAutomationPeerFactory = extern struct {
 };
 pub const IScrollViewerAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IScrollViewerAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "d985f259-1b09-4e88-88fd-421750dc6b45";
@@ -5773,6 +7108,12 @@ pub const IScrollViewerAutomationPeer = extern struct {
 };
 pub const IScrollViewerAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ScrollViewer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ScrollViewerAutomationPeer {
         var _r: *ScrollViewerAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5796,6 +7137,12 @@ pub const IScrollViewerAutomationPeerFactory = extern struct {
 };
 pub const ISearchBoxAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ISearchBoxAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "854011a4-18a6-4f30-939b-8871afa3f5e9";
@@ -5812,6 +7159,12 @@ pub const ISearchBoxAutomationPeer = extern struct {
 };
 pub const ISearchBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *SearchBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SearchBoxAutomationPeer {
         var _r: *SearchBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5835,6 +7188,12 @@ pub const ISearchBoxAutomationPeerFactory = extern struct {
 };
 pub const ISelectorAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ISelectorAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "162ac829-7115-43ec-b383-a7b71644069d";
@@ -5851,6 +7210,12 @@ pub const ISelectorAutomationPeer = extern struct {
 };
 pub const ISelectorAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Selector, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorAutomationPeer {
         var _r: *SelectorAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5874,6 +7239,12 @@ pub const ISelectorAutomationPeerFactory = extern struct {
 };
 pub const ISelectorItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ISelectorItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ae8b3477-860a-45bb-bf7c-e1b27419d1dd";
@@ -5890,6 +7261,12 @@ pub const ISelectorItemAutomationPeer = extern struct {
 };
 pub const ISelectorItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithParentAndItem(self: *@This(), item: *IInspectable, parent: *SelectorAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectorItemAutomationPeer {
         var _r: *SelectorItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithParentAndItem(@ptrCast(self), item, parent, baseInterface, innerInterface, &_r);
@@ -5913,6 +7290,12 @@ pub const ISelectorItemAutomationPeerFactory = extern struct {
 };
 pub const ISemanticZoomAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ISemanticZoomAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "3c2fac6c-a977-47fc-b44e-2754c0b2bea9";
@@ -5929,6 +7312,12 @@ pub const ISemanticZoomAutomationPeer = extern struct {
 };
 pub const ISemanticZoomAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *SemanticZoom, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SemanticZoomAutomationPeer {
         var _r: *SemanticZoomAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5952,6 +7341,12 @@ pub const ISemanticZoomAutomationPeerFactory = extern struct {
 };
 pub const ISettingsFlyoutAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ISettingsFlyoutAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "d0de0cdb-30cf-47a6-a5eb-9c77f0b0d6dd";
@@ -5968,6 +7363,12 @@ pub const ISettingsFlyoutAutomationPeer = extern struct {
 };
 pub const ISettingsFlyoutAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *SettingsFlyout, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SettingsFlyoutAutomationPeer {
         var _r: *SettingsFlyoutAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -5991,6 +7392,12 @@ pub const ISettingsFlyoutAutomationPeerFactory = extern struct {
 };
 pub const ISliderAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ISliderAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "ec30015a-d611-46d0-ae4f-6ecf27dfbaa5";
@@ -6007,6 +7414,12 @@ pub const ISliderAutomationPeer = extern struct {
 };
 pub const ISliderAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Slider, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SliderAutomationPeer {
         var _r: *SliderAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -6030,6 +7443,12 @@ pub const ISliderAutomationPeerFactory = extern struct {
 };
 pub const ITextBlockAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ITextBlockAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "be2057f5-6715-4e69-a050-92bd0ce232a9";
@@ -6046,6 +7465,12 @@ pub const ITextBlockAutomationPeer = extern struct {
 };
 pub const ITextBlockAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *TextBlock, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TextBlockAutomationPeer {
         var _r: *TextBlockAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -6069,6 +7494,12 @@ pub const ITextBlockAutomationPeerFactory = extern struct {
 };
 pub const ITextBoxAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ITextBoxAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "3a4f1ca0-5e5d-4d26-9067-e740bf657a9f";
@@ -6085,6 +7516,12 @@ pub const ITextBoxAutomationPeer = extern struct {
 };
 pub const ITextBoxAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *TextBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TextBoxAutomationPeer {
         var _r: *TextBoxAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -6108,6 +7545,12 @@ pub const ITextBoxAutomationPeerFactory = extern struct {
 };
 pub const IThumbAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IThumbAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "dc2949b5-b45e-4d6d-892f-d9422c950efb";
@@ -6124,6 +7567,12 @@ pub const IThumbAutomationPeer = extern struct {
 };
 pub const IThumbAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *Thumb, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ThumbAutomationPeer {
         var _r: *ThumbAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -6147,6 +7596,12 @@ pub const IThumbAutomationPeerFactory = extern struct {
 };
 pub const ITimePickerAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ITimePickerAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a43d44ef-3285-4df7-b4a4-e4cdf36a3a17";
@@ -6163,6 +7618,12 @@ pub const ITimePickerAutomationPeer = extern struct {
 };
 pub const ITimePickerAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *TimePicker, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TimePickerAutomationPeer {
         var _r: *TimePickerAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -6186,6 +7647,12 @@ pub const ITimePickerAutomationPeerFactory = extern struct {
 };
 pub const ITimePickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ITimePickerFlyoutPresenterAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "da93ee27-82f1-4701-8706-be297bf06043";
@@ -6202,6 +7669,12 @@ pub const ITimePickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const IToggleButtonAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IToggleButtonAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "62dbe6c5-bc0a-45bb-bf77-ea0f1502891f";
@@ -6218,6 +7691,12 @@ pub const IToggleButtonAutomationPeer = extern struct {
 };
 pub const IToggleButtonAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ToggleButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleButtonAutomationPeer {
         var _r: *ToggleButtonAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -6241,6 +7720,12 @@ pub const IToggleButtonAutomationPeerFactory = extern struct {
 };
 pub const IToggleMenuFlyoutItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IToggleMenuFlyoutItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "6b57eafe-6af1-4903-8373-3437bf352345";
@@ -6257,6 +7742,12 @@ pub const IToggleMenuFlyoutItemAutomationPeer = extern struct {
 };
 pub const IToggleMenuFlyoutItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ToggleMenuFlyoutItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleMenuFlyoutItemAutomationPeer {
         var _r: *ToggleMenuFlyoutItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -6280,6 +7771,12 @@ pub const IToggleMenuFlyoutItemAutomationPeerFactory = extern struct {
 };
 pub const IToggleSwitchAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.IToggleSwitchAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c011f174-e89e-4790-bf9a-78ebb5f59e9f";
@@ -6296,6 +7793,12 @@ pub const IToggleSwitchAutomationPeer = extern struct {
 };
 pub const IToggleSwitchAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *ToggleSwitch, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleSwitchAutomationPeer {
         var _r: *ToggleSwitchAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -6319,6 +7822,12 @@ pub const IToggleSwitchAutomationPeerFactory = extern struct {
 };
 pub const ITreeViewItemAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ITreeViewItemAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "2331d648-b617-437f-920c-71d450503e65";
@@ -6335,6 +7844,12 @@ pub const ITreeViewItemAutomationPeer = extern struct {
 };
 pub const ITreeViewItemAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *TreeViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeViewItemAutomationPeer {
         var _r: *TreeViewItemAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -6358,6 +7873,12 @@ pub const ITreeViewItemAutomationPeerFactory = extern struct {
 };
 pub const ITreeViewListAutomationPeer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ITreeViewListAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "71c1b5bc-bb29-4479-a8a8-606be6b823ae";
@@ -6374,6 +7895,12 @@ pub const ITreeViewListAutomationPeer = extern struct {
 };
 pub const ITreeViewListAutomationPeerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithOwner(self: *@This(), owner: *TreeViewList, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeViewListAutomationPeer {
         var _r: *TreeViewListAutomationPeer = undefined;
         const _c = self.vtable.CreateInstanceWithOwner(@ptrCast(self), owner, baseInterface, innerInterface, &_r);
@@ -6397,6 +7924,15 @@ pub const ITreeViewListAutomationPeerFactory = extern struct {
 };
 pub const ImageAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -6413,6 +7949,18 @@ pub const ImageAutomationPeer = extern struct {
 };
 pub const InkToolbarAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.InkToolbarAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IInkToolbarAutomationPeer.GUID;
@@ -6421,6 +7969,15 @@ pub const InkToolbarAutomationPeer = extern struct {
 };
 pub const ListBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -6437,6 +7994,15 @@ pub const ListBoxAutomationPeer = extern struct {
 };
 pub const ListBoxItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -6453,15 +8019,24 @@ pub const ListBoxItemAutomationPeer = extern struct {
 };
 pub const ListBoxItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *ListBoxAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBoxItemDataAutomationPeer {
         const _f = try @This()._IListBoxItemDataAutomationPeerFactoryCache.get();
@@ -6476,6 +8051,18 @@ pub const ListBoxItemDataAutomationPeer = extern struct {
 };
 pub const ListPickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.ListPickerFlyoutPresenterAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IListPickerFlyoutPresenterAutomationPeer.GUID;
@@ -6484,6 +8071,15 @@ pub const ListPickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const ListViewAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -6500,6 +8096,15 @@ pub const ListViewAutomationPeer = extern struct {
 };
 pub const ListViewHeaderItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -6516,6 +8121,15 @@ pub const ListViewHeaderItemAutomationPeer = extern struct {
 };
 pub const ListViewItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -6532,15 +8146,24 @@ pub const ListViewItemAutomationPeer = extern struct {
 };
 pub const ListViewItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollItemProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollIntoView();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *ListViewBaseAutomationPeer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewItemDataAutomationPeer {
         const _f = try @This()._IListViewItemDataAutomationPeerFactoryCache.get();
@@ -6555,6 +8178,18 @@ pub const ListViewItemDataAutomationPeer = extern struct {
 };
 pub const LoopingSelectorAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanSelectMultiple(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -6668,6 +8303,18 @@ pub const LoopingSelectorAutomationPeer = extern struct {
 };
 pub const LoopingSelectorItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -6718,6 +8365,18 @@ pub const LoopingSelectorItemAutomationPeer = extern struct {
 };
 pub const LoopingSelectorItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Realize(self: *@This()) core.HResult!void {
         var this: ?*IVirtualizedItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -6733,6 +8392,18 @@ pub const LoopingSelectorItemDataAutomationPeer = extern struct {
 };
 pub const MapControlAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -6881,6 +8552,15 @@ pub const MapControlAutomationPeer = extern struct {
 };
 pub const MediaElementAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -6897,6 +8577,15 @@ pub const MediaElementAutomationPeer = extern struct {
 };
 pub const MediaPlayerElementAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -6913,6 +8602,15 @@ pub const MediaPlayerElementAutomationPeer = extern struct {
 };
 pub const MediaTransportControlsAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -6929,6 +8627,15 @@ pub const MediaTransportControlsAutomationPeer = extern struct {
 };
 pub const MenuBarAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -6945,6 +8652,18 @@ pub const MenuBarAutomationPeer = extern struct {
 };
 pub const MenuBarItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -6973,9 +8692,6 @@ pub const MenuBarItemAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(owner: *MenuBarItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuBarItemAutomationPeer {
         const _f = try @This()._IMenuBarItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstance(owner, baseInterface, innerInterface);
@@ -6989,15 +8705,24 @@ pub const MenuBarItemAutomationPeer = extern struct {
 };
 pub const MenuFlyoutItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *MenuFlyoutItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuFlyoutItemAutomationPeer {
         const _f = try @This()._IMenuFlyoutItemAutomationPeerFactoryCache.get();
@@ -7012,6 +8737,15 @@ pub const MenuFlyoutItemAutomationPeer = extern struct {
 };
 pub const MenuFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7028,6 +8762,15 @@ pub const MenuFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const NavigationViewItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7044,6 +8787,15 @@ pub const NavigationViewItemAutomationPeer = extern struct {
 };
 pub const PasswordBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7096,6 +8848,15 @@ pub const PatternInterface = enum(i32) {
 };
 pub const PersonPictureAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7112,6 +8873,18 @@ pub const PersonPictureAutomationPeer = extern struct {
 };
 pub const PickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.PickerFlyoutPresenterAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IPickerFlyoutPresenterAutomationPeer.GUID;
@@ -7120,6 +8893,18 @@ pub const PickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const PivotAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanSelectMultiple(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -7197,9 +8982,6 @@ pub const PivotAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetScrollPercent(horizontalPercent, verticalPercent);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *Pivot) core.HResult!*PivotAutomationPeer {
         const _f = try @This()._IPivotAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner);
@@ -7213,6 +8995,15 @@ pub const PivotAutomationPeer = extern struct {
 };
 pub const PivotItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7229,6 +9020,18 @@ pub const PivotItemAutomationPeer = extern struct {
 };
 pub const PivotItemDataAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ScrollIntoView(self: *@This()) core.HResult!void {
         var this: ?*IScrollItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -7278,9 +9081,6 @@ pub const PivotItemDataAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Realize();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithParentAndItem(item: *IInspectable, parent: *PivotAutomationPeer) core.HResult!*PivotItemDataAutomationPeer {
         const _f = try @This()._IPivotItemDataAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithParentAndItem(item, parent);
@@ -7294,6 +9094,15 @@ pub const PivotItemDataAutomationPeer = extern struct {
 };
 pub const ProgressBarAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7310,6 +9119,15 @@ pub const ProgressBarAutomationPeer = extern struct {
 };
 pub const ProgressRingAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7326,6 +9144,18 @@ pub const ProgressRingAutomationPeer = extern struct {
 };
 pub const RadioButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSelected(self: *@This()) core.HResult!bool {
         var this: ?*ISelectionItemProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -7361,9 +9191,6 @@ pub const RadioButtonAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Select();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *RadioButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RadioButtonAutomationPeer {
         const _f = try @This()._IRadioButtonAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -7377,6 +9204,15 @@ pub const RadioButtonAutomationPeer = extern struct {
 };
 pub const RatingControlAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7397,15 +9233,24 @@ pub const RawElementProviderRuntimeId = extern struct {
 };
 pub const RepeatButtonAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Invoke(self: *@This()) core.HResult!void {
         var this: ?*IInvokeProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInvokeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Invoke();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *RepeatButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RepeatButtonAutomationPeer {
         const _f = try @This()._IRepeatButtonAutomationPeerFactoryCache.get();
@@ -7420,6 +9265,15 @@ pub const RepeatButtonAutomationPeer = extern struct {
 };
 pub const RichEditBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7436,6 +9290,15 @@ pub const RichEditBoxAutomationPeer = extern struct {
 };
 pub const RichTextBlockAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7452,6 +9315,15 @@ pub const RichTextBlockAutomationPeer = extern struct {
 };
 pub const RichTextBlockOverflowAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7468,6 +9340,15 @@ pub const RichTextBlockOverflowAutomationPeer = extern struct {
 };
 pub const ScrollBarAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7484,6 +9365,18 @@ pub const ScrollBarAutomationPeer = extern struct {
 };
 pub const ScrollViewerAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHorizontallyScrollable(self: *@This()) core.HResult!bool {
         var this: ?*IScrollProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -7540,9 +9433,6 @@ pub const ScrollViewerAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetScrollPercent(horizontalPercent, verticalPercent);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *ScrollViewer, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ScrollViewerAutomationPeer {
         const _f = try @This()._IScrollViewerAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -7556,6 +9446,15 @@ pub const ScrollViewerAutomationPeer = extern struct {
 };
 pub const SearchBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7572,6 +9471,18 @@ pub const SearchBoxAutomationPeer = extern struct {
 };
 pub const SemanticZoomAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -7586,9 +9497,6 @@ pub const SemanticZoomAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Toggle();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *SemanticZoom, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SemanticZoomAutomationPeer {
         const _f = try @This()._ISemanticZoomAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -7602,6 +9510,15 @@ pub const SemanticZoomAutomationPeer = extern struct {
 };
 pub const SettingsFlyoutAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7618,6 +9535,15 @@ pub const SettingsFlyoutAutomationPeer = extern struct {
 };
 pub const TextBlockAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7634,6 +9560,15 @@ pub const TextBlockAutomationPeer = extern struct {
 };
 pub const TextBoxAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7650,6 +9585,15 @@ pub const TextBoxAutomationPeer = extern struct {
 };
 pub const ThumbAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7666,6 +9610,15 @@ pub const ThumbAutomationPeer = extern struct {
 };
 pub const TimePickerAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7682,6 +9635,18 @@ pub const TimePickerAutomationPeer = extern struct {
 };
 pub const TimePickerFlyoutPresenterAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.Peers.TimePickerFlyoutPresenterAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ITimePickerFlyoutPresenterAutomationPeer.GUID;
@@ -7690,6 +9655,18 @@ pub const TimePickerFlyoutPresenterAutomationPeer = extern struct {
 };
 pub const ToggleMenuFlyoutItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -7703,9 +9680,6 @@ pub const ToggleMenuFlyoutItemAutomationPeer = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToggleProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Toggle();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithOwner(owner: *ToggleMenuFlyoutItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleMenuFlyoutItemAutomationPeer {
         const _f = try @This()._IToggleMenuFlyoutItemAutomationPeerFactoryCache.get();
@@ -7720,6 +9694,18 @@ pub const ToggleMenuFlyoutItemAutomationPeer = extern struct {
 };
 pub const ToggleSwitchAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getToggleState(self: *@This()) core.HResult!ToggleState {
         var this: ?*IToggleProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -7734,9 +9720,6 @@ pub const ToggleSwitchAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Toggle();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *ToggleSwitch, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleSwitchAutomationPeer {
         const _f = try @This()._IToggleSwitchAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -7750,6 +9733,18 @@ pub const ToggleSwitchAutomationPeer = extern struct {
 };
 pub const TreeViewItemAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExpandCollapseState(self: *@This()) core.HResult!ExpandCollapseState {
         var this: ?*IExpandCollapseProvider = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -7771,9 +9766,6 @@ pub const TreeViewItemAutomationPeer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Expand();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceWithOwner(owner: *TreeViewItem, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeViewItemAutomationPeer {
         const _f = try @This()._ITreeViewItemAutomationPeerFactoryCache.get();
         return try _f.CreateInstanceWithOwner(owner, baseInterface, innerInterface);
@@ -7787,6 +9779,15 @@ pub const TreeViewItemAutomationPeer = extern struct {
 };
 pub const TreeViewListAutomationPeer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

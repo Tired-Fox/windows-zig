@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IAdcControllerProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannelCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ChannelCount(@ptrCast(self), &_r);
@@ -81,6 +87,12 @@ pub const IAdcControllerProvider = extern struct {
 };
 pub const IAdcProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetControllers(self: *@This()) core.HResult!*IVectorView(IAdcControllerProvider) {
         var _r: *IVectorView(IAdcControllerProvider) = undefined;
         const _c = self.vtable.GetControllers(@ptrCast(self), &_r);
@@ -106,6 +118,7 @@ pub const ProviderAdcChannelMode = enum(i32) {
     SingleEnded = 0,
     Differential = 1,
 };
+const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;
 const HRESULT = @import("../../root.zig").HRESULT;
 const core = @import("../../root.zig").core;

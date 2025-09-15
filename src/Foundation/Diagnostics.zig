@@ -1,6 +1,15 @@
 // ----- This code is automatically generated -----
 pub const AsyncCausalityTracer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -60,6 +69,18 @@ pub const CausalityTraceLevel = enum(i32) {
 };
 pub const ErrorDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         const this: *IErrorDetails = @ptrCast(self);
         return try this.getDescription();
@@ -71,9 +92,6 @@ pub const ErrorDetails = extern struct {
     pub fn getHelpUri(self: *@This()) core.HResult!*Uri {
         const this: *IErrorDetails = @ptrCast(self);
         return try this.getHelpUri();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromHResultAsync(errorCode: i32) core.HResult!*IAsyncOperation(ErrorDetails) {
         const _f = try @This()._IErrorDetailsStaticsCache.get();
@@ -95,6 +113,18 @@ pub const ErrorOptions = enum(i32) {
 };
 pub const FileLoggingSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IFileLoggingSession = @ptrCast(self);
         return try this.getName();
@@ -130,9 +160,6 @@ pub const FileLoggingSession = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(name: ?HSTRING) core.HResult!*FileLoggingSession {
         const _f = try @This()._IFileLoggingSessionFactoryCache.get();
         return try _f.Create(name);
@@ -146,6 +173,12 @@ pub const FileLoggingSession = extern struct {
 };
 pub const IAsyncCausalityTracerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TraceOperationCreation(self: *@This(), traceLevel: CausalityTraceLevel, source: CausalitySource, platformId: *Guid, operationId: u64, operationName: ?HSTRING, relatedContext: u64) core.HResult!void {
         const _c = self.vtable.TraceOperationCreation(@ptrCast(self), traceLevel, source, platformId, operationId, operationName, relatedContext);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -199,6 +232,12 @@ pub const IAsyncCausalityTracerStatics = extern struct {
 };
 pub const IErrorDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDescription(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Description(@ptrCast(self), &_r);
@@ -236,6 +275,12 @@ pub const IErrorDetails = extern struct {
 };
 pub const IErrorDetailsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromHResultAsync(self: *@This(), errorCode: i32) core.HResult!*IAsyncOperation(ErrorDetails) {
         var _r: *IAsyncOperation(ErrorDetails) = undefined;
         const _c = self.vtable.CreateFromHResultAsync(@ptrCast(self), errorCode, &_r);
@@ -259,6 +304,12 @@ pub const IErrorDetailsStatics = extern struct {
 };
 pub const IErrorReportingSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetErrorOptions(self: *@This(), value: ErrorOptions) core.HResult!void {
         const _c = self.vtable.SetErrorOptions(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -287,6 +338,12 @@ pub const IErrorReportingSettings = extern struct {
 };
 pub const IFileLoggingSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -344,6 +401,12 @@ pub const IFileLoggingSession = extern struct {
 };
 pub const IFileLoggingSessionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), name: ?HSTRING) core.HResult!*FileLoggingSession {
         var _r: *FileLoggingSession = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, &_r);
@@ -367,6 +430,12 @@ pub const IFileLoggingSessionFactory = extern struct {
 };
 pub const ILogFileGeneratedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFile(self: *@This()) core.HResult!*StorageFile {
         var _r: *StorageFile = undefined;
         const _c = self.vtable.get_File(@ptrCast(self), &_r);
@@ -390,6 +459,12 @@ pub const ILogFileGeneratedEventArgs = extern struct {
 };
 pub const ILoggingActivity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -420,6 +495,12 @@ pub const ILoggingActivity = extern struct {
 };
 pub const ILoggingActivity2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannel(self: *@This()) core.HResult!*LoggingChannel {
         var _r: *LoggingChannel = undefined;
         const _c = self.vtable.get_Channel(@ptrCast(self), &_r);
@@ -458,6 +539,12 @@ pub const ILoggingActivity2 = extern struct {
 };
 pub const ILoggingActivityFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateLoggingActivity(self: *@This(), activityName: ?HSTRING, loggingChannel: *ILoggingChannel) core.HResult!*LoggingActivity {
         var _r: *LoggingActivity = undefined;
         const _c = self.vtable.CreateLoggingActivity(@ptrCast(self), activityName, loggingChannel, &_r);
@@ -488,6 +575,12 @@ pub const ILoggingActivityFactory = extern struct {
 };
 pub const ILoggingChannel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -557,6 +650,12 @@ pub const ILoggingChannel = extern struct {
 };
 pub const ILoggingChannel2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -580,6 +679,12 @@ pub const ILoggingChannel2 = extern struct {
 };
 pub const ILoggingChannelFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), name: ?HSTRING) core.HResult!*LoggingChannel {
         var _r: *LoggingChannel = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, &_r);
@@ -603,6 +708,12 @@ pub const ILoggingChannelFactory = extern struct {
 };
 pub const ILoggingChannelFactory2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithOptions(self: *@This(), name: ?HSTRING, options: *LoggingChannelOptions) core.HResult!*LoggingChannel {
         var _r: *LoggingChannel = undefined;
         const _c = self.vtable.CreateWithOptions(@ptrCast(self), name, options, &_r);
@@ -633,6 +744,12 @@ pub const ILoggingChannelFactory2 = extern struct {
 };
 pub const ILoggingChannelOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGroup(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Group(@ptrCast(self), &_r);
@@ -661,6 +778,12 @@ pub const ILoggingChannelOptions = extern struct {
 };
 pub const ILoggingChannelOptionsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), group: *Guid) core.HResult!*LoggingChannelOptions {
         var _r: *LoggingChannelOptions = undefined;
         const _c = self.vtable.Create(@ptrCast(self), group, &_r);
@@ -684,6 +807,12 @@ pub const ILoggingChannelOptionsFactory = extern struct {
 };
 pub const ILoggingFields = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Clear(self: *@This()) core.HResult!void {
         const _c = self.vtable.Clear(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1275,6 +1404,12 @@ pub const ILoggingFields = extern struct {
 };
 pub const ILoggingOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeywords(self: *@This()) core.HResult!i64 {
         var _r: i64 = undefined;
         const _c = self.vtable.get_Keywords(@ptrCast(self), &_r);
@@ -1363,6 +1498,12 @@ pub const ILoggingOptions = extern struct {
 };
 pub const ILoggingOptionsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithKeywords(self: *@This(), keywords: i64) core.HResult!*LoggingOptions {
         var _r: *LoggingOptions = undefined;
         const _c = self.vtable.CreateWithKeywords(@ptrCast(self), keywords, &_r);
@@ -1386,6 +1527,12 @@ pub const ILoggingOptionsFactory = extern struct {
 };
 pub const ILoggingSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -1431,6 +1578,12 @@ pub const ILoggingSession = extern struct {
 };
 pub const ILoggingSessionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), name: ?HSTRING) core.HResult!*LoggingSession {
         var _r: *LoggingSession = undefined;
         const _c = self.vtable.Create(@ptrCast(self), name, &_r);
@@ -1454,6 +1607,12 @@ pub const ILoggingSessionFactory = extern struct {
 };
 pub const ILoggingTarget = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsEnabled(@ptrCast(self), &_r);
@@ -1539,6 +1698,12 @@ pub const ILoggingTarget = extern struct {
 };
 pub const ITracingStatusChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Enabled(@ptrCast(self), &_r);
@@ -1569,6 +1734,18 @@ pub const ITracingStatusChangedEventArgs = extern struct {
 };
 pub const LogFileGeneratedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFile(self: *@This()) core.HResult!*StorageFile {
         const this: *ILogFileGeneratedEventArgs = @ptrCast(self);
         return try this.getFile();
@@ -1581,6 +1758,18 @@ pub const LogFileGeneratedEventArgs = extern struct {
 };
 pub const LoggingActivity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILoggingActivity = @ptrCast(self);
         return try this.getName();
@@ -1701,9 +1890,6 @@ pub const LoggingActivity = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartActivityWithFieldsAndLevelAndOptions(startEventName, fields, level, options);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateLoggingActivity(activityName: ?HSTRING, loggingChannel: *ILoggingChannel) core.HResult!*LoggingActivity {
         const _f = try @This()._ILoggingActivityFactoryCache.get();
         return try _f.CreateLoggingActivity(activityName, loggingChannel);
@@ -1721,6 +1907,18 @@ pub const LoggingActivity = extern struct {
 };
 pub const LoggingChannel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILoggingChannel = @ptrCast(self);
         return try this.getName();
@@ -1848,9 +2046,6 @@ pub const LoggingChannel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartActivityWithFieldsAndLevelAndOptions(startEventName, fields, level, options);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWithOptions(name: ?HSTRING, options: *LoggingChannelOptions) core.HResult!*LoggingChannel {
         const _f = try @This()._ILoggingChannelFactory2Cache.get();
         return try _f.CreateWithOptions(name, options);
@@ -1873,6 +2068,18 @@ pub const LoggingChannel = extern struct {
 };
 pub const LoggingChannelOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGroup(self: *@This()) core.HResult!*Guid {
         const this: *ILoggingChannelOptions = @ptrCast(self);
         return try this.getGroup();
@@ -1880,9 +2087,6 @@ pub const LoggingChannelOptions = extern struct {
     pub fn putGroup(self: *@This(), value: *Guid) core.HResult!void {
         const this: *ILoggingChannelOptions = @ptrCast(self);
         return try this.putGroup(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1923,6 +2127,18 @@ pub const LoggingFieldFormat = enum(i32) {
 };
 pub const LoggingFields = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Clear(self: *@This()) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.Clear();
@@ -2383,9 +2599,6 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddRectArrayWithFormatAndTags(name, value, format, tags);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILoggingFields.IID)));
@@ -2415,6 +2628,18 @@ pub const LoggingOpcode = enum(i32) {
 };
 pub const LoggingOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeywords(self: *@This()) core.HResult!i64 {
         const this: *ILoggingOptions = @ptrCast(self);
         return try this.getKeywords();
@@ -2463,9 +2688,6 @@ pub const LoggingOptions = extern struct {
         const this: *ILoggingOptions = @ptrCast(self);
         return try this.putRelatedActivityId(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILoggingOptions.IID)));
@@ -2484,6 +2706,18 @@ pub const LoggingOptions = extern struct {
 };
 pub const LoggingSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ILoggingSession = @ptrCast(self);
         return try this.getName();
@@ -2511,9 +2745,6 @@ pub const LoggingSession = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(name: ?HSTRING) core.HResult!*LoggingSession {
         const _f = try @This()._ILoggingSessionFactoryCache.get();
         return try _f.Create(name);
@@ -2527,6 +2758,18 @@ pub const LoggingSession = extern struct {
 };
 pub const RuntimeBrokerErrorSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetErrorOptions(self: *@This(), value: ErrorOptions) core.HResult!void {
         const this: *IErrorReportingSettings = @ptrCast(self);
         return try this.SetErrorOptions(value);
@@ -2534,9 +2777,6 @@ pub const RuntimeBrokerErrorSettings = extern struct {
     pub fn GetErrorOptions(self: *@This()) core.HResult!ErrorOptions {
         const this: *IErrorReportingSettings = @ptrCast(self);
         return try this.GetErrorOptions();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2551,6 +2791,18 @@ pub const RuntimeBrokerErrorSettings = extern struct {
 };
 pub const TracingStatusChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnabled(self: *@This()) core.HResult!bool {
         const this: *ITracingStatusChangedEventArgs = @ptrCast(self);
         return try this.getEnabled();

@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ISecondaryAuthenticationFactorAuthentication = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServiceAuthenticationHmac(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_ServiceAuthenticationHmac(@ptrCast(self), &_r);
@@ -59,6 +65,12 @@ pub const ISecondaryAuthenticationFactorAuthentication = extern struct {
 };
 pub const ISecondaryAuthenticationFactorAuthenticationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!SecondaryAuthenticationFactorAuthenticationStatus {
         var _r: SecondaryAuthenticationFactorAuthenticationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -89,6 +101,12 @@ pub const ISecondaryAuthenticationFactorAuthenticationResult = extern struct {
 };
 pub const ISecondaryAuthenticationFactorAuthenticationStageChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStageInfo(self: *@This()) core.HResult!*SecondaryAuthenticationFactorAuthenticationStageInfo {
         var _r: *SecondaryAuthenticationFactorAuthenticationStageInfo = undefined;
         const _c = self.vtable.get_StageInfo(@ptrCast(self), &_r);
@@ -112,6 +130,12 @@ pub const ISecondaryAuthenticationFactorAuthenticationStageChangedEventArgs = ex
 };
 pub const ISecondaryAuthenticationFactorAuthenticationStageInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStage(self: *@This()) core.HResult!SecondaryAuthenticationFactorAuthenticationStage {
         var _r: SecondaryAuthenticationFactorAuthenticationStage = undefined;
         const _c = self.vtable.get_Stage(@ptrCast(self), &_r);
@@ -149,6 +173,12 @@ pub const ISecondaryAuthenticationFactorAuthenticationStageInfo = extern struct 
 };
 pub const ISecondaryAuthenticationFactorAuthenticationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ShowNotificationMessageAsync(self: *@This(), deviceName: ?HSTRING, message: SecondaryAuthenticationFactorAuthenticationMessage) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ShowNotificationMessageAsync(@ptrCast(self), deviceName, message, &_r);
@@ -198,6 +228,12 @@ pub const ISecondaryAuthenticationFactorAuthenticationStatics = extern struct {
 };
 pub const ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RegisterDevicePresenceMonitoringAsync(self: *@This(), deviceId: ?HSTRING, deviceInstancePath: ?HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) {
         var _r: *IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) = undefined;
         const _c = self.vtable.RegisterDevicePresenceMonitoringAsync(@ptrCast(self), deviceId, deviceInstancePath, monitoringMode, &_r);
@@ -242,6 +278,12 @@ pub const ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStat
 };
 pub const ISecondaryAuthenticationFactorInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -286,6 +328,12 @@ pub const ISecondaryAuthenticationFactorInfo = extern struct {
 };
 pub const ISecondaryAuthenticationFactorInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPresenceMonitoringMode(self: *@This()) core.HResult!SecondaryAuthenticationFactorDevicePresenceMonitoringMode {
         var _r: SecondaryAuthenticationFactorDevicePresenceMonitoringMode = undefined;
         const _c = self.vtable.get_PresenceMonitoringMode(@ptrCast(self), &_r);
@@ -323,6 +371,12 @@ pub const ISecondaryAuthenticationFactorInfo2 = extern struct {
 };
 pub const ISecondaryAuthenticationFactorRegistration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FinishRegisteringDeviceAsync(self: *@This(), deviceConfigurationData: *IBuffer) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.FinishRegisteringDeviceAsync(@ptrCast(self), deviceConfigurationData, &_r);
@@ -353,6 +407,12 @@ pub const ISecondaryAuthenticationFactorRegistration = extern struct {
 };
 pub const ISecondaryAuthenticationFactorRegistrationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!SecondaryAuthenticationFactorRegistrationStatus {
         var _r: SecondaryAuthenticationFactorRegistrationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -383,6 +443,12 @@ pub const ISecondaryAuthenticationFactorRegistrationResult = extern struct {
 };
 pub const ISecondaryAuthenticationFactorRegistrationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestStartRegisteringDeviceAsync(self: *@This(), deviceId: ?HSTRING, capabilities: SecondaryAuthenticationFactorDeviceCapabilities, deviceFriendlyName: ?HSTRING, deviceModelNumber: ?HSTRING, deviceKey: *IBuffer, mutualAuthenticationKey: *IBuffer) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorRegistrationResult) {
         var _r: *IAsyncOperation(SecondaryAuthenticationFactorRegistrationResult) = undefined;
         const _c = self.vtable.RequestStartRegisteringDeviceAsync(@ptrCast(self), deviceId, capabilities, deviceFriendlyName, deviceModelNumber, deviceKey, mutualAuthenticationKey, &_r);
@@ -427,6 +493,18 @@ pub const ISecondaryAuthenticationFactorRegistrationStatics = extern struct {
 };
 pub const SecondaryAuthenticationFactorAuthentication = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServiceAuthenticationHmac(self: *@This()) core.HResult!*IBuffer {
         const this: *ISecondaryAuthenticationFactorAuthentication = @ptrCast(self);
         return try this.getServiceAuthenticationHmac();
@@ -450,9 +528,6 @@ pub const SecondaryAuthenticationFactorAuthentication = extern struct {
     pub fn AbortAuthenticationAsync(self: *@This(), errorLogMessage: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *ISecondaryAuthenticationFactorAuthentication = @ptrCast(self);
         return try this.AbortAuthenticationAsync(errorLogMessage);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ShowNotificationMessageAsync(deviceName: ?HSTRING, message: SecondaryAuthenticationFactorAuthenticationMessage) core.HResult!*IAsyncAction {
         const _f = try @This()._ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
@@ -514,6 +589,18 @@ pub const SecondaryAuthenticationFactorAuthenticationMessage = enum(i32) {
 };
 pub const SecondaryAuthenticationFactorAuthenticationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!SecondaryAuthenticationFactorAuthenticationStatus {
         const this: *ISecondaryAuthenticationFactorAuthenticationResult = @ptrCast(self);
         return try this.getStatus();
@@ -545,6 +632,18 @@ pub const SecondaryAuthenticationFactorAuthenticationStage = enum(i32) {
 };
 pub const SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStageInfo(self: *@This()) core.HResult!*SecondaryAuthenticationFactorAuthenticationStageInfo {
         const this: *ISecondaryAuthenticationFactorAuthenticationStageChangedEventArgs = @ptrCast(self);
         return try this.getStageInfo();
@@ -557,6 +656,18 @@ pub const SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs = ext
 };
 pub const SecondaryAuthenticationFactorAuthenticationStageInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStage(self: *@This()) core.HResult!SecondaryAuthenticationFactorAuthenticationStage {
         const this: *ISecondaryAuthenticationFactorAuthenticationStageInfo = @ptrCast(self);
         return try this.getStage();
@@ -617,6 +728,18 @@ pub const SecondaryAuthenticationFactorFinishAuthenticationStatus = enum(i32) {
 };
 pub const SecondaryAuthenticationFactorInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISecondaryAuthenticationFactorInfo = @ptrCast(self);
         return try this.getDeviceId();
@@ -662,6 +785,18 @@ pub const SecondaryAuthenticationFactorInfo = extern struct {
 };
 pub const SecondaryAuthenticationFactorRegistration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FinishRegisteringDeviceAsync(self: *@This(), deviceConfigurationData: *IBuffer) core.HResult!*IAsyncAction {
         const this: *ISecondaryAuthenticationFactorRegistration = @ptrCast(self);
         return try this.FinishRegisteringDeviceAsync(deviceConfigurationData);
@@ -669,9 +804,6 @@ pub const SecondaryAuthenticationFactorRegistration = extern struct {
     pub fn AbortRegisteringDeviceAsync(self: *@This(), errorLogMessage: ?HSTRING) core.HResult!*IAsyncAction {
         const this: *ISecondaryAuthenticationFactorRegistration = @ptrCast(self);
         return try this.AbortRegisteringDeviceAsync(errorLogMessage);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RegisterDevicePresenceMonitoringAsync(deviceId: ?HSTRING, deviceInstancePath: ?HSTRING, monitoringMode: SecondaryAuthenticationFactorDevicePresenceMonitoringMode) core.HResult!*IAsyncOperation(SecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStatus) {
         const _f = try @This()._ISecondaryAuthenticationFactorDevicePresenceMonitoringRegistrationStaticsCache.get();
@@ -715,6 +847,18 @@ pub const SecondaryAuthenticationFactorRegistration = extern struct {
 };
 pub const SecondaryAuthenticationFactorRegistrationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!SecondaryAuthenticationFactorRegistrationStatus {
         const this: *ISecondaryAuthenticationFactorRegistrationResult = @ptrCast(self);
         return try this.getStatus();

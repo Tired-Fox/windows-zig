@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IXamlDirect = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetObject(self: *@This(), xamlDirectObject: *IXamlDirectObject) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.GetObject(@ptrCast(self), xamlDirectObject, &_r);
@@ -327,6 +333,12 @@ pub const IXamlDirect = extern struct {
 };
 pub const IXamlDirectObject = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Core.Direct.IXamlDirectObject";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "10614a82-cee4-4645-ba25-d071ce778355";
@@ -343,6 +355,12 @@ pub const IXamlDirectObject = extern struct {
 };
 pub const IXamlDirectStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*XamlDirect {
         var _r: *XamlDirect = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -366,6 +384,18 @@ pub const IXamlDirectStatics = extern struct {
 };
 pub const XamlDirect = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetObject(self: *@This(), xamlDirectObject: *IXamlDirectObject) core.HResult!*IInspectable {
         const this: *IXamlDirect = @ptrCast(self);
         return try this.GetObject(xamlDirectObject);
@@ -573,9 +603,6 @@ pub const XamlDirect = extern struct {
     pub fn RemoveEventHandler(self: *@This(), xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable) core.HResult!void {
         const this: *IXamlDirect = @ptrCast(self);
         return try this.RemoveEventHandler(xamlDirectObject, eventIndex, handler);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*XamlDirect {
         const _f = try @This()._IXamlDirectStaticsCache.get();

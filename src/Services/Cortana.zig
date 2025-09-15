@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CortanaActionableInsights = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         const this: *ICortanaActionableInsights = @ptrCast(self);
         return try this.getUser();
@@ -33,9 +45,6 @@ pub const CortanaActionableInsights = extern struct {
         const this: *ICortanaActionableInsights = @ptrCast(self);
         return try this.ShowInsightsAsyncWithOptions(datapackage, options);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*CortanaActionableInsights {
         const _f = try @This()._ICortanaActionableInsightsStaticsCache.get();
         return try _f.GetDefault();
@@ -53,6 +62,18 @@ pub const CortanaActionableInsights = extern struct {
 };
 pub const CortanaActionableInsightsOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentSourceWebLink(self: *@This()) core.HResult!*Uri {
         const this: *ICortanaActionableInsightsOptions = @ptrCast(self);
         return try this.getContentSourceWebLink();
@@ -68,9 +89,6 @@ pub const CortanaActionableInsightsOptions = extern struct {
     pub fn putSurroundingText(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICortanaActionableInsightsOptions = @ptrCast(self);
         return try this.putSurroundingText(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -103,6 +121,18 @@ pub const CortanaPermissionsChangeResult = enum(i32) {
 };
 pub const CortanaPermissionsManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         const this: *ICortanaPermissionsManager = @ptrCast(self);
         return try this.IsSupported();
@@ -119,9 +149,6 @@ pub const CortanaPermissionsManager = extern struct {
         const this: *ICortanaPermissionsManager = @ptrCast(self);
         return try this.RevokePermissionsAsync(permissions);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*CortanaPermissionsManager {
         const _f = try @This()._ICortanaPermissionsManagerStaticsCache.get();
         return try _f.GetDefault();
@@ -135,6 +162,12 @@ pub const CortanaPermissionsManager = extern struct {
 };
 pub const ICortanaActionableInsights = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -207,6 +240,12 @@ pub const ICortanaActionableInsights = extern struct {
 };
 pub const ICortanaActionableInsightsOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentSourceWebLink(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_ContentSourceWebLink(@ptrCast(self), &_r);
@@ -247,6 +286,12 @@ pub const ICortanaActionableInsightsOptions = extern struct {
 };
 pub const ICortanaActionableInsightsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*CortanaActionableInsights {
         var _r: *CortanaActionableInsights = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -277,6 +322,12 @@ pub const ICortanaActionableInsightsStatics = extern struct {
 };
 pub const ICortanaPermissionsManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
@@ -321,6 +372,12 @@ pub const ICortanaPermissionsManager = extern struct {
 };
 pub const ICortanaPermissionsManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*CortanaPermissionsManager {
         var _r: *CortanaPermissionsManager = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -344,6 +401,18 @@ pub const ICortanaPermissionsManagerStatics = extern struct {
 };
 pub const CortanaSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHasUserConsentToVoiceActivation(self: *@This()) core.HResult!bool {
         const this: *ICortanaSettings = @ptrCast(self);
         return try this.getHasUserConsentToVoiceActivation();
@@ -355,9 +424,6 @@ pub const CortanaSettings = extern struct {
     pub fn putIsVoiceActivationEnabled(self: *@This(), value: bool) core.HResult!void {
         const this: *ICortanaSettings = @ptrCast(self);
         return try this.putIsVoiceActivationEnabled(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
         const _f = try @This()._ICortanaSettingsStaticsCache.get();
@@ -376,6 +442,12 @@ pub const CortanaSettings = extern struct {
 };
 pub const ICortanaSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHasUserConsentToVoiceActivation(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasUserConsentToVoiceActivation(@ptrCast(self), &_r);
@@ -411,6 +483,12 @@ pub const ICortanaSettings = extern struct {
 };
 pub const ICortanaSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);

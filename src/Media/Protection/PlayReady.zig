@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const INDClient = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addRegistrationCompleted(self: *@This(), handler: *TypedEventHandler(NDClient,INDRegistrationCompletedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_RegistrationCompleted(@ptrCast(self), handler, &_r);
@@ -103,6 +109,12 @@ pub const INDClient = extern struct {
 };
 pub const INDClientFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), downloadEngine: *INDDownloadEngine, streamParser: *INDStreamParser, pMessenger: *INDMessenger) core.HResult!*NDClient {
         var _r: *NDClient = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), downloadEngine, streamParser, pMessenger, &_r);
@@ -126,6 +138,12 @@ pub const INDClientFactory = extern struct {
 };
 pub const INDClosedCaptionDataReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getClosedCaptionDataFormat(self: *@This()) core.HResult!NDClosedCaptionFormat {
         var _r: NDClosedCaptionFormat = undefined;
         const _c = self.vtable.get_ClosedCaptionDataFormat(@ptrCast(self), &_r);
@@ -163,6 +181,12 @@ pub const INDClosedCaptionDataReceivedEventArgs = extern struct {
 };
 pub const INDCustomData = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCustomDataTypeID(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_CustomDataTypeID(@ptrCast(self), &_r);
@@ -193,6 +217,12 @@ pub const INDCustomData = extern struct {
 };
 pub const INDCustomDataFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), customDataTypeIDBytes: [*]u8, customDataBytes: [*]u8) core.HResult!*NDCustomData {
         var _r: *NDCustomData = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), customDataTypeIDBytes, customDataBytes, &_r);
@@ -216,6 +246,12 @@ pub const INDCustomDataFactory = extern struct {
 };
 pub const INDDownloadEngine = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Open(self: *@This(), uri: *Uri, sessionIDBytes: [*]u8) core.HResult!void {
         const _c = self.vtable.Open(@ptrCast(self), uri, sessionIDBytes);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -285,6 +321,12 @@ pub const INDDownloadEngine = extern struct {
 };
 pub const INDDownloadEngineNotifier = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnStreamOpened(self: *@This()) core.HResult!void {
         const _c = self.vtable.OnStreamOpened(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -331,6 +373,12 @@ pub const INDDownloadEngineNotifier = extern struct {
 };
 pub const INDLicenseFetchCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResponseCustomData(self: *@This()) core.HResult!*INDCustomData {
         var _r: *INDCustomData = undefined;
         const _c = self.vtable.get_ResponseCustomData(@ptrCast(self), &_r);
@@ -354,6 +402,12 @@ pub const INDLicenseFetchCompletedEventArgs = extern struct {
 };
 pub const INDLicenseFetchDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentIDType(self: *@This()) core.HResult!NDContentIDType {
         var _r: NDContentIDType = undefined;
         const _c = self.vtable.get_ContentIDType(@ptrCast(self), &_r);
@@ -396,6 +450,12 @@ pub const INDLicenseFetchDescriptor = extern struct {
 };
 pub const INDLicenseFetchDescriptorFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), contentIDType: NDContentIDType, contentIDBytes: [*]u8, licenseFetchChallengeCustomData: *INDCustomData) core.HResult!*NDLicenseFetchDescriptor {
         var _r: *NDLicenseFetchDescriptor = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), contentIDType, contentIDBytes, licenseFetchChallengeCustomData, &_r);
@@ -419,6 +479,12 @@ pub const INDLicenseFetchDescriptorFactory = extern struct {
 };
 pub const INDLicenseFetchResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResponseCustomData(self: *@This()) core.HResult!*INDCustomData {
         var _r: *INDCustomData = undefined;
         const _c = self.vtable.get_ResponseCustomData(@ptrCast(self), &_r);
@@ -442,6 +508,12 @@ pub const INDLicenseFetchResult = extern struct {
 };
 pub const INDMessenger = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendRegistrationRequestAsync(self: *@This(), sessionIDBytes: [*]u8, challengeDataBytes: [*]u8) core.HResult!*IAsyncOperation(INDSendResult) {
         var _r: *IAsyncOperation(INDSendResult) = undefined;
         const _c = self.vtable.SendRegistrationRequestAsync(@ptrCast(self), sessionIDBytes, challengeDataBytes, &_r);
@@ -486,6 +558,12 @@ pub const INDMessenger = extern struct {
 };
 pub const INDProximityDetectionCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProximityDetectionRetryCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ProximityDetectionRetryCount(@ptrCast(self), &_r);
@@ -509,6 +587,12 @@ pub const INDProximityDetectionCompletedEventArgs = extern struct {
 };
 pub const INDRegistrationCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResponseCustomData(self: *@This()) core.HResult!*INDCustomData {
         var _r: *INDCustomData = undefined;
         const _c = self.vtable.get_ResponseCustomData(@ptrCast(self), &_r);
@@ -551,6 +635,12 @@ pub const INDRegistrationCompletedEventArgs = extern struct {
 };
 pub const INDSendResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResponse(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_Response(@ptrCast(self), &_r);
@@ -574,6 +664,12 @@ pub const INDSendResult = extern struct {
 };
 pub const INDStartResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMediaStreamSource(self: *@This()) core.HResult!*MediaStreamSource {
         var _r: *MediaStreamSource = undefined;
         const _c = self.vtable.get_MediaStreamSource(@ptrCast(self), &_r);
@@ -597,6 +693,12 @@ pub const INDStartResult = extern struct {
 };
 pub const INDStorageFileHelper = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetFileURLs(self: *@This(), file: *IStorageFile) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetFileURLs(@ptrCast(self), file, &_r);
@@ -620,6 +722,12 @@ pub const INDStorageFileHelper = extern struct {
 };
 pub const INDStreamParser = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseData(self: *@This(), dataBytes: [*]u8) core.HResult!void {
         const _c = self.vtable.ParseData(@ptrCast(self), dataBytes);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -665,6 +773,12 @@ pub const INDStreamParser = extern struct {
 };
 pub const INDStreamParserNotifier = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnContentIDReceived(self: *@This(), licenseFetchDescriptor: *INDLicenseFetchDescriptor) core.HResult!void {
         const _c = self.vtable.OnContentIDReceived(@ptrCast(self), licenseFetchDescriptor);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -701,6 +815,12 @@ pub const INDStreamParserNotifier = extern struct {
 };
 pub const INDTCPMessengerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), remoteHostName: ?HSTRING, remoteHostPort: u32) core.HResult!*NDTCPMessenger {
         var _r: *NDTCPMessenger = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), remoteHostName, remoteHostPort, &_r);
@@ -724,6 +844,12 @@ pub const INDTCPMessengerFactory = extern struct {
 };
 pub const INDTransmitterProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCertificateType(self: *@This()) core.HResult!NDCertificateType {
         var _r: NDCertificateType = undefined;
         const _c = self.vtable.get_CertificateType(@ptrCast(self), &_r);
@@ -817,6 +943,12 @@ pub const INDTransmitterProperties = extern struct {
 };
 pub const IPlayReadyContentHeader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_KeyId(@ptrCast(self), &_r);
@@ -903,6 +1035,12 @@ pub const IPlayReadyContentHeader = extern struct {
 };
 pub const IPlayReadyContentHeader2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyIds(self: *@This()) core.HResult![*]Guid {
         var _r: [*]Guid = undefined;
         const _c = self.vtable.get_KeyIds(@ptrCast(self), &_r);
@@ -933,6 +1071,12 @@ pub const IPlayReadyContentHeader2 = extern struct {
 };
 pub const IPlayReadyContentHeaderFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceFromWindowsMediaDrmHeader(self: *@This(), headerBytes: [*]u8, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
         var _r: *PlayReadyContentHeader = undefined;
         const _c = self.vtable.CreateInstanceFromWindowsMediaDrmHeader(@ptrCast(self), headerBytes, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId, &_r);
@@ -970,6 +1114,12 @@ pub const IPlayReadyContentHeaderFactory = extern struct {
 };
 pub const IPlayReadyContentHeaderFactory2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceFromComponents2(self: *@This(), dwFlags: u32, contentKeyIds: [*]Guid, contentKeyIdStrings: ?[*]HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
         var _r: *PlayReadyContentHeader = undefined;
         const _c = self.vtable.CreateInstanceFromComponents2(@ptrCast(self), dwFlags, contentKeyIds, contentKeyIdStrings, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId, &_r);
@@ -993,6 +1143,12 @@ pub const IPlayReadyContentHeaderFactory2 = extern struct {
 };
 pub const IPlayReadyContentResolver = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ServiceRequest(self: *@This(), contentHeader: *PlayReadyContentHeader) core.HResult!*IPlayReadyServiceRequest {
         var _r: *IPlayReadyServiceRequest = undefined;
         const _c = self.vtable.ServiceRequest(@ptrCast(self), contentHeader, &_r);
@@ -1016,6 +1172,12 @@ pub const IPlayReadyContentResolver = extern struct {
 };
 pub const IPlayReadyDomain = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccountId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_AccountId(@ptrCast(self), &_r);
@@ -1067,6 +1229,12 @@ pub const IPlayReadyDomain = extern struct {
 };
 pub const IPlayReadyDomainIterableFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), domainAccountId: *Guid) core.HResult!*PlayReadyDomainIterable {
         var _r: *PlayReadyDomainIterable = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), domainAccountId, &_r);
@@ -1090,6 +1258,12 @@ pub const IPlayReadyDomainIterableFactory = extern struct {
 };
 pub const IPlayReadyDomainJoinServiceRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDomainAccountId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DomainAccountId(@ptrCast(self), &_r);
@@ -1142,6 +1316,12 @@ pub const IPlayReadyDomainJoinServiceRequest = extern struct {
 };
 pub const IPlayReadyDomainLeaveServiceRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDomainAccountId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DomainAccountId(@ptrCast(self), &_r);
@@ -1182,6 +1362,12 @@ pub const IPlayReadyDomainLeaveServiceRequest = extern struct {
 };
 pub const IPlayReadyITADataGenerator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GenerateData(self: *@This(), guidCPSystemId: *Guid, countOfStreams: u32, configuration: *IPropertySet, format: PlayReadyITADataFormat) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.GenerateData(@ptrCast(self), guidCPSystemId, countOfStreams, configuration, format, &_r);
@@ -1205,6 +1391,12 @@ pub const IPlayReadyITADataGenerator = extern struct {
 };
 pub const IPlayReadyIndividualizationServiceRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyIndividualizationServiceRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "21f5a86b-008c-4611-ab2f-aaa6c69f0e24";
@@ -1221,6 +1413,12 @@ pub const IPlayReadyIndividualizationServiceRequest = extern struct {
 };
 pub const IPlayReadyLicense = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFullyEvaluated(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_FullyEvaluated(@ptrCast(self), &_r);
@@ -1286,6 +1484,12 @@ pub const IPlayReadyLicense = extern struct {
 };
 pub const IPlayReadyLicense2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSecureStopId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_SecureStopId(@ptrCast(self), &_r);
@@ -1330,6 +1534,12 @@ pub const IPlayReadyLicense2 = extern struct {
 };
 pub const IPlayReadyLicenseAcquisitionServiceRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentHeader(self: *@This()) core.HResult!*PlayReadyContentHeader {
         var _r: *PlayReadyContentHeader = undefined;
         const _c = self.vtable.get_ContentHeader(@ptrCast(self), &_r);
@@ -1370,6 +1580,12 @@ pub const IPlayReadyLicenseAcquisitionServiceRequest = extern struct {
 };
 pub const IPlayReadyLicenseAcquisitionServiceRequest2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_SessionId(@ptrCast(self), &_r);
@@ -1393,6 +1609,12 @@ pub const IPlayReadyLicenseAcquisitionServiceRequest2 = extern struct {
 };
 pub const IPlayReadyLicenseAcquisitionServiceRequest3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateLicenseIterable(self: *@This(), contentHeader: *PlayReadyContentHeader, fullyEvaluated: bool) core.HResult!*PlayReadyLicenseIterable {
         var _r: *PlayReadyLicenseIterable = undefined;
         const _c = self.vtable.CreateLicenseIterable(@ptrCast(self), contentHeader, fullyEvaluated, &_r);
@@ -1416,6 +1638,12 @@ pub const IPlayReadyLicenseAcquisitionServiceRequest3 = extern struct {
 };
 pub const IPlayReadyLicenseIterableFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), contentHeader: *PlayReadyContentHeader, fullyEvaluated: bool) core.HResult!*PlayReadyLicenseIterable {
         var _r: *PlayReadyLicenseIterable = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), contentHeader, fullyEvaluated, &_r);
@@ -1439,6 +1667,12 @@ pub const IPlayReadyLicenseIterableFactory = extern struct {
 };
 pub const IPlayReadyLicenseManagement = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn DeleteLicenses(self: *@This(), contentHeader: *PlayReadyContentHeader) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.DeleteLicenses(@ptrCast(self), contentHeader, &_r);
@@ -1462,6 +1696,12 @@ pub const IPlayReadyLicenseManagement = extern struct {
 };
 pub const IPlayReadyLicenseSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateLAServiceRequest(self: *@This()) core.HResult!*IPlayReadyLicenseAcquisitionServiceRequest {
         var _r: *IPlayReadyLicenseAcquisitionServiceRequest = undefined;
         const _c = self.vtable.CreateLAServiceRequest(@ptrCast(self), &_r);
@@ -1490,6 +1730,12 @@ pub const IPlayReadyLicenseSession = extern struct {
 };
 pub const IPlayReadyLicenseSession2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateLicenseIterable(self: *@This(), contentHeader: *PlayReadyContentHeader, fullyEvaluated: bool) core.HResult!*PlayReadyLicenseIterable {
         var _r: *PlayReadyLicenseIterable = undefined;
         const _c = self.vtable.CreateLicenseIterable(@ptrCast(self), contentHeader, fullyEvaluated, &_r);
@@ -1513,6 +1759,12 @@ pub const IPlayReadyLicenseSession2 = extern struct {
 };
 pub const IPlayReadyLicenseSessionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), configuration: *IPropertySet) core.HResult!*PlayReadyLicenseSession {
         var _r: *PlayReadyLicenseSession = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), configuration, &_r);
@@ -1536,6 +1788,12 @@ pub const IPlayReadyLicenseSessionFactory = extern struct {
 };
 pub const IPlayReadyMeteringReportServiceRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMeteringCertificate(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.get_MeteringCertificate(@ptrCast(self), &_r);
@@ -1564,6 +1822,12 @@ pub const IPlayReadyMeteringReportServiceRequest = extern struct {
 };
 pub const IPlayReadyRevocationServiceRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.IPlayReadyRevocationServiceRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "543d66ac-faf0-4560-84a5-0e4acec939e4";
@@ -1580,6 +1844,12 @@ pub const IPlayReadyRevocationServiceRequest = extern struct {
 };
 pub const IPlayReadySecureStopIterableFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopIterable {
         var _r: *PlayReadySecureStopIterable = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), publisherCertBytes, &_r);
@@ -1603,6 +1873,12 @@ pub const IPlayReadySecureStopIterableFactory = extern struct {
 };
 pub const IPlayReadySecureStopServiceRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionID(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_SessionID(@ptrCast(self), &_r);
@@ -1654,6 +1930,12 @@ pub const IPlayReadySecureStopServiceRequest = extern struct {
 };
 pub const IPlayReadySecureStopServiceRequestFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopServiceRequest {
         var _r: *PlayReadySecureStopServiceRequest = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), publisherCertBytes, &_r);
@@ -1684,6 +1966,12 @@ pub const IPlayReadySecureStopServiceRequestFactory = extern struct {
 };
 pub const IPlayReadyServiceRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
@@ -1759,6 +2047,12 @@ pub const IPlayReadyServiceRequest = extern struct {
 };
 pub const IPlayReadySoapMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetMessageBody(self: *@This()) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
         const _c = self.vtable.GetMessageBody(@ptrCast(self), &_r);
@@ -1796,6 +2090,12 @@ pub const IPlayReadySoapMessage = extern struct {
 };
 pub const IPlayReadyStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDomainJoinServiceRequestType(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_DomainJoinServiceRequestType(@ptrCast(self), &_r);
@@ -1868,6 +2168,12 @@ pub const IPlayReadyStatics = extern struct {
 };
 pub const IPlayReadyStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPlayReadyCertificateSecurityLevel(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_PlayReadyCertificateSecurityLevel(@ptrCast(self), &_r);
@@ -1891,6 +2197,12 @@ pub const IPlayReadyStatics2 = extern struct {
 };
 pub const IPlayReadyStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSecureStopServiceRequestType(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_SecureStopServiceRequestType(@ptrCast(self), &_r);
@@ -1921,6 +2233,12 @@ pub const IPlayReadyStatics3 = extern struct {
 };
 pub const IPlayReadyStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInputTrustAuthorityToCreate(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_InputTrustAuthorityToCreate(@ptrCast(self), &_r);
@@ -1951,6 +2269,12 @@ pub const IPlayReadyStatics4 = extern struct {
 };
 pub const IPlayReadyStatics5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHardwareDRMDisabledAtTime(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_HardwareDRMDisabledAtTime(@ptrCast(self), &_r);
@@ -2024,6 +2348,18 @@ pub const NDCertificateType = enum(i32) {
 };
 pub const NDClient = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addRegistrationCompleted(self: *@This(), handler: *TypedEventHandler(NDClient,INDRegistrationCompletedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *INDClient = @ptrCast(self);
         return try this.addRegistrationCompleted(handler);
@@ -2080,9 +2416,6 @@ pub const NDClient = extern struct {
         const this: *INDClient = @ptrCast(self);
         return try this.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(downloadEngine: *INDDownloadEngine, streamParser: *INDStreamParser, pMessenger: *INDMessenger) core.HResult!*NDClient {
         const _f = try @This()._INDClientFactoryCache.get();
         return try _f.CreateInstance(downloadEngine, streamParser, pMessenger);
@@ -2106,6 +2439,18 @@ pub const NDContentIDType = enum(i32) {
 };
 pub const NDCustomData = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCustomDataTypeID(self: *@This()) core.HResult![*]u8 {
         const this: *INDCustomData = @ptrCast(self);
         return try this.getCustomDataTypeID();
@@ -2113,9 +2458,6 @@ pub const NDCustomData = extern struct {
     pub fn getCustomData(self: *@This()) core.HResult![*]u8 {
         const this: *INDCustomData = @ptrCast(self);
         return try this.getCustomData();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(customDataTypeIDBytes: [*]u8, customDataBytes: [*]u8) core.HResult!*NDCustomData {
         const _f = try @This()._INDCustomDataFactoryCache.get();
@@ -2130,6 +2472,18 @@ pub const NDCustomData = extern struct {
 };
 pub const NDDownloadEngineNotifier = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnStreamOpened(self: *@This()) core.HResult!void {
         const this: *INDDownloadEngineNotifier = @ptrCast(self);
         return try this.OnStreamOpened();
@@ -2154,9 +2508,6 @@ pub const NDDownloadEngineNotifier = extern struct {
         const this: *INDDownloadEngineNotifier = @ptrCast(self);
         return try this.OnNetworkError();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INDDownloadEngineNotifier.IID)));
@@ -2170,6 +2521,18 @@ pub const NDDownloadEngineNotifier = extern struct {
 };
 pub const NDLicenseFetchDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentIDType(self: *@This()) core.HResult!NDContentIDType {
         const this: *INDLicenseFetchDescriptor = @ptrCast(self);
         return try this.getContentIDType();
@@ -2185,9 +2548,6 @@ pub const NDLicenseFetchDescriptor = extern struct {
     pub fn putLicenseFetchChallengeCustomData(self: *@This(), licenseFetchChallengeCustomData: *INDCustomData) core.HResult!void {
         const this: *INDLicenseFetchDescriptor = @ptrCast(self);
         return try this.putLicenseFetchChallengeCustomData(licenseFetchChallengeCustomData);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(contentIDType: NDContentIDType, contentIDBytes: [*]u8, licenseFetchChallengeCustomData: *INDCustomData) core.HResult!*NDLicenseFetchDescriptor {
         const _f = try @This()._INDLicenseFetchDescriptorFactoryCache.get();
@@ -2215,12 +2575,21 @@ pub const NDStartAsyncOptions = enum(i32) {
 };
 pub const NDStorageFileHelper = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetFileURLs(self: *@This(), file: *IStorageFile) core.HResult!*IVector(?HSTRING) {
-        const this: *INDStorageFileHelper = @ptrCast(self);
-        return try this.GetFileURLs(file);
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GetFileURLs(self: *@This(), file: *IStorageFile) core.HResult!*IVector(?HSTRING) {
+        const this: *INDStorageFileHelper = @ptrCast(self);
+        return try this.GetFileURLs(file);
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2235,6 +2604,18 @@ pub const NDStorageFileHelper = extern struct {
 };
 pub const NDStreamParserNotifier = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnContentIDReceived(self: *@This(), licenseFetchDescriptor: *INDLicenseFetchDescriptor) core.HResult!void {
         const this: *INDStreamParserNotifier = @ptrCast(self);
         return try this.OnContentIDReceived(licenseFetchDescriptor);
@@ -2251,9 +2632,6 @@ pub const NDStreamParserNotifier = extern struct {
         const this: *INDStreamParserNotifier = @ptrCast(self);
         return try this.OnBeginSetupDecryptor(descriptor, keyID, proBytes);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INDStreamParserNotifier.IID)));
@@ -2267,6 +2645,18 @@ pub const NDStreamParserNotifier = extern struct {
 };
 pub const NDTCPMessenger = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendRegistrationRequestAsync(self: *@This(), sessionIDBytes: [*]u8, challengeDataBytes: [*]u8) core.HResult!*IAsyncOperation(INDSendResult) {
         const this: *INDMessenger = @ptrCast(self);
         return try this.SendRegistrationRequestAsync(sessionIDBytes, challengeDataBytes);
@@ -2283,9 +2673,6 @@ pub const NDTCPMessenger = extern struct {
         const this: *INDMessenger = @ptrCast(self);
         return try this.SendLicenseFetchRequestAsync(sessionIDBytes, challengeDataBytes);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(remoteHostName: ?HSTRING, remoteHostPort: u32) core.HResult!*NDTCPMessenger {
         const _f = try @This()._INDTCPMessengerFactoryCache.get();
         return try _f.CreateInstance(remoteHostName, remoteHostPort);
@@ -2299,6 +2686,18 @@ pub const NDTCPMessenger = extern struct {
 };
 pub const PlayReadyContentHeader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyId(self: *@This()) core.HResult!*Guid {
         const this: *IPlayReadyContentHeader = @ptrCast(self);
         return try this.getKeyId();
@@ -2353,9 +2752,6 @@ pub const PlayReadyContentHeader = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKeyIdStrings();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstanceFromWindowsMediaDrmHeader(headerBytes: [*]u8, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: ?HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
         const _f = try @This()._IPlayReadyContentHeaderFactoryCache.get();
         return try _f.CreateInstanceFromWindowsMediaDrmHeader(headerBytes, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
@@ -2382,6 +2778,15 @@ pub const PlayReadyContentHeader = extern struct {
 };
 pub const PlayReadyContentResolver = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2399,6 +2804,18 @@ pub const PlayReadyDecryptorSetup = enum(i32) {
 };
 pub const PlayReadyDomain = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccountId(self: *@This()) core.HResult!*Guid {
         const this: *IPlayReadyDomain = @ptrCast(self);
         return try this.getAccountId();
@@ -2427,12 +2844,21 @@ pub const PlayReadyDomain = extern struct {
 };
 pub const PlayReadyDomainIterable = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn First(self: *@This()) core.HResult!*IIterator(IPlayReadyDomain) {
-        const this: *IIterable(IPlayReadyDomain) = @ptrCast(self);
-        return try this.First();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn First(self: *@This()) core.HResult!*IIterator(IPlayReadyDomain) {
+        const this: *IIterable(IPlayReadyDomain) = @ptrCast(self);
+        return try this.First();
     }
     pub fn CreateInstance(domainAccountId: *Guid) core.HResult!*PlayReadyDomainIterable {
         const _f = try @This()._IPlayReadyDomainIterableFactoryCache.get();
@@ -2447,6 +2873,18 @@ pub const PlayReadyDomainIterable = extern struct {
 };
 pub const PlayReadyDomainIterator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHasCurrent(self: *@This()) core.HResult!bool {
         const this: *IIterator(IPlayReadyDomain) = @ptrCast(self);
         return try this.getHasCurrent();
@@ -2463,6 +2901,18 @@ pub const PlayReadyDomainIterator = extern struct {
 };
 pub const PlayReadyDomainJoinServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDomainAccountId(self: *@This()) core.HResult!*Guid {
         const this: *IPlayReadyDomainJoinServiceRequest = @ptrCast(self);
         return try this.getDomainAccountId();
@@ -2564,9 +3014,6 @@ pub const PlayReadyDomainJoinServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPlayReadyDomainJoinServiceRequest.IID)));
@@ -2580,6 +3027,18 @@ pub const PlayReadyDomainJoinServiceRequest = extern struct {
 };
 pub const PlayReadyDomainLeaveServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDomainAccountId(self: *@This()) core.HResult!*Guid {
         const this: *IPlayReadyDomainLeaveServiceRequest = @ptrCast(self);
         return try this.getDomainAccountId();
@@ -2673,9 +3132,6 @@ pub const PlayReadyDomainLeaveServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPlayReadyDomainLeaveServiceRequest.IID)));
@@ -2706,12 +3162,21 @@ pub const PlayReadyITADataFormat = enum(i32) {
 };
 pub const PlayReadyITADataGenerator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GenerateData(self: *@This(), guidCPSystemId: *Guid, countOfStreams: u32, configuration: *IPropertySet, format: PlayReadyITADataFormat) core.HResult![*]u8 {
-        const this: *IPlayReadyITADataGenerator = @ptrCast(self);
-        return try this.GenerateData(guidCPSystemId, countOfStreams, configuration, format);
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn GenerateData(self: *@This(), guidCPSystemId: *Guid, countOfStreams: u32, configuration: *IPropertySet, format: PlayReadyITADataFormat) core.HResult![*]u8 {
+        const this: *IPlayReadyITADataGenerator = @ptrCast(self);
+        return try this.GenerateData(guidCPSystemId, countOfStreams, configuration, format);
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2726,6 +3191,18 @@ pub const PlayReadyITADataGenerator = extern struct {
 };
 pub const PlayReadyIndividualizationServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -2803,9 +3280,6 @@ pub const PlayReadyIndividualizationServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPlayReadyIndividualizationServiceRequest.IID)));
@@ -2819,6 +3293,18 @@ pub const PlayReadyIndividualizationServiceRequest = extern struct {
 };
 pub const PlayReadyLicense = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFullyEvaluated(self: *@This()) core.HResult!bool {
         const this: *IPlayReadyLicense = @ptrCast(self);
         return try this.getFullyEvaluated();
@@ -2883,6 +3369,18 @@ pub const PlayReadyLicense = extern struct {
 };
 pub const PlayReadyLicenseAcquisitionServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentHeader(self: *@This()) core.HResult!*PlayReadyContentHeader {
         const this: *IPlayReadyLicenseAcquisitionServiceRequest = @ptrCast(self);
         return try this.getContentHeader();
@@ -2990,9 +3488,6 @@ pub const PlayReadyLicenseAcquisitionServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLicenseIterable(contentHeader, fullyEvaluated);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPlayReadyLicenseAcquisitionServiceRequest.IID)));
@@ -3006,12 +3501,21 @@ pub const PlayReadyLicenseAcquisitionServiceRequest = extern struct {
 };
 pub const PlayReadyLicenseIterable = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn First(self: *@This()) core.HResult!*IIterator(IPlayReadyLicense) {
-        const this: *IIterable(IPlayReadyLicense) = @ptrCast(self);
-        return try this.First();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn First(self: *@This()) core.HResult!*IIterator(IPlayReadyLicense) {
+        const this: *IIterable(IPlayReadyLicense) = @ptrCast(self);
+        return try this.First();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -3031,6 +3535,18 @@ pub const PlayReadyLicenseIterable = extern struct {
 };
 pub const PlayReadyLicenseIterator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHasCurrent(self: *@This()) core.HResult!bool {
         const this: *IIterator(IPlayReadyLicense) = @ptrCast(self);
         return try this.getHasCurrent();
@@ -3047,6 +3563,15 @@ pub const PlayReadyLicenseIterator = extern struct {
 };
 pub const PlayReadyLicenseManagement = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3060,6 +3585,18 @@ pub const PlayReadyLicenseManagement = extern struct {
 };
 pub const PlayReadyLicenseSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateLAServiceRequest(self: *@This()) core.HResult!*IPlayReadyLicenseAcquisitionServiceRequest {
         const this: *IPlayReadyLicenseSession = @ptrCast(self);
         return try this.CreateLAServiceRequest();
@@ -3075,9 +3612,6 @@ pub const PlayReadyLicenseSession = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLicenseIterable(contentHeader, fullyEvaluated);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(configuration: *IPropertySet) core.HResult!*PlayReadyLicenseSession {
         const _f = try @This()._IPlayReadyLicenseSessionFactoryCache.get();
         return try _f.CreateInstance(configuration);
@@ -3091,6 +3625,18 @@ pub const PlayReadyLicenseSession = extern struct {
 };
 pub const PlayReadyMeteringReportServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMeteringCertificate(self: *@This()) core.HResult![*]u8 {
         const this: *IPlayReadyMeteringReportServiceRequest = @ptrCast(self);
         return try this.getMeteringCertificate();
@@ -3176,9 +3722,6 @@ pub const PlayReadyMeteringReportServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPlayReadyMeteringReportServiceRequest.IID)));
@@ -3192,6 +3735,18 @@ pub const PlayReadyMeteringReportServiceRequest = extern struct {
 };
 pub const PlayReadyRevocationServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var this: ?*IPlayReadyServiceRequest = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -3269,9 +3824,6 @@ pub const PlayReadyRevocationServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPlayReadyRevocationServiceRequest.IID)));
@@ -3285,12 +3837,21 @@ pub const PlayReadyRevocationServiceRequest = extern struct {
 };
 pub const PlayReadySecureStopIterable = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn First(self: *@This()) core.HResult!*IIterator(IPlayReadySecureStopServiceRequest) {
-        const this: *IIterable(IPlayReadySecureStopServiceRequest) = @ptrCast(self);
-        return try this.First();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn First(self: *@This()) core.HResult!*IIterator(IPlayReadySecureStopServiceRequest) {
+        const this: *IIterable(IPlayReadySecureStopServiceRequest) = @ptrCast(self);
+        return try this.First();
     }
     pub fn CreateInstance(publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopIterable {
         const _f = try @This()._IPlayReadySecureStopIterableFactoryCache.get();
@@ -3305,6 +3866,18 @@ pub const PlayReadySecureStopIterable = extern struct {
 };
 pub const PlayReadySecureStopIterator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHasCurrent(self: *@This()) core.HResult!bool {
         const this: *IIterator(IPlayReadySecureStopServiceRequest) = @ptrCast(self);
         return try this.getHasCurrent();
@@ -3321,6 +3894,18 @@ pub const PlayReadySecureStopIterator = extern struct {
 };
 pub const PlayReadySecureStopServiceRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessionID(self: *@This()) core.HResult!*Guid {
         const this: *IPlayReadySecureStopServiceRequest = @ptrCast(self);
         return try this.getSessionID();
@@ -3418,9 +4003,6 @@ pub const PlayReadySecureStopServiceRequest = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getType();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopServiceRequest {
         const _f = try @This()._IPlayReadySecureStopServiceRequestFactoryCache.get();
         return try _f.CreateInstance(publisherCertBytes);
@@ -3438,6 +4020,18 @@ pub const PlayReadySecureStopServiceRequest = extern struct {
 };
 pub const PlayReadySoapMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetMessageBody(self: *@This()) core.HResult![*]u8 {
         const this: *IPlayReadySoapMessage = @ptrCast(self);
         return try this.GetMessageBody();
@@ -3458,6 +4052,15 @@ pub const PlayReadySoapMessage = extern struct {
 };
 pub const PlayReadyStatics = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

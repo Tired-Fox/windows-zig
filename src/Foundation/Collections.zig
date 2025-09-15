@@ -8,6 +8,12 @@ pub const CollectionChange = enum(i32) {
 pub fn IIterable(T: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn First(self: *@This()) core.HResult!*IIterator(T) {
             var _r: *IIterator(T) = undefined;
             const _c = self.vtable.First(@ptrCast(self), &_r);
@@ -33,6 +39,12 @@ pub fn IIterable(T: type) type {
 pub fn IIterator(T: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn getCurrent(self: *@This()) core.HResult!core.generic(T) {
             var _r: core.generic(T) = undefined;
             const _c = self.vtable.get_Current(@ptrCast(self), &_r);
@@ -79,6 +91,12 @@ pub fn IIterator(T: type) type {
 pub fn IKeyValuePair(K: type, V: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn getKey(self: *@This()) core.HResult!core.generic(K) {
             var _r: core.generic(K) = undefined;
             const _c = self.vtable.get_Key(@ptrCast(self), &_r);
@@ -111,6 +129,12 @@ pub fn IKeyValuePair(K: type, V: type) type {
 pub fn IMapChangedEventArgs(K: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn getCollectionChange(self: *@This()) core.HResult!CollectionChange {
             var _r: CollectionChange = undefined;
             const _c = self.vtable.get_CollectionChange(@ptrCast(self), &_r);
@@ -143,6 +167,12 @@ pub fn IMapChangedEventArgs(K: type) type {
 pub fn IMapView(K: type, V: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
             var _r: core.generic(V) = undefined;
             const _c = self.vtable.Lookup(@ptrCast(self), key, &_r);
@@ -187,6 +217,12 @@ pub fn IMapView(K: type, V: type) type {
 pub fn IMap(K: type, V: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
             var _r: core.generic(V) = undefined;
             const _c = self.vtable.Lookup(@ptrCast(self), key, &_r);
@@ -250,6 +286,12 @@ pub fn IMap(K: type, V: type) type {
 pub fn IObservableMap(K: type, V: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(K,V)) core.HResult!EventRegistrationToken {
             var _r: EventRegistrationToken = undefined;
             const _c = self.vtable.add_MapChanged(@ptrCast(self), vhnd, &_r);
@@ -280,6 +322,12 @@ pub fn IObservableMap(K: type, V: type) type {
 pub fn IObservableVector(T: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn addVectorChanged(self: *@This(), vhnd: *VectorChangedEventHandler(T)) core.HResult!EventRegistrationToken {
             var _r: EventRegistrationToken = undefined;
             const _c = self.vtable.add_VectorChanged(@ptrCast(self), vhnd, &_r);
@@ -309,6 +357,12 @@ pub fn IObservableVector(T: type) type {
 }
 pub const IPropertySet = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Foundation.Collections.IPropertySet";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "8a43ed9f-f4e6-4421-acf9-1dab2986820c";
@@ -325,6 +379,12 @@ pub const IPropertySet = extern struct {
 };
 pub const IVectorChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCollectionChange(self: *@This()) core.HResult!CollectionChange {
         var _r: CollectionChange = undefined;
         const _c = self.vtable.get_CollectionChange(@ptrCast(self), &_r);
@@ -356,6 +416,12 @@ pub const IVectorChangedEventArgs = extern struct {
 pub fn IVectorView(T: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
             var _r: core.generic(T) = undefined;
             const _c = self.vtable.GetAt(@ptrCast(self), index, &_r);
@@ -402,6 +468,12 @@ pub fn IVectorView(T: type) type {
 pub fn IVector(T: type) type {
     return extern struct {
         vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
         pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
             var _r: core.generic(T) = undefined;
             const _c = self.vtable.GetAt(@ptrCast(self), index, &_r);
@@ -580,6 +652,18 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
 }
 pub const PropertySet = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(?HSTRING,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IObservableMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -622,9 +706,6 @@ pub const PropertySet = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPropertySet.IID)));
@@ -638,6 +719,18 @@ pub const PropertySet = extern struct {
 };
 pub const StringMap = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IMap(?HSTRING,?HSTRING) = @ptrCast(self);
         return try this.getSize();
@@ -671,9 +764,6 @@ pub const StringMap = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMapChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMap.IID)));
@@ -687,6 +777,18 @@ pub const StringMap = extern struct {
 };
 pub const ValueSet = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(?HSTRING,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IObservableMap(?HSTRING,IInspectable) = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -728,9 +830,6 @@ pub const ValueSet = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable(IKeyValuePair(?HSTRING,IInspectable)).IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

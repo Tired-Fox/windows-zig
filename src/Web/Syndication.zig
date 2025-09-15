@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ISyndicationAttribute = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -53,6 +59,12 @@ pub const ISyndicationAttribute = extern struct {
 };
 pub const ISyndicationAttributeFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSyndicationAttribute(self: *@This(), attributeName: ?HSTRING, attributeNamespace: ?HSTRING, attributeValue: ?HSTRING) core.HResult!*SyndicationAttribute {
         var _r: *SyndicationAttribute = undefined;
         const _c = self.vtable.CreateSyndicationAttribute(@ptrCast(self), attributeName, attributeNamespace, attributeValue, &_r);
@@ -76,6 +88,12 @@ pub const ISyndicationAttributeFactory = extern struct {
 };
 pub const ISyndicationCategory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
@@ -128,6 +146,12 @@ pub const ISyndicationCategory = extern struct {
 };
 pub const ISyndicationCategoryFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSyndicationCategory(self: *@This(), term: ?HSTRING) core.HResult!*SyndicationCategory {
         var _r: *SyndicationCategory = undefined;
         const _c = self.vtable.CreateSyndicationCategory(@ptrCast(self), term, &_r);
@@ -158,6 +182,12 @@ pub const ISyndicationCategoryFactory = extern struct {
 };
 pub const ISyndicationClient = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_ServerCredential(@ptrCast(self), &_r);
@@ -246,6 +276,12 @@ pub const ISyndicationClient = extern struct {
 };
 pub const ISyndicationClientFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSyndicationClient(self: *@This(), serverCredential: *PasswordCredential) core.HResult!*SyndicationClient {
         var _r: *SyndicationClient = undefined;
         const _c = self.vtable.CreateSyndicationClient(@ptrCast(self), serverCredential, &_r);
@@ -269,6 +305,12 @@ pub const ISyndicationClientFactory = extern struct {
 };
 pub const ISyndicationContent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_SourceUri(@ptrCast(self), &_r);
@@ -297,6 +339,12 @@ pub const ISyndicationContent = extern struct {
 };
 pub const ISyndicationContentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSyndicationContent(self: *@This(), text: ?HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationContent {
         var _r: *SyndicationContent = undefined;
         const _c = self.vtable.CreateSyndicationContent(@ptrCast(self), text, ty, &_r);
@@ -327,6 +375,12 @@ pub const ISyndicationContentFactory = extern struct {
 };
 pub const ISyndicationErrorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetStatus(self: *@This(), hresult: i32) core.HResult!SyndicationErrorStatus {
         var _r: SyndicationErrorStatus = undefined;
         const _c = self.vtable.GetStatus(@ptrCast(self), hresult, &_r);
@@ -350,6 +404,12 @@ pub const ISyndicationErrorStatics = extern struct {
 };
 pub const ISyndicationFeed = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthors(self: *@This()) core.HResult!*IVector(SyndicationPerson) {
         var _r: *IVector(SyndicationPerson) = undefined;
         const _c = self.vtable.get_Authors(@ptrCast(self), &_r);
@@ -542,6 +602,12 @@ pub const ISyndicationFeed = extern struct {
 };
 pub const ISyndicationFeedFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSyndicationFeed(self: *@This(), title: ?HSTRING, subtitle: ?HSTRING, uri: *Uri) core.HResult!*SyndicationFeed {
         var _r: *SyndicationFeed = undefined;
         const _c = self.vtable.CreateSyndicationFeed(@ptrCast(self), title, subtitle, uri, &_r);
@@ -565,6 +631,12 @@ pub const ISyndicationFeedFactory = extern struct {
 };
 pub const ISyndicationGenerator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
@@ -617,6 +689,12 @@ pub const ISyndicationGenerator = extern struct {
 };
 pub const ISyndicationGeneratorFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSyndicationGenerator(self: *@This(), text: ?HSTRING) core.HResult!*SyndicationGenerator {
         var _r: *SyndicationGenerator = undefined;
         const _c = self.vtable.CreateSyndicationGenerator(@ptrCast(self), text, &_r);
@@ -640,6 +718,12 @@ pub const ISyndicationGeneratorFactory = extern struct {
 };
 pub const ISyndicationItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthors(self: *@This()) core.HResult!*IVector(SyndicationPerson) {
         var _r: *IVector(SyndicationPerson) = undefined;
         const _c = self.vtable.get_Authors(@ptrCast(self), &_r);
@@ -830,6 +914,12 @@ pub const ISyndicationItem = extern struct {
 };
 pub const ISyndicationItemFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSyndicationItem(self: *@This(), title: ?HSTRING, content: *SyndicationContent, uri: *Uri) core.HResult!*SyndicationItem {
         var _r: *SyndicationItem = undefined;
         const _c = self.vtable.CreateSyndicationItem(@ptrCast(self), title, content, uri, &_r);
@@ -853,6 +943,12 @@ pub const ISyndicationItemFactory = extern struct {
 };
 pub const ISyndicationLink = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Length(@ptrCast(self), &_r);
@@ -941,6 +1037,12 @@ pub const ISyndicationLink = extern struct {
 };
 pub const ISyndicationLinkFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSyndicationLink(self: *@This(), uri: *Uri) core.HResult!*SyndicationLink {
         var _r: *SyndicationLink = undefined;
         const _c = self.vtable.CreateSyndicationLink(@ptrCast(self), uri, &_r);
@@ -971,6 +1073,12 @@ pub const ISyndicationLinkFactory = extern struct {
 };
 pub const ISyndicationNode = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_NodeName(@ptrCast(self), &_r);
@@ -1068,6 +1176,12 @@ pub const ISyndicationNode = extern struct {
 };
 pub const ISyndicationNodeFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSyndicationNode(self: *@This(), nodeName: ?HSTRING, nodeNamespace: ?HSTRING, nodeValue: ?HSTRING) core.HResult!*SyndicationNode {
         var _r: *SyndicationNode = undefined;
         const _c = self.vtable.CreateSyndicationNode(@ptrCast(self), nodeName, nodeNamespace, nodeValue, &_r);
@@ -1091,6 +1205,12 @@ pub const ISyndicationNodeFactory = extern struct {
 };
 pub const ISyndicationPerson = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEmail(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Email(@ptrCast(self), &_r);
@@ -1143,6 +1263,12 @@ pub const ISyndicationPerson = extern struct {
 };
 pub const ISyndicationPersonFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSyndicationPerson(self: *@This(), name: ?HSTRING) core.HResult!*SyndicationPerson {
         var _r: *SyndicationPerson = undefined;
         const _c = self.vtable.CreateSyndicationPerson(@ptrCast(self), name, &_r);
@@ -1173,6 +1299,12 @@ pub const ISyndicationPersonFactory = extern struct {
 };
 pub const ISyndicationText = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
@@ -1225,6 +1357,12 @@ pub const ISyndicationText = extern struct {
 };
 pub const ISyndicationTextFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSyndicationText(self: *@This(), text: ?HSTRING) core.HResult!*SyndicationText {
         var _r: *SyndicationText = undefined;
         const _c = self.vtable.CreateSyndicationText(@ptrCast(self), text, &_r);
@@ -1259,6 +1397,18 @@ pub const RetrievalProgress = extern struct {
 };
 pub const SyndicationAttribute = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationAttribute = @ptrCast(self);
         return try this.getName();
@@ -1283,9 +1433,6 @@ pub const SyndicationAttribute = extern struct {
         const this: *ISyndicationAttribute = @ptrCast(self);
         return try this.putValue(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationAttribute.IID)));
@@ -1304,6 +1451,18 @@ pub const SyndicationAttribute = extern struct {
 };
 pub const SyndicationCategory = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationCategory = @ptrCast(self);
         return try this.getLabel();
@@ -1419,9 +1578,6 @@ pub const SyndicationCategory = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXmlDocument(format);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationCategory.IID)));
@@ -1444,6 +1600,18 @@ pub const SyndicationCategory = extern struct {
 };
 pub const SyndicationClient = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         const this: *ISyndicationClient = @ptrCast(self);
         return try this.getServerCredential();
@@ -1492,9 +1660,6 @@ pub const SyndicationClient = extern struct {
         const this: *ISyndicationClient = @ptrCast(self);
         return try this.RetrieveFeedAsync(uri);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationClient.IID)));
@@ -1513,6 +1678,18 @@ pub const SyndicationClient = extern struct {
 };
 pub const SyndicationContent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var this: ?*ISyndicationText = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1654,9 +1831,6 @@ pub const SyndicationContent = extern struct {
         const this: *ISyndicationContent = @ptrCast(self);
         return try this.putSourceUri(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationContent.IID)));
@@ -1679,6 +1853,15 @@ pub const SyndicationContent = extern struct {
 };
 pub const SyndicationError = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1700,6 +1883,18 @@ pub const SyndicationErrorStatus = enum(i32) {
 };
 pub const SyndicationFeed = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthors(self: *@This()) core.HResult!*IVector(SyndicationPerson) {
         const this: *ISyndicationFeed = @ptrCast(self);
         return try this.getAuthors();
@@ -1903,9 +2098,6 @@ pub const SyndicationFeed = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXmlDocument(format);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationFeed.IID)));
@@ -1932,6 +2124,18 @@ pub const SyndicationFormat = enum(i32) {
 };
 pub const SyndicationGenerator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationGenerator = @ptrCast(self);
         return try this.getText();
@@ -2047,9 +2251,6 @@ pub const SyndicationGenerator = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXmlDocument(format);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationGenerator.IID)));
@@ -2068,6 +2269,18 @@ pub const SyndicationGenerator = extern struct {
 };
 pub const SyndicationItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthors(self: *@This()) core.HResult!*IVector(SyndicationPerson) {
         const this: *ISyndicationItem = @ptrCast(self);
         return try this.getAuthors();
@@ -2271,9 +2484,6 @@ pub const SyndicationItem = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXmlDocument(format);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationItem.IID)));
@@ -2292,6 +2502,18 @@ pub const SyndicationItem = extern struct {
 };
 pub const SyndicationLink = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLength(self: *@This()) core.HResult!u32 {
         const this: *ISyndicationLink = @ptrCast(self);
         return try this.getLength();
@@ -2431,9 +2653,6 @@ pub const SyndicationLink = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXmlDocument(format);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationLink.IID)));
@@ -2456,6 +2675,18 @@ pub const SyndicationLink = extern struct {
 };
 pub const SyndicationNode = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNodeName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationNode = @ptrCast(self);
         return try this.getNodeName();
@@ -2508,9 +2739,6 @@ pub const SyndicationNode = extern struct {
         const this: *ISyndicationNode = @ptrCast(self);
         return try this.GetXmlDocument(format);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationNode.IID)));
@@ -2529,6 +2757,18 @@ pub const SyndicationNode = extern struct {
 };
 pub const SyndicationPerson = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEmail(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationPerson = @ptrCast(self);
         return try this.getEmail();
@@ -2644,9 +2884,6 @@ pub const SyndicationPerson = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXmlDocument(format);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationPerson.IID)));
@@ -2669,6 +2906,18 @@ pub const SyndicationPerson = extern struct {
 };
 pub const SyndicationText = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISyndicationText = @ptrCast(self);
         return try this.getText();
@@ -2783,9 +3032,6 @@ pub const SyndicationText = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISyndicationNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetXmlDocument(format);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

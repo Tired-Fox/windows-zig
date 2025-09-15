@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AppWindow = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContent(self: *@This()) core.HResult!*UIContentRoot {
         const this: *IAppWindow = @ptrCast(self);
         return try this.getContent();
@@ -117,9 +129,6 @@ pub const AppWindow = extern struct {
         const this: *IAppWindow = @ptrCast(self);
         return try this.removeCloseRequested(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn TryCreateAsync() core.HResult!*IAsyncOperation(AppWindow) {
         const _f = try @This()._IAppWindowStaticsCache.get();
         return try _f.TryCreateAsync();
@@ -141,6 +150,18 @@ pub const AppWindow = extern struct {
 };
 pub const AppWindowChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDidAvailableWindowPresentationsChange(self: *@This()) core.HResult!bool {
         const this: *IAppWindowChangedEventArgs = @ptrCast(self);
         return try this.getDidAvailableWindowPresentationsChange();
@@ -181,6 +202,18 @@ pub const AppWindowChangedEventArgs = extern struct {
 };
 pub const AppWindowCloseRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCancel(self: *@This()) core.HResult!bool {
         const this: *IAppWindowCloseRequestedEventArgs = @ptrCast(self);
         return try this.getCancel();
@@ -201,6 +234,18 @@ pub const AppWindowCloseRequestedEventArgs = extern struct {
 };
 pub const AppWindowClosedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!AppWindowClosedReason {
         const this: *IAppWindowClosedEventArgs = @ptrCast(self);
         return try this.getReason();
@@ -218,6 +263,18 @@ pub const AppWindowClosedReason = enum(i32) {
 };
 pub const AppWindowFrame = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetFrameStyle(self: *@This()) core.HResult!AppWindowFrameStyle {
         var this: ?*IAppWindowFrameStyle = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -248,6 +305,18 @@ pub const AppWindowFrameStyle = enum(i32) {
 };
 pub const AppWindowPlacement = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayRegion(self: *@This()) core.HResult!*DisplayRegion {
         const this: *IAppWindowPlacement = @ptrCast(self);
         return try this.getDisplayRegion();
@@ -268,12 +337,21 @@ pub const AppWindowPlacement = extern struct {
 };
 pub const AppWindowPresentationConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getKind(self: *@This()) core.HResult!AppWindowPresentationKind {
-        const this: *IAppWindowPresentationConfiguration = @ptrCast(self);
-        return try this.getKind();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getKind(self: *@This()) core.HResult!AppWindowPresentationKind {
+        const this: *IAppWindowPresentationConfiguration = @ptrCast(self);
+        return try this.getKind();
     }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.AppWindowPresentationConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -289,6 +367,18 @@ pub const AppWindowPresentationKind = enum(i32) {
 };
 pub const AppWindowPresenter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetConfiguration(self: *@This()) core.HResult!*AppWindowPresentationConfiguration {
         const this: *IAppWindowPresenter = @ptrCast(self);
         return try this.GetConfiguration();
@@ -313,6 +403,18 @@ pub const AppWindowPresenter = extern struct {
 };
 pub const AppWindowTitleBar = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPreferredVisibility(self: *@This()) core.HResult!AppWindowTitleBarVisibility {
         var this: ?*IAppWindowTitleBarVisibility = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -447,6 +549,18 @@ pub const AppWindowTitleBar = extern struct {
 };
 pub const AppWindowTitleBarOcclusion = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOccludingRect(self: *@This()) core.HResult!Rect {
         const this: *IAppWindowTitleBarOcclusion = @ptrCast(self);
         return try this.getOccludingRect();
@@ -463,6 +577,15 @@ pub const AppWindowTitleBarVisibility = enum(i32) {
 };
 pub const CompactOverlayPresentationConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -479,6 +602,15 @@ pub const CompactOverlayPresentationConfiguration = extern struct {
 };
 pub const DefaultPresentationConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -495,6 +627,18 @@ pub const DefaultPresentationConfiguration = extern struct {
 };
 pub const DisplayRegion = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayMonitorDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IDisplayRegion = @ptrCast(self);
         return try this.getDisplayMonitorDeviceId();
@@ -531,6 +675,18 @@ pub const DisplayRegion = extern struct {
 };
 pub const FullScreenPresentationConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsExclusive(self: *@This()) core.HResult!bool {
         const this: *IFullScreenPresentationConfiguration = @ptrCast(self);
         return try this.getIsExclusive();
@@ -538,9 +694,6 @@ pub const FullScreenPresentationConfiguration = extern struct {
     pub fn putIsExclusive(self: *@This(), value: bool) core.HResult!void {
         const this: *IFullScreenPresentationConfiguration = @ptrCast(self);
         return try this.putIsExclusive(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -555,6 +708,12 @@ pub const FullScreenPresentationConfiguration = extern struct {
 };
 pub const IAppWindow = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContent(self: *@This()) core.HResult!*UIContentRoot {
         var _r: *UIContentRoot = undefined;
         const _c = self.vtable.get_Content(@ptrCast(self), &_r);
@@ -750,6 +909,12 @@ pub const IAppWindow = extern struct {
 };
 pub const IAppWindowChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDidAvailableWindowPresentationsChange(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_DidAvailableWindowPresentationsChange(@ptrCast(self), &_r);
@@ -822,6 +987,12 @@ pub const IAppWindowChangedEventArgs = extern struct {
 };
 pub const IAppWindowCloseRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCancel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Cancel(@ptrCast(self), &_r);
@@ -857,6 +1028,12 @@ pub const IAppWindowCloseRequestedEventArgs = extern struct {
 };
 pub const IAppWindowClosedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!AppWindowClosedReason {
         var _r: AppWindowClosedReason = undefined;
         const _c = self.vtable.get_Reason(@ptrCast(self), &_r);
@@ -880,6 +1057,12 @@ pub const IAppWindowClosedEventArgs = extern struct {
 };
 pub const IAppWindowFrame = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDragRegionVisuals(self: *@This()) core.HResult!*IVector(IVisualElement) {
         var _r: *IVector(IVisualElement) = undefined;
         const _c = self.vtable.get_DragRegionVisuals(@ptrCast(self), &_r);
@@ -903,6 +1086,12 @@ pub const IAppWindowFrame = extern struct {
 };
 pub const IAppWindowFrameStyle = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetFrameStyle(self: *@This()) core.HResult!AppWindowFrameStyle {
         var _r: AppWindowFrameStyle = undefined;
         const _c = self.vtable.GetFrameStyle(@ptrCast(self), &_r);
@@ -931,6 +1120,12 @@ pub const IAppWindowFrameStyle = extern struct {
 };
 pub const IAppWindowPlacement = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayRegion(self: *@This()) core.HResult!*DisplayRegion {
         var _r: *DisplayRegion = undefined;
         const _c = self.vtable.get_DisplayRegion(@ptrCast(self), &_r);
@@ -968,6 +1163,12 @@ pub const IAppWindowPlacement = extern struct {
 };
 pub const IAppWindowPresentationConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!AppWindowPresentationKind {
         var _r: AppWindowPresentationKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -991,6 +1192,12 @@ pub const IAppWindowPresentationConfiguration = extern struct {
 };
 pub const IAppWindowPresentationConfigurationFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.IAppWindowPresentationConfigurationFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "fd3606a6-7875-5de8-84ff-6351ee13dd0d";
@@ -1007,6 +1214,12 @@ pub const IAppWindowPresentationConfigurationFactory = extern struct {
 };
 pub const IAppWindowPresenter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetConfiguration(self: *@This()) core.HResult!*AppWindowPresentationConfiguration {
         var _r: *AppWindowPresentationConfiguration = undefined;
         const _c = self.vtable.GetConfiguration(@ptrCast(self), &_r);
@@ -1051,6 +1264,12 @@ pub const IAppWindowPresenter = extern struct {
 };
 pub const IAppWindowStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryCreateAsync(self: *@This()) core.HResult!*IAsyncOperation(AppWindow) {
         var _r: *IAsyncOperation(AppWindow) = undefined;
         const _c = self.vtable.TryCreateAsync(@ptrCast(self), &_r);
@@ -1084,6 +1303,12 @@ pub const IAppWindowStatics = extern struct {
 };
 pub const IAppWindowTitleBar = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBackgroundColor(self: *@This()) core.HResult!*IReference(Color) {
         var _r: *IReference(Color) = undefined;
         const _c = self.vtable.get_BackgroundColor(@ptrCast(self), &_r);
@@ -1270,6 +1495,12 @@ pub const IAppWindowTitleBar = extern struct {
 };
 pub const IAppWindowTitleBarOcclusion = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOccludingRect(self: *@This()) core.HResult!Rect {
         var _r: Rect = undefined;
         const _c = self.vtable.get_OccludingRect(@ptrCast(self), &_r);
@@ -1293,6 +1524,12 @@ pub const IAppWindowTitleBarOcclusion = extern struct {
 };
 pub const IAppWindowTitleBarVisibility = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPreferredVisibility(self: *@This()) core.HResult!AppWindowTitleBarVisibility {
         var _r: AppWindowTitleBarVisibility = undefined;
         const _c = self.vtable.GetPreferredVisibility(@ptrCast(self), &_r);
@@ -1321,6 +1558,12 @@ pub const IAppWindowTitleBarVisibility = extern struct {
 };
 pub const ICompactOverlayPresentationConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.ICompactOverlayPresentationConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "a7e5750f-5730-56c6-8e1f-d63ff4d7980d";
@@ -1337,6 +1580,12 @@ pub const ICompactOverlayPresentationConfiguration = extern struct {
 };
 pub const IDefaultPresentationConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.IDefaultPresentationConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "d8c2b53b-2168-5703-a853-d525589fe2b9";
@@ -1353,6 +1602,12 @@ pub const IDefaultPresentationConfiguration = extern struct {
 };
 pub const IDisplayRegion = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayMonitorDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayMonitorDeviceId(@ptrCast(self), &_r);
@@ -1416,6 +1671,12 @@ pub const IDisplayRegion = extern struct {
 };
 pub const IFullScreenPresentationConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsExclusive(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsExclusive(@ptrCast(self), &_r);
@@ -1444,6 +1705,12 @@ pub const IFullScreenPresentationConfiguration = extern struct {
 };
 pub const IWindowServicesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAllTopLevelWindowIds(self: *@This()) core.HResult!*IVectorView(WindowId) {
         var _r: *IVectorView(WindowId) = undefined;
         const _c = self.vtable.FindAllTopLevelWindowIds(@ptrCast(self), &_r);
@@ -1467,6 +1734,12 @@ pub const IWindowServicesStatics = extern struct {
 };
 pub const IWindowingEnvironment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -1516,6 +1789,12 @@ pub const IWindowingEnvironment = extern struct {
 };
 pub const IWindowingEnvironmentAddedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWindowingEnvironment(self: *@This()) core.HResult!*WindowingEnvironment {
         var _r: *WindowingEnvironment = undefined;
         const _c = self.vtable.get_WindowingEnvironment(@ptrCast(self), &_r);
@@ -1539,6 +1818,12 @@ pub const IWindowingEnvironmentAddedEventArgs = extern struct {
 };
 pub const IWindowingEnvironmentChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.IWindowingEnvironmentChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "4160cfc6-023d-5e9a-b431-350e67dc978a";
@@ -1555,6 +1840,12 @@ pub const IWindowingEnvironmentChangedEventArgs = extern struct {
 };
 pub const IWindowingEnvironmentRemovedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWindowingEnvironment(self: *@This()) core.HResult!*WindowingEnvironment {
         var _r: *WindowingEnvironment = undefined;
         const _c = self.vtable.get_WindowingEnvironment(@ptrCast(self), &_r);
@@ -1578,6 +1869,12 @@ pub const IWindowingEnvironmentRemovedEventArgs = extern struct {
 };
 pub const IWindowingEnvironmentStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAll(self: *@This()) core.HResult!*IVectorView(WindowingEnvironment) {
         var _r: *IVectorView(WindowingEnvironment) = undefined;
         const _c = self.vtable.FindAll(@ptrCast(self), &_r);
@@ -1608,6 +1905,15 @@ pub const IWindowingEnvironmentStatics = extern struct {
 };
 pub const WindowServices = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1621,6 +1927,18 @@ pub const WindowServices = extern struct {
 };
 pub const WindowingEnvironment = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         const this: *IWindowingEnvironment = @ptrCast(self);
         return try this.getIsEnabled();
@@ -1641,9 +1959,6 @@ pub const WindowingEnvironment = extern struct {
         const this: *IWindowingEnvironment = @ptrCast(self);
         return try this.removeChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FindAll() core.HResult!*IVectorView(WindowingEnvironment) {
         const _f = try @This()._IWindowingEnvironmentStaticsCache.get();
         return try _f.FindAll();
@@ -1661,6 +1976,18 @@ pub const WindowingEnvironment = extern struct {
 };
 pub const WindowingEnvironmentAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWindowingEnvironment(self: *@This()) core.HResult!*WindowingEnvironment {
         const this: *IWindowingEnvironmentAddedEventArgs = @ptrCast(self);
         return try this.getWindowingEnvironment();
@@ -1673,6 +2000,18 @@ pub const WindowingEnvironmentAddedEventArgs = extern struct {
 };
 pub const WindowingEnvironmentChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.WindowingEnvironmentChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IWindowingEnvironmentChangedEventArgs.GUID;
@@ -1686,6 +2025,18 @@ pub const WindowingEnvironmentKind = enum(i32) {
 };
 pub const WindowingEnvironmentRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWindowingEnvironment(self: *@This()) core.HResult!*WindowingEnvironment {
         const this: *IWindowingEnvironmentRemovedEventArgs = @ptrCast(self);
         return try this.getWindowingEnvironment();

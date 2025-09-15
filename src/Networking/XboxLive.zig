@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IXboxLiveDeviceAddress = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSnapshotChanged(self: *@This(), handler: *TypedEventHandler(XboxLiveDeviceAddress,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SnapshotChanged(@ptrCast(self), handler, &_r);
@@ -76,6 +82,12 @@ pub const IXboxLiveDeviceAddress = extern struct {
 };
 pub const IXboxLiveDeviceAddressStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromSnapshotBase64(self: *@This(), base64: ?HSTRING) core.HResult!*XboxLiveDeviceAddress {
         var _r: *XboxLiveDeviceAddress = undefined;
         const _c = self.vtable.CreateFromSnapshotBase64(@ptrCast(self), base64, &_r);
@@ -127,6 +139,12 @@ pub const IXboxLiveDeviceAddressStatics = extern struct {
 };
 pub const IXboxLiveEndpointPair = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addStateChanged(self: *@This(), handler: *TypedEventHandler(XboxLiveEndpointPair,XboxLiveEndpointPairStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_StateChanged(@ptrCast(self), handler, &_r);
@@ -221,6 +239,12 @@ pub const IXboxLiveEndpointPair = extern struct {
 };
 pub const IXboxLiveEndpointPairCreationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceAddress(self: *@This()) core.HResult!*XboxLiveDeviceAddress {
         var _r: *XboxLiveDeviceAddress = undefined;
         const _c = self.vtable.get_DeviceAddress(@ptrCast(self), &_r);
@@ -265,6 +289,12 @@ pub const IXboxLiveEndpointPairCreationResult = extern struct {
 };
 pub const IXboxLiveEndpointPairStateChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOldState(self: *@This()) core.HResult!XboxLiveEndpointPairState {
         var _r: XboxLiveEndpointPairState = undefined;
         const _c = self.vtable.get_OldState(@ptrCast(self), &_r);
@@ -295,6 +325,12 @@ pub const IXboxLiveEndpointPairStateChangedEventArgs = extern struct {
 };
 pub const IXboxLiveEndpointPairStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindEndpointPairBySocketAddressBytes(self: *@This(), localSocketAddress: [*]u8, remoteSocketAddress: [*]u8) core.HResult!*XboxLiveEndpointPair {
         var _r: *XboxLiveEndpointPair = undefined;
         const _c = self.vtable.FindEndpointPairBySocketAddressBytes(@ptrCast(self), localSocketAddress, remoteSocketAddress, &_r);
@@ -325,6 +361,12 @@ pub const IXboxLiveEndpointPairStatics = extern struct {
 };
 pub const IXboxLiveEndpointPairTemplate = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addInboundEndpointPairCreated(self: *@This(), handler: *TypedEventHandler(XboxLiveEndpointPairTemplate,XboxLiveInboundEndpointPairCreatedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_InboundEndpointPairCreated(@ptrCast(self), handler, &_r);
@@ -430,6 +472,12 @@ pub const IXboxLiveEndpointPairTemplate = extern struct {
 };
 pub const IXboxLiveEndpointPairTemplateStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetTemplateByName(self: *@This(), name: ?HSTRING) core.HResult!*XboxLiveEndpointPairTemplate {
         var _r: *XboxLiveEndpointPairTemplate = undefined;
         const _c = self.vtable.GetTemplateByName(@ptrCast(self), name, &_r);
@@ -460,6 +508,12 @@ pub const IXboxLiveEndpointPairTemplateStatics = extern struct {
 };
 pub const IXboxLiveInboundEndpointPairCreatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndpointPair(self: *@This()) core.HResult!*XboxLiveEndpointPair {
         var _r: *XboxLiveEndpointPair = undefined;
         const _c = self.vtable.get_EndpointPair(@ptrCast(self), &_r);
@@ -483,6 +537,12 @@ pub const IXboxLiveInboundEndpointPairCreatedEventArgs = extern struct {
 };
 pub const IXboxLiveQualityOfServiceMeasurement = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn MeasureAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MeasureAsync(@ptrCast(self), &_r);
@@ -605,6 +665,12 @@ pub const IXboxLiveQualityOfServiceMeasurement = extern struct {
 };
 pub const IXboxLiveQualityOfServiceMeasurementStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn PublishPrivatePayloadBytes(self: *@This(), payload: [*]u8) core.HResult!void {
         const _c = self.vtable.PublishPrivatePayloadBytes(@ptrCast(self), payload);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -686,6 +752,12 @@ pub const IXboxLiveQualityOfServiceMeasurementStatics = extern struct {
 };
 pub const IXboxLiveQualityOfServiceMetricResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!XboxLiveQualityOfServiceMeasurementStatus {
         var _r: XboxLiveQualityOfServiceMeasurementStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -730,6 +802,12 @@ pub const IXboxLiveQualityOfServiceMetricResult = extern struct {
 };
 pub const IXboxLiveQualityOfServicePrivatePayloadResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!XboxLiveQualityOfServiceMeasurementStatus {
         var _r: XboxLiveQualityOfServiceMeasurementStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -767,6 +845,18 @@ pub const IXboxLiveQualityOfServicePrivatePayloadResult = extern struct {
 };
 pub const XboxLiveDeviceAddress = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSnapshotChanged(self: *@This(), handler: *TypedEventHandler(XboxLiveDeviceAddress,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IXboxLiveDeviceAddress = @ptrCast(self);
         return try this.addSnapshotChanged(handler);
@@ -803,9 +893,6 @@ pub const XboxLiveDeviceAddress = extern struct {
         const this: *IXboxLiveDeviceAddress = @ptrCast(self);
         return try this.getNetworkAccessKind();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateFromSnapshotBase64(base64: ?HSTRING) core.HResult!*XboxLiveDeviceAddress {
         const _f = try @This()._IXboxLiveDeviceAddressStaticsCache.get();
         return try _f.CreateFromSnapshotBase64(base64);
@@ -835,6 +922,18 @@ pub const XboxLiveDeviceAddress = extern struct {
 };
 pub const XboxLiveEndpointPair = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addStateChanged(self: *@This(), handler: *TypedEventHandler(XboxLiveEndpointPair,XboxLiveEndpointPairStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IXboxLiveEndpointPair = @ptrCast(self);
         return try this.addStateChanged(handler);
@@ -883,9 +982,6 @@ pub const XboxLiveEndpointPair = extern struct {
         const this: *IXboxLiveEndpointPair = @ptrCast(self);
         return try this.getLocalPort();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FindEndpointPairBySocketAddressBytes(localSocketAddress: [*]u8, remoteSocketAddress: [*]u8) core.HResult!*XboxLiveEndpointPair {
         const _f = try @This()._IXboxLiveEndpointPairStaticsCache.get();
         return try _f.FindEndpointPairBySocketAddressBytes(localSocketAddress, remoteSocketAddress);
@@ -907,6 +1003,18 @@ pub const XboxLiveEndpointPairCreationBehaviors = enum(i32) {
 };
 pub const XboxLiveEndpointPairCreationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceAddress(self: *@This()) core.HResult!*XboxLiveDeviceAddress {
         const this: *IXboxLiveEndpointPairCreationResult = @ptrCast(self);
         return try this.getDeviceAddress();
@@ -951,6 +1059,18 @@ pub const XboxLiveEndpointPairState = enum(i32) {
 };
 pub const XboxLiveEndpointPairStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOldState(self: *@This()) core.HResult!XboxLiveEndpointPairState {
         const this: *IXboxLiveEndpointPairStateChangedEventArgs = @ptrCast(self);
         return try this.getOldState();
@@ -967,6 +1087,18 @@ pub const XboxLiveEndpointPairStateChangedEventArgs = extern struct {
 };
 pub const XboxLiveEndpointPairTemplate = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addInboundEndpointPairCreated(self: *@This(), handler: *TypedEventHandler(XboxLiveEndpointPairTemplate,XboxLiveInboundEndpointPairCreatedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IXboxLiveEndpointPairTemplate = @ptrCast(self);
         return try this.addInboundEndpointPairCreated(handler);
@@ -1019,9 +1151,6 @@ pub const XboxLiveEndpointPairTemplate = extern struct {
         const this: *IXboxLiveEndpointPairTemplate = @ptrCast(self);
         return try this.getEndpointPairs();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetTemplateByName(name: ?HSTRING) core.HResult!*XboxLiveEndpointPairTemplate {
         const _f = try @This()._IXboxLiveEndpointPairTemplateStaticsCache.get();
         return try _f.GetTemplateByName(name);
@@ -1039,6 +1168,18 @@ pub const XboxLiveEndpointPairTemplate = extern struct {
 };
 pub const XboxLiveInboundEndpointPairCreatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEndpointPair(self: *@This()) core.HResult!*XboxLiveEndpointPair {
         const this: *IXboxLiveInboundEndpointPairCreatedEventArgs = @ptrCast(self);
         return try this.getEndpointPair();
@@ -1056,6 +1197,18 @@ pub const XboxLiveNetworkAccessKind = enum(i32) {
 };
 pub const XboxLiveQualityOfServiceMeasurement = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn MeasureAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IXboxLiveQualityOfServiceMeasurement = @ptrCast(self);
         return try this.MeasureAsync();
@@ -1119,9 +1272,6 @@ pub const XboxLiveQualityOfServiceMeasurement = extern struct {
     pub fn getPrivatePayloadResults(self: *@This()) core.HResult!*IVectorView(XboxLiveQualityOfServicePrivatePayloadResult) {
         const this: *IXboxLiveQualityOfServiceMeasurement = @ptrCast(self);
         return try this.getPrivatePayloadResults();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1206,6 +1356,18 @@ pub const XboxLiveQualityOfServiceMetric = enum(i32) {
 };
 pub const XboxLiveQualityOfServiceMetricResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!XboxLiveQualityOfServiceMeasurementStatus {
         const this: *IXboxLiveQualityOfServiceMetricResult = @ptrCast(self);
         return try this.getStatus();
@@ -1230,6 +1392,18 @@ pub const XboxLiveQualityOfServiceMetricResult = extern struct {
 };
 pub const XboxLiveQualityOfServicePrivatePayloadResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!XboxLiveQualityOfServiceMeasurementStatus {
         const this: *IXboxLiveQualityOfServicePrivatePayloadResult = @ptrCast(self);
         return try this.getStatus();

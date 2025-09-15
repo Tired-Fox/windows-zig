@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const HttpBaseProtocolFilter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowAutoRedirect(self: *@This()) core.HResult!bool {
         const this: *IHttpBaseProtocolFilter = @ptrCast(self);
         return try this.getAllowAutoRedirect();
@@ -147,9 +159,6 @@ pub const HttpBaseProtocolFilter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpBaseProtocolFilter.IID)));
@@ -168,6 +177,18 @@ pub const HttpBaseProtocolFilter = extern struct {
 };
 pub const HttpCacheControl = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReadBehavior(self: *@This()) core.HResult!HttpCacheReadBehavior {
         const this: *IHttpCacheControl = @ptrCast(self);
         return try this.getReadBehavior();
@@ -206,6 +227,18 @@ pub const HttpCookieUsageBehavior = enum(i32) {
 };
 pub const HttpServerCustomValidationRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestMessage(self: *@This()) core.HResult!*HttpRequestMessage {
         const this: *IHttpServerCustomValidationRequestedEventArgs = @ptrCast(self);
         return try this.getRequestMessage();
@@ -242,6 +275,12 @@ pub const HttpServerCustomValidationRequestedEventArgs = extern struct {
 };
 pub const IHttpBaseProtocolFilter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowAutoRedirect(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowAutoRedirect(@ptrCast(self), &_r);
@@ -375,6 +414,12 @@ pub const IHttpBaseProtocolFilter = extern struct {
 };
 pub const IHttpBaseProtocolFilter2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxVersion(self: *@This()) core.HResult!HttpVersion {
         var _r: HttpVersion = undefined;
         const _c = self.vtable.get_MaxVersion(@ptrCast(self), &_r);
@@ -403,6 +448,12 @@ pub const IHttpBaseProtocolFilter2 = extern struct {
 };
 pub const IHttpBaseProtocolFilter3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCookieUsageBehavior(self: *@This()) core.HResult!HttpCookieUsageBehavior {
         var _r: HttpCookieUsageBehavior = undefined;
         const _c = self.vtable.get_CookieUsageBehavior(@ptrCast(self), &_r);
@@ -431,6 +482,12 @@ pub const IHttpBaseProtocolFilter3 = extern struct {
 };
 pub const IHttpBaseProtocolFilter4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addServerCustomValidationRequested(self: *@This(), handler: *TypedEventHandler(HttpBaseProtocolFilter,HttpServerCustomValidationRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ServerCustomValidationRequested(@ptrCast(self), handler, &_r);
@@ -464,6 +521,12 @@ pub const IHttpBaseProtocolFilter4 = extern struct {
 };
 pub const IHttpBaseProtocolFilter5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUser(self: *@This()) core.HResult!*User {
         var _r: *User = undefined;
         const _c = self.vtable.get_User(@ptrCast(self), &_r);
@@ -487,6 +550,12 @@ pub const IHttpBaseProtocolFilter5 = extern struct {
 };
 pub const IHttpBaseProtocolFilterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateForUser(self: *@This(), user: *User) core.HResult!*HttpBaseProtocolFilter {
         var _r: *HttpBaseProtocolFilter = undefined;
         const _c = self.vtable.CreateForUser(@ptrCast(self), user, &_r);
@@ -510,6 +579,12 @@ pub const IHttpBaseProtocolFilterStatics = extern struct {
 };
 pub const IHttpCacheControl = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReadBehavior(self: *@This()) core.HResult!HttpCacheReadBehavior {
         var _r: HttpCacheReadBehavior = undefined;
         const _c = self.vtable.get_ReadBehavior(@ptrCast(self), &_r);
@@ -550,6 +625,12 @@ pub const IHttpCacheControl = extern struct {
 };
 pub const IHttpFilter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SendRequestAsync(self: *@This(), request: *HttpRequestMessage) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) = undefined;
         const _c = self.vtable.SendRequestAsync(@ptrCast(self), request, &_r);
@@ -573,6 +654,12 @@ pub const IHttpFilter = extern struct {
 };
 pub const IHttpServerCustomValidationRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestMessage(self: *@This()) core.HResult!*HttpRequestMessage {
         var _r: *HttpRequestMessage = undefined;
         const _c = self.vtable.get_RequestMessage(@ptrCast(self), &_r);

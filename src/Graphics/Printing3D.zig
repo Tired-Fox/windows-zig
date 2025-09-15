@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPrint3DManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addTaskRequested(self: *@This(), eventHandler: *TypedEventHandler(Print3DManager,Print3DTaskRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TaskRequested(@ptrCast(self), eventHandler, &_r);
@@ -29,6 +35,12 @@ pub const IPrint3DManager = extern struct {
 };
 pub const IPrint3DManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*Print3DManager {
         var _r: *Print3DManager = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -59,6 +71,12 @@ pub const IPrint3DManagerStatics = extern struct {
 };
 pub const IPrint3DTask = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*Printing3D3MFPackage {
         var _r: *Printing3D3MFPackage = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
@@ -118,6 +136,12 @@ pub const IPrint3DTask = extern struct {
 };
 pub const IPrint3DTaskCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompletion(self: *@This()) core.HResult!Print3DTaskCompletion {
         var _r: Print3DTaskCompletion = undefined;
         const _c = self.vtable.get_Completion(@ptrCast(self), &_r);
@@ -148,6 +172,12 @@ pub const IPrint3DTaskCompletedEventArgs = extern struct {
 };
 pub const IPrint3DTaskRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateTask(self: *@This(), title: ?HSTRING, printerId: ?HSTRING, handler: *Print3DTaskSourceRequestedHandler) core.HResult!*Print3DTask {
         var _r: *Print3DTask = undefined;
         const _c = self.vtable.CreateTask(@ptrCast(self), title, printerId, handler, &_r);
@@ -171,6 +201,12 @@ pub const IPrint3DTaskRequest = extern struct {
 };
 pub const IPrint3DTaskRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*Print3DTaskRequest {
         var _r: *Print3DTaskRequest = undefined;
         const _c = self.vtable.get_Request(@ptrCast(self), &_r);
@@ -194,6 +230,12 @@ pub const IPrint3DTaskRequestedEventArgs = extern struct {
 };
 pub const IPrint3DTaskSourceChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*Printing3D3MFPackage {
         var _r: *Printing3D3MFPackage = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
@@ -217,6 +259,12 @@ pub const IPrint3DTaskSourceChangedEventArgs = extern struct {
 };
 pub const IPrint3DTaskSourceRequestedArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetSource(self: *@This(), source: *Printing3D3MFPackage) core.HResult!void {
         const _c = self.vtable.SetSource(@ptrCast(self), source);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -238,6 +286,12 @@ pub const IPrint3DTaskSourceRequestedArgs = extern struct {
 };
 pub const IPrinting3D3MFPackage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SaveAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         var _r: *IAsyncOperation(IRandomAccessStream) = undefined;
         const _c = self.vtable.SaveAsync(@ptrCast(self), &_r);
@@ -318,6 +372,12 @@ pub const IPrinting3D3MFPackage = extern struct {
 };
 pub const IPrinting3D3MFPackage2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompression(self: *@This()) core.HResult!Printing3DPackageCompression {
         var _r: Printing3DPackageCompression = undefined;
         const _c = self.vtable.get_Compression(@ptrCast(self), &_r);
@@ -346,6 +406,12 @@ pub const IPrinting3D3MFPackage2 = extern struct {
 };
 pub const IPrinting3D3MFPackageStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadAsync(self: *@This(), value: *IRandomAccessStream) core.HResult!*IAsyncOperation(Printing3D3MFPackage) {
         var _r: *IAsyncOperation(Printing3D3MFPackage) = undefined;
         const _c = self.vtable.LoadAsync(@ptrCast(self), value, &_r);
@@ -369,6 +435,12 @@ pub const IPrinting3D3MFPackageStatics = extern struct {
 };
 pub const IPrinting3DBaseMaterial = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -409,6 +481,12 @@ pub const IPrinting3DBaseMaterial = extern struct {
 };
 pub const IPrinting3DBaseMaterialGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBases(self: *@This()) core.HResult!*IVector(Printing3DBaseMaterial) {
         var _r: *IVector(Printing3DBaseMaterial) = undefined;
         const _c = self.vtable.get_Bases(@ptrCast(self), &_r);
@@ -439,6 +517,12 @@ pub const IPrinting3DBaseMaterialGroup = extern struct {
 };
 pub const IPrinting3DBaseMaterialGroupFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), MaterialGroupId: u32) core.HResult!*Printing3DBaseMaterialGroup {
         var _r: *Printing3DBaseMaterialGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), MaterialGroupId, &_r);
@@ -462,6 +546,12 @@ pub const IPrinting3DBaseMaterialGroupFactory = extern struct {
 };
 pub const IPrinting3DBaseMaterialStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAbs(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Abs(@ptrCast(self), &_r);
@@ -492,6 +582,12 @@ pub const IPrinting3DBaseMaterialStatics = extern struct {
 };
 pub const IPrinting3DColorMaterial = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
@@ -520,6 +616,12 @@ pub const IPrinting3DColorMaterial = extern struct {
 };
 pub const IPrinting3DColorMaterial2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColor(self: *@This()) core.HResult!Color {
         var _r: Color = undefined;
         const _c = self.vtable.get_Color(@ptrCast(self), &_r);
@@ -548,6 +650,12 @@ pub const IPrinting3DColorMaterial2 = extern struct {
 };
 pub const IPrinting3DColorMaterialGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColors(self: *@This()) core.HResult!*IVector(Printing3DColorMaterial) {
         var _r: *IVector(Printing3DColorMaterial) = undefined;
         const _c = self.vtable.get_Colors(@ptrCast(self), &_r);
@@ -578,6 +686,12 @@ pub const IPrinting3DColorMaterialGroup = extern struct {
 };
 pub const IPrinting3DColorMaterialGroupFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), MaterialGroupId: u32) core.HResult!*Printing3DColorMaterialGroup {
         var _r: *Printing3DColorMaterialGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), MaterialGroupId, &_r);
@@ -601,6 +715,12 @@ pub const IPrinting3DColorMaterialGroupFactory = extern struct {
 };
 pub const IPrinting3DComponent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMesh(self: *@This()) core.HResult!*Printing3DMesh {
         var _r: *Printing3DMesh = undefined;
         const _c = self.vtable.get_Mesh(@ptrCast(self), &_r);
@@ -684,6 +804,12 @@ pub const IPrinting3DComponent = extern struct {
 };
 pub const IPrinting3DComponentWithMatrix = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getComponent(self: *@This()) core.HResult!*Printing3DComponent {
         var _r: *Printing3DComponent = undefined;
         const _c = self.vtable.get_Component(@ptrCast(self), &_r);
@@ -724,6 +850,12 @@ pub const IPrinting3DComponentWithMatrix = extern struct {
 };
 pub const IPrinting3DCompositeMaterial = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValues(self: *@This()) core.HResult!*IVector(f64) {
         var _r: *IVector(f64) = undefined;
         const _c = self.vtable.get_Values(@ptrCast(self), &_r);
@@ -747,6 +879,12 @@ pub const IPrinting3DCompositeMaterial = extern struct {
 };
 pub const IPrinting3DCompositeMaterialGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getComposites(self: *@This()) core.HResult!*IVector(Printing3DCompositeMaterial) {
         var _r: *IVector(Printing3DCompositeMaterial) = undefined;
         const _c = self.vtable.get_Composites(@ptrCast(self), &_r);
@@ -784,6 +922,12 @@ pub const IPrinting3DCompositeMaterialGroup = extern struct {
 };
 pub const IPrinting3DCompositeMaterialGroup2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBaseMaterialGroup(self: *@This()) core.HResult!*Printing3DBaseMaterialGroup {
         var _r: *Printing3DBaseMaterialGroup = undefined;
         const _c = self.vtable.get_BaseMaterialGroup(@ptrCast(self), &_r);
@@ -812,6 +956,12 @@ pub const IPrinting3DCompositeMaterialGroup2 = extern struct {
 };
 pub const IPrinting3DCompositeMaterialGroupFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), MaterialGroupId: u32) core.HResult!*Printing3DCompositeMaterialGroup {
         var _r: *Printing3DCompositeMaterialGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), MaterialGroupId, &_r);
@@ -835,6 +985,12 @@ pub const IPrinting3DCompositeMaterialGroupFactory = extern struct {
 };
 pub const IPrinting3DFaceReductionOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxReductionArea(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_MaxReductionArea(@ptrCast(self), &_r);
@@ -887,6 +1043,12 @@ pub const IPrinting3DFaceReductionOptions = extern struct {
 };
 pub const IPrinting3DMaterial = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBaseGroups(self: *@This()) core.HResult!*IVector(Printing3DBaseMaterialGroup) {
         var _r: *IVector(Printing3DBaseMaterialGroup) = undefined;
         const _c = self.vtable.get_BaseGroups(@ptrCast(self), &_r);
@@ -938,6 +1100,12 @@ pub const IPrinting3DMaterial = extern struct {
 };
 pub const IPrinting3DMesh = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVertexCount(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_VertexCount(@ptrCast(self), &_r);
@@ -1095,6 +1263,12 @@ pub const IPrinting3DMesh = extern struct {
 };
 pub const IPrinting3DMeshVerificationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsValid(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsValid(@ptrCast(self), &_r);
@@ -1132,6 +1306,12 @@ pub const IPrinting3DMeshVerificationResult = extern struct {
 };
 pub const IPrinting3DModel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnit(self: *@This()) core.HResult!Printing3DModelUnit {
         var _r: Printing3DModelUnit = undefined;
         const _c = self.vtable.get_Unit(@ptrCast(self), &_r);
@@ -1245,6 +1425,12 @@ pub const IPrinting3DModel = extern struct {
 };
 pub const IPrinting3DModel2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryPartialRepairAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.TryPartialRepairAsync(@ptrCast(self), &_r);
@@ -1303,6 +1489,12 @@ pub const IPrinting3DModel2 = extern struct {
 };
 pub const IPrinting3DModelTexture = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextureResource(self: *@This()) core.HResult!*Printing3DTextureResource {
         var _r: *Printing3DTextureResource = undefined;
         const _c = self.vtable.get_TextureResource(@ptrCast(self), &_r);
@@ -1355,6 +1547,12 @@ pub const IPrinting3DModelTexture = extern struct {
 };
 pub const IPrinting3DMultiplePropertyMaterial = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaterialIndices(self: *@This()) core.HResult!*IVector(u32) {
         var _r: *IVector(u32) = undefined;
         const _c = self.vtable.get_MaterialIndices(@ptrCast(self), &_r);
@@ -1378,6 +1576,12 @@ pub const IPrinting3DMultiplePropertyMaterial = extern struct {
 };
 pub const IPrinting3DMultiplePropertyMaterialGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMultipleProperties(self: *@This()) core.HResult!*IVector(Printing3DMultiplePropertyMaterial) {
         var _r: *IVector(Printing3DMultiplePropertyMaterial) = undefined;
         const _c = self.vtable.get_MultipleProperties(@ptrCast(self), &_r);
@@ -1415,6 +1619,12 @@ pub const IPrinting3DMultiplePropertyMaterialGroup = extern struct {
 };
 pub const IPrinting3DMultiplePropertyMaterialGroupFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), MaterialGroupId: u32) core.HResult!*Printing3DMultiplePropertyMaterialGroup {
         var _r: *Printing3DMultiplePropertyMaterialGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), MaterialGroupId, &_r);
@@ -1438,6 +1648,12 @@ pub const IPrinting3DMultiplePropertyMaterialGroupFactory = extern struct {
 };
 pub const IPrinting3DTexture2CoordMaterial = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTexture(self: *@This()) core.HResult!*Printing3DModelTexture {
         var _r: *Printing3DModelTexture = undefined;
         const _c = self.vtable.get_Texture(@ptrCast(self), &_r);
@@ -1490,6 +1706,12 @@ pub const IPrinting3DTexture2CoordMaterial = extern struct {
 };
 pub const IPrinting3DTexture2CoordMaterialGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTexture2Coords(self: *@This()) core.HResult!*IVector(Printing3DTexture2CoordMaterial) {
         var _r: *IVector(Printing3DTexture2CoordMaterial) = undefined;
         const _c = self.vtable.get_Texture2Coords(@ptrCast(self), &_r);
@@ -1520,6 +1742,12 @@ pub const IPrinting3DTexture2CoordMaterialGroup = extern struct {
 };
 pub const IPrinting3DTexture2CoordMaterialGroup2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTexture(self: *@This()) core.HResult!*Printing3DModelTexture {
         var _r: *Printing3DModelTexture = undefined;
         const _c = self.vtable.get_Texture(@ptrCast(self), &_r);
@@ -1548,6 +1776,12 @@ pub const IPrinting3DTexture2CoordMaterialGroup2 = extern struct {
 };
 pub const IPrinting3DTexture2CoordMaterialGroupFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), MaterialGroupId: u32) core.HResult!*Printing3DTexture2CoordMaterialGroup {
         var _r: *Printing3DTexture2CoordMaterialGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), MaterialGroupId, &_r);
@@ -1571,6 +1805,12 @@ pub const IPrinting3DTexture2CoordMaterialGroupFactory = extern struct {
 };
 pub const IPrinting3DTextureResource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextureData(self: *@This()) core.HResult!*IRandomAccessStreamWithContentType {
         var _r: *IRandomAccessStreamWithContentType = undefined;
         const _c = self.vtable.get_TextureData(@ptrCast(self), &_r);
@@ -1611,6 +1851,18 @@ pub const IPrinting3DTextureResource = extern struct {
 };
 pub const Print3DManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addTaskRequested(self: *@This(), eventHandler: *TypedEventHandler(Print3DManager,Print3DTaskRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IPrint3DManager = @ptrCast(self);
         return try this.addTaskRequested(eventHandler);
@@ -1618,9 +1870,6 @@ pub const Print3DManager = extern struct {
     pub fn removeTaskRequested(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *IPrint3DManager = @ptrCast(self);
         return try this.removeTaskRequested(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*Print3DManager {
         const _f = try @This()._IPrint3DManagerStaticsCache.get();
@@ -1639,6 +1888,18 @@ pub const Print3DManager = extern struct {
 };
 pub const Print3DTask = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*Printing3D3MFPackage {
         const this: *IPrint3DTask = @ptrCast(self);
         return try this.getSource();
@@ -1675,6 +1936,18 @@ pub const Print3DTask = extern struct {
 };
 pub const Print3DTaskCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompletion(self: *@This()) core.HResult!Print3DTaskCompletion {
         const this: *IPrint3DTaskCompletedEventArgs = @ptrCast(self);
         return try this.getCompletion();
@@ -1707,6 +1980,18 @@ pub const Print3DTaskDetail = enum(i32) {
 };
 pub const Print3DTaskRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateTask(self: *@This(), title: ?HSTRING, printerId: ?HSTRING, handler: *Print3DTaskSourceRequestedHandler) core.HResult!*Print3DTask {
         const this: *IPrint3DTaskRequest = @ptrCast(self);
         return try this.CreateTask(title, printerId, handler);
@@ -1719,6 +2004,18 @@ pub const Print3DTaskRequest = extern struct {
 };
 pub const Print3DTaskRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequest(self: *@This()) core.HResult!*Print3DTaskRequest {
         const this: *IPrint3DTaskRequestedEventArgs = @ptrCast(self);
         return try this.getRequest();
@@ -1731,6 +2028,18 @@ pub const Print3DTaskRequestedEventArgs = extern struct {
 };
 pub const Print3DTaskSourceChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*Printing3D3MFPackage {
         const this: *IPrint3DTaskSourceChangedEventArgs = @ptrCast(self);
         return try this.getSource();
@@ -1743,6 +2052,18 @@ pub const Print3DTaskSourceChangedEventArgs = extern struct {
 };
 pub const Print3DTaskSourceRequestedArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetSource(self: *@This(), source: *Printing3D3MFPackage) core.HResult!void {
         const this: *IPrint3DTaskSourceRequestedArgs = @ptrCast(self);
         return try this.SetSource(source);
@@ -1844,6 +2165,18 @@ pub const Print3DTaskSourceRequestedHandler = extern struct {
 };
 pub const Printing3D3MFPackage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SaveAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         const this: *IPrinting3D3MFPackage = @ptrCast(self);
         return try this.SaveAsync();
@@ -1898,9 +2231,6 @@ pub const Printing3D3MFPackage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putCompression(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3D3MFPackage.IID)));
@@ -1919,6 +2249,18 @@ pub const Printing3D3MFPackage = extern struct {
 };
 pub const Printing3DBaseMaterial = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrinting3DBaseMaterial = @ptrCast(self);
         return try this.getName();
@@ -1934,9 +2276,6 @@ pub const Printing3DBaseMaterial = extern struct {
     pub fn putColor(self: *@This(), value: *Printing3DColorMaterial) core.HResult!void {
         const this: *IPrinting3DBaseMaterial = @ptrCast(self);
         return try this.putColor(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1960,6 +2299,18 @@ pub const Printing3DBaseMaterial = extern struct {
 };
 pub const Printing3DBaseMaterialGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBases(self: *@This()) core.HResult!*IVector(Printing3DBaseMaterial) {
         const this: *IPrinting3DBaseMaterialGroup = @ptrCast(self);
         return try this.getBases();
@@ -1967,9 +2318,6 @@ pub const Printing3DBaseMaterialGroup = extern struct {
     pub fn getMaterialGroupId(self: *@This()) core.HResult!u32 {
         const this: *IPrinting3DBaseMaterialGroup = @ptrCast(self);
         return try this.getMaterialGroupId();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DBaseMaterialGroup {
         const _f = try @This()._IPrinting3DBaseMaterialGroupFactoryCache.get();
@@ -1997,6 +2345,18 @@ pub const Printing3DBufferFormat = enum(i32) {
 };
 pub const Printing3DColorMaterial = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!u32 {
         const this: *IPrinting3DColorMaterial = @ptrCast(self);
         return try this.getValue();
@@ -2019,9 +2379,6 @@ pub const Printing3DColorMaterial = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putColor(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DColorMaterial.IID)));
@@ -2035,6 +2392,18 @@ pub const Printing3DColorMaterial = extern struct {
 };
 pub const Printing3DColorMaterialGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getColors(self: *@This()) core.HResult!*IVector(Printing3DColorMaterial) {
         const this: *IPrinting3DColorMaterialGroup = @ptrCast(self);
         return try this.getColors();
@@ -2042,9 +2411,6 @@ pub const Printing3DColorMaterialGroup = extern struct {
     pub fn getMaterialGroupId(self: *@This()) core.HResult!u32 {
         const this: *IPrinting3DColorMaterialGroup = @ptrCast(self);
         return try this.getMaterialGroupId();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DColorMaterialGroup {
         const _f = try @This()._IPrinting3DColorMaterialGroupFactoryCache.get();
@@ -2059,6 +2425,18 @@ pub const Printing3DColorMaterialGroup = extern struct {
 };
 pub const Printing3DComponent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMesh(self: *@This()) core.HResult!*Printing3DMesh {
         const this: *IPrinting3DComponent = @ptrCast(self);
         return try this.getMesh();
@@ -2103,9 +2481,6 @@ pub const Printing3DComponent = extern struct {
         const this: *IPrinting3DComponent = @ptrCast(self);
         return try this.putPartNumber(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DComponent.IID)));
@@ -2119,6 +2494,18 @@ pub const Printing3DComponent = extern struct {
 };
 pub const Printing3DComponentWithMatrix = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getComponent(self: *@This()) core.HResult!*Printing3DComponent {
         const this: *IPrinting3DComponentWithMatrix = @ptrCast(self);
         return try this.getComponent();
@@ -2135,9 +2522,6 @@ pub const Printing3DComponentWithMatrix = extern struct {
         const this: *IPrinting3DComponentWithMatrix = @ptrCast(self);
         return try this.putMatrix(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DComponentWithMatrix.IID)));
@@ -2151,12 +2535,21 @@ pub const Printing3DComponentWithMatrix = extern struct {
 };
 pub const Printing3DCompositeMaterial = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getValues(self: *@This()) core.HResult!*IVector(f64) {
-        const this: *IPrinting3DCompositeMaterial = @ptrCast(self);
-        return try this.getValues();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getValues(self: *@This()) core.HResult!*IVector(f64) {
+        const this: *IPrinting3DCompositeMaterial = @ptrCast(self);
+        return try this.getValues();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2171,6 +2564,18 @@ pub const Printing3DCompositeMaterial = extern struct {
 };
 pub const Printing3DCompositeMaterialGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getComposites(self: *@This()) core.HResult!*IVector(Printing3DCompositeMaterial) {
         const this: *IPrinting3DCompositeMaterialGroup = @ptrCast(self);
         return try this.getComposites();
@@ -2197,9 +2602,6 @@ pub const Printing3DCompositeMaterialGroup = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putBaseMaterialGroup(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DCompositeMaterialGroup {
         const _f = try @This()._IPrinting3DCompositeMaterialGroupFactoryCache.get();
         return try _f.Create(MaterialGroupId);
@@ -2213,6 +2615,18 @@ pub const Printing3DCompositeMaterialGroup = extern struct {
 };
 pub const Printing3DFaceReductionOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxReductionArea(self: *@This()) core.HResult!f64 {
         const this: *IPrinting3DFaceReductionOptions = @ptrCast(self);
         return try this.getMaxReductionArea();
@@ -2237,9 +2651,6 @@ pub const Printing3DFaceReductionOptions = extern struct {
         const this: *IPrinting3DFaceReductionOptions = @ptrCast(self);
         return try this.putMaxEdgeLength(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DFaceReductionOptions.IID)));
@@ -2253,6 +2664,18 @@ pub const Printing3DFaceReductionOptions = extern struct {
 };
 pub const Printing3DMaterial = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBaseGroups(self: *@This()) core.HResult!*IVector(Printing3DBaseMaterialGroup) {
         const this: *IPrinting3DMaterial = @ptrCast(self);
         return try this.getBaseGroups();
@@ -2273,9 +2696,6 @@ pub const Printing3DMaterial = extern struct {
         const this: *IPrinting3DMaterial = @ptrCast(self);
         return try this.getMultiplePropertyGroups();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DMaterial.IID)));
@@ -2289,6 +2709,18 @@ pub const Printing3DMaterial = extern struct {
 };
 pub const Printing3DMesh = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVertexCount(self: *@This()) core.HResult!u32 {
         const this: *IPrinting3DMesh = @ptrCast(self);
         return try this.getVertexCount();
@@ -2381,9 +2813,6 @@ pub const Printing3DMesh = extern struct {
         const this: *IPrinting3DMesh = @ptrCast(self);
         return try this.VerifyAsync(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DMesh.IID)));
@@ -2401,6 +2830,18 @@ pub const Printing3DMeshVerificationMode = enum(i32) {
 };
 pub const Printing3DMeshVerificationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsValid(self: *@This()) core.HResult!bool {
         const this: *IPrinting3DMeshVerificationResult = @ptrCast(self);
         return try this.getIsValid();
@@ -2421,6 +2862,18 @@ pub const Printing3DMeshVerificationResult = extern struct {
 };
 pub const Printing3DModel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUnit(self: *@This()) core.HResult!Printing3DModelUnit {
         const this: *IPrinting3DModel = @ptrCast(self);
         return try this.getUnit();
@@ -2523,9 +2976,6 @@ pub const Printing3DModel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RepairWithProgressAsync();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DModel.IID)));
@@ -2539,6 +2989,18 @@ pub const Printing3DModel = extern struct {
 };
 pub const Printing3DModelTexture = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextureResource(self: *@This()) core.HResult!*Printing3DTextureResource {
         const this: *IPrinting3DModelTexture = @ptrCast(self);
         return try this.getTextureResource();
@@ -2563,9 +3025,6 @@ pub const Printing3DModelTexture = extern struct {
         const this: *IPrinting3DModelTexture = @ptrCast(self);
         return try this.putTileStyleV(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DModelTexture.IID)));
@@ -2587,12 +3046,21 @@ pub const Printing3DModelUnit = enum(i32) {
 };
 pub const Printing3DMultiplePropertyMaterial = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getMaterialIndices(self: *@This()) core.HResult!*IVector(u32) {
-        const this: *IPrinting3DMultiplePropertyMaterial = @ptrCast(self);
-        return try this.getMaterialIndices();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getMaterialIndices(self: *@This()) core.HResult!*IVector(u32) {
+        const this: *IPrinting3DMultiplePropertyMaterial = @ptrCast(self);
+        return try this.getMaterialIndices();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2607,6 +3075,18 @@ pub const Printing3DMultiplePropertyMaterial = extern struct {
 };
 pub const Printing3DMultiplePropertyMaterialGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMultipleProperties(self: *@This()) core.HResult!*IVector(Printing3DMultiplePropertyMaterial) {
         const this: *IPrinting3DMultiplePropertyMaterialGroup = @ptrCast(self);
         return try this.getMultipleProperties();
@@ -2618,9 +3098,6 @@ pub const Printing3DMultiplePropertyMaterialGroup = extern struct {
     pub fn getMaterialGroupId(self: *@This()) core.HResult!u32 {
         const this: *IPrinting3DMultiplePropertyMaterialGroup = @ptrCast(self);
         return try this.getMaterialGroupId();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DMultiplePropertyMaterialGroup {
         const _f = try @This()._IPrinting3DMultiplePropertyMaterialGroupFactoryCache.get();
@@ -2645,6 +3122,18 @@ pub const Printing3DPackageCompression = enum(i32) {
 };
 pub const Printing3DTexture2CoordMaterial = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTexture(self: *@This()) core.HResult!*Printing3DModelTexture {
         const this: *IPrinting3DTexture2CoordMaterial = @ptrCast(self);
         return try this.getTexture();
@@ -2669,9 +3158,6 @@ pub const Printing3DTexture2CoordMaterial = extern struct {
         const this: *IPrinting3DTexture2CoordMaterial = @ptrCast(self);
         return try this.putV(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DTexture2CoordMaterial.IID)));
@@ -2685,6 +3171,18 @@ pub const Printing3DTexture2CoordMaterial = extern struct {
 };
 pub const Printing3DTexture2CoordMaterialGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTexture2Coords(self: *@This()) core.HResult!*IVector(Printing3DTexture2CoordMaterial) {
         const this: *IPrinting3DTexture2CoordMaterialGroup = @ptrCast(self);
         return try this.getTexture2Coords();
@@ -2707,9 +3205,6 @@ pub const Printing3DTexture2CoordMaterialGroup = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putTexture(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DTexture2CoordMaterialGroup {
         const _f = try @This()._IPrinting3DTexture2CoordMaterialGroupFactoryCache.get();
         return try _f.Create(MaterialGroupId);
@@ -2729,6 +3224,18 @@ pub const Printing3DTextureEdgeBehavior = enum(i32) {
 };
 pub const Printing3DTextureResource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTextureData(self: *@This()) core.HResult!*IRandomAccessStreamWithContentType {
         const this: *IPrinting3DTextureResource = @ptrCast(self);
         return try this.getTextureData();
@@ -2744,9 +3251,6 @@ pub const Printing3DTextureResource = extern struct {
     pub fn putName(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IPrinting3DTextureResource = @ptrCast(self);
         return try this.putName(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();

@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CurrentTimeChangeRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTime(self: *@This()) core.HResult!TimeSpan {
         const this: *ICurrentTimeChangeRequestedEventArgs = @ptrCast(self);
         return try this.getTime();
@@ -13,6 +25,12 @@ pub const CurrentTimeChangeRequestedEventArgs = extern struct {
 };
 pub const ICurrentTimeChangeRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTime(self: *@This()) core.HResult!TimeSpan {
         var _r: TimeSpan = undefined;
         const _c = self.vtable.get_Time(@ptrCast(self), &_r);
@@ -36,6 +54,12 @@ pub const ICurrentTimeChangeRequestedEventArgs = extern struct {
 };
 pub const IMuteChangeRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMute(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Mute(@ptrCast(self), &_r);
@@ -59,6 +83,12 @@ pub const IMuteChangeRequestedEventArgs = extern struct {
 };
 pub const IPlayToConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!PlayToConnectionState {
         var _r: PlayToConnectionState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -118,6 +148,12 @@ pub const IPlayToConnection = extern struct {
 };
 pub const IPlayToConnectionErrorEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCode(self: *@This()) core.HResult!PlayToConnectionError {
         var _r: PlayToConnectionError = undefined;
         const _c = self.vtable.get_Code(@ptrCast(self), &_r);
@@ -148,6 +184,12 @@ pub const IPlayToConnectionErrorEventArgs = extern struct {
 };
 pub const IPlayToConnectionStateChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreviousState(self: *@This()) core.HResult!PlayToConnectionState {
         var _r: PlayToConnectionState = undefined;
         const _c = self.vtable.get_PreviousState(@ptrCast(self), &_r);
@@ -178,6 +220,12 @@ pub const IPlayToConnectionStateChangedEventArgs = extern struct {
 };
 pub const IPlayToConnectionTransferredEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreviousSource(self: *@This()) core.HResult!*PlayToSource {
         var _r: *PlayToSource = undefined;
         const _c = self.vtable.get_PreviousSource(@ptrCast(self), &_r);
@@ -208,6 +256,12 @@ pub const IPlayToConnectionTransferredEventArgs = extern struct {
 };
 pub const IPlayToManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSourceRequested(self: *@This(), handler: *TypedEventHandler(PlayToManager,PlayToSourceRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SourceRequested(@ptrCast(self), handler, &_r);
@@ -260,6 +314,12 @@ pub const IPlayToManager = extern struct {
 };
 pub const IPlayToManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentView(self: *@This()) core.HResult!*PlayToManager {
         var _r: *PlayToManager = undefined;
         const _c = self.vtable.GetForCurrentView(@ptrCast(self), &_r);
@@ -288,6 +348,12 @@ pub const IPlayToManagerStatics = extern struct {
 };
 pub const IPlayToReceiver = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addPlayRequested(self: *@This(), handler: *TypedEventHandler(PlayToReceiver,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PlayRequested(@ptrCast(self), handler, &_r);
@@ -541,6 +607,12 @@ pub const IPlayToReceiver = extern struct {
 };
 pub const IPlayToSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*PlayToConnection {
         var _r: *PlayToConnection = undefined;
         const _c = self.vtable.get_Connection(@ptrCast(self), &_r);
@@ -581,6 +653,12 @@ pub const IPlayToSource = extern struct {
 };
 pub const IPlayToSourceDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -602,6 +680,12 @@ pub const IPlayToSourceDeferral = extern struct {
 };
 pub const IPlayToSourceRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeadline(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Deadline(@ptrCast(self), &_r);
@@ -642,6 +726,12 @@ pub const IPlayToSourceRequest = extern struct {
 };
 pub const IPlayToSourceRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceRequest(self: *@This()) core.HResult!*PlayToSourceRequest {
         var _r: *PlayToSourceRequest = undefined;
         const _c = self.vtable.get_SourceRequest(@ptrCast(self), &_r);
@@ -665,6 +755,12 @@ pub const IPlayToSourceRequestedEventArgs = extern struct {
 };
 pub const IPlayToSourceSelectedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FriendlyName(@ptrCast(self), &_r);
@@ -716,6 +812,12 @@ pub const IPlayToSourceSelectedEventArgs = extern struct {
 };
 pub const IPlayToSourceWithPreferredSourceUri = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreferredSourceUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_PreferredSourceUri(@ptrCast(self), &_r);
@@ -744,6 +846,12 @@ pub const IPlayToSourceWithPreferredSourceUri = extern struct {
 };
 pub const IPlaybackRateChangeRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRate(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Rate(@ptrCast(self), &_r);
@@ -767,6 +875,12 @@ pub const IPlaybackRateChangeRequestedEventArgs = extern struct {
 };
 pub const ISourceChangeRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStream(self: *@This()) core.HResult!*IRandomAccessStreamWithContentType {
         var _r: *IRandomAccessStreamWithContentType = undefined;
         const _c = self.vtable.get_Stream(@ptrCast(self), &_r);
@@ -853,6 +967,12 @@ pub const ISourceChangeRequestedEventArgs = extern struct {
 };
 pub const IVolumeChangeRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVolume(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Volume(@ptrCast(self), &_r);
@@ -876,6 +996,18 @@ pub const IVolumeChangeRequestedEventArgs = extern struct {
 };
 pub const MuteChangeRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMute(self: *@This()) core.HResult!bool {
         const this: *IMuteChangeRequestedEventArgs = @ptrCast(self);
         return try this.getMute();
@@ -888,6 +1020,18 @@ pub const MuteChangeRequestedEventArgs = extern struct {
 };
 pub const PlayToConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!PlayToConnectionState {
         const this: *IPlayToConnection = @ptrCast(self);
         return try this.getState();
@@ -931,6 +1075,18 @@ pub const PlayToConnectionError = enum(i32) {
 };
 pub const PlayToConnectionErrorEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCode(self: *@This()) core.HResult!PlayToConnectionError {
         const this: *IPlayToConnectionErrorEventArgs = @ptrCast(self);
         return try this.getCode();
@@ -952,6 +1108,18 @@ pub const PlayToConnectionState = enum(i32) {
 };
 pub const PlayToConnectionStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreviousState(self: *@This()) core.HResult!PlayToConnectionState {
         const this: *IPlayToConnectionStateChangedEventArgs = @ptrCast(self);
         return try this.getPreviousState();
@@ -968,6 +1136,18 @@ pub const PlayToConnectionStateChangedEventArgs = extern struct {
 };
 pub const PlayToConnectionTransferredEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPreviousSource(self: *@This()) core.HResult!*PlayToSource {
         const this: *IPlayToConnectionTransferredEventArgs = @ptrCast(self);
         return try this.getPreviousSource();
@@ -984,6 +1164,18 @@ pub const PlayToConnectionTransferredEventArgs = extern struct {
 };
 pub const PlayToManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSourceRequested(self: *@This(), handler: *TypedEventHandler(PlayToManager,PlayToSourceRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IPlayToManager = @ptrCast(self);
         return try this.addSourceRequested(handler);
@@ -1008,9 +1200,6 @@ pub const PlayToManager = extern struct {
         const this: *IPlayToManager = @ptrCast(self);
         return try this.getDefaultSourceSelection();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetForCurrentView() core.HResult!*PlayToManager {
         const _f = try @This()._IPlayToManagerStaticsCache.get();
         return try _f.GetForCurrentView();
@@ -1028,6 +1217,18 @@ pub const PlayToManager = extern struct {
 };
 pub const PlayToReceiver = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addPlayRequested(self: *@This(), handler: *TypedEventHandler(PlayToReceiver,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IPlayToReceiver = @ptrCast(self);
         return try this.addPlayRequested(handler);
@@ -1192,9 +1393,6 @@ pub const PlayToReceiver = extern struct {
         const this: *IPlayToReceiver = @ptrCast(self);
         return try this.StopAsync();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPlayToReceiver.IID)));
@@ -1208,6 +1406,18 @@ pub const PlayToReceiver = extern struct {
 };
 pub const PlayToSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnection(self: *@This()) core.HResult!*PlayToConnection {
         const this: *IPlayToSource = @ptrCast(self);
         return try this.getConnection();
@@ -1246,6 +1456,18 @@ pub const PlayToSource = extern struct {
 };
 pub const PlayToSourceDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IPlayToSourceDeferral = @ptrCast(self);
         return try this.Complete();
@@ -1258,6 +1480,18 @@ pub const PlayToSourceDeferral = extern struct {
 };
 pub const PlayToSourceRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeadline(self: *@This()) core.HResult!DateTime {
         const this: *IPlayToSourceRequest = @ptrCast(self);
         return try this.getDeadline();
@@ -1282,6 +1516,18 @@ pub const PlayToSourceRequest = extern struct {
 };
 pub const PlayToSourceRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceRequest(self: *@This()) core.HResult!*PlayToSourceRequest {
         const this: *IPlayToSourceRequestedEventArgs = @ptrCast(self);
         return try this.getSourceRequest();
@@ -1294,6 +1540,18 @@ pub const PlayToSourceRequestedEventArgs = extern struct {
 };
 pub const PlayToSourceSelectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFriendlyName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPlayToSourceSelectedEventArgs = @ptrCast(self);
         return try this.getFriendlyName();
@@ -1322,6 +1580,18 @@ pub const PlayToSourceSelectedEventArgs = extern struct {
 };
 pub const PlaybackRateChangeRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRate(self: *@This()) core.HResult!f64 {
         const this: *IPlaybackRateChangeRequestedEventArgs = @ptrCast(self);
         return try this.getRate();
@@ -1334,6 +1604,18 @@ pub const PlaybackRateChangeRequestedEventArgs = extern struct {
 };
 pub const SourceChangeRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStream(self: *@This()) core.HResult!*IRandomAccessStreamWithContentType {
         const this: *ISourceChangeRequestedEventArgs = @ptrCast(self);
         return try this.getStream();
@@ -1382,6 +1664,18 @@ pub const SourceChangeRequestedEventArgs = extern struct {
 };
 pub const VolumeChangeRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVolume(self: *@This()) core.HResult!f64 {
         const this: *IVolumeChangeRequestedEventArgs = @ptrCast(self);
         return try this.getVolume();

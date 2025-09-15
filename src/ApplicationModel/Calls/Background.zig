@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPhoneCallBlockedTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PhoneNumber(@ptrCast(self), &_r);
@@ -38,6 +44,12 @@ pub const IPhoneCallBlockedTriggerDetails = extern struct {
 };
 pub const IPhoneCallOriginDataRequestTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_RequestId(@ptrCast(self), &_r);
@@ -68,6 +80,12 @@ pub const IPhoneCallOriginDataRequestTriggerDetails = extern struct {
 };
 pub const IPhoneIncomingCallDismissedTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLineId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_LineId(@ptrCast(self), &_r);
@@ -126,6 +144,12 @@ pub const IPhoneIncomingCallDismissedTriggerDetails = extern struct {
 };
 pub const IPhoneIncomingCallNotificationTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLineId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_LineId(@ptrCast(self), &_r);
@@ -156,6 +180,12 @@ pub const IPhoneIncomingCallNotificationTriggerDetails = extern struct {
 };
 pub const IPhoneLineChangedTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLineId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_LineId(@ptrCast(self), &_r);
@@ -193,6 +223,12 @@ pub const IPhoneLineChangedTriggerDetails = extern struct {
 };
 pub const IPhoneNewVoicemailMessageTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLineId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_LineId(@ptrCast(self), &_r);
@@ -235,6 +271,18 @@ pub const PhoneCallBlockedReason = enum(i32) {
 };
 pub const PhoneCallBlockedTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPhoneNumber(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhoneCallBlockedTriggerDetails = @ptrCast(self);
         return try this.getPhoneNumber();
@@ -255,6 +303,18 @@ pub const PhoneCallBlockedTriggerDetails = extern struct {
 };
 pub const PhoneCallOriginDataRequestTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequestId(self: *@This()) core.HResult!*Guid {
         const this: *IPhoneCallOriginDataRequestTriggerDetails = @ptrCast(self);
         return try this.getRequestId();
@@ -277,6 +337,18 @@ pub const PhoneIncomingCallDismissedReason = enum(i32) {
 };
 pub const PhoneIncomingCallDismissedTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLineId(self: *@This()) core.HResult!*Guid {
         const this: *IPhoneIncomingCallDismissedTriggerDetails = @ptrCast(self);
         return try this.getLineId();
@@ -309,6 +381,18 @@ pub const PhoneIncomingCallDismissedTriggerDetails = extern struct {
 };
 pub const PhoneIncomingCallNotificationTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLineId(self: *@This()) core.HResult!*Guid {
         const this: *IPhoneIncomingCallNotificationTriggerDetails = @ptrCast(self);
         return try this.getLineId();
@@ -330,6 +414,18 @@ pub const PhoneLineChangeKind = enum(i32) {
 };
 pub const PhoneLineChangedTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLineId(self: *@This()) core.HResult!*Guid {
         const this: *IPhoneLineChangedTriggerDetails = @ptrCast(self);
         return try this.getLineId();
@@ -362,6 +458,18 @@ pub const PhoneLineProperties = enum(i32) {
 };
 pub const PhoneNewVoicemailMessageTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLineId(self: *@This()) core.HResult!*Guid {
         const this: *IPhoneNewVoicemailMessageTriggerDetails = @ptrCast(self);
         return try this.getLineId();
@@ -390,6 +498,7 @@ pub const PhoneTriggerType = enum(i32) {
     IncomingCallDismissed = 6,
     IncomingCallNotification = 7,
 };
+const IUnknown = @import("../../root.zig").IUnknown;
 const Guid = @import("../../root.zig").Guid;
 const HRESULT = @import("../../root.zig").HRESULT;
 const core = @import("../../root.zig").core;

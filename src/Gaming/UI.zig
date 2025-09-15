@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const GameChatMessageReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
         const this: *IGameChatMessageReceivedEventArgs = @ptrCast(self);
         return try this.getAppId();
@@ -29,6 +41,18 @@ pub const GameChatMessageReceivedEventArgs = extern struct {
 };
 pub const GameChatOverlayMessageSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMessageReceived(self: *@This(), handler: *TypedEventHandler(GameChatOverlayMessageSource,GameChatMessageReceivedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IGameChatOverlayMessageSource = @ptrCast(self);
         return try this.addMessageReceived(handler);
@@ -40,9 +64,6 @@ pub const GameChatOverlayMessageSource = extern struct {
     pub fn SetDelayBeforeClosingAfterMessageReceived(self: *@This(), value: TimeSpan) core.HResult!void {
         const this: *IGameChatOverlayMessageSource = @ptrCast(self);
         return try this.SetDelayBeforeClosingAfterMessageReceived(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -57,6 +78,12 @@ pub const GameChatOverlayMessageSource = extern struct {
 };
 pub const IGameChatMessageReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAppId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AppId(@ptrCast(self), &_r);
@@ -108,6 +135,12 @@ pub const IGameChatMessageReceivedEventArgs = extern struct {
 };
 pub const IGameChatOverlayMessageSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMessageReceived(self: *@This(), handler: *TypedEventHandler(GameChatOverlayMessageSource,GameChatMessageReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MessageReceived(@ptrCast(self), handler, &_r);
@@ -141,6 +174,18 @@ pub const IGameChatOverlayMessageSource = extern struct {
 };
 pub const GameUIProviderActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGameUIArgs(self: *@This()) core.HResult!*ValueSet {
         const this: *IGameUIProviderActivatedEventArgs = @ptrCast(self);
         return try this.getGameUIArgs();
@@ -178,6 +223,12 @@ pub const GameUIProviderActivatedEventArgs = extern struct {
 };
 pub const IGameUIProviderActivatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGameUIArgs(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_GameUIArgs(@ptrCast(self), &_r);
@@ -206,6 +257,15 @@ pub const IGameUIProviderActivatedEventArgs = extern struct {
 };
 pub const GameBar = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -243,6 +303,18 @@ pub const GameChatMessageOrigin = enum(i32) {
 };
 pub const GameChatOverlay = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesiredPosition(self: *@This()) core.HResult!GameChatOverlayPosition {
         const this: *IGameChatOverlay = @ptrCast(self);
         return try this.getDesiredPosition();
@@ -254,9 +326,6 @@ pub const GameChatOverlay = extern struct {
     pub fn AddMessage(self: *@This(), sender: ?HSTRING, message: ?HSTRING, origin: GameChatMessageOrigin) core.HResult!void {
         const this: *IGameChatOverlay = @ptrCast(self);
         return try this.AddMessage(sender, message, origin);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*GameChatOverlay {
         const _f = try @This()._IGameChatOverlayStaticsCache.get();
@@ -281,6 +350,12 @@ pub const GameChatOverlayPosition = enum(i32) {
 };
 pub const IGameBarStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addVisibilityChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VisibilityChanged(@ptrCast(self), handler, &_r);
@@ -335,6 +410,12 @@ pub const IGameBarStatics = extern struct {
 };
 pub const IGameChatOverlay = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesiredPosition(self: *@This()) core.HResult!GameChatOverlayPosition {
         var _r: GameChatOverlayPosition = undefined;
         const _c = self.vtable.get_DesiredPosition(@ptrCast(self), &_r);
@@ -368,6 +449,12 @@ pub const IGameChatOverlay = extern struct {
 };
 pub const IGameChatOverlayStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*GameChatOverlay {
         var _r: *GameChatOverlay = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);

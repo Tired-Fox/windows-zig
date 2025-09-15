@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IKnownSmartCardAppletIds = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPaymentSystemEnvironment(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_PaymentSystemEnvironment(@ptrCast(self), &_r);
@@ -31,6 +37,12 @@ pub const IKnownSmartCardAppletIds = extern struct {
 };
 pub const ISmartCardAppletIdGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -102,6 +114,12 @@ pub const ISmartCardAppletIdGroup = extern struct {
 };
 pub const ISmartCardAppletIdGroup2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLogo(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.get_Logo(@ptrCast(self), &_r);
@@ -161,6 +179,12 @@ pub const ISmartCardAppletIdGroup2 = extern struct {
 };
 pub const ISmartCardAppletIdGroupFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), displayName: ?HSTRING, appletIds: *IVector(IBuffer), emulationCategory: SmartCardEmulationCategory, emulationType: SmartCardEmulationType) core.HResult!*SmartCardAppletIdGroup {
         var _r: *SmartCardAppletIdGroup = undefined;
         const _c = self.vtable.Create(@ptrCast(self), displayName, appletIds, emulationCategory, emulationType, &_r);
@@ -184,6 +208,12 @@ pub const ISmartCardAppletIdGroupFactory = extern struct {
 };
 pub const ISmartCardAppletIdGroupRegistration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivationPolicy(self: *@This()) core.HResult!SmartCardAppletIdGroupActivationPolicy {
         var _r: SmartCardAppletIdGroupActivationPolicy = undefined;
         const _c = self.vtable.get_ActivationPolicy(@ptrCast(self), &_r);
@@ -235,6 +265,12 @@ pub const ISmartCardAppletIdGroupRegistration = extern struct {
 };
 pub const ISmartCardAppletIdGroupRegistration2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSmartCardReaderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SmartCardReaderId(@ptrCast(self), &_r);
@@ -265,6 +301,12 @@ pub const ISmartCardAppletIdGroupRegistration2 = extern struct {
 };
 pub const ISmartCardAppletIdGroupStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxAppletIds(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_MaxAppletIds(@ptrCast(self), &_r);
@@ -288,6 +330,12 @@ pub const ISmartCardAppletIdGroupStatics = extern struct {
 };
 pub const ISmartCardAutomaticResponseApdu = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCommandApdu(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_CommandApdu(@ptrCast(self), &_r);
@@ -364,6 +412,12 @@ pub const ISmartCardAutomaticResponseApdu = extern struct {
 };
 pub const ISmartCardAutomaticResponseApdu2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInputState(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_InputState(@ptrCast(self), &_r);
@@ -404,6 +458,12 @@ pub const ISmartCardAutomaticResponseApdu2 = extern struct {
 };
 pub const ISmartCardAutomaticResponseApdu3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowWhenCryptogramGeneratorNotPrepared(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowWhenCryptogramGeneratorNotPrepared(@ptrCast(self), &_r);
@@ -432,6 +492,12 @@ pub const ISmartCardAutomaticResponseApdu3 = extern struct {
 };
 pub const ISmartCardAutomaticResponseApduFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), commandApdu: *IBuffer, responseApdu: *IBuffer) core.HResult!*SmartCardAutomaticResponseApdu {
         var _r: *SmartCardAutomaticResponseApdu = undefined;
         const _c = self.vtable.Create(@ptrCast(self), commandApdu, responseApdu, &_r);
@@ -455,6 +521,12 @@ pub const ISmartCardAutomaticResponseApduFactory = extern struct {
 };
 pub const ISmartCardCryptogramGenerator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedCryptogramMaterialTypes(self: *@This()) core.HResult!*IVectorView(SmartCardCryptogramMaterialType) {
         var _r: *IVectorView(SmartCardCryptogramMaterialType) = undefined;
         const _c = self.vtable.get_SupportedCryptogramMaterialTypes(@ptrCast(self), &_r);
@@ -555,6 +627,12 @@ pub const ISmartCardCryptogramGenerator = extern struct {
 };
 pub const ISmartCardCryptogramGenerator2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ValidateRequestApduAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, apduToValidate: *IBuffer, cryptogramPlacementSteps: *IIterable(SmartCardCryptogramPlacementStep)) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         var _r: *IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) = undefined;
         const _c = self.vtable.ValidateRequestApduAsync(@ptrCast(self), promptingBehavior, apduToValidate, cryptogramPlacementSteps, &_r);
@@ -606,6 +684,12 @@ pub const ISmartCardCryptogramGenerator2 = extern struct {
 };
 pub const ISmartCardCryptogramGeneratorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetSmartCardCryptogramGeneratorAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardCryptogramGenerator) {
         var _r: *IAsyncOperation(SmartCardCryptogramGenerator) = undefined;
         const _c = self.vtable.GetSmartCardCryptogramGeneratorAsync(@ptrCast(self), &_r);
@@ -629,6 +713,12 @@ pub const ISmartCardCryptogramGeneratorStatics = extern struct {
 };
 pub const ISmartCardCryptogramGeneratorStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
@@ -652,6 +742,12 @@ pub const ISmartCardCryptogramGeneratorStatics2 = extern struct {
 };
 pub const ISmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperationStatus(self: *@This()) core.HResult!SmartCardCryptogramGeneratorOperationStatus {
         var _r: SmartCardCryptogramGeneratorOperationStatus = undefined;
         const _c = self.vtable.get_OperationStatus(@ptrCast(self), &_r);
@@ -682,6 +778,12 @@ pub const ISmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult = ex
 };
 pub const ISmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperationStatus(self: *@This()) core.HResult!SmartCardCryptogramGeneratorOperationStatus {
         var _r: SmartCardCryptogramGeneratorOperationStatus = undefined;
         const _c = self.vtable.get_OperationStatus(@ptrCast(self), &_r);
@@ -712,6 +814,12 @@ pub const ISmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResu
 };
 pub const ISmartCardCryptogramGetAllCryptogramStorageKeyCharacteristicsResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperationStatus(self: *@This()) core.HResult!SmartCardCryptogramGeneratorOperationStatus {
         var _r: SmartCardCryptogramGeneratorOperationStatus = undefined;
         const _c = self.vtable.get_OperationStatus(@ptrCast(self), &_r);
@@ -742,6 +850,12 @@ pub const ISmartCardCryptogramGetAllCryptogramStorageKeyCharacteristicsResult = 
 };
 pub const ISmartCardCryptogramMaterialCharacteristics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaterialName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MaterialName(@ptrCast(self), &_r);
@@ -814,6 +928,12 @@ pub const ISmartCardCryptogramMaterialCharacteristics = extern struct {
 };
 pub const ISmartCardCryptogramMaterialPackageCharacteristics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackageName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PackageName(@ptrCast(self), &_r);
@@ -858,6 +978,12 @@ pub const ISmartCardCryptogramMaterialPackageCharacteristics = extern struct {
 };
 pub const ISmartCardCryptogramMaterialPossessionProof = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperationStatus(self: *@This()) core.HResult!SmartCardCryptogramGeneratorOperationStatus {
         var _r: SmartCardCryptogramGeneratorOperationStatus = undefined;
         const _c = self.vtable.get_OperationStatus(@ptrCast(self), &_r);
@@ -888,6 +1014,12 @@ pub const ISmartCardCryptogramMaterialPossessionProof = extern struct {
 };
 pub const ISmartCardCryptogramPlacementStep = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlgorithm(self: *@This()) core.HResult!SmartCardCryptogramAlgorithm {
         var _r: SmartCardCryptogramAlgorithm = undefined;
         const _c = self.vtable.get_Algorithm(@ptrCast(self), &_r);
@@ -1012,6 +1144,12 @@ pub const ISmartCardCryptogramPlacementStep = extern struct {
 };
 pub const ISmartCardCryptogramStorageKeyCharacteristics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStorageKeyName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_StorageKeyName(@ptrCast(self), &_r);
@@ -1056,6 +1194,12 @@ pub const ISmartCardCryptogramStorageKeyCharacteristics = extern struct {
 };
 pub const ISmartCardCryptogramStorageKeyInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperationStatus(self: *@This()) core.HResult!SmartCardCryptogramGeneratorOperationStatus {
         var _r: SmartCardCryptogramGeneratorOperationStatus = undefined;
         const _c = self.vtable.get_OperationStatus(@ptrCast(self), &_r);
@@ -1121,6 +1265,12 @@ pub const ISmartCardCryptogramStorageKeyInfo = extern struct {
 };
 pub const ISmartCardCryptogramStorageKeyInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperationalRequirements(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OperationalRequirements(@ptrCast(self), &_r);
@@ -1144,6 +1294,12 @@ pub const ISmartCardCryptogramStorageKeyInfo2 = extern struct {
 };
 pub const ISmartCardEmulator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnablementPolicy(self: *@This()) core.HResult!SmartCardEmulatorEnablementPolicy {
         var _r: SmartCardEmulatorEnablementPolicy = undefined;
         const _c = self.vtable.get_EnablementPolicy(@ptrCast(self), &_r);
@@ -1167,6 +1323,12 @@ pub const ISmartCardEmulator = extern struct {
 };
 pub const ISmartCardEmulator2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addApduReceived(self: *@This(), value: *TypedEventHandler(SmartCardEmulator,SmartCardEmulatorApduReceivedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ApduReceived(@ptrCast(self), value, &_r);
@@ -1219,6 +1381,12 @@ pub const ISmartCardEmulator2 = extern struct {
 };
 pub const ISmartCardEmulatorApduReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCommandApdu(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_CommandApdu(@ptrCast(self), &_r);
@@ -1263,6 +1431,12 @@ pub const ISmartCardEmulatorApduReceivedEventArgs = extern struct {
 };
 pub const ISmartCardEmulatorApduReceivedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -1293,6 +1467,12 @@ pub const ISmartCardEmulatorApduReceivedEventArgs2 = extern struct {
 };
 pub const ISmartCardEmulatorApduReceivedEventArgsWithCryptograms = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryRespondWithCryptogramsAsync(self: *@This(), responseTemplate: *IBuffer, cryptogramPlacementSteps: *IIterable(SmartCardCryptogramPlacementStep)) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         var _r: *IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) = undefined;
         const _c = self.vtable.TryRespondWithCryptogramsAsync(@ptrCast(self), responseTemplate, cryptogramPlacementSteps, &_r);
@@ -1323,6 +1503,12 @@ pub const ISmartCardEmulatorApduReceivedEventArgsWithCryptograms = extern struct
 };
 pub const ISmartCardEmulatorConnectionDeactivatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnectionProperties(self: *@This()) core.HResult!*SmartCardEmulatorConnectionProperties {
         var _r: *SmartCardEmulatorConnectionProperties = undefined;
         const _c = self.vtable.get_ConnectionProperties(@ptrCast(self), &_r);
@@ -1353,6 +1539,12 @@ pub const ISmartCardEmulatorConnectionDeactivatedEventArgs = extern struct {
 };
 pub const ISmartCardEmulatorConnectionProperties = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -1383,6 +1575,12 @@ pub const ISmartCardEmulatorConnectionProperties = extern struct {
 };
 pub const ISmartCardEmulatorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardEmulator) {
         var _r: *IAsyncOperation(SmartCardEmulator) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
@@ -1406,6 +1604,12 @@ pub const ISmartCardEmulatorStatics = extern struct {
 };
 pub const ISmartCardEmulatorStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAppletIdGroupRegistrationsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(SmartCardAppletIdGroupRegistration)) {
         var _r: *IAsyncOperation(IVectorView(SmartCardAppletIdGroupRegistration)) = undefined;
         const _c = self.vtable.GetAppletIdGroupRegistrationsAsync(@ptrCast(self), &_r);
@@ -1450,6 +1654,12 @@ pub const ISmartCardEmulatorStatics2 = extern struct {
 };
 pub const ISmartCardEmulatorStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), &_r);
@@ -1473,6 +1683,15 @@ pub const ISmartCardEmulatorStatics3 = extern struct {
 };
 pub const KnownSmartCardAppletIds = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1494,6 +1713,18 @@ pub const SmartCardActivationPolicyChangeResult = enum(i32) {
 };
 pub const SmartCardAppletIdGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardAppletIdGroup = @ptrCast(self);
         return try this.getDisplayName();
@@ -1579,9 +1810,6 @@ pub const SmartCardAppletIdGroup = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putSecureUserAuthenticationRequired(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmartCardAppletIdGroup.IID)));
@@ -1610,6 +1838,18 @@ pub const SmartCardAppletIdGroupActivationPolicy = enum(i32) {
 };
 pub const SmartCardAppletIdGroupRegistration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivationPolicy(self: *@This()) core.HResult!SmartCardAppletIdGroupActivationPolicy {
         const this: *ISmartCardAppletIdGroupRegistration = @ptrCast(self);
         return try this.getActivationPolicy();
@@ -1652,6 +1892,18 @@ pub const SmartCardAppletIdGroupRegistration = extern struct {
 };
 pub const SmartCardAutomaticResponseApdu = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCommandApdu(self: *@This()) core.HResult!*IBuffer {
         const this: *ISmartCardAutomaticResponseApdu = @ptrCast(self);
         return try this.getCommandApdu();
@@ -1734,9 +1986,6 @@ pub const SmartCardAutomaticResponseApdu = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putAllowWhenCryptogramGeneratorNotPrepared(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(commandApdu: *IBuffer, responseApdu: *IBuffer) core.HResult!*SmartCardAutomaticResponseApdu {
         const _f = try @This()._ISmartCardAutomaticResponseApduFactoryCache.get();
         return try _f.Create(commandApdu, responseApdu);
@@ -1766,6 +2015,18 @@ pub const SmartCardCryptogramAlgorithm = enum(i32) {
 };
 pub const SmartCardCryptogramGenerator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedCryptogramMaterialTypes(self: *@This()) core.HResult!*IVectorView(SmartCardCryptogramMaterialType) {
         const this: *ISmartCardCryptogramGenerator = @ptrCast(self);
         return try this.getSupportedCryptogramMaterialTypes();
@@ -1849,9 +2110,6 @@ pub const SmartCardCryptogramGenerator = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllCryptogramMaterialCharacteristicsAsync(promptingBehavior, materialPackageName);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn IsSupported() core.HResult!bool {
         const _f = try @This()._ISmartCardCryptogramGeneratorStatics2Cache.get();
         return try _f.IsSupported();
@@ -1886,6 +2144,18 @@ pub const SmartCardCryptogramGeneratorOperationStatus = enum(i32) {
 };
 pub const SmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperationStatus(self: *@This()) core.HResult!SmartCardCryptogramGeneratorOperationStatus {
         const this: *ISmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult = @ptrCast(self);
         return try this.getOperationStatus();
@@ -1893,9 +2163,6 @@ pub const SmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult = ext
     pub fn getCharacteristics(self: *@This()) core.HResult!*IVectorView(SmartCardCryptogramMaterialCharacteristics) {
         const this: *ISmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult = @ptrCast(self);
         return try this.getCharacteristics();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1910,6 +2177,18 @@ pub const SmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult = ext
 };
 pub const SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperationStatus(self: *@This()) core.HResult!SmartCardCryptogramGeneratorOperationStatus {
         const this: *ISmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult = @ptrCast(self);
         return try this.getOperationStatus();
@@ -1917,9 +2196,6 @@ pub const SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResul
     pub fn getCharacteristics(self: *@This()) core.HResult!*IVectorView(SmartCardCryptogramMaterialPackageCharacteristics) {
         const this: *ISmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult = @ptrCast(self);
         return try this.getCharacteristics();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1934,6 +2210,18 @@ pub const SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResul
 };
 pub const SmartCardCryptogramGetAllCryptogramStorageKeyCharacteristicsResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperationStatus(self: *@This()) core.HResult!SmartCardCryptogramGeneratorOperationStatus {
         const this: *ISmartCardCryptogramGetAllCryptogramStorageKeyCharacteristicsResult = @ptrCast(self);
         return try this.getOperationStatus();
@@ -1941,9 +2229,6 @@ pub const SmartCardCryptogramGetAllCryptogramStorageKeyCharacteristicsResult = e
     pub fn getCharacteristics(self: *@This()) core.HResult!*IVectorView(SmartCardCryptogramStorageKeyCharacteristics) {
         const this: *ISmartCardCryptogramGetAllCryptogramStorageKeyCharacteristicsResult = @ptrCast(self);
         return try this.getCharacteristics();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1958,6 +2243,18 @@ pub const SmartCardCryptogramGetAllCryptogramStorageKeyCharacteristicsResult = e
 };
 pub const SmartCardCryptogramMaterialCharacteristics = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaterialName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardCryptogramMaterialCharacteristics = @ptrCast(self);
         return try this.getMaterialName();
@@ -1990,9 +2287,6 @@ pub const SmartCardCryptogramMaterialCharacteristics = extern struct {
         const this: *ISmartCardCryptogramMaterialCharacteristics = @ptrCast(self);
         return try this.getMaterialLength();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmartCardCryptogramMaterialCharacteristics.IID)));
@@ -2006,6 +2300,18 @@ pub const SmartCardCryptogramMaterialCharacteristics = extern struct {
 };
 pub const SmartCardCryptogramMaterialPackageCharacteristics = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackageName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardCryptogramMaterialPackageCharacteristics = @ptrCast(self);
         return try this.getPackageName();
@@ -2021,9 +2327,6 @@ pub const SmartCardCryptogramMaterialPackageCharacteristics = extern struct {
     pub fn getPackageFormat(self: *@This()) core.HResult!SmartCardCryptogramMaterialPackageFormat {
         const this: *ISmartCardCryptogramMaterialPackageCharacteristics = @ptrCast(self);
         return try this.getPackageFormat();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -2046,6 +2349,18 @@ pub const SmartCardCryptogramMaterialPackageFormat = enum(i32) {
 };
 pub const SmartCardCryptogramMaterialPossessionProof = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperationStatus(self: *@This()) core.HResult!SmartCardCryptogramGeneratorOperationStatus {
         const this: *ISmartCardCryptogramMaterialPossessionProof = @ptrCast(self);
         return try this.getOperationStatus();
@@ -2078,6 +2393,18 @@ pub const SmartCardCryptogramPlacementOptions = enum(i32) {
 };
 pub const SmartCardCryptogramPlacementStep = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlgorithm(self: *@This()) core.HResult!SmartCardCryptogramAlgorithm {
         const this: *ISmartCardCryptogramPlacementStep = @ptrCast(self);
         return try this.getAlgorithm();
@@ -2150,9 +2477,6 @@ pub const SmartCardCryptogramPlacementStep = extern struct {
         const this: *ISmartCardCryptogramPlacementStep = @ptrCast(self);
         return try this.putChainedOutputStep(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmartCardCryptogramPlacementStep.IID)));
@@ -2175,6 +2499,18 @@ pub const SmartCardCryptogramStorageKeyCapabilities = enum(i32) {
 };
 pub const SmartCardCryptogramStorageKeyCharacteristics = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStorageKeyName(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardCryptogramStorageKeyCharacteristics = @ptrCast(self);
         return try this.getStorageKeyName();
@@ -2191,9 +2527,6 @@ pub const SmartCardCryptogramStorageKeyCharacteristics = extern struct {
         const this: *ISmartCardCryptogramStorageKeyCharacteristics = @ptrCast(self);
         return try this.getCapabilities();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmartCardCryptogramStorageKeyCharacteristics.IID)));
@@ -2207,6 +2540,18 @@ pub const SmartCardCryptogramStorageKeyCharacteristics = extern struct {
 };
 pub const SmartCardCryptogramStorageKeyInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperationStatus(self: *@This()) core.HResult!SmartCardCryptogramGeneratorOperationStatus {
         const this: *ISmartCardCryptogramStorageKeyInfo = @ptrCast(self);
         return try this.getOperationStatus();
@@ -2269,6 +2614,18 @@ pub const SmartCardEmulationType = enum(i32) {
 };
 pub const SmartCardEmulator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEnablementPolicy(self: *@This()) core.HResult!SmartCardEmulatorEnablementPolicy {
         const this: *ISmartCardEmulator = @ptrCast(self);
         return try this.getEnablementPolicy();
@@ -2315,9 +2672,6 @@ pub const SmartCardEmulator = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsHostCardEmulationSupported();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn IsSupported() core.HResult!bool {
         const _f = try @This()._ISmartCardEmulatorStatics3Cache.get();
         return try _f.IsSupported();
@@ -2353,6 +2707,18 @@ pub const SmartCardEmulator = extern struct {
 };
 pub const SmartCardEmulatorApduReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCommandApdu(self: *@This()) core.HResult!*IBuffer {
         const this: *ISmartCardEmulatorApduReceivedEventArgs = @ptrCast(self);
         return try this.getCommandApdu();
@@ -2405,6 +2771,18 @@ pub const SmartCardEmulatorApduReceivedEventArgs = extern struct {
 };
 pub const SmartCardEmulatorConnectionDeactivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConnectionProperties(self: *@This()) core.HResult!*SmartCardEmulatorConnectionProperties {
         const this: *ISmartCardEmulatorConnectionDeactivatedEventArgs = @ptrCast(self);
         return try this.getConnectionProperties();
@@ -2425,6 +2803,18 @@ pub const SmartCardEmulatorConnectionDeactivatedReason = enum(i32) {
 };
 pub const SmartCardEmulatorConnectionProperties = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*Guid {
         const this: *ISmartCardEmulatorConnectionProperties = @ptrCast(self);
         return try this.getId();
@@ -2456,6 +2846,12 @@ pub const SmartCardUnlockPromptingBehavior = enum(i32) {
 };
 pub const ISmartCardTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
         var _r: SmartCardTriggerType = undefined;
         const _c = self.vtable.get_TriggerType(@ptrCast(self), &_r);
@@ -2493,6 +2889,12 @@ pub const ISmartCardTriggerDetails = extern struct {
 };
 pub const ISmartCardTriggerDetails2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEmulator(self: *@This()) core.HResult!*SmartCardEmulator {
         var _r: *SmartCardEmulator = undefined;
         const _c = self.vtable.get_Emulator(@ptrCast(self), &_r);
@@ -2530,6 +2932,12 @@ pub const ISmartCardTriggerDetails2 = extern struct {
 };
 pub const ISmartCardTriggerDetails3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
         var _r: *SmartCard = undefined;
         const _c = self.vtable.get_SmartCard(@ptrCast(self), &_r);
@@ -2557,6 +2965,18 @@ pub const SmartCardLaunchBehavior = enum(i32) {
 };
 pub const SmartCardTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTriggerType(self: *@This()) core.HResult!SmartCardTriggerType {
         const this: *ISmartCardTriggerDetails = @ptrCast(self);
         return try this.getTriggerType();
@@ -2613,6 +3033,18 @@ pub const SmartCardTriggerType = enum(i32) {
 };
 pub const CardAddedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
         const this: *ICardAddedEventArgs = @ptrCast(self);
         return try this.getSmartCard();
@@ -2625,6 +3057,18 @@ pub const CardAddedEventArgs = extern struct {
 };
 pub const CardRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
         const this: *ICardRemovedEventArgs = @ptrCast(self);
         return try this.getSmartCard();
@@ -2637,6 +3081,12 @@ pub const CardRemovedEventArgs = extern struct {
 };
 pub const ICardAddedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
         var _r: *SmartCard = undefined;
         const _c = self.vtable.get_SmartCard(@ptrCast(self), &_r);
@@ -2660,6 +3110,12 @@ pub const ICardAddedEventArgs = extern struct {
 };
 pub const ICardRemovedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
         var _r: *SmartCard = undefined;
         const _c = self.vtable.get_SmartCard(@ptrCast(self), &_r);
@@ -2683,6 +3139,12 @@ pub const ICardRemovedEventArgs = extern struct {
 };
 pub const ISmartCard = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReader(self: *@This()) core.HResult!*SmartCardReader {
         var _r: *SmartCardReader = undefined;
         const _c = self.vtable.get_Reader(@ptrCast(self), &_r);
@@ -2720,6 +3182,12 @@ pub const ISmartCard = extern struct {
 };
 pub const ISmartCardChallengeContext = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChallenge(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Challenge(@ptrCast(self), &_r);
@@ -2771,6 +3239,12 @@ pub const ISmartCardChallengeContext = extern struct {
 };
 pub const ISmartCardConnect = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ConnectAsync(self: *@This()) core.HResult!*IAsyncOperation(SmartCardConnection) {
         var _r: *IAsyncOperation(SmartCardConnection) = undefined;
         const _c = self.vtable.ConnectAsync(@ptrCast(self), &_r);
@@ -2794,6 +3268,12 @@ pub const ISmartCardConnect = extern struct {
 };
 pub const ISmartCardConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TransmitAsync(self: *@This(), command: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
         var _r: *IAsyncOperation(IBuffer) = undefined;
         const _c = self.vtable.TransmitAsync(@ptrCast(self), command, &_r);
@@ -2817,6 +3297,12 @@ pub const ISmartCardConnection = extern struct {
 };
 pub const ISmartCardPinPolicy = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinLength(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_MinLength(@ptrCast(self), &_r);
@@ -2905,6 +3391,12 @@ pub const ISmartCardPinPolicy = extern struct {
 };
 pub const ISmartCardPinResetDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2926,6 +3418,12 @@ pub const ISmartCardPinResetDeferral = extern struct {
 };
 pub const ISmartCardPinResetRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChallenge(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Challenge(@ptrCast(self), &_r);
@@ -2968,6 +3466,12 @@ pub const ISmartCardPinResetRequest = extern struct {
 };
 pub const ISmartCardProvisioning = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
         var _r: *SmartCard = undefined;
         const _c = self.vtable.get_SmartCard(@ptrCast(self), &_r);
@@ -3026,6 +3530,12 @@ pub const ISmartCardProvisioning = extern struct {
 };
 pub const ISmartCardProvisioning2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAuthorityKeyContainerNameAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.GetAuthorityKeyContainerNameAsync(@ptrCast(self), &_r);
@@ -3049,6 +3559,12 @@ pub const ISmartCardProvisioning2 = extern struct {
 };
 pub const ISmartCardProvisioningStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromSmartCardAsync(self: *@This(), card: *SmartCard) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
         const _c = self.vtable.FromSmartCardAsync(@ptrCast(self), card, &_r);
@@ -3093,6 +3609,12 @@ pub const ISmartCardProvisioningStatics = extern struct {
 };
 pub const ISmartCardProvisioningStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestAttestedVirtualSmartCardCreationAsync(self: *@This(), friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         var _r: *IAsyncOperation(SmartCardProvisioning) = undefined;
         const _c = self.vtable.RequestAttestedVirtualSmartCardCreationAsync(@ptrCast(self), friendlyName, administrativeKey, pinPolicy, &_r);
@@ -3123,6 +3645,12 @@ pub const ISmartCardProvisioningStatics2 = extern struct {
 };
 pub const ISmartCardReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -3198,6 +3726,12 @@ pub const ISmartCardReader = extern struct {
 };
 pub const ISmartCardReaderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -3235,6 +3769,18 @@ pub const ISmartCardReaderStatics = extern struct {
 };
 pub const SmartCard = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReader(self: *@This()) core.HResult!*SmartCardReader {
         const this: *ISmartCard = @ptrCast(self);
         return try this.getReader();
@@ -3262,6 +3808,18 @@ pub const SmartCard = extern struct {
 };
 pub const SmartCardChallengeContext = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChallenge(self: *@This()) core.HResult!*IBuffer {
         const this: *ISmartCardChallengeContext = @ptrCast(self);
         return try this.getChallenge();
@@ -3297,6 +3855,18 @@ pub const SmartCardChallengeContext = extern struct {
 };
 pub const SmartCardConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TransmitAsync(self: *@This(), command: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
         const this: *ISmartCardConnection = @ptrCast(self);
         return try this.TransmitAsync(command);
@@ -3321,6 +3891,18 @@ pub const SmartCardPinCharacterPolicyOption = enum(i32) {
 };
 pub const SmartCardPinPolicy = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMinLength(self: *@This()) core.HResult!u32 {
         const this: *ISmartCardPinPolicy = @ptrCast(self);
         return try this.getMinLength();
@@ -3369,9 +3951,6 @@ pub const SmartCardPinPolicy = extern struct {
         const this: *ISmartCardPinPolicy = @ptrCast(self);
         return try this.putSpecialCharacters(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmartCardPinPolicy.IID)));
@@ -3385,6 +3964,18 @@ pub const SmartCardPinPolicy = extern struct {
 };
 pub const SmartCardPinResetDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *ISmartCardPinResetDeferral = @ptrCast(self);
         return try this.Complete();
@@ -3486,6 +4077,18 @@ pub const SmartCardPinResetHandler = extern struct {
 };
 pub const SmartCardPinResetRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChallenge(self: *@This()) core.HResult!*IBuffer {
         const this: *ISmartCardPinResetRequest = @ptrCast(self);
         return try this.getChallenge();
@@ -3510,6 +4113,18 @@ pub const SmartCardPinResetRequest = extern struct {
 };
 pub const SmartCardProvisioning = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSmartCard(self: *@This()) core.HResult!*SmartCard {
         const this: *ISmartCardProvisioning = @ptrCast(self);
         return try this.getSmartCard();
@@ -3540,9 +4155,6 @@ pub const SmartCardProvisioning = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardProvisioning2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAuthorityKeyContainerNameAsync();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestAttestedVirtualSmartCardCreationAsync(friendlyName: ?HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         const _f = try @This()._ISmartCardProvisioningStatics2Cache.get();
@@ -3578,6 +4190,18 @@ pub const SmartCardProvisioning = extern struct {
 };
 pub const SmartCardReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISmartCardReader = @ptrCast(self);
         return try this.getDeviceId();
@@ -3613,9 +4237,6 @@ pub const SmartCardReader = extern struct {
     pub fn removeCardRemoved(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *ISmartCardReader = @ptrCast(self);
         return try this.removeCardRemoved(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ISmartCardReaderStaticsCache.get();

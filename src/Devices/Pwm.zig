@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPwmController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPinCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_PinCount(@ptrCast(self), &_r);
@@ -59,6 +65,12 @@ pub const IPwmController = extern struct {
 };
 pub const IPwmControllerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetControllersAsync(self: *@This(), provider: *IPwmProvider) core.HResult!*IAsyncOperation(IVectorView(PwmController)) {
         var _r: *IAsyncOperation(IVectorView(PwmController)) = undefined;
         const _c = self.vtable.GetControllersAsync(@ptrCast(self), provider, &_r);
@@ -82,6 +94,12 @@ pub const IPwmControllerStatics = extern struct {
 };
 pub const IPwmControllerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(PwmController) {
         var _r: *IAsyncOperation(PwmController) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
@@ -105,6 +123,12 @@ pub const IPwmControllerStatics2 = extern struct {
 };
 pub const IPwmControllerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -142,6 +166,12 @@ pub const IPwmControllerStatics3 = extern struct {
 };
 pub const IPwmPin = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getController(self: *@This()) core.HResult!*PwmController {
         var _r: *PwmController = undefined;
         const _c = self.vtable.get_Controller(@ptrCast(self), &_r);
@@ -206,6 +236,18 @@ pub const IPwmPin = extern struct {
 };
 pub const PwmController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPinCount(self: *@This()) core.HResult!i32 {
         const this: *IPwmController = @ptrCast(self);
         return try this.getPinCount();
@@ -229,9 +271,6 @@ pub const PwmController = extern struct {
     pub fn OpenPin(self: *@This(), pinNumber: i32) core.HResult!*PwmPin {
         const this: *IPwmController = @ptrCast(self);
         return try this.OpenPin(pinNumber);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IPwmControllerStatics3Cache.get();
@@ -264,6 +303,18 @@ pub const PwmController = extern struct {
 };
 pub const PwmPin = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getController(self: *@This()) core.HResult!*PwmController {
         const this: *IPwmPin = @ptrCast(self);
         return try this.getController();
@@ -313,8 +364,8 @@ pub const PwmPulsePolarity = enum(i32) {
     ActiveHigh = 0,
     ActiveLow = 1,
 };
-const HSTRING = @import("../root.zig").HSTRING;
 const IUnknown = @import("../root.zig").IUnknown;
+const HSTRING = @import("../root.zig").HSTRING;
 const Guid = @import("../root.zig").Guid;
 const HRESULT = @import("../root.zig").HRESULT;
 const core = @import("../root.zig").core;

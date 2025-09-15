@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IVariablePhotoCapturedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrame(self: *@This()) core.HResult!*CapturedFrame {
         var _r: *CapturedFrame = undefined;
         const _c = self.vtable.get_Frame(@ptrCast(self), &_r);
@@ -45,6 +51,12 @@ pub const IVariablePhotoCapturedEventArgs = extern struct {
 };
 pub const IVariablePhotoSequenceCapture = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.StartAsync(@ptrCast(self), &_r);
@@ -106,6 +118,12 @@ pub const IVariablePhotoSequenceCapture = extern struct {
 };
 pub const IVariablePhotoSequenceCapture2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn UpdateSettingsAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.UpdateSettingsAsync(@ptrCast(self), &_r);
@@ -129,6 +147,18 @@ pub const IVariablePhotoSequenceCapture2 = extern struct {
 };
 pub const VariablePhotoCapturedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFrame(self: *@This()) core.HResult!*CapturedFrame {
         const this: *IVariablePhotoCapturedEventArgs = @ptrCast(self);
         return try this.getFrame();
@@ -153,6 +183,18 @@ pub const VariablePhotoCapturedEventArgs = extern struct {
 };
 pub const VariablePhotoSequenceCapture = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IVariablePhotoSequenceCapture = @ptrCast(self);
         return try this.StartAsync();

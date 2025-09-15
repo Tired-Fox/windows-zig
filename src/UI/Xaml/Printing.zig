@@ -1,12 +1,21 @@
 // ----- This code is automatically generated -----
 pub const AddPagesEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPrintTaskOptions(self: *@This()) core.HResult!*PrintTaskOptions {
-        const this: *IAddPagesEventArgs = @ptrCast(self);
-        return try this.getPrintTaskOptions();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getPrintTaskOptions(self: *@This()) core.HResult!*PrintTaskOptions {
+        const this: *IAddPagesEventArgs = @ptrCast(self);
+        return try this.getPrintTaskOptions();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -110,12 +119,21 @@ pub const AddPagesEventHandler = extern struct {
 };
 pub const GetPreviewPageEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getPageNumber(self: *@This()) core.HResult!i32 {
-        const this: *IGetPreviewPageEventArgs = @ptrCast(self);
-        return try this.getPageNumber();
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
+    }
+    pub fn getPageNumber(self: *@This()) core.HResult!i32 {
+        const this: *IGetPreviewPageEventArgs = @ptrCast(self);
+        return try this.getPageNumber();
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -219,6 +237,12 @@ pub const GetPreviewPageEventHandler = extern struct {
 };
 pub const IAddPagesEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrintTaskOptions(self: *@This()) core.HResult!*PrintTaskOptions {
         var _r: *PrintTaskOptions = undefined;
         const _c = self.vtable.get_PrintTaskOptions(@ptrCast(self), &_r);
@@ -242,6 +266,12 @@ pub const IAddPagesEventArgs = extern struct {
 };
 pub const IGetPreviewPageEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPageNumber(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_PageNumber(@ptrCast(self), &_r);
@@ -265,6 +295,12 @@ pub const IGetPreviewPageEventArgs = extern struct {
 };
 pub const IPaginateEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrintTaskOptions(self: *@This()) core.HResult!*PrintTaskOptions {
         var _r: *PrintTaskOptions = undefined;
         const _c = self.vtable.get_PrintTaskOptions(@ptrCast(self), &_r);
@@ -295,6 +331,12 @@ pub const IPaginateEventArgs = extern struct {
 };
 pub const IPrintDocument = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDocumentSource(self: *@This()) core.HResult!*IPrintDocumentSource {
         var _r: *IPrintDocumentSource = undefined;
         const _c = self.vtable.get_DocumentSource(@ptrCast(self), &_r);
@@ -379,6 +421,12 @@ pub const IPrintDocument = extern struct {
 };
 pub const IPrintDocumentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PrintDocument {
         var _r: *PrintDocument = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -402,6 +450,12 @@ pub const IPrintDocumentFactory = extern struct {
 };
 pub const IPrintDocumentStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDocumentSourceProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DocumentSourceProperty(@ptrCast(self), &_r);
@@ -425,6 +479,18 @@ pub const IPrintDocumentStatics = extern struct {
 };
 pub const PaginateEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrintTaskOptions(self: *@This()) core.HResult!*PrintTaskOptions {
         const this: *IPaginateEventArgs = @ptrCast(self);
         return try this.getPrintTaskOptions();
@@ -432,9 +498,6 @@ pub const PaginateEventArgs = extern struct {
     pub fn getCurrentPreviewPageNumber(self: *@This()) core.HResult!i32 {
         const this: *IPaginateEventArgs = @ptrCast(self);
         return try this.getCurrentPreviewPageNumber();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -542,6 +605,18 @@ pub const PreviewPageCountType = enum(i32) {
 };
 pub const PrintDocument = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDocumentSource(self: *@This()) core.HResult!*IPrintDocumentSource {
         const this: *IPrintDocument = @ptrCast(self);
         return try this.getDocumentSource();
@@ -589,9 +664,6 @@ pub const PrintDocument = extern struct {
     pub fn InvalidatePreview(self: *@This()) core.HResult!void {
         const this: *IPrintDocument = @ptrCast(self);
         return try this.InvalidatePreview();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getDocumentSourceProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IPrintDocumentStaticsCache.get();

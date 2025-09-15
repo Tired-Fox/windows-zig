@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPnpObject = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!PnpObjectType {
         var _r: PnpObjectType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -43,6 +49,12 @@ pub const IPnpObject = extern struct {
 };
 pub const IPnpObjectStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromIdAsync(self: *@This(), ty: PnpObjectType, id: ?HSTRING, requestedProperties: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(PnpObject) {
         var _r: *IAsyncOperation(PnpObject) = undefined;
         const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), ty, id, requestedProperties, &_r);
@@ -94,6 +106,12 @@ pub const IPnpObjectStatics = extern struct {
 };
 pub const IPnpObjectUpdate = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!PnpObjectType {
         var _r: PnpObjectType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -131,6 +149,12 @@ pub const IPnpObjectUpdate = extern struct {
 };
 pub const IPnpObjectWatcher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAdded(self: *@This(), handler: *TypedEventHandler(PnpObjectWatcher,PnpObject)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_Added(@ptrCast(self), handler, &_r);
@@ -224,6 +248,18 @@ pub const IPnpObjectWatcher = extern struct {
 };
 pub const PnpObject = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!PnpObjectType {
         const this: *IPnpObject = @ptrCast(self);
         return try this.getType();
@@ -239,9 +275,6 @@ pub const PnpObject = extern struct {
     pub fn Update(self: *@This(), updateInfo: *PnpObjectUpdate) core.HResult!void {
         const this: *IPnpObject = @ptrCast(self);
         return try this.Update(updateInfo);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromIdAsync(ty: PnpObjectType, id: ?HSTRING, requestedProperties: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(PnpObject) {
         const _f = try @This()._IPnpObjectStaticsCache.get();
@@ -272,6 +305,18 @@ pub const PnpObject = extern struct {
 };
 pub const PnpObjectCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVectorView(PnpObject) = @ptrCast(self);
         return try this.getSize();
@@ -303,6 +348,18 @@ pub const PnpObjectType = enum(i32) {
 };
 pub const PnpObjectUpdate = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!PnpObjectType {
         const this: *IPnpObjectUpdate = @ptrCast(self);
         return try this.getType();
@@ -323,6 +380,18 @@ pub const PnpObjectUpdate = extern struct {
 };
 pub const PnpObjectWatcher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addAdded(self: *@This(), handler: *TypedEventHandler(PnpObjectWatcher,PnpObject)) core.HResult!EventRegistrationToken {
         const this: *IPnpObjectWatcher = @ptrCast(self);
         return try this.addAdded(handler);

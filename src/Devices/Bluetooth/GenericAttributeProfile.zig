@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const GattCharacteristic = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDescriptors(self: *@This(), descriptorUuid: *Guid) core.HResult!*IVectorView(GattDescriptor) {
         const this: *IGattCharacteristic = @ptrCast(self);
         return try this.GetDescriptors(descriptorUuid);
@@ -128,9 +140,6 @@ pub const GattCharacteristic = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WriteClientCharacteristicConfigurationDescriptorWithResultAsync(clientCharacteristicConfigurationDescriptorValue);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn ConvertShortIdToUuid(shortId: u16) core.HResult!*Guid {
         const _f = try @This()._IGattCharacteristicStaticsCache.get();
         return try _f.ConvertShortIdToUuid(shortId);
@@ -157,6 +166,15 @@ pub const GattCharacteristicProperties = enum(i32) {
 };
 pub const GattCharacteristicUuids = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -491,6 +509,18 @@ pub const GattCharacteristicUuids = extern struct {
 };
 pub const GattCharacteristicsResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GattCommunicationStatus {
         const this: *IGattCharacteristicsResult = @ptrCast(self);
         return try this.getStatus();
@@ -516,6 +546,18 @@ pub const GattClientCharacteristicConfigurationDescriptorValue = enum(i32) {
 };
 pub const GattClientNotificationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSubscribedClient(self: *@This()) core.HResult!*GattSubscribedClient {
         const this: *IGattClientNotificationResult = @ptrCast(self);
         return try this.getSubscribedClient();
@@ -549,6 +591,18 @@ pub const GattCommunicationStatus = enum(i32) {
 };
 pub const GattDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProtectionLevel(self: *@This()) core.HResult!GattProtectionLevel {
         const this: *IGattDescriptor = @ptrCast(self);
         return try this.getProtectionLevel();
@@ -584,9 +638,6 @@ pub const GattDescriptor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WriteValueWithResultAsync(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn ConvertShortIdToUuid(shortId: u16) core.HResult!*Guid {
         const _f = try @This()._IGattDescriptorStaticsCache.get();
         return try _f.ConvertShortIdToUuid(shortId);
@@ -600,6 +651,15 @@ pub const GattDescriptor = extern struct {
 };
 pub const GattDescriptorUuids = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -633,6 +693,18 @@ pub const GattDescriptorUuids = extern struct {
 };
 pub const GattDescriptorsResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GattCommunicationStatus {
         const this: *IGattDescriptorsResult = @ptrCast(self);
         return try this.getStatus();
@@ -653,6 +725,18 @@ pub const GattDescriptorsResult = extern struct {
 };
 pub const GattDeviceService = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCharacteristics(self: *@This(), characteristicUuid: *Guid) core.HResult!*IVectorView(GattCharacteristic) {
         const this: *IGattDeviceService = @ptrCast(self);
         return try this.GetCharacteristics(characteristicUuid);
@@ -799,9 +883,6 @@ pub const GattDeviceService = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIncludedServicesForUuidAsyncWithCacheMode(serviceUuid, cacheMode);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(GattDeviceService) {
         const _f = try @This()._IGattDeviceServiceStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
@@ -848,6 +929,18 @@ pub const GattDeviceService = extern struct {
 };
 pub const GattDeviceServicesResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GattCommunicationStatus {
         const this: *IGattDeviceServicesResult = @ptrCast(self);
         return try this.getStatus();
@@ -868,6 +961,18 @@ pub const GattDeviceServicesResult = extern struct {
 };
 pub const GattLocalCharacteristic = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUuid(self: *@This()) core.HResult!*Guid {
         const this: *IGattLocalCharacteristic = @ptrCast(self);
         return try this.getUuid();
@@ -948,6 +1053,18 @@ pub const GattLocalCharacteristic = extern struct {
 };
 pub const GattLocalCharacteristicParameters = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putStaticValue(self: *@This(), value: *IBuffer) core.HResult!void {
         const this: *IGattLocalCharacteristicParameters = @ptrCast(self);
         return try this.putStaticValue(value);
@@ -992,9 +1109,6 @@ pub const GattLocalCharacteristicParameters = extern struct {
         const this: *IGattLocalCharacteristicParameters = @ptrCast(self);
         return try this.getPresentationFormats();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGattLocalCharacteristicParameters.IID)));
@@ -1008,6 +1122,18 @@ pub const GattLocalCharacteristicParameters = extern struct {
 };
 pub const GattLocalCharacteristicResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharacteristic(self: *@This()) core.HResult!*GattLocalCharacteristic {
         const this: *IGattLocalCharacteristicResult = @ptrCast(self);
         return try this.getCharacteristic();
@@ -1024,6 +1150,18 @@ pub const GattLocalCharacteristicResult = extern struct {
 };
 pub const GattLocalDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUuid(self: *@This()) core.HResult!*Guid {
         const this: *IGattLocalDescriptor = @ptrCast(self);
         return try this.getUuid();
@@ -1064,6 +1202,18 @@ pub const GattLocalDescriptor = extern struct {
 };
 pub const GattLocalDescriptorParameters = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putStaticValue(self: *@This(), value: *IBuffer) core.HResult!void {
         const this: *IGattLocalDescriptorParameters = @ptrCast(self);
         return try this.putStaticValue(value);
@@ -1088,9 +1238,6 @@ pub const GattLocalDescriptorParameters = extern struct {
         const this: *IGattLocalDescriptorParameters = @ptrCast(self);
         return try this.getWriteProtectionLevel();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGattLocalDescriptorParameters.IID)));
@@ -1104,6 +1251,18 @@ pub const GattLocalDescriptorParameters = extern struct {
 };
 pub const GattLocalDescriptorResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDescriptor(self: *@This()) core.HResult!*GattLocalDescriptor {
         const this: *IGattLocalDescriptorResult = @ptrCast(self);
         return try this.getDescriptor();
@@ -1120,6 +1279,18 @@ pub const GattLocalDescriptorResult = extern struct {
 };
 pub const GattLocalService = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUuid(self: *@This()) core.HResult!*Guid {
         const this: *IGattLocalService = @ptrCast(self);
         return try this.getUuid();
@@ -1148,6 +1319,18 @@ pub const GattOpenStatus = enum(i32) {
 };
 pub const GattPresentationFormat = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormatType(self: *@This()) core.HResult!u8 {
         const this: *IGattPresentationFormat = @ptrCast(self);
         return try this.getFormatType();
@@ -1168,9 +1351,6 @@ pub const GattPresentationFormat = extern struct {
         const this: *IGattPresentationFormat = @ptrCast(self);
         return try this.getDescription();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromParts(formatType: u8, exponent: i32, unit: u16, namespaceId: u8, description: u16) core.HResult!*GattPresentationFormat {
         const _f = try @This()._IGattPresentationFormatStatics2Cache.get();
         return try _f.FromParts(formatType, exponent, unit, namespaceId, description);
@@ -1189,6 +1369,15 @@ pub const GattPresentationFormat = extern struct {
 };
 pub const GattPresentationFormatTypes = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1312,6 +1501,15 @@ pub const GattProtectionLevel = enum(i32) {
 };
 pub const GattProtocolError = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1389,6 +1587,18 @@ pub const GattProtocolError = extern struct {
 };
 pub const GattReadClientCharacteristicConfigurationDescriptorResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GattCommunicationStatus {
         const this: *IGattReadClientCharacteristicConfigurationDescriptorResult = @ptrCast(self);
         return try this.getStatus();
@@ -1412,6 +1622,18 @@ pub const GattReadClientCharacteristicConfigurationDescriptorResult = extern str
 };
 pub const GattReadRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOffset(self: *@This()) core.HResult!u32 {
         const this: *IGattReadRequest = @ptrCast(self);
         return try this.getOffset();
@@ -1448,6 +1670,18 @@ pub const GattReadRequest = extern struct {
 };
 pub const GattReadRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*GattSession {
         const this: *IGattReadRequestedEventArgs = @ptrCast(self);
         return try this.getSession();
@@ -1468,6 +1702,18 @@ pub const GattReadRequestedEventArgs = extern struct {
 };
 pub const GattReadResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GattCommunicationStatus {
         const this: *IGattReadResult = @ptrCast(self);
         return try this.getStatus();
@@ -1491,6 +1737,18 @@ pub const GattReadResult = extern struct {
 };
 pub const GattReliableWriteTransaction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn WriteValue(self: *@This(), characteristic: *GattCharacteristic, value: *IBuffer) core.HResult!void {
         const this: *IGattReliableWriteTransaction = @ptrCast(self);
         return try this.WriteValue(characteristic, value);
@@ -1505,9 +1763,6 @@ pub const GattReliableWriteTransaction = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattReliableWriteTransaction2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CommitWithResultAsync();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1527,6 +1782,18 @@ pub const GattRequestState = enum(i32) {
 };
 pub const GattRequestStateChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!GattRequestState {
         const this: *IGattRequestStateChangedEventArgs = @ptrCast(self);
         return try this.getState();
@@ -1543,6 +1810,18 @@ pub const GattRequestStateChangedEventArgs = extern struct {
 };
 pub const GattServiceProvider = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getService(self: *@This()) core.HResult!*GattLocalService {
         const this: *IGattServiceProvider = @ptrCast(self);
         return try this.getService();
@@ -1578,9 +1857,6 @@ pub const GattServiceProvider = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdateAdvertisingParameters(parameters);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateAsync(serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattServiceProviderResult) {
         const _f = try @This()._IGattServiceProviderStaticsCache.get();
         return try _f.CreateAsync(serviceUuid);
@@ -1601,6 +1877,18 @@ pub const GattServiceProviderAdvertisementStatus = enum(i32) {
 };
 pub const GattServiceProviderAdvertisementStatusChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         const this: *IGattServiceProviderAdvertisementStatusChangedEventArgs = @ptrCast(self);
         return try this.getError();
@@ -1617,6 +1905,18 @@ pub const GattServiceProviderAdvertisementStatusChangedEventArgs = extern struct
 };
 pub const GattServiceProviderAdvertisingParameters = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putIsConnectable(self: *@This(), value: bool) core.HResult!void {
         const this: *IGattServiceProviderAdvertisingParameters = @ptrCast(self);
         return try this.putIsConnectable(value);
@@ -1675,9 +1975,6 @@ pub const GattServiceProviderAdvertisingParameters = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putUseLowEnergyUncoded2MPhyAsSecondaryPhy(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGattServiceProviderAdvertisingParameters.IID)));
@@ -1691,6 +1988,18 @@ pub const GattServiceProviderAdvertisingParameters = extern struct {
 };
 pub const GattServiceProviderResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         const this: *IGattServiceProviderResult = @ptrCast(self);
         return try this.getError();
@@ -1707,6 +2016,15 @@ pub const GattServiceProviderResult = extern struct {
 };
 pub const GattServiceUuids = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1805,6 +2123,18 @@ pub const GattServiceUuids = extern struct {
 };
 pub const GattSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!*BluetoothDeviceId {
         const this: *IGattSession = @ptrCast(self);
         return try this.getDeviceId();
@@ -1852,9 +2182,6 @@ pub const GattSession = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromDeviceIdAsync(deviceId: *BluetoothDeviceId) core.HResult!*IAsyncOperation(GattSession) {
         const _f = try @This()._IGattSessionStaticsCache.get();
         return try _f.FromDeviceIdAsync(deviceId);
@@ -1872,6 +2199,18 @@ pub const GattSessionStatus = enum(i32) {
 };
 pub const GattSessionStatusChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         const this: *IGattSessionStatusChangedEventArgs = @ptrCast(self);
         return try this.getError();
@@ -1894,6 +2233,18 @@ pub const GattSharingMode = enum(i32) {
 };
 pub const GattSubscribedClient = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*GattSession {
         const this: *IGattSubscribedClient = @ptrCast(self);
         return try this.getSession();
@@ -1918,6 +2269,18 @@ pub const GattSubscribedClient = extern struct {
 };
 pub const GattValueChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharacteristicValue(self: *@This()) core.HResult!*IBuffer {
         const this: *IGattValueChangedEventArgs = @ptrCast(self);
         return try this.getCharacteristicValue();
@@ -1938,6 +2301,18 @@ pub const GattWriteOption = enum(i32) {
 };
 pub const GattWriteRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!*IBuffer {
         const this: *IGattWriteRequest = @ptrCast(self);
         return try this.getValue();
@@ -1978,6 +2353,18 @@ pub const GattWriteRequest = extern struct {
 };
 pub const GattWriteRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*GattSession {
         const this: *IGattWriteRequestedEventArgs = @ptrCast(self);
         return try this.getSession();
@@ -1998,6 +2385,18 @@ pub const GattWriteRequestedEventArgs = extern struct {
 };
 pub const GattWriteResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GattCommunicationStatus {
         const this: *IGattWriteResult = @ptrCast(self);
         return try this.getStatus();
@@ -2014,6 +2413,12 @@ pub const GattWriteResult = extern struct {
 };
 pub const IGattCharacteristic = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDescriptors(self: *@This(), descriptorUuid: *Guid) core.HResult!*IVectorView(GattDescriptor) {
         var _r: *IVectorView(GattDescriptor) = undefined;
         const _c = self.vtable.GetDescriptors(@ptrCast(self), descriptorUuid, &_r);
@@ -2138,6 +2543,12 @@ pub const IGattCharacteristic = extern struct {
 };
 pub const IGattCharacteristic2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getService(self: *@This()) core.HResult!*GattDeviceService {
         var _r: *GattDeviceService = undefined;
         const _c = self.vtable.get_Service(@ptrCast(self), &_r);
@@ -2168,6 +2579,12 @@ pub const IGattCharacteristic2 = extern struct {
 };
 pub const IGattCharacteristic3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDescriptorsAsync(self: *@This()) core.HResult!*IAsyncOperation(GattDescriptorsResult) {
         var _r: *IAsyncOperation(GattDescriptorsResult) = undefined;
         const _c = self.vtable.GetDescriptorsAsync(@ptrCast(self), &_r);
@@ -2233,6 +2650,12 @@ pub const IGattCharacteristic3 = extern struct {
 };
 pub const IGattCharacteristicStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ConvertShortIdToUuid(self: *@This(), shortId: u16) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.ConvertShortIdToUuid(@ptrCast(self), shortId, &_r);
@@ -2256,6 +2679,12 @@ pub const IGattCharacteristicStatics = extern struct {
 };
 pub const IGattCharacteristicUuidsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBatteryLevel(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_BatteryLevel(@ptrCast(self), &_r);
@@ -2419,6 +2848,12 @@ pub const IGattCharacteristicUuidsStatics = extern struct {
 };
 pub const IGattCharacteristicUuidsStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlertCategoryId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_AlertCategoryId(@ptrCast(self), &_r);
@@ -2855,6 +3290,12 @@ pub const IGattCharacteristicUuidsStatics2 = extern struct {
 };
 pub const IGattCharacteristicsResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GattCommunicationStatus {
         var _r: GattCommunicationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -2892,6 +3333,12 @@ pub const IGattCharacteristicsResult = extern struct {
 };
 pub const IGattClientNotificationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSubscribedClient(self: *@This()) core.HResult!*GattSubscribedClient {
         var _r: *GattSubscribedClient = undefined;
         const _c = self.vtable.get_SubscribedClient(@ptrCast(self), &_r);
@@ -2929,6 +3376,12 @@ pub const IGattClientNotificationResult = extern struct {
 };
 pub const IGattClientNotificationResult2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBytesSent(self: *@This()) core.HResult!u16 {
         var _r: u16 = undefined;
         const _c = self.vtable.get_BytesSent(@ptrCast(self), &_r);
@@ -2952,6 +3405,12 @@ pub const IGattClientNotificationResult2 = extern struct {
 };
 pub const IGattDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProtectionLevel(self: *@This()) core.HResult!GattProtectionLevel {
         var _r: GattProtectionLevel = undefined;
         const _c = self.vtable.get_ProtectionLevel(@ptrCast(self), &_r);
@@ -3015,6 +3474,12 @@ pub const IGattDescriptor = extern struct {
 };
 pub const IGattDescriptor2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn WriteValueWithResultAsync(self: *@This(), value: *IBuffer) core.HResult!*IAsyncOperation(GattWriteResult) {
         var _r: *IAsyncOperation(GattWriteResult) = undefined;
         const _c = self.vtable.WriteValueWithResultAsync(@ptrCast(self), value, &_r);
@@ -3038,6 +3503,12 @@ pub const IGattDescriptor2 = extern struct {
 };
 pub const IGattDescriptorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ConvertShortIdToUuid(self: *@This(), shortId: u16) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.ConvertShortIdToUuid(@ptrCast(self), shortId, &_r);
@@ -3061,6 +3532,12 @@ pub const IGattDescriptorStatics = extern struct {
 };
 pub const IGattDescriptorUuidsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharacteristicAggregateFormat(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_CharacteristicAggregateFormat(@ptrCast(self), &_r);
@@ -3119,6 +3596,12 @@ pub const IGattDescriptorUuidsStatics = extern struct {
 };
 pub const IGattDescriptorsResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GattCommunicationStatus {
         var _r: GattCommunicationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -3156,6 +3639,12 @@ pub const IGattDescriptorsResult = extern struct {
 };
 pub const IGattDeviceService = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCharacteristics(self: *@This(), characteristicUuid: *Guid) core.HResult!*IVectorView(GattCharacteristic) {
         var _r: *IVectorView(GattCharacteristic) = undefined;
         const _c = self.vtable.GetCharacteristics(@ptrCast(self), characteristicUuid, &_r);
@@ -3207,6 +3696,12 @@ pub const IGattDeviceService = extern struct {
 };
 pub const IGattDeviceService2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDevice(self: *@This()) core.HResult!*BluetoothLEDevice {
         var _r: *BluetoothLEDevice = undefined;
         const _c = self.vtable.get_Device(@ptrCast(self), &_r);
@@ -3251,6 +3746,12 @@ pub const IGattDeviceService2 = extern struct {
 };
 pub const IGattDeviceService3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceAccessInformation(self: *@This()) core.HResult!*DeviceAccessInformation {
         var _r: *DeviceAccessInformation = undefined;
         const _c = self.vtable.get_DeviceAccessInformation(@ptrCast(self), &_r);
@@ -3358,6 +3859,12 @@ pub const IGattDeviceService3 = extern struct {
 };
 pub const IGattDeviceServiceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(GattDeviceService) {
         var _r: *IAsyncOperation(GattDeviceService) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
@@ -3402,6 +3909,12 @@ pub const IGattDeviceServiceStatics = extern struct {
 };
 pub const IGattDeviceServiceStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING, sharingMode: GattSharingMode) core.HResult!*IAsyncOperation(GattDeviceService) {
         var _r: *IAsyncOperation(GattDeviceService) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, sharingMode, &_r);
@@ -3453,6 +3966,12 @@ pub const IGattDeviceServiceStatics2 = extern struct {
 };
 pub const IGattDeviceServicesResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GattCommunicationStatus {
         var _r: GattCommunicationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -3490,6 +4009,12 @@ pub const IGattDeviceServicesResult = extern struct {
 };
 pub const IGattLocalCharacteristic = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUuid(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Uuid(@ptrCast(self), &_r);
@@ -3626,6 +4151,12 @@ pub const IGattLocalCharacteristic = extern struct {
 };
 pub const IGattLocalCharacteristicParameters = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putStaticValue(self: *@This(), value: *IBuffer) core.HResult!void {
         const _c = self.vtable.put_StaticValue(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3709,6 +4240,12 @@ pub const IGattLocalCharacteristicParameters = extern struct {
 };
 pub const IGattLocalCharacteristicResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharacteristic(self: *@This()) core.HResult!*GattLocalCharacteristic {
         var _r: *GattLocalCharacteristic = undefined;
         const _c = self.vtable.get_Characteristic(@ptrCast(self), &_r);
@@ -3739,6 +4276,12 @@ pub const IGattLocalCharacteristicResult = extern struct {
 };
 pub const IGattLocalDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUuid(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Uuid(@ptrCast(self), &_r);
@@ -3807,6 +4350,12 @@ pub const IGattLocalDescriptor = extern struct {
 };
 pub const IGattLocalDescriptorParameters = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putStaticValue(self: *@This(), value: *IBuffer) core.HResult!void {
         const _c = self.vtable.put_StaticValue(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3859,6 +4408,12 @@ pub const IGattLocalDescriptorParameters = extern struct {
 };
 pub const IGattLocalDescriptorResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDescriptor(self: *@This()) core.HResult!*GattLocalDescriptor {
         var _r: *GattLocalDescriptor = undefined;
         const _c = self.vtable.get_Descriptor(@ptrCast(self), &_r);
@@ -3889,6 +4444,12 @@ pub const IGattLocalDescriptorResult = extern struct {
 };
 pub const IGattLocalService = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUuid(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Uuid(@ptrCast(self), &_r);
@@ -3926,6 +4487,12 @@ pub const IGattLocalService = extern struct {
 };
 pub const IGattPresentationFormat = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFormatType(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_FormatType(@ptrCast(self), &_r);
@@ -3977,6 +4544,12 @@ pub const IGattPresentationFormat = extern struct {
 };
 pub const IGattPresentationFormatStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBluetoothSigAssignedNumbers(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_BluetoothSigAssignedNumbers(@ptrCast(self), &_r);
@@ -4000,6 +4573,12 @@ pub const IGattPresentationFormatStatics = extern struct {
 };
 pub const IGattPresentationFormatStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromParts(self: *@This(), formatType: u8, exponent: i32, unit: u16, namespaceId: u8, description: u16) core.HResult!*GattPresentationFormat {
         var _r: *GattPresentationFormat = undefined;
         const _c = self.vtable.FromParts(@ptrCast(self), formatType, exponent, unit, namespaceId, description, &_r);
@@ -4023,6 +4602,12 @@ pub const IGattPresentationFormatStatics2 = extern struct {
 };
 pub const IGattPresentationFormatTypesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBoolean(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_Boolean(@ptrCast(self), &_r);
@@ -4228,6 +4813,12 @@ pub const IGattPresentationFormatTypesStatics = extern struct {
 };
 pub const IGattProtocolErrorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInvalidHandle(self: *@This()) core.HResult!u8 {
         var _r: u8 = undefined;
         const _c = self.vtable.get_InvalidHandle(@ptrCast(self), &_r);
@@ -4363,6 +4954,12 @@ pub const IGattProtocolErrorStatics = extern struct {
 };
 pub const IGattReadClientCharacteristicConfigurationDescriptorResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GattCommunicationStatus {
         var _r: GattCommunicationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -4393,6 +4990,12 @@ pub const IGattReadClientCharacteristicConfigurationDescriptorResult = extern st
 };
 pub const IGattReadClientCharacteristicConfigurationDescriptorResult2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProtocolError(self: *@This()) core.HResult!*IReference(u8) {
         var _r: *IReference(u8) = undefined;
         const _c = self.vtable.get_ProtocolError(@ptrCast(self), &_r);
@@ -4416,6 +5019,12 @@ pub const IGattReadClientCharacteristicConfigurationDescriptorResult2 = extern s
 };
 pub const IGattReadRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOffset(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_Offset(@ptrCast(self), &_r);
@@ -4475,6 +5084,12 @@ pub const IGattReadRequest = extern struct {
 };
 pub const IGattReadRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*GattSession {
         var _r: *GattSession = undefined;
         const _c = self.vtable.get_Session(@ptrCast(self), &_r);
@@ -4512,6 +5127,12 @@ pub const IGattReadRequestedEventArgs = extern struct {
 };
 pub const IGattReadResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GattCommunicationStatus {
         var _r: GattCommunicationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -4542,6 +5163,12 @@ pub const IGattReadResult = extern struct {
 };
 pub const IGattReadResult2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProtocolError(self: *@This()) core.HResult!*IReference(u8) {
         var _r: *IReference(u8) = undefined;
         const _c = self.vtable.get_ProtocolError(@ptrCast(self), &_r);
@@ -4565,6 +5192,12 @@ pub const IGattReadResult2 = extern struct {
 };
 pub const IGattReliableWriteTransaction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn WriteValue(self: *@This(), characteristic: *GattCharacteristic, value: *IBuffer) core.HResult!void {
         const _c = self.vtable.WriteValue(@ptrCast(self), characteristic, value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4593,6 +5226,12 @@ pub const IGattReliableWriteTransaction = extern struct {
 };
 pub const IGattReliableWriteTransaction2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CommitWithResultAsync(self: *@This()) core.HResult!*IAsyncOperation(GattWriteResult) {
         var _r: *IAsyncOperation(GattWriteResult) = undefined;
         const _c = self.vtable.CommitWithResultAsync(@ptrCast(self), &_r);
@@ -4616,6 +5255,12 @@ pub const IGattReliableWriteTransaction2 = extern struct {
 };
 pub const IGattRequestStateChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getState(self: *@This()) core.HResult!GattRequestState {
         var _r: GattRequestState = undefined;
         const _c = self.vtable.get_State(@ptrCast(self), &_r);
@@ -4646,6 +5291,12 @@ pub const IGattRequestStateChangedEventArgs = extern struct {
 };
 pub const IGattServiceProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getService(self: *@This()) core.HResult!*GattLocalService {
         var _r: *GattLocalService = undefined;
         const _c = self.vtable.get_Service(@ptrCast(self), &_r);
@@ -4703,6 +5354,12 @@ pub const IGattServiceProvider = extern struct {
 };
 pub const IGattServiceProvider2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn UpdateAdvertisingParameters(self: *@This(), parameters: *GattServiceProviderAdvertisingParameters) core.HResult!void {
         const _c = self.vtable.UpdateAdvertisingParameters(@ptrCast(self), parameters);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4724,6 +5381,12 @@ pub const IGattServiceProvider2 = extern struct {
 };
 pub const IGattServiceProviderAdvertisementStatusChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         var _r: BluetoothError = undefined;
         const _c = self.vtable.get_Error(@ptrCast(self), &_r);
@@ -4754,6 +5417,12 @@ pub const IGattServiceProviderAdvertisementStatusChangedEventArgs = extern struc
 };
 pub const IGattServiceProviderAdvertisingParameters = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putIsConnectable(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_IsConnectable(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4794,6 +5463,12 @@ pub const IGattServiceProviderAdvertisingParameters = extern struct {
 };
 pub const IGattServiceProviderAdvertisingParameters2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putServiceData(self: *@This(), value: *IBuffer) core.HResult!void {
         const _c = self.vtable.put_ServiceData(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4822,6 +5497,12 @@ pub const IGattServiceProviderAdvertisingParameters2 = extern struct {
 };
 pub const IGattServiceProviderAdvertisingParameters3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUseLowEnergyUncoded1MPhyAsSecondaryPhy(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_UseLowEnergyUncoded1MPhyAsSecondaryPhy(@ptrCast(self), &_r);
@@ -4862,6 +5543,12 @@ pub const IGattServiceProviderAdvertisingParameters3 = extern struct {
 };
 pub const IGattServiceProviderResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         var _r: BluetoothError = undefined;
         const _c = self.vtable.get_Error(@ptrCast(self), &_r);
@@ -4892,6 +5579,12 @@ pub const IGattServiceProviderResult = extern struct {
 };
 pub const IGattServiceProviderStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAsync(self: *@This(), serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattServiceProviderResult) {
         var _r: *IAsyncOperation(GattServiceProviderResult) = undefined;
         const _c = self.vtable.CreateAsync(@ptrCast(self), serviceUuid, &_r);
@@ -4915,6 +5608,12 @@ pub const IGattServiceProviderStatics = extern struct {
 };
 pub const IGattServiceUuidsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBattery(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Battery(@ptrCast(self), &_r);
@@ -4994,6 +5693,12 @@ pub const IGattServiceUuidsStatics = extern struct {
 };
 pub const IGattServiceUuidsStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAlertNotification(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_AlertNotification(@ptrCast(self), &_r);
@@ -5101,6 +5806,12 @@ pub const IGattServiceUuidsStatics2 = extern struct {
 };
 pub const IGattSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!*BluetoothDeviceId {
         var _r: *BluetoothDeviceId = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -5181,6 +5892,12 @@ pub const IGattSession = extern struct {
 };
 pub const IGattSessionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromDeviceIdAsync(self: *@This(), deviceId: *BluetoothDeviceId) core.HResult!*IAsyncOperation(GattSession) {
         var _r: *IAsyncOperation(GattSession) = undefined;
         const _c = self.vtable.FromDeviceIdAsync(@ptrCast(self), deviceId, &_r);
@@ -5204,6 +5921,12 @@ pub const IGattSessionStatics = extern struct {
 };
 pub const IGattSessionStatusChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getError(self: *@This()) core.HResult!BluetoothError {
         var _r: BluetoothError = undefined;
         const _c = self.vtable.get_Error(@ptrCast(self), &_r);
@@ -5234,6 +5957,12 @@ pub const IGattSessionStatusChangedEventArgs = extern struct {
 };
 pub const IGattSubscribedClient = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*GattSession {
         var _r: *GattSession = undefined;
         const _c = self.vtable.get_Session(@ptrCast(self), &_r);
@@ -5276,6 +6005,12 @@ pub const IGattSubscribedClient = extern struct {
 };
 pub const IGattValueChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharacteristicValue(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_CharacteristicValue(@ptrCast(self), &_r);
@@ -5306,6 +6041,12 @@ pub const IGattValueChangedEventArgs = extern struct {
 };
 pub const IGattWriteRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
@@ -5372,6 +6113,12 @@ pub const IGattWriteRequest = extern struct {
 };
 pub const IGattWriteRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*GattSession {
         var _r: *GattSession = undefined;
         const _c = self.vtable.get_Session(@ptrCast(self), &_r);
@@ -5409,6 +6156,12 @@ pub const IGattWriteRequestedEventArgs = extern struct {
 };
 pub const IGattWriteResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!GattCommunicationStatus {
         var _r: GattCommunicationStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);

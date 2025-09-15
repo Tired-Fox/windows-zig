@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IImageFeatureDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapPixelFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         var _r: BitmapPixelFormat = undefined;
         const _c = self.vtable.get_BitmapPixelFormat(@ptrCast(self), &_r);
@@ -45,6 +51,12 @@ pub const IImageFeatureDescriptor = extern struct {
 };
 pub const IImageFeatureDescriptor2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPixelRange(self: *@This()) core.HResult!LearningModelPixelRange {
         var _r: LearningModelPixelRange = undefined;
         const _c = self.vtable.get_PixelRange(@ptrCast(self), &_r);
@@ -68,6 +80,12 @@ pub const IImageFeatureDescriptor2 = extern struct {
 };
 pub const IImageFeatureValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoFrame(self: *@This()) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
         const _c = self.vtable.get_VideoFrame(@ptrCast(self), &_r);
@@ -91,6 +109,12 @@ pub const IImageFeatureValue = extern struct {
 };
 pub const IImageFeatureValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromVideoFrame(self: *@This(), image: *VideoFrame) core.HResult!*ImageFeatureValue {
         var _r: *ImageFeatureValue = undefined;
         const _c = self.vtable.CreateFromVideoFrame(@ptrCast(self), image, &_r);
@@ -114,6 +138,12 @@ pub const IImageFeatureValueStatics = extern struct {
 };
 pub const ILearningModel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Author(@ptrCast(self), &_r);
@@ -186,6 +216,12 @@ pub const ILearningModel = extern struct {
 };
 pub const ILearningModelBinding = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Bind(self: *@This(), name: ?HSTRING, value: *IInspectable) core.HResult!void {
         const _c = self.vtable.Bind(@ptrCast(self), name, value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -217,6 +253,12 @@ pub const ILearningModelBinding = extern struct {
 };
 pub const ILearningModelBindingFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromSession(self: *@This(), session: *LearningModelSession) core.HResult!*LearningModelBinding {
         var _r: *LearningModelBinding = undefined;
         const _c = self.vtable.CreateFromSession(@ptrCast(self), session, &_r);
@@ -240,6 +282,12 @@ pub const ILearningModelBindingFactory = extern struct {
 };
 pub const ILearningModelDevice = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdapterId(self: *@This()) core.HResult!DisplayAdapterId {
         var _r: DisplayAdapterId = undefined;
         const _c = self.vtable.get_AdapterId(@ptrCast(self), &_r);
@@ -270,6 +318,12 @@ pub const ILearningModelDevice = extern struct {
 };
 pub const ILearningModelDeviceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), deviceKind: LearningModelDeviceKind) core.HResult!*LearningModelDevice {
         var _r: *LearningModelDevice = undefined;
         const _c = self.vtable.Create(@ptrCast(self), deviceKind, &_r);
@@ -293,6 +347,12 @@ pub const ILearningModelDeviceFactory = extern struct {
 };
 pub const ILearningModelDeviceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromDirect3D11Device(self: *@This(), device: *IDirect3DDevice) core.HResult!*LearningModelDevice {
         var _r: *LearningModelDevice = undefined;
         const _c = self.vtable.CreateFromDirect3D11Device(@ptrCast(self), device, &_r);
@@ -316,6 +376,12 @@ pub const ILearningModelDeviceStatics = extern struct {
 };
 pub const ILearningModelEvaluationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CorrelationId(@ptrCast(self), &_r);
@@ -360,6 +426,12 @@ pub const ILearningModelEvaluationResult = extern struct {
 };
 pub const ILearningModelFeatureDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -404,6 +476,12 @@ pub const ILearningModelFeatureDescriptor = extern struct {
 };
 pub const ILearningModelFeatureValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!LearningModelFeatureKind {
         var _r: LearningModelFeatureKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -427,6 +505,12 @@ pub const ILearningModelFeatureValue = extern struct {
 };
 pub const ILearningModelOperatorProvider = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ILearningModelOperatorProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "2a222e5d-afb1-47ed-bfad-b5b3a459ec04";
@@ -443,6 +527,12 @@ pub const ILearningModelOperatorProvider = extern struct {
 };
 pub const ILearningModelSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getModel(self: *@This()) core.HResult!*LearningModel {
         var _r: *LearningModel = undefined;
         const _c = self.vtable.get_Model(@ptrCast(self), &_r);
@@ -508,6 +598,12 @@ pub const ILearningModelSession = extern struct {
 };
 pub const ILearningModelSessionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromModel(self: *@This(), model: *LearningModel) core.HResult!*LearningModelSession {
         var _r: *LearningModelSession = undefined;
         const _c = self.vtable.CreateFromModel(@ptrCast(self), model, &_r);
@@ -538,6 +634,12 @@ pub const ILearningModelSessionFactory = extern struct {
 };
 pub const ILearningModelSessionFactory2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromModelOnDeviceWithSessionOptions(self: *@This(), model: *LearningModel, deviceToRunOn: *LearningModelDevice, learningModelSessionOptions: *LearningModelSessionOptions) core.HResult!*LearningModelSession {
         var _r: *LearningModelSession = undefined;
         const _c = self.vtable.CreateFromModelOnDeviceWithSessionOptions(@ptrCast(self), model, deviceToRunOn, learningModelSessionOptions, &_r);
@@ -561,6 +663,12 @@ pub const ILearningModelSessionFactory2 = extern struct {
 };
 pub const ILearningModelSessionOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBatchSizeOverride(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_BatchSizeOverride(@ptrCast(self), &_r);
@@ -589,6 +697,12 @@ pub const ILearningModelSessionOptions = extern struct {
 };
 pub const ILearningModelSessionOptions2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCloseModelOnSessionCreation(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CloseModelOnSessionCreation(@ptrCast(self), &_r);
@@ -617,6 +731,12 @@ pub const ILearningModelSessionOptions2 = extern struct {
 };
 pub const ILearningModelSessionOptions3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OverrideNamedDimension(self: *@This(), name: ?HSTRING, dimension: u32) core.HResult!void {
         const _c = self.vtable.OverrideNamedDimension(@ptrCast(self), name, dimension);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -638,6 +758,12 @@ pub const ILearningModelSessionOptions3 = extern struct {
 };
 pub const ILearningModelStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LoadFromStorageFileAsync(self: *@This(), modelFile: *IStorageFile) core.HResult!*IAsyncOperation(LearningModel) {
         var _r: *IAsyncOperation(LearningModel) = undefined;
         const _c = self.vtable.LoadFromStorageFileAsync(@ptrCast(self), modelFile, &_r);
@@ -710,6 +836,12 @@ pub const ILearningModelStatics = extern struct {
 };
 pub const IMapFeatureDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyKind(self: *@This()) core.HResult!TensorKind {
         var _r: TensorKind = undefined;
         const _c = self.vtable.get_KeyKind(@ptrCast(self), &_r);
@@ -740,6 +872,12 @@ pub const IMapFeatureDescriptor = extern struct {
 };
 pub const ISequenceFeatureDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getElementDescriptor(self: *@This()) core.HResult!*ILearningModelFeatureDescriptor {
         var _r: *ILearningModelFeatureDescriptor = undefined;
         const _c = self.vtable.get_ElementDescriptor(@ptrCast(self), &_r);
@@ -763,6 +901,12 @@ pub const ISequenceFeatureDescriptor = extern struct {
 };
 pub const ITensor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var _r: TensorKind = undefined;
         const _c = self.vtable.get_TensorKind(@ptrCast(self), &_r);
@@ -793,6 +937,12 @@ pub const ITensor = extern struct {
 };
 pub const ITensorBoolean = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(bool) {
         var _r: *IVectorView(bool) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -816,6 +966,12 @@ pub const ITensorBoolean = extern struct {
 };
 pub const ITensorBooleanStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorBoolean {
         var _r: *TensorBoolean = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -860,6 +1016,12 @@ pub const ITensorBooleanStatics = extern struct {
 };
 pub const ITensorBooleanStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]bool) core.HResult!*TensorBoolean {
         var _r: *TensorBoolean = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -890,6 +1052,12 @@ pub const ITensorBooleanStatics2 = extern struct {
 };
 pub const ITensorDouble = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(f64) {
         var _r: *IVectorView(f64) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -913,6 +1081,12 @@ pub const ITensorDouble = extern struct {
 };
 pub const ITensorDoubleStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorDouble {
         var _r: *TensorDouble = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -957,6 +1131,12 @@ pub const ITensorDoubleStatics = extern struct {
 };
 pub const ITensorDoubleStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]f64) core.HResult!*TensorDouble {
         var _r: *TensorDouble = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -987,6 +1167,12 @@ pub const ITensorDoubleStatics2 = extern struct {
 };
 pub const ITensorFeatureDescriptor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         var _r: TensorKind = undefined;
         const _c = self.vtable.get_TensorKind(@ptrCast(self), &_r);
@@ -1017,6 +1203,12 @@ pub const ITensorFeatureDescriptor = extern struct {
 };
 pub const ITensorFloat = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(f32) {
         var _r: *IVectorView(f32) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -1040,6 +1232,12 @@ pub const ITensorFloat = extern struct {
 };
 pub const ITensorFloat16Bit = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(f32) {
         var _r: *IVectorView(f32) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -1063,6 +1261,12 @@ pub const ITensorFloat16Bit = extern struct {
 };
 pub const ITensorFloat16BitStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorFloat16Bit {
         var _r: *TensorFloat16Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -1107,6 +1311,12 @@ pub const ITensorFloat16BitStatics = extern struct {
 };
 pub const ITensorFloat16BitStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]f32) core.HResult!*TensorFloat16Bit {
         var _r: *TensorFloat16Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -1137,6 +1347,12 @@ pub const ITensorFloat16BitStatics2 = extern struct {
 };
 pub const ITensorFloatStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorFloat {
         var _r: *TensorFloat = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -1181,6 +1397,12 @@ pub const ITensorFloatStatics = extern struct {
 };
 pub const ITensorFloatStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]f32) core.HResult!*TensorFloat {
         var _r: *TensorFloat = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -1211,6 +1433,12 @@ pub const ITensorFloatStatics2 = extern struct {
 };
 pub const ITensorInt16Bit = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(i16) {
         var _r: *IVectorView(i16) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -1234,6 +1462,12 @@ pub const ITensorInt16Bit = extern struct {
 };
 pub const ITensorInt16BitStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorInt16Bit {
         var _r: *TensorInt16Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -1278,6 +1512,12 @@ pub const ITensorInt16BitStatics = extern struct {
 };
 pub const ITensorInt16BitStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]i16) core.HResult!*TensorInt16Bit {
         var _r: *TensorInt16Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -1308,6 +1548,12 @@ pub const ITensorInt16BitStatics2 = extern struct {
 };
 pub const ITensorInt32Bit = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(i32) {
         var _r: *IVectorView(i32) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -1331,6 +1577,12 @@ pub const ITensorInt32Bit = extern struct {
 };
 pub const ITensorInt32BitStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorInt32Bit {
         var _r: *TensorInt32Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -1375,6 +1627,12 @@ pub const ITensorInt32BitStatics = extern struct {
 };
 pub const ITensorInt32BitStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]i32) core.HResult!*TensorInt32Bit {
         var _r: *TensorInt32Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -1405,6 +1663,12 @@ pub const ITensorInt32BitStatics2 = extern struct {
 };
 pub const ITensorInt64Bit = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(i64) {
         var _r: *IVectorView(i64) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -1428,6 +1692,12 @@ pub const ITensorInt64Bit = extern struct {
 };
 pub const ITensorInt64BitStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorInt64Bit {
         var _r: *TensorInt64Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -1472,6 +1742,12 @@ pub const ITensorInt64BitStatics = extern struct {
 };
 pub const ITensorInt64BitStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]i64) core.HResult!*TensorInt64Bit {
         var _r: *TensorInt64Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -1502,6 +1778,12 @@ pub const ITensorInt64BitStatics2 = extern struct {
 };
 pub const ITensorInt8Bit = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u8) {
         var _r: *IVectorView(u8) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -1525,6 +1807,12 @@ pub const ITensorInt8Bit = extern struct {
 };
 pub const ITensorInt8BitStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorInt8Bit {
         var _r: *TensorInt8Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -1569,6 +1857,12 @@ pub const ITensorInt8BitStatics = extern struct {
 };
 pub const ITensorInt8BitStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]u8) core.HResult!*TensorInt8Bit {
         var _r: *TensorInt8Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -1599,6 +1893,12 @@ pub const ITensorInt8BitStatics2 = extern struct {
 };
 pub const ITensorString = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -1622,6 +1922,12 @@ pub const ITensorString = extern struct {
 };
 pub const ITensorStringStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorString {
         var _r: *TensorString = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -1666,6 +1972,12 @@ pub const ITensorStringStatics = extern struct {
 };
 pub const ITensorStringStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: ?[*]HSTRING) core.HResult!*TensorString {
         var _r: *TensorString = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -1689,6 +2001,12 @@ pub const ITensorStringStatics2 = extern struct {
 };
 pub const ITensorUInt16Bit = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u16) {
         var _r: *IVectorView(u16) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -1712,6 +2030,12 @@ pub const ITensorUInt16Bit = extern struct {
 };
 pub const ITensorUInt16BitStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorUInt16Bit {
         var _r: *TensorUInt16Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -1756,6 +2080,12 @@ pub const ITensorUInt16BitStatics = extern struct {
 };
 pub const ITensorUInt16BitStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]u16) core.HResult!*TensorUInt16Bit {
         var _r: *TensorUInt16Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -1786,6 +2116,12 @@ pub const ITensorUInt16BitStatics2 = extern struct {
 };
 pub const ITensorUInt32Bit = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u32) {
         var _r: *IVectorView(u32) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -1809,6 +2145,12 @@ pub const ITensorUInt32Bit = extern struct {
 };
 pub const ITensorUInt32BitStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorUInt32Bit {
         var _r: *TensorUInt32Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -1853,6 +2195,12 @@ pub const ITensorUInt32BitStatics = extern struct {
 };
 pub const ITensorUInt32BitStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]u32) core.HResult!*TensorUInt32Bit {
         var _r: *TensorUInt32Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -1883,6 +2231,12 @@ pub const ITensorUInt32BitStatics2 = extern struct {
 };
 pub const ITensorUInt64Bit = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u64) {
         var _r: *IVectorView(u64) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -1906,6 +2260,12 @@ pub const ITensorUInt64Bit = extern struct {
 };
 pub const ITensorUInt64BitStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorUInt64Bit {
         var _r: *TensorUInt64Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -1950,6 +2310,12 @@ pub const ITensorUInt64BitStatics = extern struct {
 };
 pub const ITensorUInt64BitStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]u64) core.HResult!*TensorUInt64Bit {
         var _r: *TensorUInt64Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -1980,6 +2346,12 @@ pub const ITensorUInt64BitStatics2 = extern struct {
 };
 pub const ITensorUInt8Bit = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u8) {
         var _r: *IVectorView(u8) = undefined;
         const _c = self.vtable.GetAsVectorView(@ptrCast(self), &_r);
@@ -2003,6 +2375,12 @@ pub const ITensorUInt8Bit = extern struct {
 };
 pub const ITensorUInt8BitStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This()) core.HResult!*TensorUInt8Bit {
         var _r: *TensorUInt8Bit = undefined;
         const _c = self.vtable.Create(@ptrCast(self), &_r);
@@ -2047,6 +2425,12 @@ pub const ITensorUInt8BitStatics = extern struct {
 };
 pub const ITensorUInt8BitStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromShapeArrayAndDataArray(self: *@This(), shape: [*]i64, data: [*]u8) core.HResult!*TensorUInt8Bit {
         var _r: *TensorUInt8Bit = undefined;
         const _c = self.vtable.CreateFromShapeArrayAndDataArray(@ptrCast(self), shape, data, &_r);
@@ -2077,6 +2461,18 @@ pub const ITensorUInt8BitStatics2 = extern struct {
 };
 pub const ImageFeatureDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBitmapPixelFormat(self: *@This()) core.HResult!BitmapPixelFormat {
         const this: *IImageFeatureDescriptor = @ptrCast(self);
         return try this.getBitmapPixelFormat();
@@ -2136,6 +2532,18 @@ pub const ImageFeatureDescriptor = extern struct {
 };
 pub const ImageFeatureValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVideoFrame(self: *@This()) core.HResult!*VideoFrame {
         const this: *IImageFeatureValue = @ptrCast(self);
         return try this.getVideoFrame();
@@ -2146,9 +2554,6 @@ pub const ImageFeatureValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILearningModelFeatureValue.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getKind();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromVideoFrame(image: *VideoFrame) core.HResult!*ImageFeatureValue {
         const _f = try @This()._IImageFeatureValueStaticsCache.get();
@@ -2163,6 +2568,18 @@ pub const ImageFeatureValue = extern struct {
 };
 pub const LearningModel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAuthor(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModel = @ptrCast(self);
         return try this.getAuthor();
@@ -2201,9 +2618,6 @@ pub const LearningModel = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn LoadFromStorageFileAsync(modelFile: *IStorageFile) core.HResult!*IAsyncOperation(LearningModel) {
         const _f = try @This()._ILearningModelStaticsCache.get();
@@ -2246,6 +2660,18 @@ pub const LearningModel = extern struct {
 };
 pub const LearningModelBinding = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Bind(self: *@This(), name: ?HSTRING, value: *IInspectable) core.HResult!void {
         const this: *ILearningModelBinding = @ptrCast(self);
         return try this.Bind(name, value);
@@ -2279,9 +2705,6 @@ pub const LearningModelBinding = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateFromSession(session: *LearningModelSession) core.HResult!*LearningModelBinding {
         const _f = try @This()._ILearningModelBindingFactoryCache.get();
         return try _f.CreateFromSession(session);
@@ -2295,6 +2718,18 @@ pub const LearningModelBinding = extern struct {
 };
 pub const LearningModelDevice = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdapterId(self: *@This()) core.HResult!DisplayAdapterId {
         const this: *ILearningModelDevice = @ptrCast(self);
         return try this.getAdapterId();
@@ -2302,9 +2737,6 @@ pub const LearningModelDevice = extern struct {
     pub fn getDirect3D11Device(self: *@This()) core.HResult!*IDirect3DDevice {
         const this: *ILearningModelDevice = @ptrCast(self);
         return try this.getDirect3D11Device();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(deviceKind: LearningModelDeviceKind) core.HResult!*LearningModelDevice {
         const _f = try @This()._ILearningModelDeviceFactoryCache.get();
@@ -2331,6 +2763,18 @@ pub const LearningModelDeviceKind = enum(i32) {
 };
 pub const LearningModelEvaluationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCorrelationId(self: *@This()) core.HResult!?HSTRING {
         const this: *ILearningModelEvaluationResult = @ptrCast(self);
         return try this.getCorrelationId();
@@ -2366,6 +2810,18 @@ pub const LearningModelPixelRange = enum(i32) {
 };
 pub const LearningModelSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getModel(self: *@This()) core.HResult!*LearningModel {
         const this: *ILearningModelSession = @ptrCast(self);
         return try this.getModel();
@@ -2401,9 +2857,6 @@ pub const LearningModelSession = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateFromModelOnDeviceWithSessionOptions(model: *LearningModel, deviceToRunOn: *LearningModelDevice, learningModelSessionOptions: *LearningModelSessionOptions) core.HResult!*LearningModelSession {
         const _f = try @This()._ILearningModelSessionFactory2Cache.get();
         return try _f.CreateFromModelOnDeviceWithSessionOptions(model, deviceToRunOn, learningModelSessionOptions);
@@ -2426,6 +2879,18 @@ pub const LearningModelSession = extern struct {
 };
 pub const LearningModelSessionOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBatchSizeOverride(self: *@This()) core.HResult!u32 {
         const this: *ILearningModelSessionOptions = @ptrCast(self);
         return try this.getBatchSizeOverride();
@@ -2455,9 +2920,6 @@ pub const LearningModelSessionOptions = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OverrideNamedDimension(name, dimension);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILearningModelSessionOptions.IID)));
@@ -2471,6 +2933,18 @@ pub const LearningModelSessionOptions = extern struct {
 };
 pub const MapFeatureDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKeyKind(self: *@This()) core.HResult!TensorKind {
         const this: *IMapFeatureDescriptor = @ptrCast(self);
         return try this.getKeyKind();
@@ -2515,6 +2989,18 @@ pub const MapFeatureDescriptor = extern struct {
 };
 pub const SequenceFeatureDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getElementDescriptor(self: *@This()) core.HResult!*ILearningModelFeatureDescriptor {
         const this: *ISequenceFeatureDescriptor = @ptrCast(self);
         return try this.getElementDescriptor();
@@ -2555,6 +3041,18 @@ pub const SequenceFeatureDescriptor = extern struct {
 };
 pub const TensorBoolean = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(bool) {
         const this: *ITensorBoolean = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -2594,9 +3092,6 @@ pub const TensorBoolean = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]bool) core.HResult!*TensorBoolean {
         const _f = try @This()._ITensorBooleanStatics2Cache.get();
         return try _f.CreateFromShapeArrayAndDataArray(shape, data);
@@ -2631,6 +3126,18 @@ pub const TensorBoolean = extern struct {
 };
 pub const TensorDouble = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(f64) {
         const this: *ITensorDouble = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -2670,9 +3177,6 @@ pub const TensorDouble = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create() core.HResult!*TensorDouble {
         const _f = try @This()._ITensorDoubleStaticsCache.get();
         return try _f.Create();
@@ -2707,6 +3211,18 @@ pub const TensorDouble = extern struct {
 };
 pub const TensorFeatureDescriptor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTensorKind(self: *@This()) core.HResult!TensorKind {
         const this: *ITensorFeatureDescriptor = @ptrCast(self);
         return try this.getTensorKind();
@@ -2751,6 +3267,18 @@ pub const TensorFeatureDescriptor = extern struct {
 };
 pub const TensorFloat = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(f32) {
         const this: *ITensorFloat = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -2790,9 +3318,6 @@ pub const TensorFloat = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create() core.HResult!*TensorFloat {
         const _f = try @This()._ITensorFloatStaticsCache.get();
         return try _f.Create();
@@ -2827,6 +3352,18 @@ pub const TensorFloat = extern struct {
 };
 pub const TensorFloat16Bit = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(f32) {
         const this: *ITensorFloat16Bit = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -2866,9 +3403,6 @@ pub const TensorFloat16Bit = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]f32) core.HResult!*TensorFloat16Bit {
         const _f = try @This()._ITensorFloat16BitStatics2Cache.get();
         return try _f.CreateFromShapeArrayAndDataArray(shape, data);
@@ -2903,6 +3437,18 @@ pub const TensorFloat16Bit = extern struct {
 };
 pub const TensorInt16Bit = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(i16) {
         const this: *ITensorInt16Bit = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -2942,9 +3488,6 @@ pub const TensorInt16Bit = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create() core.HResult!*TensorInt16Bit {
         const _f = try @This()._ITensorInt16BitStaticsCache.get();
         return try _f.Create();
@@ -2979,6 +3522,18 @@ pub const TensorInt16Bit = extern struct {
 };
 pub const TensorInt32Bit = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(i32) {
         const this: *ITensorInt32Bit = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -3018,9 +3573,6 @@ pub const TensorInt32Bit = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create() core.HResult!*TensorInt32Bit {
         const _f = try @This()._ITensorInt32BitStaticsCache.get();
         return try _f.Create();
@@ -3055,6 +3607,18 @@ pub const TensorInt32Bit = extern struct {
 };
 pub const TensorInt64Bit = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(i64) {
         const this: *ITensorInt64Bit = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -3094,9 +3658,6 @@ pub const TensorInt64Bit = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create() core.HResult!*TensorInt64Bit {
         const _f = try @This()._ITensorInt64BitStaticsCache.get();
         return try _f.Create();
@@ -3131,6 +3692,18 @@ pub const TensorInt64Bit = extern struct {
 };
 pub const TensorInt8Bit = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u8) {
         const this: *ITensorInt8Bit = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -3169,9 +3742,6 @@ pub const TensorInt8Bit = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]u8) core.HResult!*TensorInt8Bit {
         const _f = try @This()._ITensorInt8BitStatics2Cache.get();
@@ -3225,6 +3795,18 @@ pub const TensorKind = enum(i32) {
 };
 pub const TensorString = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(?HSTRING) {
         const this: *ITensorString = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -3264,9 +3846,6 @@ pub const TensorString = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create() core.HResult!*TensorString {
         const _f = try @This()._ITensorStringStaticsCache.get();
         return try _f.Create();
@@ -3297,6 +3876,18 @@ pub const TensorString = extern struct {
 };
 pub const TensorUInt16Bit = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u16) {
         const this: *ITensorUInt16Bit = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -3336,9 +3927,6 @@ pub const TensorUInt16Bit = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create() core.HResult!*TensorUInt16Bit {
         const _f = try @This()._ITensorUInt16BitStaticsCache.get();
         return try _f.Create();
@@ -3373,6 +3961,18 @@ pub const TensorUInt16Bit = extern struct {
 };
 pub const TensorUInt32Bit = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u32) {
         const this: *ITensorUInt32Bit = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -3412,9 +4012,6 @@ pub const TensorUInt32Bit = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create() core.HResult!*TensorUInt32Bit {
         const _f = try @This()._ITensorUInt32BitStaticsCache.get();
         return try _f.Create();
@@ -3449,6 +4046,18 @@ pub const TensorUInt32Bit = extern struct {
 };
 pub const TensorUInt64Bit = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u64) {
         const this: *ITensorUInt64Bit = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -3488,9 +4097,6 @@ pub const TensorUInt64Bit = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create() core.HResult!*TensorUInt64Bit {
         const _f = try @This()._ITensorUInt64BitStaticsCache.get();
         return try _f.Create();
@@ -3525,6 +4131,18 @@ pub const TensorUInt64Bit = extern struct {
 };
 pub const TensorUInt8Bit = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAsVectorView(self: *@This()) core.HResult!*IVectorView(u8) {
         const this: *ITensorUInt8Bit = @ptrCast(self);
         return try this.GetAsVectorView();
@@ -3563,9 +4181,6 @@ pub const TensorUInt8Bit = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]u8) core.HResult!*TensorUInt8Bit {
         const _f = try @This()._ITensorUInt8BitStatics2Cache.get();

@@ -10,6 +10,15 @@ pub const AuthenticationProtocol = enum(i32) {
 };
 pub const CredentialPicker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -31,6 +40,18 @@ pub const CredentialPicker = extern struct {
 };
 pub const CredentialPickerOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCaption(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *ICredentialPickerOptions = @ptrCast(self);
         return try this.putCaption(value);
@@ -111,9 +132,6 @@ pub const CredentialPickerOptions = extern struct {
         const this: *ICredentialPickerOptions = @ptrCast(self);
         return try this.getCredentialSaveOption();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICredentialPickerOptions.IID)));
@@ -127,6 +145,18 @@ pub const CredentialPickerOptions = extern struct {
 };
 pub const CredentialPickerResults = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getErrorCode(self: *@This()) core.HResult!u32 {
         const this: *ICredentialPickerResults = @ptrCast(self);
         return try this.getErrorCode();
@@ -168,6 +198,12 @@ pub const CredentialSaveOption = enum(i32) {
 };
 pub const ICredentialPickerOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCaption(self: *@This(), value: ?HSTRING) core.HResult!void {
         const _c = self.vtable.put_Caption(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -304,6 +340,12 @@ pub const ICredentialPickerOptions = extern struct {
 };
 pub const ICredentialPickerResults = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getErrorCode(self: *@This()) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.get_ErrorCode(@ptrCast(self), &_r);
@@ -369,6 +411,12 @@ pub const ICredentialPickerResults = extern struct {
 };
 pub const ICredentialPickerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn PickAsync(self: *@This(), options: *CredentialPickerOptions) core.HResult!*IAsyncOperation(CredentialPickerResults) {
         var _r: *IAsyncOperation(CredentialPickerResults) = undefined;
         const _c = self.vtable.PickAsync(@ptrCast(self), options, &_r);
@@ -406,6 +454,12 @@ pub const ICredentialPickerStatics = extern struct {
 };
 pub const IUserConsentVerifierStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CheckAvailabilityAsync(self: *@This()) core.HResult!*IAsyncOperation(UserConsentVerifierAvailability) {
         var _r: *IAsyncOperation(UserConsentVerifierAvailability) = undefined;
         const _c = self.vtable.CheckAvailabilityAsync(@ptrCast(self), &_r);
@@ -445,6 +499,15 @@ pub const UserConsentVerificationResult = enum(i32) {
 };
 pub const UserConsentVerifier = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

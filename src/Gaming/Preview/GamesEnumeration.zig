@@ -1,6 +1,15 @@
 // ----- This code is automatically generated -----
 pub const GameList = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -145,6 +154,18 @@ pub const GameListChangedEventHandler = extern struct {
 };
 pub const GameListEntry = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayInfo(self: *@This()) core.HResult!*AppDisplayInfo {
         const this: *IGameListEntry = @ptrCast(self);
         return try this.getDisplayInfo();
@@ -324,6 +345,18 @@ pub const GameListRemovedEventHandler = extern struct {
 };
 pub const GameModeConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         const this: *IGameModeConfiguration = @ptrCast(self);
         return try this.getIsEnabled();
@@ -404,6 +437,18 @@ pub const GameModeConfiguration = extern struct {
 };
 pub const GameModeUserConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGamingRelatedProcessNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         const this: *IGameModeUserConfiguration = @ptrCast(self);
         return try this.getGamingRelatedProcessNames();
@@ -411,9 +456,6 @@ pub const GameModeUserConfiguration = extern struct {
     pub fn SaveAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IGameModeUserConfiguration = @ptrCast(self);
         return try this.SaveAsync();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*GameModeUserConfiguration {
         const _f = try @This()._IGameModeUserConfigurationStaticsCache.get();
@@ -428,6 +470,12 @@ pub const GameModeUserConfiguration = extern struct {
 };
 pub const IGameListEntry = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayInfo(self: *@This()) core.HResult!*AppDisplayInfo {
         var _r: *AppDisplayInfo = undefined;
         const _c = self.vtable.get_DisplayInfo(@ptrCast(self), &_r);
@@ -479,6 +527,12 @@ pub const IGameListEntry = extern struct {
 };
 pub const IGameListEntry2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLaunchableState(self: *@This()) core.HResult!GameListEntryLaunchableState {
         var _r: GameListEntryLaunchableState = undefined;
         const _c = self.vtable.get_LaunchableState(@ptrCast(self), &_r);
@@ -551,6 +605,12 @@ pub const IGameListEntry2 = extern struct {
 };
 pub const IGameListStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindAllAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
         var _r: *IAsyncOperation(IVectorView(GameListEntry)) = undefined;
         const _c = self.vtable.FindAllAsync(@ptrCast(self), &_r);
@@ -617,6 +677,12 @@ pub const IGameListStatics = extern struct {
 };
 pub const IGameListStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn MergeEntriesAsync(self: *@This(), left: *GameListEntry, right: *GameListEntry) core.HResult!*IAsyncOperation(GameListEntry) {
         var _r: *IAsyncOperation(GameListEntry) = undefined;
         const _c = self.vtable.MergeEntriesAsync(@ptrCast(self), left, right, &_r);
@@ -647,6 +713,12 @@ pub const IGameListStatics2 = extern struct {
 };
 pub const IGameModeConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -773,6 +845,12 @@ pub const IGameModeConfiguration = extern struct {
 };
 pub const IGameModeUserConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGamingRelatedProcessNames(self: *@This()) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.get_GamingRelatedProcessNames(@ptrCast(self), &_r);
@@ -803,6 +881,12 @@ pub const IGameModeUserConfiguration = extern struct {
 };
 pub const IGameModeUserConfigurationStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*GameModeUserConfiguration {
         var _r: *GameModeUserConfiguration = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);

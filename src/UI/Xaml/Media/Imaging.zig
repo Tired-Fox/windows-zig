@@ -5,6 +5,18 @@ pub const BitmapCreateOptions = enum(i32) {
 };
 pub const BitmapSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPixelWidth(self: *@This()) core.HResult!i32 {
         const this: *IBitmapSource = @ptrCast(self);
         return try this.getPixelWidth();
@@ -20,9 +32,6 @@ pub const BitmapSource = extern struct {
     pub fn SetSourceAsync(self: *@This(), streamSource: *IRandomAccessStream) core.HResult!*IAsyncAction {
         const this: *IBitmapSource = @ptrCast(self);
         return try this.SetSourceAsync(streamSource);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getPixelWidthProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._IBitmapSourceStaticsCache.get();
@@ -46,6 +55,18 @@ pub const BitmapSource = extern struct {
 };
 pub const BitmapImage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCreateOptions(self: *@This()) core.HResult!BitmapCreateOptions {
         const this: *IBitmapImage = @ptrCast(self);
         return try this.getCreateOptions();
@@ -158,9 +179,6 @@ pub const BitmapImage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Stop();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBitmapImage.IID)));
@@ -218,6 +236,18 @@ pub const DecodePixelType = enum(i32) {
 };
 pub const DownloadProgressEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProgress(self: *@This()) core.HResult!i32 {
         const this: *IDownloadProgressEventArgs = @ptrCast(self);
         return try this.getProgress();
@@ -323,6 +353,12 @@ pub const DownloadProgressEventHandler = extern struct {
 };
 pub const IBitmapImage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCreateOptions(self: *@This()) core.HResult!BitmapCreateOptions {
         var _r: BitmapCreateOptions = undefined;
         const _c = self.vtable.get_CreateOptions(@ptrCast(self), &_r);
@@ -423,6 +459,12 @@ pub const IBitmapImage = extern struct {
 };
 pub const IBitmapImage2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDecodePixelType(self: *@This()) core.HResult!DecodePixelType {
         var _r: DecodePixelType = undefined;
         const _c = self.vtable.get_DecodePixelType(@ptrCast(self), &_r);
@@ -451,6 +493,12 @@ pub const IBitmapImage2 = extern struct {
 };
 pub const IBitmapImage3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAnimatedBitmap(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAnimatedBitmap(@ptrCast(self), &_r);
@@ -503,6 +551,12 @@ pub const IBitmapImage3 = extern struct {
 };
 pub const IBitmapImageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithUriSource(self: *@This(), uriSource: *Uri) core.HResult!*BitmapImage {
         var _r: *BitmapImage = undefined;
         const _c = self.vtable.CreateInstanceWithUriSource(@ptrCast(self), uriSource, &_r);
@@ -526,6 +580,12 @@ pub const IBitmapImageFactory = extern struct {
 };
 pub const IBitmapImageStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCreateOptionsProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_CreateOptionsProperty(@ptrCast(self), &_r);
@@ -570,6 +630,12 @@ pub const IBitmapImageStatics = extern struct {
 };
 pub const IBitmapImageStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDecodePixelTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_DecodePixelTypeProperty(@ptrCast(self), &_r);
@@ -593,6 +659,12 @@ pub const IBitmapImageStatics2 = extern struct {
 };
 pub const IBitmapImageStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAnimatedBitmapProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_IsAnimatedBitmapProperty(@ptrCast(self), &_r);
@@ -630,6 +702,12 @@ pub const IBitmapImageStatics3 = extern struct {
 };
 pub const IBitmapSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPixelWidth(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_PixelWidth(@ptrCast(self), &_r);
@@ -672,6 +750,12 @@ pub const IBitmapSource = extern struct {
 };
 pub const IBitmapSourceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*BitmapSource {
         var _r: *BitmapSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -695,6 +779,12 @@ pub const IBitmapSourceFactory = extern struct {
 };
 pub const IBitmapSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPixelWidthProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PixelWidthProperty(@ptrCast(self), &_r);
@@ -725,6 +815,12 @@ pub const IBitmapSourceStatics = extern struct {
 };
 pub const IDownloadProgressEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProgress(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_Progress(@ptrCast(self), &_r);
@@ -753,6 +849,12 @@ pub const IDownloadProgressEventArgs = extern struct {
 };
 pub const IRenderTargetBitmap = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPixelWidth(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_PixelWidth(@ptrCast(self), &_r);
@@ -804,6 +906,12 @@ pub const IRenderTargetBitmap = extern struct {
 };
 pub const IRenderTargetBitmapStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPixelWidthProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_PixelWidthProperty(@ptrCast(self), &_r);
@@ -834,6 +942,12 @@ pub const IRenderTargetBitmapStatics = extern struct {
 };
 pub const ISoftwareBitmapSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetBitmapAsync(self: *@This(), softwareBitmap: *SoftwareBitmap) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SetBitmapAsync(@ptrCast(self), softwareBitmap, &_r);
@@ -857,6 +971,12 @@ pub const ISoftwareBitmapSource = extern struct {
 };
 pub const ISurfaceImageSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.ISurfaceImageSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "62f7d416-c714-4c4c-8273-f839bc58135c";
@@ -873,6 +993,12 @@ pub const ISurfaceImageSource = extern struct {
 };
 pub const ISurfaceImageSourceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithDimensions(self: *@This(), pixelWidth: i32, pixelHeight: i32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SurfaceImageSource {
         var _r: *SurfaceImageSource = undefined;
         const _c = self.vtable.CreateInstanceWithDimensions(@ptrCast(self), pixelWidth, pixelHeight, baseInterface, innerInterface, &_r);
@@ -903,6 +1029,12 @@ pub const ISurfaceImageSourceFactory = extern struct {
 };
 pub const ISvgImageSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUriSource(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_UriSource(@ptrCast(self), &_r);
@@ -986,6 +1118,12 @@ pub const ISvgImageSource = extern struct {
 };
 pub const ISvgImageSourceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SvgImageSource {
         var _r: *SvgImageSource = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -1016,6 +1154,12 @@ pub const ISvgImageSourceFactory = extern struct {
 };
 pub const ISvgImageSourceFailedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!SvgImageSourceLoadStatus {
         var _r: SvgImageSourceLoadStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1039,6 +1183,12 @@ pub const ISvgImageSourceFailedEventArgs = extern struct {
 };
 pub const ISvgImageSourceOpenedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.ISvgImageSourceOpenedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "85ef4c16-748e-4008-95c7-6a23dd7316db";
@@ -1055,6 +1205,12 @@ pub const ISvgImageSourceOpenedEventArgs = extern struct {
 };
 pub const ISvgImageSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUriSourceProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_UriSourceProperty(@ptrCast(self), &_r);
@@ -1092,6 +1248,12 @@ pub const ISvgImageSourceStatics = extern struct {
 };
 pub const IVirtualSurfaceImageSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.IVirtualSurfaceImageSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "4a711fea-bfac-11e0-a06a-9de44724019b";
@@ -1108,6 +1270,12 @@ pub const IVirtualSurfaceImageSource = extern struct {
 };
 pub const IVirtualSurfaceImageSourceFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithDimensions(self: *@This(), pixelWidth: i32, pixelHeight: i32) core.HResult!*VirtualSurfaceImageSource {
         var _r: *VirtualSurfaceImageSource = undefined;
         const _c = self.vtable.CreateInstanceWithDimensions(@ptrCast(self), pixelWidth, pixelHeight, &_r);
@@ -1138,6 +1306,12 @@ pub const IVirtualSurfaceImageSourceFactory = extern struct {
 };
 pub const IWriteableBitmap = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPixelBuffer(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_PixelBuffer(@ptrCast(self), &_r);
@@ -1166,6 +1340,12 @@ pub const IWriteableBitmap = extern struct {
 };
 pub const IWriteableBitmapFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstanceWithDimensions(self: *@This(), pixelWidth: i32, pixelHeight: i32) core.HResult!*WriteableBitmap {
         var _r: *WriteableBitmap = undefined;
         const _c = self.vtable.CreateInstanceWithDimensions(@ptrCast(self), pixelWidth, pixelHeight, &_r);
@@ -1189,6 +1369,12 @@ pub const IWriteableBitmapFactory = extern struct {
 };
 pub const IXamlRenderingBackgroundTask = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.IXamlRenderingBackgroundTask";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "5d5fe9aa-533e-44b8-a975-fc5f1e3bff52";
@@ -1205,6 +1391,12 @@ pub const IXamlRenderingBackgroundTask = extern struct {
 };
 pub const IXamlRenderingBackgroundTaskFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*XamlRenderingBackgroundTask {
         var _r: *XamlRenderingBackgroundTask = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -1228,6 +1420,12 @@ pub const IXamlRenderingBackgroundTaskFactory = extern struct {
 };
 pub const IXamlRenderingBackgroundTaskOverrides = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnRun(self: *@This(), taskInstance: *IBackgroundTaskInstance) core.HResult!void {
         const _c = self.vtable.OnRun(@ptrCast(self), taskInstance);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1249,6 +1447,18 @@ pub const IXamlRenderingBackgroundTaskOverrides = extern struct {
 };
 pub const RenderTargetBitmap = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPixelWidth(self: *@This()) core.HResult!i32 {
         const this: *IRenderTargetBitmap = @ptrCast(self);
         return try this.getPixelWidth();
@@ -1268,9 +1478,6 @@ pub const RenderTargetBitmap = extern struct {
     pub fn GetPixelsAsync(self: *@This()) core.HResult!*IAsyncOperation(IBuffer) {
         const this: *IRenderTargetBitmap = @ptrCast(self);
         return try this.GetPixelsAsync();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1294,6 +1501,18 @@ pub const RenderTargetBitmap = extern struct {
 };
 pub const SoftwareBitmapSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SetBitmapAsync(self: *@This(), softwareBitmap: *SoftwareBitmap) core.HResult!*IAsyncAction {
         const this: *ISoftwareBitmapSource = @ptrCast(self);
         return try this.SetBitmapAsync(softwareBitmap);
@@ -1304,9 +1523,6 @@ pub const SoftwareBitmapSource = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1321,6 +1537,15 @@ pub const SoftwareBitmapSource = extern struct {
 };
 pub const SurfaceImageSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1341,6 +1566,18 @@ pub const SurfaceImageSource = extern struct {
 };
 pub const SvgImageSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUriSource(self: *@This()) core.HResult!*Uri {
         const this: *ISvgImageSource = @ptrCast(self);
         return try this.getUriSource();
@@ -1385,9 +1622,6 @@ pub const SvgImageSource = extern struct {
         const this: *ISvgImageSource = @ptrCast(self);
         return try this.SetSourceAsync(streamSource);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getUriSourceProperty() core.HResult!*DependencyProperty {
         const _f = try @This()._ISvgImageSourceStaticsCache.get();
         return try _f.getUriSourceProperty();
@@ -1418,6 +1652,18 @@ pub const SvgImageSource = extern struct {
 };
 pub const SvgImageSourceFailedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!SvgImageSourceLoadStatus {
         const this: *ISvgImageSourceFailedEventArgs = @ptrCast(self);
         return try this.getStatus();
@@ -1436,6 +1682,18 @@ pub const SvgImageSourceLoadStatus = enum(i32) {
 };
 pub const SvgImageSourceOpenedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.SvgImageSourceOpenedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = ISvgImageSourceOpenedEventArgs.GUID;
@@ -1444,6 +1702,15 @@ pub const SvgImageSourceOpenedEventArgs = extern struct {
 };
 pub const VirtualSurfaceImageSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1464,6 +1731,18 @@ pub const VirtualSurfaceImageSource = extern struct {
 };
 pub const WriteableBitmap = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPixelBuffer(self: *@This()) core.HResult!*IBuffer {
         const this: *IWriteableBitmap = @ptrCast(self);
         return try this.getPixelBuffer();
@@ -1471,9 +1750,6 @@ pub const WriteableBitmap = extern struct {
     pub fn Invalidate(self: *@This()) core.HResult!void {
         const this: *IWriteableBitmap = @ptrCast(self);
         return try this.Invalidate();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithDimensions(pixelWidth: i32, pixelHeight: i32) core.HResult!*WriteableBitmap {
         const _f = try @This()._IWriteableBitmapFactoryCache.get();
@@ -1488,15 +1764,24 @@ pub const WriteableBitmap = extern struct {
 };
 pub const XamlRenderingBackgroundTask = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OnRun(self: *@This(), taskInstance: *IBackgroundTaskInstance) core.HResult!void {
         var this: ?*IXamlRenderingBackgroundTaskOverrides = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXamlRenderingBackgroundTaskOverrides.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.OnRun(taskInstance);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*XamlRenderingBackgroundTask {
         const _f = try @This()._IXamlRenderingBackgroundTaskFactoryCache.get();

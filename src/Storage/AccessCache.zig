@@ -12,6 +12,18 @@ pub const AccessListEntry = extern struct {
 };
 pub const AccessListEntryView = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         const this: *IVectorView(AccessListEntry) = @ptrCast(self);
         return try this.getSize();
@@ -31,6 +43,12 @@ pub const AccessListEntryView = extern struct {
 };
 pub const IItemRemovedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemovedEntry(self: *@This()) core.HResult!AccessListEntry {
         var _r: AccessListEntry = undefined;
         const _c = self.vtable.get_RemovedEntry(@ptrCast(self), &_r);
@@ -54,6 +72,12 @@ pub const IItemRemovedEventArgs = extern struct {
 };
 pub const IStorageApplicationPermissionsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFutureAccessList(self: *@This()) core.HResult!*StorageItemAccessList {
         var _r: *StorageItemAccessList = undefined;
         const _c = self.vtable.get_FutureAccessList(@ptrCast(self), &_r);
@@ -84,6 +108,12 @@ pub const IStorageApplicationPermissionsStatics = extern struct {
 };
 pub const IStorageApplicationPermissionsStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetFutureAccessListForUser(self: *@This(), user: *User) core.HResult!*StorageItemAccessList {
         var _r: *StorageItemAccessList = undefined;
         const _c = self.vtable.GetFutureAccessListForUser(@ptrCast(self), user, &_r);
@@ -114,6 +144,12 @@ pub const IStorageApplicationPermissionsStatics2 = extern struct {
 };
 pub const IStorageItemAccessList = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), file: *IStorageItem) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.Add(@ptrCast(self), file, &_r);
@@ -234,6 +270,12 @@ pub const IStorageItemAccessList = extern struct {
 };
 pub const IStorageItemMostRecentlyUsedList = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addItemRemoved(self: *@This(), handler: *TypedEventHandler(StorageItemMostRecentlyUsedList,ItemRemovedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ItemRemoved(@ptrCast(self), handler, &_r);
@@ -262,6 +304,12 @@ pub const IStorageItemMostRecentlyUsedList = extern struct {
 };
 pub const IStorageItemMostRecentlyUsedList2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), file: *IStorageItem, metadata: ?HSTRING, visibility: RecentStorageItemVisibility) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.Add(@ptrCast(self), file, metadata, visibility, &_r);
@@ -290,6 +338,18 @@ pub const IStorageItemMostRecentlyUsedList2 = extern struct {
 };
 pub const ItemRemovedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemovedEntry(self: *@This()) core.HResult!AccessListEntry {
         const this: *IItemRemovedEventArgs = @ptrCast(self);
         return try this.getRemovedEntry();
@@ -306,6 +366,15 @@ pub const RecentStorageItemVisibility = enum(i32) {
 };
 pub const StorageApplicationPermissions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -332,6 +401,18 @@ pub const StorageApplicationPermissions = extern struct {
 };
 pub const StorageItemAccessList = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Add(self: *@This(), file: *IStorageItem) core.HResult!?HSTRING {
         const this: *IStorageItemAccessList = @ptrCast(self);
         return try this.Add(file);
@@ -404,6 +485,18 @@ pub const StorageItemAccessList = extern struct {
 };
 pub const StorageItemMostRecentlyUsedList = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addItemRemoved(self: *@This(), handler: *TypedEventHandler(StorageItemMostRecentlyUsedList,ItemRemovedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IStorageItemMostRecentlyUsedList = @ptrCast(self);
         return try this.addItemRemoved(handler);

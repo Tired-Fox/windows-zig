@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AtomPubClient = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RetrieveServiceDocumentAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(ServiceDocument,RetrievalProgress) {
         const this: *IAtomPubClient = @ptrCast(self);
         return try this.RetrieveServiceDocumentAsync(uri);
@@ -129,9 +141,6 @@ pub const AtomPubClient = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrieveFeedAsync(uri);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAtomPubClient.IID)));
@@ -150,6 +159,12 @@ pub const AtomPubClient = extern struct {
 };
 pub const IAtomPubClient = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RetrieveServiceDocumentAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(ServiceDocument,RetrievalProgress) {
         var _r: *IAsyncOperationWithProgress(ServiceDocument,RetrievalProgress) = undefined;
         const _c = self.vtable.RetrieveServiceDocumentAsync(@ptrCast(self), uri, &_r);
@@ -241,6 +256,12 @@ pub const IAtomPubClient = extern struct {
 };
 pub const IAtomPubClientFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateAtomPubClientWithCredentials(self: *@This(), serverCredential: *PasswordCredential) core.HResult!*AtomPubClient {
         var _r: *AtomPubClient = undefined;
         const _c = self.vtable.CreateAtomPubClientWithCredentials(@ptrCast(self), serverCredential, &_r);
@@ -264,6 +285,12 @@ pub const IAtomPubClientFactory = extern struct {
 };
 pub const IResourceCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!*ISyndicationText {
         var _r: *ISyndicationText = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -308,6 +335,12 @@ pub const IResourceCollection = extern struct {
 };
 pub const IServiceDocument = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWorkspaces(self: *@This()) core.HResult!*IVectorView(Workspace) {
         var _r: *IVectorView(Workspace) = undefined;
         const _c = self.vtable.get_Workspaces(@ptrCast(self), &_r);
@@ -331,6 +364,12 @@ pub const IServiceDocument = extern struct {
 };
 pub const IWorkspace = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!*ISyndicationText {
         var _r: *ISyndicationText = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -361,6 +400,18 @@ pub const IWorkspace = extern struct {
 };
 pub const ResourceCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!*ISyndicationText {
         const this: *IResourceCollection = @ptrCast(self);
         return try this.getTitle();
@@ -476,6 +527,18 @@ pub const ResourceCollection = extern struct {
 };
 pub const ServiceDocument = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getWorkspaces(self: *@This()) core.HResult!*IVectorView(Workspace) {
         const this: *IServiceDocument = @ptrCast(self);
         return try this.getWorkspaces();
@@ -579,6 +642,18 @@ pub const ServiceDocument = extern struct {
 };
 pub const Workspace = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!*ISyndicationText {
         const this: *IWorkspace = @ptrCast(self);
         return try this.getTitle();

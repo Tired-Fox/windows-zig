@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IWindowsUpdate = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
@@ -183,6 +189,12 @@ pub const IWindowsUpdate = extern struct {
 };
 pub const IWindowsUpdateActionCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUpdate(self: *@This()) core.HResult!*WindowsUpdate {
         var _r: *WindowsUpdate = undefined;
         const _c = self.vtable.get_Update(@ptrCast(self), &_r);
@@ -227,6 +239,12 @@ pub const IWindowsUpdateActionCompletedEventArgs = extern struct {
 };
 pub const IWindowsUpdateActionProgress = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Action(@ptrCast(self), &_r);
@@ -257,6 +275,12 @@ pub const IWindowsUpdateActionProgress = extern struct {
 };
 pub const IWindowsUpdateActionResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -301,6 +325,12 @@ pub const IWindowsUpdateActionResult = extern struct {
 };
 pub const IWindowsUpdateAdministrator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartAdministratorScan(self: *@This()) core.HResult!void {
         const _c = self.vtable.StartAdministratorScan(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -349,6 +379,12 @@ pub const IWindowsUpdateAdministrator = extern struct {
 };
 pub const IWindowsUpdateAdministratorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetRegisteredAdministrator(self: *@This(), organizationName: ?HSTRING) core.HResult!*WindowsUpdateGetAdministratorResult {
         var _r: *WindowsUpdateGetAdministratorResult = undefined;
         const _c = self.vtable.GetRegisteredAdministrator(@ptrCast(self), organizationName, &_r);
@@ -405,6 +441,12 @@ pub const IWindowsUpdateAdministratorStatics = extern struct {
 };
 pub const IWindowsUpdateApprovalData = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSeeker(self: *@This()) core.HResult!*IReference(bool) {
         var _r: *IReference(bool) = undefined;
         const _c = self.vtable.get_Seeker(@ptrCast(self), &_r);
@@ -481,6 +523,12 @@ pub const IWindowsUpdateApprovalData = extern struct {
 };
 pub const IWindowsUpdateAttentionRequiredInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!WindowsUpdateAttentionRequiredReason {
         var _r: WindowsUpdateAttentionRequiredReason = undefined;
         const _c = self.vtable.get_Reason(@ptrCast(self), &_r);
@@ -511,6 +559,12 @@ pub const IWindowsUpdateAttentionRequiredInfo = extern struct {
 };
 pub const IWindowsUpdateAttentionRequiredReasonChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUpdate(self: *@This()) core.HResult!*WindowsUpdate {
         var _r: *WindowsUpdate = undefined;
         const _c = self.vtable.get_Update(@ptrCast(self), &_r);
@@ -541,6 +595,12 @@ pub const IWindowsUpdateAttentionRequiredReasonChangedEventArgs = extern struct 
 };
 pub const IWindowsUpdateGetAdministratorResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdministrator(self: *@This()) core.HResult!*WindowsUpdateAdministrator {
         var _r: *WindowsUpdateAdministrator = undefined;
         const _c = self.vtable.get_Administrator(@ptrCast(self), &_r);
@@ -571,6 +631,12 @@ pub const IWindowsUpdateGetAdministratorResult = extern struct {
 };
 pub const IWindowsUpdateItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
@@ -643,6 +709,12 @@ pub const IWindowsUpdateItem = extern struct {
 };
 pub const IWindowsUpdateManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addScanningStateChanged(self: *@This(), handler: *TypedEventHandler(WindowsUpdateManager,IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ScanningStateChanged(@ptrCast(self), handler, &_r);
@@ -778,6 +850,12 @@ pub const IWindowsUpdateManager = extern struct {
 };
 pub const IWindowsUpdateManagerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), clientId: ?HSTRING) core.HResult!*WindowsUpdateManager {
         var _r: *WindowsUpdateManager = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), clientId, &_r);
@@ -801,6 +879,12 @@ pub const IWindowsUpdateManagerFactory = extern struct {
 };
 pub const IWindowsUpdateProgressChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUpdate(self: *@This()) core.HResult!*WindowsUpdate {
         var _r: *WindowsUpdate = undefined;
         const _c = self.vtable.get_Update(@ptrCast(self), &_r);
@@ -831,6 +915,12 @@ pub const IWindowsUpdateProgressChangedEventArgs = extern struct {
 };
 pub const IWindowsUpdateRestartRequestOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -931,6 +1021,12 @@ pub const IWindowsUpdateRestartRequestOptions = extern struct {
 };
 pub const IWindowsUpdateRestartRequestOptionsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), title: ?HSTRING, description: ?HSTRING, moreInfoUrl: *Uri, complianceDeadlineInDays: i32, complianceGracePeriodInDays: i32) core.HResult!*WindowsUpdateRestartRequestOptions {
         var _r: *WindowsUpdateRestartRequestOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), title, description, moreInfoUrl, complianceDeadlineInDays, complianceGracePeriodInDays, &_r);
@@ -954,6 +1050,12 @@ pub const IWindowsUpdateRestartRequestOptionsFactory = extern struct {
 };
 pub const IWindowsUpdateScanCompletedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProviderId(@ptrCast(self), &_r);
@@ -998,6 +1100,18 @@ pub const IWindowsUpdateScanCompletedEventArgs = extern struct {
 };
 pub const WindowsUpdate = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdate = @ptrCast(self);
         return try this.getProviderId();
@@ -1102,6 +1216,18 @@ pub const WindowsUpdate = extern struct {
 };
 pub const WindowsUpdateActionCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUpdate(self: *@This()) core.HResult!*WindowsUpdate {
         const this: *IWindowsUpdateActionCompletedEventArgs = @ptrCast(self);
         return try this.getUpdate();
@@ -1126,6 +1252,18 @@ pub const WindowsUpdateActionCompletedEventArgs = extern struct {
 };
 pub const WindowsUpdateActionProgress = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateActionProgress = @ptrCast(self);
         return try this.getAction();
@@ -1142,6 +1280,18 @@ pub const WindowsUpdateActionProgress = extern struct {
 };
 pub const WindowsUpdateActionResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IWindowsUpdateActionResult = @ptrCast(self);
         return try this.getTimestamp();
@@ -1166,6 +1316,18 @@ pub const WindowsUpdateActionResult = extern struct {
 };
 pub const WindowsUpdateAdministrator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn StartAdministratorScan(self: *@This()) core.HResult!void {
         const this: *IWindowsUpdateAdministrator = @ptrCast(self);
         return try this.StartAdministratorScan();
@@ -1189,9 +1351,6 @@ pub const WindowsUpdateAdministrator = extern struct {
     pub fn GetUpdates(self: *@This()) core.HResult!*IVectorView(WindowsUpdate) {
         const this: *IWindowsUpdateAdministrator = @ptrCast(self);
         return try this.GetUpdates();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetRegisteredAdministrator(organizationName: ?HSTRING) core.HResult!*WindowsUpdateGetAdministratorResult {
         const _f = try @This()._IWindowsUpdateAdministratorStaticsCache.get();
@@ -1237,6 +1396,18 @@ pub const WindowsUpdateAdministratorStatus = enum(i32) {
 };
 pub const WindowsUpdateApprovalData = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSeeker(self: *@This()) core.HResult!*IReference(bool) {
         const this: *IWindowsUpdateApprovalData = @ptrCast(self);
         return try this.getSeeker();
@@ -1277,9 +1448,6 @@ pub const WindowsUpdateApprovalData = extern struct {
         const this: *IWindowsUpdateApprovalData = @ptrCast(self);
         return try this.putOptOutOfAutoReboot(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWindowsUpdateApprovalData.IID)));
@@ -1293,6 +1461,18 @@ pub const WindowsUpdateApprovalData = extern struct {
 };
 pub const WindowsUpdateAttentionRequiredInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReason(self: *@This()) core.HResult!WindowsUpdateAttentionRequiredReason {
         const this: *IWindowsUpdateAttentionRequiredInfo = @ptrCast(self);
         return try this.getReason();
@@ -1344,6 +1524,18 @@ pub const WindowsUpdateAttentionRequiredReason = enum(i32) {
 };
 pub const WindowsUpdateAttentionRequiredReasonChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUpdate(self: *@This()) core.HResult!*WindowsUpdate {
         const this: *IWindowsUpdateAttentionRequiredReasonChangedEventArgs = @ptrCast(self);
         return try this.getUpdate();
@@ -1360,6 +1552,18 @@ pub const WindowsUpdateAttentionRequiredReasonChangedEventArgs = extern struct {
 };
 pub const WindowsUpdateGetAdministratorResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAdministrator(self: *@This()) core.HResult!*WindowsUpdateAdministrator {
         const this: *IWindowsUpdateGetAdministratorResult = @ptrCast(self);
         return try this.getAdministrator();
@@ -1376,6 +1580,18 @@ pub const WindowsUpdateGetAdministratorResult = extern struct {
 };
 pub const WindowsUpdateItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateItem = @ptrCast(self);
         return try this.getProviderId();
@@ -1416,6 +1632,18 @@ pub const WindowsUpdateItem = extern struct {
 };
 pub const WindowsUpdateManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addScanningStateChanged(self: *@This(), handler: *TypedEventHandler(WindowsUpdateManager,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IWindowsUpdateManager = @ptrCast(self);
         return try this.addScanningStateChanged(handler);
@@ -1492,9 +1720,6 @@ pub const WindowsUpdateManager = extern struct {
         const this: *IWindowsUpdateManager = @ptrCast(self);
         return try this.StartScan(userInitiated);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(clientId: ?HSTRING) core.HResult!*WindowsUpdateManager {
         const _f = try @This()._IWindowsUpdateManagerFactoryCache.get();
         return try _f.CreateInstance(clientId);
@@ -1508,6 +1733,18 @@ pub const WindowsUpdateManager = extern struct {
 };
 pub const WindowsUpdateProgressChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUpdate(self: *@This()) core.HResult!*WindowsUpdate {
         const this: *IWindowsUpdateProgressChangedEventArgs = @ptrCast(self);
         return try this.getUpdate();
@@ -1524,6 +1761,18 @@ pub const WindowsUpdateProgressChangedEventArgs = extern struct {
 };
 pub const WindowsUpdateRestartRequestOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateRestartRequestOptions = @ptrCast(self);
         return try this.getTitle();
@@ -1580,9 +1829,6 @@ pub const WindowsUpdateRestartRequestOptions = extern struct {
         const this: *IWindowsUpdateRestartRequestOptions = @ptrCast(self);
         return try this.putOptOutOfAutoReboot(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWindowsUpdateRestartRequestOptions.IID)));
@@ -1601,6 +1847,18 @@ pub const WindowsUpdateRestartRequestOptions = extern struct {
 };
 pub const WindowsUpdateScanCompletedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProviderId(self: *@This()) core.HResult!?HSTRING {
         const this: *IWindowsUpdateScanCompletedEventArgs = @ptrCast(self);
         return try this.getProviderId();
@@ -1625,6 +1883,12 @@ pub const WindowsUpdateScanCompletedEventArgs = extern struct {
 };
 pub const IPreviewBuildsManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getArePreviewBuildsAllowed(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ArePreviewBuildsAllowed(@ptrCast(self), &_r);
@@ -1667,6 +1931,12 @@ pub const IPreviewBuildsManager = extern struct {
 };
 pub const IPreviewBuildsManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*PreviewBuildsManager {
         var _r: *PreviewBuildsManager = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -1697,6 +1967,12 @@ pub const IPreviewBuildsManagerStatics = extern struct {
 };
 pub const IPreviewBuildsState = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProperties(self: *@This()) core.HResult!*ValueSet {
         var _r: *ValueSet = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
@@ -1720,6 +1996,18 @@ pub const IPreviewBuildsState = extern struct {
 };
 pub const PreviewBuildsManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getArePreviewBuildsAllowed(self: *@This()) core.HResult!bool {
         const this: *IPreviewBuildsManager = @ptrCast(self);
         return try this.getArePreviewBuildsAllowed();
@@ -1735,9 +2023,6 @@ pub const PreviewBuildsManager = extern struct {
     pub fn SyncAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         const this: *IPreviewBuildsManager = @ptrCast(self);
         return try this.SyncAsync();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PreviewBuildsManager {
         const _f = try @This()._IPreviewBuildsManagerStaticsCache.get();
@@ -1756,6 +2041,18 @@ pub const PreviewBuildsManager = extern struct {
 };
 pub const PreviewBuildsState = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProperties(self: *@This()) core.HResult!*ValueSet {
         const this: *IPreviewBuildsState = @ptrCast(self);
         return try this.getProperties();

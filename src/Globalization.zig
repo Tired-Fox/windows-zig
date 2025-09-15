@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IJapanesePhoneme = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
@@ -38,6 +44,12 @@ pub const IJapanesePhoneme = extern struct {
 };
 pub const IJapanesePhoneticAnalyzerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetWords(self: *@This(), input: ?HSTRING) core.HResult!*IVectorView(JapanesePhoneme) {
         var _r: *IVectorView(JapanesePhoneme) = undefined;
         const _c = self.vtable.GetWords(@ptrCast(self), input, &_r);
@@ -68,6 +80,18 @@ pub const IJapanesePhoneticAnalyzerStatics = extern struct {
 };
 pub const JapanesePhoneme = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         const this: *IJapanesePhoneme = @ptrCast(self);
         return try this.getDisplayText();
@@ -88,6 +112,15 @@ pub const JapanesePhoneme = extern struct {
 };
 pub const JapanesePhoneticAnalyzer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -105,6 +138,15 @@ pub const JapanesePhoneticAnalyzer = extern struct {
 };
 pub const ApplicationLanguages = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -135,6 +177,18 @@ pub const ApplicationLanguages = extern struct {
 };
 pub const Calendar = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Clone(self: *@This()) core.HResult!*Calendar {
         const this: *ICalendar = @ptrCast(self);
         return try this.Clone();
@@ -555,9 +609,6 @@ pub const Calendar = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TimeZoneAsStringWithIdealLength(idealLength);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICalendar.IID)));
@@ -585,6 +636,15 @@ pub const Calendar = extern struct {
 };
 pub const CalendarIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -656,6 +716,15 @@ pub const CalendarIdentifiers = extern struct {
 };
 pub const ClockIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -673,6 +742,18 @@ pub const ClockIdentifiers = extern struct {
 };
 pub const CurrencyAmount = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAmount(self: *@This()) core.HResult!?HSTRING {
         const this: *ICurrencyAmount = @ptrCast(self);
         return try this.getAmount();
@@ -680,9 +761,6 @@ pub const CurrencyAmount = extern struct {
     pub fn getCurrency(self: *@This()) core.HResult!?HSTRING {
         const this: *ICurrencyAmount = @ptrCast(self);
         return try this.getCurrency();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(amount: ?HSTRING, currency: ?HSTRING) core.HResult!*CurrencyAmount {
         const _f = try @This()._ICurrencyAmountFactoryCache.get();
@@ -697,6 +775,15 @@ pub const CurrencyAmount = extern struct {
 };
 pub const CurrencyIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1365,6 +1452,18 @@ pub const DayOfWeek = enum(i32) {
 };
 pub const GeographicRegion = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IGeographicRegion = @ptrCast(self);
         return try this.getCode();
@@ -1393,9 +1492,6 @@ pub const GeographicRegion = extern struct {
         const this: *IGeographicRegion = @ptrCast(self);
         return try this.getCurrenciesInUse();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGeographicRegion.IID)));
@@ -1419,6 +1515,12 @@ pub const GeographicRegion = extern struct {
 };
 pub const IApplicationLanguagesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrimaryLanguageOverride(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_PrimaryLanguageOverride(@ptrCast(self), &_r);
@@ -1461,6 +1563,12 @@ pub const IApplicationLanguagesStatics = extern struct {
 };
 pub const IApplicationLanguagesStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetLanguagesForUser(self: *@This(), user: *User) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetLanguagesForUser(@ptrCast(self), user, &_r);
@@ -1484,6 +1592,12 @@ pub const IApplicationLanguagesStatics2 = extern struct {
 };
 pub const ICalendar = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Clone(self: *@This()) core.HResult!*Calendar {
         var _r: *Calendar = undefined;
         const _c = self.vtable.Clone(@ptrCast(self), &_r);
@@ -2132,6 +2246,12 @@ pub const ICalendar = extern struct {
 };
 pub const ICalendarFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateCalendarDefaultCalendarAndClock(self: *@This(), languages: *IIterable(?HSTRING)) core.HResult!*Calendar {
         var _r: *Calendar = undefined;
         const _c = self.vtable.CreateCalendarDefaultCalendarAndClock(@ptrCast(self), languages, &_r);
@@ -2162,6 +2282,12 @@ pub const ICalendarFactory = extern struct {
 };
 pub const ICalendarFactory2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateCalendarWithTimeZone(self: *@This(), languages: *IIterable(?HSTRING), calendar: ?HSTRING, clock: ?HSTRING, timeZoneId: ?HSTRING) core.HResult!*Calendar {
         var _r: *Calendar = undefined;
         const _c = self.vtable.CreateCalendarWithTimeZone(@ptrCast(self), languages, calendar, clock, timeZoneId, &_r);
@@ -2185,6 +2311,12 @@ pub const ICalendarFactory2 = extern struct {
 };
 pub const ICalendarIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getGregorian(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Gregorian(@ptrCast(self), &_r);
@@ -2264,6 +2396,12 @@ pub const ICalendarIdentifiersStatics = extern struct {
 };
 pub const ICalendarIdentifiersStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPersian(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Persian(@ptrCast(self), &_r);
@@ -2287,6 +2425,12 @@ pub const ICalendarIdentifiersStatics2 = extern struct {
 };
 pub const ICalendarIdentifiersStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChineseLunar(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ChineseLunar(@ptrCast(self), &_r);
@@ -2338,6 +2482,12 @@ pub const ICalendarIdentifiersStatics3 = extern struct {
 };
 pub const IClockIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTwelveHour(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TwelveHour(@ptrCast(self), &_r);
@@ -2368,6 +2518,12 @@ pub const IClockIdentifiersStatics = extern struct {
 };
 pub const ICurrencyAmount = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAmount(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Amount(@ptrCast(self), &_r);
@@ -2398,6 +2554,12 @@ pub const ICurrencyAmount = extern struct {
 };
 pub const ICurrencyAmountFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), amount: ?HSTRING, currency: ?HSTRING) core.HResult!*CurrencyAmount {
         var _r: *CurrencyAmount = undefined;
         const _c = self.vtable.Create(@ptrCast(self), amount, currency, &_r);
@@ -2421,6 +2583,12 @@ pub const ICurrencyAmountFactory = extern struct {
 };
 pub const ICurrencyIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAED(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AED(@ptrCast(self), &_r);
@@ -3536,6 +3704,12 @@ pub const ICurrencyIdentifiersStatics = extern struct {
 };
 pub const ICurrencyIdentifiersStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBYN(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_BYN(@ptrCast(self), &_r);
@@ -3559,6 +3733,12 @@ pub const ICurrencyIdentifiersStatics2 = extern struct {
 };
 pub const ICurrencyIdentifiersStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMRU(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_MRU(@ptrCast(self), &_r);
@@ -3603,6 +3783,12 @@ pub const ICurrencyIdentifiersStatics3 = extern struct {
 };
 pub const IGeographicRegion = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCode(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Code(@ptrCast(self), &_r);
@@ -3668,6 +3854,12 @@ pub const IGeographicRegion = extern struct {
 };
 pub const IGeographicRegionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateGeographicRegion(self: *@This(), geographicRegionCode: ?HSTRING) core.HResult!*GeographicRegion {
         var _r: *GeographicRegion = undefined;
         const _c = self.vtable.CreateGeographicRegion(@ptrCast(self), geographicRegionCode, &_r);
@@ -3691,6 +3883,12 @@ pub const IGeographicRegionFactory = extern struct {
 };
 pub const IGeographicRegionStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupported(self: *@This(), geographicRegionCode: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsSupported(@ptrCast(self), geographicRegionCode, &_r);
@@ -3714,6 +3912,12 @@ pub const IGeographicRegionStatics = extern struct {
 };
 pub const ILanguage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguageTag(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LanguageTag(@ptrCast(self), &_r);
@@ -3758,6 +3962,12 @@ pub const ILanguage = extern struct {
 };
 pub const ILanguage2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLayoutDirection(self: *@This()) core.HResult!LanguageLayoutDirection {
         var _r: LanguageLayoutDirection = undefined;
         const _c = self.vtable.get_LayoutDirection(@ptrCast(self), &_r);
@@ -3781,6 +3991,12 @@ pub const ILanguage2 = extern struct {
 };
 pub const ILanguage3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAbbreviatedName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AbbreviatedName(@ptrCast(self), &_r);
@@ -3804,6 +4020,12 @@ pub const ILanguage3 = extern struct {
 };
 pub const ILanguageExtensionSubtags = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetExtensionSubtags(self: *@This(), singleton: ?HSTRING) core.HResult!*IVectorView(?HSTRING) {
         var _r: *IVectorView(?HSTRING) = undefined;
         const _c = self.vtable.GetExtensionSubtags(@ptrCast(self), singleton, &_r);
@@ -3827,6 +4049,12 @@ pub const ILanguageExtensionSubtags = extern struct {
 };
 pub const ILanguageFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateLanguage(self: *@This(), languageTag: ?HSTRING) core.HResult!*Language {
         var _r: *Language = undefined;
         const _c = self.vtable.CreateLanguage(@ptrCast(self), languageTag, &_r);
@@ -3850,6 +4078,12 @@ pub const ILanguageFactory = extern struct {
 };
 pub const ILanguageStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsWellFormed(self: *@This(), languageTag: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsWellFormed(@ptrCast(self), languageTag, &_r);
@@ -3880,6 +4114,12 @@ pub const ILanguageStatics = extern struct {
 };
 pub const ILanguageStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TrySetInputMethodLanguageTag(self: *@This(), languageTag: ?HSTRING) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.TrySetInputMethodLanguageTag(@ptrCast(self), languageTag, &_r);
@@ -3903,6 +4143,12 @@ pub const ILanguageStatics2 = extern struct {
 };
 pub const ILanguageStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetMuiCompatibleLanguageListFromLanguageTags(self: *@This(), languageTags: *IIterable(?HSTRING)) core.HResult!*IVector(?HSTRING) {
         var _r: *IVector(?HSTRING) = undefined;
         const _c = self.vtable.GetMuiCompatibleLanguageListFromLanguageTags(@ptrCast(self), languageTags, &_r);
@@ -3926,6 +4172,12 @@ pub const ILanguageStatics3 = extern struct {
 };
 pub const INumeralSystemIdentifiersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getArab(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Arab(@ptrCast(self), &_r);
@@ -4194,6 +4446,12 @@ pub const INumeralSystemIdentifiersStatics = extern struct {
 };
 pub const INumeralSystemIdentifiersStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getBrah(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Brah(@ptrCast(self), &_r);
@@ -4294,6 +4552,12 @@ pub const INumeralSystemIdentifiersStatics2 = extern struct {
 };
 pub const ITimeZoneOnCalendar = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetTimeZone(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetTimeZone(@ptrCast(self), &_r);
@@ -4336,6 +4600,18 @@ pub const ITimeZoneOnCalendar = extern struct {
 };
 pub const Language = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguageTag(self: *@This()) core.HResult!?HSTRING {
         const this: *ILanguage = @ptrCast(self);
         return try this.getLanguageTag();
@@ -4372,9 +4648,6 @@ pub const Language = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILanguage3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAbbreviatedName();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateLanguage(languageTag: ?HSTRING) core.HResult!*Language {
         const _f = try @This()._ILanguageFactoryCache.get();
@@ -4414,6 +4687,15 @@ pub const LanguageLayoutDirection = enum(i32) {
 };
 pub const NumeralSystemIdentifiers = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

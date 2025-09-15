@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IIndexedResourceCandidate = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!IndexedResourceType {
         var _r: IndexedResourceType = undefined;
         const _c = self.vtable.get_Type(@ptrCast(self), &_r);
@@ -59,6 +65,12 @@ pub const IIndexedResourceCandidate = extern struct {
 };
 pub const IIndexedResourceQualifier = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQualifierName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_QualifierName(@ptrCast(self), &_r);
@@ -89,6 +101,12 @@ pub const IIndexedResourceQualifier = extern struct {
 };
 pub const IResourceIndexer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IndexFilePath(self: *@This(), filePath: *Uri) core.HResult!*IndexedResourceCandidate {
         var _r: *IndexedResourceCandidate = undefined;
         const _c = self.vtable.IndexFilePath(@ptrCast(self), filePath, &_r);
@@ -119,6 +137,12 @@ pub const IResourceIndexer = extern struct {
 };
 pub const IResourceIndexerFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateResourceIndexer(self: *@This(), projectRoot: *Uri) core.HResult!*ResourceIndexer {
         var _r: *ResourceIndexer = undefined;
         const _c = self.vtable.CreateResourceIndexer(@ptrCast(self), projectRoot, &_r);
@@ -142,6 +166,12 @@ pub const IResourceIndexerFactory = extern struct {
 };
 pub const IResourceIndexerFactory2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateResourceIndexerWithExtension(self: *@This(), projectRoot: *Uri, extensionDllPath: *Uri) core.HResult!*ResourceIndexer {
         var _r: *ResourceIndexer = undefined;
         const _c = self.vtable.CreateResourceIndexerWithExtension(@ptrCast(self), projectRoot, extensionDllPath, &_r);
@@ -165,6 +195,18 @@ pub const IResourceIndexerFactory2 = extern struct {
 };
 pub const IndexedResourceCandidate = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getType(self: *@This()) core.HResult!IndexedResourceType {
         const this: *IIndexedResourceCandidate = @ptrCast(self);
         return try this.getType();
@@ -197,6 +239,18 @@ pub const IndexedResourceCandidate = extern struct {
 };
 pub const IndexedResourceQualifier = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getQualifierName(self: *@This()) core.HResult!?HSTRING {
         const this: *IIndexedResourceQualifier = @ptrCast(self);
         return try this.getQualifierName();
@@ -218,6 +272,18 @@ pub const IndexedResourceType = enum(i32) {
 };
 pub const ResourceIndexer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IndexFilePath(self: *@This(), filePath: *Uri) core.HResult!*IndexedResourceCandidate {
         const this: *IResourceIndexer = @ptrCast(self);
         return try this.IndexFilePath(filePath);
@@ -225,9 +291,6 @@ pub const ResourceIndexer = extern struct {
     pub fn IndexFileContentsAsync(self: *@This(), file: *Uri) core.HResult!*IAsyncOperation(IVectorView(IndexedResourceCandidate)) {
         const this: *IResourceIndexer = @ptrCast(self);
         return try this.IndexFileContentsAsync(file);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateResourceIndexer(projectRoot: *Uri) core.HResult!*ResourceIndexer {
         const _f = try @This()._IResourceIndexerFactoryCache.get();

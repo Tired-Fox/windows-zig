@@ -6,6 +6,12 @@ pub const CredentialPromptType = enum(i32) {
 };
 pub const IOnlineIdAuthenticator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AuthenticateUserAsync(self: *@This(), request: *OnlineIdServiceTicketRequest) core.HResult!*UserAuthenticationOperation {
         var _r: *UserAuthenticationOperation = undefined;
         const _c = self.vtable.AuthenticateUserAsync(@ptrCast(self), request, &_r);
@@ -69,6 +75,12 @@ pub const IOnlineIdAuthenticator = extern struct {
 };
 pub const IOnlineIdServiceTicket = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Value(@ptrCast(self), &_r);
@@ -106,6 +118,12 @@ pub const IOnlineIdServiceTicket = extern struct {
 };
 pub const IOnlineIdServiceTicketRequest = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getService(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Service(@ptrCast(self), &_r);
@@ -136,6 +154,12 @@ pub const IOnlineIdServiceTicketRequest = extern struct {
 };
 pub const IOnlineIdServiceTicketRequestFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateOnlineIdServiceTicketRequest(self: *@This(), service: ?HSTRING, policy: ?HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
         var _r: *OnlineIdServiceTicketRequest = undefined;
         const _c = self.vtable.CreateOnlineIdServiceTicketRequest(@ptrCast(self), service, policy, &_r);
@@ -166,6 +190,12 @@ pub const IOnlineIdServiceTicketRequestFactory = extern struct {
 };
 pub const IOnlineIdSystemAuthenticatorForUser = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetTicketAsync(self: *@This(), request: *OnlineIdServiceTicketRequest) core.HResult!*IAsyncOperation(OnlineIdSystemTicketResult) {
         var _r: *IAsyncOperation(OnlineIdSystemTicketResult) = undefined;
         const _c = self.vtable.GetTicketAsync(@ptrCast(self), request, &_r);
@@ -208,6 +238,12 @@ pub const IOnlineIdSystemAuthenticatorForUser = extern struct {
 };
 pub const IOnlineIdSystemAuthenticatorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDefault(self: *@This()) core.HResult!*OnlineIdSystemAuthenticatorForUser {
         var _r: *OnlineIdSystemAuthenticatorForUser = undefined;
         const _c = self.vtable.get_Default(@ptrCast(self), &_r);
@@ -238,6 +274,12 @@ pub const IOnlineIdSystemAuthenticatorStatics = extern struct {
 };
 pub const IOnlineIdSystemIdentity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTicket(self: *@This()) core.HResult!*OnlineIdServiceTicket {
         var _r: *OnlineIdServiceTicket = undefined;
         const _c = self.vtable.get_Ticket(@ptrCast(self), &_r);
@@ -268,6 +310,12 @@ pub const IOnlineIdSystemIdentity = extern struct {
 };
 pub const IOnlineIdSystemTicketResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIdentity(self: *@This()) core.HResult!*OnlineIdSystemIdentity {
         var _r: *OnlineIdSystemIdentity = undefined;
         const _c = self.vtable.get_Identity(@ptrCast(self), &_r);
@@ -305,6 +353,12 @@ pub const IOnlineIdSystemTicketResult = extern struct {
 };
 pub const IUserIdentity = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTickets(self: *@This()) core.HResult!*IVectorView(OnlineIdServiceTicket) {
         var _r: *IVectorView(OnlineIdServiceTicket) = undefined;
         const _c = self.vtable.get_Tickets(@ptrCast(self), &_r);
@@ -377,6 +431,18 @@ pub const IUserIdentity = extern struct {
 };
 pub const OnlineIdAuthenticator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AuthenticateUserAsync(self: *@This(), request: *OnlineIdServiceTicketRequest) core.HResult!*UserAuthenticationOperation {
         const this: *IOnlineIdAuthenticator = @ptrCast(self);
         return try this.AuthenticateUserAsync(request);
@@ -405,9 +471,6 @@ pub const OnlineIdAuthenticator = extern struct {
         const this: *IOnlineIdAuthenticator = @ptrCast(self);
         return try this.getAuthenticatedSafeCustomerId();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IOnlineIdAuthenticator.IID)));
@@ -421,6 +484,18 @@ pub const OnlineIdAuthenticator = extern struct {
 };
 pub const OnlineIdServiceTicket = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getValue(self: *@This()) core.HResult!?HSTRING {
         const this: *IOnlineIdServiceTicket = @ptrCast(self);
         return try this.getValue();
@@ -441,6 +516,18 @@ pub const OnlineIdServiceTicket = extern struct {
 };
 pub const OnlineIdServiceTicketRequest = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getService(self: *@This()) core.HResult!?HSTRING {
         const this: *IOnlineIdServiceTicketRequest = @ptrCast(self);
         return try this.getService();
@@ -448,9 +535,6 @@ pub const OnlineIdServiceTicketRequest = extern struct {
     pub fn getPolicy(self: *@This()) core.HResult!?HSTRING {
         const this: *IOnlineIdServiceTicketRequest = @ptrCast(self);
         return try this.getPolicy();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateOnlineIdServiceTicketRequest(service: ?HSTRING, policy: ?HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
         const _f = try @This()._IOnlineIdServiceTicketRequestFactoryCache.get();
@@ -469,6 +553,15 @@ pub const OnlineIdServiceTicketRequest = extern struct {
 };
 pub const OnlineIdSystemAuthenticator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -486,6 +579,18 @@ pub const OnlineIdSystemAuthenticator = extern struct {
 };
 pub const OnlineIdSystemAuthenticatorForUser = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetTicketAsync(self: *@This(), request: *OnlineIdServiceTicketRequest) core.HResult!*IAsyncOperation(OnlineIdSystemTicketResult) {
         const this: *IOnlineIdSystemAuthenticatorForUser = @ptrCast(self);
         return try this.GetTicketAsync(request);
@@ -510,6 +615,18 @@ pub const OnlineIdSystemAuthenticatorForUser = extern struct {
 };
 pub const OnlineIdSystemIdentity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTicket(self: *@This()) core.HResult!*OnlineIdServiceTicket {
         const this: *IOnlineIdSystemIdentity = @ptrCast(self);
         return try this.getTicket();
@@ -526,6 +643,18 @@ pub const OnlineIdSystemIdentity = extern struct {
 };
 pub const OnlineIdSystemTicketResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIdentity(self: *@This()) core.HResult!*OnlineIdSystemIdentity {
         const this: *IOnlineIdSystemTicketResult = @ptrCast(self);
         return try this.getIdentity();
@@ -551,6 +680,18 @@ pub const OnlineIdSystemTicketStatus = enum(i32) {
 };
 pub const SignOutUserOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCompleted(self: *@This(), handler: *AsyncActionCompletedHandler) core.HResult!void {
         const this: *IAsyncAction = @ptrCast(self);
         return try this.putCompleted(handler);
@@ -606,6 +747,18 @@ pub const SignOutUserOperation = extern struct {
 };
 pub const UserAuthenticationOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(UserIdentity)) core.HResult!void {
         const this: *IAsyncOperation(UserIdentity) = @ptrCast(self);
         return try this.putCompleted(handler);
@@ -657,6 +810,18 @@ pub const UserAuthenticationOperation = extern struct {
 };
 pub const UserIdentity = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTickets(self: *@This()) core.HResult!*IVectorView(OnlineIdServiceTicket) {
         const this: *IUserIdentity = @ptrCast(self);
         return try this.getTickets();
@@ -697,6 +862,7 @@ pub const UserIdentity = extern struct {
 };
 const IUnknown = @import("../../root.zig").IUnknown;
 const IActivationFactory = @import("../../Foundation.zig").IActivationFactory;
+const HSTRING = @import("../../root.zig").HSTRING;
 const Guid = @import("../../root.zig").Guid;
 const IVectorView = @import("../../Foundation/Collections.zig").IVectorView;
 const IIterable = @import("../../Foundation/Collections.zig").IIterable;
@@ -713,4 +879,3 @@ const AsyncActionCompletedHandler = @import("../../Foundation.zig").AsyncActionC
 const TrustLevel = @import("../../root.zig").TrustLevel;
 const IAsyncAction = @import("../../Foundation.zig").IAsyncAction;
 const User = @import("../../System.zig").User;
-const HSTRING = @import("../../root.zig").HSTRING;

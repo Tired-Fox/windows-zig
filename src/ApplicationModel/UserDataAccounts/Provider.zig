@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IUserDataAccountPartnerAccountInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -38,6 +44,12 @@ pub const IUserDataAccountPartnerAccountInfo = extern struct {
 };
 pub const IUserDataAccountProviderAddAccountOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentKinds(self: *@This()) core.HResult!UserDataAccountContentKinds {
         var _r: UserDataAccountContentKinds = undefined;
         const _c = self.vtable.get_ContentKinds(@ptrCast(self), &_r);
@@ -73,6 +85,12 @@ pub const IUserDataAccountProviderAddAccountOperation = extern struct {
 };
 pub const IUserDataAccountProviderOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKind(self: *@This()) core.HResult!UserDataAccountProviderOperationKind {
         var _r: UserDataAccountProviderOperationKind = undefined;
         const _c = self.vtable.get_Kind(@ptrCast(self), &_r);
@@ -96,6 +114,12 @@ pub const IUserDataAccountProviderOperation = extern struct {
 };
 pub const IUserDataAccountProviderResolveErrorsOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDataAccountId(@ptrCast(self), &_r);
@@ -124,6 +148,12 @@ pub const IUserDataAccountProviderResolveErrorsOperation = extern struct {
 };
 pub const IUserDataAccountProviderSettingsOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserDataAccountId(@ptrCast(self), &_r);
@@ -152,6 +182,18 @@ pub const IUserDataAccountProviderSettingsOperation = extern struct {
 };
 pub const UserDataAccountPartnerAccountInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataAccountPartnerAccountInfo = @ptrCast(self);
         return try this.getDisplayName();
@@ -172,6 +214,18 @@ pub const UserDataAccountPartnerAccountInfo = extern struct {
 };
 pub const UserDataAccountProviderAddAccountOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentKinds(self: *@This()) core.HResult!UserDataAccountContentKinds {
         const this: *IUserDataAccountProviderAddAccountOperation = @ptrCast(self);
         return try this.getContentKinds();
@@ -208,6 +262,18 @@ pub const UserDataAccountProviderPartnerAccountKind = enum(i32) {
 };
 pub const UserDataAccountProviderResolveErrorsOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataAccountProviderResolveErrorsOperation = @ptrCast(self);
         return try this.getUserDataAccountId();
@@ -231,6 +297,18 @@ pub const UserDataAccountProviderResolveErrorsOperation = extern struct {
 };
 pub const UserDataAccountProviderSettingsOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserDataAccountId(self: *@This()) core.HResult!?HSTRING {
         const this: *IUserDataAccountProviderSettingsOperation = @ptrCast(self);
         return try this.getUserDataAccountId();

@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const ISocialDashboardItemUpdater = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOwnerRemoteId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OwnerRemoteId(@ptrCast(self), &_r);
@@ -74,6 +80,12 @@ pub const ISocialDashboardItemUpdater = extern struct {
 };
 pub const ISocialFeedUpdater = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOwnerRemoteId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_OwnerRemoteId(@ptrCast(self), &_r);
@@ -118,6 +130,12 @@ pub const ISocialFeedUpdater = extern struct {
 };
 pub const ISocialInfoProviderManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateSocialFeedUpdaterAsync(self: *@This(), kind: SocialFeedKind, mode: SocialFeedUpdateMode, ownerRemoteId: ?HSTRING) core.HResult!*IAsyncOperation(SocialFeedUpdater) {
         var _r: *IAsyncOperation(SocialFeedUpdater) = undefined;
         const _c = self.vtable.CreateSocialFeedUpdaterAsync(@ptrCast(self), kind, mode, ownerRemoteId, &_r);
@@ -172,6 +190,18 @@ pub const ISocialInfoProviderManagerStatics = extern struct {
 };
 pub const SocialDashboardItemUpdater = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOwnerRemoteId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISocialDashboardItemUpdater = @ptrCast(self);
         return try this.getOwnerRemoteId();
@@ -216,6 +246,18 @@ pub const SocialDashboardItemUpdater = extern struct {
 };
 pub const SocialFeedUpdater = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOwnerRemoteId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISocialFeedUpdater = @ptrCast(self);
         return try this.getOwnerRemoteId();
@@ -240,6 +282,15 @@ pub const SocialFeedUpdater = extern struct {
 };
 pub const SocialInfoProviderManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

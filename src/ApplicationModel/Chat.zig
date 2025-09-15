@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const ChatCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsOnline(self: *@This()) core.HResult!bool {
         const this: *IChatCapabilities = @ptrCast(self);
         return try this.getIsOnline();
@@ -29,6 +41,15 @@ pub const ChatCapabilities = extern struct {
 };
 pub const ChatCapabilitiesManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -55,6 +76,18 @@ pub const ChatCapabilitiesManager = extern struct {
 };
 pub const ChatConversation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHasUnreadMessages(self: *@This()) core.HResult!bool {
         const this: *IChatConversation = @ptrCast(self);
         return try this.getHasUnreadMessages();
@@ -156,6 +189,18 @@ pub const ChatConversation = extern struct {
 };
 pub const ChatConversationReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ChatConversation)) {
         const this: *IChatConversationReader = @ptrCast(self);
         return try this.ReadBatchAsync();
@@ -172,6 +217,18 @@ pub const ChatConversationReader = extern struct {
 };
 pub const ChatConversationThreadingInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatConversationThreadingInfo = @ptrCast(self);
         return try this.getContactId();
@@ -208,9 +265,6 @@ pub const ChatConversationThreadingInfo = extern struct {
         const this: *IChatConversationThreadingInfo = @ptrCast(self);
         return try this.putKind(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IChatConversationThreadingInfo.IID)));
@@ -234,6 +288,18 @@ pub const ChatItemKind = enum(i32) {
 };
 pub const ChatMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAttachments(self: *@This()) core.HResult!*IVector(ChatMessageAttachment) {
         const this: *IChatMessage = @ptrCast(self);
         return try this.getAttachments();
@@ -526,9 +592,6 @@ pub const ChatMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getItemKind();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IChatMessage.IID)));
@@ -542,6 +605,18 @@ pub const ChatMessage = extern struct {
 };
 pub const ChatMessageAttachment = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataStreamReference(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         const this: *IChatMessageAttachment = @ptrCast(self);
         return try this.getDataStreamReference();
@@ -616,9 +691,6 @@ pub const ChatMessageAttachment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOriginalFileName(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateChatMessageAttachment(mimeType: ?HSTRING, dataStreamReference: *IRandomAccessStreamReference) core.HResult!*ChatMessageAttachment {
         const _f = try @This()._IChatMessageAttachmentFactoryCache.get();
         return try _f.CreateChatMessageAttachment(mimeType, dataStreamReference);
@@ -632,6 +704,15 @@ pub const ChatMessageAttachment = extern struct {
 };
 pub const ChatMessageBlocking = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -645,6 +726,18 @@ pub const ChatMessageBlocking = extern struct {
 };
 pub const ChatMessageChange = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeType(self: *@This()) core.HResult!ChatMessageChangeType {
         const this: *IChatMessageChange = @ptrCast(self);
         return try this.getChangeType();
@@ -661,6 +754,18 @@ pub const ChatMessageChange = extern struct {
 };
 pub const ChatMessageChangeReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AcceptChanges(self: *@This()) core.HResult!void {
         const this: *IChatMessageChangeReader = @ptrCast(self);
         return try this.AcceptChanges();
@@ -681,6 +786,18 @@ pub const ChatMessageChangeReader = extern struct {
 };
 pub const ChatMessageChangeTracker = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Enable(self: *@This()) core.HResult!void {
         const this: *IChatMessageChangeTracker = @ptrCast(self);
         return try this.Enable();
@@ -707,6 +824,18 @@ pub const ChatMessageChangeType = enum(i32) {
 };
 pub const ChatMessageChangedDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *IChatMessageChangedDeferral = @ptrCast(self);
         return try this.Complete();
@@ -719,6 +848,18 @@ pub const ChatMessageChangedDeferral = extern struct {
 };
 pub const ChatMessageChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*ChatMessageChangedDeferral {
         const this: *IChatMessageChangedEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -740,6 +881,15 @@ pub const ChatMessageKind = enum(i32) {
 };
 pub const ChatMessageManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -779,6 +929,18 @@ pub const ChatMessageManager = extern struct {
 };
 pub const ChatMessageNotificationTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChatMessage(self: *@This()) core.HResult!*ChatMessage {
         const this: *IChatMessageNotificationTriggerDetails = @ptrCast(self);
         return try this.getChatMessage();
@@ -825,6 +987,18 @@ pub const ChatMessageOperatorKind = enum(i32) {
 };
 pub const ChatMessageReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ChatMessage)) {
         const this: *IChatMessageReader = @ptrCast(self);
         return try this.ReadBatchAsync();
@@ -860,6 +1034,18 @@ pub const ChatMessageStatus = enum(i32) {
 };
 pub const ChatMessageStore = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeTracker(self: *@This()) core.HResult!*ChatMessageChangeTracker {
         const this: *IChatMessageStore = @ptrCast(self);
         return try this.getChangeTracker();
@@ -1042,6 +1228,18 @@ pub const ChatMessageStore = extern struct {
 };
 pub const ChatMessageStoreChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatMessageStoreChangedEventArgs = @ptrCast(self);
         return try this.getId();
@@ -1058,6 +1256,18 @@ pub const ChatMessageStoreChangedEventArgs = extern struct {
 };
 pub const ChatMessageTransport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAppSetAsNotificationProvider(self: *@This()) core.HResult!bool {
         const this: *IChatMessageTransport = @ptrCast(self);
         return try this.getIsAppSetAsNotificationProvider();
@@ -1100,6 +1310,18 @@ pub const ChatMessageTransport = extern struct {
 };
 pub const ChatMessageTransportConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxAttachmentCount(self: *@This()) core.HResult!i32 {
         const this: *IChatMessageTransportConfiguration = @ptrCast(self);
         return try this.getMaxAttachmentCount();
@@ -1134,6 +1356,18 @@ pub const ChatMessageTransportKind = enum(i32) {
 };
 pub const ChatMessageValidationResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxPartCount(self: *@This()) core.HResult!*IReference(u32) {
         const this: *IChatMessageValidationResult = @ptrCast(self);
         return try this.getMaxPartCount();
@@ -1174,6 +1408,18 @@ pub const ChatMessageValidationStatus = enum(i32) {
 };
 pub const ChatQueryOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSearchString(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatQueryOptions = @ptrCast(self);
         return try this.getSearchString();
@@ -1181,9 +1427,6 @@ pub const ChatQueryOptions = extern struct {
     pub fn putSearchString(self: *@This(), value: ?HSTRING) core.HResult!void {
         const this: *IChatQueryOptions = @ptrCast(self);
         return try this.putSearchString(value);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
@@ -1198,6 +1441,18 @@ pub const ChatQueryOptions = extern struct {
 };
 pub const ChatRecipientDeliveryInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransportAddress(self: *@This()) core.HResult!?HSTRING {
         const this: *IChatRecipientDeliveryInfo = @ptrCast(self);
         return try this.getTransportAddress();
@@ -1242,9 +1497,6 @@ pub const ChatRecipientDeliveryInfo = extern struct {
         const this: *IChatRecipientDeliveryInfo = @ptrCast(self);
         return try this.getStatus();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IChatRecipientDeliveryInfo.IID)));
@@ -1263,6 +1515,18 @@ pub const ChatRestoreHistorySpan = enum(i32) {
 };
 pub const ChatSearchReader = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(IChatItem)) {
         const this: *IChatSearchReader = @ptrCast(self);
         return try this.ReadBatchAsync();
@@ -1289,6 +1553,18 @@ pub const ChatStoreChangedEventKind = enum(i32) {
 };
 pub const ChatSyncConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSyncEnabled(self: *@This()) core.HResult!bool {
         const this: *IChatSyncConfiguration = @ptrCast(self);
         return try this.getIsSyncEnabled();
@@ -1313,6 +1589,18 @@ pub const ChatSyncConfiguration = extern struct {
 };
 pub const ChatSyncManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*ChatSyncConfiguration {
         const this: *IChatSyncManager = @ptrCast(self);
         return try this.getConfiguration();
@@ -1359,6 +1647,12 @@ pub const ChatTransportInterpretedErrorCode = enum(i32) {
 };
 pub const IChatCapabilities = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsOnline(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsOnline(@ptrCast(self), &_r);
@@ -1410,6 +1704,12 @@ pub const IChatCapabilities = extern struct {
 };
 pub const IChatCapabilitiesManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCachedCapabilitiesAsync(self: *@This(), address: ?HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
         var _r: *IAsyncOperation(ChatCapabilities) = undefined;
         const _c = self.vtable.GetCachedCapabilitiesAsync(@ptrCast(self), address, &_r);
@@ -1440,6 +1740,12 @@ pub const IChatCapabilitiesManagerStatics = extern struct {
 };
 pub const IChatCapabilitiesManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCachedCapabilitiesAsync(self: *@This(), address: ?HSTRING, transportId: ?HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
         var _r: *IAsyncOperation(ChatCapabilities) = undefined;
         const _c = self.vtable.GetCachedCapabilitiesAsync(@ptrCast(self), address, transportId, &_r);
@@ -1470,6 +1776,12 @@ pub const IChatCapabilitiesManagerStatics2 = extern struct {
 };
 pub const IChatConversation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHasUnreadMessages(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_HasUnreadMessages(@ptrCast(self), &_r);
@@ -1602,6 +1914,12 @@ pub const IChatConversation = extern struct {
 };
 pub const IChatConversation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCanModifyParticipants(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_CanModifyParticipants(@ptrCast(self), &_r);
@@ -1630,6 +1948,12 @@ pub const IChatConversation2 = extern struct {
 };
 pub const IChatConversationReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ChatConversation)) {
         var _r: *IAsyncOperation(IVectorView(ChatConversation)) = undefined;
         const _c = self.vtable.ReadBatchAsync(@ptrCast(self), &_r);
@@ -1660,6 +1984,12 @@ pub const IChatConversationReader = extern struct {
 };
 pub const IChatConversationThreadingInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContactId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContactId(@ptrCast(self), &_r);
@@ -1731,6 +2061,12 @@ pub const IChatConversationThreadingInfo = extern struct {
 };
 pub const IChatItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getItemKind(self: *@This()) core.HResult!ChatItemKind {
         var _r: ChatItemKind = undefined;
         const _c = self.vtable.get_ItemKind(@ptrCast(self), &_r);
@@ -1754,6 +2090,12 @@ pub const IChatItem = extern struct {
 };
 pub const IChatMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAttachments(self: *@This()) core.HResult!*IVector(ChatMessageAttachment) {
         var _r: *IVector(ChatMessageAttachment) = undefined;
         const _c = self.vtable.get_Attachments(@ptrCast(self), &_r);
@@ -1885,6 +2227,12 @@ pub const IChatMessage = extern struct {
 };
 pub const IChatMessage2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEstimatedDownloadSize(self: *@This()) core.HResult!u64 {
         var _r: u64 = undefined;
         const _c = self.vtable.get_EstimatedDownloadSize(@ptrCast(self), &_r);
@@ -2063,6 +2411,12 @@ pub const IChatMessage2 = extern struct {
 };
 pub const IChatMessage3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRemoteId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RemoteId(@ptrCast(self), &_r);
@@ -2086,6 +2440,12 @@ pub const IChatMessage3 = extern struct {
 };
 pub const IChatMessage4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSyncId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SyncId(@ptrCast(self), &_r);
@@ -2114,6 +2474,12 @@ pub const IChatMessage4 = extern struct {
 };
 pub const IChatMessageAttachment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDataStreamReference(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.get_DataStreamReference(@ptrCast(self), &_r);
@@ -2178,6 +2544,12 @@ pub const IChatMessageAttachment = extern struct {
 };
 pub const IChatMessageAttachment2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getThumbnail(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
         const _c = self.vtable.get_Thumbnail(@ptrCast(self), &_r);
@@ -2230,6 +2602,12 @@ pub const IChatMessageAttachment2 = extern struct {
 };
 pub const IChatMessageAttachmentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateChatMessageAttachment(self: *@This(), mimeType: ?HSTRING, dataStreamReference: *IRandomAccessStreamReference) core.HResult!*ChatMessageAttachment {
         var _r: *ChatMessageAttachment = undefined;
         const _c = self.vtable.CreateChatMessageAttachment(@ptrCast(self), mimeType, dataStreamReference, &_r);
@@ -2253,6 +2631,12 @@ pub const IChatMessageAttachmentFactory = extern struct {
 };
 pub const IChatMessageBlockingStatic = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn MarkMessageAsBlockedAsync(self: *@This(), localChatMessageId: ?HSTRING, blocked: bool) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.MarkMessageAsBlockedAsync(@ptrCast(self), localChatMessageId, blocked, &_r);
@@ -2276,6 +2660,12 @@ pub const IChatMessageBlockingStatic = extern struct {
 };
 pub const IChatMessageChange = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeType(self: *@This()) core.HResult!ChatMessageChangeType {
         var _r: ChatMessageChangeType = undefined;
         const _c = self.vtable.get_ChangeType(@ptrCast(self), &_r);
@@ -2306,6 +2696,12 @@ pub const IChatMessageChange = extern struct {
 };
 pub const IChatMessageChangeReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AcceptChanges(self: *@This()) core.HResult!void {
         const _c = self.vtable.AcceptChanges(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2339,6 +2735,12 @@ pub const IChatMessageChangeReader = extern struct {
 };
 pub const IChatMessageChangeTracker = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Enable(self: *@This()) core.HResult!void {
         const _c = self.vtable.Enable(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2372,6 +2774,12 @@ pub const IChatMessageChangeTracker = extern struct {
 };
 pub const IChatMessageChangedDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2393,6 +2801,12 @@ pub const IChatMessageChangedDeferral = extern struct {
 };
 pub const IChatMessageChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*ChatMessageChangedDeferral {
         var _r: *ChatMessageChangedDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -2416,6 +2830,12 @@ pub const IChatMessageChangedEventArgs = extern struct {
 };
 pub const IChatMessageManager2Statics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RegisterTransportAsync(self: *@This()) core.HResult!*IAsyncOperation(?HSTRING) {
         var _r: *IAsyncOperation(?HSTRING) = undefined;
         const _c = self.vtable.RegisterTransportAsync(@ptrCast(self), &_r);
@@ -2446,6 +2866,12 @@ pub const IChatMessageManager2Statics = extern struct {
 };
 pub const IChatMessageManagerStatic = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetTransportsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ChatMessageTransport)) {
         var _r: *IAsyncOperation(IVectorView(ChatMessageTransport)) = undefined;
         const _c = self.vtable.GetTransportsAsync(@ptrCast(self), &_r);
@@ -2488,6 +2914,12 @@ pub const IChatMessageManagerStatic = extern struct {
 };
 pub const IChatMessageManagerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestSyncManagerAsync(self: *@This()) core.HResult!*IAsyncOperation(ChatSyncManager) {
         var _r: *IAsyncOperation(ChatSyncManager) = undefined;
         const _c = self.vtable.RequestSyncManagerAsync(@ptrCast(self), &_r);
@@ -2511,6 +2943,12 @@ pub const IChatMessageManagerStatics3 = extern struct {
 };
 pub const IChatMessageNotificationTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChatMessage(self: *@This()) core.HResult!*ChatMessage {
         var _r: *ChatMessage = undefined;
         const _c = self.vtable.get_ChatMessage(@ptrCast(self), &_r);
@@ -2534,6 +2972,12 @@ pub const IChatMessageNotificationTriggerDetails = extern struct {
 };
 pub const IChatMessageNotificationTriggerDetails2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getShouldDisplayToast(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_ShouldDisplayToast(@ptrCast(self), &_r);
@@ -2578,6 +3022,12 @@ pub const IChatMessageNotificationTriggerDetails2 = extern struct {
 };
 pub const IChatMessageReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ChatMessage)) {
         var _r: *IAsyncOperation(IVectorView(ChatMessage)) = undefined;
         const _c = self.vtable.ReadBatchAsync(@ptrCast(self), &_r);
@@ -2601,6 +3051,12 @@ pub const IChatMessageReader = extern struct {
 };
 pub const IChatMessageReader2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This(), count: i32) core.HResult!*IAsyncOperation(IVectorView(ChatMessage)) {
         var _r: *IAsyncOperation(IVectorView(ChatMessage)) = undefined;
         const _c = self.vtable.ReadBatchAsync(@ptrCast(self), count, &_r);
@@ -2624,6 +3080,12 @@ pub const IChatMessageReader2 = extern struct {
 };
 pub const IChatMessageStore = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChangeTracker(self: *@This()) core.HResult!*ChatMessageChangeTracker {
         var _r: *ChatMessageChangeTracker = undefined;
         const _c = self.vtable.get_ChangeTracker(@ptrCast(self), &_r);
@@ -2722,6 +3184,12 @@ pub const IChatMessageStore = extern struct {
 };
 pub const IChatMessageStore2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ForwardMessageAsync(self: *@This(), localChatMessageId: ?HSTRING, addresses: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(ChatMessage) {
         var _r: *IAsyncOperation(ChatMessage) = undefined;
         const _c = self.vtable.ForwardMessageAsync(@ptrCast(self), localChatMessageId, addresses, &_r);
@@ -2855,6 +3323,12 @@ pub const IChatMessageStore2 = extern struct {
 };
 pub const IChatMessageStore3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetMessageBySyncIdAsync(self: *@This(), syncId: ?HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
         var _r: *IAsyncOperation(ChatMessage) = undefined;
         const _c = self.vtable.GetMessageBySyncIdAsync(@ptrCast(self), syncId, &_r);
@@ -2878,6 +3352,12 @@ pub const IChatMessageStore3 = extern struct {
 };
 pub const IChatMessageStoreChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -2908,6 +3388,12 @@ pub const IChatMessageStoreChangedEventArgs = extern struct {
 };
 pub const IChatMessageTransport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAppSetAsNotificationProvider(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAppSetAsNotificationProvider(@ptrCast(self), &_r);
@@ -2959,6 +3445,12 @@ pub const IChatMessageTransport = extern struct {
 };
 pub const IChatMessageTransport2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*ChatMessageTransportConfiguration {
         var _r: *ChatMessageTransportConfiguration = undefined;
         const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
@@ -2989,6 +3481,12 @@ pub const IChatMessageTransport2 = extern struct {
 };
 pub const IChatMessageTransportConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxAttachmentCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MaxAttachmentCount(@ptrCast(self), &_r);
@@ -3040,6 +3538,12 @@ pub const IChatMessageTransportConfiguration = extern struct {
 };
 pub const IChatMessageValidationResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxPartCount(self: *@This()) core.HResult!*IReference(u32) {
         var _r: *IReference(u32) = undefined;
         const _c = self.vtable.get_MaxPartCount(@ptrCast(self), &_r);
@@ -3084,6 +3588,12 @@ pub const IChatMessageValidationResult = extern struct {
 };
 pub const IChatQueryOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSearchString(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SearchString(@ptrCast(self), &_r);
@@ -3112,6 +3622,12 @@ pub const IChatQueryOptions = extern struct {
 };
 pub const IChatRecipientDeliveryInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransportAddress(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportAddress(@ptrCast(self), &_r);
@@ -3199,6 +3715,12 @@ pub const IChatRecipientDeliveryInfo = extern struct {
 };
 pub const IChatSearchReader = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(IChatItem)) {
         var _r: *IAsyncOperation(IVectorView(IChatItem)) = undefined;
         const _c = self.vtable.ReadBatchAsync(@ptrCast(self), &_r);
@@ -3229,6 +3751,12 @@ pub const IChatSearchReader = extern struct {
 };
 pub const IChatSyncConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSyncEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSyncEnabled(@ptrCast(self), &_r);
@@ -3269,6 +3797,12 @@ pub const IChatSyncConfiguration = extern struct {
 };
 pub const IChatSyncManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*ChatSyncConfiguration {
         var _r: *ChatSyncConfiguration = undefined;
         const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
@@ -3325,6 +3859,12 @@ pub const IChatSyncManager = extern struct {
 };
 pub const IRcsEndUserMessage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportId(@ptrCast(self), &_r);
@@ -3390,6 +3930,12 @@ pub const IRcsEndUserMessage = extern struct {
 };
 pub const IRcsEndUserMessageAction = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Label(@ptrCast(self), &_r);
@@ -3413,6 +3959,12 @@ pub const IRcsEndUserMessageAction = extern struct {
 };
 pub const IRcsEndUserMessageAvailableEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsMessageAvailable(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsMessageAvailable(@ptrCast(self), &_r);
@@ -3443,6 +3995,12 @@ pub const IRcsEndUserMessageAvailableEventArgs = extern struct {
 };
 pub const IRcsEndUserMessageAvailableTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Title(@ptrCast(self), &_r);
@@ -3473,6 +4031,12 @@ pub const IRcsEndUserMessageAvailableTriggerDetails = extern struct {
 };
 pub const IRcsEndUserMessageManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMessageAvailableChanged(self: *@This(), handler: *TypedEventHandler(RcsEndUserMessageManager,RcsEndUserMessageAvailableEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_MessageAvailableChanged(@ptrCast(self), handler, &_r);
@@ -3501,6 +4065,12 @@ pub const IRcsEndUserMessageManager = extern struct {
 };
 pub const IRcsManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetEndUserMessageManager(self: *@This()) core.HResult!*RcsEndUserMessageManager {
         var _r: *RcsEndUserMessageManager = undefined;
         const _c = self.vtable.GetEndUserMessageManager(@ptrCast(self), &_r);
@@ -3545,6 +4115,12 @@ pub const IRcsManagerStatics = extern struct {
 };
 pub const IRcsManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addTransportListChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_TransportListChanged(@ptrCast(self), handler, &_r);
@@ -3573,6 +4149,12 @@ pub const IRcsManagerStatics2 = extern struct {
 };
 pub const IRcsServiceKindSupportedChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServiceKind(self: *@This()) core.HResult!RcsServiceKind {
         var _r: RcsServiceKind = undefined;
         const _c = self.vtable.get_ServiceKind(@ptrCast(self), &_r);
@@ -3596,6 +4178,12 @@ pub const IRcsServiceKindSupportedChangedEventArgs = extern struct {
 };
 pub const IRcsTransport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_ExtendedProperties(@ptrCast(self), &_r);
@@ -3673,6 +4261,12 @@ pub const IRcsTransport = extern struct {
 };
 pub const IRcsTransportConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxAttachmentCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MaxAttachmentCount(@ptrCast(self), &_r);
@@ -3731,6 +4325,12 @@ pub const IRcsTransportConfiguration = extern struct {
 };
 pub const IRemoteParticipantComposingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_TransportId(@ptrCast(self), &_r);
@@ -3768,6 +4368,18 @@ pub const IRemoteParticipantComposingChangedEventArgs = extern struct {
 };
 pub const RcsEndUserMessage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRcsEndUserMessage = @ptrCast(self);
         return try this.getTransportId();
@@ -3804,6 +4416,18 @@ pub const RcsEndUserMessage = extern struct {
 };
 pub const RcsEndUserMessageAction = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLabel(self: *@This()) core.HResult!?HSTRING {
         const this: *IRcsEndUserMessageAction = @ptrCast(self);
         return try this.getLabel();
@@ -3816,6 +4440,18 @@ pub const RcsEndUserMessageAction = extern struct {
 };
 pub const RcsEndUserMessageAvailableEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsMessageAvailable(self: *@This()) core.HResult!bool {
         const this: *IRcsEndUserMessageAvailableEventArgs = @ptrCast(self);
         return try this.getIsMessageAvailable();
@@ -3832,6 +4468,18 @@ pub const RcsEndUserMessageAvailableEventArgs = extern struct {
 };
 pub const RcsEndUserMessageAvailableTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTitle(self: *@This()) core.HResult!?HSTRING {
         const this: *IRcsEndUserMessageAvailableTriggerDetails = @ptrCast(self);
         return try this.getTitle();
@@ -3848,6 +4496,18 @@ pub const RcsEndUserMessageAvailableTriggerDetails = extern struct {
 };
 pub const RcsEndUserMessageManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addMessageAvailableChanged(self: *@This(), handler: *TypedEventHandler(RcsEndUserMessageManager,RcsEndUserMessageAvailableEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IRcsEndUserMessageManager = @ptrCast(self);
         return try this.addMessageAvailableChanged(handler);
@@ -3864,6 +4524,15 @@ pub const RcsEndUserMessageManager = extern struct {
 };
 pub const RcsManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3904,6 +4573,18 @@ pub const RcsServiceKind = enum(i32) {
 };
 pub const RcsServiceKindSupportedChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getServiceKind(self: *@This()) core.HResult!RcsServiceKind {
         const this: *IRcsServiceKindSupportedChangedEventArgs = @ptrCast(self);
         return try this.getServiceKind();
@@ -3916,6 +4597,18 @@ pub const RcsServiceKindSupportedChangedEventArgs = extern struct {
 };
 pub const RcsTransport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExtendedProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         const this: *IRcsTransport = @ptrCast(self);
         return try this.getExtendedProperties();
@@ -3960,6 +4653,18 @@ pub const RcsTransport = extern struct {
 };
 pub const RcsTransportConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxAttachmentCount(self: *@This()) core.HResult!i32 {
         const this: *IRcsTransportConfiguration = @ptrCast(self);
         return try this.getMaxAttachmentCount();
@@ -3992,6 +4697,18 @@ pub const RcsTransportConfiguration = extern struct {
 };
 pub const RemoteParticipantComposingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTransportId(self: *@This()) core.HResult!?HSTRING {
         const this: *IRemoteParticipantComposingChangedEventArgs = @ptrCast(self);
         return try this.getTransportId();

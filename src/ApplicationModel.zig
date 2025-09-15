@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IStartupTask = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestEnableAsync(self: *@This()) core.HResult!*IAsyncOperation(StartupTaskState) {
         var _r: *IAsyncOperation(StartupTaskState) = undefined;
         const _c = self.vtable.RequestEnableAsync(@ptrCast(self), &_r);
@@ -43,6 +49,12 @@ pub const IStartupTask = extern struct {
 };
 pub const IStartupTaskStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForCurrentPackageAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(StartupTask)) {
         var _r: *IAsyncOperation(IVectorView(StartupTask)) = undefined;
         const _c = self.vtable.GetForCurrentPackageAsync(@ptrCast(self), &_r);
@@ -73,6 +85,18 @@ pub const IStartupTaskStatics = extern struct {
 };
 pub const StartupTask = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RequestEnableAsync(self: *@This()) core.HResult!*IAsyncOperation(StartupTaskState) {
         const this: *IStartupTask = @ptrCast(self);
         return try this.RequestEnableAsync();
@@ -88,9 +112,6 @@ pub const StartupTask = extern struct {
     pub fn getTaskId(self: *@This()) core.HResult!?HSTRING {
         const this: *IStartupTask = @ptrCast(self);
         return try this.getTaskId();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentPackageAsync() core.HResult!*IAsyncOperation(IVectorView(StartupTask)) {
         const _f = try @This()._IStartupTaskStaticsCache.get();
@@ -121,6 +142,18 @@ pub const AddResourcePackageOptions = enum(i32) {
 };
 pub const AppDisplayInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppDisplayInfo = @ptrCast(self);
         return try this.getDisplayName();
@@ -146,6 +179,18 @@ pub const AppExecutionContext = enum(i32) {
 };
 pub const AppInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppInfo = @ptrCast(self);
         return try this.getId();
@@ -183,9 +228,6 @@ pub const AppInfo = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSupportedFileExtensions();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getCurrent() core.HResult!*AppInfo {
         const _f = try @This()._IAppInfoStaticsCache.get();
         return try _f.getCurrent();
@@ -207,6 +249,18 @@ pub const AppInfo = extern struct {
 };
 pub const AppInstallerInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         const this: *IAppInstallerInfo = @ptrCast(self);
         return try this.getUri();
@@ -328,6 +382,18 @@ pub const AppInstallerPolicySource = enum(i32) {
 };
 pub const AppInstance = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKey(self: *@This()) core.HResult!?HSTRING {
         const this: *IAppInstance = @ptrCast(self);
         return try this.getKey();
@@ -339,9 +405,6 @@ pub const AppInstance = extern struct {
     pub fn RedirectActivationTo(self: *@This()) core.HResult!void {
         const this: *IAppInstance = @ptrCast(self);
         return try this.RedirectActivationTo();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn getRecommendedInstance() core.HResult!*AppInstance {
         const _f = try @This()._IAppInstanceStaticsCache.get();
@@ -372,6 +435,15 @@ pub const AppInstance = extern struct {
 };
 pub const DesignMode = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -390,6 +462,18 @@ pub const DesignMode = extern struct {
 };
 pub const EnteredBackgroundEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *IEnteredBackgroundEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -402,6 +486,18 @@ pub const EnteredBackgroundEventArgs = extern struct {
 };
 pub const FindRelatedPackagesOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelationship(self: *@This()) core.HResult!PackageRelationship {
         const this: *IFindRelatedPackagesOptions = @ptrCast(self);
         return try this.getRelationship();
@@ -442,9 +538,6 @@ pub const FindRelatedPackagesOptions = extern struct {
         const this: *IFindRelatedPackagesOptions = @ptrCast(self);
         return try this.putIncludeResources(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(Relationship: PackageRelationship) core.HResult!*FindRelatedPackagesOptions {
         const _f = try @This()._IFindRelatedPackagesOptionsFactoryCache.get();
         return try _f.CreateInstance(Relationship);
@@ -458,6 +551,12 @@ pub const FindRelatedPackagesOptions = extern struct {
 };
 pub const IAppDisplayInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -495,6 +594,12 @@ pub const IAppDisplayInfo = extern struct {
 };
 pub const IAppInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -539,6 +644,12 @@ pub const IAppInfo = extern struct {
 };
 pub const IAppInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackage(self: *@This()) core.HResult!*Package {
         var _r: *Package = undefined;
         const _c = self.vtable.get_Package(@ptrCast(self), &_r);
@@ -562,6 +673,12 @@ pub const IAppInfo2 = extern struct {
 };
 pub const IAppInfo3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getExecutionContext(self: *@This()) core.HResult!AppExecutionContext {
         var _r: AppExecutionContext = undefined;
         const _c = self.vtable.get_ExecutionContext(@ptrCast(self), &_r);
@@ -585,6 +702,12 @@ pub const IAppInfo3 = extern struct {
 };
 pub const IAppInfo4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSupportedFileExtensions(self: *@This()) core.HResult!?[*]HSTRING {
         var _r: ?[*]HSTRING = undefined;
         const _c = self.vtable.get_SupportedFileExtensions(@ptrCast(self), &_r);
@@ -608,6 +731,12 @@ pub const IAppInfo4 = extern struct {
 };
 pub const IAppInfoStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrent(self: *@This()) core.HResult!*AppInfo {
         var _r: *AppInfo = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
@@ -645,6 +774,12 @@ pub const IAppInfoStatics = extern struct {
 };
 pub const IAppInstallerInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!*Uri {
         var _r: *Uri = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
@@ -668,6 +803,12 @@ pub const IAppInstallerInfo = extern struct {
 };
 pub const IAppInstallerInfo2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOnLaunch(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_OnLaunch(@ptrCast(self), &_r);
@@ -789,6 +930,12 @@ pub const IAppInstallerInfo2 = extern struct {
 };
 pub const IAppInstance = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getKey(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Key(@ptrCast(self), &_r);
@@ -824,6 +971,12 @@ pub const IAppInstance = extern struct {
 };
 pub const IAppInstanceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRecommendedInstance(self: *@This()) core.HResult!*AppInstance {
         var _r: *AppInstance = undefined;
         const _c = self.vtable.get_RecommendedInstance(@ptrCast(self), &_r);
@@ -873,6 +1026,12 @@ pub const IAppInstanceStatics = extern struct {
 };
 pub const IDesignModeStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesignModeEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_DesignModeEnabled(@ptrCast(self), &_r);
@@ -896,6 +1055,12 @@ pub const IDesignModeStatics = extern struct {
 };
 pub const IDesignModeStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDesignMode2Enabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_DesignMode2Enabled(@ptrCast(self), &_r);
@@ -919,6 +1084,12 @@ pub const IDesignModeStatics2 = extern struct {
 };
 pub const IEnteredBackgroundEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -942,6 +1113,12 @@ pub const IEnteredBackgroundEventArgs = extern struct {
 };
 pub const IFindRelatedPackagesOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRelationship(self: *@This()) core.HResult!PackageRelationship {
         var _r: PackageRelationship = undefined;
         const _c = self.vtable.get_Relationship(@ptrCast(self), &_r);
@@ -1018,6 +1195,12 @@ pub const IFindRelatedPackagesOptions = extern struct {
 };
 pub const IFindRelatedPackagesOptionsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), Relationship: PackageRelationship) core.HResult!*FindRelatedPackagesOptions {
         var _r: *FindRelatedPackagesOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), Relationship, &_r);
@@ -1041,6 +1224,12 @@ pub const IFindRelatedPackagesOptionsFactory = extern struct {
 };
 pub const ILeavingBackgroundEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         var _r: *Deferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -1064,6 +1253,12 @@ pub const ILeavingBackgroundEventArgs = extern struct {
 };
 pub const ILimitedAccessFeatureRequestResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFeatureId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_FeatureId(@ptrCast(self), &_r);
@@ -1101,6 +1296,12 @@ pub const ILimitedAccessFeatureRequestResult = extern struct {
 };
 pub const ILimitedAccessFeaturesStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn TryUnlockFeature(self: *@This(), featureId: ?HSTRING, token: ?HSTRING, attestation: ?HSTRING) core.HResult!*LimitedAccessFeatureRequestResult {
         var _r: *LimitedAccessFeatureRequestResult = undefined;
         const _c = self.vtable.TryUnlockFeature(@ptrCast(self), featureId, token, attestation, &_r);
@@ -1124,6 +1325,12 @@ pub const ILimitedAccessFeaturesStatics = extern struct {
 };
 pub const IPackage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*PackageId {
         var _r: *PackageId = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -1168,6 +1375,12 @@ pub const IPackage = extern struct {
 };
 pub const IPackage2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayName(@ptrCast(self), &_r);
@@ -1233,6 +1446,12 @@ pub const IPackage2 = extern struct {
 };
 pub const IPackage3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!*PackageStatus {
         var _r: *PackageStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1270,6 +1489,12 @@ pub const IPackage3 = extern struct {
 };
 pub const IPackage4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSignatureKind(self: *@This()) core.HResult!PackageSignatureKind {
         var _r: PackageSignatureKind = undefined;
         const _c = self.vtable.get_SignatureKind(@ptrCast(self), &_r);
@@ -1307,6 +1532,12 @@ pub const IPackage4 = extern struct {
 };
 pub const IPackage5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetContentGroupsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
         var _r: *IAsyncOperation(IVector(PackageContentGroup)) = undefined;
         const _c = self.vtable.GetContentGroupsAsync(@ptrCast(self), &_r);
@@ -1358,6 +1589,12 @@ pub const IPackage5 = extern struct {
 };
 pub const IPackage6 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetAppInstallerInfo(self: *@This()) core.HResult!*AppInstallerInfo {
         var _r: *AppInstallerInfo = undefined;
         const _c = self.vtable.GetAppInstallerInfo(@ptrCast(self), &_r);
@@ -1388,6 +1625,12 @@ pub const IPackage6 = extern struct {
 };
 pub const IPackage7 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMutableLocation(self: *@This()) core.HResult!*StorageFolder {
         var _r: *StorageFolder = undefined;
         const _c = self.vtable.get_MutableLocation(@ptrCast(self), &_r);
@@ -1418,6 +1661,12 @@ pub const IPackage7 = extern struct {
 };
 pub const IPackage8 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEffectiveExternalLocation(self: *@This()) core.HResult!*StorageFolder {
         var _r: *StorageFolder = undefined;
         const _c = self.vtable.get_EffectiveExternalLocation(@ptrCast(self), &_r);
@@ -1518,6 +1767,12 @@ pub const IPackage8 = extern struct {
 };
 pub const IPackage9 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FindRelatedPackages(self: *@This(), options: *FindRelatedPackagesOptions) core.HResult!*IVector(Package) {
         var _r: *IVector(Package) = undefined;
         const _c = self.vtable.FindRelatedPackages(@ptrCast(self), options, &_r);
@@ -1548,6 +1803,12 @@ pub const IPackage9 = extern struct {
 };
 pub const IPackageCatalog = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addPackageStaging(self: *@This(), handler: *TypedEventHandler(PackageCatalog,PackageStagingEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PackageStaging(@ptrCast(self), handler, &_r);
@@ -1624,6 +1885,12 @@ pub const IPackageCatalog = extern struct {
 };
 pub const IPackageCatalog2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addPackageContentGroupStaging(self: *@This(), handler: *TypedEventHandler(PackageCatalog,PackageContentGroupStagingEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_PackageContentGroupStaging(@ptrCast(self), handler, &_r);
@@ -1659,6 +1926,12 @@ pub const IPackageCatalog2 = extern struct {
 };
 pub const IPackageCatalog3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn RemoveOptionalPackagesAsync(self: *@This(), optionalPackageFamilyNames: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(PackageCatalogRemoveOptionalPackagesResult) {
         var _r: *IAsyncOperation(PackageCatalogRemoveOptionalPackagesResult) = undefined;
         const _c = self.vtable.RemoveOptionalPackagesAsync(@ptrCast(self), optionalPackageFamilyNames, &_r);
@@ -1682,6 +1955,12 @@ pub const IPackageCatalog3 = extern struct {
 };
 pub const IPackageCatalog4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddResourcePackageAsync(self: *@This(), resourcePackageFamilyName: ?HSTRING, resourceID: ?HSTRING, options: AddResourcePackageOptions) core.HResult!*IAsyncOperationWithProgress(PackageCatalogAddResourcePackageResult,PackageInstallProgress) {
         var _r: *IAsyncOperationWithProgress(PackageCatalogAddResourcePackageResult,PackageInstallProgress) = undefined;
         const _c = self.vtable.AddResourcePackageAsync(@ptrCast(self), resourcePackageFamilyName, resourceID, options, &_r);
@@ -1712,6 +1991,12 @@ pub const IPackageCatalog4 = extern struct {
 };
 pub const IPackageCatalogAddOptionalPackageResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackage(self: *@This()) core.HResult!*Package {
         var _r: *Package = undefined;
         const _c = self.vtable.get_Package(@ptrCast(self), &_r);
@@ -1742,6 +2027,12 @@ pub const IPackageCatalogAddOptionalPackageResult = extern struct {
 };
 pub const IPackageCatalogAddResourcePackageResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackage(self: *@This()) core.HResult!*Package {
         var _r: *Package = undefined;
         const _c = self.vtable.get_Package(@ptrCast(self), &_r);
@@ -1779,6 +2070,12 @@ pub const IPackageCatalogAddResourcePackageResult = extern struct {
 };
 pub const IPackageCatalogRemoveOptionalPackagesResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackagesRemoved(self: *@This()) core.HResult!*IVectorView(Package) {
         var _r: *IVectorView(Package) = undefined;
         const _c = self.vtable.get_PackagesRemoved(@ptrCast(self), &_r);
@@ -1809,6 +2106,12 @@ pub const IPackageCatalogRemoveOptionalPackagesResult = extern struct {
 };
 pub const IPackageCatalogRemoveResourcePackagesResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackagesRemoved(self: *@This()) core.HResult!*IVectorView(Package) {
         var _r: *IVectorView(Package) = undefined;
         const _c = self.vtable.get_PackagesRemoved(@ptrCast(self), &_r);
@@ -1839,6 +2142,12 @@ pub const IPackageCatalogRemoveResourcePackagesResult = extern struct {
 };
 pub const IPackageCatalogStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenForCurrentPackage(self: *@This()) core.HResult!*PackageCatalog {
         var _r: *PackageCatalog = undefined;
         const _c = self.vtable.OpenForCurrentPackage(@ptrCast(self), &_r);
@@ -1869,6 +2178,12 @@ pub const IPackageCatalogStatics = extern struct {
 };
 pub const IPackageCatalogStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn OpenForPackage(self: *@This(), package: *Package) core.HResult!*PackageCatalog {
         var _r: *PackageCatalog = undefined;
         const _c = self.vtable.OpenForPackage(@ptrCast(self), package, &_r);
@@ -1892,6 +2207,12 @@ pub const IPackageCatalogStatics2 = extern struct {
 };
 pub const IPackageContentGroup = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackage(self: *@This()) core.HResult!*Package {
         var _r: *Package = undefined;
         const _c = self.vtable.get_Package(@ptrCast(self), &_r);
@@ -1936,6 +2257,12 @@ pub const IPackageContentGroup = extern struct {
 };
 pub const IPackageContentGroupStagingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ActivityId(@ptrCast(self), &_r);
@@ -2001,6 +2328,12 @@ pub const IPackageContentGroupStagingEventArgs = extern struct {
 };
 pub const IPackageContentGroupStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequiredGroupName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_RequiredGroupName(@ptrCast(self), &_r);
@@ -2024,6 +2357,12 @@ pub const IPackageContentGroupStatics = extern struct {
 };
 pub const IPackageId = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -2096,6 +2435,12 @@ pub const IPackageId = extern struct {
 };
 pub const IPackageIdWithMetadata = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProductId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ProductId(@ptrCast(self), &_r);
@@ -2126,6 +2471,12 @@ pub const IPackageIdWithMetadata = extern struct {
 };
 pub const IPackageInstallingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ActivityId(@ptrCast(self), &_r);
@@ -2177,6 +2528,12 @@ pub const IPackageInstallingEventArgs = extern struct {
 };
 pub const IPackageStagingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ActivityId(@ptrCast(self), &_r);
@@ -2228,6 +2585,12 @@ pub const IPackageStagingEventArgs = extern struct {
 };
 pub const IPackageStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrent(self: *@This()) core.HResult!*Package {
         var _r: *Package = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
@@ -2251,6 +2614,12 @@ pub const IPackageStatics = extern struct {
 };
 pub const IPackageStatus = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn VerifyIsOK(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.VerifyIsOK(@ptrCast(self), &_r);
@@ -2351,6 +2720,12 @@ pub const IPackageStatus = extern struct {
 };
 pub const IPackageStatus2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPartiallyStaged(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPartiallyStaged(@ptrCast(self), &_r);
@@ -2374,6 +2749,12 @@ pub const IPackageStatus2 = extern struct {
 };
 pub const IPackageStatusChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackage(self: *@This()) core.HResult!*Package {
         var _r: *Package = undefined;
         const _c = self.vtable.get_Package(@ptrCast(self), &_r);
@@ -2397,6 +2778,12 @@ pub const IPackageStatusChangedEventArgs = extern struct {
 };
 pub const IPackageUninstallingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ActivityId(@ptrCast(self), &_r);
@@ -2448,6 +2835,12 @@ pub const IPackageUninstallingEventArgs = extern struct {
 };
 pub const IPackageUpdateAvailabilityResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAvailability(self: *@This()) core.HResult!PackageUpdateAvailability {
         var _r: PackageUpdateAvailability = undefined;
         const _c = self.vtable.get_Availability(@ptrCast(self), &_r);
@@ -2478,6 +2871,12 @@ pub const IPackageUpdateAvailabilityResult = extern struct {
 };
 pub const IPackageUpdatingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_ActivityId(@ptrCast(self), &_r);
@@ -2536,6 +2935,12 @@ pub const IPackageUpdatingEventArgs = extern struct {
 };
 pub const IPackageWithMetadata = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getInstallDate(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_InstallDate(@ptrCast(self), &_r);
@@ -2571,6 +2976,12 @@ pub const IPackageWithMetadata = extern struct {
 };
 pub const ISuspendingDeferral = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2592,6 +3003,12 @@ pub const ISuspendingDeferral = extern struct {
 };
 pub const ISuspendingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSuspendingOperation(self: *@This()) core.HResult!*SuspendingOperation {
         var _r: *SuspendingOperation = undefined;
         const _c = self.vtable.get_SuspendingOperation(@ptrCast(self), &_r);
@@ -2615,6 +3032,12 @@ pub const ISuspendingEventArgs = extern struct {
 };
 pub const ISuspendingOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*SuspendingDeferral {
         var _r: *SuspendingDeferral = undefined;
         const _c = self.vtable.GetDeferral(@ptrCast(self), &_r);
@@ -2645,6 +3068,18 @@ pub const ISuspendingOperation = extern struct {
 };
 pub const LeavingBackgroundEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *ILeavingBackgroundEventArgs = @ptrCast(self);
         return try this.GetDeferral();
@@ -2657,6 +3092,18 @@ pub const LeavingBackgroundEventArgs = extern struct {
 };
 pub const LimitedAccessFeatureRequestResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFeatureId(self: *@This()) core.HResult!?HSTRING {
         const this: *ILimitedAccessFeatureRequestResult = @ptrCast(self);
         return try this.getFeatureId();
@@ -2683,6 +3130,15 @@ pub const LimitedAccessFeatureStatus = enum(i32) {
 };
 pub const LimitedAccessFeatures = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -2696,6 +3152,18 @@ pub const LimitedAccessFeatures = extern struct {
 };
 pub const Package = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*PackageId {
         const this: *IPackage = @ptrCast(self);
         return try this.getId();
@@ -2985,9 +3453,6 @@ pub const Package = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSourceUriSchemeName();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getCurrent() core.HResult!*Package {
         const _f = try @This()._IPackageStaticsCache.get();
         return try _f.getCurrent();
@@ -3001,6 +3466,18 @@ pub const Package = extern struct {
 };
 pub const PackageCatalog = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addPackageStaging(self: *@This(), handler: *TypedEventHandler(PackageCatalog,PackageStagingEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IPackageCatalog = @ptrCast(self);
         return try this.addPackageStaging(handler);
@@ -3083,9 +3560,6 @@ pub const PackageCatalog = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveResourcePackagesAsync(resourcePackages);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn OpenForCurrentPackage() core.HResult!*PackageCatalog {
         const _f = try @This()._IPackageCatalogStaticsCache.get();
         return try _f.OpenForCurrentPackage();
@@ -3108,6 +3582,18 @@ pub const PackageCatalog = extern struct {
 };
 pub const PackageCatalogAddOptionalPackageResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackage(self: *@This()) core.HResult!*Package {
         const this: *IPackageCatalogAddOptionalPackageResult = @ptrCast(self);
         return try this.getPackage();
@@ -3124,6 +3610,18 @@ pub const PackageCatalogAddOptionalPackageResult = extern struct {
 };
 pub const PackageCatalogAddResourcePackageResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackage(self: *@This()) core.HResult!*Package {
         const this: *IPackageCatalogAddResourcePackageResult = @ptrCast(self);
         return try this.getPackage();
@@ -3144,6 +3642,18 @@ pub const PackageCatalogAddResourcePackageResult = extern struct {
 };
 pub const PackageCatalogRemoveOptionalPackagesResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackagesRemoved(self: *@This()) core.HResult!*IVectorView(Package) {
         const this: *IPackageCatalogRemoveOptionalPackagesResult = @ptrCast(self);
         return try this.getPackagesRemoved();
@@ -3160,6 +3670,18 @@ pub const PackageCatalogRemoveOptionalPackagesResult = extern struct {
 };
 pub const PackageCatalogRemoveResourcePackagesResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackagesRemoved(self: *@This()) core.HResult!*IVectorView(Package) {
         const this: *IPackageCatalogRemoveResourcePackagesResult = @ptrCast(self);
         return try this.getPackagesRemoved();
@@ -3176,6 +3698,18 @@ pub const PackageCatalogRemoveResourcePackagesResult = extern struct {
 };
 pub const PackageContentGroup = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackage(self: *@This()) core.HResult!*Package {
         const this: *IPackageContentGroup = @ptrCast(self);
         return try this.getPackage();
@@ -3192,9 +3726,6 @@ pub const PackageContentGroup = extern struct {
         const this: *IPackageContentGroup = @ptrCast(self);
         return try this.getIsRequired();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getRequiredGroupName() core.HResult!?HSTRING {
         const _f = try @This()._IPackageContentGroupStaticsCache.get();
         return try _f.getRequiredGroupName();
@@ -3208,6 +3739,18 @@ pub const PackageContentGroup = extern struct {
 };
 pub const PackageContentGroupStagingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         const this: *IPackageContentGroupStagingEventArgs = @ptrCast(self);
         return try this.getActivityId();
@@ -3250,6 +3793,18 @@ pub const PackageContentGroupState = enum(i32) {
 };
 pub const PackageId = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPackageId = @ptrCast(self);
         return try this.getName();
@@ -3307,6 +3862,18 @@ pub const PackageInstallProgress = extern struct {
 };
 pub const PackageInstallingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         const this: *IPackageInstallingEventArgs = @ptrCast(self);
         return try this.getActivityId();
@@ -3347,6 +3914,18 @@ pub const PackageSignatureKind = enum(i32) {
 };
 pub const PackageStagingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         const this: *IPackageStagingEventArgs = @ptrCast(self);
         return try this.getActivityId();
@@ -3375,6 +3954,18 @@ pub const PackageStagingEventArgs = extern struct {
 };
 pub const PackageStatus = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn VerifyIsOK(self: *@This()) core.HResult!bool {
         const this: *IPackageStatus = @ptrCast(self);
         return try this.VerifyIsOK();
@@ -3438,6 +4029,18 @@ pub const PackageStatus = extern struct {
 };
 pub const PackageStatusChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPackage(self: *@This()) core.HResult!*Package {
         const this: *IPackageStatusChangedEventArgs = @ptrCast(self);
         return try this.getPackage();
@@ -3450,6 +4053,18 @@ pub const PackageStatusChangedEventArgs = extern struct {
 };
 pub const PackageUninstallingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         const this: *IPackageUninstallingEventArgs = @ptrCast(self);
         return try this.getActivityId();
@@ -3485,6 +4100,18 @@ pub const PackageUpdateAvailability = enum(i32) {
 };
 pub const PackageUpdateAvailabilityResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAvailability(self: *@This()) core.HResult!PackageUpdateAvailability {
         const this: *IPackageUpdateAvailabilityResult = @ptrCast(self);
         return try this.getAvailability();
@@ -3501,6 +4128,18 @@ pub const PackageUpdateAvailabilityResult = extern struct {
 };
 pub const PackageUpdatingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getActivityId(self: *@This()) core.HResult!*Guid {
         const this: *IPackageUpdatingEventArgs = @ptrCast(self);
         return try this.getActivityId();
@@ -3539,6 +4178,18 @@ pub const PackageVersion = extern struct {
 };
 pub const SuspendingDeferral = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This()) core.HResult!void {
         const this: *ISuspendingDeferral = @ptrCast(self);
         return try this.Complete();
@@ -3551,6 +4202,18 @@ pub const SuspendingDeferral = extern struct {
 };
 pub const SuspendingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSuspendingOperation(self: *@This()) core.HResult!*SuspendingOperation {
         const this: *ISuspendingEventArgs = @ptrCast(self);
         return try this.getSuspendingOperation();
@@ -3563,6 +4226,18 @@ pub const SuspendingEventArgs = extern struct {
 };
 pub const SuspendingOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeferral(self: *@This()) core.HResult!*SuspendingDeferral {
         const this: *ISuspendingOperation = @ptrCast(self);
         return try this.GetDeferral();
@@ -3585,6 +4260,18 @@ pub const FullTrustLaunchResult = enum(i32) {
 };
 pub const FullTrustProcessLaunchResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLaunchResult(self: *@This()) core.HResult!FullTrustLaunchResult {
         const this: *IFullTrustProcessLaunchResult = @ptrCast(self);
         return try this.getLaunchResult();
@@ -3601,6 +4288,15 @@ pub const FullTrustProcessLaunchResult = extern struct {
 };
 pub const FullTrustProcessLauncher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -3635,6 +4331,12 @@ pub const FullTrustProcessLauncher = extern struct {
 };
 pub const IFullTrustProcessLaunchResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLaunchResult(self: *@This()) core.HResult!FullTrustLaunchResult {
         var _r: FullTrustLaunchResult = undefined;
         const _c = self.vtable.get_LaunchResult(@ptrCast(self), &_r);
@@ -3665,6 +4367,12 @@ pub const IFullTrustProcessLaunchResult = extern struct {
 };
 pub const IFullTrustProcessLauncherStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LaunchFullTrustProcessForCurrentAppAsync(self: *@This()) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.LaunchFullTrustProcessForCurrentAppAsync(@ptrCast(self), &_r);
@@ -3709,6 +4417,12 @@ pub const IFullTrustProcessLauncherStatics = extern struct {
 };
 pub const IFullTrustProcessLauncherStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(self: *@This(), commandLine: ?HSTRING) core.HResult!*IAsyncOperation(FullTrustProcessLaunchResult) {
         var _r: *IAsyncOperation(FullTrustProcessLaunchResult) = undefined;
         const _c = self.vtable.LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(@ptrCast(self), commandLine, &_r);

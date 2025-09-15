@@ -9,6 +9,12 @@ pub const HingeState = enum(i32) {
 };
 pub const ITwoPanelHingedDevicePosturePreview = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentPostureAsync(self: *@This()) core.HResult!*IAsyncOperation(TwoPanelHingedDevicePosturePreviewReading) {
         var _r: *IAsyncOperation(TwoPanelHingedDevicePosturePreviewReading) = undefined;
         const _c = self.vtable.GetCurrentPostureAsync(@ptrCast(self), &_r);
@@ -44,6 +50,12 @@ pub const ITwoPanelHingedDevicePosturePreview = extern struct {
 };
 pub const ITwoPanelHingedDevicePosturePreviewReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -102,6 +114,12 @@ pub const ITwoPanelHingedDevicePosturePreviewReading = extern struct {
 };
 pub const ITwoPanelHingedDevicePosturePreviewReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*TwoPanelHingedDevicePosturePreviewReading {
         var _r: *TwoPanelHingedDevicePosturePreviewReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -125,6 +143,12 @@ pub const ITwoPanelHingedDevicePosturePreviewReadingChangedEventArgs = extern st
 };
 pub const ITwoPanelHingedDevicePosturePreviewStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(TwoPanelHingedDevicePosturePreview) {
         var _r: *IAsyncOperation(TwoPanelHingedDevicePosturePreview) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
@@ -148,6 +172,18 @@ pub const ITwoPanelHingedDevicePosturePreviewStatics = extern struct {
 };
 pub const TwoPanelHingedDevicePosturePreview = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentPostureAsync(self: *@This()) core.HResult!*IAsyncOperation(TwoPanelHingedDevicePosturePreviewReading) {
         const this: *ITwoPanelHingedDevicePosturePreview = @ptrCast(self);
         return try this.GetCurrentPostureAsync();
@@ -159,9 +195,6 @@ pub const TwoPanelHingedDevicePosturePreview = extern struct {
     pub fn removePostureChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *ITwoPanelHingedDevicePosturePreview = @ptrCast(self);
         return try this.removePostureChanged(token);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(TwoPanelHingedDevicePosturePreview) {
         const _f = try @This()._ITwoPanelHingedDevicePosturePreviewStaticsCache.get();
@@ -176,6 +209,18 @@ pub const TwoPanelHingedDevicePosturePreview = extern struct {
 };
 pub const TwoPanelHingedDevicePosturePreviewReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *ITwoPanelHingedDevicePosturePreviewReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -208,6 +253,18 @@ pub const TwoPanelHingedDevicePosturePreviewReading = extern struct {
 };
 pub const TwoPanelHingedDevicePosturePreviewReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*TwoPanelHingedDevicePosturePreviewReading {
         const this: *ITwoPanelHingedDevicePosturePreviewReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();

@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const AdcChannel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getController(self: *@This()) core.HResult!*AdcController {
         const this: *IAdcChannel = @ptrCast(self);
         return try this.getController();
@@ -32,6 +44,18 @@ pub const AdcChannelMode = enum(i32) {
 };
 pub const AdcController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannelCount(self: *@This()) core.HResult!i32 {
         const this: *IAdcController = @ptrCast(self);
         return try this.getChannelCount();
@@ -64,9 +88,6 @@ pub const AdcController = extern struct {
         const this: *IAdcController = @ptrCast(self);
         return try this.OpenChannel(channelNumber);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(AdcController) {
         const _f = try @This()._IAdcControllerStatics2Cache.get();
         return try _f.GetDefaultAsync();
@@ -85,6 +106,12 @@ pub const AdcController = extern struct {
 };
 pub const IAdcChannel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getController(self: *@This()) core.HResult!*AdcController {
         var _r: *AdcController = undefined;
         const _c = self.vtable.get_Controller(@ptrCast(self), &_r);
@@ -122,6 +149,12 @@ pub const IAdcChannel = extern struct {
 };
 pub const IAdcController = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChannelCount(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_ChannelCount(@ptrCast(self), &_r);
@@ -192,6 +225,12 @@ pub const IAdcController = extern struct {
 };
 pub const IAdcControllerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetControllersAsync(self: *@This(), provider: *IAdcProvider) core.HResult!*IAsyncOperation(IVectorView(AdcController)) {
         var _r: *IAsyncOperation(IVectorView(AdcController)) = undefined;
         const _c = self.vtable.GetControllersAsync(@ptrCast(self), provider, &_r);
@@ -215,6 +254,12 @@ pub const IAdcControllerStatics = extern struct {
 };
 pub const IAdcControllerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(AdcController) {
         var _r: *IAsyncOperation(AdcController) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);

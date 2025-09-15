@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const EasClientSecurityPolicy = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequireEncryption(self: *@This()) core.HResult!bool {
         const this: *IEasClientSecurityPolicy = @ptrCast(self);
         return try this.getRequireEncryption();
@@ -73,9 +85,6 @@ pub const EasClientSecurityPolicy = extern struct {
         const this: *IEasClientSecurityPolicy = @ptrCast(self);
         return try this.ApplyAsync();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEasClientSecurityPolicy.IID)));
@@ -89,6 +98,18 @@ pub const EasClientSecurityPolicy = extern struct {
 };
 pub const EasComplianceResults = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompliant(self: *@This()) core.HResult!bool {
         const this: *IEasComplianceResults = @ptrCast(self);
         return try this.getCompliant();
@@ -238,6 +259,12 @@ pub const EasRequireEncryptionResult = enum(i32) {
 };
 pub const IEasClientSecurityPolicy = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRequireEncryption(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_RequireEncryption(@ptrCast(self), &_r);
@@ -364,6 +391,12 @@ pub const IEasClientSecurityPolicy = extern struct {
 };
 pub const IEasComplianceResults = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCompliant(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Compliant(@ptrCast(self), &_r);
@@ -443,6 +476,12 @@ pub const IEasComplianceResults = extern struct {
 };
 pub const IEasComplianceResults2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEncryptionProviderType(self: *@This()) core.HResult!EasEncryptionProviderType {
         var _r: EasEncryptionProviderType = undefined;
         const _c = self.vtable.get_EncryptionProviderType(@ptrCast(self), &_r);
@@ -466,6 +505,18 @@ pub const IEasComplianceResults2 = extern struct {
 };
 pub const EasClientDeviceInformation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*Guid {
         const this: *IEasClientDeviceInformation = @ptrCast(self);
         return try this.getId();
@@ -504,9 +555,6 @@ pub const EasClientDeviceInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSystemFirmwareVersion();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEasClientDeviceInformation.IID)));
@@ -520,6 +568,12 @@ pub const EasClientDeviceInformation = extern struct {
 };
 pub const IEasClientDeviceInformation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!*Guid {
         var _r: *Guid = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -578,6 +632,12 @@ pub const IEasClientDeviceInformation = extern struct {
 };
 pub const IEasClientDeviceInformation2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSystemHardwareVersion(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SystemHardwareVersion(@ptrCast(self), &_r);

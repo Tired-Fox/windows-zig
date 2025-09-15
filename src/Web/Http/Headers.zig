@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const HttpCacheDirectiveHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxAge(self: *@This()) core.HResult!*IReference(TimeSpan) {
         const this: *IHttpCacheDirectiveHeaderValueCollection = @ptrCast(self);
         return try this.getMaxAge();
@@ -98,6 +110,18 @@ pub const HttpCacheDirectiveHeaderValueCollection = extern struct {
 };
 pub const HttpChallengeHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParameters(self: *@This()) core.HResult!*IVector(HttpNameValueHeaderValue) {
         const this: *IHttpChallengeHeaderValue = @ptrCast(self);
         return try this.getParameters();
@@ -116,9 +140,6 @@ pub const HttpChallengeHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromScheme(scheme: ?HSTRING) core.HResult!*HttpChallengeHeaderValue {
         const _f = try @This()._IHttpChallengeHeaderValueFactoryCache.get();
@@ -146,6 +167,18 @@ pub const HttpChallengeHeaderValue = extern struct {
 };
 pub const HttpChallengeHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const this: *IHttpChallengeHeaderValueCollection = @ptrCast(self);
         return try this.ParseAdd(input);
@@ -211,6 +244,18 @@ pub const HttpChallengeHeaderValueCollection = extern struct {
 };
 pub const HttpConnectionOptionHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getToken(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpConnectionOptionHeaderValue = @ptrCast(self);
         return try this.getToken();
@@ -221,9 +266,6 @@ pub const HttpConnectionOptionHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(token: ?HSTRING) core.HResult!*HttpConnectionOptionHeaderValue {
         const _f = try @This()._IHttpConnectionOptionHeaderValueFactoryCache.get();
@@ -247,6 +289,18 @@ pub const HttpConnectionOptionHeaderValue = extern struct {
 };
 pub const HttpConnectionOptionHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const this: *IHttpConnectionOptionHeaderValueCollection = @ptrCast(self);
         return try this.ParseAdd(input);
@@ -312,6 +366,18 @@ pub const HttpConnectionOptionHeaderValueCollection = extern struct {
 };
 pub const HttpContentCodingHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentCoding(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpContentCodingHeaderValue = @ptrCast(self);
         return try this.getContentCoding();
@@ -322,9 +388,6 @@ pub const HttpContentCodingHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(contentCoding: ?HSTRING) core.HResult!*HttpContentCodingHeaderValue {
         const _f = try @This()._IHttpContentCodingHeaderValueFactoryCache.get();
@@ -348,6 +411,18 @@ pub const HttpContentCodingHeaderValue = extern struct {
 };
 pub const HttpContentCodingHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const this: *IHttpContentCodingHeaderValueCollection = @ptrCast(self);
         return try this.ParseAdd(input);
@@ -413,6 +488,18 @@ pub const HttpContentCodingHeaderValueCollection = extern struct {
 };
 pub const HttpContentCodingWithQualityHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentCoding(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpContentCodingWithQualityHeaderValue = @ptrCast(self);
         return try this.getContentCoding();
@@ -427,9 +514,6 @@ pub const HttpContentCodingWithQualityHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromValue(contentCoding: ?HSTRING) core.HResult!*HttpContentCodingWithQualityHeaderValue {
         const _f = try @This()._IHttpContentCodingWithQualityHeaderValueFactoryCache.get();
@@ -457,6 +541,18 @@ pub const HttpContentCodingWithQualityHeaderValue = extern struct {
 };
 pub const HttpContentCodingWithQualityHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const this: *IHttpContentCodingWithQualityHeaderValueCollection = @ptrCast(self);
         return try this.ParseAdd(input);
@@ -522,6 +618,18 @@ pub const HttpContentCodingWithQualityHeaderValueCollection = extern struct {
 };
 pub const HttpContentDispositionHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDispositionType(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpContentDispositionHeaderValue = @ptrCast(self);
         return try this.getDispositionType();
@@ -573,9 +681,6 @@ pub const HttpContentDispositionHeaderValue = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(dispositionType: ?HSTRING) core.HResult!*HttpContentDispositionHeaderValue {
         const _f = try @This()._IHttpContentDispositionHeaderValueFactoryCache.get();
         return try _f.Create(dispositionType);
@@ -598,6 +703,18 @@ pub const HttpContentDispositionHeaderValue = extern struct {
 };
 pub const HttpContentHeaderCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentDisposition(self: *@This()) core.HResult!*HttpContentDispositionHeaderValue {
         const this: *IHttpContentHeaderCollection = @ptrCast(self);
         return try this.getContentDisposition();
@@ -713,9 +830,6 @@ pub const HttpContentHeaderCollection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpContentHeaderCollection.IID)));
@@ -729,6 +843,18 @@ pub const HttpContentHeaderCollection = extern struct {
 };
 pub const HttpContentRangeHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFirstBytePosition(self: *@This()) core.HResult!*IReference(u64) {
         const this: *IHttpContentRangeHeaderValue = @ptrCast(self);
         return try this.getFirstBytePosition();
@@ -755,9 +881,6 @@ pub const HttpContentRangeHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromLength(length: u64) core.HResult!*HttpContentRangeHeaderValue {
         const _f = try @This()._IHttpContentRangeHeaderValueFactoryCache.get();
@@ -789,6 +912,18 @@ pub const HttpContentRangeHeaderValue = extern struct {
 };
 pub const HttpCookiePairHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpCookiePairHeaderValue = @ptrCast(self);
         return try this.getName();
@@ -807,9 +942,6 @@ pub const HttpCookiePairHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromName(name: ?HSTRING) core.HResult!*HttpCookiePairHeaderValue {
         const _f = try @This()._IHttpCookiePairHeaderValueFactoryCache.get();
@@ -837,6 +969,18 @@ pub const HttpCookiePairHeaderValue = extern struct {
 };
 pub const HttpCookiePairHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const this: *IHttpCookiePairHeaderValueCollection = @ptrCast(self);
         return try this.ParseAdd(input);
@@ -902,6 +1046,18 @@ pub const HttpCookiePairHeaderValueCollection = extern struct {
 };
 pub const HttpCredentialsHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParameters(self: *@This()) core.HResult!*IVector(HttpNameValueHeaderValue) {
         const this: *IHttpCredentialsHeaderValue = @ptrCast(self);
         return try this.getParameters();
@@ -920,9 +1076,6 @@ pub const HttpCredentialsHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromScheme(scheme: ?HSTRING) core.HResult!*HttpCredentialsHeaderValue {
         const _f = try @This()._IHttpCredentialsHeaderValueFactoryCache.get();
@@ -950,6 +1103,18 @@ pub const HttpCredentialsHeaderValue = extern struct {
 };
 pub const HttpDateOrDeltaHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDate(self: *@This()) core.HResult!*IReference(DateTime) {
         const this: *IHttpDateOrDeltaHeaderValue = @ptrCast(self);
         return try this.getDate();
@@ -964,9 +1129,6 @@ pub const HttpDateOrDeltaHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Parse(input: ?HSTRING) core.HResult!*HttpDateOrDeltaHeaderValue {
         const _f = try @This()._IHttpDateOrDeltaHeaderValueStaticsCache.get();
@@ -985,6 +1147,18 @@ pub const HttpDateOrDeltaHeaderValue = extern struct {
 };
 pub const HttpExpectationHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpExpectationHeaderValue = @ptrCast(self);
         return try this.getName();
@@ -1007,9 +1181,6 @@ pub const HttpExpectationHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromName(name: ?HSTRING) core.HResult!*HttpExpectationHeaderValue {
         const _f = try @This()._IHttpExpectationHeaderValueFactoryCache.get();
@@ -1037,6 +1208,18 @@ pub const HttpExpectationHeaderValue = extern struct {
 };
 pub const HttpExpectationHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const this: *IHttpExpectationHeaderValueCollection = @ptrCast(self);
         return try this.ParseAdd(input);
@@ -1102,6 +1285,18 @@ pub const HttpExpectationHeaderValueCollection = extern struct {
 };
 pub const HttpLanguageHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const this: *IHttpLanguageHeaderValueCollection = @ptrCast(self);
         return try this.ParseAdd(input);
@@ -1167,6 +1362,18 @@ pub const HttpLanguageHeaderValueCollection = extern struct {
 };
 pub const HttpLanguageRangeWithQualityHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguageRange(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpLanguageRangeWithQualityHeaderValue = @ptrCast(self);
         return try this.getLanguageRange();
@@ -1181,9 +1388,6 @@ pub const HttpLanguageRangeWithQualityHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromLanguageRange(languageRange: ?HSTRING) core.HResult!*HttpLanguageRangeWithQualityHeaderValue {
         const _f = try @This()._IHttpLanguageRangeWithQualityHeaderValueFactoryCache.get();
@@ -1211,6 +1415,18 @@ pub const HttpLanguageRangeWithQualityHeaderValue = extern struct {
 };
 pub const HttpLanguageRangeWithQualityHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const this: *IHttpLanguageRangeWithQualityHeaderValueCollection = @ptrCast(self);
         return try this.ParseAdd(input);
@@ -1276,6 +1492,18 @@ pub const HttpLanguageRangeWithQualityHeaderValueCollection = extern struct {
 };
 pub const HttpMediaTypeHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharSet(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpMediaTypeHeaderValue = @ptrCast(self);
         return try this.getCharSet();
@@ -1303,9 +1531,6 @@ pub const HttpMediaTypeHeaderValue = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(mediaType: ?HSTRING) core.HResult!*HttpMediaTypeHeaderValue {
         const _f = try @This()._IHttpMediaTypeHeaderValueFactoryCache.get();
         return try _f.Create(mediaType);
@@ -1328,6 +1553,18 @@ pub const HttpMediaTypeHeaderValue = extern struct {
 };
 pub const HttpMediaTypeWithQualityHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharSet(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpMediaTypeWithQualityHeaderValue = @ptrCast(self);
         return try this.getCharSet();
@@ -1363,9 +1600,6 @@ pub const HttpMediaTypeWithQualityHeaderValue = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateFromMediaType(mediaType: ?HSTRING) core.HResult!*HttpMediaTypeWithQualityHeaderValue {
         const _f = try @This()._IHttpMediaTypeWithQualityHeaderValueFactoryCache.get();
         return try _f.CreateFromMediaType(mediaType);
@@ -1392,6 +1626,18 @@ pub const HttpMediaTypeWithQualityHeaderValue = extern struct {
 };
 pub const HttpMediaTypeWithQualityHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const this: *IHttpMediaTypeWithQualityHeaderValueCollection = @ptrCast(self);
         return try this.ParseAdd(input);
@@ -1457,6 +1703,18 @@ pub const HttpMediaTypeWithQualityHeaderValueCollection = extern struct {
 };
 pub const HttpMethodHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const this: *IHttpMethodHeaderValueCollection = @ptrCast(self);
         return try this.ParseAdd(input);
@@ -1522,6 +1780,18 @@ pub const HttpMethodHeaderValueCollection = extern struct {
 };
 pub const HttpNameValueHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpNameValueHeaderValue = @ptrCast(self);
         return try this.getName();
@@ -1540,9 +1810,6 @@ pub const HttpNameValueHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromName(name: ?HSTRING) core.HResult!*HttpNameValueHeaderValue {
         const _f = try @This()._IHttpNameValueHeaderValueFactoryCache.get();
@@ -1570,6 +1837,18 @@ pub const HttpNameValueHeaderValue = extern struct {
 };
 pub const HttpProductHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IHttpProductHeaderValue = @ptrCast(self);
         return try this.getName();
@@ -1584,9 +1863,6 @@ pub const HttpProductHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromName(productName: ?HSTRING) core.HResult!*HttpProductHeaderValue {
         const _f = try @This()._IHttpProductHeaderValueFactoryCache.get();
@@ -1614,6 +1890,18 @@ pub const HttpProductHeaderValue = extern struct {
 };
 pub const HttpProductInfoHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProduct(self: *@This()) core.HResult!*HttpProductHeaderValue {
         const this: *IHttpProductInfoHeaderValue = @ptrCast(self);
         return try this.getProduct();
@@ -1628,9 +1916,6 @@ pub const HttpProductInfoHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromComment(productComment: ?HSTRING) core.HResult!*HttpProductInfoHeaderValue {
         const _f = try @This()._IHttpProductInfoHeaderValueFactoryCache.get();
@@ -1658,6 +1943,18 @@ pub const HttpProductInfoHeaderValue = extern struct {
 };
 pub const HttpProductInfoHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const this: *IHttpProductInfoHeaderValueCollection = @ptrCast(self);
         return try this.ParseAdd(input);
@@ -1723,6 +2020,18 @@ pub const HttpProductInfoHeaderValueCollection = extern struct {
 };
 pub const HttpRequestHeaderCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccept(self: *@This()) core.HResult!*HttpMediaTypeWithQualityHeaderValueCollection {
         const this: *IHttpRequestHeaderCollection = @ptrCast(self);
         return try this.getAccept();
@@ -1882,6 +2191,18 @@ pub const HttpRequestHeaderCollection = extern struct {
 };
 pub const HttpResponseHeaderCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAge(self: *@This()) core.HResult!*IReference(TimeSpan) {
         const this: *IHttpResponseHeaderCollection = @ptrCast(self);
         return try this.getAge();
@@ -1989,6 +2310,18 @@ pub const HttpResponseHeaderCollection = extern struct {
 };
 pub const HttpTransferCodingHeaderValue = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParameters(self: *@This()) core.HResult!*IVector(HttpNameValueHeaderValue) {
         const this: *IHttpTransferCodingHeaderValue = @ptrCast(self);
         return try this.getParameters();
@@ -2003,9 +2336,6 @@ pub const HttpTransferCodingHeaderValue = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStringable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ToString();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(input: ?HSTRING) core.HResult!*HttpTransferCodingHeaderValue {
         const _f = try @This()._IHttpTransferCodingHeaderValueFactoryCache.get();
@@ -2029,6 +2359,18 @@ pub const HttpTransferCodingHeaderValue = extern struct {
 };
 pub const HttpTransferCodingHeaderValueCollection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const this: *IHttpTransferCodingHeaderValueCollection = @ptrCast(self);
         return try this.ParseAdd(input);
@@ -2094,6 +2436,12 @@ pub const HttpTransferCodingHeaderValueCollection = extern struct {
 };
 pub const IHttpCacheDirectiveHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxAge(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_MaxAge(@ptrCast(self), &_r);
@@ -2170,6 +2518,12 @@ pub const IHttpCacheDirectiveHeaderValueCollection = extern struct {
 };
 pub const IHttpChallengeHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParameters(self: *@This()) core.HResult!*IVector(HttpNameValueHeaderValue) {
         var _r: *IVector(HttpNameValueHeaderValue) = undefined;
         const _c = self.vtable.get_Parameters(@ptrCast(self), &_r);
@@ -2207,6 +2561,12 @@ pub const IHttpChallengeHeaderValue = extern struct {
 };
 pub const IHttpChallengeHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ParseAdd(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2235,6 +2595,12 @@ pub const IHttpChallengeHeaderValueCollection = extern struct {
 };
 pub const IHttpChallengeHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromScheme(self: *@This(), scheme: ?HSTRING) core.HResult!*HttpChallengeHeaderValue {
         var _r: *HttpChallengeHeaderValue = undefined;
         const _c = self.vtable.CreateFromScheme(@ptrCast(self), scheme, &_r);
@@ -2265,6 +2631,12 @@ pub const IHttpChallengeHeaderValueFactory = extern struct {
 };
 pub const IHttpChallengeHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpChallengeHeaderValue {
         var _r: *HttpChallengeHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -2295,6 +2667,12 @@ pub const IHttpChallengeHeaderValueStatics = extern struct {
 };
 pub const IHttpConnectionOptionHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getToken(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Token(@ptrCast(self), &_r);
@@ -2318,6 +2696,12 @@ pub const IHttpConnectionOptionHeaderValue = extern struct {
 };
 pub const IHttpConnectionOptionHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ParseAdd(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2346,6 +2730,12 @@ pub const IHttpConnectionOptionHeaderValueCollection = extern struct {
 };
 pub const IHttpConnectionOptionHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), token: ?HSTRING) core.HResult!*HttpConnectionOptionHeaderValue {
         var _r: *HttpConnectionOptionHeaderValue = undefined;
         const _c = self.vtable.Create(@ptrCast(self), token, &_r);
@@ -2369,6 +2759,12 @@ pub const IHttpConnectionOptionHeaderValueFactory = extern struct {
 };
 pub const IHttpConnectionOptionHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpConnectionOptionHeaderValue {
         var _r: *HttpConnectionOptionHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -2399,6 +2795,12 @@ pub const IHttpConnectionOptionHeaderValueStatics = extern struct {
 };
 pub const IHttpContentCodingHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentCoding(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentCoding(@ptrCast(self), &_r);
@@ -2422,6 +2824,12 @@ pub const IHttpContentCodingHeaderValue = extern struct {
 };
 pub const IHttpContentCodingHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ParseAdd(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2450,6 +2858,12 @@ pub const IHttpContentCodingHeaderValueCollection = extern struct {
 };
 pub const IHttpContentCodingHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), contentCoding: ?HSTRING) core.HResult!*HttpContentCodingHeaderValue {
         var _r: *HttpContentCodingHeaderValue = undefined;
         const _c = self.vtable.Create(@ptrCast(self), contentCoding, &_r);
@@ -2473,6 +2887,12 @@ pub const IHttpContentCodingHeaderValueFactory = extern struct {
 };
 pub const IHttpContentCodingHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpContentCodingHeaderValue {
         var _r: *HttpContentCodingHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -2503,6 +2923,12 @@ pub const IHttpContentCodingHeaderValueStatics = extern struct {
 };
 pub const IHttpContentCodingWithQualityHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentCoding(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentCoding(@ptrCast(self), &_r);
@@ -2533,6 +2959,12 @@ pub const IHttpContentCodingWithQualityHeaderValue = extern struct {
 };
 pub const IHttpContentCodingWithQualityHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ParseAdd(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2561,6 +2993,12 @@ pub const IHttpContentCodingWithQualityHeaderValueCollection = extern struct {
 };
 pub const IHttpContentCodingWithQualityHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromValue(self: *@This(), contentCoding: ?HSTRING) core.HResult!*HttpContentCodingWithQualityHeaderValue {
         var _r: *HttpContentCodingWithQualityHeaderValue = undefined;
         const _c = self.vtable.CreateFromValue(@ptrCast(self), contentCoding, &_r);
@@ -2591,6 +3029,12 @@ pub const IHttpContentCodingWithQualityHeaderValueFactory = extern struct {
 };
 pub const IHttpContentCodingWithQualityHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpContentCodingWithQualityHeaderValue {
         var _r: *HttpContentCodingWithQualityHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -2621,6 +3065,12 @@ pub const IHttpContentCodingWithQualityHeaderValueStatics = extern struct {
 };
 pub const IHttpContentDispositionHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDispositionType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DispositionType(@ptrCast(self), &_r);
@@ -2704,6 +3154,12 @@ pub const IHttpContentDispositionHeaderValue = extern struct {
 };
 pub const IHttpContentDispositionHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), dispositionType: ?HSTRING) core.HResult!*HttpContentDispositionHeaderValue {
         var _r: *HttpContentDispositionHeaderValue = undefined;
         const _c = self.vtable.Create(@ptrCast(self), dispositionType, &_r);
@@ -2727,6 +3183,12 @@ pub const IHttpContentDispositionHeaderValueFactory = extern struct {
 };
 pub const IHttpContentDispositionHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpContentDispositionHeaderValue {
         var _r: *HttpContentDispositionHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -2757,6 +3219,12 @@ pub const IHttpContentDispositionHeaderValueStatics = extern struct {
 };
 pub const IHttpContentHeaderCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentDisposition(self: *@This()) core.HResult!*HttpContentDispositionHeaderValue {
         var _r: *HttpContentDispositionHeaderValue = undefined;
         const _c = self.vtable.get_ContentDisposition(@ptrCast(self), &_r);
@@ -2895,6 +3363,12 @@ pub const IHttpContentHeaderCollection = extern struct {
 };
 pub const IHttpContentRangeHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getFirstBytePosition(self: *@This()) core.HResult!*IReference(u64) {
         var _r: *IReference(u64) = undefined;
         const _c = self.vtable.get_FirstBytePosition(@ptrCast(self), &_r);
@@ -2944,6 +3418,12 @@ pub const IHttpContentRangeHeaderValue = extern struct {
 };
 pub const IHttpContentRangeHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromLength(self: *@This(), length: u64) core.HResult!*HttpContentRangeHeaderValue {
         var _r: *HttpContentRangeHeaderValue = undefined;
         const _c = self.vtable.CreateFromLength(@ptrCast(self), length, &_r);
@@ -2981,6 +3461,12 @@ pub const IHttpContentRangeHeaderValueFactory = extern struct {
 };
 pub const IHttpContentRangeHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpContentRangeHeaderValue {
         var _r: *HttpContentRangeHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -3011,6 +3497,12 @@ pub const IHttpContentRangeHeaderValueStatics = extern struct {
 };
 pub const IHttpCookiePairHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -3046,6 +3538,12 @@ pub const IHttpCookiePairHeaderValue = extern struct {
 };
 pub const IHttpCookiePairHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ParseAdd(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3074,6 +3572,12 @@ pub const IHttpCookiePairHeaderValueCollection = extern struct {
 };
 pub const IHttpCookiePairHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromName(self: *@This(), name: ?HSTRING) core.HResult!*HttpCookiePairHeaderValue {
         var _r: *HttpCookiePairHeaderValue = undefined;
         const _c = self.vtable.CreateFromName(@ptrCast(self), name, &_r);
@@ -3104,6 +3608,12 @@ pub const IHttpCookiePairHeaderValueFactory = extern struct {
 };
 pub const IHttpCookiePairHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpCookiePairHeaderValue {
         var _r: *HttpCookiePairHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -3134,6 +3644,12 @@ pub const IHttpCookiePairHeaderValueStatics = extern struct {
 };
 pub const IHttpCredentialsHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParameters(self: *@This()) core.HResult!*IVector(HttpNameValueHeaderValue) {
         var _r: *IVector(HttpNameValueHeaderValue) = undefined;
         const _c = self.vtable.get_Parameters(@ptrCast(self), &_r);
@@ -3171,6 +3687,12 @@ pub const IHttpCredentialsHeaderValue = extern struct {
 };
 pub const IHttpCredentialsHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromScheme(self: *@This(), scheme: ?HSTRING) core.HResult!*HttpCredentialsHeaderValue {
         var _r: *HttpCredentialsHeaderValue = undefined;
         const _c = self.vtable.CreateFromScheme(@ptrCast(self), scheme, &_r);
@@ -3201,6 +3723,12 @@ pub const IHttpCredentialsHeaderValueFactory = extern struct {
 };
 pub const IHttpCredentialsHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpCredentialsHeaderValue {
         var _r: *HttpCredentialsHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -3231,6 +3759,12 @@ pub const IHttpCredentialsHeaderValueStatics = extern struct {
 };
 pub const IHttpDateOrDeltaHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDate(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_Date(@ptrCast(self), &_r);
@@ -3261,6 +3795,12 @@ pub const IHttpDateOrDeltaHeaderValue = extern struct {
 };
 pub const IHttpDateOrDeltaHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpDateOrDeltaHeaderValue {
         var _r: *HttpDateOrDeltaHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -3291,6 +3831,12 @@ pub const IHttpDateOrDeltaHeaderValueStatics = extern struct {
 };
 pub const IHttpExpectationHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -3333,6 +3879,12 @@ pub const IHttpExpectationHeaderValue = extern struct {
 };
 pub const IHttpExpectationHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ParseAdd(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3361,6 +3913,12 @@ pub const IHttpExpectationHeaderValueCollection = extern struct {
 };
 pub const IHttpExpectationHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromName(self: *@This(), name: ?HSTRING) core.HResult!*HttpExpectationHeaderValue {
         var _r: *HttpExpectationHeaderValue = undefined;
         const _c = self.vtable.CreateFromName(@ptrCast(self), name, &_r);
@@ -3391,6 +3949,12 @@ pub const IHttpExpectationHeaderValueFactory = extern struct {
 };
 pub const IHttpExpectationHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpExpectationHeaderValue {
         var _r: *HttpExpectationHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -3421,6 +3985,12 @@ pub const IHttpExpectationHeaderValueStatics = extern struct {
 };
 pub const IHttpLanguageHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ParseAdd(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3449,6 +4019,12 @@ pub const IHttpLanguageHeaderValueCollection = extern struct {
 };
 pub const IHttpLanguageRangeWithQualityHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLanguageRange(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_LanguageRange(@ptrCast(self), &_r);
@@ -3479,6 +4055,12 @@ pub const IHttpLanguageRangeWithQualityHeaderValue = extern struct {
 };
 pub const IHttpLanguageRangeWithQualityHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ParseAdd(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3507,6 +4089,12 @@ pub const IHttpLanguageRangeWithQualityHeaderValueCollection = extern struct {
 };
 pub const IHttpLanguageRangeWithQualityHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromLanguageRange(self: *@This(), languageRange: ?HSTRING) core.HResult!*HttpLanguageRangeWithQualityHeaderValue {
         var _r: *HttpLanguageRangeWithQualityHeaderValue = undefined;
         const _c = self.vtable.CreateFromLanguageRange(@ptrCast(self), languageRange, &_r);
@@ -3537,6 +4125,12 @@ pub const IHttpLanguageRangeWithQualityHeaderValueFactory = extern struct {
 };
 pub const IHttpLanguageRangeWithQualityHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpLanguageRangeWithQualityHeaderValue {
         var _r: *HttpLanguageRangeWithQualityHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -3567,6 +4161,12 @@ pub const IHttpLanguageRangeWithQualityHeaderValueStatics = extern struct {
 };
 pub const IHttpMediaTypeHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharSet(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CharSet(@ptrCast(self), &_r);
@@ -3614,6 +4214,12 @@ pub const IHttpMediaTypeHeaderValue = extern struct {
 };
 pub const IHttpMediaTypeHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), mediaType: ?HSTRING) core.HResult!*HttpMediaTypeHeaderValue {
         var _r: *HttpMediaTypeHeaderValue = undefined;
         const _c = self.vtable.Create(@ptrCast(self), mediaType, &_r);
@@ -3637,6 +4243,12 @@ pub const IHttpMediaTypeHeaderValueFactory = extern struct {
 };
 pub const IHttpMediaTypeHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpMediaTypeHeaderValue {
         var _r: *HttpMediaTypeHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -3667,6 +4279,12 @@ pub const IHttpMediaTypeHeaderValueStatics = extern struct {
 };
 pub const IHttpMediaTypeWithQualityHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCharSet(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_CharSet(@ptrCast(self), &_r);
@@ -3726,6 +4344,12 @@ pub const IHttpMediaTypeWithQualityHeaderValue = extern struct {
 };
 pub const IHttpMediaTypeWithQualityHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ParseAdd(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3754,6 +4378,12 @@ pub const IHttpMediaTypeWithQualityHeaderValueCollection = extern struct {
 };
 pub const IHttpMediaTypeWithQualityHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromMediaType(self: *@This(), mediaType: ?HSTRING) core.HResult!*HttpMediaTypeWithQualityHeaderValue {
         var _r: *HttpMediaTypeWithQualityHeaderValue = undefined;
         const _c = self.vtable.CreateFromMediaType(@ptrCast(self), mediaType, &_r);
@@ -3784,6 +4414,12 @@ pub const IHttpMediaTypeWithQualityHeaderValueFactory = extern struct {
 };
 pub const IHttpMediaTypeWithQualityHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpMediaTypeWithQualityHeaderValue {
         var _r: *HttpMediaTypeWithQualityHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -3814,6 +4450,12 @@ pub const IHttpMediaTypeWithQualityHeaderValueStatics = extern struct {
 };
 pub const IHttpMethodHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ParseAdd(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3842,6 +4484,12 @@ pub const IHttpMethodHeaderValueCollection = extern struct {
 };
 pub const IHttpNameValueHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -3877,6 +4525,12 @@ pub const IHttpNameValueHeaderValue = extern struct {
 };
 pub const IHttpNameValueHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromName(self: *@This(), name: ?HSTRING) core.HResult!*HttpNameValueHeaderValue {
         var _r: *HttpNameValueHeaderValue = undefined;
         const _c = self.vtable.CreateFromName(@ptrCast(self), name, &_r);
@@ -3907,6 +4561,12 @@ pub const IHttpNameValueHeaderValueFactory = extern struct {
 };
 pub const IHttpNameValueHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpNameValueHeaderValue {
         var _r: *HttpNameValueHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -3937,6 +4597,12 @@ pub const IHttpNameValueHeaderValueStatics = extern struct {
 };
 pub const IHttpProductHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -3967,6 +4633,12 @@ pub const IHttpProductHeaderValue = extern struct {
 };
 pub const IHttpProductHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromName(self: *@This(), productName: ?HSTRING) core.HResult!*HttpProductHeaderValue {
         var _r: *HttpProductHeaderValue = undefined;
         const _c = self.vtable.CreateFromName(@ptrCast(self), productName, &_r);
@@ -3997,6 +4669,12 @@ pub const IHttpProductHeaderValueFactory = extern struct {
 };
 pub const IHttpProductHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpProductHeaderValue {
         var _r: *HttpProductHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -4027,6 +4705,12 @@ pub const IHttpProductHeaderValueStatics = extern struct {
 };
 pub const IHttpProductInfoHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProduct(self: *@This()) core.HResult!*HttpProductHeaderValue {
         var _r: *HttpProductHeaderValue = undefined;
         const _c = self.vtable.get_Product(@ptrCast(self), &_r);
@@ -4057,6 +4741,12 @@ pub const IHttpProductInfoHeaderValue = extern struct {
 };
 pub const IHttpProductInfoHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ParseAdd(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4085,6 +4775,12 @@ pub const IHttpProductInfoHeaderValueCollection = extern struct {
 };
 pub const IHttpProductInfoHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateFromComment(self: *@This(), productComment: ?HSTRING) core.HResult!*HttpProductInfoHeaderValue {
         var _r: *HttpProductInfoHeaderValue = undefined;
         const _c = self.vtable.CreateFromComment(@ptrCast(self), productComment, &_r);
@@ -4115,6 +4811,12 @@ pub const IHttpProductInfoHeaderValueFactory = extern struct {
 };
 pub const IHttpProductInfoHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpProductInfoHeaderValue {
         var _r: *HttpProductInfoHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);
@@ -4145,6 +4847,12 @@ pub const IHttpProductInfoHeaderValueStatics = extern struct {
 };
 pub const IHttpRequestHeaderCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccept(self: *@This()) core.HResult!*HttpMediaTypeWithQualityHeaderValueCollection {
         var _r: *HttpMediaTypeWithQualityHeaderValueCollection = undefined;
         const _c = self.vtable.get_Accept(@ptrCast(self), &_r);
@@ -4344,6 +5052,12 @@ pub const IHttpRequestHeaderCollection = extern struct {
 };
 pub const IHttpResponseHeaderCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAge(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_Age(@ptrCast(self), &_r);
@@ -4462,6 +5176,12 @@ pub const IHttpResponseHeaderCollection = extern struct {
 };
 pub const IHttpTransferCodingHeaderValue = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParameters(self: *@This()) core.HResult!*IVector(HttpNameValueHeaderValue) {
         var _r: *IVector(HttpNameValueHeaderValue) = undefined;
         const _c = self.vtable.get_Parameters(@ptrCast(self), &_r);
@@ -4492,6 +5212,12 @@ pub const IHttpTransferCodingHeaderValue = extern struct {
 };
 pub const IHttpTransferCodingHeaderValueCollection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ParseAdd(self: *@This(), input: ?HSTRING) core.HResult!void {
         const _c = self.vtable.ParseAdd(@ptrCast(self), input);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4520,6 +5246,12 @@ pub const IHttpTransferCodingHeaderValueCollection = extern struct {
 };
 pub const IHttpTransferCodingHeaderValueFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), input: ?HSTRING) core.HResult!*HttpTransferCodingHeaderValue {
         var _r: *HttpTransferCodingHeaderValue = undefined;
         const _c = self.vtable.Create(@ptrCast(self), input, &_r);
@@ -4543,6 +5275,12 @@ pub const IHttpTransferCodingHeaderValueFactory = extern struct {
 };
 pub const IHttpTransferCodingHeaderValueStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Parse(self: *@This(), input: ?HSTRING) core.HResult!*HttpTransferCodingHeaderValue {
         var _r: *HttpTransferCodingHeaderValue = undefined;
         const _c = self.vtable.Parse(@ptrCast(self), input, &_r);

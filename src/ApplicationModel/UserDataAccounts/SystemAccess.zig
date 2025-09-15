@@ -6,6 +6,18 @@ pub const DeviceAccountAuthenticationType = enum(i32) {
 };
 pub const DeviceAccountConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccountName(self: *@This()) core.HResult!?HSTRING {
         const this: *IDeviceAccountConfiguration = @ptrCast(self);
         return try this.getAccountName();
@@ -526,9 +538,6 @@ pub const DeviceAccountConfiguration = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsSyncScheduleManagedBySystem(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDeviceAccountConfiguration.IID)));
@@ -571,6 +580,12 @@ pub const DeviceAccountSyncScheduleKind = enum(i32) {
 };
 pub const IDeviceAccountConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAccountName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_AccountName(@ptrCast(self), &_r);
@@ -779,6 +794,12 @@ pub const IDeviceAccountConfiguration = extern struct {
 };
 pub const IDeviceAccountConfiguration2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIncomingServerCredential(self: *@This()) core.HResult!*PasswordCredential {
         var _r: *PasswordCredential = undefined;
         const _c = self.vtable.get_IncomingServerCredential(@ptrCast(self), &_r);
@@ -1133,6 +1154,12 @@ pub const IDeviceAccountConfiguration2 = extern struct {
 };
 pub const IUserDataAccountSystemAccessManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddAndShowDeviceAccountsAsync(self: *@This(), accounts: *IIterable(DeviceAccountConfiguration)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.AddAndShowDeviceAccountsAsync(@ptrCast(self), accounts, &_r);
@@ -1156,6 +1183,12 @@ pub const IUserDataAccountSystemAccessManagerStatics = extern struct {
 };
 pub const IUserDataAccountSystemAccessManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn SuppressLocalAccountWithAccountAsync(self: *@This(), userDataAccountId: ?HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.SuppressLocalAccountWithAccountAsync(@ptrCast(self), userDataAccountId, &_r);
@@ -1200,6 +1233,15 @@ pub const IUserDataAccountSystemAccessManagerStatics2 = extern struct {
 };
 pub const UserDataAccountSystemAccessManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }

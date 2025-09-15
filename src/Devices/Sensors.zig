@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const Accelerometer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*AccelerometerReading {
         const this: *IAccelerometer = @ptrCast(self);
         return try this.GetCurrentReading();
@@ -89,9 +101,6 @@ pub const Accelerometer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Accelerometer) {
         const _f = try @This()._IAccelerometerStatics3Cache.get();
         return try _f.FromIdAsync(deviceId);
@@ -119,6 +128,18 @@ pub const Accelerometer = extern struct {
 };
 pub const AccelerometerDataThreshold = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getXAxisInGForce(self: *@This()) core.HResult!f64 {
         const this: *IAccelerometerDataThreshold = @ptrCast(self);
         return try this.getXAxisInGForce();
@@ -151,6 +172,18 @@ pub const AccelerometerDataThreshold = extern struct {
 };
 pub const AccelerometerReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IAccelerometerReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -189,6 +222,18 @@ pub const AccelerometerReading = extern struct {
 };
 pub const AccelerometerReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*AccelerometerReading {
         const this: *IAccelerometerReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -206,6 +251,18 @@ pub const AccelerometerReadingType = enum(i32) {
 };
 pub const AccelerometerShakenEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IAccelerometerShakenEventArgs = @ptrCast(self);
         return try this.getTimestamp();
@@ -218,6 +275,18 @@ pub const AccelerometerShakenEventArgs = extern struct {
 };
 pub const ActivitySensor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReadingAsync(self: *@This()) core.HResult!*IAsyncOperation(ActivitySensorReading) {
         const this: *IActivitySensor = @ptrCast(self);
         return try this.GetCurrentReadingAsync();
@@ -250,9 +319,6 @@ pub const ActivitySensor = extern struct {
         const this: *IActivitySensor = @ptrCast(self);
         return try this.removeReadingChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(ActivitySensor) {
         const _f = try @This()._IActivitySensorStaticsCache.get();
         return try _f.GetDefaultAsync();
@@ -282,6 +348,18 @@ pub const ActivitySensor = extern struct {
 };
 pub const ActivitySensorReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IActivitySensorReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -302,6 +380,18 @@ pub const ActivitySensorReading = extern struct {
 };
 pub const ActivitySensorReadingChangeReport = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*ActivitySensorReading {
         const this: *IActivitySensorReadingChangeReport = @ptrCast(self);
         return try this.getReading();
@@ -314,6 +404,18 @@ pub const ActivitySensorReadingChangeReport = extern struct {
 };
 pub const ActivitySensorReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*ActivitySensorReading {
         const this: *IActivitySensorReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -330,6 +432,18 @@ pub const ActivitySensorReadingConfidence = enum(i32) {
 };
 pub const ActivitySensorTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadReports(self: *@This()) core.HResult!*IVectorView(ActivitySensorReadingChangeReport) {
         const this: *IActivitySensorTriggerDetails = @ptrCast(self);
         return try this.ReadReports();
@@ -352,6 +466,18 @@ pub const ActivityType = enum(i32) {
 };
 pub const AdaptiveDimmingOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowWhenExternalDisplayConnected(self: *@This()) core.HResult!bool {
         const this: *IAdaptiveDimmingOptions = @ptrCast(self);
         return try this.getAllowWhenExternalDisplayConnected();
@@ -368,6 +494,18 @@ pub const AdaptiveDimmingOptions = extern struct {
 };
 pub const Altimeter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*AltimeterReading {
         const this: *IAltimeter = @ptrCast(self);
         return try this.GetCurrentReading();
@@ -417,9 +555,6 @@ pub const Altimeter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*Altimeter {
         const _f = try @This()._IAltimeterStaticsCache.get();
         return try _f.GetDefault();
@@ -433,6 +568,18 @@ pub const Altimeter = extern struct {
 };
 pub const AltimeterReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IAltimeterReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -463,6 +610,18 @@ pub const AltimeterReading = extern struct {
 };
 pub const AltimeterReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*AltimeterReading {
         const this: *IAltimeterReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -475,6 +634,18 @@ pub const AltimeterReadingChangedEventArgs = extern struct {
 };
 pub const Barometer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*BarometerReading {
         const this: *IBarometer = @ptrCast(self);
         return try this.GetCurrentReading();
@@ -531,9 +702,6 @@ pub const Barometer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Barometer) {
         const _f = try @This()._IBarometerStatics2Cache.get();
         return try _f.FromIdAsync(deviceId);
@@ -556,6 +724,18 @@ pub const Barometer = extern struct {
 };
 pub const BarometerDataThreshold = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHectopascals(self: *@This()) core.HResult!f64 {
         const this: *IBarometerDataThreshold = @ptrCast(self);
         return try this.getHectopascals();
@@ -572,6 +752,18 @@ pub const BarometerDataThreshold = extern struct {
 };
 pub const BarometerReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IBarometerReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -602,6 +794,18 @@ pub const BarometerReading = extern struct {
 };
 pub const BarometerReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*BarometerReading {
         const this: *IBarometerReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -614,6 +818,18 @@ pub const BarometerReadingChangedEventArgs = extern struct {
 };
 pub const Compass = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*CompassReading {
         const this: *ICompass = @ptrCast(self);
         return try this.GetCurrentReading();
@@ -687,9 +903,6 @@ pub const Compass = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ICompassStatics2Cache.get();
         return try _f.GetDeviceSelector();
@@ -712,6 +925,18 @@ pub const Compass = extern struct {
 };
 pub const CompassDataThreshold = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDegrees(self: *@This()) core.HResult!f64 {
         const this: *ICompassDataThreshold = @ptrCast(self);
         return try this.getDegrees();
@@ -728,6 +953,18 @@ pub const CompassDataThreshold = extern struct {
 };
 pub const CompassReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *ICompassReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -769,6 +1006,18 @@ pub const CompassReading = extern struct {
 };
 pub const CompassReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*CompassReading {
         const this: *ICompassReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -781,6 +1030,18 @@ pub const CompassReadingChangedEventArgs = extern struct {
 };
 pub const DetectedPerson = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEngagement(self: *@This()) core.HResult!HumanEngagement {
         const this: *IDetectedPerson = @ptrCast(self);
         return try this.getEngagement();
@@ -809,6 +1070,18 @@ pub const DetectedPerson = extern struct {
 };
 pub const Gyrometer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*GyrometerReading {
         const this: *IGyrometer = @ptrCast(self);
         return try this.GetCurrentReading();
@@ -882,9 +1155,6 @@ pub const Gyrometer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*Gyrometer {
         const _f = try @This()._IGyrometerStaticsCache.get();
         return try _f.GetDefault();
@@ -907,6 +1177,18 @@ pub const Gyrometer = extern struct {
 };
 pub const GyrometerDataThreshold = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getXAxisInDegreesPerSecond(self: *@This()) core.HResult!f64 {
         const this: *IGyrometerDataThreshold = @ptrCast(self);
         return try this.getXAxisInDegreesPerSecond();
@@ -939,6 +1221,18 @@ pub const GyrometerDataThreshold = extern struct {
 };
 pub const GyrometerReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IGyrometerReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -977,6 +1271,18 @@ pub const GyrometerReading = extern struct {
 };
 pub const GyrometerReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*GyrometerReading {
         const this: *IGyrometerReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -989,6 +1295,18 @@ pub const GyrometerReadingChangedEventArgs = extern struct {
 };
 pub const HeadOrientation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRollInDegrees(self: *@This()) core.HResult!*IReference(f64) {
         const this: *IHeadOrientation = @ptrCast(self);
         return try this.getRollInDegrees();
@@ -1009,6 +1327,18 @@ pub const HeadOrientation = extern struct {
 };
 pub const HeadPosition = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAzimuthInDegrees(self: *@This()) core.HResult!*IReference(f64) {
         const this: *IHeadPosition = @ptrCast(self);
         return try this.getAzimuthInDegrees();
@@ -1025,6 +1355,18 @@ pub const HeadPosition = extern struct {
 };
 pub const HingeAngleReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IHingeAngleReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -1045,6 +1387,18 @@ pub const HingeAngleReading = extern struct {
 };
 pub const HingeAngleSensor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReadingAsync(self: *@This()) core.HResult!*IAsyncOperation(HingeAngleReading) {
         const this: *IHingeAngleSensor = @ptrCast(self);
         return try this.GetCurrentReadingAsync();
@@ -1073,9 +1427,6 @@ pub const HingeAngleSensor = extern struct {
         const this: *IHingeAngleSensor = @ptrCast(self);
         return try this.removeReadingChanged(token);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IHingeAngleSensorStaticsCache.get();
         return try _f.GetDeviceSelector();
@@ -1101,6 +1452,18 @@ pub const HingeAngleSensor = extern struct {
 };
 pub const HingeAngleSensorReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*HingeAngleReading {
         const this: *IHingeAngleSensorReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -1123,6 +1486,18 @@ pub const HumanPresence = enum(i32) {
 };
 pub const HumanPresenceFeatures = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSensorId(self: *@This()) core.HResult!?HSTRING {
         const this: *IHumanPresenceFeatures = @ptrCast(self);
         return try this.getSensorId();
@@ -1165,6 +1540,18 @@ pub const HumanPresenceFeatures = extern struct {
 };
 pub const HumanPresenceSensor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IHumanPresenceSensor = @ptrCast(self);
         return try this.getDeviceId();
@@ -1238,9 +1625,6 @@ pub const HumanPresenceSensor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxDetectableAltitudeInDegrees();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromId(sensorId: ?HSTRING) core.HResult!*HumanPresenceSensor {
         const _f = try @This()._IHumanPresenceSensorStatics2Cache.get();
         return try _f.FromId(sensorId);
@@ -1271,6 +1655,18 @@ pub const HumanPresenceSensor = extern struct {
 };
 pub const HumanPresenceSensorReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IHumanPresenceSensorReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -1316,6 +1712,18 @@ pub const HumanPresenceSensorReading = extern struct {
 };
 pub const HumanPresenceSensorReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*HumanPresenceSensorReading {
         const this: *IHumanPresenceSensorReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -1328,6 +1736,18 @@ pub const HumanPresenceSensorReadingChangedEventArgs = extern struct {
 };
 pub const HumanPresenceSensorReadingUpdate = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!*IReference(DateTime) {
         const this: *IHumanPresenceSensorReadingUpdate = @ptrCast(self);
         return try this.getTimestamp();
@@ -1374,9 +1794,6 @@ pub const HumanPresenceSensorReadingUpdate = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putOnlookerPresence(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn init() core.HResult!*@This() {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHumanPresenceSensorReadingUpdate.IID)));
@@ -1390,6 +1807,18 @@ pub const HumanPresenceSensorReadingUpdate = extern struct {
 };
 pub const HumanPresenceSettings = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSensorId(self: *@This()) core.HResult!?HSTRING {
         const this: *IHumanPresenceSettings = @ptrCast(self);
         return try this.getSensorId();
@@ -1502,9 +1931,6 @@ pub const HumanPresenceSettings = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getOnlookerDetectionOptions();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetCurrentSettingsAsync() core.HResult!*IAsyncOperation(HumanPresenceSettings) {
         const _f = try @This()._IHumanPresenceSettingsStaticsCache.get();
         return try _f.GetCurrentSettingsAsync();
@@ -1550,6 +1976,12 @@ pub const HumanPresenceSettings = extern struct {
 };
 pub const IAccelerometer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*AccelerometerReading {
         var _r: *AccelerometerReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
@@ -1616,6 +2048,12 @@ pub const IAccelerometer = extern struct {
 };
 pub const IAccelerometer2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         const _c = self.vtable.put_ReadingTransform(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1644,6 +2082,12 @@ pub const IAccelerometer2 = extern struct {
 };
 pub const IAccelerometer3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ReportLatency(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1679,6 +2123,12 @@ pub const IAccelerometer3 = extern struct {
 };
 pub const IAccelerometer4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReadingType(self: *@This()) core.HResult!AccelerometerReadingType {
         var _r: AccelerometerReadingType = undefined;
         const _c = self.vtable.get_ReadingType(@ptrCast(self), &_r);
@@ -1702,6 +2152,12 @@ pub const IAccelerometer4 = extern struct {
 };
 pub const IAccelerometer5 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReportThreshold(self: *@This()) core.HResult!*AccelerometerDataThreshold {
         var _r: *AccelerometerDataThreshold = undefined;
         const _c = self.vtable.get_ReportThreshold(@ptrCast(self), &_r);
@@ -1725,6 +2181,12 @@ pub const IAccelerometer5 = extern struct {
 };
 pub const IAccelerometerDataThreshold = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getXAxisInGForce(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_XAxisInGForce(@ptrCast(self), &_r);
@@ -1777,6 +2239,12 @@ pub const IAccelerometerDataThreshold = extern struct {
 };
 pub const IAccelerometerDeviceId = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -1800,6 +2268,12 @@ pub const IAccelerometerDeviceId = extern struct {
 };
 pub const IAccelerometerReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -1844,6 +2318,12 @@ pub const IAccelerometerReading = extern struct {
 };
 pub const IAccelerometerReading2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_PerformanceCount(@ptrCast(self), &_r);
@@ -1874,6 +2354,12 @@ pub const IAccelerometerReading2 = extern struct {
 };
 pub const IAccelerometerReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*AccelerometerReading {
         var _r: *AccelerometerReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -1897,6 +2383,12 @@ pub const IAccelerometerReadingChangedEventArgs = extern struct {
 };
 pub const IAccelerometerShakenEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -1920,6 +2412,12 @@ pub const IAccelerometerShakenEventArgs = extern struct {
 };
 pub const IAccelerometerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*Accelerometer {
         var _r: *Accelerometer = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -1943,6 +2441,12 @@ pub const IAccelerometerStatics = extern struct {
 };
 pub const IAccelerometerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This(), readingType: AccelerometerReadingType) core.HResult!*Accelerometer {
         var _r: *Accelerometer = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), readingType, &_r);
@@ -1966,6 +2470,12 @@ pub const IAccelerometerStatics2 = extern struct {
 };
 pub const IAccelerometerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Accelerometer) {
         var _r: *IAsyncOperation(Accelerometer) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
@@ -1996,6 +2506,12 @@ pub const IAccelerometerStatics3 = extern struct {
 };
 pub const IActivitySensor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReadingAsync(self: *@This()) core.HResult!*IAsyncOperation(ActivitySensorReading) {
         var _r: *IAsyncOperation(ActivitySensorReading) = undefined;
         const _c = self.vtable.GetCurrentReadingAsync(@ptrCast(self), &_r);
@@ -2066,6 +2582,12 @@ pub const IActivitySensor = extern struct {
 };
 pub const IActivitySensorReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -2103,6 +2625,12 @@ pub const IActivitySensorReading = extern struct {
 };
 pub const IActivitySensorReadingChangeReport = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*ActivitySensorReading {
         var _r: *ActivitySensorReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -2126,6 +2654,12 @@ pub const IActivitySensorReadingChangeReport = extern struct {
 };
 pub const IActivitySensorReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*ActivitySensorReading {
         var _r: *ActivitySensorReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -2149,6 +2683,12 @@ pub const IActivitySensorReadingChangedEventArgs = extern struct {
 };
 pub const IActivitySensorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultAsync(self: *@This()) core.HResult!*IAsyncOperation(ActivitySensor) {
         var _r: *IAsyncOperation(ActivitySensor) = undefined;
         const _c = self.vtable.GetDefaultAsync(@ptrCast(self), &_r);
@@ -2200,6 +2740,12 @@ pub const IActivitySensorStatics = extern struct {
 };
 pub const IActivitySensorTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReadReports(self: *@This()) core.HResult!*IVectorView(ActivitySensorReadingChangeReport) {
         var _r: *IVectorView(ActivitySensorReadingChangeReport) = undefined;
         const _c = self.vtable.ReadReports(@ptrCast(self), &_r);
@@ -2223,6 +2769,12 @@ pub const IActivitySensorTriggerDetails = extern struct {
 };
 pub const IAdaptiveDimmingOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowWhenExternalDisplayConnected(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowWhenExternalDisplayConnected(@ptrCast(self), &_r);
@@ -2251,6 +2803,12 @@ pub const IAdaptiveDimmingOptions = extern struct {
 };
 pub const IAltimeter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*AltimeterReading {
         var _r: *AltimeterReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
@@ -2312,6 +2870,12 @@ pub const IAltimeter = extern struct {
 };
 pub const IAltimeter2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ReportLatency(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2347,6 +2911,12 @@ pub const IAltimeter2 = extern struct {
 };
 pub const IAltimeterReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -2377,6 +2947,12 @@ pub const IAltimeterReading = extern struct {
 };
 pub const IAltimeterReading2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_PerformanceCount(@ptrCast(self), &_r);
@@ -2407,6 +2983,12 @@ pub const IAltimeterReading2 = extern struct {
 };
 pub const IAltimeterReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*AltimeterReading {
         var _r: *AltimeterReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -2430,6 +3012,12 @@ pub const IAltimeterReadingChangedEventArgs = extern struct {
 };
 pub const IAltimeterStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*Altimeter {
         var _r: *Altimeter = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -2453,6 +3041,12 @@ pub const IAltimeterStatics = extern struct {
 };
 pub const IBarometer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*BarometerReading {
         var _r: *BarometerReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
@@ -2514,6 +3108,12 @@ pub const IBarometer = extern struct {
 };
 pub const IBarometer2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ReportLatency(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2549,6 +3149,12 @@ pub const IBarometer2 = extern struct {
 };
 pub const IBarometer3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReportThreshold(self: *@This()) core.HResult!*BarometerDataThreshold {
         var _r: *BarometerDataThreshold = undefined;
         const _c = self.vtable.get_ReportThreshold(@ptrCast(self), &_r);
@@ -2572,6 +3178,12 @@ pub const IBarometer3 = extern struct {
 };
 pub const IBarometerDataThreshold = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHectopascals(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Hectopascals(@ptrCast(self), &_r);
@@ -2600,6 +3212,12 @@ pub const IBarometerDataThreshold = extern struct {
 };
 pub const IBarometerReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -2630,6 +3248,12 @@ pub const IBarometerReading = extern struct {
 };
 pub const IBarometerReading2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_PerformanceCount(@ptrCast(self), &_r);
@@ -2660,6 +3284,12 @@ pub const IBarometerReading2 = extern struct {
 };
 pub const IBarometerReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*BarometerReading {
         var _r: *BarometerReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -2683,6 +3313,12 @@ pub const IBarometerReadingChangedEventArgs = extern struct {
 };
 pub const IBarometerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*Barometer {
         var _r: *Barometer = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -2706,6 +3342,12 @@ pub const IBarometerStatics = extern struct {
 };
 pub const IBarometerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Barometer) {
         var _r: *IAsyncOperation(Barometer) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
@@ -2736,6 +3378,12 @@ pub const IBarometerStatics2 = extern struct {
 };
 pub const ICompass = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*CompassReading {
         var _r: *CompassReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
@@ -2790,6 +3438,12 @@ pub const ICompass = extern struct {
 };
 pub const ICompass2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         const _c = self.vtable.put_ReadingTransform(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2818,6 +3472,12 @@ pub const ICompass2 = extern struct {
 };
 pub const ICompass3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ReportLatency(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -2853,6 +3513,12 @@ pub const ICompass3 = extern struct {
 };
 pub const ICompass4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReportThreshold(self: *@This()) core.HResult!*CompassDataThreshold {
         var _r: *CompassDataThreshold = undefined;
         const _c = self.vtable.get_ReportThreshold(@ptrCast(self), &_r);
@@ -2876,6 +3542,12 @@ pub const ICompass4 = extern struct {
 };
 pub const ICompassDataThreshold = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDegrees(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_Degrees(@ptrCast(self), &_r);
@@ -2904,6 +3576,12 @@ pub const ICompassDataThreshold = extern struct {
 };
 pub const ICompassDeviceId = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -2927,6 +3605,12 @@ pub const ICompassDeviceId = extern struct {
 };
 pub const ICompassReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -2964,6 +3648,12 @@ pub const ICompassReading = extern struct {
 };
 pub const ICompassReading2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_PerformanceCount(@ptrCast(self), &_r);
@@ -2994,6 +3684,12 @@ pub const ICompassReading2 = extern struct {
 };
 pub const ICompassReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*CompassReading {
         var _r: *CompassReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -3017,6 +3713,12 @@ pub const ICompassReadingChangedEventArgs = extern struct {
 };
 pub const ICompassReadingHeadingAccuracy = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeadingAccuracy(self: *@This()) core.HResult!MagnetometerAccuracy {
         var _r: MagnetometerAccuracy = undefined;
         const _c = self.vtable.get_HeadingAccuracy(@ptrCast(self), &_r);
@@ -3040,6 +3742,12 @@ pub const ICompassReadingHeadingAccuracy = extern struct {
 };
 pub const ICompassStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*Compass {
         var _r: *Compass = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -3063,6 +3771,12 @@ pub const ICompassStatics = extern struct {
 };
 pub const ICompassStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -3093,6 +3807,12 @@ pub const ICompassStatics2 = extern struct {
 };
 pub const IDetectedPerson = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getEngagement(self: *@This()) core.HResult!HumanEngagement {
         var _r: HumanEngagement = undefined;
         const _c = self.vtable.get_Engagement(@ptrCast(self), &_r);
@@ -3144,6 +3864,12 @@ pub const IDetectedPerson = extern struct {
 };
 pub const IGyrometer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*GyrometerReading {
         var _r: *GyrometerReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
@@ -3198,6 +3924,12 @@ pub const IGyrometer = extern struct {
 };
 pub const IGyrometer2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         const _c = self.vtable.put_ReadingTransform(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3226,6 +3958,12 @@ pub const IGyrometer2 = extern struct {
 };
 pub const IGyrometer3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ReportLatency(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -3261,6 +3999,12 @@ pub const IGyrometer3 = extern struct {
 };
 pub const IGyrometer4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReportThreshold(self: *@This()) core.HResult!*GyrometerDataThreshold {
         var _r: *GyrometerDataThreshold = undefined;
         const _c = self.vtable.get_ReportThreshold(@ptrCast(self), &_r);
@@ -3284,6 +4028,12 @@ pub const IGyrometer4 = extern struct {
 };
 pub const IGyrometerDataThreshold = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getXAxisInDegreesPerSecond(self: *@This()) core.HResult!f64 {
         var _r: f64 = undefined;
         const _c = self.vtable.get_XAxisInDegreesPerSecond(@ptrCast(self), &_r);
@@ -3336,6 +4086,12 @@ pub const IGyrometerDataThreshold = extern struct {
 };
 pub const IGyrometerDeviceId = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -3359,6 +4115,12 @@ pub const IGyrometerDeviceId = extern struct {
 };
 pub const IGyrometerReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -3403,6 +4165,12 @@ pub const IGyrometerReading = extern struct {
 };
 pub const IGyrometerReading2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_PerformanceCount(@ptrCast(self), &_r);
@@ -3433,6 +4201,12 @@ pub const IGyrometerReading2 = extern struct {
 };
 pub const IGyrometerReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*GyrometerReading {
         var _r: *GyrometerReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -3456,6 +4230,12 @@ pub const IGyrometerReadingChangedEventArgs = extern struct {
 };
 pub const IGyrometerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*Gyrometer {
         var _r: *Gyrometer = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -3479,6 +4259,12 @@ pub const IGyrometerStatics = extern struct {
 };
 pub const IGyrometerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -3509,6 +4295,12 @@ pub const IGyrometerStatics2 = extern struct {
 };
 pub const IHeadOrientation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getRollInDegrees(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_RollInDegrees(@ptrCast(self), &_r);
@@ -3546,6 +4338,12 @@ pub const IHeadOrientation = extern struct {
 };
 pub const IHeadPosition = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAzimuthInDegrees(self: *@This()) core.HResult!*IReference(f64) {
         var _r: *IReference(f64) = undefined;
         const _c = self.vtable.get_AzimuthInDegrees(@ptrCast(self), &_r);
@@ -3576,6 +4374,12 @@ pub const IHeadPosition = extern struct {
 };
 pub const IHingeAngleReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -3613,6 +4417,12 @@ pub const IHingeAngleReading = extern struct {
 };
 pub const IHingeAngleSensor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReadingAsync(self: *@This()) core.HResult!*IAsyncOperation(HingeAngleReading) {
         var _r: *IAsyncOperation(HingeAngleReading) = undefined;
         const _c = self.vtable.GetCurrentReadingAsync(@ptrCast(self), &_r);
@@ -3674,6 +4484,12 @@ pub const IHingeAngleSensor = extern struct {
 };
 pub const IHingeAngleSensorReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*HingeAngleReading {
         var _r: *HingeAngleReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -3697,6 +4513,12 @@ pub const IHingeAngleSensorReadingChangedEventArgs = extern struct {
 };
 pub const IHingeAngleSensorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -3741,6 +4563,12 @@ pub const IHingeAngleSensorStatics = extern struct {
 };
 pub const IHumanPresenceFeatures = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSensorId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SensorId(@ptrCast(self), &_r);
@@ -3792,6 +4620,12 @@ pub const IHumanPresenceFeatures = extern struct {
 };
 pub const IHumanPresenceFeatures2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAdaptiveDimmingSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAdaptiveDimmingSupported(@ptrCast(self), &_r);
@@ -3815,6 +4649,12 @@ pub const IHumanPresenceFeatures2 = extern struct {
 };
 pub const IHumanPresenceFeatures3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsOnlookerDetectionSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsOnlookerDetectionSupported(@ptrCast(self), &_r);
@@ -3838,6 +4678,12 @@ pub const IHumanPresenceFeatures3 = extern struct {
 };
 pub const IHumanPresenceSensor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -3894,6 +4740,12 @@ pub const IHumanPresenceSensor = extern struct {
 };
 pub const IHumanPresenceSensor2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsPresenceSupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsPresenceSupported(@ptrCast(self), &_r);
@@ -3924,6 +4776,12 @@ pub const IHumanPresenceSensor2 = extern struct {
 };
 pub const IHumanPresenceSensor3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getMaxDetectablePersons(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_MaxDetectablePersons(@ptrCast(self), &_r);
@@ -3975,6 +4833,12 @@ pub const IHumanPresenceSensor3 = extern struct {
 };
 pub const IHumanPresenceSensorExtension = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Initialize(self: *@This(), deviceInterface: ?HSTRING) core.HResult!void {
         const _c = self.vtable.Initialize(@ptrCast(self), deviceInterface);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4028,6 +4892,12 @@ pub const IHumanPresenceSensorExtension = extern struct {
 };
 pub const IHumanPresenceSensorReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -4072,6 +4942,12 @@ pub const IHumanPresenceSensorReading = extern struct {
 };
 pub const IHumanPresenceSensorReading2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getProperties(self: *@This()) core.HResult!*IMapView(?HSTRING,IInspectable) {
         var _r: *IMapView(?HSTRING,IInspectable) = undefined;
         const _c = self.vtable.get_Properties(@ptrCast(self), &_r);
@@ -4095,6 +4971,12 @@ pub const IHumanPresenceSensorReading2 = extern struct {
 };
 pub const IHumanPresenceSensorReading3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOnlookerPresence(self: *@This()) core.HResult!HumanPresence {
         var _r: HumanPresence = undefined;
         const _c = self.vtable.get_OnlookerPresence(@ptrCast(self), &_r);
@@ -4125,6 +5007,12 @@ pub const IHumanPresenceSensorReading3 = extern struct {
 };
 pub const IHumanPresenceSensorReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*HumanPresenceSensorReading {
         var _r: *HumanPresenceSensorReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -4148,6 +5036,12 @@ pub const IHumanPresenceSensorReadingChangedEventArgs = extern struct {
 };
 pub const IHumanPresenceSensorReadingUpdate = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!*IReference(DateTime) {
         var _r: *IReference(DateTime) = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -4212,6 +5106,12 @@ pub const IHumanPresenceSensorReadingUpdate = extern struct {
 };
 pub const IHumanPresenceSensorReadingUpdate2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOnlookerPresence(self: *@This()) core.HResult!*IReference(HumanPresence) {
         var _r: *IReference(HumanPresence) = undefined;
         const _c = self.vtable.get_OnlookerPresence(@ptrCast(self), &_r);
@@ -4240,6 +5140,12 @@ pub const IHumanPresenceSensorReadingUpdate2 = extern struct {
 };
 pub const IHumanPresenceSensorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -4277,6 +5183,12 @@ pub const IHumanPresenceSensorStatics = extern struct {
 };
 pub const IHumanPresenceSensorStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromId(self: *@This(), sensorId: ?HSTRING) core.HResult!*HumanPresenceSensor {
         var _r: *HumanPresenceSensor = undefined;
         const _c = self.vtable.FromId(@ptrCast(self), sensorId, &_r);
@@ -4307,6 +5219,12 @@ pub const IHumanPresenceSensorStatics2 = extern struct {
 };
 pub const IHumanPresenceSettings = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSensorId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SensorId(@ptrCast(self), &_r);
@@ -4407,6 +5325,12 @@ pub const IHumanPresenceSettings = extern struct {
 };
 pub const IHumanPresenceSettings2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsAdaptiveDimmingEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsAdaptiveDimmingEnabled(@ptrCast(self), &_r);
@@ -4456,6 +5380,12 @@ pub const IHumanPresenceSettings2 = extern struct {
 };
 pub const IHumanPresenceSettings3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsOnlookerDetectionEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsOnlookerDetectionEnabled(@ptrCast(self), &_r);
@@ -4491,6 +5421,12 @@ pub const IHumanPresenceSettings3 = extern struct {
 };
 pub const IHumanPresenceSettingsStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentSettingsAsync(self: *@This()) core.HResult!*IAsyncOperation(HumanPresenceSettings) {
         var _r: *IAsyncOperation(HumanPresenceSettings) = undefined;
         const _c = self.vtable.GetCurrentSettingsAsync(@ptrCast(self), &_r);
@@ -4566,6 +5502,12 @@ pub const IHumanPresenceSettingsStatics = extern struct {
 };
 pub const IInclinometer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*InclinometerReading {
         var _r: *InclinometerReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
@@ -4620,6 +5562,12 @@ pub const IInclinometer = extern struct {
 };
 pub const IInclinometer2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         const _c = self.vtable.put_ReadingTransform(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4655,6 +5603,12 @@ pub const IInclinometer2 = extern struct {
 };
 pub const IInclinometer3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ReportLatency(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -4690,6 +5644,12 @@ pub const IInclinometer3 = extern struct {
 };
 pub const IInclinometer4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReportThreshold(self: *@This()) core.HResult!*InclinometerDataThreshold {
         var _r: *InclinometerDataThreshold = undefined;
         const _c = self.vtable.get_ReportThreshold(@ptrCast(self), &_r);
@@ -4713,6 +5673,12 @@ pub const IInclinometer4 = extern struct {
 };
 pub const IInclinometerDataThreshold = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPitchInDegrees(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_PitchInDegrees(@ptrCast(self), &_r);
@@ -4765,6 +5731,12 @@ pub const IInclinometerDataThreshold = extern struct {
 };
 pub const IInclinometerDeviceId = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -4788,6 +5760,12 @@ pub const IInclinometerDeviceId = extern struct {
 };
 pub const IInclinometerReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -4832,6 +5810,12 @@ pub const IInclinometerReading = extern struct {
 };
 pub const IInclinometerReading2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_PerformanceCount(@ptrCast(self), &_r);
@@ -4862,6 +5846,12 @@ pub const IInclinometerReading2 = extern struct {
 };
 pub const IInclinometerReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*InclinometerReading {
         var _r: *InclinometerReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -4885,6 +5875,12 @@ pub const IInclinometerReadingChangedEventArgs = extern struct {
 };
 pub const IInclinometerReadingYawAccuracy = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getYawAccuracy(self: *@This()) core.HResult!MagnetometerAccuracy {
         var _r: MagnetometerAccuracy = undefined;
         const _c = self.vtable.get_YawAccuracy(@ptrCast(self), &_r);
@@ -4908,6 +5904,12 @@ pub const IInclinometerReadingYawAccuracy = extern struct {
 };
 pub const IInclinometerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*Inclinometer {
         var _r: *Inclinometer = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -4931,6 +5933,12 @@ pub const IInclinometerStatics = extern struct {
 };
 pub const IInclinometerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultForRelativeReadings(self: *@This()) core.HResult!*Inclinometer {
         var _r: *Inclinometer = undefined;
         const _c = self.vtable.GetDefaultForRelativeReadings(@ptrCast(self), &_r);
@@ -4954,6 +5962,12 @@ pub const IInclinometerStatics2 = extern struct {
 };
 pub const IInclinometerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This(), sensorReadingtype: SensorReadingType) core.HResult!*Inclinometer {
         var _r: *Inclinometer = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), sensorReadingtype, &_r);
@@ -4977,6 +5991,12 @@ pub const IInclinometerStatics3 = extern struct {
 };
 pub const IInclinometerStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This(), readingType: SensorReadingType) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), readingType, &_r);
@@ -5007,6 +6027,12 @@ pub const IInclinometerStatics4 = extern struct {
 };
 pub const ILightSensor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*LightSensorReading {
         var _r: *LightSensorReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
@@ -5061,6 +6087,12 @@ pub const ILightSensor = extern struct {
 };
 pub const ILightSensor2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ReportLatency(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5096,6 +6128,12 @@ pub const ILightSensor2 = extern struct {
 };
 pub const ILightSensor3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReportThreshold(self: *@This()) core.HResult!*LightSensorDataThreshold {
         var _r: *LightSensorDataThreshold = undefined;
         const _c = self.vtable.get_ReportThreshold(@ptrCast(self), &_r);
@@ -5119,6 +6157,12 @@ pub const ILightSensor3 = extern struct {
 };
 pub const ILightSensor4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsChromaticitySupported(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsChromaticitySupported(@ptrCast(self), &_r);
@@ -5142,6 +6186,12 @@ pub const ILightSensor4 = extern struct {
 };
 pub const ILightSensorDataThreshold = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLuxPercentage(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_LuxPercentage(@ptrCast(self), &_r);
@@ -5182,6 +6232,12 @@ pub const ILightSensorDataThreshold = extern struct {
 };
 pub const ILightSensorDataThreshold2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChromaticity(self: *@This()) core.HResult!LightSensorChromaticity {
         var _r: LightSensorChromaticity = undefined;
         const _c = self.vtable.get_Chromaticity(@ptrCast(self), &_r);
@@ -5210,6 +6266,12 @@ pub const ILightSensorDataThreshold2 = extern struct {
 };
 pub const ILightSensorDeviceId = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -5233,6 +6295,12 @@ pub const ILightSensorDeviceId = extern struct {
 };
 pub const ILightSensorReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -5263,6 +6331,12 @@ pub const ILightSensorReading = extern struct {
 };
 pub const ILightSensorReading2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_PerformanceCount(@ptrCast(self), &_r);
@@ -5293,6 +6367,12 @@ pub const ILightSensorReading2 = extern struct {
 };
 pub const ILightSensorReading3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getChromaticity(self: *@This()) core.HResult!LightSensorChromaticity {
         var _r: LightSensorChromaticity = undefined;
         const _c = self.vtable.get_Chromaticity(@ptrCast(self), &_r);
@@ -5316,6 +6396,12 @@ pub const ILightSensorReading3 = extern struct {
 };
 pub const ILightSensorReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*LightSensorReading {
         var _r: *LightSensorReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -5339,6 +6425,12 @@ pub const ILightSensorReadingChangedEventArgs = extern struct {
 };
 pub const ILightSensorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*LightSensor {
         var _r: *LightSensor = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -5362,6 +6454,12 @@ pub const ILightSensorStatics = extern struct {
 };
 pub const ILightSensorStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -5392,6 +6490,12 @@ pub const ILightSensorStatics2 = extern struct {
 };
 pub const ILockOnLeaveOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowWhenExternalDisplayConnected(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowWhenExternalDisplayConnected(@ptrCast(self), &_r);
@@ -5420,6 +6524,12 @@ pub const ILockOnLeaveOptions = extern struct {
 };
 pub const IMagnetometer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*MagnetometerReading {
         var _r: *MagnetometerReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
@@ -5474,6 +6584,12 @@ pub const IMagnetometer = extern struct {
 };
 pub const IMagnetometer2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         const _c = self.vtable.put_ReadingTransform(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5502,6 +6618,12 @@ pub const IMagnetometer2 = extern struct {
 };
 pub const IMagnetometer3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ReportLatency(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5537,6 +6659,12 @@ pub const IMagnetometer3 = extern struct {
 };
 pub const IMagnetometer4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReportThreshold(self: *@This()) core.HResult!*MagnetometerDataThreshold {
         var _r: *MagnetometerDataThreshold = undefined;
         const _c = self.vtable.get_ReportThreshold(@ptrCast(self), &_r);
@@ -5560,6 +6688,12 @@ pub const IMagnetometer4 = extern struct {
 };
 pub const IMagnetometerDataThreshold = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getXAxisMicroteslas(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_XAxisMicroteslas(@ptrCast(self), &_r);
@@ -5612,6 +6746,12 @@ pub const IMagnetometerDataThreshold = extern struct {
 };
 pub const IMagnetometerDeviceId = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -5635,6 +6775,12 @@ pub const IMagnetometerDeviceId = extern struct {
 };
 pub const IMagnetometerReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -5686,6 +6832,12 @@ pub const IMagnetometerReading = extern struct {
 };
 pub const IMagnetometerReading2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_PerformanceCount(@ptrCast(self), &_r);
@@ -5716,6 +6868,12 @@ pub const IMagnetometerReading2 = extern struct {
 };
 pub const IMagnetometerReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*MagnetometerReading {
         var _r: *MagnetometerReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -5739,6 +6897,12 @@ pub const IMagnetometerReadingChangedEventArgs = extern struct {
 };
 pub const IMagnetometerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*Magnetometer {
         var _r: *Magnetometer = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -5762,6 +6926,12 @@ pub const IMagnetometerStatics = extern struct {
 };
 pub const IMagnetometerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -5792,6 +6962,12 @@ pub const IMagnetometerStatics2 = extern struct {
 };
 pub const IOnlookerDetectionOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!OnlookerDetectionAction {
         var _r: OnlookerDetectionAction = undefined;
         const _c = self.vtable.get_Action(@ptrCast(self), &_r);
@@ -5832,6 +7008,12 @@ pub const IOnlookerDetectionOptions = extern struct {
 };
 pub const IOrientationSensor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*OrientationSensorReading {
         var _r: *OrientationSensorReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
@@ -5886,6 +7068,12 @@ pub const IOrientationSensor = extern struct {
 };
 pub const IOrientationSensor2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         const _c = self.vtable.put_ReadingTransform(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5921,6 +7109,12 @@ pub const IOrientationSensor2 = extern struct {
 };
 pub const IOrientationSensor3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ReportLatency(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -5956,6 +7150,12 @@ pub const IOrientationSensor3 = extern struct {
 };
 pub const IOrientationSensorDeviceId = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -5979,6 +7179,12 @@ pub const IOrientationSensorDeviceId = extern struct {
 };
 pub const IOrientationSensorReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -6016,6 +7222,12 @@ pub const IOrientationSensorReading = extern struct {
 };
 pub const IOrientationSensorReading2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_PerformanceCount(@ptrCast(self), &_r);
@@ -6046,6 +7258,12 @@ pub const IOrientationSensorReading2 = extern struct {
 };
 pub const IOrientationSensorReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*OrientationSensorReading {
         var _r: *OrientationSensorReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -6069,6 +7287,12 @@ pub const IOrientationSensorReadingChangedEventArgs = extern struct {
 };
 pub const IOrientationSensorReadingYawAccuracy = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getYawAccuracy(self: *@This()) core.HResult!MagnetometerAccuracy {
         var _r: MagnetometerAccuracy = undefined;
         const _c = self.vtable.get_YawAccuracy(@ptrCast(self), &_r);
@@ -6092,6 +7316,12 @@ pub const IOrientationSensorReadingYawAccuracy = extern struct {
 };
 pub const IOrientationSensorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*OrientationSensor {
         var _r: *OrientationSensor = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -6115,6 +7345,12 @@ pub const IOrientationSensorStatics = extern struct {
 };
 pub const IOrientationSensorStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefaultForRelativeReadings(self: *@This()) core.HResult!*OrientationSensor {
         var _r: *OrientationSensor = undefined;
         const _c = self.vtable.GetDefaultForRelativeReadings(@ptrCast(self), &_r);
@@ -6138,6 +7374,12 @@ pub const IOrientationSensorStatics2 = extern struct {
 };
 pub const IOrientationSensorStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This(), sensorReadingtype: SensorReadingType) core.HResult!*OrientationSensor {
         var _r: *OrientationSensor = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), sensorReadingtype, &_r);
@@ -6168,6 +7410,12 @@ pub const IOrientationSensorStatics3 = extern struct {
 };
 pub const IOrientationSensorStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This(), readingType: SensorReadingType) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), readingType, &_r);
@@ -6205,6 +7453,12 @@ pub const IOrientationSensorStatics4 = extern struct {
 };
 pub const IPedometer = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -6266,6 +7520,12 @@ pub const IPedometer = extern struct {
 };
 pub const IPedometer2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReadings(self: *@This()) core.HResult!*IMapView(PedometerStepKind,PedometerReading) {
         var _r: *IMapView(PedometerStepKind,PedometerReading) = undefined;
         const _c = self.vtable.GetCurrentReadings(@ptrCast(self), &_r);
@@ -6289,6 +7549,12 @@ pub const IPedometer2 = extern struct {
 };
 pub const IPedometerDataThresholdFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), sensor: *Pedometer, stepGoal: i32) core.HResult!*PedometerDataThreshold {
         var _r: *PedometerDataThreshold = undefined;
         const _c = self.vtable.Create(@ptrCast(self), sensor, stepGoal, &_r);
@@ -6312,6 +7578,12 @@ pub const IPedometerDataThresholdFactory = extern struct {
 };
 pub const IPedometerReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStepKind(self: *@This()) core.HResult!PedometerStepKind {
         var _r: PedometerStepKind = undefined;
         const _c = self.vtable.get_StepKind(@ptrCast(self), &_r);
@@ -6356,6 +7628,12 @@ pub const IPedometerReading = extern struct {
 };
 pub const IPedometerReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*PedometerReading {
         var _r: *PedometerReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -6379,6 +7657,12 @@ pub const IPedometerReadingChangedEventArgs = extern struct {
 };
 pub const IPedometerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Pedometer) {
         var _r: *IAsyncOperation(Pedometer) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), deviceId, &_r);
@@ -6430,6 +7714,12 @@ pub const IPedometerStatics = extern struct {
 };
 pub const IPedometerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetReadingsFromTriggerDetails(self: *@This(), triggerDetails: *SensorDataThresholdTriggerDetails) core.HResult!*IVectorView(PedometerReading) {
         var _r: *IVectorView(PedometerReading) = undefined;
         const _c = self.vtable.GetReadingsFromTriggerDetails(@ptrCast(self), triggerDetails, &_r);
@@ -6453,6 +7743,12 @@ pub const IPedometerStatics2 = extern struct {
 };
 pub const IProximitySensor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -6516,6 +7812,12 @@ pub const IProximitySensor = extern struct {
 };
 pub const IProximitySensorDataThresholdFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), sensor: *ProximitySensor) core.HResult!*ProximitySensorDataThreshold {
         var _r: *ProximitySensorDataThreshold = undefined;
         const _c = self.vtable.Create(@ptrCast(self), sensor, &_r);
@@ -6539,6 +7841,12 @@ pub const IProximitySensorDataThresholdFactory = extern struct {
 };
 pub const IProximitySensorReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -6576,6 +7884,12 @@ pub const IProximitySensorReading = extern struct {
 };
 pub const IProximitySensorReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*ProximitySensorReading {
         var _r: *ProximitySensorReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -6599,6 +7913,12 @@ pub const IProximitySensorReadingChangedEventArgs = extern struct {
 };
 pub const IProximitySensorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -6629,6 +7949,12 @@ pub const IProximitySensorStatics = extern struct {
 };
 pub const IProximitySensorStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetReadingsFromTriggerDetails(self: *@This(), triggerDetails: *SensorDataThresholdTriggerDetails) core.HResult!*IVectorView(ProximitySensorReading) {
         var _r: *IVectorView(ProximitySensorReading) = undefined;
         const _c = self.vtable.GetReadingsFromTriggerDetails(@ptrCast(self), triggerDetails, &_r);
@@ -6652,6 +7978,12 @@ pub const IProximitySensorStatics2 = extern struct {
 };
 pub const ISensorDataThreshold = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.ISensorDataThreshold";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "54daec61-fe4b-4e07-b260-3a4cdfbe396e";
@@ -6668,6 +8000,12 @@ pub const ISensorDataThreshold = extern struct {
 };
 pub const ISensorDataThresholdTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -6698,6 +8036,12 @@ pub const ISensorDataThresholdTriggerDetails = extern struct {
 };
 pub const ISensorQuaternion = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getW(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_W(@ptrCast(self), &_r);
@@ -6742,6 +8086,12 @@ pub const ISensorQuaternion = extern struct {
 };
 pub const ISensorRotationMatrix = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getM11(self: *@This()) core.HResult!f32 {
         var _r: f32 = undefined;
         const _c = self.vtable.get_M11(@ptrCast(self), &_r);
@@ -6821,6 +8171,12 @@ pub const ISensorRotationMatrix = extern struct {
 };
 pub const ISimpleOrientationSensor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentOrientation(self: *@This()) core.HResult!SimpleOrientation {
         var _r: SimpleOrientation = undefined;
         const _c = self.vtable.GetCurrentOrientation(@ptrCast(self), &_r);
@@ -6856,6 +8212,12 @@ pub const ISimpleOrientationSensor = extern struct {
 };
 pub const ISimpleOrientationSensor2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReadingTransform(self: *@This(), value: DisplayOrientations) core.HResult!void {
         const _c = self.vtable.put_ReadingTransform(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -6884,6 +8246,12 @@ pub const ISimpleOrientationSensor2 = extern struct {
 };
 pub const ISimpleOrientationSensorDeviceId = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DeviceId(@ptrCast(self), &_r);
@@ -6907,6 +8275,12 @@ pub const ISimpleOrientationSensorDeviceId = extern struct {
 };
 pub const ISimpleOrientationSensorOrientationChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -6937,6 +8311,12 @@ pub const ISimpleOrientationSensorOrientationChangedEventArgs = extern struct {
 };
 pub const ISimpleOrientationSensorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*SimpleOrientationSensor {
         var _r: *SimpleOrientationSensor = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -6960,6 +8340,12 @@ pub const ISimpleOrientationSensorStatics = extern struct {
 };
 pub const ISimpleOrientationSensorStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), &_r);
@@ -6990,6 +8376,12 @@ pub const ISimpleOrientationSensorStatics2 = extern struct {
 };
 pub const IWakeOnApproachOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowWhenExternalDisplayConnected(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_AllowWhenExternalDisplayConnected(@ptrCast(self), &_r);
@@ -7030,6 +8422,18 @@ pub const IWakeOnApproachOptions = extern struct {
 };
 pub const Inclinometer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*InclinometerReading {
         const this: *IInclinometer = @ptrCast(self);
         return try this.GetCurrentReading();
@@ -7110,9 +8514,6 @@ pub const Inclinometer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*Inclinometer {
         const _f = try @This()._IInclinometerStaticsCache.get();
         return try _f.GetDefault();
@@ -7145,6 +8546,18 @@ pub const Inclinometer = extern struct {
 };
 pub const InclinometerDataThreshold = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPitchInDegrees(self: *@This()) core.HResult!f32 {
         const this: *IInclinometerDataThreshold = @ptrCast(self);
         return try this.getPitchInDegrees();
@@ -7177,6 +8590,18 @@ pub const InclinometerDataThreshold = extern struct {
 };
 pub const InclinometerReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IInclinometerReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -7222,6 +8647,18 @@ pub const InclinometerReading = extern struct {
 };
 pub const InclinometerReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*InclinometerReading {
         const this: *IInclinometerReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -7234,6 +8671,18 @@ pub const InclinometerReadingChangedEventArgs = extern struct {
 };
 pub const LightSensor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*LightSensorReading {
         const this: *ILightSensor = @ptrCast(self);
         return try this.GetCurrentReading();
@@ -7300,9 +8749,6 @@ pub const LightSensor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsChromaticitySupported();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._ILightSensorStatics2Cache.get();
         return try _f.GetDeviceSelector();
@@ -7329,6 +8775,18 @@ pub const LightSensorChromaticity = extern struct {
 };
 pub const LightSensorDataThreshold = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getLuxPercentage(self: *@This()) core.HResult!f32 {
         const this: *ILightSensorDataThreshold = @ptrCast(self);
         return try this.getLuxPercentage();
@@ -7367,6 +8825,18 @@ pub const LightSensorDataThreshold = extern struct {
 };
 pub const LightSensorReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *ILightSensorReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -7404,6 +8874,18 @@ pub const LightSensorReading = extern struct {
 };
 pub const LightSensorReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*LightSensorReading {
         const this: *ILightSensorReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -7416,6 +8898,18 @@ pub const LightSensorReadingChangedEventArgs = extern struct {
 };
 pub const LockOnLeaveOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowWhenExternalDisplayConnected(self: *@This()) core.HResult!bool {
         const this: *ILockOnLeaveOptions = @ptrCast(self);
         return try this.getAllowWhenExternalDisplayConnected();
@@ -7432,6 +8926,18 @@ pub const LockOnLeaveOptions = extern struct {
 };
 pub const Magnetometer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*MagnetometerReading {
         const this: *IMagnetometer = @ptrCast(self);
         return try this.GetCurrentReading();
@@ -7505,9 +9011,6 @@ pub const Magnetometer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReportThreshold();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDeviceSelector() core.HResult!?HSTRING {
         const _f = try @This()._IMagnetometerStatics2Cache.get();
         return try _f.GetDeviceSelector();
@@ -7536,6 +9039,18 @@ pub const MagnetometerAccuracy = enum(i32) {
 };
 pub const MagnetometerDataThreshold = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getXAxisMicroteslas(self: *@This()) core.HResult!f32 {
         const this: *IMagnetometerDataThreshold = @ptrCast(self);
         return try this.getXAxisMicroteslas();
@@ -7568,6 +9083,18 @@ pub const MagnetometerDataThreshold = extern struct {
 };
 pub const MagnetometerReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IMagnetometerReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -7610,6 +9137,18 @@ pub const MagnetometerReading = extern struct {
 };
 pub const MagnetometerReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*MagnetometerReading {
         const this: *IMagnetometerReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -7633,6 +9172,18 @@ pub const OnlookerDetectionBackOnMode = enum(i32) {
 };
 pub const OnlookerDetectionOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAction(self: *@This()) core.HResult!OnlookerDetectionAction {
         const this: *IOnlookerDetectionOptions = @ptrCast(self);
         return try this.getAction();
@@ -7657,6 +9208,18 @@ pub const OnlookerDetectionOptions = extern struct {
 };
 pub const OrientationSensor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*OrientationSensorReading {
         const this: *IOrientationSensor = @ptrCast(self);
         return try this.GetCurrentReading();
@@ -7730,9 +9293,6 @@ pub const OrientationSensor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefaultForRelativeReadings() core.HResult!*OrientationSensor {
         const _f = try @This()._IOrientationSensorStatics2Cache.get();
         return try _f.GetDefaultForRelativeReadings();
@@ -7773,6 +9333,18 @@ pub const OrientationSensor = extern struct {
 };
 pub const OrientationSensorReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IOrientationSensorReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -7814,6 +9386,18 @@ pub const OrientationSensorReading = extern struct {
 };
 pub const OrientationSensorReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*OrientationSensorReading {
         const this: *IOrientationSensorReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -7826,6 +9410,18 @@ pub const OrientationSensorReadingChangedEventArgs = extern struct {
 };
 pub const Pedometer = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPedometer = @ptrCast(self);
         return try this.getDeviceId();
@@ -7861,9 +9457,6 @@ pub const Pedometer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCurrentReadings();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromIdAsync(deviceId: ?HSTRING) core.HResult!*IAsyncOperation(Pedometer) {
         const _f = try @This()._IPedometerStaticsCache.get();
         return try _f.FromIdAsync(deviceId);
@@ -7898,6 +9491,15 @@ pub const Pedometer = extern struct {
 };
 pub const PedometerDataThreshold = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -7914,6 +9516,18 @@ pub const PedometerDataThreshold = extern struct {
 };
 pub const PedometerReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStepKind(self: *@This()) core.HResult!PedometerStepKind {
         const this: *IPedometerReading = @ptrCast(self);
         return try this.getStepKind();
@@ -7938,6 +9552,18 @@ pub const PedometerReading = extern struct {
 };
 pub const PedometerReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*PedometerReading {
         const this: *IPedometerReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -7955,6 +9581,18 @@ pub const PedometerStepKind = enum(i32) {
 };
 pub const ProximitySensor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *IProximitySensor = @ptrCast(self);
         return try this.getDeviceId();
@@ -7983,9 +9621,6 @@ pub const ProximitySensor = extern struct {
         const this: *IProximitySensor = @ptrCast(self);
         return try this.CreateDisplayOnOffController();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetReadingsFromTriggerDetails(triggerDetails: *SensorDataThresholdTriggerDetails) core.HResult!*IVectorView(ProximitySensorReading) {
         const _f = try @This()._IProximitySensorStatics2Cache.get();
         return try _f.GetReadingsFromTriggerDetails(triggerDetails);
@@ -8008,6 +9643,15 @@ pub const ProximitySensor = extern struct {
 };
 pub const ProximitySensorDataThreshold = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -8024,6 +9668,18 @@ pub const ProximitySensorDataThreshold = extern struct {
 };
 pub const ProximitySensorDisplayOnOffController = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Close(self: *@This()) core.HResult!void {
         const this: *IClosable = @ptrCast(self);
         return try this.Close();
@@ -8036,6 +9692,18 @@ pub const ProximitySensorDisplayOnOffController = extern struct {
 };
 pub const ProximitySensorReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *IProximitySensorReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -8056,6 +9724,18 @@ pub const ProximitySensorReading = extern struct {
 };
 pub const ProximitySensorReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*ProximitySensorReading {
         const this: *IProximitySensorReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -8068,6 +9748,18 @@ pub const ProximitySensorReadingChangedEventArgs = extern struct {
 };
 pub const SensorDataThresholdTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDeviceId(self: *@This()) core.HResult!?HSTRING {
         const this: *ISensorDataThresholdTriggerDetails = @ptrCast(self);
         return try this.getDeviceId();
@@ -8088,6 +9780,18 @@ pub const SensorOptimizationGoal = enum(i32) {
 };
 pub const SensorQuaternion = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getW(self: *@This()) core.HResult!f32 {
         const this: *ISensorQuaternion = @ptrCast(self);
         return try this.getW();
@@ -8116,6 +9820,18 @@ pub const SensorReadingType = enum(i32) {
 };
 pub const SensorRotationMatrix = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getM11(self: *@This()) core.HResult!f32 {
         const this: *ISensorRotationMatrix = @ptrCast(self);
         return try this.getM11();
@@ -8184,6 +9900,18 @@ pub const SimpleOrientation = enum(i32) {
 };
 pub const SimpleOrientationSensor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentOrientation(self: *@This()) core.HResult!SimpleOrientation {
         const this: *ISimpleOrientationSensor = @ptrCast(self);
         return try this.GetCurrentOrientation();
@@ -8217,9 +9945,6 @@ pub const SimpleOrientationSensor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getReadingTransform();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDefault() core.HResult!*SimpleOrientationSensor {
         const _f = try @This()._ISimpleOrientationSensorStaticsCache.get();
         return try _f.GetDefault();
@@ -8242,6 +9967,18 @@ pub const SimpleOrientationSensor = extern struct {
 };
 pub const SimpleOrientationSensorOrientationChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *ISimpleOrientationSensorOrientationChangedEventArgs = @ptrCast(self);
         return try this.getTimestamp();
@@ -8258,6 +9995,18 @@ pub const SimpleOrientationSensorOrientationChangedEventArgs = extern struct {
 };
 pub const WakeOnApproachOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getAllowWhenExternalDisplayConnected(self: *@This()) core.HResult!bool {
         const this: *IWakeOnApproachOptions = @ptrCast(self);
         return try this.getAllowWhenExternalDisplayConnected();

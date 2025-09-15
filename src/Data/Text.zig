@@ -8,6 +8,18 @@ pub const AlternateNormalizationFormat = enum(i32) {
 };
 pub const AlternateWordForm = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceTextSegment(self: *@This()) core.HResult!TextSegment {
         const this: *IAlternateWordForm = @ptrCast(self);
         return try this.getSourceTextSegment();
@@ -28,6 +40,12 @@ pub const AlternateWordForm = extern struct {
 };
 pub const IAlternateWordForm = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceTextSegment(self: *@This()) core.HResult!TextSegment {
         var _r: TextSegment = undefined;
         const _c = self.vtable.get_SourceTextSegment(@ptrCast(self), &_r);
@@ -65,6 +83,12 @@ pub const IAlternateWordForm = extern struct {
 };
 pub const ISelectableWordSegment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
@@ -95,6 +119,12 @@ pub const ISelectableWordSegment = extern struct {
 };
 pub const ISelectableWordsSegmenter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
@@ -137,6 +167,12 @@ pub const ISelectableWordsSegmenter = extern struct {
 };
 pub const ISelectableWordsSegmenterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithLanguage(self: *@This(), language: ?HSTRING) core.HResult!*SelectableWordsSegmenter {
         var _r: *SelectableWordsSegmenter = undefined;
         const _c = self.vtable.CreateWithLanguage(@ptrCast(self), language, &_r);
@@ -160,6 +196,12 @@ pub const ISelectableWordsSegmenterFactory = extern struct {
 };
 pub const ISemanticTextQuery = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Find(self: *@This(), content: ?HSTRING) core.HResult!*IVectorView(TextSegment) {
         var _r: *IVectorView(TextSegment) = undefined;
         const _c = self.vtable.Find(@ptrCast(self), content, &_r);
@@ -190,6 +232,12 @@ pub const ISemanticTextQuery = extern struct {
 };
 pub const ISemanticTextQueryFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), aqsFilter: ?HSTRING) core.HResult!*SemanticTextQuery {
         var _r: *SemanticTextQuery = undefined;
         const _c = self.vtable.Create(@ptrCast(self), aqsFilter, &_r);
@@ -220,6 +268,12 @@ pub const ISemanticTextQueryFactory = extern struct {
 };
 pub const ITextConversionGenerator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
@@ -264,6 +318,12 @@ pub const ITextConversionGenerator = extern struct {
 };
 pub const ITextConversionGeneratorFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), languageTag: ?HSTRING) core.HResult!*TextConversionGenerator {
         var _r: *TextConversionGenerator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), languageTag, &_r);
@@ -287,6 +347,12 @@ pub const ITextConversionGeneratorFactory = extern struct {
 };
 pub const ITextPhoneme = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_DisplayText(@ptrCast(self), &_r);
@@ -317,6 +383,12 @@ pub const ITextPhoneme = extern struct {
 };
 pub const ITextPredictionGenerator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
@@ -361,6 +433,12 @@ pub const ITextPredictionGenerator = extern struct {
 };
 pub const ITextPredictionGenerator2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCandidatesAsync(self: *@This(), input: ?HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(?HSTRING)) core.HResult!*IAsyncOperation(IVectorView(?HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(?HSTRING)) = undefined;
         const _c = self.vtable.GetCandidatesAsync(@ptrCast(self), input, maxCandidates, predictionOptions, previousStrings, &_r);
@@ -403,6 +481,12 @@ pub const ITextPredictionGenerator2 = extern struct {
 };
 pub const ITextPredictionGeneratorFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), languageTag: ?HSTRING) core.HResult!*TextPredictionGenerator {
         var _r: *TextPredictionGenerator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), languageTag, &_r);
@@ -426,6 +510,12 @@ pub const ITextPredictionGeneratorFactory = extern struct {
 };
 pub const ITextReverseConversionGenerator = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
@@ -463,6 +553,12 @@ pub const ITextReverseConversionGenerator = extern struct {
 };
 pub const ITextReverseConversionGenerator2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetPhonemesAsync(self: *@This(), input: ?HSTRING) core.HResult!*IAsyncOperation(IVectorView(TextPhoneme)) {
         var _r: *IAsyncOperation(IVectorView(TextPhoneme)) = undefined;
         const _c = self.vtable.GetPhonemesAsync(@ptrCast(self), input, &_r);
@@ -486,6 +582,12 @@ pub const ITextReverseConversionGenerator2 = extern struct {
 };
 pub const ITextReverseConversionGeneratorFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Create(self: *@This(), languageTag: ?HSTRING) core.HResult!*TextReverseConversionGenerator {
         var _r: *TextReverseConversionGenerator = undefined;
         const _c = self.vtable.Create(@ptrCast(self), languageTag, &_r);
@@ -509,6 +611,12 @@ pub const ITextReverseConversionGeneratorFactory = extern struct {
 };
 pub const IUnicodeCharactersStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCodepointFromSurrogatePair(self: *@This(), highSurrogate: u32, lowSurrogate: u32) core.HResult!u32 {
         var _r: u32 = undefined;
         const _c = self.vtable.GetCodepointFromSurrogatePair(@ptrCast(self), highSurrogate, lowSurrogate, &_r);
@@ -642,6 +750,12 @@ pub const IUnicodeCharactersStatics = extern struct {
 };
 pub const IWordSegment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Text(@ptrCast(self), &_r);
@@ -679,6 +793,12 @@ pub const IWordSegment = extern struct {
 };
 pub const IWordsSegmenter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ResolvedLanguage(@ptrCast(self), &_r);
@@ -721,6 +841,12 @@ pub const IWordsSegmenter = extern struct {
 };
 pub const IWordsSegmenterFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateWithLanguage(self: *@This(), language: ?HSTRING) core.HResult!*WordsSegmenter {
         var _r: *WordsSegmenter = undefined;
         const _c = self.vtable.CreateWithLanguage(@ptrCast(self), language, &_r);
@@ -744,6 +870,18 @@ pub const IWordsSegmenterFactory = extern struct {
 };
 pub const SelectableWordSegment = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *ISelectableWordSegment = @ptrCast(self);
         return try this.getText();
@@ -849,6 +987,18 @@ pub const SelectableWordSegmentsTokenizingHandler = extern struct {
 };
 pub const SelectableWordsSegmenter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ISelectableWordsSegmenter = @ptrCast(self);
         return try this.getResolvedLanguage();
@@ -865,9 +1015,6 @@ pub const SelectableWordsSegmenter = extern struct {
         const this: *ISelectableWordsSegmenter = @ptrCast(self);
         return try this.Tokenize(text, startIndex, handler);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateWithLanguage(language: ?HSTRING) core.HResult!*SelectableWordsSegmenter {
         const _f = try @This()._ISelectableWordsSegmenterFactoryCache.get();
         return try _f.CreateWithLanguage(language);
@@ -881,6 +1028,18 @@ pub const SelectableWordsSegmenter = extern struct {
 };
 pub const SemanticTextQuery = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Find(self: *@This(), content: ?HSTRING) core.HResult!*IVectorView(TextSegment) {
         const this: *ISemanticTextQuery = @ptrCast(self);
         return try this.Find(content);
@@ -888,9 +1047,6 @@ pub const SemanticTextQuery = extern struct {
     pub fn FindInProperty(self: *@This(), propertyContent: ?HSTRING, propertyName: ?HSTRING) core.HResult!*IVectorView(TextSegment) {
         const this: *ISemanticTextQuery = @ptrCast(self);
         return try this.FindInProperty(propertyContent, propertyName);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(aqsFilter: ?HSTRING) core.HResult!*SemanticTextQuery {
         const _f = try @This()._ISemanticTextQueryFactoryCache.get();
@@ -909,6 +1065,18 @@ pub const SemanticTextQuery = extern struct {
 };
 pub const TextConversionGenerator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextConversionGenerator = @ptrCast(self);
         return try this.getResolvedLanguage();
@@ -925,9 +1093,6 @@ pub const TextConversionGenerator = extern struct {
         const this: *ITextConversionGenerator = @ptrCast(self);
         return try this.GetCandidatesAsyncWithMaxCandidates(input, maxCandidates);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(languageTag: ?HSTRING) core.HResult!*TextConversionGenerator {
         const _f = try @This()._ITextConversionGeneratorFactoryCache.get();
         return try _f.Create(languageTag);
@@ -941,6 +1106,18 @@ pub const TextConversionGenerator = extern struct {
 };
 pub const TextPhoneme = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getDisplayText(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextPhoneme = @ptrCast(self);
         return try this.getDisplayText();
@@ -957,6 +1134,18 @@ pub const TextPhoneme = extern struct {
 };
 pub const TextPredictionGenerator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextPredictionGenerator = @ptrCast(self);
         return try this.getResolvedLanguage();
@@ -1001,9 +1190,6 @@ pub const TextPredictionGenerator = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putInputScope(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(languageTag: ?HSTRING) core.HResult!*TextPredictionGenerator {
         const _f = try @This()._ITextPredictionGeneratorFactoryCache.get();
         return try _f.Create(languageTag);
@@ -1022,6 +1208,18 @@ pub const TextPredictionOptions = enum(i32) {
 };
 pub const TextReverseConversionGenerator = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *ITextReverseConversionGenerator = @ptrCast(self);
         return try this.getResolvedLanguage();
@@ -1041,9 +1239,6 @@ pub const TextReverseConversionGenerator = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPhonemesAsync(input);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn Create(languageTag: ?HSTRING) core.HResult!*TextReverseConversionGenerator {
         const _f = try @This()._ITextReverseConversionGeneratorFactoryCache.get();
         return try _f.Create(languageTag);
@@ -1061,6 +1256,15 @@ pub const TextSegment = extern struct {
 };
 pub const UnicodeCharacters = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1176,6 +1380,18 @@ pub const UnicodeNumericType = enum(i32) {
 };
 pub const WordSegment = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getText(self: *@This()) core.HResult!?HSTRING {
         const this: *IWordSegment = @ptrCast(self);
         return try this.getText();
@@ -1285,6 +1501,18 @@ pub const WordSegmentsTokenizingHandler = extern struct {
 };
 pub const WordsSegmenter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getResolvedLanguage(self: *@This()) core.HResult!?HSTRING {
         const this: *IWordsSegmenter = @ptrCast(self);
         return try this.getResolvedLanguage();
@@ -1300,9 +1528,6 @@ pub const WordsSegmenter = extern struct {
     pub fn Tokenize(self: *@This(), text: ?HSTRING, startIndex: u32, handler: *WordSegmentsTokenizingHandler) core.HResult!void {
         const this: *IWordsSegmenter = @ptrCast(self);
         return try this.Tokenize(text, startIndex, handler);
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithLanguage(language: ?HSTRING) core.HResult!*WordsSegmenter {
         const _f = try @This()._IWordsSegmenterFactoryCache.get();

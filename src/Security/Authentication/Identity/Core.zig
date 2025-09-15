@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IMicrosoftAccountMultiFactorAuthenticationManager = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetOneTimePassCodeAsync(self: *@This(), userAccountId: ?HSTRING, codeLength: u32) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorOneTimeCodedInfo) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorOneTimeCodedInfo) = undefined;
         const _c = self.vtable.GetOneTimePassCodeAsync(@ptrCast(self), userAccountId, codeLength, &_r);
@@ -87,6 +93,12 @@ pub const IMicrosoftAccountMultiFactorAuthenticationManager = extern struct {
 };
 pub const IMicrosoftAccountMultiFactorAuthenticatorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCurrent(self: *@This()) core.HResult!*MicrosoftAccountMultiFactorAuthenticationManager {
         var _r: *MicrosoftAccountMultiFactorAuthenticationManager = undefined;
         const _c = self.vtable.get_Current(@ptrCast(self), &_r);
@@ -110,6 +122,12 @@ pub const IMicrosoftAccountMultiFactorAuthenticatorStatics = extern struct {
 };
 pub const IMicrosoftAccountMultiFactorGetSessionsResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessions(self: *@This()) core.HResult!*IVectorView(MicrosoftAccountMultiFactorSessionInfo) {
         var _r: *IVectorView(MicrosoftAccountMultiFactorSessionInfo) = undefined;
         const _c = self.vtable.get_Sessions(@ptrCast(self), &_r);
@@ -140,6 +158,12 @@ pub const IMicrosoftAccountMultiFactorGetSessionsResult = extern struct {
 };
 pub const IMicrosoftAccountMultiFactorOneTimeCodedInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCode(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Code(@ptrCast(self), &_r);
@@ -184,6 +208,12 @@ pub const IMicrosoftAccountMultiFactorOneTimeCodedInfo = extern struct {
 };
 pub const IMicrosoftAccountMultiFactorSessionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserAccountId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_UserAccountId(@ptrCast(self), &_r);
@@ -249,6 +279,12 @@ pub const IMicrosoftAccountMultiFactorSessionInfo = extern struct {
 };
 pub const IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessions(self: *@This()) core.HResult!*IVectorView(MicrosoftAccountMultiFactorSessionInfo) {
         var _r: *IVectorView(MicrosoftAccountMultiFactorSessionInfo) = undefined;
         const _c = self.vtable.get_Sessions(@ptrCast(self), &_r);
@@ -286,6 +322,18 @@ pub const IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = exter
 };
 pub const MicrosoftAccountMultiFactorAuthenticationManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetOneTimePassCodeAsync(self: *@This(), userAccountId: ?HSTRING, codeLength: u32) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorOneTimeCodedInfo) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.GetOneTimePassCodeAsync(userAccountId, codeLength);
@@ -326,9 +374,6 @@ pub const MicrosoftAccountMultiFactorAuthenticationManager = extern struct {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(userAccountId, sessionId, sessionAuthenticationType);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn getCurrent() core.HResult!*MicrosoftAccountMultiFactorAuthenticationManager {
         const _f = try @This()._IMicrosoftAccountMultiFactorAuthenticatorStaticsCache.get();
         return try _f.getCurrent();
@@ -346,6 +391,18 @@ pub const MicrosoftAccountMultiFactorAuthenticationType = enum(i32) {
 };
 pub const MicrosoftAccountMultiFactorGetSessionsResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessions(self: *@This()) core.HResult!*IVectorView(MicrosoftAccountMultiFactorSessionInfo) {
         const this: *IMicrosoftAccountMultiFactorGetSessionsResult = @ptrCast(self);
         return try this.getSessions();
@@ -362,6 +419,18 @@ pub const MicrosoftAccountMultiFactorGetSessionsResult = extern struct {
 };
 pub const MicrosoftAccountMultiFactorOneTimeCodedInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCode(self: *@This()) core.HResult!?HSTRING {
         const this: *IMicrosoftAccountMultiFactorOneTimeCodedInfo = @ptrCast(self);
         return try this.getCode();
@@ -419,6 +488,18 @@ pub const MicrosoftAccountMultiFactorSessionAuthenticationStatus = enum(i32) {
 };
 pub const MicrosoftAccountMultiFactorSessionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUserAccountId(self: *@This()) core.HResult!?HSTRING {
         const this: *IMicrosoftAccountMultiFactorSessionInfo = @ptrCast(self);
         return try this.getUserAccountId();
@@ -455,6 +536,18 @@ pub const MicrosoftAccountMultiFactorSessionInfo = extern struct {
 };
 pub const MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSessions(self: *@This()) core.HResult!*IVectorView(MicrosoftAccountMultiFactorSessionInfo) {
         const this: *IMicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo = @ptrCast(self);
         return try this.getSessions();

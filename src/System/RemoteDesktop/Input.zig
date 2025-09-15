@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IRemoteTextConnection = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsEnabled(@ptrCast(self), &_r);
@@ -44,6 +50,12 @@ pub const IRemoteTextConnection = extern struct {
 };
 pub const IRemoteTextConnection2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ReportPredictedKeyEvent(self: *@This(), scanCode: u16, attributes: RemoteKeyEventAttributes) core.HResult!void {
         const _c = self.vtable.ReportPredictedKeyEvent(@ptrCast(self), scanCode, attributes);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -65,6 +77,12 @@ pub const IRemoteTextConnection2 = extern struct {
 };
 pub const IRemoteTextConnectionFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler) core.HResult!*RemoteTextConnection {
         var _r: *RemoteTextConnection = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), connectionId, pduForwarder, &_r);
@@ -88,6 +106,12 @@ pub const IRemoteTextConnectionFactory = extern struct {
 };
 pub const IRemoteTextConnectionFactory2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler, options: RemoteTextConnectionOptions) core.HResult!*RemoteTextConnection {
         var _r: *RemoteTextConnection = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), connectionId, pduForwarder, options, &_r);
@@ -118,6 +142,18 @@ pub const RemoteKeyEventAttributes = enum(i32) {
 };
 pub const RemoteTextConnection = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsEnabled(self: *@This()) core.HResult!bool {
         const this: *IRemoteTextConnection = @ptrCast(self);
         return try this.getIsEnabled();
@@ -151,9 +187,6 @@ pub const RemoteTextConnection = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler) core.HResult!*RemoteTextConnection {
         const _f = try @This()._IRemoteTextConnectionFactoryCache.get();

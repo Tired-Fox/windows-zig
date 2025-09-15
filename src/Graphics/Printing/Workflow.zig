@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPrintWorkflowBackgroundSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSetupRequested(self: *@This(), setupEventHandler: *TypedEventHandler(PrintWorkflowBackgroundSession,PrintWorkflowBackgroundSetupRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SetupRequested(@ptrCast(self), setupEventHandler, &_r);
@@ -53,6 +59,12 @@ pub const IPrintWorkflowBackgroundSession = extern struct {
 };
 pub const IPrintWorkflowBackgroundSetupRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetUserPrintTicketAsync(self: *@This()) core.HResult!*IAsyncOperation(WorkflowPrintTicket) {
         var _r: *IAsyncOperation(WorkflowPrintTicket) = undefined;
         const _c = self.vtable.GetUserPrintTicketAsync(@ptrCast(self), &_r);
@@ -95,6 +107,12 @@ pub const IPrintWorkflowBackgroundSetupRequestedEventArgs = extern struct {
 };
 pub const IPrintWorkflowConfiguration = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourceAppDisplayName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_SourceAppDisplayName(@ptrCast(self), &_r);
@@ -132,6 +150,12 @@ pub const IPrintWorkflowConfiguration = extern struct {
 };
 pub const IPrintWorkflowConfiguration2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AbortPrintFlow(self: *@This(), reason: PrintWorkflowJobAbortReason) core.HResult!void {
         const _c = self.vtable.AbortPrintFlow(@ptrCast(self), reason);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -153,6 +177,12 @@ pub const IPrintWorkflowConfiguration2 = extern struct {
 };
 pub const IPrintWorkflowForegroundSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSetupRequested(self: *@This(), setupEventHandler: *TypedEventHandler(PrintWorkflowForegroundSession,PrintWorkflowForegroundSetupRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_SetupRequested(@ptrCast(self), setupEventHandler, &_r);
@@ -205,6 +235,12 @@ pub const IPrintWorkflowForegroundSession = extern struct {
 };
 pub const IPrintWorkflowForegroundSetupRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetUserPrintTicketAsync(self: *@This()) core.HResult!*IAsyncOperation(WorkflowPrintTicket) {
         var _r: *IAsyncOperation(WorkflowPrintTicket) = undefined;
         const _c = self.vtable.GetUserPrintTicketAsync(@ptrCast(self), &_r);
@@ -242,6 +278,12 @@ pub const IPrintWorkflowForegroundSetupRequestedEventArgs = extern struct {
 };
 pub const IPrintWorkflowJobActivatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*PrintWorkflowJobUISession {
         var _r: *PrintWorkflowJobUISession = undefined;
         const _c = self.vtable.get_Session(@ptrCast(self), &_r);
@@ -265,6 +307,12 @@ pub const IPrintWorkflowJobActivatedEventArgs = extern struct {
 };
 pub const IPrintWorkflowJobBackgroundSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!PrintWorkflowSessionStatus {
         var _r: PrintWorkflowSessionStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -317,6 +365,12 @@ pub const IPrintWorkflowJobBackgroundSession = extern struct {
 };
 pub const IPrintWorkflowJobBackgroundSession2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addJobIssueDetected(self: *@This(), handler: *TypedEventHandler(PrintWorkflowJobBackgroundSession,PrintWorkflowJobIssueDetectedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_JobIssueDetected(@ptrCast(self), handler, &_r);
@@ -345,6 +399,12 @@ pub const IPrintWorkflowJobBackgroundSession2 = extern struct {
 };
 pub const IPrintWorkflowJobIssueDetectedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getJobIssueKind(self: *@This()) core.HResult!PrintWorkflowJobIssueKind {
         var _r: PrintWorkflowJobIssueKind = undefined;
         const _c = self.vtable.get_JobIssueKind(@ptrCast(self), &_r);
@@ -415,6 +475,12 @@ pub const IPrintWorkflowJobIssueDetectedEventArgs = extern struct {
 };
 pub const IPrintWorkflowJobNotificationEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintWorkflowConfiguration {
         var _r: *PrintWorkflowConfiguration = undefined;
         const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
@@ -452,6 +518,12 @@ pub const IPrintWorkflowJobNotificationEventArgs = extern struct {
 };
 pub const IPrintWorkflowJobStartingEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintWorkflowConfiguration {
         var _r: *PrintWorkflowConfiguration = undefined;
         const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
@@ -494,6 +566,12 @@ pub const IPrintWorkflowJobStartingEventArgs = extern struct {
 };
 pub const IPrintWorkflowJobStartingEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsIppCompressionEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsIppCompressionEnabled(@ptrCast(self), &_r);
@@ -534,6 +612,12 @@ pub const IPrintWorkflowJobStartingEventArgs2 = extern struct {
 };
 pub const IPrintWorkflowJobTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrintWorkflowJobSession(self: *@This()) core.HResult!*PrintWorkflowJobBackgroundSession {
         var _r: *PrintWorkflowJobBackgroundSession = undefined;
         const _c = self.vtable.get_PrintWorkflowJobSession(@ptrCast(self), &_r);
@@ -557,6 +641,12 @@ pub const IPrintWorkflowJobTriggerDetails = extern struct {
 };
 pub const IPrintWorkflowJobUISession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!PrintWorkflowSessionStatus {
         var _r: PrintWorkflowSessionStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -609,6 +699,12 @@ pub const IPrintWorkflowJobUISession = extern struct {
 };
 pub const IPrintWorkflowJobUISession2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addVirtualPrinterUIDataAvailable(self: *@This(), handler: *TypedEventHandler(PrintWorkflowJobUISession,PrintWorkflowVirtualPrinterUIEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_VirtualPrinterUIDataAvailable(@ptrCast(self), handler, &_r);
@@ -637,6 +733,12 @@ pub const IPrintWorkflowJobUISession2 = extern struct {
 };
 pub const IPrintWorkflowObjectModelSourceFileContent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.Workflow.IPrintWorkflowObjectModelSourceFileContent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "c36c8a6a-8a2a-419a-b3c3-2090e6bfab2f";
@@ -653,6 +755,12 @@ pub const IPrintWorkflowObjectModelSourceFileContent = extern struct {
 };
 pub const IPrintWorkflowObjectModelSourceFileContentFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), xpsStream: *IInputStream) core.HResult!*PrintWorkflowObjectModelSourceFileContent {
         var _r: *PrintWorkflowObjectModelSourceFileContent = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), xpsStream, &_r);
@@ -676,6 +784,12 @@ pub const IPrintWorkflowObjectModelSourceFileContentFactory = extern struct {
 };
 pub const IPrintWorkflowObjectModelTargetPackage = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.Workflow.IPrintWorkflowObjectModelTargetPackage";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "7d96bc74-9b54-4ca1-ad3a-979c3d44ddac";
@@ -692,6 +806,12 @@ pub const IPrintWorkflowObjectModelTargetPackage = extern struct {
 };
 pub const IPrintWorkflowPdlConverter = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ConvertPdlAsync(self: *@This(), printTicket: *WorkflowPrintTicket, inputStream: *IInputStream, outputStream: *IOutputStream) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ConvertPdlAsync(@ptrCast(self), printTicket, inputStream, outputStream, &_r);
@@ -715,6 +835,12 @@ pub const IPrintWorkflowPdlConverter = extern struct {
 };
 pub const IPrintWorkflowPdlConverter2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ConvertPdlAsync(self: *@This(), printTicket: *WorkflowPrintTicket, inputStream: *IInputStream, outputStream: *IOutputStream, hostBasedProcessingOperations: PdlConversionHostBasedProcessingOperations) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
         const _c = self.vtable.ConvertPdlAsync(@ptrCast(self), printTicket, inputStream, outputStream, hostBasedProcessingOperations, &_r);
@@ -738,6 +864,12 @@ pub const IPrintWorkflowPdlConverter2 = extern struct {
 };
 pub const IPrintWorkflowPdlDataAvailableEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintWorkflowConfiguration {
         var _r: *PrintWorkflowConfiguration = undefined;
         const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
@@ -782,6 +914,12 @@ pub const IPrintWorkflowPdlDataAvailableEventArgs = extern struct {
 };
 pub const IPrintWorkflowPdlModificationRequestedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintWorkflowConfiguration {
         var _r: *PrintWorkflowConfiguration = undefined;
         const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
@@ -861,6 +999,12 @@ pub const IPrintWorkflowPdlModificationRequestedEventArgs = extern struct {
 };
 pub const IPrintWorkflowPdlModificationRequestedEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateJobOnPrinterWithAttributes(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), targetContentType: ?HSTRING, operationAttributes: *IIterable(IKeyValuePair(?HSTRING,IppAttributeValue)), jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
         var _r: *PrintWorkflowPdlTargetStream = undefined;
         const _c = self.vtable.CreateJobOnPrinterWithAttributes(@ptrCast(self), jobAttributes, targetContentType, operationAttributes, jobAttributesMergePolicy, operationAttributesMergePolicy, &_r);
@@ -891,6 +1035,12 @@ pub const IPrintWorkflowPdlModificationRequestedEventArgs2 = extern struct {
 };
 pub const IPrintWorkflowPdlSourceContent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_ContentType(@ptrCast(self), &_r);
@@ -928,6 +1078,12 @@ pub const IPrintWorkflowPdlSourceContent = extern struct {
 };
 pub const IPrintWorkflowPdlTargetStream = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetOutputStream(self: *@This()) core.HResult!*IOutputStream {
         var _r: *IOutputStream = undefined;
         const _c = self.vtable.GetOutputStream(@ptrCast(self), &_r);
@@ -956,6 +1112,12 @@ pub const IPrintWorkflowPdlTargetStream = extern struct {
 };
 pub const IPrintWorkflowPrinterJob = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getJobId(self: *@This()) core.HResult!i32 {
         var _r: i32 = undefined;
         const _c = self.vtable.get_JobId(@ptrCast(self), &_r);
@@ -1028,6 +1190,12 @@ pub const IPrintWorkflowPrinterJob = extern struct {
 };
 pub const IPrintWorkflowPrinterJob2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ConvertPrintTicketToJobAttributes(self: *@This(), printTicket: *WorkflowPrintTicket, targetPdlFormat: ?HSTRING) core.HResult!*IMap(?HSTRING,IppAttributeValue) {
         var _r: *IMap(?HSTRING,IppAttributeValue) = undefined;
         const _c = self.vtable.ConvertPrintTicketToJobAttributes(@ptrCast(self), printTicket, targetPdlFormat, &_r);
@@ -1051,6 +1219,12 @@ pub const IPrintWorkflowPrinterJob2 = extern struct {
 };
 pub const IPrintWorkflowSourceContent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetJobPrintTicketAsync(self: *@This()) core.HResult!*IAsyncOperation(WorkflowPrintTicket) {
         var _r: *IAsyncOperation(WorkflowPrintTicket) = undefined;
         const _c = self.vtable.GetJobPrintTicketAsync(@ptrCast(self), &_r);
@@ -1088,6 +1262,12 @@ pub const IPrintWorkflowSourceContent = extern struct {
 };
 pub const IPrintWorkflowSpoolStreamContent = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetInputStream(self: *@This()) core.HResult!*IInputStream {
         var _r: *IInputStream = undefined;
         const _c = self.vtable.GetInputStream(@ptrCast(self), &_r);
@@ -1111,6 +1291,12 @@ pub const IPrintWorkflowSpoolStreamContent = extern struct {
 };
 pub const IPrintWorkflowStreamTarget = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetOutputStream(self: *@This()) core.HResult!*IOutputStream {
         var _r: *IOutputStream = undefined;
         const _c = self.vtable.GetOutputStream(@ptrCast(self), &_r);
@@ -1134,6 +1320,12 @@ pub const IPrintWorkflowStreamTarget = extern struct {
 };
 pub const IPrintWorkflowSubmittedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperation(self: *@This()) core.HResult!*PrintWorkflowSubmittedOperation {
         var _r: *PrintWorkflowSubmittedOperation = undefined;
         const _c = self.vtable.get_Operation(@ptrCast(self), &_r);
@@ -1171,6 +1363,12 @@ pub const IPrintWorkflowSubmittedEventArgs = extern struct {
 };
 pub const IPrintWorkflowSubmittedOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This(), status: PrintWorkflowSubmittedStatus) core.HResult!void {
         const _c = self.vtable.Complete(@ptrCast(self), status);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -1206,6 +1404,12 @@ pub const IPrintWorkflowSubmittedOperation = extern struct {
 };
 pub const IPrintWorkflowTarget = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetAsStream(self: *@This()) core.HResult!*PrintWorkflowStreamTarget {
         var _r: *PrintWorkflowStreamTarget = undefined;
         const _c = self.vtable.get_TargetAsStream(@ptrCast(self), &_r);
@@ -1236,6 +1440,12 @@ pub const IPrintWorkflowTarget = extern struct {
 };
 pub const IPrintWorkflowTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrintWorkflowSession(self: *@This()) core.HResult!*PrintWorkflowBackgroundSession {
         var _r: *PrintWorkflowBackgroundSession = undefined;
         const _c = self.vtable.get_PrintWorkflowSession(@ptrCast(self), &_r);
@@ -1259,6 +1469,12 @@ pub const IPrintWorkflowTriggerDetails = extern struct {
 };
 pub const IPrintWorkflowUIActivatedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrintWorkflowSession(self: *@This()) core.HResult!*PrintWorkflowForegroundSession {
         var _r: *PrintWorkflowForegroundSession = undefined;
         const _c = self.vtable.get_PrintWorkflowSession(@ptrCast(self), &_r);
@@ -1282,6 +1498,12 @@ pub const IPrintWorkflowUIActivatedEventArgs = extern struct {
 };
 pub const IPrintWorkflowUILauncher = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsUILaunchEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.IsUILaunchEnabled(@ptrCast(self), &_r);
@@ -1312,6 +1534,12 @@ pub const IPrintWorkflowUILauncher = extern struct {
 };
 pub const IPrintWorkflowVirtualPrinterDataAvailableEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintWorkflowConfiguration {
         var _r: *PrintWorkflowConfiguration = undefined;
         const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
@@ -1375,6 +1603,12 @@ pub const IPrintWorkflowVirtualPrinterDataAvailableEventArgs = extern struct {
 };
 pub const IPrintWorkflowVirtualPrinterSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!PrintWorkflowSessionStatus {
         var _r: PrintWorkflowSessionStatus = undefined;
         const _c = self.vtable.get_Status(@ptrCast(self), &_r);
@@ -1422,6 +1656,12 @@ pub const IPrintWorkflowVirtualPrinterSession = extern struct {
 };
 pub const IPrintWorkflowVirtualPrinterTriggerDetails = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVirtualPrinterSession(self: *@This()) core.HResult!*PrintWorkflowVirtualPrinterSession {
         var _r: *PrintWorkflowVirtualPrinterSession = undefined;
         const _c = self.vtable.get_VirtualPrinterSession(@ptrCast(self), &_r);
@@ -1445,6 +1685,12 @@ pub const IPrintWorkflowVirtualPrinterTriggerDetails = extern struct {
 };
 pub const IPrintWorkflowVirtualPrinterUIEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintWorkflowConfiguration {
         var _r: *PrintWorkflowConfiguration = undefined;
         const _c = self.vtable.get_Configuration(@ptrCast(self), &_r);
@@ -1496,6 +1742,12 @@ pub const IPrintWorkflowVirtualPrinterUIEventArgs = extern struct {
 };
 pub const IPrintWorkflowXpsDataAvailableEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperation(self: *@This()) core.HResult!*PrintWorkflowSubmittedOperation {
         var _r: *PrintWorkflowSubmittedOperation = undefined;
         const _c = self.vtable.get_Operation(@ptrCast(self), &_r);
@@ -1539,6 +1791,18 @@ pub const PrintWorkflowAttributesMergePolicy = enum(i32) {
 };
 pub const PrintWorkflowBackgroundSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSetupRequested(self: *@This(), setupEventHandler: *TypedEventHandler(PrintWorkflowBackgroundSession,PrintWorkflowBackgroundSetupRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IPrintWorkflowBackgroundSession = @ptrCast(self);
         return try this.addSetupRequested(setupEventHandler);
@@ -1571,6 +1835,18 @@ pub const PrintWorkflowBackgroundSession = extern struct {
 };
 pub const PrintWorkflowBackgroundSetupRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetUserPrintTicketAsync(self: *@This()) core.HResult!*IAsyncOperation(WorkflowPrintTicket) {
         const this: *IPrintWorkflowBackgroundSetupRequestedEventArgs = @ptrCast(self);
         return try this.GetUserPrintTicketAsync();
@@ -1595,6 +1871,18 @@ pub const PrintWorkflowBackgroundSetupRequestedEventArgs = extern struct {
 };
 pub const PrintWorkflowConfiguration = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AbortPrintFlow(self: *@This(), reason: PrintWorkflowJobAbortReason) core.HResult!void {
         var this: ?*IPrintWorkflowConfiguration2 = undefined;
         defer _ = IUnknown.Release(@ptrCast(this));
@@ -1622,6 +1910,18 @@ pub const PrintWorkflowConfiguration = extern struct {
 };
 pub const PrintWorkflowForegroundSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addSetupRequested(self: *@This(), setupEventHandler: *TypedEventHandler(PrintWorkflowForegroundSession,PrintWorkflowForegroundSetupRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IPrintWorkflowForegroundSession = @ptrCast(self);
         return try this.addSetupRequested(setupEventHandler);
@@ -1654,6 +1954,18 @@ pub const PrintWorkflowForegroundSession = extern struct {
 };
 pub const PrintWorkflowForegroundSetupRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetUserPrintTicketAsync(self: *@This()) core.HResult!*IAsyncOperation(WorkflowPrintTicket) {
         const this: *IPrintWorkflowForegroundSetupRequestedEventArgs = @ptrCast(self);
         return try this.GetUserPrintTicketAsync();
@@ -1678,6 +1990,18 @@ pub const PrintWorkflowJobAbortReason = enum(i32) {
 };
 pub const PrintWorkflowJobActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*PrintWorkflowJobUISession {
         const this: *IPrintWorkflowJobActivatedEventArgs = @ptrCast(self);
         return try this.getSession();
@@ -1718,6 +2042,18 @@ pub const PrintWorkflowJobActivatedEventArgs = extern struct {
 };
 pub const PrintWorkflowJobBackgroundSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!PrintWorkflowSessionStatus {
         const this: *IPrintWorkflowJobBackgroundSession = @ptrCast(self);
         return try this.getStatus();
@@ -1764,6 +2100,18 @@ pub const PrintWorkflowJobBackgroundSession = extern struct {
 };
 pub const PrintWorkflowJobIssueDetectedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getJobIssueKind(self: *@This()) core.HResult!PrintWorkflowJobIssueKind {
         const this: *IPrintWorkflowJobIssueDetectedEventArgs = @ptrCast(self);
         return try this.getJobIssueKind();
@@ -1817,6 +2165,18 @@ pub const PrintWorkflowJobIssueKind = enum(i32) {
 };
 pub const PrintWorkflowJobNotificationEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintWorkflowConfiguration {
         const this: *IPrintWorkflowJobNotificationEventArgs = @ptrCast(self);
         return try this.getConfiguration();
@@ -1837,6 +2197,18 @@ pub const PrintWorkflowJobNotificationEventArgs = extern struct {
 };
 pub const PrintWorkflowJobStartingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintWorkflowConfiguration {
         const this: *IPrintWorkflowJobStartingEventArgs = @ptrCast(self);
         return try this.getConfiguration();
@@ -1889,6 +2261,18 @@ pub const PrintWorkflowJobStartingEventArgs = extern struct {
 };
 pub const PrintWorkflowJobTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrintWorkflowJobSession(self: *@This()) core.HResult!*PrintWorkflowJobBackgroundSession {
         const this: *IPrintWorkflowJobTriggerDetails = @ptrCast(self);
         return try this.getPrintWorkflowJobSession();
@@ -1901,6 +2285,18 @@ pub const PrintWorkflowJobTriggerDetails = extern struct {
 };
 pub const PrintWorkflowJobUISession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!PrintWorkflowSessionStatus {
         const this: *IPrintWorkflowJobUISession = @ptrCast(self);
         return try this.getStatus();
@@ -1947,6 +2343,15 @@ pub const PrintWorkflowJobUISession = extern struct {
 };
 pub const PrintWorkflowObjectModelSourceFileContent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1963,6 +2368,18 @@ pub const PrintWorkflowObjectModelSourceFileContent = extern struct {
 };
 pub const PrintWorkflowObjectModelTargetPackage = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.Workflow.PrintWorkflowObjectModelTargetPackage";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IPrintWorkflowObjectModelTargetPackage.GUID;
@@ -1977,6 +2394,18 @@ pub const PrintWorkflowPdlConversionType = enum(i32) {
 };
 pub const PrintWorkflowPdlConverter = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn ConvertPdlAsync(self: *@This(), printTicket: *WorkflowPrintTicket, inputStream: *IInputStream, outputStream: *IOutputStream) core.HResult!*IAsyncAction {
         const this: *IPrintWorkflowPdlConverter = @ptrCast(self);
         return try this.ConvertPdlAsync(printTicket, inputStream, outputStream);
@@ -1996,6 +2425,18 @@ pub const PrintWorkflowPdlConverter = extern struct {
 };
 pub const PrintWorkflowPdlDataAvailableEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintWorkflowConfiguration {
         const this: *IPrintWorkflowPdlDataAvailableEventArgs = @ptrCast(self);
         return try this.getConfiguration();
@@ -2020,6 +2461,18 @@ pub const PrintWorkflowPdlDataAvailableEventArgs = extern struct {
 };
 pub const PrintWorkflowPdlModificationRequestedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintWorkflowConfiguration {
         const this: *IPrintWorkflowPdlModificationRequestedEventArgs = @ptrCast(self);
         return try this.getConfiguration();
@@ -2078,6 +2531,18 @@ pub const PrintWorkflowPdlModificationRequestedEventArgs = extern struct {
 };
 pub const PrintWorkflowPdlSourceContent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentType(self: *@This()) core.HResult!?HSTRING {
         const this: *IPrintWorkflowPdlSourceContent = @ptrCast(self);
         return try this.getContentType();
@@ -2098,6 +2563,18 @@ pub const PrintWorkflowPdlSourceContent = extern struct {
 };
 pub const PrintWorkflowPdlTargetStream = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetOutputStream(self: *@This()) core.HResult!*IOutputStream {
         const this: *IPrintWorkflowPdlTargetStream = @ptrCast(self);
         return try this.GetOutputStream();
@@ -2114,6 +2591,18 @@ pub const PrintWorkflowPdlTargetStream = extern struct {
 };
 pub const PrintWorkflowPrinterJob = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getJobId(self: *@This()) core.HResult!i32 {
         const this: *IPrintWorkflowPrinterJob = @ptrCast(self);
         return try this.getJobId();
@@ -2174,6 +2663,18 @@ pub const PrintWorkflowSessionStatus = enum(i32) {
 };
 pub const PrintWorkflowSourceContent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetJobPrintTicketAsync(self: *@This()) core.HResult!*IAsyncOperation(WorkflowPrintTicket) {
         const this: *IPrintWorkflowSourceContent = @ptrCast(self);
         return try this.GetJobPrintTicketAsync();
@@ -2194,6 +2695,18 @@ pub const PrintWorkflowSourceContent = extern struct {
 };
 pub const PrintWorkflowSpoolStreamContent = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetInputStream(self: *@This()) core.HResult!*IInputStream {
         const this: *IPrintWorkflowSpoolStreamContent = @ptrCast(self);
         return try this.GetInputStream();
@@ -2206,6 +2719,18 @@ pub const PrintWorkflowSpoolStreamContent = extern struct {
 };
 pub const PrintWorkflowStreamTarget = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetOutputStream(self: *@This()) core.HResult!*IOutputStream {
         const this: *IPrintWorkflowStreamTarget = @ptrCast(self);
         return try this.GetOutputStream();
@@ -2218,6 +2743,18 @@ pub const PrintWorkflowStreamTarget = extern struct {
 };
 pub const PrintWorkflowSubmittedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperation(self: *@This()) core.HResult!*PrintWorkflowSubmittedOperation {
         const this: *IPrintWorkflowSubmittedEventArgs = @ptrCast(self);
         return try this.getOperation();
@@ -2238,6 +2775,18 @@ pub const PrintWorkflowSubmittedEventArgs = extern struct {
 };
 pub const PrintWorkflowSubmittedOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn Complete(self: *@This(), status: PrintWorkflowSubmittedStatus) core.HResult!void {
         const this: *IPrintWorkflowSubmittedOperation = @ptrCast(self);
         return try this.Complete(status);
@@ -2263,6 +2812,18 @@ pub const PrintWorkflowSubmittedStatus = enum(i32) {
 };
 pub const PrintWorkflowTarget = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTargetAsStream(self: *@This()) core.HResult!*PrintWorkflowStreamTarget {
         const this: *IPrintWorkflowTarget = @ptrCast(self);
         return try this.getTargetAsStream();
@@ -2279,6 +2840,18 @@ pub const PrintWorkflowTarget = extern struct {
 };
 pub const PrintWorkflowTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrintWorkflowSession(self: *@This()) core.HResult!*PrintWorkflowBackgroundSession {
         const this: *IPrintWorkflowTriggerDetails = @ptrCast(self);
         return try this.getPrintWorkflowSession();
@@ -2291,6 +2864,18 @@ pub const PrintWorkflowTriggerDetails = extern struct {
 };
 pub const PrintWorkflowUIActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPrintWorkflowSession(self: *@This()) core.HResult!*PrintWorkflowForegroundSession {
         const this: *IPrintWorkflowUIActivatedEventArgs = @ptrCast(self);
         return try this.getPrintWorkflowSession();
@@ -2337,6 +2922,18 @@ pub const PrintWorkflowUICompletionStatus = enum(i32) {
 };
 pub const PrintWorkflowUILauncher = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsUILaunchEnabled(self: *@This()) core.HResult!bool {
         const this: *IPrintWorkflowUILauncher = @ptrCast(self);
         return try this.IsUILaunchEnabled();
@@ -2353,6 +2950,18 @@ pub const PrintWorkflowUILauncher = extern struct {
 };
 pub const PrintWorkflowVirtualPrinterDataAvailableEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintWorkflowConfiguration {
         const this: *IPrintWorkflowVirtualPrinterDataAvailableEventArgs = @ptrCast(self);
         return try this.getConfiguration();
@@ -2389,6 +2998,18 @@ pub const PrintWorkflowVirtualPrinterDataAvailableEventArgs = extern struct {
 };
 pub const PrintWorkflowVirtualPrinterSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStatus(self: *@This()) core.HResult!PrintWorkflowSessionStatus {
         const this: *IPrintWorkflowVirtualPrinterSession = @ptrCast(self);
         return try this.getStatus();
@@ -2417,6 +3038,18 @@ pub const PrintWorkflowVirtualPrinterSession = extern struct {
 };
 pub const PrintWorkflowVirtualPrinterTriggerDetails = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getVirtualPrinterSession(self: *@This()) core.HResult!*PrintWorkflowVirtualPrinterSession {
         const this: *IPrintWorkflowVirtualPrinterTriggerDetails = @ptrCast(self);
         return try this.getVirtualPrinterSession();
@@ -2429,6 +3062,18 @@ pub const PrintWorkflowVirtualPrinterTriggerDetails = extern struct {
 };
 pub const PrintWorkflowVirtualPrinterUIEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getConfiguration(self: *@This()) core.HResult!*PrintWorkflowConfiguration {
         const this: *IPrintWorkflowVirtualPrinterUIEventArgs = @ptrCast(self);
         return try this.getConfiguration();
@@ -2457,6 +3102,18 @@ pub const PrintWorkflowVirtualPrinterUIEventArgs = extern struct {
 };
 pub const PrintWorkflowXpsDataAvailableEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getOperation(self: *@This()) core.HResult!*PrintWorkflowSubmittedOperation {
         const this: *IPrintWorkflowXpsDataAvailableEventArgs = @ptrCast(self);
         return try this.getOperation();

@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPhotoImportDeleteImportedItemsFromSourceResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*PhotoImportSession {
         var _r: *PhotoImportSession = undefined;
         const _c = self.vtable.get_Session(@ptrCast(self), &_r);
@@ -108,6 +114,12 @@ pub const IPhotoImportDeleteImportedItemsFromSourceResult = extern struct {
 };
 pub const IPhotoImportFindItemsResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*PhotoImportSession {
         var _r: *PhotoImportSession = undefined;
         const _c = self.vtable.get_Session(@ptrCast(self), &_r);
@@ -345,6 +357,12 @@ pub const IPhotoImportFindItemsResult = extern struct {
 };
 pub const IPhotoImportFindItemsResult2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn AddItemsInDateRangeToSelection(self: *@This(), rangeStart: DateTime, rangeLength: TimeSpan) core.HResult!void {
         const _c = self.vtable.AddItemsInDateRangeToSelection(@ptrCast(self), rangeStart, rangeLength);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -366,6 +384,12 @@ pub const IPhotoImportFindItemsResult2 = extern struct {
 };
 pub const IPhotoImportImportItemsResult = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*PhotoImportSession {
         var _r: *PhotoImportSession = undefined;
         const _c = self.vtable.get_Session(@ptrCast(self), &_r);
@@ -480,6 +504,12 @@ pub const IPhotoImportImportItemsResult = extern struct {
 };
 pub const IPhotoImportItem = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -585,6 +615,12 @@ pub const IPhotoImportItem = extern struct {
 };
 pub const IPhotoImportItem2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPath(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Path(@ptrCast(self), &_r);
@@ -608,6 +644,12 @@ pub const IPhotoImportItem2 = extern struct {
 };
 pub const IPhotoImportItemImportedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getImportedItem(self: *@This()) core.HResult!*PhotoImportItem {
         var _r: *PhotoImportItem = undefined;
         const _c = self.vtable.get_ImportedItem(@ptrCast(self), &_r);
@@ -631,6 +673,12 @@ pub const IPhotoImportItemImportedEventArgs = extern struct {
 };
 pub const IPhotoImportManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn IsSupportedAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
         const _c = self.vtable.IsSupportedAsync(@ptrCast(self), &_r);
@@ -668,6 +716,12 @@ pub const IPhotoImportManagerStatics = extern struct {
 };
 pub const IPhotoImportOperation = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStage(self: *@This()) core.HResult!PhotoImportStage {
         var _r: PhotoImportStage = undefined;
         const _c = self.vtable.get_Stage(@ptrCast(self), &_r);
@@ -719,6 +773,12 @@ pub const IPhotoImportOperation = extern struct {
 };
 pub const IPhotoImportSelectionChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSelectionEmpty(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsSelectionEmpty(@ptrCast(self), &_r);
@@ -742,6 +802,12 @@ pub const IPhotoImportSelectionChangedEventArgs = extern struct {
 };
 pub const IPhotoImportSession = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*PhotoImportSource {
         var _r: *PhotoImportSource = undefined;
         const _c = self.vtable.get_Source(@ptrCast(self), &_r);
@@ -827,6 +893,12 @@ pub const IPhotoImportSession = extern struct {
 };
 pub const IPhotoImportSession2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putSubfolderDateFormat(self: *@This(), value: PhotoImportSubfolderDateFormat) core.HResult!void {
         const _c = self.vtable.put_SubfolderDateFormat(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -867,6 +939,12 @@ pub const IPhotoImportSession2 = extern struct {
 };
 pub const IPhotoImportSidecar = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -904,6 +982,12 @@ pub const IPhotoImportSidecar = extern struct {
 };
 pub const IPhotoImportSource = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Id(@ptrCast(self), &_r);
@@ -1039,6 +1123,12 @@ pub const IPhotoImportSource = extern struct {
 };
 pub const IPhotoImportSourceStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn FromIdAsync(self: *@This(), sourceId: ?HSTRING) core.HResult!*IAsyncOperation(PhotoImportSource) {
         var _r: *IAsyncOperation(PhotoImportSource) = undefined;
         const _c = self.vtable.FromIdAsync(@ptrCast(self), sourceId, &_r);
@@ -1069,6 +1159,12 @@ pub const IPhotoImportSourceStatics = extern struct {
 };
 pub const IPhotoImportStorageMedium = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -1139,6 +1235,12 @@ pub const IPhotoImportStorageMedium = extern struct {
 };
 pub const IPhotoImportVideoSegment = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Name(@ptrCast(self), &_r);
@@ -1212,6 +1314,18 @@ pub const PhotoImportContentTypeFilter = enum(i32) {
 };
 pub const PhotoImportDeleteImportedItemsFromSourceResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*PhotoImportSession {
         const this: *IPhotoImportDeleteImportedItemsFromSourceResult = @ptrCast(self);
         return try this.getSession();
@@ -1272,6 +1386,18 @@ pub const PhotoImportDeleteImportedItemsFromSourceResult = extern struct {
 };
 pub const PhotoImportFindItemsResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*PhotoImportSession {
         const this: *IPhotoImportFindItemsResult = @ptrCast(self);
         return try this.getSession();
@@ -1419,6 +1545,18 @@ pub const PhotoImportFindItemsResult = extern struct {
 };
 pub const PhotoImportImportItemsResult = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSession(self: *@This()) core.HResult!*PhotoImportSession {
         const this: *IPhotoImportImportItemsResult = @ptrCast(self);
         return try this.getSession();
@@ -1489,6 +1627,18 @@ pub const PhotoImportImportMode = enum(i32) {
 };
 pub const PhotoImportItem = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportItem = @ptrCast(self);
         return try this.getName();
@@ -1556,6 +1706,18 @@ pub const PhotoImportItem = extern struct {
 };
 pub const PhotoImportItemImportedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getImportedItem(self: *@This()) core.HResult!*PhotoImportItem {
         const this: *IPhotoImportItemImportedEventArgs = @ptrCast(self);
         return try this.getImportedItem();
@@ -1573,6 +1735,15 @@ pub const PhotoImportItemSelectionMode = enum(i32) {
 };
 pub const PhotoImportManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -1594,6 +1765,18 @@ pub const PhotoImportManager = extern struct {
 };
 pub const PhotoImportOperation = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getStage(self: *@This()) core.HResult!PhotoImportStage {
         const this: *IPhotoImportOperation = @ptrCast(self);
         return try this.getStage();
@@ -1634,6 +1817,18 @@ pub const PhotoImportProgress = extern struct {
 };
 pub const PhotoImportSelectionChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsSelectionEmpty(self: *@This()) core.HResult!bool {
         const this: *IPhotoImportSelectionChangedEventArgs = @ptrCast(self);
         return try this.getIsSelectionEmpty();
@@ -1646,6 +1841,18 @@ pub const PhotoImportSelectionChangedEventArgs = extern struct {
 };
 pub const PhotoImportSession = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSource(self: *@This()) core.HResult!*PhotoImportSource {
         const this: *IPhotoImportSession = @ptrCast(self);
         return try this.getSource();
@@ -1733,6 +1940,18 @@ pub const PhotoImportSession = extern struct {
 };
 pub const PhotoImportSidecar = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportSidecar = @ptrCast(self);
         return try this.getName();
@@ -1753,6 +1972,18 @@ pub const PhotoImportSidecar = extern struct {
 };
 pub const PhotoImportSource = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getId(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportSource = @ptrCast(self);
         return try this.getId();
@@ -1821,9 +2052,6 @@ pub const PhotoImportSource = extern struct {
         const this: *IPhotoImportSource = @ptrCast(self);
         return try this.CreateImportSession();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn FromIdAsync(sourceId: ?HSTRING) core.HResult!*IAsyncOperation(PhotoImportSource) {
         const _f = try @This()._IPhotoImportSourceStaticsCache.get();
         return try _f.FromIdAsync(sourceId);
@@ -1856,6 +2084,18 @@ pub const PhotoImportStage = enum(i32) {
 };
 pub const PhotoImportStorageMedium = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportStorageMedium = @ptrCast(self);
         return try this.getName();
@@ -1912,6 +2152,18 @@ pub const PhotoImportSubfolderDateFormat = enum(i32) {
 };
 pub const PhotoImportVideoSegment = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getName(self: *@This()) core.HResult!?HSTRING {
         const this: *IPhotoImportVideoSegment = @ptrCast(self);
         return try this.getName();

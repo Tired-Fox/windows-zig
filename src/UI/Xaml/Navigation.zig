@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const FrameNavigationOptions = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsNavigationStackEnabled(self: *@This()) core.HResult!bool {
         const this: *IFrameNavigationOptions = @ptrCast(self);
         return try this.getIsNavigationStackEnabled();
@@ -17,9 +29,6 @@ pub const FrameNavigationOptions = extern struct {
         const this: *IFrameNavigationOptions = @ptrCast(self);
         return try this.putTransitionInfoOverride(value);
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FrameNavigationOptions {
         const _f = try @This()._IFrameNavigationOptionsFactoryCache.get();
         return try _f.CreateInstance(baseInterface, innerInterface);
@@ -33,6 +42,12 @@ pub const FrameNavigationOptions = extern struct {
 };
 pub const IFrameNavigationOptions = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getIsNavigationStackEnabled(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_IsNavigationStackEnabled(@ptrCast(self), &_r);
@@ -73,6 +88,12 @@ pub const IFrameNavigationOptions = extern struct {
 };
 pub const IFrameNavigationOptionsFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FrameNavigationOptions {
         var _r: *FrameNavigationOptions = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), baseInterface, innerInterface, &_r);
@@ -96,6 +117,12 @@ pub const IFrameNavigationOptionsFactory = extern struct {
 };
 pub const INavigatingCancelEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCancel(self: *@This()) core.HResult!bool {
         var _r: bool = undefined;
         const _c = self.vtable.get_Cancel(@ptrCast(self), &_r);
@@ -138,6 +165,12 @@ pub const INavigatingCancelEventArgs = extern struct {
 };
 pub const INavigatingCancelEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getParameter(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Parameter(@ptrCast(self), &_r);
@@ -168,6 +201,12 @@ pub const INavigatingCancelEventArgs2 = extern struct {
 };
 pub const INavigationEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContent(self: *@This()) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
         const _c = self.vtable.get_Content(@ptrCast(self), &_r);
@@ -224,6 +263,12 @@ pub const INavigationEventArgs = extern struct {
 };
 pub const INavigationEventArgs2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getNavigationTransitionInfo(self: *@This()) core.HResult!*NavigationTransitionInfo {
         var _r: *NavigationTransitionInfo = undefined;
         const _c = self.vtable.get_NavigationTransitionInfo(@ptrCast(self), &_r);
@@ -247,6 +292,12 @@ pub const INavigationEventArgs2 = extern struct {
 };
 pub const INavigationFailedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getException(self: *@This()) core.HResult!HResult {
         var _r: HResult = undefined;
         const _c = self.vtable.get_Exception(@ptrCast(self), &_r);
@@ -289,6 +340,12 @@ pub const INavigationFailedEventArgs = extern struct {
 };
 pub const IPageStackEntry = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourcePageType(self: *@This()) core.HResult!TypeName {
         var _r: TypeName = undefined;
         const _c = self.vtable.get_SourcePageType(@ptrCast(self), &_r);
@@ -326,6 +383,12 @@ pub const IPageStackEntry = extern struct {
 };
 pub const IPageStackEntryFactory = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateInstance(self: *@This(), sourcePageType: TypeName, parameter: *IInspectable, navigationTransitionInfo: *NavigationTransitionInfo) core.HResult!*PageStackEntry {
         var _r: *PageStackEntry = undefined;
         const _c = self.vtable.CreateInstance(@ptrCast(self), sourcePageType, parameter, navigationTransitionInfo, &_r);
@@ -349,6 +412,12 @@ pub const IPageStackEntryFactory = extern struct {
 };
 pub const IPageStackEntryStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourcePageTypeProperty(self: *@This()) core.HResult!*DependencyProperty {
         var _r: *DependencyProperty = undefined;
         const _c = self.vtable.get_SourcePageTypeProperty(@ptrCast(self), &_r);
@@ -550,6 +619,18 @@ pub const NavigatedEventHandler = extern struct {
 };
 pub const NavigatingCancelEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getCancel(self: *@This()) core.HResult!bool {
         const this: *INavigatingCancelEventArgs = @ptrCast(self);
         return try this.getCancel();
@@ -682,6 +763,18 @@ pub const NavigationCacheMode = enum(i32) {
 };
 pub const NavigationEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContent(self: *@This()) core.HResult!*IInspectable {
         const this: *INavigationEventArgs = @ptrCast(self);
         return try this.getContent();
@@ -721,6 +814,18 @@ pub const NavigationEventArgs = extern struct {
 };
 pub const NavigationFailedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getException(self: *@This()) core.HResult!HResult {
         const this: *INavigationFailedEventArgs = @ptrCast(self);
         return try this.getException();
@@ -929,6 +1034,18 @@ pub const NavigationStoppedEventHandler = extern struct {
 };
 pub const PageStackEntry = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getSourcePageType(self: *@This()) core.HResult!TypeName {
         const this: *IPageStackEntry = @ptrCast(self);
         return try this.getSourcePageType();
@@ -940,9 +1057,6 @@ pub const PageStackEntry = extern struct {
     pub fn getNavigationTransitionInfo(self: *@This()) core.HResult!*NavigationTransitionInfo {
         const this: *IPageStackEntry = @ptrCast(self);
         return try this.getNavigationTransitionInfo();
-    }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(sourcePageType: TypeName, parameter: *IInspectable, navigationTransitionInfo: *NavigationTransitionInfo) core.HResult!*PageStackEntry {
         const _f = try @This()._IPageStackEntryFactoryCache.get();

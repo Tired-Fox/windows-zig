@@ -1,6 +1,18 @@
 // ----- This code is automatically generated -----
 pub const CustomSensor = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*CustomSensorReading {
         const this: *ICustomSensor = @ptrCast(self);
         return try this.GetCurrentReading();
@@ -50,9 +62,6 @@ pub const CustomSensor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaxBatchSize();
     }
-    pub fn deinit(self: *@This()) void {
-        _ = IUnknown.Release(@ptrCast(self));
-    }
     pub fn GetDeviceSelector(interfaceId: *Guid) core.HResult!?HSTRING {
         const _f = try @This()._ICustomSensorStaticsCache.get();
         return try _f.GetDeviceSelector(interfaceId);
@@ -70,6 +79,18 @@ pub const CustomSensor = extern struct {
 };
 pub const CustomSensorReading = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         const this: *ICustomSensorReading = @ptrCast(self);
         return try this.getTimestamp();
@@ -93,6 +114,18 @@ pub const CustomSensorReading = extern struct {
 };
 pub const CustomSensorReadingChangedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*CustomSensorReading {
         const this: *ICustomSensorReadingChangedEventArgs = @ptrCast(self);
         return try this.getReading();
@@ -105,6 +138,12 @@ pub const CustomSensorReadingChangedEventArgs = extern struct {
 };
 pub const ICustomSensor = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetCurrentReading(self: *@This()) core.HResult!*CustomSensorReading {
         var _r: *CustomSensorReading = undefined;
         const _c = self.vtable.GetCurrentReading(@ptrCast(self), &_r);
@@ -166,6 +205,12 @@ pub const ICustomSensor = extern struct {
 };
 pub const ICustomSensor2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putReportLatency(self: *@This(), value: u32) core.HResult!void {
         const _c = self.vtable.put_ReportLatency(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -201,6 +246,12 @@ pub const ICustomSensor2 = extern struct {
 };
 pub const ICustomSensorReading = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getTimestamp(self: *@This()) core.HResult!DateTime {
         var _r: DateTime = undefined;
         const _c = self.vtable.get_Timestamp(@ptrCast(self), &_r);
@@ -231,6 +282,12 @@ pub const ICustomSensorReading = extern struct {
 };
 pub const ICustomSensorReading2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getPerformanceCount(self: *@This()) core.HResult!*IReference(TimeSpan) {
         var _r: *IReference(TimeSpan) = undefined;
         const _c = self.vtable.get_PerformanceCount(@ptrCast(self), &_r);
@@ -254,6 +311,12 @@ pub const ICustomSensorReading2 = extern struct {
 };
 pub const ICustomSensorReadingChangedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getReading(self: *@This()) core.HResult!*CustomSensorReading {
         var _r: *CustomSensorReading = undefined;
         const _c = self.vtable.get_Reading(@ptrCast(self), &_r);
@@ -277,6 +340,12 @@ pub const ICustomSensorReadingChangedEventArgs = extern struct {
 };
 pub const ICustomSensorStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDeviceSelector(self: *@This(), interfaceId: *Guid) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.GetDeviceSelector(@ptrCast(self), interfaceId, &_r);

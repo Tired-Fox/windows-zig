@@ -1,6 +1,12 @@
 // ----- This code is automatically generated -----
 pub const IPushNotificationChannel = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Uri(@ptrCast(self), &_r);
@@ -48,6 +54,12 @@ pub const IPushNotificationChannel = extern struct {
 };
 pub const IPushNotificationChannelManagerForUser = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreatePushNotificationChannelForApplicationAsync(self: *@This()) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         var _r: *IAsyncOperation(PushNotificationChannel) = undefined;
         const _c = self.vtable.CreatePushNotificationChannelForApplicationAsync(@ptrCast(self), &_r);
@@ -92,6 +104,12 @@ pub const IPushNotificationChannelManagerForUser = extern struct {
 };
 pub const IPushNotificationChannelManagerForUser2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsync(self: *@This(), appServerKey: *IBuffer, channelId: ?HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         var _r: *IAsyncOperation(PushNotificationChannel) = undefined;
         const _c = self.vtable.CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsync(@ptrCast(self), appServerKey, channelId, &_r);
@@ -122,6 +140,12 @@ pub const IPushNotificationChannelManagerForUser2 = extern struct {
 };
 pub const IPushNotificationChannelManagerStatics = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreatePushNotificationChannelForApplicationAsync(self: *@This()) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         var _r: *IAsyncOperation(PushNotificationChannel) = undefined;
         const _c = self.vtable.CreatePushNotificationChannelForApplicationAsync(@ptrCast(self), &_r);
@@ -159,6 +183,12 @@ pub const IPushNotificationChannelManagerStatics = extern struct {
 };
 pub const IPushNotificationChannelManagerStatics2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetForUser(self: *@This(), user: *User) core.HResult!*PushNotificationChannelManagerForUser {
         var _r: *PushNotificationChannelManagerForUser = undefined;
         const _c = self.vtable.GetForUser(@ptrCast(self), user, &_r);
@@ -182,6 +212,12 @@ pub const IPushNotificationChannelManagerStatics2 = extern struct {
 };
 pub const IPushNotificationChannelManagerStatics3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn GetDefault(self: *@This()) core.HResult!*PushNotificationChannelManagerForUser {
         var _r: *PushNotificationChannelManagerForUser = undefined;
         const _c = self.vtable.GetDefault(@ptrCast(self), &_r);
@@ -205,6 +241,12 @@ pub const IPushNotificationChannelManagerStatics3 = extern struct {
 };
 pub const IPushNotificationChannelManagerStatics4 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn addChannelsRevoked(self: *@This(), handler: *EventHandler(PushNotificationChannelsRevokedEventArgs)) core.HResult!EventRegistrationToken {
         var _r: EventRegistrationToken = undefined;
         const _c = self.vtable.add_ChannelsRevoked(@ptrCast(self), handler, &_r);
@@ -233,6 +275,12 @@ pub const IPushNotificationChannelManagerStatics4 = extern struct {
 };
 pub const IPushNotificationChannelsRevokedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Networking.PushNotifications.IPushNotificationChannelsRevokedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = "20e1a24c-1a34-5beb-aae2-40c232c8c140";
@@ -249,6 +297,12 @@ pub const IPushNotificationChannelsRevokedEventArgs = extern struct {
 };
 pub const IPushNotificationReceivedEventArgs = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCancel(self: *@This(), value: bool) core.HResult!void {
         const _c = self.vtable.put_Cancel(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
@@ -312,6 +366,12 @@ pub const IPushNotificationReceivedEventArgs = extern struct {
 };
 pub const IRawNotification = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContent(self: *@This()) core.HResult!?HSTRING {
         var _r: ?HSTRING = undefined;
         const _c = self.vtable.get_Content(@ptrCast(self), &_r);
@@ -335,6 +395,12 @@ pub const IRawNotification = extern struct {
 };
 pub const IRawNotification2 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getHeaders(self: *@This()) core.HResult!*IMapView(?HSTRING,?HSTRING) {
         var _r: *IMapView(?HSTRING,?HSTRING) = undefined;
         const _c = self.vtable.get_Headers(@ptrCast(self), &_r);
@@ -365,6 +431,12 @@ pub const IRawNotification2 = extern struct {
 };
 pub const IRawNotification3 = extern struct {
     vtable: *const VTable,
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContentBytes(self: *@This()) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
         const _c = self.vtable.get_ContentBytes(@ptrCast(self), &_r);
@@ -388,6 +460,18 @@ pub const IRawNotification3 = extern struct {
 };
 pub const PushNotificationChannel = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getUri(self: *@This()) core.HResult!?HSTRING {
         const this: *IPushNotificationChannel = @ptrCast(self);
         return try this.getUri();
@@ -416,6 +500,15 @@ pub const PushNotificationChannel = extern struct {
 };
 pub const PushNotificationChannelManager = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
@@ -456,6 +549,18 @@ pub const PushNotificationChannelManager = extern struct {
 };
 pub const PushNotificationChannelManagerForUser = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn CreatePushNotificationChannelForApplicationAsync(self: *@This()) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         const this: *IPushNotificationChannelManagerForUser = @ptrCast(self);
         return try this.CreatePushNotificationChannelForApplicationAsync();
@@ -494,6 +599,18 @@ pub const PushNotificationChannelManagerForUser = extern struct {
 };
 pub const PushNotificationChannelsRevokedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub const NAME: []const u8 = "Windows.Networking.PushNotifications.PushNotificationChannelsRevokedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
     pub const GUID: []const u8 = IPushNotificationChannelsRevokedEventArgs.GUID;
@@ -502,6 +619,18 @@ pub const PushNotificationChannelsRevokedEventArgs = extern struct {
 };
 pub const PushNotificationReceivedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn putCancel(self: *@This(), value: bool) core.HResult!void {
         const this: *IPushNotificationReceivedEventArgs = @ptrCast(self);
         return try this.putCancel(value);
@@ -545,6 +674,18 @@ pub const PushNotificationType = enum(i32) {
 };
 pub const RawNotification = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn cast(self: *@This(), T: type) !*T {
+        var _r: ?*T = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));
+        if (_c != 0 or _r == null) return error.NoInterface;
+        return _r.?;
+    }
+    pub fn Release(self: *@This()) u32 {
+        return IUnknown.Release(@ptrCast(self));
+    }
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
     pub fn getContent(self: *@This()) core.HResult!?HSTRING {
         const this: *IRawNotification = @ptrCast(self);
         return try this.getContent();
@@ -576,9 +717,9 @@ pub const RawNotification = extern struct {
     pub const IID: Guid = IRawNotification.IID;
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, IRawNotification.SIGNATURE);
 };
+const IUnknown = @import("../root.zig").IUnknown;
 const TileNotification = @import("../UI/Notifications.zig").TileNotification;
 const Guid = @import("../root.zig").Guid;
-const IUnknown = @import("../root.zig").IUnknown;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const IMapView = @import("../Foundation/Collections.zig").IMapView;
 const IBuffer = @import("../Storage/Streams.zig").IBuffer;
